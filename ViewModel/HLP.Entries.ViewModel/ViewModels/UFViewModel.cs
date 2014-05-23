@@ -35,7 +35,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         public UFViewModel()
             : base()
         {            
-            objUFCommands = new UFCommands(objViewModel: this);            
+            objUFCommands = new UFCommands(objViewModel: this);          
         }     
 
     }

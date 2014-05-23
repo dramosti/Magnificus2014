@@ -1,10 +1,10 @@
-﻿<runtime:WindowsBase x:Class="HLP.Entries.View.WPF.Comercial.WinOrcamento"
+﻿<runtime:WindowsBase x:Class="HLP.Sales.View.WPF.Comercial.WinOrcamento"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
-        xmlns:convertLocal="clr-namespace:HLP.Entries.View.WPF.Comercial.Converter"
+        xmlns:convertLocal="clr-namespace:HLP.Sales.View.WPF.Converters"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         xmlns:dat="clr-namespace:System.Windows.Data;assembly=PresentationFramework"
         xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
@@ -204,7 +204,6 @@
                         <System:String>xFantasia</System:String>
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
-
                 <Components:HlpPesquisa
                     Grid.Column="7" Grid.Row="2" Height="20" Margin="0,0,0,3"
                     Text="{Binding currentModel.idTipoDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"

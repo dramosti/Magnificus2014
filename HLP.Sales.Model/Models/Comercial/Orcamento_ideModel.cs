@@ -81,6 +81,8 @@ namespace HLP.Sales.Model.Models.Comercial
                 this.lOrcamento_Item_Impostos = new ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel>();
                 this.lOrcamento_Itens.CollectionChanged += lOrcamento_Itens_CollectionChanged;
                 this.bTodos = true;
+
+                this.dDataHora = DateTime.Now;
             }
             catch (Exception)
             {
