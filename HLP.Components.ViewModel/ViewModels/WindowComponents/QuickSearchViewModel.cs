@@ -24,29 +24,32 @@ namespace HLP.Components.ViewModel.ViewModels.WindowComponents
 
         QuickSearchCommands comm;
 
-        public QuickSearchViewModel(object model, object sender)
+        public QuickSearchViewModel(Type modelType, object sender)
         {
-            PropertyInfo pi = sender.GetType().GetProperty(name: "Binding");
-            if (pi != null)
+
+            BindingExpression bExp = (sender as TextBox).GetBindingExpression(dp: TextBox.TextProperty);
+
+            this.modelType = modelType;
+
+
+            if (bExp != null)
             {
-                object o = pi.GetValue(sender);
+                this.xNameBinding = bExp.ParentBinding.Path.Path.Replace(oldValue: "currentModel.", newValue: "");
+                PropertyInfo piField = this.modelType.GetProperty(name: this.xNameBinding);
 
-                if (o != null)
-                {
-                    Binding b = o as Binding;
-
-                    PropertyPath p = b.GetType().GetProperty(name: "Path").GetValue(obj: b) as PropertyPath;
-
-                    this.xNameBinding = p.Path;
-                }
+                this.fieldType = piField.PropertyType;
             }
 
-            PropertyInfo piIdEmpresa = model.GetType().GetProperty(name: "idEmpresa");
-
-            this.idEmpresa = piIdEmpresa == null ? 0 : CompanyData.idEmpresa;
+            if (modelType.GetProperties().Count(i => i.Name == "idEmpresa") > 1)
+            {
+                this.idEmpresa = CompanyData.idEmpresa;
+            }
+            else
+            {
+                this.idEmpresa = 0;
+            }
 
             comm = new QuickSearchCommands(objViewModel: this);
-            this.model = model;
         }
 
         private int _returnedId;
@@ -55,15 +58,6 @@ namespace HLP.Components.ViewModel.ViewModels.WindowComponents
         {
             get { return _returnedId; }
             set { _returnedId = value; }
-        }
-
-
-        private object _model;
-
-        public object model
-        {
-            get { return _model; }
-            set { _model = value; }
         }
 
         private object _sender;
@@ -106,6 +100,14 @@ namespace HLP.Components.ViewModel.ViewModels.WindowComponents
             }
         }
 
+        private Type _modelType;
+
+        public Type modelType
+        {
+            get { return _modelType; }
+            set { _modelType = value; }
+        }
+
         private int _idEmpresa;
 
         public int idEmpresa
@@ -114,6 +116,22 @@ namespace HLP.Components.ViewModel.ViewModels.WindowComponents
             set { _idEmpresa = value; }
         }
 
+        private Type _fieldType;
+
+        public Type fieldType
+        {
+            get { return _fieldType; }
+            set { _fieldType = value; }
+        }
+
+        private Visibility _visibility;
+
+        public Visibility visibility
+        {
+            get { return _visibility; }
+            set { _visibility = value; }
+        }
+        
 
         #region NotifyPropertyChanged
 

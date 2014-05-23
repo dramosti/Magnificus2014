@@ -38,7 +38,7 @@
                 <!--Label-->
 
                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Nome"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Código Alternativo"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Descrição"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Percentual da Multa "></Components:CustomTextBlock>
                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Dias de Carência"></Components:CustomTextBlock>
@@ -52,7 +52,7 @@
 					ToolTip="Chave principal do registro da Multa">                    
                 </Components:CustomTextBox>
                 <Components:CustomTextBox stCompPosicao="first"
-                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
+                    Grid.Column="2" Grid.Row="2"
                     Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				    IsEnabled="{Binding bIsEnabled}"
 				    ToolTip="Insira nome do código da multa">                    
@@ -70,7 +70,7 @@
 				    ToolTip="Insira a porcentagem da multa que se aplica ao código da multa">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="5"
+                    Grid.Column="2" Grid.Row="5" stCompPosicao="last"
                     Text="{Binding currentModel.nDias, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				    IsEnabled="{Binding bIsEnabled}"
 				    ToolTip="Insira o número de dias no período de carência antes da aplicação da porcentagem de multa">
