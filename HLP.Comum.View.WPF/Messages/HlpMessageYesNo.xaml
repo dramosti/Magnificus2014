@@ -1,7 +1,8 @@
 ﻿<Window x:Class="HLP.Comum.View.WPF.Messages.HlpMessageYesNo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="HlpMessageYesNo" Height="300" Width="470" x:Name="hlpMessage" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
+        Title="HlpMessageYesNo" Height="300" Width="470" x:Name="hlpMessage" 
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" FocusManager.FocusedElement="{Binding ElementName=btnSim}">
     <Window.Resources>
         <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
             <Setter Property="BorderThickness" Value="1"/>
@@ -161,7 +162,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Border Grid.ColumnSpan="3" Grid.RowSpan="4" BorderThickness="1" BorderBrush="White" Background="#FF4774B5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border x:Name="mainBorder" Grid.ColumnSpan="3" Grid.RowSpan="4" BorderThickness="1" BorderBrush="White" Background="#FF4774B5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"></RowDefinition>
@@ -203,8 +204,10 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="30"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Button Grid.Column="1" Grid.Row="1" Style="{StaticResource Button_SIM}" Content="SIM" Command="{Binding commYes}" CommandParameter="{Binding ElementName=hlpMessage}"></Button>
-                <Button Grid.Column="3" Grid.Row="1" Style="{StaticResource Button_NAO}" Content="NÃO" Command="{Binding commNo}" CommandParameter="{Binding ElementName=hlpMessage}"></Button>
+                <Button x:Name="btnSim" Grid.Column="1" Grid.Row="1" Style="{StaticResource Button_SIM}" 
+                        Content="SIM" Command="{Binding commYes}" CommandParameter="{Binding ElementName=hlpMessage}"></Button>
+                <Button x:Name="btnNao" Grid.Column="3" Grid.Row="1" Style="{StaticResource Button_NAO}" 
+                        Content="NÃO" Command="{Binding commNo}" CommandParameter="{Binding ElementName=hlpMessage}"></Button>
             </Grid>
         </Grid>
     </Border>

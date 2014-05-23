@@ -22,7 +22,7 @@ namespace HLP.Comum.View.WPF.Messages
     {
         public HlpMessageYesNo()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         public static MessageBoxResult ShowMessage(string xMessageToUser)
@@ -45,6 +45,6 @@ namespace HLP.Comum.View.WPF.Messages
         {
             DragMove();
         }
-       
+
     }
 }

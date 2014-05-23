@@ -6,21 +6,33 @@ using System.Threading.Tasks;
 using HLP.Components.Services;
 using HLP.Components.Model.Models;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace HLP.Components.ViewModel.ViewModels
 {
     public class FillComboBoxViewModel
     {
         FillComboBoxService objService;
+        bool designTime = false;
 
         public FillComboBoxViewModel()
         {
-            objService = new FillComboBoxService();
+            designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
+    new DependencyObject());
+
+            if (!designTime)
+            {
+                objService = new FillComboBoxService();
+            }
         }
 
         public ObservableCollection<modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter = "")
         {
-            return new ObservableCollection<modelToComboBox>(objService.GetAllValuesToComboBox(sNameView, sParameter));
+            if (!designTime)
+            {
+                return new ObservableCollection<modelToComboBox>(objService.GetAllValuesToComboBox(sNameView, sParameter));
+            }
+            return null;
         }
 
         public string GetDisplay(object source, int value)

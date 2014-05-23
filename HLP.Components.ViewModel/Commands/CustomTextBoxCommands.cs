@@ -45,30 +45,35 @@ namespace HLP.Components.ViewModel.Commands
             _dataContext.GetType().GetProperty(name: "currentID").SetValue(obj: _dataContext, value: _return);
 
 
-            PropertyInfo currentModelProperty =
-                _dataContext.GetType().GetProperty(name: "currentModel");
-
-
-            if (currentModelProperty != null)
-                currentModelProperty.SetValue(obj: _dataContext, value: null);
-
-            MethodInfo miSetOp = _dataContext.GetType().GetMethod(
-                name: "SetValorCurrentOp");
-
-            object[] _paramsPesquisa = new object[] { OperacaoCadastro.pesquisando };
-
-            miSetOp.Invoke(obj: _dataContext, parameters: _paramsPesquisa);
-
-            _dataContext.GetType().GetProperty(name: "bIsEnabled")
-                .SetValue(obj: _dataContext, value: false);
-
-            BackgroundWorker bw = _dataContext.GetType().GetProperty(
-                name: "bWorkerPesquisa").GetValue(obj: _dataContext) as BackgroundWorker;
-
-            if (bw != null)
+            if ((int?)_return > 0)
             {
-                bw.RunWorkerAsync();
+                PropertyInfo currentModelProperty =
+            _dataContext.GetType().GetProperty(name: "currentModel");
+
+
+                if (currentModelProperty != null)
+                    currentModelProperty.SetValue(obj: _dataContext, value: null);
+
+                MethodInfo miSetOp = _dataContext.GetType().GetMethod(
+                    name: "SetValorCurrentOp");
+
+                object[] _paramsPesquisa = new object[] { OperacaoCadastro.pesquisando };
+
+                miSetOp.Invoke(obj: _dataContext, parameters: _paramsPesquisa);
+
+                _dataContext.GetType().GetProperty(name: "bIsEnabled")
+                    .SetValue(obj: _dataContext, value: false);
+
+                BackgroundWorker bw = _dataContext.GetType().GetProperty(
+                    name: "bWorkerPesquisa").GetValue(obj: _dataContext) as BackgroundWorker;
+
+                if (bw != null)
+                {
+                    bw.RunWorkerAsync();
+                }
             }
+
+            
         }
 
         private bool SearchCanExecute(object o)
