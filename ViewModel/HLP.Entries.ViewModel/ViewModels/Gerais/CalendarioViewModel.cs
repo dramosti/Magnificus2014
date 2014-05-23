@@ -162,6 +162,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                     this.lDiasSemProgramacao.Remove((DateTime)(sender as ListBox).SelectedItem);
             }
         }
-
     }
 }

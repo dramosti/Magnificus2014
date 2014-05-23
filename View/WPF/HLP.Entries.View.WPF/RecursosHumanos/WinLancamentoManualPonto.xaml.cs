@@ -22,7 +22,7 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
     {
         public WinLancamentoManualPonto()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         public Funcionario_Controle_Horas_PontoViewModel ViewModel
@@ -33,7 +33,7 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
 
         public void SetDataContext(object idFuncionario, object data)
         {
-            this.ViewModel = new Funcionario_Controle_Horas_PontoViewModel(Convert.ToInt32(idFuncionario), Convert.ToDateTime(data));
+            this.ViewModel = new Funcionario_Controle_Horas_PontoViewModel(Convert.ToInt32(idFuncionario), Convert.ToDateTime(data), dgvLancamentos);
             this.pFuncionario.Text = idFuncionario.ToString();
             this.dtPonto.Text = Convert.ToDateTime(data).ToShortDateString();
         }

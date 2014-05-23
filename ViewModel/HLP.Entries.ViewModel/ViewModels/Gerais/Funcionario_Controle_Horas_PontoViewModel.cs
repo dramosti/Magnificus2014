@@ -23,9 +23,12 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand commandCancelar { get; set; }
         #endregion
 
+        public object dgvLancamentos { get; set; }
+
         Funcionario_Controle_Horas_PontoCommand command;
-        public Funcionario_Controle_Horas_PontoViewModel(int idFuncionario, DateTime data)
+        public Funcionario_Controle_Horas_PontoViewModel(int idFuncionario, DateTime data, object dgvLancamentos)
         {
+            this.dgvLancamentos = dgvLancamentos;
             this.data = data;
             this.idFuncionario = idFuncionario;
             command = new Funcionario_Controle_Horas_PontoCommand(this);

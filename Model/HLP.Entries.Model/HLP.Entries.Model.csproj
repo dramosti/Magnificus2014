@@ -108,7 +108,6 @@
     <Compile Include="Models\Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_documento_oper_validaModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_operacaoModel.cs" />
-    <Compile Include="Models\Gerais\CalendarioGeraDetalhesModel.cs" />
     <Compile Include="Models\Gerais\CalendarioModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />

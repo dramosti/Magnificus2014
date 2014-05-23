@@ -107,7 +107,7 @@ namespace HLP.Entries.Services.RecursosHumanos
                     }
             }
             return 0;
-        }
+            }
         public TimeSpan GetHorasATrabalharMes(int idFuncionario, DateTime dtMes)
         {
             switch (Sistema.bOnline)

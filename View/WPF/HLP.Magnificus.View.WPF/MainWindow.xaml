@@ -328,7 +328,7 @@
                                         Focusable="False"
 									x:Name="btnUltimo"                                    
 									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnUltimo}"
-									Style="{StaticResource Button_PROXIMO_DUPLO}" DockPanel.Dock="Right" Height="34"  Width="34" Margin="2,0,0,0" Foreground="#FFECE5E5">                                        
+									Style="{StaticResource Button_PROXIMO_DUPLO}" DockPanel.Dock="Right" Height="34"  Width="34" Margin="2,0,-15,0" Foreground="#FFECE5E5">                                        
                                     </Button>
                                     <Button x:Name="btnProximo"
                                             Focusable="False"
