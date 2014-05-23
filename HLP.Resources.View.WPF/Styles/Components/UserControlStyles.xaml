@@ -421,10 +421,51 @@
         <Setter Property="Background" Value="{StaticResource StyleMainWindowDefault}"/>
     </Style>
 
-
-    <Style x:Key="ButtonFilter_TEXTBOX" TargetType="{x:Type Button}">
+    <Style  x:Key="TextBoxInside" TargetType="{x:Type TextBox}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="Gray"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Border x:Name="border" BorderBrush="#FF8C8C8C" BorderThickness="1.3" Background="White" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonFilter" TargetType="{x:Type Button}">
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -444,7 +485,7 @@
                         <Storyboard x:Key="Storyboard2">
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
                                 <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
-                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#074774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#F0FFFFFF"/>
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
                                 <EasingColorKeyFrame KeyTime="0" Value="White"/>
@@ -453,9 +494,10 @@
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <Grid>
-                        <Border x:Name="border" Background="Transparent">
-                            <Path x:Name="path" Width="12" Height="12" Stretch="Fill" Fill="#FF545454" Data="F1 M 34.8333,61.75L 34.8333,42.75L 19,20.5833L 57,20.5833L 41.1667,42.75L 41.1667,58.5833L 34.8333,61.75 Z "/>
+                        <Border x:Name="border" BorderThickness="1" Background="#FFF6F6F8" SnapsToDevicePixels="true" BorderBrush="#FFBDBDBF">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
+                        <Path x:Name="path" Width="12" Height="12" Stretch="Fill" Fill="#FF545454" Data="F1 M 34.8333,61.75L 34.8333,42.75L 19,20.5833L 57,20.5833L 41.1667,42.75L 41.1667,58.5833L 34.8333,61.75 Z "/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -465,62 +507,6 @@
                             <Trigger.EnterActions>
                                 <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
                             </Trigger.EnterActions>
-                        </Trigger>                        
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style x:Key="TextBoxComponentStyle2" TargetType="{x:Type TextBox}">
-        <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
-        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>        
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="Height" Value="20"/>
-        <Setter Property="Margin" Value="0,0,0,3"/>
-        <Setter Property="CharacterCasing" Value="Normal"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition Width="20"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Border x:Name="border" Grid.ColumnSpan="2" BorderBrush="{StaticResource CinzaClaro}" BorderThickness="1.3" Background="{StaticResource WhiteStandard}" SnapsToDevicePixels="True"/>
-                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Foreground="{StaticResource CinzaEscuro}" FontFamily="Segoe UI Symbol"/>
-                        <Button Grid.Column="1" Style="{StaticResource ButtonFilter_TEXTBOX}" IsEnabled="True">
-                        </Button>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="border" Value="0.50"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
-                        </Trigger>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
-                        </Trigger>
-                        <Trigger Property="Validation.HasError" Value="True">
-                            <Setter Property="Validation.ErrorTemplate">
-                                <Setter.Value>
-                                    <ControlTemplate>
-                                        <DockPanel LastChildFill="True">
-                                            <Border Background="{StaticResource BackgroundError}" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
-														ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
-                                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
-                                            </Border>
-                                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
-                                                <Border BorderBrush="Transparent" BorderThickness="1"></Border>
-                                            </AdornedElementPlaceholder>
-                                        </DockPanel>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsVisible" Value="false">
-                            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -542,74 +528,24 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBox 
-                            Style="{StaticResource TextBoxComponentStyle2}" 
-                                 x:Name="txt"
-                                 Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=IsEnabled}"></TextBox>
-                        <Button Grid.Column="1" x:Name="btn"
-                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=ViewModel.searchCommand}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}}"></Button>
+                        <TextBox                             
+											 x:Name="txt"
+											 Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+											 IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=IsEnabled}" Style="{StaticResource TextBoxInside}"></TextBox>
+                        <Button Grid.Column="1" x:Name="btn" Width="20"
+											Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=ViewModel.searchCommand}"
+											CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}}" Style="{StaticResource ButtonFilter}"></Button>
                     </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
-                    <Condition Property="IsSelectionActive" Value="false"/>
-                </MultiTrigger.Conditions>
-                <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
-            </MultiTrigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="TextBoxComponentStyle_FILTRO" TargetType="{x:Type TextBox}">
-        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Height" Value="20"/>
-        <Setter Property="CharacterCasing" Value="Normal"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
-                    <Border x:Name="border" BorderBrush="{StaticResource CinzaClaro}" BorderThickness="1.3" Background="{StaticResource WhiteStandard}" SnapsToDevicePixels="True">
-                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" VerticalAlignment="Top" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Foreground="{StaticResource CinzaEscuro}" FontFamily="Segoe UI Symbol"/>
-                    </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
-                        </Trigger>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
-                        </Trigger>
-                        <Trigger Property="Validation.HasError" Value="True">
-                            <Setter Property="Validation.ErrorTemplate">
-                                <Setter.Value>
-                                    <ControlTemplate>
-                                        <DockPanel LastChildFill="True">
-                                            <Border Background="{StaticResource BackgroundError}" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
-														ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
-                                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
-                                            </Border>
-                                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
-                                                <Border BorderBrush="Transparent" BorderThickness="1"></Border>
-                                            </AdornedElementPlaceholder>
-                                        </DockPanel>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsVisible" Value="false">
-                            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
-                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True"/>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    
 
 
 
