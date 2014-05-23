@@ -13,12 +13,12 @@ namespace HLP.Wcf.Entries
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceLogin" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select serviceLogin.svc or serviceLogin.svc.cs at the Solution Explorer and start debugging.
-    public class serviceLogin : IserviceLogin
+    public class wcf_Login : Iwcf_Login
     {
         [Inject]
         public ILoginRepository loginRepository { get; set; }
 
-        public serviceLogin()
+        public wcf_Login()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;

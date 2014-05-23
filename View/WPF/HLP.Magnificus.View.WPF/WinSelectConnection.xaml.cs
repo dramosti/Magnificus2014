@@ -33,7 +33,7 @@ namespace HLP.Magnificus.View.WPF
         }
 
 
-        public bool bProssegue
+        public bool? bProssegue
         {
             get { return this.ViewModel.bProssegue; }
         }

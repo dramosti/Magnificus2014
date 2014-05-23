@@ -33,6 +33,11 @@ namespace HLP.Magnificus.View.WPF
                 this._viewModel = new MainViewModel();
                 this._viewModel.CarregaMenu(m: this.menuPrincipal);
                 this._viewModel.tabWindows = this.tabControlItens;
+
+               
+               
+
+
             }
             catch (Exception)
             {

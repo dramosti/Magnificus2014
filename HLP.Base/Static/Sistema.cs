@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using HLP.Report.View.WPF.DataSet;
+using System.Xml;
 
 namespace HLP.Base.Static
 {
@@ -103,6 +104,149 @@ namespace HLP.Base.Static
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
+
+        public static void SetAppSettings(string xKey, string xValue)
+        {
+            try
+            {
+                Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+                if (c.AppSettings.Settings[xKey] != null)
+                {
+                    c.AppSettings.Settings[xKey].Value = xValue;
+                }
+                else
+                {
+                    c.AppSettings.Settings.Add(new KeyValueConfigurationElement(xKey, xValue));
+                }
+                c.Save();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static string GetAppSettings(string xKey)
+        {
+            try
+            {
+                Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                if (c.AppSettings.Settings[xKey] != null)
+                {
+                    return c.AppSettings.Settings[xKey].Value.ToString();
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Adiciona todas os bindings de wcf no config principal
+        /// </summary>
+        public static void SetAllConfigService()
+        {
+            List<BasicHttpBindingElement> lBindings = new List<BasicHttpBindingElement>();
+            List<ChannelEndpointElement> lChannels = new List<ChannelEndpointElement>();
+            Configuration localConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            // local...
+            ServiceModelSectionGroup serviceModeGroupLocal = ServiceModelSectionGroup.GetSectionGroup(config: localConfig);
+            List<BasicHttpBindingElement> lBindingsLocalConfig = new List<BasicHttpBindingElement>();
+            foreach (BasicHttpBindingElement item in serviceModeGroupLocal.Bindings.BasicHttpBinding.Bindings)
+            {
+                lBindingsLocalConfig.Add(item: item);
+            }
+
+            string[] arrayPaths = Directory.GetFiles(System.Windows.Forms.Application.StartupPath, "*.config", SearchOption.AllDirectories);
+            ConfigXmlDocument configXml = new ConfigXmlDocument();
+            XmlNodeList nodeList;
+            List<BasicHttpBindingElement> lBindingsToAdd = new List<BasicHttpBindingElement>();
+            List<ChannelEndpointElement> lChannelsToAdd = new List<ChannelEndpointElement>();
+
+            foreach (string paths in arrayPaths)
+            {
+                if (paths != localConfig.FilePath)
+                {
+                    configXml.Load(filename: paths);
+                    nodeList = configXml.SelectNodes(xpath: "/configuration/system.serviceModel/bindings/basicHttpBinding/binding");
+
+                    foreach (XmlNode node in nodeList)
+                    {
+                        lBindings.Add(item: new BasicHttpBindingElement
+                        {
+                            Name = node.Attributes[name: "name"].Value
+                        });
+                    }
+
+                    nodeList = configXml.SelectNodes(xpath: "/configuration/system.serviceModel/client/endpoint");
+
+                    foreach (XmlNode node in nodeList)
+                    {
+                        lChannels.Add(item: new ChannelEndpointElement
+                        {
+                            Address = new Uri(uriString: node.Attributes[name: "address"].Value),
+                            Binding = node.Attributes[name: "binding"].Value,
+                            BindingConfiguration = node.Attributes[name: "bindingConfiguration"].Value,
+                            Contract = node.Attributes[name: "contract"].Value,
+                            Name = node.Attributes[name: "name"].Value
+                        });
+                    }
+
+                  
+
+                    
+
+
+                    List<string> lLocal = lBindingsLocalConfig.Select(c => c.Name).ToList();
+                    List<string> lPath = lBindings.Select(c => c.Name).ToList();
+                    List<string> ltoAdd = (from c in lPath
+                                           where !lLocal.Contains(c)
+                                           select c).ToList();
+
+                    lBindingsToAdd.AddRange(lBindings.Where(c => ltoAdd.Contains(c.Name.ToString())).ToList());
+
+                    List<ChannelEndpointElement> lChannelsLocalConfig = new List<ChannelEndpointElement>();
+                    foreach (ChannelEndpointElement channels in serviceModeGroupLocal.Client.Endpoints)
+                    {
+                        lChannelsLocalConfig.Add(item: channels);
+                    }
+                    foreach (ChannelEndpointElement c in lChannels)
+                    {
+                        if (lChannelsLocalConfig.Count(i => i.Name == c.Name) == 0)
+                            lChannelsToAdd.Add(item: c);
+                    }
+                }
+            }
+
+            try
+            {
+                lBindingsToAdd = lBindingsToAdd.Distinct().ToList();
+                foreach (BasicHttpBindingElement i in lBindingsToAdd.Distinct())
+                {
+                    serviceModeGroupLocal.Bindings.BasicHttpBinding.Bindings.Add(element:
+                        i);
+                }
+
+                foreach (ChannelEndpointElement c in lChannelsToAdd)
+                {
+                    serviceModeGroupLocal.Client.Endpoints.Add(element:
+                        c);
+                }
+
+                localConfig.Save();
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
         }
@@ -207,7 +351,7 @@ namespace HLP.Base.Static
             {
                 pr = p.Send(WcfData.xIpServidor);
 
-                if (pr.Status == System.Net.NetworkInformation.IPStatus.Success)
+                if ((pr.Status == System.Net.NetworkInformation.IPStatus.Success) && Directory.Exists(@"J:\D6\"))
                     Sistema.bOnline = StConnection.OnlineNetwork;
                 else
                     Sistema.bOnline = StConnection.OnlineWeb;
@@ -267,7 +411,7 @@ namespace HLP.Base.Static
                         {
                             Sistema._dsImagemToReport = new DataSetImgRport();
                             DataSetImgRport.ImagensRow row = Sistema._dsImagemToReport.Imagens.NewImagensRow();
-                            FileStream fs = new FileStream(xPath.ToString(),System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                            FileStream fs = new FileStream(xPath.ToString(), System.IO.FileMode.Open, System.IO.FileAccess.Read);
                             byte[] Image = new byte[fs.Length];
                             fs.Read(Image, 0, Convert.ToInt32(fs.Length));
                             fs.Close();

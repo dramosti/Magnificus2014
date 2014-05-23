@@ -34,10 +34,10 @@ namespace HLP.Comum.ViewModel.ViewModel
             }
         }
 
-        
-        private bool _bProssegue = false;
 
-        public bool bProssegue
+        private bool? _bProssegue = null;
+
+        public bool? bProssegue
         {
             get { return _bProssegue; }
             set
@@ -46,8 +46,8 @@ namespace HLP.Comum.ViewModel.ViewModel
                 base.NotifyPropertyChanged(propertyName: "bProssegue");
             }
         }
-        
-        
+
+
 
     }
 }

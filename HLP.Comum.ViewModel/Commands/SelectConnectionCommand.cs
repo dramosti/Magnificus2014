@@ -40,8 +40,10 @@ namespace HLP.Comum.ViewModel.Commands
         {
             try
             {
+                Sistema.SetAppSettings("urlWebService", ViewModel.currentModel.urlWebService);                
                 Sistema.SalvaEndPoint(ViewModel.currentModel.urlWebService);
                 Sistema.AddConnection(ViewModel.currentModel.ConnectionStringCompleted);
+
                 this.ViewModel.bProssegue = true;
                 Window objWin = win as Window;
                 objWin.Close();
@@ -63,7 +65,7 @@ namespace HLP.Comum.ViewModel.Commands
 
 
         public void Fechar(object win)
-        {         
+        {
             this.ViewModel.bProssegue = false;
             Window objWin = win as Window;
             objWin.Close();
