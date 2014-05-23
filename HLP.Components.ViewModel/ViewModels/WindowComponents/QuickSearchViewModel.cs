@@ -124,15 +124,6 @@ namespace HLP.Components.ViewModel.ViewModels.WindowComponents
             set { _fieldType = value; }
         }
 
-        private Visibility _visibility;
-
-        public Visibility visibility
-        {
-            get { return _visibility; }
-            set { _visibility = value; }
-        }
-        
-
         #region NotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

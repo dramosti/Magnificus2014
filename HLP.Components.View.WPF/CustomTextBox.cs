@@ -69,7 +69,7 @@ namespace HLP.Components.View.WPF
 
             if (!designTime)
             {
-                this.ViewModel = new CustomTextBoxViewModel();                
+                this.ViewModel = new CustomTextBoxViewModel();
 
                 this.ApplyTemplate();
 
@@ -135,7 +135,14 @@ namespace HLP.Components.View.WPF
         {
             if (d != null && e.NewValue != null)
             {
-
+                if (((bool?)e.NewValue) == true)
+                {
+                    (d as CustomTextBox).ViewModel.visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    (d as CustomTextBox).ViewModel.visibility = Visibility.Visible;
+                }
             }
         }
 
