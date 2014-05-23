@@ -287,8 +287,7 @@
                                 <Button
 								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
 								Cursor="Hand"
-								Style="{DynamicResource Button_ADD}" Height="34" Width="34" Margin="3,0,0,0" ToolTip="Novo ( Alt + N )" Focusable="False">
-                                    
+								Style="{DynamicResource Button_ADD}" Height="34" Width="34" Margin="3,0,0,0" ToolTip="Novo ( Alt + N )">
                                 </Button>
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}"
 								Style="{DynamicResource Button_EDIT}" ToolTipService.ShowOnDisabled="True" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Alterar ( Alt + A )" Focusable="False">
@@ -338,7 +337,7 @@
                                     </Button>
                                     <Label Content="{Binding winMan._currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>
                                 </DockPanel>
-                                <Button Style="{DynamicResource Button_PRINTER}" Command="{Binding winMan._currentTab._currentDataContext.commandImprimir}" Width="34" VerticalAlignment="Center" Height="34" Margin="25,0,0,0" ToolTip="Imprimir" Focusable="False" >
+                                <Button Style="{DynamicResource Button_PRINTER}" Width="34" VerticalAlignment="Center" Height="34" Margin="25,0,0,0" ToolTip="Imprimir" Focusable="False" >
                                     
                                 </Button>
                                 <Button Style="{DynamicResource Button_CONFIG}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Configurações" Focusable="False">

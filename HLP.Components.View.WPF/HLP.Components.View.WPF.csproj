@@ -147,7 +147,6 @@
     <Compile Include="Validates\ListUniqueValueTrueValidationRule.cs" />
     <Compile Include="Validates\NumericDecimalValidationRule.cs" />
     <Compile Include="Validates\NumericIntValidationRule.cs" />
-    <Compile Include="WindowComponents\Converter\VisibilityButtonWdQuickSearch.cs" />
     <Compile Include="WindowComponents\wdQuickSearch.xaml.cs">
       <DependentUpon>wdQuickSearch.xaml</DependentUpon>
     </Compile>

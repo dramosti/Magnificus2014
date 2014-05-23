@@ -71,6 +71,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Styles\Components\Converters\VisibilityButtonWdQuickSearch.cs" />
     <Compile Include="Styles\Util\AutoSelectTextBoxAttachedProperty.cs" />
     <Compile Include="Styles\Util\PasswordBoxMonitor.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -669,6 +670,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\IconsMoeda\btnEUR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

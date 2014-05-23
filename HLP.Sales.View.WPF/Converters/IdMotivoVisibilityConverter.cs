@@ -1,5 +1,4 @@
-﻿using HLP.Base.EnumsBases;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,22 +6,25 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace HLP.Components.View.WPF.WindowComponents.Converter
+namespace HLP.Sales.View.WPF.Converters
 {
-    public class VisibilityButtonWdQuickSearch : IValueConverter
+    public class IdMotivoVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            object currentOp = value;
-
-            if (currentOp != null)
+            switch ((byte)value)
             {
-                if (((OperacaoCadastro)currentOp) == OperacaoCadastro.pesquisando
-                    || ((OperacaoCadastro)currentOp) == OperacaoCadastro.livre)
-                    return Visibility.Visible;
+                case 0:
+                case 1:
+                case 2:
+                    {
+                        return false;
+                    }
+                default:
+                    {
+                        return true;
+                    }
             }
-
-            return Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

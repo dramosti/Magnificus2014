@@ -1,4 +1,5 @@
 ﻿using HLP.Components.View.WPF;
+using HLP.Sales.ViewModel.ViewModel.Comercio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace HLP.Entries.View.WPF.Comercial
+namespace HLP.Sales.View.WPF.Comercial
 {
     /// <summary>
     /// Interaction logic for WinOrcamento.xaml
@@ -23,6 +24,19 @@ namespace HLP.Entries.View.WPF.Comercial
         public WinOrcamento()
         {
             InitializeComponent();
+            this.ViewModel = new OrcamentoViewModel();
+        }
+
+        public OrcamentoViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as OrcamentoViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }
