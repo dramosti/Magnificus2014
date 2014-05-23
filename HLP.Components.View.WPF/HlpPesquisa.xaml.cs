@@ -41,7 +41,13 @@ namespace HLP.Components.View.WPF
         public HlpPesquisa()
         {
             InitializeComponent();
-            objViewModel = new HlpPesquisaViewModel();
+            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
+    new DependencyObject());
+
+            if (!designTime)
+            {
+                objViewModel = new HlpPesquisaViewModel();
+            }
         }
 
         public void ExecutaPesquisa(string sValor)

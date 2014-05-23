@@ -372,8 +372,6 @@
                                             <System:String>xDescricao</System:String>
                                         </Components:HlpPesquisa.Items>
                                     </Components:HlpPesquisa>
-
-
                                 </Grid>
                             </Expander>
                             <Expander Header="Pedido de Compras do Cliente" IsExpanded="True" Grid.Row="2" Style="{StaticResource ExpanderPadrao}">
