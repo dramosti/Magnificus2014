@@ -1,7 +1,8 @@
 ﻿<Window x:Class="HLP.Comum.View.WPF.Messages.HlpMessageAlert"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" FocusManager.FocusedElement="{Binding ElementName=btn}"
-        Title="HlpMessageAlert" Height="300" WindowStartupLocation="CenterScreen" Width="470" AllowsTransparency="True" WindowStyle="None">
+        Title="HlpMessageAlert" x:Name="wdAlert"
+        Height="300" WindowStartupLocation="CenterScreen" Width="470" AllowsTransparency="True" WindowStyle="None">
     <Window.Resources>
         <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
             <Setter Property="BorderThickness" Value="1"/>
@@ -116,7 +117,7 @@
                 </Grid.RowDefinitions>
                 <Path HorizontalAlignment="Left" Grid.Column="1" Stretch="Fill" Fill="White" Data="F1 M34.0417,25.7292 L36.0208,41.9584 39.9792,41.9583 41.9583,25.7292 34.0417,25.7292 z M38,44.3333 C36.2511,44.3333 34.8333,45.7511 34.8333,47.5 34.8333,49.2489 36.2511,50.6667 38,50.6667 39.7489,50.6667 41.1667,49.2489 41.1667,47.5 41.1667,45.7511 39.7489,44.3333 38,44.3333 z" Width="15" Height="50"/>
                 <TextBlock Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Alerta !" FontSize="30" FontFamily="Segoe UI Light" Foreground="White"></TextBlock>
-                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" IsReadOnly="True" Text="{Binding xMessageToUser}" Foreground="White" FontFamily="Segoe Ui light" FontSize="14" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxStyle1}"/>
+                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" IsReadOnly="True" Text="{Binding xAlertMessageToUser, Mode=OneWay}" Foreground="White" FontFamily="Segoe Ui light" FontSize="14" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxStyle1}"/>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -131,7 +132,9 @@
                     <RowDefinition Height="53"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Button Grid.Column="3" Grid.Row="1" Style="{StaticResource Button_OK}" Content="OK" x:Name="btn"></Button>
+                <Button 
+                    Command="{Binding commOk}" CommandParameter="{Binding ElementName=wdAlert}"
+                    Grid.Column="3" Grid.Row="1" Style="{StaticResource Button_OK}" Content="OK" x:Name="btn"></Button>
                 
             </Grid>
         </Grid>
