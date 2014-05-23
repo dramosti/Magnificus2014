@@ -1,11 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:ConvertLocal="clr-namespace:HLP.Resources.View.WPF.Styles.Components.Converters"
-                    xmlns:UtilLocal="clr-namespace:HLP.Resources.View.WPF.Styles.Util"                    
-                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"                                 
-                    >       
+                    xmlns:UtilLocal="clr-namespace:HLP.Resources.View.WPF.Styles.Util"
+                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
 
-    <ConvertLocal:VisibilityButtonWdQuickSearchConverter x:Key="visibilityButtonWdQuickSearchConverter"/>
+
+
     <!--Style Components TextBox-->
     <SolidColorBrush Color="#FF545454" x:Key="CinzaEscuro"/>
     <SolidColorBrush Color="#FF8C8C8C" x:Key="CinzaClaro"/>
@@ -137,13 +136,9 @@
     <SolidColorBrush x:Key="AlternateBackgroundBrush" Color="#FFBFDBFF"/>
     <SolidColorBrush x:Key="ControlContentBrush" Color="#FFE0EAF6"/>
     <SolidColorBrush x:Key="Thema2BackgroundGeral" Color="#FFB1CEF1"/>
-
-
     <Color x:Key="BlackColor">#FF000000</Color>
     <Color x:Key="WhiteColor">#FFFFFFFF</Color>
-
     <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
-
     <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#FFF" />
 
     <!--Cores do Expander-->
@@ -515,8 +510,6 @@
         </Setter>
     </Style>
     <Style x:Key="TextBoxComponentStyle" TargetType="TextBox">
-        <Style.Resources>            
-        </Style.Resources>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -538,8 +531,7 @@
 											 Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 											 IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=IsEnabled}" Style="{StaticResource TextBoxInside}"></TextBox>
                         <Button Grid.Column="1" x:Name="btn" Width="20"
-                                Visibility="Visible"
-											Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=CustomViewModel.searchCommand}"
+											Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=ViewModel.searchCommand}"
 											CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}}" Style="{StaticResource ButtonFilter}"></Button>
                     </Grid>
                     <ControlTemplate.Triggers>
