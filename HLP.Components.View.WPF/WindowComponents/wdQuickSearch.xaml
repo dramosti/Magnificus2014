@@ -24,9 +24,9 @@
         <Components:CustomTextBlock HorizontalAlignment="Left" Grid.Row="2"  TextWrapping="Wrap" 
                                     Text="Tipo Filtro" VerticalAlignment="Top"/>
         <Components:CustomTextBox Text="{Binding xValue}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" IsEnabled="True"></Components:CustomTextBox>        
-        <CheckBox Grid.Row="3" Grid.Column="0" Command="{Binding ChangeToEqualCommand}"></CheckBox>
-        <CheckBox Grid.Row="3" Grid.Column="1" Command="{Binding ChangeToStartWithCommand}"></CheckBox>
-        <CheckBox Grid.Row="3" Grid.Column="2" Command="{Binding ChangeToContainsCommand}"></CheckBox>
+        <CheckBox Content="Igual" Grid.Row="3" Grid.Column="0" Command="{Binding ChangeToEqualCommand}"></CheckBox>
+        <CheckBox Content="Começa com" Grid.Row="3" Grid.Column="1" Command="{Binding ChangeToStartWithCommand}"></CheckBox>
+        <CheckBox Content="Contém" Grid.Row="3" Grid.Column="2" Command="{Binding ChangeToContainsCommand}"></CheckBox>
         <Button Command="{Binding searchCommad}" CommandParameter="{Binding ElementName=wdQs}" Content="Search" Grid.Row="6" Grid.Column="2"></Button>
     </Grid>
 </Window>

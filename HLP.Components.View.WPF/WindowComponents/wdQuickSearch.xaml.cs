@@ -25,10 +25,10 @@ namespace HLP.Components.View.WPF.WindowComponents
             InitializeComponent();
         }
 
-        public wdQuickSearch(object model, object sender)
+        public wdQuickSearch(Type modelType, object sender)
         {
             InitializeComponent();
-            this.ViewModel = new QuickSearchViewModel(sender: sender);
+            this.ViewModel = new QuickSearchViewModel(modelType: modelType, sender: sender);
         }
 
         public QuickSearchViewModel ViewModel
@@ -43,9 +43,9 @@ namespace HLP.Components.View.WPF.WindowComponents
             }
         }
 
-        public static int ShowDialogWdQuickSearch(object model, object sender)
+        public static int ShowDialogWdQuickSearch(Type modelType, object sender)
         {
-            wdQuickSearch wd = new wdQuickSearch(model: model, sender: sender);
+            wdQuickSearch wd = new wdQuickSearch(modelType: modelType, sender: sender);
             wd.ShowDialog();
 
             return wd.ViewModel.returnedId;
