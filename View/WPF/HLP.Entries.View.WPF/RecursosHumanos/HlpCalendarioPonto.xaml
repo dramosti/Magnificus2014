@@ -68,8 +68,8 @@
             <ColumnDefinition Width="47*" MaxWidth="40"/>
             <ColumnDefinition Width="48*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="{Binding iDia}" Foreground="{StaticResource BlueStandard}" Margin="5,0,0,0" FontWeight="Black" Width="15" HorizontalAlignment="Left"/>
-        <TextBlock Text="{Binding hTotal, Converter={StaticResource horaMinConv}}" Foreground="{StaticResource BlueStandard}" Opacity="0.7" FontWeight="Black" Grid.Column="1" Grid.Row="0" Margin="5,0,0,0"/>
+        <TextBlock Text="{Binding iDia}" Foreground="#FF4774B5" Margin="5,0,0,0" FontWeight="Black" Width="15" HorizontalAlignment="Left"/>
+        <TextBlock Text="{Binding hTotal, Converter={StaticResource horaMinConv}}" Foreground="#FF4774B5" Opacity="0.7" FontWeight="Black" Grid.Column="1" Grid.Row="0" Margin="5,0,0,0"/>
         <Button Command="{Binding LancamentoManualCommand}" Content="edit" Grid.Column="2" HorizontalAlignment="Left" Margin="8,0,0,0"
 				ToolTipService.ShowOnDisabled="True" Width="18" ToolTip="Alterar ( Alt + A )" Focusable="False">
             <Button.Template>

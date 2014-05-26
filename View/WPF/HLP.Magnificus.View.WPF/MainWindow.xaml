@@ -337,12 +337,10 @@
                                     </Button>
                                     <Label Content="{Binding winMan._currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>
                                 </DockPanel>
-                                <Button Style="{DynamicResource Button_PRINTER}" Width="34" VerticalAlignment="Center" Height="34" Margin="25,0,0,0" ToolTip="Imprimir" Focusable="False" >
-                                    
-                                </Button>
-                                <Button Style="{DynamicResource Button_CONFIG}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Configurações" Focusable="False">
-                                    
-                                </Button>                              
+                                <Button Style="{DynamicResource Button_PRINTER}" Width="34" VerticalAlignment="Center" Height="34" Margin="25,0,0,0" ToolTip="Imprimir" Focusable="False" 
+                                    Command="{Binding winMan._currentTab._currentDataContext.commandImprimir}"/>
+                                <Button Style="{DynamicResource Button_CONFIG}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Configurações" Focusable="False"
+                                        />
 
                             </ToolBar>
                         </DockPanel>

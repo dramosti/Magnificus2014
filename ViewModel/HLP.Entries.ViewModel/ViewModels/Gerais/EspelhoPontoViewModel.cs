@@ -45,7 +45,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             this.lControlsPonto = lControlsPonto;
             this.btnCarregar = btnCarregar;
             command = new EspelhoPontoCommand(this);
-            this.bIsEnabled = false;
+            this.bIsEnabled = true;
         }
         public EspelhoPontoViewModel()
         {

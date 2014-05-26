@@ -229,9 +229,10 @@
                             </Components:HlpDatePicker.InputBindings>
                         </Components:HlpDatePicker>
                         <Button Grid.Column="3" Style="{StaticResource ButtonAddCalendarioDetalhe}"
+                            IsEnabled="{Binding bIsEnabled}"
                             Command="{Binding addDateCommand}"
                             Grid.Row="1" Height="23" Width="23" VerticalAlignment="Center"></Button>
-                        <ListBox x:Name="lbxDatas" ItemsSource="{Binding  Path=lDiasSemProgramacao}"
+                        <ListBox IsEnabled="{Binding bIsEnabled}" x:Name="lbxDatas" ItemsSource="{Binding  Path=lDiasSemProgramacao}"
                         Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="10,2,-5,-2">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>

@@ -17,7 +17,10 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
         public HlpCalendarioPonto()
         {
             InitializeComponent();
-            this.ViewModel = new HlpCalendarioPontoViewModel();
+            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
+    new DependencyObject());
+            if (!designTime)
+                this.ViewModel = new HlpCalendarioPontoViewModel();
 
         }
 

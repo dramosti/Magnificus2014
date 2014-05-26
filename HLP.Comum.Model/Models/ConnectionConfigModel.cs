@@ -139,7 +139,7 @@ namespace HLP.Comum.Model.Models
                 {
                     if (!String.IsNullOrEmpty(_xLogin) && !String.IsNullOrEmpty(_xPassword) && this.xServerName != "" && this.xBaseDados != "")
                     {
-                        return "Data Source=" + this.xServerName + ";Initial Catalog=" + this.xBaseDados + ";User Id=" + this.xLogin + ";Password=" + this.xPassword + "; Min Pool Size=10; Connection Lifetime=120; Connection Timeout=60;";
+                        return "Data Source=" + this.xServerName + ";Initial Catalog=" + this.xBaseDados + ";User Id=" + this.xLogin + ";Password=" + this.xPassword + "; Pooling=False;";
                     }
                 }
                 return "";
