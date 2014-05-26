@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using HLP.Base.EnumsBases;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -79,6 +80,14 @@ namespace HLP.Components.View.WPF
                     this.Text = fd.FileName;
                 }
             }
+        }
+
+        private StVisibilityButtonQuickSearch _stVisibilityBtnQuickSearch;
+
+        public StVisibilityButtonQuickSearch stVisibilityBtnQuickSearch
+        {
+            get { return _stVisibilityBtnQuickSearch; }
+            set { _stVisibilityBtnQuickSearch = value; }
         }
     }
 }

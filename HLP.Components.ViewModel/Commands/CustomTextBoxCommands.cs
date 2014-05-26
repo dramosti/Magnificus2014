@@ -73,7 +73,7 @@ namespace HLP.Components.ViewModel.Commands
                 }
             }
 
-            
+
         }
 
         private bool SearchCanExecute(object o)
@@ -105,9 +105,18 @@ namespace HLP.Components.ViewModel.Commands
 
             (o as Control).ApplyTemplate();
 
+            PropertyInfo stVisibilityBtnQuickSearchProperty
+                = o.GetType().GetProperty(name: "stVisibilityBtnQuickSearch");
+
+            StVisibilityButtonQuickSearch stVisibilityBtnQuickSearch = StVisibilityButtonQuickSearch._default;
+
+            if (stVisibilityBtnQuickSearchProperty != null)
+                stVisibilityBtnQuickSearch = (StVisibilityButtonQuickSearch)stVisibilityBtnQuickSearchProperty.GetValue(
+                    obj: o);
+
             Button btn = (o as Control).Template.FindName(name: "btn", templatedParent: (o as FrameworkElement)) as Button;
 
-            if (btn != null && !retorno)
+            if (btn != null && !retorno || stVisibilityBtnQuickSearch == StVisibilityButtonQuickSearch.notVisible)
             {
                 btn.Visibility = Visibility.Collapsed;
             }
