@@ -4,31 +4,62 @@
         xmlns:Components="clr-namespace:HLP.Components.View.WPF"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         x:Class="HLP.Components.View.WPF.WindowComponents.wdQuickSearch"
-        Title="wdQuickSearch" Height="200" Width="300" x:Name="wdQs" FocusManager.FocusedElement="{Binding ElementName=txtValor}" AllowsTransparency="True" WindowStyle="None">
-    <Border>
+        Title="wdQuickSearch" Height="150" Width="250" x:Name="wdQs" WindowStartupLocation="CenterScreen" FocusManager.FocusedElement="{Binding ElementName=txtValor}" AllowsTransparency="True" WindowStyle="None">
+    <Border BorderBrush="{StaticResource BlueStandard}" BorderThickness="1.3">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="28"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
             </Grid.RowDefinitions>
-            <Components:CustomTextBlock HorizontalAlignment="Left" Grid.Row="1"  TextWrapping="Wrap" 
-                                    Text="Valor" VerticalAlignment="Top"/>
-            <Components:CustomTextBlock HorizontalAlignment="Left" Grid.Row="2"  TextWrapping="Wrap" 
-                                    Text="Tipo Filtro" VerticalAlignment="Top"/>
             <TextBox Style="{StaticResource TextBox_FILTER}" x:Name="txtValor" Text="{Binding xValue , UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" IsEnabled="True"></TextBox>
-            <CheckBox Content="Igual" Grid.Row="3" Grid.Column="0" Style="{StaticResource CheckBox_FILTER}" Command="{Binding ChangeToEqualCommand}"></CheckBox>
-            <CheckBox Content="Começa com" Grid.Row="3" Grid.Column="1"  Style="{StaticResource CheckBox_FILTER}" Command="{Binding ChangeToStartWithCommand}"></CheckBox>
-            <CheckBox Content="Contém" Grid.Row="3" Grid.Column="2"  Style="{StaticResource CheckBox_FILTER}" Command="{Binding ChangeToContainsCommand}"></CheckBox>
-            <Button Command="{Binding searchCommad}" CommandParameter="{Binding ElementName=wdQs}" Content="Search" Grid.Row="6" Grid.Column="2"></Button>
+            <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MaxWidth="84" MinWidth="84"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                </Grid.RowDefinitions>                
+                <Components:CustomTextBlock Text="Tipo do Filtro" Foreground="{StaticResource CinzaEscuro}" Margin="0,0,0,12"></Components:CustomTextBlock>
+                <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="55" ></ColumnDefinition>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Content="Igual" Grid.Column="0" Style="{StaticResource CheckBox_FILTER}" Command="{Binding ChangeToEqualCommand}"></CheckBox>
+                    <CheckBox Content="Começa com" Grid.Column="1"  Style="{StaticResource CheckBox_FILTER}" Command="{Binding ChangeToStartWithCommand}"></CheckBox>
+                    <CheckBox Content="Contém" Grid.Column="2"  Style="{StaticResource CheckBox_FILTER}" Command="{Binding ChangeToContainsCommand}"></CheckBox>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Background="#FF4774B5" Margin="0,0,-1,-1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="35"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="35"></ColumnDefinition>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2.5"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="2.5"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Grid.Column="1" Grid.Row="1" Height="35" Style="{StaticResource ButtonPesquisa_Filtro}" Command="{Binding searchCommad}" CommandParameter="{Binding ElementName=wdQs}"></Button>
+                <Button Grid.Column="3" Grid.Row="1" Height="35" Style="{StaticResource ButtonPesquisa_Sair}"></Button>
+            </Grid>
         </Grid>
     </Border>  
 </Window>

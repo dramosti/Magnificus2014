@@ -118,7 +118,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="1" Grid.Row="0" FontSize="50" Foreground="White" FontFamily="Segoe Ui Symbol" Text=":(" Margin="0,-16,0,0"></TextBlock>
                 <TextBlock Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Ocorreu um erro !" FontSize="30" FontFamily="Segoe UI Light" Foreground="White"></TextBlock>
-                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Focusable="False" Grid.Row="2" IsReadOnly="True" Text="{Binding xMessageToUser}" Foreground="White" FontFamily="Segoe Ui light" FontSize="14" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxStyle1}"/>
+                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Focusable="False" Grid.Row="2" IsReadOnly="True" Text="{Binding xErrorMessageToUser, Mode=OneWay}" Foreground="White" FontFamily="Segoe Ui light" FontSize="14" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxStyle1}"/>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="2">
                 <Grid.ColumnDefinitions>
