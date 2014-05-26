@@ -351,7 +351,7 @@ namespace HLP.Base.Static
             {
                 pr = p.Send(WcfData.xIpServidor);
 
-                if ((pr.Status == System.Net.NetworkInformation.IPStatus.Success) && Directory.Exists(@"J:\D6\"))
+                if ((pr.Status == System.Net.NetworkInformation.IPStatus.Success))
                     Sistema.bOnline = StConnection.OnlineNetwork;
                 else
                     Sistema.bOnline = StConnection.OnlineWeb;

@@ -2,22 +2,22 @@
 <objects xmlns="http://www.springframework.net" default-lazy-init="true">
 
   <object id="WinSelectConnection" name="WinSelectConnection" singleton="false" scope="request"
-  type="HLP.Magnificus.View.WPF.WinSelectConnection, HLP.Magnificus.View.WPF">
+  type="HLP.Magnificus.View.WPF.WinSelectConnection, MagnificusES">
   </object>
 
   <object id="WinConnectionConfig" name="Conexões" singleton="false" scope="request"
-  type="HLP.Magnificus.View.WPF.WinConnectionConfig, HLP.Magnificus.View.WPF">
+  type="HLP.Magnificus.View.WPF.WinConnectionConfig, MagnificusES">
   </object>
   <object id="WinPreviewReport" name="Report" singleton="false" scope="request"
    type="HLP.Comum.View.WPF.WinPreviewReport, HLP.Comum.View.WPF">
   </object>
 
   <object id="WinSobre" name="Sobre" singleton="false" scope="request"
-   type="HLP.Magnificus.View.WPF.WinSobre, HLP.Magnificus.View.WPF">
+   type="HLP.Magnificus.View.WPF.WinSobre, MagnificusES">
   </object>
 
   <object id="WinFindAll" name="Find" singleton="false" scope="request"
-   type="HLP.Magnificus.View.WPF.WinFindAll, HLP.Magnificus.View.WPF">
+   type="HLP.Magnificus.View.WPF.WinFindAll, MagnificusES">
   </object>
   <object id="WinDesconto" name="Desconto" singleton="false" scope="request"
    type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinDesconto, HLP.Entries.View.WPF">

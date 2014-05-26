@@ -166,7 +166,7 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
-                if (MessageBox.Show("Deseja continuar o Magníficus ES . . . ?", "A V I S O", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                // if (MessageBox.Show("Deseja continuar o Magníficus ES . . . ?", "A V I S O", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     Sistema.SetAllConfigService();
                     if (this.ValidaConnection())
