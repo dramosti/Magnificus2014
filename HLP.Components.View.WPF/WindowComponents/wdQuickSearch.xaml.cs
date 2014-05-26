@@ -50,5 +50,10 @@ namespace HLP.Components.View.WPF.WindowComponents
 
             return wd.ViewModel.returnedId;
         }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }
