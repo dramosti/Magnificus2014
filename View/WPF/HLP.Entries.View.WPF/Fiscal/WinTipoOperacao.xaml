@@ -37,7 +37,7 @@
                                     <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="300" MinWidth="300"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
@@ -92,7 +92,7 @@
 									Text="{Binding currentModel.idTipoOperacao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox stCompPosicao="first"
-                                    Grid.Column="2" Grid.Row="2"
+                                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"
                                     Text="{Binding currentModel.xOperacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}">
                                 </Components:CustomTextBox>
@@ -1127,14 +1127,13 @@
                                 </Components:CustomComboBox.Items>
                             </Components:CustomComboBox>
                             <Components:CustomComboBox
-                                Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="2"
+                                Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="2" stCompPosicao="last"
                                 SelectedIndex="{Binding currentModel.stCompoeValorNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}">
                                 <Components:CustomComboBox.Items>
                                     <System:String>0-VALOR CIF+VALOR COM II</System:String>
                                 </Components:CustomComboBox.Items>
                             </Components:CustomComboBox>
-
                         </Grid>
                     </Expander>
                 </AdornerDecorator>
