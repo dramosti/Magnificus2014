@@ -32,6 +32,9 @@ namespace HLP.Components.ViewModel.Commands.WindowComponents
 
             this.objViewModel.ChangeToContainsCommand = new RelayCommand(
                 execute: e => this.ChangeToContainsExecute(), canExecute: eC => this.ChangeToContainsCanExecute());
+
+            this.objViewModel.closeCommand = new RelayCommand(
+                execute: e => this.CloseExecute(o: e));
         }
 
         private void ChangeToEqualExecute()
@@ -82,6 +85,11 @@ namespace HLP.Components.ViewModel.Commands.WindowComponents
         private bool SearchCanExecute()
         {
             return !(string.IsNullOrEmpty(value: this.objViewModel.xValue));
+        }
+
+        private void CloseExecute(object o)
+        {
+            (o as Window).Close();
         }
     }
 }

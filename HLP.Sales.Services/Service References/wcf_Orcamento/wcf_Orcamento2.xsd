@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Orcamento.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases" />
+  <xs:complexType name="modelBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lcamposSqlNotNull" nillable="true" type="tns:ArrayOfPesquisaPadraoModelContract" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases" minOccurs="0" name="status" type="q1:statusModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelBase" nillable="true" type="tns:modelBase" />
   <xs:complexType name="ArrayOfPesquisaPadraoModelContract">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PesquisaPadraoModelContract" nillable="true" type="tns:PesquisaPadraoModelContract" />

@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Entries.Model.Models.Comercial;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.Commands.Comercio;
 using System;
@@ -31,6 +32,8 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
 
         #endregion
 
+        OrcamentoCommands comm = null;
+
         public OrcamentoViewModel()
         {
             ResourceDictionary resource = new ResourceDictionary
@@ -38,7 +41,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
                 Source = new Uri("/HLP.Comum.Resources;component/Styles/Sales/Orcamento/Template/Buttons_Shurtcut.xaml", UriKind.RelativeOrAbsolute)
             };
 
-            OrcamentoCommands comm = new OrcamentoCommands(objViewModel: this);
+            comm = new OrcamentoCommands(objViewModel: this);
 
             Button btnAprovarDescontos = new Button();
             btnAprovarDescontos.Content = "Aprovar descontos?";
@@ -74,7 +77,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             this.Botoes.Children.Add(element: btnConfirmarItens);
             this.Botoes.Children.Add(element: btnItensPerdidos);
             this.Botoes.Children.Add(element: btnItensCancelados);
-            this.Botoes.Children.Add(element: btnGerarVersao);
+            this.Botoes.Children.Add(element: btnGerarVersao);            
         }
 
         public bool bListaPrecoHabilitado
@@ -116,6 +119,10 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             }
         }
 
+        public Cliente_fornecedorModel GetCliente(int idCliente)
+        {
+            return comm.GetCliente(idCliente: idCliente);
+        }
 
         #region Métodos Públicos
         public void AtualizarTotais()

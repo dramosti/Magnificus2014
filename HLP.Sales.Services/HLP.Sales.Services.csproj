@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D366257C-5ED0-425E-9EF3-125A2CEC5AFD}</ProjectGuid>
+    <ProjectGuid>{434B6114-F8DD-4984-9517-4F691D1CEC0B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HLP.Sales.ViewModel</RootNamespace>
-    <AssemblyName>HLP.Sales.ViewModel</AssemblyName>
+    <RootNamespace>HLP.Sales.Services</RootNamespace>
+    <AssemblyName>HLP.Sales.Services</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,73 +29,86 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_HLP065|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug_HLP065\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Comercio\OrcamentoCommands.cs" />
-    <Compile Include="Commands\Comercio\OrcamentoTrocarStatusCommands.cs" />
+    <Compile Include="Comercial\OrcamentoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\Comercio\OrcamentoTrocarStatusViewModel.cs" />
-    <Compile Include="ViewModel\Comercio\OrcamentoViewModel.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
-      <Project>{178fdd5c-d3e5-4809-87c6-3a69c0055bc6}</Project>
-      <Name>HLP.Comum.View</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
-      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
-      <Name>HLP.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HLP.Entries.Services\HLP.Entries.Services.csproj">
-      <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>
-      <Name>HLP.Entries.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HLP.Sales.Model\HLP.Sales.Model.csproj">
-      <Project>{b27b639d-7237-466d-a5a8-c9b126485a21}</Project>
-      <Name>HLP.Sales.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HLP.Sales.Services\HLP.Sales.Services.csproj">
-      <Project>{434b6114-f8dd-4984-9517-4f691d1cec0b}</Project>
-      <Name>HLP.Sales.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HLP.Wcf.Sales\HLP.Wcf.Sales.csproj">
-      <Project>{8c718c6c-dd19-43c8-aa18-4fe453d9c6a2}</Project>
-      <Name>HLP.Wcf.Sales</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model\HLP.Entries.Model\HLP.Entries.Model.csproj">
-      <Project>{ef298ced-27e9-4647-93d6-883f4dccc9ee}</Project>
-      <Name>HLP.Entries.Model</Name>
-    </ProjectReference>
+    <Compile Include="Service References\wcf_Orcamento\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Sales.Model\HLP.Sales.Model.csproj">
+      <Project>{b27b639d-7237-466d-a5a8-c9b126485a21}</Project>
+      <Name>HLP.Sales.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Wcf.Sales\HLP.Wcf.Sales.csproj">
+      <Project>{8c718c6c-dd19-43c8-aa18-4fe453d9c6a2}</Project>
+      <Name>HLP.Wcf.Sales</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\DataSources\HLP.Sales.Model.Models.Comercial.Orcamento_ideModel.datasource" />
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento.wsdl" />
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\wcf_Orcamento\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Orcamento\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Orcamento\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Orcamento\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

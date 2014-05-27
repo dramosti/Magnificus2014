@@ -2,10 +2,11 @@
 using HLP.Base.EnumsBases;
 using HLP.Base.Modules;
 using HLP.Base.Static;
-using HLP.Comum.Resources.Util;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Services.Comercial;
 using HLP.Sales.Model.Models.Comercial;
-using HLP.Sales.ViewModel.Services;
+using HLP.Sales.Services.Comercial;
 using HLP.Sales.ViewModel.ViewModel.Comercio;
 using System;
 using System.Collections.Generic;
@@ -26,10 +27,12 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         BackgroundWorker bWorkerAcoes;
         Window wd = null;
         OrcamentoService objServico;
+        ClienteService objClienteService;
 
         public OrcamentoCommands(OrcamentoViewModel objViewModel)
         {
             objServico = new OrcamentoService();
+            objClienteService = new ClienteService();
 
             this.objViewModel = objViewModel;
 
@@ -101,7 +104,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             try
             {
                 e.Result = e.Argument;
-                this.objViewModel.currentModel = this.objServico.Save(objModel: this.objViewModel.currentModel);
+                this.objViewModel.currentModel = this.objServico.
+                    Save(objModel: this.objViewModel.currentModel);
                 this.IniciaCollection();
             }
             catch (Exception ex)
@@ -578,7 +582,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                             row = dg.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
                             if (row != null)
                             {
-                                c = StaticUtil.GetCell(grid: dg, row: row, column: column.DisplayIndex);
+                                c = Util.GetCell(grid: dg, row: row, column: column.DisplayIndex);
                                 if (c != null)
                                 {
                                     o = c.Content;
@@ -595,6 +599,15 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 }
             }
             return false;
+        }
+
+        #endregion
+
+        #region Métodos para utilização via Model
+
+        public Cliente_fornecedorModel GetCliente(int idCliente)
+        {
+            return objClienteService.GetObjeto(id: idCliente);
         }
 
         #endregion

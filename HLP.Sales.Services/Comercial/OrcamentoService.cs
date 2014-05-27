@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HLP.Sales.ViewModel.Services
+namespace HLP.Sales.Services.Comercial
 {
     public class OrcamentoService
     {
@@ -142,4 +142,5 @@ namespace HLP.Sales.ViewModel.Services
             return false;
         }
     }
+
 }

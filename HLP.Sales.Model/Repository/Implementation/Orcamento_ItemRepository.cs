@@ -1,6 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
-using HLP.Comum.Resources.Util;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.Model.Repository.Interfaces;
 using Microsoft.Practices.EnterpriseLibrary.Data;

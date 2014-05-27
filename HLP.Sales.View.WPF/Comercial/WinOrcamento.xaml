@@ -204,16 +204,13 @@
                         <System:String>xFantasia</System:String>
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
-                <Components:HlpPesquisa
-                    Grid.Column="7" Grid.Row="2" Height="20" Margin="0,0,0,3"
-                    Text="{Binding currentModel.idTipoDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="Informar o Tipo de Documento" TableView="vwTipoDocumento" FieldPesquisa="ID" WidthLabel="0" nameWindow="WinTipoDocumento">
-                    <Components:HlpPesquisa.Items>
-                        <System:String>xTpdoc</System:String>
-                        <System:String>stDocumento</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
+                <Components:CustomComboBox Grid.Column="7" Grid.Row="2" IsEnabled="{Binding bIsEnabled}"
+                                           ItemsSource="{Binding Source={StaticResource lResultTipoDocumento}}"
+                                           SelectedValue="{Binding currentModel.idTipoDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                           SelectedValuePath="id"
+                                           DisplayMemberPath="display">
+
+                </Components:CustomComboBox>
                 <Components:CustomTextBox
                     Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"
                     IsEnabled="False"
@@ -364,13 +361,33 @@
                                     </Components:HlpDatePicker>
                                     <Components:HlpPesquisa 
                                         Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="5"                                                        
-			                            Text="{Binding currentModel.idTipoOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-			                            IsEnabled="{Binding bIsEnabled}"
+			                            Text="{Binding currentModel.idTipoOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			                            
 			                            TableView="vwMotivoPerdaOrcam" FieldPesquisa="ID" WidthLabel="0">
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xMotivo</System:String>
                                             <System:String>xDescricao</System:String>
                                         </Components:HlpPesquisa.Items>
+                                        <Components:HlpPesquisa.Style>
+                                            <Style>
+                                                <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding bIsEnabled}" Value="True"></Condition>
+                                                            <Condition Binding="{Binding currentModel.stOrcamento}" Value="3"></Condition>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="True"/>
+                                                    </MultiDataTrigger>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding bIsEnabled}" Value="True"></Condition>
+                                                            <Condition Binding="{Binding currentModel.stOrcamento}" Value="4"></Condition>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="True"/>
+                                                    </MultiDataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Components:HlpPesquisa.Style>
                                     </Components:HlpPesquisa>
                                 </Grid>
                             </Expander>
