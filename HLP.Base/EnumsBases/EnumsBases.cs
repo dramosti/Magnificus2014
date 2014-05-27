@@ -36,4 +36,10 @@ namespace HLP.Base.EnumsBases
         startWith,
         contains
     }
+
+    public enum StVisibilityButtonQuickSearch
+    {        
+        _default,
+        notVisible
+    }
 }

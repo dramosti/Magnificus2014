@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Base.EnumsBases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,6 +60,14 @@ namespace HLP.Components.View.WPF
             };
 
             this.Style = resource["TextBlocktyleComponents"] as Style;
+        }
+
+        private StVisibilityButtonQuickSearch _stVisibilityBtnQuickSearch;
+
+        public StVisibilityButtonQuickSearch stVisibilityBtnQuickSearch
+        {
+            get { return _stVisibilityBtnQuickSearch; }
+            set { _stVisibilityBtnQuickSearch = value; }
         }
     }
 }

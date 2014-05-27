@@ -69,5 +69,13 @@ namespace HLP.Components.View.WPF
             get { return _stCompPosicao; }
             set { _stCompPosicao = value; }
         }
+
+        private StVisibilityButtonQuickSearch _stVisibilityBtnQuickSearch;
+
+        public StVisibilityButtonQuickSearch stVisibilityBtnQuickSearch
+        {
+            get { return _stVisibilityBtnQuickSearch; }
+            set { _stVisibilityBtnQuickSearch = value; }
+        }
     }
 }

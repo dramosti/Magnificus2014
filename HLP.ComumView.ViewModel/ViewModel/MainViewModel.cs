@@ -324,9 +324,16 @@ namespace HLP.ComumView.ViewModel.ViewModel
         public void FindAll()
         {
             Window win = GerenciadorModulo.Instancia.CarregaForm("WinFindAll", Base.InterfacesBases.TipoExibeForm.Modal);
-            win.SetPropertyValue("AddWindowCommand", this.AddWindowCommand);
-            win.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            win.ShowDialog();
+            if (win != null)
+            {
+                win.SetPropertyValue("AddWindowCommand", this.AddWindowCommand);
+                win.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                win.ShowDialog();
+            }
+            else
+            {
+                MessageHlp.Show(StMessage.stAlert, "Window não encontrado.");
+            }
         }
 
         private string getHeaderWindow(string xNomeForm)
