@@ -182,36 +182,36 @@
                                         <System:String>1-Insumos</System:String>
                                     </Components:CustomComboBox.Items>
                                 </Components:CustomComboBox>
-                                <Components:HlpPesquisa 
+                                <Components:CustomPesquisa 
 									Grid.Column="2" Grid.Row="14" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-									Text="{Binding currentModel.cCfopNaUf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									xIdPesquisa="{Binding currentModel.cCfopNaUf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									WidthLabel="0" FieldPesquisa="ID" TableView="vwCfop" nameWindow="WinCfop">
-                                    <Components:HlpPesquisa.Items>
+									FieldPesquisa="ID" TableView="vwCfop" NameWindowCadastro="WinCfop">
+                                    <Components:CustomPesquisa.Items>
                                         <System:String>cCfop</System:String>
                                         <System:String>xCfop</System:String>
-                                    </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
-                                <Components:HlpPesquisa 
+                                    </Components:CustomPesquisa.Items>
+                                </Components:CustomPesquisa>
+                                <Components:CustomPesquisa 
 									Grid.Column="2" Grid.Row="15" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-									Text="{Binding currentModel.cCfopOutraUf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									xIdPesquisa="{Binding currentModel.cCfopOutraUf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									WidthLabel="0" FieldPesquisa="ID" TableView="vwCfop" nameWindow="WinCfop">
-                                    <Components:HlpPesquisa.Items>
+									FieldPesquisa="ID" TableView="vwCfop" NameWindowCadastro="WinCfop">
+                                    <Components:CustomPesquisa.Items>
                                         <System:String>cCfop</System:String>
                                         <System:String>xCfop</System:String>
-                                    </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
-                                <Components:HlpPesquisa 
+                                    </Components:CustomPesquisa.Items>
+                                </Components:CustomPesquisa>
+                                <Components:CustomPesquisa 
 									Grid.Column="2" Grid.Row="16" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-									Text="{Binding currentModel.cCfopNaoContribuinte, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									xIdPesquisa="{Binding currentModel.cCfopNaoContribuinte, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									WidthLabel="0" FieldPesquisa="ID" TableView="vwCfop" nameWindow="WinCfop">
-                                    <Components:HlpPesquisa.Items>
+									FieldPesquisa="ID" TableView="vwCfop" NameWindowCadastro="WinCfop">
+                                    <Components:CustomPesquisa.Items>
                                         <System:String>cCfop</System:String>
                                         <System:String>xCfop</System:String>
-                                    </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
+                                    </Components:CustomPesquisa.Items>
+                                </Components:CustomPesquisa>
                                 <Components:CustomCheckBox
                                     Grid.Column="2" Grid.Row="17"
                                     IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -370,7 +370,6 @@
                                     IsChecked="{Binding currentModel.stCalculaCreditoIcmsSubstituicaoTributariaSuperSimples, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}">
                                 </Components:CustomCheckBox>
-
                             </Grid>
                         </Expander>
                     </Grid>
@@ -446,25 +445,25 @@
                                                 IsChecked="{Binding currentModel.stCalculaIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}">
                                             </Components:CustomCheckBox>
-                                            <Components:HlpPesquisa 
+                                            <Components:CustomPesquisa 
 												Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-												Text="{Binding currentModel.idCodigoIcmsPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												xIdPesquisa="{Binding currentModel.idCodigoIcmsPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												WidthLabel="0" FieldPesquisa="ID" TableView="vwCodigoIcmsPai" nameWindow="WinCodigoICMS">
-                                                <Components:HlpPesquisa.Items>
+												FieldPesquisa="ID" TableView="vwCodigoIcmsPai" NameWindowCadastro="WinCodigoICMS">
+                                                <Components:CustomPesquisa.Items>
                                                     <System:String>cIcms</System:String>
-                                                </Components:HlpPesquisa.Items>
-                                            </Components:HlpPesquisa>
-                                            <Components:HlpPesquisa 
+                                                </Components:CustomPesquisa.Items>
+                                            </Components:CustomPesquisa>
+                                            <Components:CustomPesquisa 
 												Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-												Text="{Binding currentModel.idCSTIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												xIdPesquisa="{Binding currentModel.idCSTIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												WidthLabel="0" TableView="vwSituacaoTributariaIcms" FieldPesquisa="ID">
-                                                <Components:HlpPesquisa.Items>
+												TableView="vwSituacaoTributariaIcms" FieldPesquisa="ID" NameWindowCadastro="WinStICMS">
+                                                <Components:CustomPesquisa.Items>
                                                     <System:String>cCSTicms</System:String>
                                                     <System:String>xCSTicms</System:String>
-                                                </Components:HlpPesquisa.Items>
-                                            </Components:HlpPesquisa>
+                                                </Components:CustomPesquisa.Items>
+                                            </Components:CustomPesquisa>
                                             <Components:CustomComboBox
                                                 Grid.Column="2" Grid.Row="6"
                                                 SelectedIndex="{Binding currentModel.stCompoeBaseIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -482,16 +481,16 @@
                                                 IsChecked="{Binding currentModel.stCalculaIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}">
                                             </Components:CustomCheckBox>
-                                            <Components:HlpPesquisa 
+                                            <Components:CustomPesquisa 
 												Grid.Column="2" Grid.Row="8" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-												Text="{Binding currentModel.idClassificacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												xIdPesquisa="{Binding currentModel.idClassificacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												WidthLabel="0" TableView="vwClassificacaoFiscal" FieldPesquisa="ID" nameWindow="WinClassificacaoFiscal">
-                                                <Components:HlpPesquisa.Items>
+												TableView="vwClassificacaoFiscal" FieldPesquisa="ID" NameWindowCadastro="WinClassificacaoFiscal">
+                                                <Components:CustomPesquisa.Items>
                                                     <System:String>xClassificacaoFiscal</System:String>
                                                     <System:String>cNCM</System:String>
-                                                </Components:HlpPesquisa.Items>
-                                            </Components:HlpPesquisa>
+                                                </Components:CustomPesquisa.Items>
+                                            </Components:CustomPesquisa>
                                         </Grid>
                                     </Expander>
                                     <Expander Header="Serviço" Style="{StaticResource ExpanderPadrao}" IsExpanded="True" Grid.Row="1">
@@ -678,26 +677,26 @@
                                                     <System:String>1-Não Cumulativo</System:String>
                                                 </Components:CustomComboBox.Items>
                                             </Components:CustomComboBox>                                            
-                                            <Components:HlpPesquisa 
+                                            <Components:CustomPesquisa 
 											Grid.Column="2" Grid.Row="7" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-											Text="{Binding currentModel.idCSTPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											xIdPesquisa="{Binding currentModel.idCSTPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" FieldPesquisa="ID" TableView="vwStPIS" nameWindow="WinStPIS">
-                                                <Components:HlpPesquisa.Items>
+											FieldPesquisa="ID" TableView="vwStPIS" NameWindowCadastro="WinStPIS">
+                                                <Components:CustomPesquisa.Items>
                                                     <System:String>cCSTPis</System:String>
                                                     <System:String>xCSTPis</System:String>
-                                                </Components:HlpPesquisa.Items>
-                                            </Components:HlpPesquisa>
-                                            <Components:HlpPesquisa 
+                                                </Components:CustomPesquisa.Items>
+                                            </Components:CustomPesquisa>
+                                            <Components:CustomPesquisa 
 											Grid.Column="2" Grid.Row="8" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-											Text="{Binding currentModel.idCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											xIdPesquisa="{Binding currentModel.idCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" FieldPesquisa="ID" TableView="vwStCOFINS">
-                                                <Components:HlpPesquisa.Items>
+											FieldPesquisa="ID" TableView="vwStCOFINS" NameWindowCadastro="WinStCofins">
+                                                <Components:CustomPesquisa.Items>
                                                     <System:String>cCSTCofins</System:String>
                                                     <System:String>xCSTCofins</System:String>
-                                                </Components:HlpPesquisa.Items>
-                                            </Components:HlpPesquisa>
+                                                </Components:CustomPesquisa.Items>
+                                            </Components:CustomPesquisa>
                                             <Components:CustomComboBox
                                                Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="2"
                                                SelectedIndex="{Binding currentModel.stCompoeBaseNormalPiscofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -823,16 +822,16 @@
                                                     <System:String>3-Nenhum</System:String>
                                                 </Components:CustomComboBox.Items>
                                             </Components:CustomComboBox>
-                                            <Components:HlpPesquisa 
+                                            <Components:CustomPesquisa 
 											Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-											Text="{Binding currentModel.idCSTIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											xIdPesquisa="{Binding currentModel.idCSTIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" TableView="vwStIPI" FieldPesquisa="ID" nameWindow="WinStIPI">
-                                                <Components:HlpPesquisa.Items>
+											TableView="vwStIPI" FieldPesquisa="ID" NameWindowCadastro="WinStIPI">
+                                                <Components:CustomPesquisa.Items>
                                                     <System:String>cCSTIpi</System:String>
                                                     <System:String>xCSTIpi</System:String>
-                                                </Components:HlpPesquisa.Items>
-                                            </Components:HlpPesquisa>                                                                                                                                                         
+                                                </Components:CustomPesquisa.Items>
+                                            </Components:CustomPesquisa>                                                                                                                                                         
                                         </Grid>
                                     </Expander>
                                 </Grid>

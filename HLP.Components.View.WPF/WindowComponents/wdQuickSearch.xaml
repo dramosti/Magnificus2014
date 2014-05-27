@@ -9,7 +9,7 @@
     <Window.Resources>
         <converter:RadioButtonCheckedButtonQuickSearchConverter x:Key="radioBtnCheckedButtonQSConv"/>
     </Window.Resources>
-    <Border BorderBrush="{StaticResource BlueStandard}" BorderThickness="1.3" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border BorderBrush="{StaticResource BlueStandard}" BorderThickness="1.5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"></ColumnDefinition>
