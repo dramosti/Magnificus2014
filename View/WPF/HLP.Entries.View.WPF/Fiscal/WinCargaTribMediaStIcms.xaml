@@ -48,28 +48,27 @@
                     IsReadOnly="True"
 					Text="{Binding currentModel.idCargaTribMediaStIcms, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 </Components:CustomTextBox>
-                <Components:HlpPesquisa
-					Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-					Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                <Components:CustomPesquisa
+					Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" stCompPosicao="first"
+					xIdPesquisa="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					FieldPesquisa="ID" TableView="vwRamoAtividade" WidthLabel="0" nameWindow="WinRamoAtividade">
-                    <Components:HlpPesquisa.Items>
+					FieldPesquisa="ID" TableView="vwRamoAtividade" NameWindowCadastro="WinRamoAtividade">
+                    <Components:CustomPesquisa.Items>
                         <System:String>xRamo</System:String>
                         <System:String>xDescricao</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
-                <Components:HlpPesquisa 
-					Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-				    FieldPesquisa="ID"	 TableView="vwUF" nameWindow="WinUF"
-                    Text="{Binding currentModel.idUf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					WidthLabel="0">
-                    <Components:HlpPesquisa.Items>
+                    </Components:CustomPesquisa.Items>
+                </Components:CustomPesquisa>
+                <Components:CustomPesquisa 
+					Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+				    FieldPesquisa="ID"	 TableView="vwUF" NameWindowCadastro="WinUF"
+                    xIdPesquisa="{Binding currentModel.idUf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                    <Components:CustomPesquisa.Items>
                         <System:String>xUf</System:String>
                         <System:String>xSiglaUf</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
-                <Components:CustomTextBox stCompPosicao="first"
+                    </Components:CustomPesquisa.Items>
+                </Components:CustomPesquisa>
+                <Components:CustomTextBox stCompPosicao="last"
                     Grid.Column="2" Grid.Row="4"
                     Text="{Binding currentModel.pCargaTributariaMedia, Mode=TwoWay, NotifyOnValidationError=True,
                     Converter={StaticResource porcentagemConverter}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"

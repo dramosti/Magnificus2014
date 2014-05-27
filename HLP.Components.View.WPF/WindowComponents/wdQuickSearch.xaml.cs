@@ -49,7 +49,7 @@ namespace HLP.Components.View.WPF.WindowComponents
             wd.ShowDialog();
 
             return wd.ViewModel.returnedId;
-        }
+        }                     
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

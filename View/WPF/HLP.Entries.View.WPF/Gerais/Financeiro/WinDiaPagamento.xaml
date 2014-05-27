@@ -73,7 +73,7 @@
 					ToolTip="Insira uma breve identificação para o dia de pagamento. ">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" stCompPosicao="last"
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Insira uma descrição da identificação do dia de pagamento.">

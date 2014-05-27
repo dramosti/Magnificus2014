@@ -13,11 +13,15 @@
         </ResourceDictionary>
     </runtime:WindowsBase.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
         <Expander Header="Geral" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="410" MinWidth="410"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="175" MinWidth="175"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="50" MinWidth="50"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
@@ -29,11 +33,7 @@
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                    
                 </Grid.RowDefinitions>
                 <!--Label-->
 
@@ -43,13 +43,9 @@
                 <Components:CustomTextBlock Text="Material de Terceiros?" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Serviços?" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Produto de Patrimônio?" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Visualizar o Tipo do Produto no módulo de Produção?" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Visualizar o Tipo do Produto no módulo de Estoque?" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Visualizar o TIpo do Produto no módulo de Compras?" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Visualizar o Tipo do Produto no módulo de Comercial/Faturamento?" Grid.Column="1" Grid.Row="10"></Components:CustomTextBlock>
-                
+
                 <!--Components-->
-                
+
                 <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     IsReadOnly="True"
@@ -86,31 +82,60 @@
 					IsEnabled="{Binding bIsEnabled}"     
                     ToolTip="Marque se o produto é referente a patrimônio">
                 </Components:CustomCheckBox>
+            </Grid>
+        </Expander>
+        <Expander Header="Ajuste de Visualização" Style="{StaticResource ExpanderPadrao}" IsExpanded="True" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition Width="450"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <!--Label-->
+
+                <Components:CustomTextBlock Text="Visualizar o Tipo do Produto no módulo de Produção?" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Visualizar o Tipo do Produto no módulo de Estoque?" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Visualizar o Tipo do Produto no módulo de Compras?" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Visualizar o Tipo do Produto no módulo de Comercial/Faturamento?" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                
+                <!--Components-->
+
                 <Components:CustomCheckBox
-                    Grid.Column="2" Grid.Row="7"
+                    Grid.Column="2" Grid.Row="1"
                     IsChecked="{Binding currentModel.stProducao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"     
                     ToolTip="Marque se deseja que todos os produtos com esse tipo deverá mostrar em todas as telas do módulo produção.">
                 </Components:CustomCheckBox>
                 <Components:CustomCheckBox
-                    Grid.Column="2" Grid.Row="8"
+                    Grid.Column="2" Grid.Row="2"
                     IsChecked="{Binding currentModel.stEstoque, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"     
                     ToolTip="Marque se deseja que todos os produtos com esse tipo deverá mostrar em todas as telas do módulo estoque.">
                 </Components:CustomCheckBox>
                 <Components:CustomCheckBox
-                    Grid.Column="2" Grid.Row="9"
+                    Grid.Column="2" Grid.Row="3"
                     IsChecked="{Binding currentModel.stCompras, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"      
                     ToolTip="Marque se deseja que todos os produtos com esse tipo deverá mostrar em todas as telas do módulo compras.">
                 </Components:CustomCheckBox>
                 <Components:CustomCheckBox
-                    Grid.Column="2" Grid.Row="10"
+                    Grid.Column="2" Grid.Row="4" stCompPosicao="last"
                     IsChecked="{Binding currentModel.stComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"       
                     ToolTip="Marque se deseja que todos os produtos com esse tipo deverá mostrar em todas as telas do módulo Comercial/Faturamento.">
                 </Components:CustomCheckBox>
-                
+
             </Grid>
         </Expander>
     </Grid>

@@ -18,9 +18,10 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -32,7 +33,7 @@
                 <!--Label-->
 
                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Decisao" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código Alternativo" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                 
                 <!--Components-->
@@ -43,13 +44,13 @@
                     IsReadOnly="True">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox stCompPosicao="first"
-                    Grid.Column="2" Grid.Row="2"
+                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                     x:Name="txtdecisao" ToolTip="Insira um código ou descrição de uma palavra para a influência da pessoa de contato sobre o processo de tomada de decisões da empresa."                                  
                     Text="{Binding currentModel.xDecisao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                     IsEnabled="{Binding bIsEnabled}">                    
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" ToolTip="Insira uma descrição mais detalhada do código de decisão ativo."
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" ToolTip="Insira uma descrição mais detalhada do código de decisão ativo." stCompPosicao="last"
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay,
                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"                                   
                     IsEnabled="{Binding bIsEnabled}">

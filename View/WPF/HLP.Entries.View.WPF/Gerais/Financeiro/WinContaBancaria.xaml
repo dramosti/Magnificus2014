@@ -33,6 +33,7 @@
                                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="5"></RowDefinition>
@@ -87,28 +88,28 @@
                                         <System:String>2-Conta Poupança</System:String>
                                     </Components:CustomComboBox.Items>
                                 </Components:CustomComboBox>
-                                <Components:HlpPesquisa nameWindow="WinAgencia"
-						            Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-						            Text="{Binding currentModel.idAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                <Components:CustomPesquisa NameWindowCadastro="WinAgencia"
+						            Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3"
+						            xIdPesquisa="{Binding currentModel.idAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						            IsEnabled="{Binding bIsEnabled}"
-						            ToolTip="Informa o código da Agencia. O banco e a Agencia deverá estar cadastro na Tela de Bancos e Agência." WidthLabel="0" FieldPesquisa="ID" TableView="vwAgencia">
-                                    <Components:HlpPesquisa.Items>
+						            ToolTip="Informa o código da Agencia. O banco e a Agencia deverá estar cadastro na Tela de Bancos e Agência." FieldPesquisa="ID" TableView="vwAgencia">
+                                    <Components:CustomPesquisa.Items>
                                         <System:String>cAgencia</System:String>
                                         <System:String>Banco</System:String>
-                                    </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
-                                <Components:HlpPesquisa nameWindow="WinBanco"
+                                    </Components:CustomPesquisa.Items>
+                                </Components:CustomPesquisa>
+                                <Components:CustomPesquisa NameWindowCadastro="WinBanco"
                                     Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-						            Text="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            xIdPesquisa="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						            IsEnabled="{Binding bIsEnabled}"
-						            ToolTip="Informa o código da Banco. O banco e a Agencia deverá estar cadastro na Tela de Bancos e Agência." WidthLabel="0" FieldPesquisa="ID" TableView="vwBanco">
-                                <Components:HlpPesquisa.Items>
-                                    <System:String>cAgencia</System:String>
-                                    <System:String>Banco</System:String>
-                                </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
+						            ToolTip="Informa o código da Banco. O banco e a Agencia deverá estar cadastro na Tela de Bancos e Agência." FieldPesquisa="ID" TableView="vwBanco">
+                                <Components:CustomPesquisa.Items>
+                                    <System:String>cBanco</System:String>
+                                    <System:String>xBanco</System:String>
+                                </Components:CustomPesquisa.Items>
+                                </Components:CustomPesquisa>
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="7"                                    
+                                    Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2"                                  
                                     Text="{Binding currentModel.xTitular, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						            IsEnabled="{Binding bIsEnabled}"
 						            ToolTip="É preenchido com o nome do titular da Conta Bancária.">
@@ -120,7 +121,6 @@
 						            IsEnabled="{Binding bIsEnabled}"
 						            ToolTip="É preenchido com o CNPJ ou CPF do Titular da Conta Bancária.">
                                 </Components:CustomTextBox>
-
                             </Grid>
                         </Expander>
                         <Expander Header="Home Banking" IsExpanded="True" Grid.Row="1" Style="{StaticResource ExpanderPadrao}" Focusable="False">
@@ -239,7 +239,7 @@
 						            ToolTip="Qual o tipo de movimentação/documento que será lançado.">
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="13"
+                                    Grid.Column="2" Grid.Row="13" stCompPosicao="last"
                                     Text="{Binding currentModel.nRemessaHomeBanking, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						            IsEnabled="{Binding bIsEnabled}"
 						            ToolTip="Informar o numero inicial da sequencia para Remessa ao Home Banking">

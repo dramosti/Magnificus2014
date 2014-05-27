@@ -5,7 +5,7 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         x:Class="HLP.Components.View.WPF.WindowComponents.wdQuickSearch"
         Title="wdQuickSearch" Height="150" Width="250" x:Name="wdQs" WindowStartupLocation="CenterScreen" FocusManager.FocusedElement="{Binding ElementName=txtValor}" AllowsTransparency="True" WindowStyle="None">
-    <Border BorderBrush="{StaticResource BlueStandard}" BorderThickness="1.3" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border BorderBrush="{StaticResource BlueStandard}" BorderThickness="1.5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"></ColumnDefinition>

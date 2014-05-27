@@ -89,7 +89,7 @@
 								ToolTip="Define a quantidade de dias a mais para ser faturado a duplicata recebida.">
                             </Components:CustomTextBox>
                             <Components:CustomTextBox
-                                Grid.Column="2" Grid.Row="7"
+                                Grid.Column="2" Grid.Row="7" stCompPosicao="last"
                                 Text="{Binding currentModel.vDxMenos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Define a quantidade de dias a menos para ser faturado a duplicata paga.">
