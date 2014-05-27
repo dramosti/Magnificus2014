@@ -81,6 +81,7 @@
     <Compile Include="Converter\NotConverter.cs" />
     <Compile Include="Converter\OperacoesAritmetConverter.cs" />
     <Compile Include="Converter\PorcentagemConverter.cs" />
+    <Compile Include="Converter\RadioButtonCheckedButtonQuickSearchConverter.cs" />
     <Compile Include="Converter\SelectedItemToTextConverter.cs" />
     <Compile Include="Converter\TimeSpanToString.cs" />
     <Compile Include="Converter\VisibilityDatePickerConverter.cs" />

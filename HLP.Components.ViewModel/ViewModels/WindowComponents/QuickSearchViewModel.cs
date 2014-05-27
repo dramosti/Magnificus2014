@@ -18,6 +18,7 @@ namespace HLP.Components.ViewModel.ViewModels.WindowComponents
     public class QuickSearchViewModel : INotifyPropertyChanged
     {
         public ICommand searchCommad { get; set; }
+        public ICommand closeCommand { get; set; }
         public ICommand ChangeToEqualCommand { get; set; }
         public ICommand ChangeToStartWithCommand { get; set; }
         public ICommand ChangeToContainsCommand { get; set; }
@@ -38,6 +39,15 @@ namespace HLP.Components.ViewModel.ViewModels.WindowComponents
                 PropertyInfo piField = this.modelType.GetProperty(name: this.xNameBinding);
 
                 this.fieldType = piField.PropertyType;
+
+                if (this.fieldType.FullName.ToUpper().Contains(value: "INT"))
+                {
+                    this.stFilterQs = stFilterQuickSearch.equal;
+                }
+                else
+                {
+                    this.stFilterQs = stFilterQuickSearch.contains;
+                }
             }
 
             if (modelType.GetProperties().Count(i => i.Name == "idEmpresa") > 1)

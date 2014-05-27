@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Components.ViewModel.ViewModels.WindowComponents;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Components.View.WPF.WindowComponents
 {
@@ -54,6 +55,15 @@ namespace HLP.Components.View.WPF.WindowComponents
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void txtValor_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (this.ViewModel.searchCommad.CanExecute(parameter: null))
+                    this.ViewModel.searchCommad.Execute(parameter: this);
+            }
         }
     }
 }

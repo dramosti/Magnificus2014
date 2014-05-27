@@ -92,7 +92,7 @@ namespace HLP.Base.ClassesBases
         public ICommand copyBaseCommand { get; set; }
         public ICommand pesquisarBaseCommand { get; set; }
         public ICommand navegarBaseCommand { get; set; }
-        public ICommand fecharCommand { get; set; }        
+        public ICommand fecharCommand { get; set; }
         public void SetValorCurrentOp(OperacaoCadastro op)
         {
             viewModelBaseCommands.currentOp = op;
@@ -124,13 +124,15 @@ namespace HLP.Base.ClassesBases
 
         public BackgroundWorker bWorkerPrint
         {
-            get {
+            get
+            {
                 if (_bWorkerPrint == null)
                     _bWorkerPrint = new BackgroundWorker();
-                return _bWorkerPrint; }
+                return _bWorkerPrint;
+            }
             set { _bWorkerPrint = value; }
         }
-        
+
 
         private BackgroundWorker _bWorkerNovo;
         public BackgroundWorker bWorkerNovo
@@ -482,7 +484,7 @@ namespace HLP.Base.ClassesBases
         }
     }
 
-    public class ViewModelBaseCommands<T>: INotifyPropertyChanged where T : class
+    public class ViewModelBaseCommands<T> : INotifyPropertyChanged where T : class
     {
         BackgroundWorker bwFocus;
         public ViewModelBase<T> objviewModel;
@@ -692,7 +694,7 @@ namespace HLP.Base.ClassesBases
         }
 
         private void novoBase()
-        {           
+        {
             this.objviewModel.bIsEnabled = true;
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
             objviewModel.currentID = 0;
@@ -764,7 +766,9 @@ namespace HLP.Base.ClassesBases
             {
                 Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                 {
-                    ((Stack<UIElement>)e.Result).Pop().Focus();
+                    UIElement comp = ((Stack<UIElement>)e.Result).Pop();
+
+                    comp.Focus();
                 }));
             }
         }

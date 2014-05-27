@@ -4,8 +4,12 @@
         xmlns:Components="clr-namespace:HLP.Components.View.WPF"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         x:Class="HLP.Components.View.WPF.WindowComponents.wdQuickSearch"
+    xmlns:converter="clr-namespace:HLP.Components.View.WPF.Converter"
         Title="wdQuickSearch" Height="150" Width="250" x:Name="wdQs" WindowStartupLocation="CenterScreen" FocusManager.FocusedElement="{Binding ElementName=txtValor}" AllowsTransparency="True" WindowStyle="None">
-    <Border BorderBrush="{StaticResource BlueStandard}" BorderThickness="1.5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Window.Resources>
+        <converter:RadioButtonCheckedButtonQuickSearchConverter x:Key="radioBtnCheckedButtonQSConv"/>
+    </Window.Resources>
+    <Border BorderBrush="{StaticResource BlueStandard}" BorderThickness="1.3" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"></ColumnDefinition>
@@ -21,7 +25,9 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="40"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBox Style="{StaticResource TextBox_FILTER}" x:Name="txtValor" Text="{Binding xValue , UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" IsEnabled="True"></TextBox>
+            <TextBox 
+                KeyUp="txtValor_KeyUp"
+                Style="{StaticResource TextBox_FILTER}" x:Name="txtValor" Text="{Binding xValue , UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" IsEnabled="True"></TextBox>
             <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" MaxWidth="84" MinWidth="84"></ColumnDefinition>
@@ -31,7 +37,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="20"></RowDefinition>
-                </Grid.RowDefinitions>                
+                </Grid.RowDefinitions>
                 <Components:CustomTextBlock Text="Tipo do Filtro" Foreground="{StaticResource CinzaEscuro}" Margin="0,0,0,12"></Components:CustomTextBlock>
                 <Grid Grid.Row="1" Grid.ColumnSpan="3">
                     <Grid.ColumnDefinitions>
@@ -39,9 +45,15 @@
                         <ColumnDefinition Width="100"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <RadioButton Content="Igual" Grid.Column="0" Style="{StaticResource RadioButton_Filter}" Command="{Binding ChangeToEqualCommand}"></RadioButton>
-                    <RadioButton Content="Começa com" Grid.Column="1"  Style="{StaticResource RadioButton_Filter}" Command="{Binding ChangeToStartWithCommand}"></RadioButton>
-                    <RadioButton Content="Contém" Grid.Column="2"  Style="{StaticResource RadioButton_Filter}" Command="{Binding ChangeToContainsCommand}"></RadioButton>
+                    <RadioButton x:Name="rbEqual" Content="Igual" Grid.Column="0" 
+                                 IsChecked="{Binding stFilterQs, Converter={StaticResource radioBtnCheckedButtonQSConv}, ConverterParameter=eq}"
+                                 Style="{StaticResource RadioButton_Filter}" Command="{Binding ChangeToEqualCommand}"></RadioButton>
+                    <RadioButton x:Name="rbStart" Content="Começa com" Grid.Column="1"
+                                 IsChecked="{Binding stFilterQs, Converter={StaticResource radioBtnCheckedButtonQSConv}, ConverterParameter=start}"
+                                 Style="{StaticResource RadioButton_Filter}" Command="{Binding ChangeToStartWithCommand}"></RadioButton>
+                    <RadioButton x:Name="rbContains" Content="Contém" 
+                                 IsChecked="{Binding stFilterQs, Converter={StaticResource radioBtnCheckedButtonQSConv}, ConverterParameter=contains}"
+                                 Grid.Column="2"  Style="{StaticResource RadioButton_Filter}" Command="{Binding ChangeToContainsCommand}"></RadioButton>
                 </Grid>
             </Grid>
             <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Background="#FF4774B5" Margin="0,0,-1,-1">
@@ -58,8 +70,8 @@
                     <RowDefinition Height="2.5"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Button Grid.Column="1" Grid.Row="1" Height="35" Style="{StaticResource ButtonPesquisa_Filtro}" Command="{Binding searchCommad}" CommandParameter="{Binding ElementName=wdQs}"></Button>
-                <Button Grid.Column="3" Grid.Row="1" Height="35" Style="{StaticResource ButtonPesquisa_Sair}"></Button>
+                <Button Grid.Column="3" Grid.Row="1" Height="35" Style="{StaticResource ButtonPesquisa_Sair}" Command="{Binding closeCommand}" CommandParameter="{Binding ElementName=wdQs}"></Button>
             </Grid>
         </Grid>
-    </Border>  
+    </Border>
 </Window>
