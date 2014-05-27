@@ -19,8 +19,8 @@
                     <ColumnDefinition Width="10"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -44,13 +44,13 @@
 					ToolTip="Chave principal do registro da Personalidade">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox stCompPosicao="first"
-                    Grid.Column="2" Grid.Row="2"
+                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xPersonalidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Característica e/ou personalidade da pessoa de contato.">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                   Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+                   Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" stCompPosicao="last"
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Descrição mais precisa do da característica ativo.">

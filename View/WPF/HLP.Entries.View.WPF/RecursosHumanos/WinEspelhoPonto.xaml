@@ -241,7 +241,8 @@
                         </Components:CustomPesquisa.Items>
                     </Components:CustomPesquisa>
                     <Components:CustomTextBox stCompPosicao="first" Visibility="Hidden"/>
-                    <Components:CustomTextBox                            
+                    <Components:CustomTextBox  
+                          stVisibilityBtnQuickSearch="notVisible"
                           IsEnabled="{Binding bIsEnabled}"
                           x:Name="txtPeriodo"                                 
                           Text="{Binding currentModel.data, Converter={StaticResource dataConvert}}"

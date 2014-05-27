@@ -46,7 +46,8 @@
                                     <ColumnDefinition Width="10"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="50" MinWidth="50"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="20" MinWidth="20"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="70" MinWidth="70"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
@@ -70,7 +71,7 @@
                                 <Components:CustomTextBlock Text="Banco" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Telefone" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Fax" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Contatos" Grid.Column="5" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Contatos" Grid.Column="6" Grid.Row="1"></Components:CustomTextBlock>
                                 
                                 <!--Components-->
                                 
@@ -81,27 +82,27 @@
 									ToolTip="Chave principal do registro da Agencia.">
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox stCompPosicao="first"
-                                    Grid.Column="2" Grid.Row="2"
+                                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                                     Text="{Binding currentModel.cAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"	
 									ToolTip="Digite um código da Agencia bancária.">
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="3"
+                                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
                                     Text="{Binding currentModel.xAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informa o nome por completo da Agência Bancária">
                                 </Components:CustomTextBox>
-                                <Components:HlpPesquisa nameWindow="WinBanco"
-                                        	Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-                                        	Text="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                <Components:CustomPesquisa NameWindowCadastro="WinBanco"
+                                        	Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3"
+                                        	xIdPesquisa="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                         	IsEnabled="{Binding bIsEnabled}"
-                                        	ToolTip="Informa o código do Banco. O banco deverá estar cadastro no Formulário de Bancos." WidthLabel="0" FieldPesquisa="ID" TableView="vwBanco">
-                                    <Components:HlpPesquisa.Items>
+                                        	ToolTip="Informa o código do Banco. O banco deverá estar cadastro no Formulário de Bancos." FieldPesquisa="ID" TableView="vwBanco">
+                                    <Components:CustomPesquisa.Items>
                                         <System:String>xBanco</System:String>
                                         <System:String>cBanco</System:String>
-                                    </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
+                                    </Components:CustomPesquisa.Items>
+                                </Components:CustomPesquisa>
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="5"
                                     Text="{Binding currentModel.xTelefone, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,Converter={StaticResource maskConverter}, ConverterParameter=tel}"
@@ -109,7 +110,7 @@
 									ToolTip="Informar o telefone principal da Agencia Bancária">
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="6"
+                                    Grid.Column="2" Grid.Row="6" stCompPosicao="last"
                                     Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informar o Fax principal da Agencia Bancária.">
@@ -117,7 +118,7 @@
                                 <Components:HlpContato
                                     IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     ItemsSourceContatos="{Binding currentModel.lAgencia_ContatoModel}"
-                                    Grid.Column="6" Grid.Row="1" Grid.RowSpan="6"
+                                    Grid.Column="7" Grid.Row="1" Grid.RowSpan="6"
                                          x:Name="dgvContato"
                                     >
                                     <Components:HlpContato.lColumns>

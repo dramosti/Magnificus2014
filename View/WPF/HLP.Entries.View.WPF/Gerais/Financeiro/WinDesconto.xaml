@@ -21,8 +21,9 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="175" MinWidth="175"></ColumnDefinition>
-                    <ColumnDefinition MinWidth="110" MaxWidth="110"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                    <ColumnDefinition MinWidth="90" MaxWidth="90 "></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="110" MinWidth="110"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
@@ -40,7 +41,7 @@
                 <!--Label-->
 
                 <Components:CustomTextBlock Text="Código do Desconto" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Desconto " Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código Alternativo" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Descrição " Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Próximo Código de Desconto" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Liquido/Atual" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
@@ -68,18 +69,18 @@
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Digite uma breve descrição do desconto à vista, por exemplo, 10 dias antecipado 2 % de Desconto para o código de desconto 10D2%.">
                 </Components:CustomTextBox>
-                <Components:HlpPesquisa 
-					Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-					Text="{Binding currentModel.idProximoDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                <Components:CustomPesquisa 
+					Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3"
+					xIdPesquisa="{Binding currentModel.idProximoDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					FieldPesquisa="ID" TableView="vwDescontosAvista" WidthLabel="0" nameWindow="WinDesconto">
-                    <Components:HlpPesquisa.Items>
+					FieldPesquisa="ID" TableView="vwDescontosAvista" NameWindowCadastro="WinDesconto">
+                    <Components:CustomPesquisa.Items>
                         <System:String>xDescontos</System:String>
                         <System:String>xDescricao</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
+                    </Components:CustomPesquisa.Items>
+                </Components:CustomPesquisa>
                 <Components:CustomComboBox
-                    Grid.Column="2" Grid.Row="5" x:Name="cbxStLiquidoAtual"
+                    Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" x:Name="cbxStLiquidoAtual"
                     SelectedIndex="{Binding currentModel.stLiquidoAtual, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Escolha o método aplicável ao seu desconto à vista. O método especificado, juntamente com o valor fornecido no campo Dias e/ou Meses, será usado para calcular a última data em que o pagamento pode ser feito para receber qualquer desconto à vista disponível. ">
@@ -128,7 +129,7 @@
 
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="8"
+                    Grid.Column="2" Grid.Row="8" stCompPosicao="last"
                     Text="{Binding currentModel.pDesconto, Mode=TwoWay, 
                     NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 					IsEnabled="{Binding bIsEnabled}"

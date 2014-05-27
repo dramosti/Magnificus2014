@@ -20,8 +20,8 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="60" MinWidth="60"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="175" MinWidth="175"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -54,7 +54,7 @@
                                        Text="{Binding currentModel.xCfopResumida, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                        IsEnabled="{Binding bIsEnabled}"
                                        ToolTip="Informar uma descrição abreviada do CFOP. Esse campo sairá na NF por isso que há necessidade da abreviação da Descrição da CFOP."/>                
-                <Components:CustomTextBox  Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4"
+                <Components:CustomTextBox  Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4" stCompPosicao="last"
                                        Text="{Binding currentModel.xCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                        IsEnabled="{Binding bIsEnabled}"
                                        ToolTip="Descrição Detalhada da CFOP"/>         

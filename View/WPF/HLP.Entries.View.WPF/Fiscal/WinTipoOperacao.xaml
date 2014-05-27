@@ -34,7 +34,7 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="230" MinWidth="230"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
@@ -229,7 +229,7 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="450" MinWidth="450"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="500" MinWidth="500"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="140" MinWidth="140"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
@@ -318,7 +318,7 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="400" MinWidth="400"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="420" MinWidth="420"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
@@ -390,7 +390,7 @@
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="10"></ColumnDefinition>
-                                                <ColumnDefinition MaxWidth="230" MinWidth="230"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
                                                 <ColumnDefinition MaxWidth="130" MinWidth="130"></ColumnDefinition>
                                                 <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
@@ -498,7 +498,7 @@
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="10"></ColumnDefinition>
-                                                <ColumnDefinition MaxWidth="300" MinWidth="300"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="310" MinWidth="310"></ColumnDefinition>
                                                 <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
@@ -599,7 +599,7 @@
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="10"></ColumnDefinition>
-                                                <ColumnDefinition MaxWidth="340" MinWidth="340"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="360" MinWidth="360"></ColumnDefinition>
                                                 <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
                                                 <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
                                                 <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
@@ -741,7 +741,7 @@
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="10"></ColumnDefinition>
-                                                <ColumnDefinition MaxWidth="340" MinWidth="340"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="365" MinWidth="365"></ColumnDefinition>
                                                 <ColumnDefinition MaxWidth="140" MinWidth="140"></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
@@ -785,7 +785,7 @@
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="10"></ColumnDefinition>
-                                                <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="230" MinWidth="230"></ColumnDefinition>
                                                 <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                                                 <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
                                                 <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
@@ -893,8 +893,8 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10"></ColumnDefinition>
-                                <ColumnDefinition MaxWidth="300" MinWidth="300"></ColumnDefinition>
-                                <ColumnDefinition MaxWidth="140" MinWidth="140"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="340" MinWidth="340"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="130" MinWidth="130"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
@@ -956,7 +956,7 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10"></ColumnDefinition>
-                                <ColumnDefinition MaxWidth="350" MinWidth="350"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="300" MinWidth="300"></ColumnDefinition>
                                 <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                                 <ColumnDefinition MaxWidth="50" MinWidth="50"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>

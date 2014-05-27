@@ -23,7 +23,7 @@
                     <ColumnDefinition MaxWidth="340" MinWidth="340"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="300" MinWidth="300"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -74,7 +74,7 @@
 					Text="{Binding currentModel.idClassificacaoFiscal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}">					
                 </Components:CustomTextBox>
                 <Components:CustomTextBox stCompPosicao="first"
-                    Grid.Column="2" Grid.Row="2"
+                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"
                     Text="{Binding currentModel.xClassificacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				    IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomTextBox>
@@ -178,9 +178,7 @@
                     Grid.Column="2" Grid.Row="17"
                     IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}">						
-                </Components:CustomCheckBox>
-                
-                
+                </Components:CustomCheckBox>                
             </Grid>
         </Expander>
     </DockPanel>

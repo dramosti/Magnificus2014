@@ -49,7 +49,7 @@ namespace HLP.Entries.Model.Models.Financeiro
             {
                 if (columnName.Equals("cBanco"))
                 {
-                    if (this.cBanco != "")
+                    if (this.cBanco != "" && this.cBanco != "0")
                     {
                         int ivalida;
                         int.TryParse(this.cBanco, out ivalida);

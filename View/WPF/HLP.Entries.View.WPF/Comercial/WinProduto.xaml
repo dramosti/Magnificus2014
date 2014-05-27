@@ -488,9 +488,10 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10"></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="300"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="200"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
@@ -512,7 +513,7 @@
                                 <!--Components-->
 
                                 <Components:CustomComboBox
-                                    Grid.Column="2" Grid.Row="1"
+                                    Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"
                                     SelectedIndex="{Binding currentModel.stOrigemMercadoria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informar qual é a origem da Mercadoria, são elas:">
@@ -523,7 +524,7 @@
                                     </Components:CustomComboBox.Items>
                                 </Components:CustomComboBox>
                                 <Components:CustomPesquisa 
-									Grid.Column="2" Grid.Row="2" NameWindowCadastro="WinStICMS"
+									Grid.Column="2" Grid.Row="2" NameWindowCadastro="WinStICMS" Grid.ColumnSpan="3"
 									xIdPesquisa="{Binding currentModel.idCSTIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informar a Situação Tributária para o ICMS (IMPOSTO SOBRE CIRCULAÇÃO DE MERCADORIAS E PRESTAÇÃO DE SERVIÇOS)" TableView="vwSituacaoTributariaIcms" FieldPesquisa="ID">
@@ -852,7 +853,7 @@
 									ToolTip="Insira o valor aceitável da entrega insuficiente como uma porcentagem. Se o número de itens entregues for menor que o número encomendado, você poderá bloqueá-la.">
                                 </Components:CustomTextBox>
                                 <Components:CustomPesquisa     
-									Grid.Column="2" Grid.Row="5"
+									Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
 									Text="{Binding currentModel.idUnidadeMedidaCompras, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Deve ser informado a unidade de medida para as, requisições, cotações de compras, Ordens de Compra. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para Ordem de compras dentro da unidades que estejam com as devidas conversões corretas para esse produto."
@@ -994,7 +995,7 @@
                         CanUserDeleteRows="True"
                         CanUserAddRows="True">
                         <DataGrid.Columns>
-                            <DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Fornecedor" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="220"/>
+                            <DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Fornecedor" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="*"/>
                             <DataGridTextColumn 
 								ElementStyle="{StaticResource CellErrorStyle}"
 								Binding="{Binding Path=nLeadTimeEntrega, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
