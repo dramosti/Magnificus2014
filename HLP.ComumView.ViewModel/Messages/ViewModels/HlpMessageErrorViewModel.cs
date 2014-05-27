@@ -1,23 +1,32 @@
-﻿using System;
+﻿using HLP.ComumView.ViewModel.Messages.Commands;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace HLP.ComumView.ViewModel.Messages.ViewModels
 {
     public class HlpMessageErrorViewModel : INotifyPropertyChanged
     {
+        public ICommand commCopy { get; set; }
+        public ICommand commOk { get; set; }
+
+        HlpMessageErrorCommands comm;
+
         public HlpMessageErrorViewModel()
         {
+            comm = new HlpMessageErrorCommands(objViewModel: this);
         }
 
         public HlpMessageErrorViewModel(string xErrorCode, string xErrorMessageToUser, string xErrorMessageFramework)
         {
             this.xErrorCode = xErrorCode;
             this.xErrorMessageToUser = xErrorMessageToUser;
-            this.xErrorMessageFramework = xErrorMessageFramework;            
+            this.xErrorMessageFramework = xErrorMessageFramework;
+            comm = new HlpMessageErrorCommands(objViewModel: this);
         }
 
         private string _xErrorCode;

@@ -112,10 +112,8 @@ namespace HLP.Magnificus.View.WPF
 
 
             if (!xMessage.Contains("NewItemPlaceholderPosition"))
-                MessageBox.Show(messageBoxText: "Erro: " +
-                    xMessage + Environment.NewLine +
-                "Inner Exception: " + xInner, caption: "Erro.",
-                    button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
+                MessageHlp.Show(stMessage: StMessage.stError, xMessageToUser: xMessage,
+                    xMessageFramework: e.Exception.StackTrace);            
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

@@ -493,11 +493,15 @@
                                             <System:String>xDescricaoUnidadeVenda</System:String>
                                         </Components:HlpPesquisa.Items>
                                     </Components:HlpPesquisa>
-                                    <Components:CustomTextBox
-                                            Grid.Column="2" Grid.Row="4"
-                                            Text="{Binding currentModel.xCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
-                                    </Components:CustomTextBox>
+                                    <Components:CustomPesquisa Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
+                                        TableView="vwCanalVenda" NameWindowCadastro="WinCanalVenda" 
+                                        xIdPesquisa="{Binding currentModel.idRamoAtividade, Mode=OneWay}" FieldPesquisa="ID"
+                                        >          
+                                        <Components:CustomPesquisa.Items>
+                                            <System:String>cCanalVenda</System:String>
+                                            <System:String>cCanalVenda</System:String>
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
                                     <Components:HlpPesquisa 
                                         Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"                                                        
 			                            Text="{Binding currentModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
