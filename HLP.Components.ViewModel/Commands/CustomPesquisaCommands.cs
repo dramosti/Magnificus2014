@@ -154,7 +154,7 @@ namespace HLP.Components.ViewModel.Commands
                                 MethodInfo miSetOp = _DataContext.GetType().GetMethod(
                                     name: "SetValorCurrentOp");
 
-                                object[] _params = new object[] { OperacaoCadastro.pesquisando };
+                                object[] _params = new object[] { OperationModel.searching };
 
                                 miSetOp.Invoke(obj: _DataContext, parameters: _params);
 

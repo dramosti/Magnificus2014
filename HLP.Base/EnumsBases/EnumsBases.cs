@@ -14,12 +14,11 @@ namespace HLP.Base.EnumsBases
         excluido
     }
 
-    public enum OperacaoCadastro
+    public enum OperationModel
     {
-        livre,
-        criando,
-        alterando,
-        pesquisando
+        noAction,
+        updating,
+        searching
     }
 
     public enum statusComponentePosicao

@@ -3,9 +3,11 @@ using HLP.Base.EnumsBases;
 using HLP.Base.Modules;
 using HLP.Base.Static;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Services.Comercial;
+using HLP.Entries.Services.Fiscal;
 using HLP.Entries.Services.Gerais;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.Services.Comercial;
@@ -31,12 +33,14 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         OrcamentoService objServico;
         ClienteService objClienteService;
         FuncionarioService objFuncionarioService;
+        Tipo_Documento_Operacao_ValidaService objTipoDocumentoOperacaoValidaService;
 
         public OrcamentoCommands(OrcamentoViewModel objViewModel)
         {
             objServico = new OrcamentoService();
             objClienteService = new ClienteService();
             objFuncionarioService = new FuncionarioService();
+            objTipoDocumentoOperacaoValidaService = new Tipo_Documento_Operacao_ValidaService();
 
             this.objViewModel = objViewModel;
 
@@ -157,7 +161,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 this.objViewModel.currentModel.lOrcamento_Item_Impostos.CollectionCarregada();
                 this.objViewModel.currentModel.lOrcamento_Itens.CollectionCarregada();
             }
-
         }
 
         public void Delete()
@@ -390,8 +393,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                             item.objImposto.vTotalItem = item.vTotalItem;
                         }
                     }
-                    if (this.objViewModel.currentModel.lOrcamento_Itens != null)
-                        this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged += this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
                     //this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentID);
                 }
             }
@@ -617,6 +618,12 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         public FuncionarioModel GetFuncionario(int idFuncionario)
         {
             return objFuncionarioService.GetObject(id: idFuncionario, bGetChild: false);
+        }
+
+        public List<Tipo_documento_oper_validaModel> GetOperacoesValidas(int idTipoDocumento)
+        {
+            return objTipoDocumentoOperacaoValidaService.GetOperacoesValidas(
+                idTipoDocumento: idTipoDocumento);
         }
 
         #endregion

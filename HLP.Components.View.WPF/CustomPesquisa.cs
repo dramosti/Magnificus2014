@@ -204,8 +204,7 @@ namespace HLP.Components.View.WPF
         {
             if (d != null && e.NewValue != null)
             {
-                int valorPesquisa = 0;
-
+                int valorPesquisa = 0;                
                 int.TryParse(s: e.NewValue.ToString(), result: out valorPesquisa);
 
                 (d as CustomPesquisa).ViewModel.GetValorDisplay(

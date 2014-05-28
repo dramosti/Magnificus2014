@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5163610b-e504-4834-a7a8-239bc4da0592" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Base" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CamposBaseDados.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_CamposBaseDados.wsdl" MetadataType="Wsdl" ID="1f227521-a419-4c07-9273-de6d51f8600c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CamposBaseDados.svc?wsdl" />
+    <MetadataFile FileName="wcf_CamposBaseDados.xsd" MetadataType="Schema" ID="af437e10-812a-4492-a3c9-15af5ff1da9c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CamposBaseDados.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_CamposBaseDados1.xsd" MetadataType="Schema" ID="a779bd66-7767-474f-8851-5da361e2616c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CamposBaseDados.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_CamposBaseDados.disco" MetadataType="Disco" ID="4069e275-3b5b-4df9-9b5d-3335cec79f25" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CamposBaseDados.svc?disco" />
+    <MetadataFile FileName="wcf_CamposBaseDados2.xsd" MetadataType="Schema" ID="ecd2ecb0-de7e-4d26-8f3c-945d9be50473" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CamposBaseDados.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
