@@ -163,7 +163,7 @@
                 <RowDefinition Height="10"></RowDefinition>
             </Grid.RowDefinitions>
             <Label Grid.Column="1" Grid.Row="2"
-				VerticalAlignment="Center" Content="© HLP - Estratégia em Sistemas" Foreground="White"/>
+				VerticalAlignment="Center" Content="© HLP - Estratégia em Software" Foreground="White"/>
         </Grid>
     </Grid>
 </Window>
