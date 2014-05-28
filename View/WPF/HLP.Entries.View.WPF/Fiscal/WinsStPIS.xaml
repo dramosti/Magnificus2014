@@ -16,9 +16,9 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="175" MinWidth="175"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>

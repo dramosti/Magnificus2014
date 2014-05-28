@@ -6,6 +6,9 @@
 
 
     <!--Style Components TextBox-->
+    
+    
+    
     <SolidColorBrush Color="#FF545454" x:Key="CinzaEscuro"/>
     <SolidColorBrush Color="#FF8C8C8C" x:Key="CinzaClaro"/>
     <SolidColorBrush x:Key="MouseOverCinzaClaro" Color="#FFE0E0E0"/>
@@ -119,20 +122,17 @@
         <GradientStop Color="#FF4774B5" Offset="0"/>
         <GradientStop Color="#FF749CE2" Offset="1"/>
     </LinearGradientBrush>
-
     <LinearGradientBrush x:Key="ControlBackgroundBrush" EndPoint="1.204,0.5" StartPoint="0.056,0.5">
         <GradientStop Color="#FFFFFFFF" Offset="0" />
         <GradientStop Color="#FFD4D7DB" Offset="1" />
     </LinearGradientBrush>
     <SolidColorBrush x:Key="ControlBorderBrush" Color="#FFB1703C"/>
-
     <SolidColorBrush x:Key="GlyphBrush" Color="#FF527DB5"/>
     <LinearGradientBrush x:Key="DegradeCelulaDatagrid" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Color="#FF8DA4C5"/>
         <GradientStop Color="#FF8DA4C5" Offset="1"/>
         <GradientStop Color="#FFC4C7CB" Offset="0.5"/>
     </LinearGradientBrush>
-
     <SolidColorBrush x:Key="AlternateBackgroundBrush" Color="#FFBFDBFF"/>
     <SolidColorBrush x:Key="ControlContentBrush" Color="#FFE0EAF6"/>
     <SolidColorBrush x:Key="Thema2BackgroundGeral" Color="#FFB1CEF1"/>
@@ -7095,6 +7095,7 @@
     <Style x:Key="Button_OK" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
