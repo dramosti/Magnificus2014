@@ -18,6 +18,7 @@ using HLP.Base.EnumsBases;
 using HLP.Components.Model.Models;
 using HLP.Entries.Model.Models.Comercial;
 using System.Reflection;
+using HLP.Entries.Model.Models.Gerais;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
@@ -82,8 +83,22 @@ namespace HLP.Sales.Model.Models.Comercial
                 //this.lOrcamento_Item_Impostos = new ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel>();
                 //this.lOrcamento_Itens.CollectionChanged += lOrcamento_Itens_CollectionChanged;
                 //this.bTodos = true;
-
+                this.idFuncionario = UserData.idUser;
                 this.dDataHora = DateTime.Now;
+
+                Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
+
+                MethodInfo mi = w.DataContext.GetType().GetMethod(name: "GetFuncionario");
+
+                object retorno = mi.Invoke(obj: w.DataContext, parameters: new object[] { this.idFuncionario });
+
+                if (retorno != null)
+                    this.objFuncionario = retorno as FuncionarioModel;
+
+                if (this.objFuncionario != null)
+                {
+                    this.idFuncionarioRepresentante = this.objFuncionario.idResponsavel ?? 0;
+                }
             }
             catch (Exception)
             {
@@ -311,9 +326,9 @@ namespace HLP.Sales.Model.Models.Comercial
         }
 
 
-        private int _idRamoAtividade;
+        private int? _idRamoAtividade;
 
-        public int idRamoAtividade
+        public int? idRamoAtividade
         {
             get { return _idRamoAtividade; }
             set
@@ -358,6 +373,13 @@ namespace HLP.Sales.Model.Models.Comercial
             set { _objCliente = value; }
         }
 
+        private FuncionarioModel _objFuncionario;
+
+        public FuncionarioModel objFuncionario
+        {
+            get { return _objFuncionario; }
+            set { _objFuncionario = value; }
+        }
 
         #endregion
 
@@ -521,9 +543,9 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 if (this.objCliente != null)
                 {
-                    this.idFuncionarioRepresentante = this.objCliente.idFuncionario ?? 0;
                     this.idCondicaoPagamento = this.objCliente.idCondicaoPagamento;
                     this.idRamoAtividade = this.objCliente.idRamoAtividade;
+                    this.idCanalVenda = this.objCliente.idCanalVenda;
                 }
 
                 base.NotifyPropertyChanged(propertyName: "idClienteFornecedor");
@@ -1075,8 +1097,6 @@ namespace HLP.Sales.Model.Models.Comercial
         #region Propriedades não mapeadas
 
         public bool stServico { get; set; }
-
-
 
         public bool bPermitePorcentagem { get; set; }
 

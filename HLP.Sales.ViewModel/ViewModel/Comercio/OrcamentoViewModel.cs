@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Model.Models.Gerais;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.Commands.Comercio;
 using System;
@@ -77,7 +78,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             this.Botoes.Children.Add(element: btnConfirmarItens);
             this.Botoes.Children.Add(element: btnItensPerdidos);
             this.Botoes.Children.Add(element: btnItensCancelados);
-            this.Botoes.Children.Add(element: btnGerarVersao);            
+            this.Botoes.Children.Add(element: btnGerarVersao);
         }
 
         public bool bListaPrecoHabilitado
@@ -122,6 +123,11 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public Cliente_fornecedorModel GetCliente(int idCliente)
         {
             return comm.GetCliente(idCliente: idCliente);
+        }
+
+        public FuncionarioModel GetFuncionario(int idFuncionario)
+        {
+            return comm.GetFuncionario(idFuncionario: idFuncionario);
         }
 
         #region Métodos Públicos

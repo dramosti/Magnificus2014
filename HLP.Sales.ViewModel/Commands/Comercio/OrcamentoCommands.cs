@@ -4,7 +4,9 @@ using HLP.Base.Modules;
 using HLP.Base.Static;
 using HLP.Comum.View.Formularios;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Services.Comercial;
+using HLP.Entries.Services.Gerais;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.Services.Comercial;
 using HLP.Sales.ViewModel.ViewModel.Comercio;
@@ -28,11 +30,13 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         Window wd = null;
         OrcamentoService objServico;
         ClienteService objClienteService;
+        FuncionarioService objFuncionarioService;
 
         public OrcamentoCommands(OrcamentoViewModel objViewModel)
         {
             objServico = new OrcamentoService();
             objClienteService = new ClienteService();
+            objFuncionarioService = new FuncionarioService();
 
             this.objViewModel = objViewModel;
 
@@ -608,6 +612,11 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         public Cliente_fornecedorModel GetCliente(int idCliente)
         {
             return objClienteService.GetObjeto(id: idCliente);
+        }
+
+        public FuncionarioModel GetFuncionario(int idFuncionario)
+        {
+            return objFuncionarioService.GetObject(id: idFuncionario, bGetChild: false);
         }
 
         #endregion
