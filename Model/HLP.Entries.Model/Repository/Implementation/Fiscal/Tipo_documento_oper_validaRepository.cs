@@ -51,15 +51,12 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
 
         public List<Tipo_documento_oper_validaModel> GetAll(int idTipoDocumento)
         {
-            if (regdocumentoOperAccessor == null)
-            {
-                regdocumentoOperAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Tipo_documento_oper_valida WHERE idTipoDocumento = @idTipoDocumento",
+            regdocumentoOperAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Tipo_documento_oper_valida WHERE idTipoDocumento = @idTipoDocumento",
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idTipoDocumento"),
                                   MapBuilder<Tipo_documento_oper_validaModel>.MapAllProperties()
-                                  .DoNotMap(c=>c.status)
+                                  .DoNotMap(c => c.status)
                                   .Build());
-            }
             return regdocumentoOperAccessor.Execute(idTipoDocumento).ToList();
         }
 

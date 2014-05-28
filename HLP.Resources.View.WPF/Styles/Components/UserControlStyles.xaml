@@ -540,7 +540,9 @@
                         <TextBox                             
                             x:Name="txt"
                             Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                            IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=IsEnabled}" Style="{StaticResource TextBoxInside}"></TextBox>
+                            IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, 
+                            Path=IsEnabled}" 
+                            Style="{StaticResource TextBoxInside}"></TextBox>
                         <Button Grid.Column="1" x:Name="btn" Width="20"
                                 Visibility="Visible"
                                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=CustomViewModel.searchCommand}"

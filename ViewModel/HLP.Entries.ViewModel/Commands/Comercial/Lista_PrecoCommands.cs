@@ -108,7 +108,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
             this.PesquisarRegistro();
 
-            this.objViewModel.SetValorCurrentOp(op: OperacaoCadastro.pesquisando);
+            this.objViewModel.currentModel.SetOperationModel(_value: OperationModel.searching);
         }
 
         private void IniciaCollection()
@@ -287,7 +287,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 });
 
                 e.Result = e.Argument;
-            }              
+            }
         }
 
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -338,7 +338,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             (w as Window).DialogResult = true;
                             (w as Window).Close();
                         }
-                    }                    
+                    }
                 }
             }
             catch (Exception ex)

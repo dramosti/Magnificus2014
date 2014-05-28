@@ -79,10 +79,10 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 //this.orcamento_Total_Impostos = new Orcamento_Total_ImpostosModel();
                 //this.orcamento_retTransp = new Orcamento_retTranspModel();
-                //this.lOrcamento_Itens = new ObservableCollectionBaseCadastros<Orcamento_ItemModel>();
                 //this.lOrcamento_Item_Impostos = new ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel>();
                 //this.lOrcamento_Itens.CollectionChanged += lOrcamento_Itens_CollectionChanged;
                 //this.bTodos = true;
+                this.lOrcamento_Itens = new ObservableCollectionBaseCadastros<Orcamento_ItemModel>();
                 this.idFuncionario = UserData.idUser;
                 this.dDataHora = DateTime.Now;
 
@@ -104,57 +104,6 @@ namespace HLP.Sales.Model.Models.Comercial
             {
 
                 throw;
-            }
-        }
-
-        public void lOrcamento_Itens_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            switch (e.Action)
-            {
-                case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
-                    {
-                        Orcamento_Item_ImpostosModel objImposto;
-                        if (e.NewItems != null)
-                        {
-                            foreach (Orcamento_ItemModel item in e.NewItems)
-                            {
-                                item.nItem = this._lOrcamento_Itens.Count;
-                                item.objImposto.nItem = item.nItem;
-                                objImposto = item.objImposto;
-
-                                if (objImposto == null)
-                                {
-                                    item.objImposto = new Orcamento_Item_ImpostosModel
-                                    {
-                                    };
-                                    objImposto.nItem = item.nItem;
-                                }
-
-                                if (this.lOrcamento_Item_Impostos.Count(i => i.nItem == objImposto.nItem) == 0)
-                                    this.lOrcamento_Item_Impostos.Add(item: objImposto);
-
-                            }
-                            base.NotifyPropertyChanged(propertyName: "lOrcamento_Item_Impostos");
-                        }
-                    }
-                    break;
-                case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
-                    {
-                        if (e.OldItems != null)
-                        {
-                            foreach (Orcamento_ItemModel item in e.OldItems)
-                            {
-                                if (this.lOrcamento_Item_Impostos.Count(i => i.nItem == item.nItem) > 0)
-                                {
-                                    this.lOrcamento_Item_Impostos.RemoveAt(index: this.lOrcamento_Item_Impostos.IndexOf(item:
-                                        this.lOrcamento_Item_Impostos.FirstOrDefault(i => i.nItem == item.nItem)));
-                                }
-                            }
-                        }
-                    }
-                    break;
-                default:
-                    break;
             }
         }
 
@@ -546,6 +495,7 @@ namespace HLP.Sales.Model.Models.Comercial
                     this.idCondicaoPagamento = this.objCliente.idCondicaoPagamento;
                     this.idRamoAtividade = this.objCliente.idRamoAtividade;
                     this.idCanalVenda = this.objCliente.idCanalVenda;
+                    this.idDescontos = this.objCliente.idDescontos ?? 0;
                 }
 
                 base.NotifyPropertyChanged(propertyName: "idClienteFornecedor");
@@ -869,15 +819,48 @@ namespace HLP.Sales.Model.Models.Comercial
             get { return _idTipoDocumento; }
             set
             {
-                _idTipoDocumento = value;
+                if (this.lOrcamento_Itens.Count > 0)
+                {
+                    if (MessageHlp.Show(stMessage: StMessage.stYesNo, xMessageToUser: "Esta alteração mudará operações válidas dos itens, deseja continuar?")
+                         == MessageBoxResult.Yes)
+                    {
+                        _idTipoDocumento = value;
 
-                //if (value > 0)
-                //    foreach (var item in this._lOrcamento_Itens)
-                //    {
-                //        item.lTipoOperacao = OrcamentoFacade.GetAllValuesToComboBox(sNameView: "getTipoOperacaoValidaToComboBoxOrcamento", sParameter: value.ToString());
-                //    }
+                        Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
 
-                base.NotifyPropertyChanged(propertyName: "idTipoDocumento");
+                        MethodInfo mi = w.DataContext.GetType().GetMethod(name: "GetOperacoesValidas");
+
+                        object retorno = mi.Invoke(obj: w.DataContext, parameters: new object[] { value });
+
+                        if (retorno != null)
+                        {
+                            List<modelToComboBox> lDocumentoOperacaoValida = new List<modelToComboBox>();
+
+                            foreach (Tipo_documento_oper_validaModel item in (retorno as List<Tipo_documento_oper_validaModel>))
+                            {
+                                lDocumentoOperacaoValida.Add(item:
+                                    new modelToComboBox
+                                    {
+                                        id = item.idTipoDocumentoOperValida ?? 0,
+                                        display = item.idTipoOperacao.ToString()
+                                    });
+                            }
+
+                            foreach (Orcamento_ItemModel item in this.lOrcamento_Itens)
+                            {
+                                item.lTipoOperacao = new ObservableCollection<modelToComboBox>
+                                (list: lDocumentoOperacaoValida);
+                            }
+                        }
+
+                        base.NotifyPropertyChanged(propertyName: "idTipoDocumento");
+                    }
+                }
+                else
+                {
+                    _idTipoDocumento = value;
+                    base.NotifyPropertyChanged(propertyName: "idTipoDocumento");
+                }
             }
         }
         private int _idEmpresa;
@@ -1082,6 +1065,29 @@ namespace HLP.Sales.Model.Models.Comercial
 
             this.objImposto = new Orcamento_Item_ImpostosModel();
 
+            Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
+
+
+            if (w != null)
+            {
+                object objDataContext = w.DataContext;
+
+                if (objDataContext != null)
+                {
+                    object currentModel = objDataContext.GetType().GetProperty(name: "currentModel").GetValue(
+                        obj: objDataContext);
+
+                    if (currentModel != null)
+                    {
+                        if ((currentModel as Orcamento_ideModel).lOrcamento_Itens.Count
+                            > 0)
+                            this.nItem = (currentModel as Orcamento_ideModel).lOrcamento_Itens.Max(i => i.nItem).Value + 1;
+                        else
+                            this.nItem = 1;
+                    }
+                }
+            }
+
 
         }
 
@@ -1198,15 +1204,6 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _idProduto = value;
-
-                if (value != null)
-                {
-                    if (value != 0)
-                    {
-
-
-                    }
-                }
                 base.NotifyPropertyChanged(propertyName: "idProduto");
             }
         }

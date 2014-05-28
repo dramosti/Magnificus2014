@@ -57,7 +57,7 @@ namespace HLP.Components.ViewModel.Commands
                 MethodInfo miSetOp = _dataContext.GetType().GetMethod(
                     name: "SetValorCurrentOp");
 
-                object[] _paramsPesquisa = new object[] { OperacaoCadastro.pesquisando };
+                object[] _paramsPesquisa = new object[] { OperationModel.searching };
 
                 miSetOp.Invoke(obj: _dataContext, parameters: _paramsPesquisa);
 
@@ -84,24 +84,20 @@ namespace HLP.Components.ViewModel.Commands
             if ((o as Control).DataContext == null)
                 return false;
 
-            PropertyInfo piCommands = (o as Control).DataContext.GetType().GetProperty(name: "viewModelBaseCommands");
+            PropertyInfo piModel = (o as Control).DataContext.GetType().GetProperty(
+                name: "currentModel");
 
-            if (piCommands == null)
-                return false;
+            if (piModel == null)
+                return true;
 
-            object comm = piCommands.
-                GetValue(obj: (o as Control).DataContext);
+            object _value = piModel.GetValue(obj: (o as Control).DataContext);
 
-            if (comm == null)
-                return false;
+            if (_value == null)
+                return true;
 
-            object opCadastro = comm.GetType().GetProperty(name: "currentOp").GetValue(obj: comm);
 
-            if (opCadastro == null)
-                return false;
-
-            bool retorno = (((OperacaoCadastro)opCadastro) != OperacaoCadastro.alterando
-                && ((OperacaoCadastro)opCadastro) != OperacaoCadastro.criando);
+            bool retorno = (_value as modelBase).GetOperationModel()
+                 != OperationModel.updating;
 
             (o as Control).ApplyTemplate();
 

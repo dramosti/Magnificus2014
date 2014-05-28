@@ -17,8 +17,21 @@ namespace HLP.Base.ClassesBases
         public statusModel status { get; set; }
         public readonly string[] camposSeremIgnorados = { "Item", "Error" }; //Campos que não devem ser verificados no reflection de iniciaobjeto()        
 
+        private OperationModel operationModel;
+
+        public OperationModel GetOperationModel()
+        {
+            return this.operationModel;
+        }
+
+        public void SetOperationModel(OperationModel _value)
+        {
+            this.operationModel = _value;
+        }
+
         public modelBase()
         {
+            this.operationModel = OperationModel.searching;
         }
 
         public void IniciaObjeto()
@@ -47,6 +60,8 @@ namespace HLP.Base.ClassesBases
 
         public modelBase(string xTabela)
         {
+            this.operationModel = OperationModel.searching;
+
             CamposSqlNotNullModel x = lCamposSqlNotNull._lCamposSql.FirstOrDefault(i => i.xTabela
                       == xTabela);
 

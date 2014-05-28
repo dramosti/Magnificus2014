@@ -1,4 +1,5 @@
-﻿using HLP.Base.Static;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Sales.Model.Models.Comercial;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,11 @@ namespace HLP.Sales.Services.Comercial
 {
     public class OrcamentoService
     {
+        const string xTabela = "";
+        HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
+        wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
+
+
         Wcf.Sales.wcf_Orcamento servicoRede;
         wcf_Orcamento.Iwcf_OrcamentoClient servicoInternet;
 
@@ -19,11 +25,44 @@ namespace HLP.Sales.Services.Comercial
             {
                 case StConnection.OnlineNetwork:
                     {
+                        this.serviceCamposBaseDadosNetwork = new Wcf.Entries.wcf_CamposBaseDados();
+                        #region Validação
+
+                        foreach (string str in xTabela.Split(';').ToArray())
+                        {
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosNetwork.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
+                        }
+
+                        #endregion
                         this.servicoRede = new Wcf.Sales.wcf_Orcamento();
                     }
                     break;
                 case StConnection.OnlineWeb:
                     {
+                        this.serviceCamposBaseDadosWeb = new wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient();
+                        #region Validação
+
+                        foreach (string str in xTabela.Split(';').ToArray())
+                        {
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
+                        }
+
+                        #endregion
+
                         this.servicoInternet = new wcf_Orcamento.Iwcf_OrcamentoClient();
                     }
                     break;

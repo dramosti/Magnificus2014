@@ -62,7 +62,6 @@ namespace HLP.Components.View.WPF
                 Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
             };
 
-
             this.Style = resource["TextBoxComponentStyle"] as Style;
 
             bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
@@ -125,7 +124,7 @@ namespace HLP.Components.View.WPF
             get { return _stVisibilityBtnQuickSearch; }
             set { _stVisibilityBtnQuickSearch = value; }
         }
-        
+
 
         public bool IsEnabled
         {
@@ -135,24 +134,7 @@ namespace HLP.Components.View.WPF
 
         // Using a DependencyProperty as the backing store for IsEnabled.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsEnabledProperty =
-            DependencyProperty.Register("IsEnabled", typeof(bool), typeof(CustomTextBox), new PropertyMetadata(defaultValue: false,
-                propertyChangedCallback: new PropertyChangedCallback(
-                OnIsEnabledChanged)));
-
-        public static void OnIsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (d != null && e.NewValue != null)
-            {
-                if (((bool?)e.NewValue) == true)
-                {
-                    (d as CustomTextBox).CustomViewModel.visibility = Visibility.Collapsed;
-                }
-                else
-                {
-                    (d as CustomTextBox).CustomViewModel.visibility = Visibility.Visible;
-                }
-            }
-        }
-
-    }    
+            DependencyProperty.Register("IsEnabled", typeof(bool), typeof(CustomTextBox),
+            new PropertyMetadata(defaultValue: false));
+    }
 }

@@ -149,6 +149,7 @@
     <Content Include="wcf_StIcms.svc" />
     <Content Include="wcf_StIpi.svc" />
     <Content Include="wcf_TipoDocumento.svc" />
+    <Content Include="wcf_TipoDocumentoOperacaoValida.svc" />
     <Content Include="wcf_TipoOperacao.svc" />
     <Content Include="wcf_TipoProduto.svc" />
     <Content Include="wcf_TipoServico.svc" />
@@ -219,6 +220,7 @@
     <Compile Include="Iwcf_StIcms.cs" />
     <Compile Include="Iwcf_StIpi.cs" />
     <Compile Include="Iwcf_TipoDocumento.cs" />
+    <Compile Include="Iwcf_TipoDocumentoOperacaoValida.cs" />
     <Compile Include="Iwcf_TipoOperacao.cs" />
     <Compile Include="Iwcf_TipoProduto.cs" />
     <Compile Include="Iwcf_TipoServico.cs" />
@@ -399,6 +401,9 @@
     </Compile>
     <Compile Include="wcf_TipoDocumento.svc.cs">
       <DependentUpon>wcf_TipoDocumento.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_TipoDocumentoOperacaoValida.svc.cs">
+      <DependentUpon>wcf_TipoDocumentoOperacaoValida.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_TipoOperacao.svc.cs">
       <DependentUpon>wcf_TipoOperacao.svc</DependentUpon>

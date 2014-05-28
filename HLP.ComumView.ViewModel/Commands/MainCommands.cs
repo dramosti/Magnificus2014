@@ -140,7 +140,7 @@ namespace HLP.ComumView.ViewModel.Commands
 
                     if (this.objviewModel.winMan._lTabPagesAtivas.Count(
                         i => i._windows.Name == form.Name) == 0)
-                    {
+                    {   
                         this.objviewModel.winMan._lTabPagesAtivas.Add(item: objTabPageAtivasModel);
                     }
 

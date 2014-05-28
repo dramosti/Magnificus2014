@@ -143,8 +143,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         private bool AlterarCanExecute()
         {
             //return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
-            return (this.objViewModel.viewModelBaseCommands.currentOp == Base.EnumsBases.OperacaoCadastro.pesquisando ||
-                this.objViewModel.viewModelBaseCommands.currentOp == Base.EnumsBases.OperacaoCadastro.livre);
+            return (this.objViewModel.currentModel as modelBase).GetOperationModel() != Base.EnumsBases.OperationModel.updating;
         }
 
         private void Cancelar()

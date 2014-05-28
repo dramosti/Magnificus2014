@@ -93,10 +93,6 @@ namespace HLP.Base.ClassesBases
         public ICommand pesquisarBaseCommand { get; set; }
         public ICommand navegarBaseCommand { get; set; }
         public ICommand fecharCommand { get; set; }
-        public void SetValorCurrentOp(OperacaoCadastro op)
-        {
-            viewModelBaseCommands.currentOp = op;
-        }
         private string _sText = "0 de 0";
         public string sText
         {
@@ -488,17 +484,6 @@ namespace HLP.Base.ClassesBases
     {
         BackgroundWorker bwFocus;
         public ViewModelBase<T> objviewModel;
-        private OperacaoCadastro _currentOp;
-        public OperacaoCadastro currentOp
-        {
-            get
-            { return this._currentOp; }
-            set
-            {
-                this._currentOp = value;
-                this.NotifyPropertyChanged(propertyName: "currentOp");
-            }
-        }
 
         #region NotifyPropertyChanged
 
@@ -532,8 +517,6 @@ namespace HLP.Base.ClassesBases
             this.objviewModel.fecharCommand = new RelayCommand(execute: pExec => this.Fechar(wd: pExec),
                 canExecute: pCanExec => this.FecharCanExecute(wd: pCanExec));
 
-            this.currentOp = OperacaoCadastro.livre;
-
             this.objviewModel.pesquisarBaseCommand = new RelayCommand(
                  execute: ex => ShowPesquisaExecute(),
                  canExecute: canExecute => ShowPesquisaCanEcexute());
@@ -561,6 +544,15 @@ namespace HLP.Base.ClassesBases
             return true;
         }
 
+        private OperationModel GetOperationModel
+            ()
+        {
+            if (this.objviewModel.currentModel == null)
+                return OperationModel.noAction;
+
+            return (objviewModel.currentModel as modelBase).GetOperationModel();
+        }
+
         private void ShowPesquisaExecute()
         {
             Window winPesquisa = GerenciadorModulo.Instancia.CarregaForm("WinPesquisaPadrao", TipoExibeForm.Normal);
@@ -577,7 +569,6 @@ namespace HLP.Base.ClassesBases
                     //MessageBox.Show(this.delBaseCanExecute().ToString());
                     objviewModel.navegarBaseCommand.Execute("Primeiro");
                     objviewModel.visibilityNavegacao = Visibility.Visible;
-                    this.currentOp = OperacaoCadastro.pesquisando;
                 }
             }
         }
@@ -585,7 +576,7 @@ namespace HLP.Base.ClassesBases
         {
             bool bReturn = false;
 
-            if ((objviewModel.NameView != string.Empty) && ((this.currentOp == OperacaoCadastro.livre) || (this.currentOp == OperacaoCadastro.pesquisando)))
+            if ((objviewModel.NameView != string.Empty) && ((this.GetOperationModel() == OperationModel.noAction) || (this.GetOperationModel() == OperationModel.searching)))
                 bReturn = true;
             else
                 bReturn = false;
@@ -701,7 +692,7 @@ namespace HLP.Base.ClassesBases
             objviewModel.lItensHierarquia = new List<int>();
             this.SetFocusFirstControl();
 
-            this.currentOp = OperacaoCadastro.criando;
+            (this.objviewModel.currentModel as modelBase).SetOperationModel(_value: OperationModel.updating);
         }
 
         public void SetFocusFirstControl()
@@ -818,13 +809,13 @@ namespace HLP.Base.ClassesBases
 
         private bool novoBaseCanExecute()
         {
-            return (this.currentOp == OperacaoCadastro.livre
+            return (this.GetOperationModel() != OperationModel.updating
                 || this.GenericCanExecute());
         }
         private void alterarBase()
         {
             this.objviewModel.bIsEnabled = true;
-            this.currentOp = OperacaoCadastro.alterando;
+            (this.objviewModel.currentModel as modelBase).SetOperationModel(_value: OperationModel.updating);
         }
         private void delBase(object iRemoved)
         {
@@ -843,11 +834,7 @@ namespace HLP.Base.ClassesBases
 
                     if (objviewModel.navigatePesquisa.Count() > 0)
                     {
-                        this.currentOp = OperacaoCadastro.pesquisando;
-                    }
-                    else
-                    {
-                        this.currentOp = OperacaoCadastro.livre;
+                        (this.objviewModel.currentModel as modelBase).SetOperationModel(_value: OperationModel.searching);
                     }
                     this.ExecAcao("");
 
@@ -856,7 +843,7 @@ namespace HLP.Base.ClassesBases
         }
         private void salvarBase()
         {
-            this.currentOp = OperacaoCadastro.pesquisando;
+            (this.objviewModel.currentModel as modelBase).SetOperationModel(_value: OperationModel.searching);
             this.objviewModel.bIsEnabled = false;
 
             if (lControls == null)
@@ -891,34 +878,30 @@ namespace HLP.Base.ClassesBases
         }
         private bool salvarBaseCanExecute()
         {
-            if (this.currentOp != OperacaoCadastro.criando &&
-                this.currentOp != OperacaoCadastro.alterando)
-                return false;
-            else
+            if (this.GetOperationModel() ==
+                 OperationModel.updating)
                 return true;
+            else
+                return false;
         }
         private void cancelarBase()
         {
             System.Threading.Thread.Sleep(200);
-            if (objviewModel.currentID == 0)
+            if (objviewModel.currentID != 0)
             {
-                this.currentOp = OperacaoCadastro.livre;
-            }
-            else
-            {
-                this.currentOp = OperacaoCadastro.pesquisando;
+                (this.objviewModel.currentModel as modelBase).SetOperationModel(_value: OperationModel.searching);
             }
             this.objviewModel.bIsEnabled = false;
 
         }
         private bool cancelarBaseCanExecute()
         {
-            return (this.currentOp == OperacaoCadastro.criando ||
-                this.currentOp == OperacaoCadastro.alterando);
+            return (this.GetOperationModel()
+                == OperationModel.updating);
         }
         private bool GenericCanExecute()
         {
-            return this.currentOp == OperacaoCadastro.pesquisando;
+            return this.GetOperationModel() == OperationModel.searching;
         }
         private void CopyExecute()
         {
@@ -1012,7 +995,7 @@ namespace HLP.Base.ClassesBases
 
             }
 
-            this.currentOp = OperacaoCadastro.criando;
+            (this.objviewModel.currentModel as modelBase).SetOperationModel(_value: OperationModel.updating);
             this.objviewModel.bIsEnabled = true;
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
             objviewModel.currentID = 0;

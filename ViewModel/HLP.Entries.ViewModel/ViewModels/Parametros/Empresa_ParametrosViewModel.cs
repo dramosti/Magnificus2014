@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Parametros;
 using System;
@@ -29,8 +30,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Parametros
         {
             Empresa_ParametrosCommands comm = new Empresa_ParametrosCommands(objViewModel: this);
             comm.ExecPesquisa();
-            this.SetValorCurrentOp(op: Base.EnumsBases.OperacaoCadastro.pesquisando);
-            
+            this.currentModel.SetOperationModel(_value: OperationModel.searching);
         }
 
     }
