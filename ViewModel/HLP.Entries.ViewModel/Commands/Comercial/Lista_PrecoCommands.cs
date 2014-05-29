@@ -106,9 +106,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
                 //this.objViewModel.currentID = this.objViewModel.navigatePesquisa.FirstOrDefault();
             }
-            this.PesquisarRegistro();
-
-            this.objViewModel.currentModel.SetOperationModel(_value: OperationModel.searching);
+            this.PesquisarRegistro();            
         }
 
         private void IniciaCollection()

@@ -2,6 +2,7 @@
 using HLP.Components.Model.Models;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.Commands.Comercio;
@@ -83,16 +84,6 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             this.Botoes.Children.Add(element: btnGerarVersao);
         }
 
-        public bool bListaPrecoHabilitado
-        {
-            get
-            {
-                if (currentModel != null)
-                    return !this.currentModel.bListaPrecoItemHabil;
-                return false;
-            }
-        }
-
         private Orcamento_ItemModel _currentItem;
 
         public Orcamento_ItemModel currentItem
@@ -122,6 +113,8 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             }
         }
 
+        #region GetObjectsInModel
+
         public Cliente_fornecedorModel GetCliente(int idCliente)
         {
             return comm.GetCliente(idCliente: idCliente);
@@ -146,6 +139,23 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         {
             return comm.GetProduto(idProduto: idProduto);
         }
+
+        public List<modelToComboBox> GetListUnidadeMedida(int idProduto)
+        {
+            return comm.GetListUnidadeMedida(idProduto: idProduto);
+        }
+
+        public Lista_Preco_PaiModel GetListaPreco(int idListaPreco)
+        {
+            return comm.GetListaPreco(idListaPreco: idListaPreco);
+        }
+
+        public Descontos_AvistaModel GetDesconto(int idDesconto)
+        {
+            return comm.GetDesconto(idDesconto: idDesconto);
+        }
+
+        #endregion
 
         #region Métodos Públicos
         public void AtualizarTotais()
