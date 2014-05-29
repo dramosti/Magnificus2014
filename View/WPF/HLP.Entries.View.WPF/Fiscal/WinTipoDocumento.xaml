@@ -31,11 +31,12 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="350" MinWidth="350"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="360" MinWidth="360"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="130" MinWidth="130"></ColumnDefinition>
                     <ColumnDefinition Width="50"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="350" MinWidth="350"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="360" MinWidth="360"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="125" MinWidth="125"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
@@ -74,19 +75,19 @@
                 <Components:CustomTextBlock Text="Soma valor da subst.Tributária somente na 1 Duplicata?" Grid.Column="1" Grid.Row="12"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="É NF complementar?" Grid.Column="1" Grid.Row="13"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="É NF de importação?" Grid.Column="1" Grid.Row="14"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="É NF de exportação?" Grid.Column="5" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="É NF de Industrialização?" Grid.Column="5" Grid.Row="2"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="É NF de suframa?" Grid.Column="5" Grid.Row="3"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="É NF de ativo?" Grid.Column="5" Grid.Row="4"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="É NF de devolução" Grid.Column="5" Grid.Row="5"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Compõem o valor total dos produtos?" Grid.Column="5" Grid.Row="6"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Soma devolução no total da nf?" Grid.Column="5" Grid.Row="7"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Imprime icms próprio com normal na nf?" Grid.Column="5" Grid.Row="8"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Relação do recebimento com pedido de compra" Grid.Column="5" Grid.Row="9"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Relação do pedido de compra com cotação de compra" Grid.Column="5" Grid.Row="10"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Modelo de documento fiscal" Grid.Column="5" Grid.Row="11"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Observação" Grid.Column="5" Grid.Row="12"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Ativo?" Grid.Column="5" Grid.Row="13"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="É NF de exportação?" Grid.Column="6" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="É NF de Industrialização?" Grid.Column="6" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="É NF de suframa?" Grid.Column="6" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="É NF de ativo?" Grid.Column="6" Grid.Row="4"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="É NF de devolução" Grid.Column="6" Grid.Row="5"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Compõem o valor total dos produtos?" Grid.Column="6" Grid.Row="6"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Soma devolução no total da nf?" Grid.Column="6" Grid.Row="7"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Imprime icms próprio com normal na nf?" Grid.Column="6" Grid.Row="8"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Relação do recebimento com pedido de compra" Grid.Column="6" Grid.Row="9"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Relação do pedido de compra com cotação de compra" Grid.Column="6" Grid.Row="10"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Modelo de documento fiscal" Grid.Column="6" Grid.Row="11"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Observação" Grid.Column="6" Grid.Row="12"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Ativo?" Grid.Column="6" Grid.Row="13"></Components:CustomTextBlock>
                 
                 <!--Components-->
                 
@@ -96,7 +97,7 @@
 				   Text="{Binding currentModel.idTipoDocumento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}">						
                 </Components:CustomTextBox>
                 <Components:CustomTextBox stCompPosicao="first"
-                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
+                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"
                     Text="{Binding currentModel.xTpdoc, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomTextBox>
@@ -195,7 +196,7 @@
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomCheckBox>
                 <Components:CustomComboBox
-                    Grid.Column="6" Grid.Row="1"
+                    Grid.Column="7" Grid.Row="1"
                     SelectedIndex="{Binding currentModel.stNfExportacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}">
                     <Components:CustomComboBox.Items>
@@ -205,27 +206,27 @@
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
                 <Components:CustomCheckBox
-                    Grid.Column="6" Grid.Row="2"
+                    Grid.Column="7" Grid.Row="2"
                     IsChecked="{Binding currentModel.stNfIndustrializacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomCheckBox>
                 <Components:CustomCheckBox
-                    Grid.Column="6" Grid.Row="3"
+                    Grid.Column="7" Grid.Row="3"
                     IsChecked="{Binding currentModel.stNfSuframa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomCheckBox>
                 <Components:CustomCheckBox
-                    Grid.Column="6" Grid.Row="4"
+                    Grid.Column="7" Grid.Row="4"
                     IsChecked="{Binding currentModel.stNfAtivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomCheckBox>
                 <Components:CustomCheckBox
-                    Grid.Column="6" Grid.Row="5"
+                    Grid.Column="7" Grid.Row="5"
                     IsChecked="{Binding currentModel.stNFdevolucao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomCheckBox>
                 <Components:CustomComboBox
-                    Grid.Column="6" Grid.Row="6"
+                    Grid.Column="7" Grid.Row="6"
                     SelectedIndex="{Binding currentModel.stCompoeVlTotalProdutos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}">
                     <Components:CustomComboBox.Items>
@@ -235,42 +236,42 @@
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
                 <Components:CustomCheckBox
-                    Grid.Column="6" Grid.Row="7"
+                    Grid.Column="7" Grid.Row="7"
                     IsChecked="{Binding currentModel.stSomaDevolucaoVlTotalNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomCheckBox>
                 <Components:CustomCheckBox
-                    Grid.Column="6" Grid.Row="8"
+                    Grid.Column="7" Grid.Row="8"
                     IsChecked="{Binding currentModel.stImprimeIcmsProprioComNormal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomCheckBox>
                 <Components:CustomCheckBox
-                    Grid.Column="6" Grid.Row="9"
+                    Grid.Column="7" Grid.Row="9"
                     IsChecked="{Binding currentModel.stRelacaoRecebimentoPedidocpa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomCheckBox>
                 <Components:CustomCheckBox
-                    Grid.Column="6" Grid.Row="10"
+                    Grid.Column="7" Grid.Row="10"
                     IsChecked="{Binding currentModel.stRelacaoPedidocpaCotacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomCheckBox>
-                <Components:HlpPesquisa 
-						Grid.Column="6" Grid.Row="11" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-						Text="{Binding currentModel.idModeloDocFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                <Components:CustomPesquisa 
+						Grid.Column="7" Grid.Row="11" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
+						xIdPesquisa="{Binding currentModel.idModeloDocFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						WidthLabel="0" TableView="vwModeloDocFiscal" FieldPesquisa="ID">
-                    <Components:HlpPesquisa.Items>
+						TableView="vwModeloDocFiscal" FieldPesquisa="ID">
+                    <Components:CustomPesquisa.Items>
                         <System:String>xCodFiscal</System:String>
                         <System:String>xDescrFiscal</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
+                    </Components:CustomPesquisa.Items>
+                </Components:CustomPesquisa>
                 <Components:CustomTextBox
-                    Grid.Column="6" Grid.Row="12" Grid.ColumnSpan="2"
+                    Grid.Column="7" Grid.Row="12" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xObs, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomTextBox>
                 <Components:CustomCheckBox
-                    Grid.Column="6" Grid.Row="13"
+                    Grid.Column="7" Grid.Row="13" stCompPosicao="last"
                     IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomCheckBox>
