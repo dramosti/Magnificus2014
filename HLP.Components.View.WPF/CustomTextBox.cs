@@ -51,8 +51,6 @@ namespace HLP.Components.View.WPF
         static CustomTextBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomTextBox), new FrameworkPropertyMetadata(typeof(CustomTextBox)));
-
-
         }
 
         public CustomTextBox()

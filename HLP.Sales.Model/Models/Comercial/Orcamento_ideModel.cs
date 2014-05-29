@@ -19,6 +19,7 @@ using HLP.Components.Model.Models;
 using HLP.Entries.Model.Models.Comercial;
 using System.Reflection;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Model.Models.Financeiro;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
@@ -296,6 +297,15 @@ namespace HLP.Sales.Model.Models.Comercial
             set { _objListaPreco = value; }
         }
 
+        private Descontos_AvistaModel _objDesconto;
+
+        public Descontos_AvistaModel objDesconto
+        {
+            get { return _objDesconto; }
+            set { _objDesconto = value; }
+        }
+
+
         #endregion
 
         private void FiltrarItems()
@@ -464,7 +474,9 @@ namespace HLP.Sales.Model.Models.Comercial
 
                     this.objListaPreco = miGetListaPreco.Invoke(obj: w.DataContext, parameters: new object[] { objCliente.idListaPrecoPai }) as Lista_Preco_PaiModel;
 
+                    MethodInfo miGetDesconto = w.DataContext.GetType().GetMethod(name: "GetDesconto");
 
+                    this.objDesconto = miGetDesconto.Invoke(obj: w.DataContext, parameters: new object[] { objCliente.idDescontos }) as Descontos_AvistaModel;
                 }
 
                 if (this.GetOperationModel() == OperationModel.updating)
@@ -1027,7 +1039,12 @@ namespace HLP.Sales.Model.Models.Comercial
 
                             if ((currentModel as Orcamento_ideModel).objListaPreco != null)
                                 this.idListaPrecoPai = (currentModel as Orcamento_ideModel).objListaPreco.idListaPrecoPai ?? 0;
+
+
+                            if ((currentModel as Orcamento_ideModel).objDesconto != null)
+                                this.pDesconto = (currentModel as Orcamento_ideModel).objDesconto.pDesconto ?? 0;
                         }
+
                         MethodInfo mi = w.DataContext.GetType().GetMethod(name: "GetOperacoesValidas");
 
                         object retorno = mi.Invoke(obj: w.DataContext, parameters: new object[] { (currentModel as Orcamento_ideModel).idTipoDocumento });
@@ -1067,13 +1084,54 @@ namespace HLP.Sales.Model.Models.Comercial
                     {
                         if ((currentModel as modelBase).GetOperationModel() == OperationModel.updating)
                         {
+                            Lista_precoModel objItemListaPreco = null;
                             if (p < 0) //Desconto
                             {
-                                decimal pDesconto = 100;
+                                decimal pDescontoMaximo = 100;
+
+                                if ((currentModel as Lista_Preco_PaiModel).pDescontoMaximo != null)
+                                {
+                                    pDescontoMaximo = (decimal)(currentModel as Lista_Preco_PaiModel).pDescontoMaximo;
+                                }
+                                else
+                                {
+                                    if ((currentModel as Lista_Preco_PaiModel).lLista_preco != null)
+                                    {
+                                        objItemListaPreco = (currentModel as Lista_Preco_PaiModel).lLista_preco.FirstOrDefault(
+                                            i => i.idProduto == this.idProduto);
+
+                                        pDescontoMaximo = objItemListaPreco.pDescontoMaximo ?? 0;
+                                    }
+                                }
+
+                                if (p > pDescontoMaximo)
+                                {
+                                    //TODO: chamar tela de aprovação de gerente
+                                }
                             }
                             else //Acréscimo
                             {
+                                decimal pAcrescimoMaximo = 100;
 
+                                if ((currentModel as Lista_Preco_PaiModel).pAcressimoMaximo != null)
+                                {
+                                    pAcrescimoMaximo = (decimal)(currentModel as Lista_Preco_PaiModel).pAcressimoMaximo;
+                                }
+                                else
+                                {
+                                    if ((currentModel as Lista_Preco_PaiModel).lLista_preco != null)
+                                    {
+                                        objItemListaPreco = (currentModel as Lista_Preco_PaiModel).lLista_preco.FirstOrDefault(
+                                            i => i.idProduto == this.idProduto);
+
+                                        pAcrescimoMaximo = objItemListaPreco.pAcrescimoMaximo ?? 0;
+                                    }
+                                }
+
+                                if (p > pAcrescimoMaximo)
+                                {
+                                    //TODO: chamar tela de aprovação de gerente
+                                }
                             }
                         }
                     }
@@ -1389,13 +1447,11 @@ namespace HLP.Sales.Model.Models.Comercial
             get { return _pDesconto; }
             set
             {
-                _pDesconto = value;
-                if (Sistema.stSender != TipoSender.WCF)
+                if (this.DescValidated(p: value))
                 {
-                    decimal vDesconto = this._vVenda * (value / 100);
-                    this.vTotalItem = (this._vVenda + (vDesconto)) * this._qProduto;
-                    this._vDesconto = vDesconto;
+                    _pDesconto = value;
                 }
+
                 base.NotifyPropertyChanged(propertyName: "pDesconto");
                 base.NotifyPropertyChanged(propertyName: "vDesconto");
             }

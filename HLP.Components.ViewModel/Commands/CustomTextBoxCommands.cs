@@ -112,7 +112,8 @@ namespace HLP.Components.ViewModel.Commands
 
             Button btn = (o as Control).Template.FindName(name: "btn", templatedParent: (o as FrameworkElement)) as Button;
 
-            if (btn != null && !retorno || stVisibilityBtnQuickSearch == StVisibilityButtonQuickSearch.notVisible)
+            if ((btn != null && !retorno) 
+                || stVisibilityBtnQuickSearch == StVisibilityButtonQuickSearch.notVisible)
             {
                 btn.Visibility = Visibility.Collapsed;
             }
