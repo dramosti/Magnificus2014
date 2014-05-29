@@ -113,7 +113,7 @@ namespace HLP.Magnificus.View.WPF
 
             if (!xMessage.Contains("NewItemPlaceholderPosition"))
                 MessageHlp.Show(stMessage: StMessage.stError, xMessageToUser: xMessage,
-                    xMessageFramework: e.Exception.StackTrace);            
+                    xMessageFramework: e.Exception.StackTrace);
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -164,60 +164,61 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
-                // if (MessageBox.Show("Deseja continuar o Magníficus ES . . . ?", "A V I S O", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                // Verificar se a maquina esta na Rede...
+                Sistema.EmRedeLocal();
+                // Adicionar todos os configs ao app.config principal ...
+                Sistema.SetAllConfigService();
+                // Validar se ja existe uma conexão
+                if (this.ValidaConnection())
                 {
-                    Sistema.SetAllConfigService();
-                    if (this.ValidaConnection())
+
+                    bool bModificado = false;
+                    bModificado = Sistema.SalvaTamanhoMensagensWcf();
+                    if (Sistema.bOnline != StConnection.OnlineNetwork)
+                    {
+                        InternetCS internetUtil = new InternetCS();
+
+                        if (internetUtil.Conexao())
+                        {
+                            Sistema.bOnline = StConnection.OnlineWeb;
+                            bModificado = Sistema.SalvaEndPoint(xUri: Sistema.GetAppSettings("urlWebService"));
+                        }
+                        else
+                        {
+                            Sistema.bOnline = StConnection.Offline;
+                            MessageBox.Show(messageBoxText: "Não foi possível iniciar sistema, sem conexão de rede e internet.");
+                            Application.Current.Shutdown();
+                        }
+                    }
+                    if (Sistema.bOnline != StConnection.Offline)
                     {
 
-                        bool bModificado = false;
-                        bModificado = Sistema.SalvaTamanhoMensagensWcf();
-                        if (Sistema.EmRedeLocal() != StConnection.OnlineNetwork)
+                        if (bModificado)
                         {
-                            InternetCS internetUtil = new InternetCS();
-
-                            if (internetUtil.Conexao())
-                            {
-                                Sistema.bOnline = StConnection.OnlineWeb;
-                                bModificado = Sistema.SalvaEndPoint(xUri: Sistema.GetAppSettings("urlWebService"));
-                            }
-                            else
-                            {
-                                Sistema.bOnline = StConnection.Offline;
-                                MessageBox.Show(messageBoxText: "Não foi possível iniciar sistema, sem conexão de rede e internet.");
-                                Application.Current.Shutdown();
-                            }
+                            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                            Application.Current.Shutdown();
                         }
-                        if (Sistema.bOnline != StConnection.Offline)
+
+                        HLP.Magnificus.View.WPF.MainWindow wd = new MainWindow();
+                        this.MainWindow = wd;
+
+                        WinLogin wdLogin = new WinLogin(stModoInicial: ComumView.ViewModel.ViewModel.ModoInicial.padrao);
+                        wdLogin.ShowDialog();
+                        if (wdLogin.ViewModel.bLogado)
                         {
-
-                            if (bModificado)
-                            {
-                                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                                Application.Current.Shutdown();
-                            }
-
-                            HLP.Magnificus.View.WPF.MainWindow wd = new MainWindow();
-                            this.MainWindow = wd;
-
-                            WinLogin wdLogin = new WinLogin(stModoInicial: ComumView.ViewModel.ViewModel.ModoInicial.padrao);
-                            wdLogin.ShowDialog();
-                            if (wdLogin.ViewModel.bLogado)
-                            {
-                                wd._viewModel.CarregaDadosLogin();
-                                FrameworkElement.LanguageProperty.OverrideMetadata(
-                                typeof(FrameworkElement),
-                                new FrameworkPropertyMetadata(
-                                    XmlLanguage.GetLanguage(
-                                    CultureInfo.CurrentCulture.IetfLanguageTag)));
-                                base.OnStartup(e);
-                                wd.WindowState = WindowState.Maximized;
-                                wd.Show();
-                            }
-                            else
-                            {
-                                Application.Current.Shutdown();
-                            }
+                            wd._viewModel.CarregaDadosLogin();
+                            FrameworkElement.LanguageProperty.OverrideMetadata(
+                            typeof(FrameworkElement),
+                            new FrameworkPropertyMetadata(
+                                XmlLanguage.GetLanguage(
+                                CultureInfo.CurrentCulture.IetfLanguageTag)));
+                            base.OnStartup(e);
+                            wd.WindowState = WindowState.Maximized;
+                            wd.Show();
+                        }
+                        else
+                        {
+                            Application.Current.Shutdown();
                         }
                     }
                 }
