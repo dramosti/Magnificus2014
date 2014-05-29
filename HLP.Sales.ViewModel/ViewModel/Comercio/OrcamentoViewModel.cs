@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Components.Model.Models;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Gerais;
@@ -131,9 +132,19 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             return comm.GetFuncionario(idFuncionario: idFuncionario);
         }
 
-        public List<Tipo_documento_oper_validaModel> GetOperacoesValidas(int idTipoDocumento)
+        public List<modelToComboBox> GetOperacoesValidas(int idTipoDocumento)
         {
             return comm.GetOperacoesValidas(idTipoDocumento: idTipoDocumento);
+        }
+
+        public Familia_produtoModel GetFamiliaProduto(int idFamiliaProduto)
+        {
+            return comm.GetFamiliaProduto(idFamiliaProduto: idFamiliaProduto);
+        }
+
+        public ProdutoModel GetProduto(int idProduto)
+        {
+            return comm.GetProduto(idProduto: idProduto);
         }
 
         #region Métodos Públicos

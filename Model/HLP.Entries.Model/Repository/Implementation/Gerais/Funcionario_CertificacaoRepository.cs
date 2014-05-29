@@ -71,7 +71,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idFuncionarioCertificacao"),
                    MapBuilder<Funcionario_CertificacaoModel>.MapAllProperties()
                    .DoNotMap(i => i.status)
-                   .DoNotMap(i => i.enumTipoCertificacao)
                    .Build());
             }
             return regAcessor.Execute(idFuncionarioCertificacao).FirstOrDefault();
@@ -83,7 +82,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             ("SELECT * FROM Funcionario_Certificacao WHERE idFuncionario = @idFuncionario", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idFuncionario"),
             MapBuilder<Funcionario_CertificacaoModel>.MapAllProperties()
             .DoNotMap(i => i.status)
-            .DoNotMap(i => i.enumTipoCertificacao)
             .Build());
 
             return reg.Execute(idFuncionario).ToList();

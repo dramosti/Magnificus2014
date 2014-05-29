@@ -2,6 +2,8 @@
 using HLP.Base.EnumsBases;
 using HLP.Base.Modules;
 using HLP.Base.Static;
+using HLP.Components.Model.Models;
+using HLP.Components.Services;
 using HLP.Comum.View.Formularios;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
@@ -34,6 +36,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         ClienteService objClienteService;
         FuncionarioService objFuncionarioService;
         Tipo_Documento_Operacao_ValidaService objTipoDocumentoOperacaoValidaService;
+        FillComboBoxService objFillComboBoxService;
+        FamiliaProdutoService objFamiliaProdutoService;
+        ProdutoService objProdutoService;
 
         public OrcamentoCommands(OrcamentoViewModel objViewModel)
         {
@@ -41,6 +46,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             objClienteService = new ClienteService();
             objFuncionarioService = new FuncionarioService();
             objTipoDocumentoOperacaoValidaService = new Tipo_Documento_Operacao_ValidaService();
+            this.objFillComboBoxService = new FillComboBoxService();
+            this.objFamiliaProdutoService = new FamiliaProdutoService();
+            this.objProdutoService = new ProdutoService();
 
             this.objViewModel = objViewModel;
 
@@ -620,12 +628,21 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             return objFuncionarioService.GetObject(id: idFuncionario, bGetChild: false);
         }
 
-        public List<Tipo_documento_oper_validaModel> GetOperacoesValidas(int idTipoDocumento)
+        public List<modelToComboBox> GetOperacoesValidas(int idTipoDocumento)
         {
-            return objTipoDocumentoOperacaoValidaService.GetOperacoesValidas(
-                idTipoDocumento: idTipoDocumento);
+            return objFillComboBoxService.GetAllValuesToComboBox(sNameView: "getTipoOperacaoValidaToComboBoxOrcamento",
+                sParameter: idTipoDocumento.ToString());
         }
 
+        public Familia_produtoModel GetFamiliaProduto(int idFamiliaProduto)
+        {
+            return objFamiliaProdutoService.GetObjeto(id: idFamiliaProduto);
+        }
+
+        public ProdutoModel GetProduto(int idProduto)
+        {
+            return objProdutoService.GetObjeto(id: idProduto);
+        }
         #endregion
     }
 }

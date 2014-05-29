@@ -1,5 +1,4 @@
 ﻿using HLP.Base.ClassesBases;
-using HLP.Comum.Resources.RecursosBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,9 +69,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
         public Site_enderecoModel()
             : base(xTabela: "Site_Endereco")
-        {
-            this.enumTipoEndereco = TipoEndereco.COMERCIAL;
-            this.enumTipoLogradouro = TipoLogradouro.RUA;
+        {            
         }
 
         private int? _idEndereco;
@@ -86,19 +83,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "idEndereco");
             }
         }
-
-
-        private TipoEndereco _enumTipoEndereco;
-        public TipoEndereco enumTipoEndereco
-        {
-            get { return _enumTipoEndereco; }
-            set
-            {
-                _enumTipoEndereco = value;
-                _stTipoEndereco = (byte)value;
-            }
-        }
-
+        
         private byte _stTipoEndereco;
         [ParameterOrder(Order = 2)]
         public byte stTipoEndereco
@@ -107,7 +92,6 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stTipoEndereco = value;
-                _enumTipoEndereco = (TipoEndereco)value;
             }
         }
 
@@ -122,19 +106,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "xCEP");
             }
         }
-
-
-        private TipoLogradouro _enumTipoLogradouro;
-        public TipoLogradouro enumTipoLogradouro
-        {
-            get { return _enumTipoLogradouro; }
-            set
-            {
-                _enumTipoLogradouro = value;
-                _stLogradouro = (byte)value;
-            }
-        }
-
+        
         private byte _stLogradouro;
         [ParameterOrder(Order = 4)]
         public byte stLogradouro
@@ -143,7 +115,6 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stLogradouro = value;
-                _enumTipoLogradouro = (TipoLogradouro)value;
             }
         }
 

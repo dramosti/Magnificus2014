@@ -1,5 +1,4 @@
 ﻿using HLP.Base.ClassesBases;
-using HLP.Comum.Resources.RecursosBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;

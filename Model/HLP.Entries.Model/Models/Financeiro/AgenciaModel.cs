@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.Resources.RecursosBases;
 using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
 
@@ -129,17 +128,7 @@ namespace HLP.Entries.Model.Models.Financeiro
                 base.NotifyPropertyChanged(propertyName: "idEndereco");
             }
         }
-        private TipoEndereco _enumTipoEndereco;
-        public TipoEndereco enumTipoEndereco
-        {
-            get { return _enumTipoEndereco; }
-            set
-            {
-                _enumTipoEndereco = value;
-                _stTipoEndereco = (byte)value;
-            }
-        }
-
+        
         private byte _stTipoEndereco;
         [ParameterOrder(Order = 2)]
         public byte stTipoEndereco
@@ -148,7 +137,6 @@ namespace HLP.Entries.Model.Models.Financeiro
             set
             {
                 _stTipoEndereco = value;
-                _enumTipoEndereco = (TipoEndereco)value;
             }
         }
 
@@ -163,17 +151,7 @@ namespace HLP.Entries.Model.Models.Financeiro
                 base.NotifyPropertyChanged(propertyName: "xCEP");
             }
         }
-        private TipoLogradouro _enumTipoLogradouro;
-        public TipoLogradouro enumTipoLogradouro
-        {
-            get { return _enumTipoLogradouro; }
-            set
-            {
-                _enumTipoLogradouro = value;
-                _stLogradouro = (byte)value;
-            }
-        }
-
+        
         private byte _stLogradouro;
         [ParameterOrder(Order = 4)]
         public byte stLogradouro
@@ -182,7 +160,6 @@ namespace HLP.Entries.Model.Models.Financeiro
             set
             {
                 _stLogradouro = value;
-                _enumTipoLogradouro = (TipoLogradouro)value;
             }
         }
         private string _xEndereco;

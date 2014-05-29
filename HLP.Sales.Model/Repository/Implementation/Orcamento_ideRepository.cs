@@ -74,6 +74,8 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.bPerdido)
                                 .DoNotMap(i => i.bConfirmado)
                                 .DoNotMap(i => i.bTodos)
+                                .DoNotMap(i => i.objCliente)
+                                .DoNotMap(i => i.objFuncionario)
                                  .Build());
             }
 

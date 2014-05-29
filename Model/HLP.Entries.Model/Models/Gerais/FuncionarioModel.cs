@@ -1,7 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
 using HLP.Components.Model.Models;
-using HLP.Comum.Resources.RecursosBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -945,17 +944,6 @@ namespace HLP.Entries.Model.Models.Gerais
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idFuncionarioCertificacao { get; set; }
 
-        private TipoCertificacao _enumTipoCertificacao;
-        public TipoCertificacao enumTipoCertificacao
-        {
-            get { return _enumTipoCertificacao; }
-            set
-            {
-                _enumTipoCertificacao = value;
-                _stCertificacao = (byte)value;
-            }
-        }
-
         private byte _stCertificacao;
         [ParameterOrder(Order = 2)]
         public byte stCertificacao
@@ -964,7 +952,6 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stCertificacao = value;
-                _enumTipoCertificacao = (TipoCertificacao)value;
             }
         }
 

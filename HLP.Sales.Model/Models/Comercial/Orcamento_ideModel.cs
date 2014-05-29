@@ -478,29 +478,32 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _idClienteFornecedor = value;
 
-                if (this.objCliente == null)
-                    this.objCliente = new Cliente_fornecedorModel();
-
-                Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
-
-                MethodInfo mi = w.DataContext.GetType().GetMethod(name: "GetCliente");
-
-                object retorno = mi.Invoke(obj: w.DataContext, parameters: new object[] { value });
-
-                if (retorno != null)
-                    this.objCliente = retorno as Cliente_fornecedorModel;
-
-                if (this.objCliente != null)
+                if (this.GetOperationModel() == OperationModel.updating)
                 {
-                    this.idCondicaoPagamento = this.objCliente.idCondicaoPagamento;
-                    this.idRamoAtividade = this.objCliente.idRamoAtividade;
-                    this.idCanalVenda = this.objCliente.idCanalVenda;
-                    this.idDescontos = this.objCliente.idDescontos ?? 0;
-                }
+                    if (this.objCliente == null)
+                        this.objCliente = new Cliente_fornecedorModel();
 
+                    Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
+
+                    MethodInfo mi = w.DataContext.GetType().GetMethod(name: "GetCliente");
+
+                    object retorno = mi.Invoke(obj: w.DataContext, parameters: new object[] { value });
+
+                    if (retorno != null)
+                        this.objCliente = retorno as Cliente_fornecedorModel;
+
+                    if (this.objCliente != null)
+                    {
+                        this.idCondicaoPagamento = this.objCliente.idCondicaoPagamento;
+                        this.idRamoAtividade = this.objCliente.idRamoAtividade;
+                        this.idCanalVenda = this.objCliente.idCanalVenda;
+                        this.idDescontos = this.objCliente.idDescontos ?? 0;
+                    }
+                }
                 base.NotifyPropertyChanged(propertyName: "idClienteFornecedor");
             }
         }
+
         private byte _stOrcamento;
         [ParameterOrder(Order = 4)]
         public byte stOrcamento
@@ -567,32 +570,8 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "xPedidoCliente");
             }
         }
-        private int _idDeposito;
-        [ParameterOrder(Order = 10)]
-        public int idDeposito
-        {
-            get { return _idDeposito; }
-            set
-            {
-                _idDeposito = value;
-                if (value != 0 && value != null)
-                {
-                    if (Sistema.stSender != TipoSender.WCF)
-                    {
-                        if (this._lOrcamento_Itens != null)
-                        {
-                            foreach (Orcamento_ItemModel item in this._lOrcamento_Itens)
-                            {
-                                item.idDeposito = (int)value;
-                            }
-                        }
-                    }
-                }
-                base.NotifyPropertyChanged(propertyName: "idDeposito");
-            }
-        }
         private string _xNomeEntrega;
-        [ParameterOrder(Order = 11)]
+        [ParameterOrder(Order = 10)]
         public string xNomeEntrega
         {
             get { return _xNomeEntrega; }
@@ -603,7 +582,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int _idModosEntrega;
-        [ParameterOrder(Order = 12)]
+        [ParameterOrder(Order = 11)]
         public int idModosEntrega
         {
             get { return _idModosEntrega; }
@@ -614,7 +593,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int _idCondicaoEntrega;
-        [ParameterOrder(Order = 13)]
+        [ParameterOrder(Order = 12)]
         public int idCondicaoEntrega
         {
             get { return _idCondicaoEntrega; }
@@ -625,7 +604,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private DateTime? _dDataRecebimentoSolicitado;
-        [ParameterOrder(Order = 14)]
+        [ParameterOrder(Order = 13)]
         public DateTime? dDataRecebimentoSolicitado
         {
             get { return _dDataRecebimentoSolicitado; }
@@ -636,7 +615,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private DateTime? _dDataRemessaSolicitada;
-        [ParameterOrder(Order = 15)]
+        [ParameterOrder(Order = 14)]
         public DateTime? dDataRemessaSolicitada
         {
             get { return _dDataRemessaSolicitada; }
@@ -647,19 +626,18 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int _idCondicaoPagamento;
-        [ParameterOrder(Order = 16)]
+        [ParameterOrder(Order = 15)]
         public int idCondicaoPagamento
         {
             get { return _idCondicaoPagamento; }
             set
             {
                 _idCondicaoPagamento = value;
-
                 base.NotifyPropertyChanged(propertyName: "idCondicaoPagamento");
             }
         }
         private int? _idMotivo;
-        [ParameterOrder(Order = 17)]
+        [ParameterOrder(Order = 16)]
         public int? idMotivo
         {
             get { return _idMotivo; }
@@ -670,7 +648,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private DateTime? _dConfirmacao;
-        [ParameterOrder(Order = 18)]
+        [ParameterOrder(Order = 17)]
         public DateTime? dConfirmacao
         {
             get { return _dConfirmacao; }
@@ -681,7 +659,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int _idUnidadeVenda;
-        [ParameterOrder(Order = 19)]
+        [ParameterOrder(Order = 18)]
         public int idUnidadeVenda
         {
             get { return _idUnidadeVenda; }
@@ -692,7 +670,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int _idDescontos;
-        [ParameterOrder(Order = 20)]
+        [ParameterOrder(Order = 19)]
         public int idDescontos
         {
             get { return _idDescontos; }
@@ -703,7 +681,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int _idJuros;
-        [ParameterOrder(Order = 21)]
+        [ParameterOrder(Order = 20)]
         public int idJuros
         {
             get { return _idJuros; }
@@ -714,7 +692,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int _idMulta;
-        [ParameterOrder(Order = 22)]
+        [ParameterOrder(Order = 21)]
         public int idMulta
         {
             get { return _idMulta; }
@@ -725,7 +703,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private string _xObservacao;
-        [ParameterOrder(Order = 23)]
+        [ParameterOrder(Order = 22)]
         public string xObservacao
         {
             get { return _xObservacao; }
@@ -736,7 +714,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private byte? _stConsumidorFinal;
-        [ParameterOrder(Order = 24)]
+        [ParameterOrder(Order = 23)]
         public byte? stConsumidorFinal
         {
             get { return _stConsumidorFinal; }
@@ -747,7 +725,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private byte? _stSuframaOrcamento;
-        [ParameterOrder(Order = 25)]
+        [ParameterOrder(Order = 24)]
         public byte? stSuframaOrcamento
         {
             get { return _stSuframaOrcamento; }
@@ -758,7 +736,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private byte? _stDescPISCOFINSSuframa;
-        [ParameterOrder(Order = 26)]
+        [ParameterOrder(Order = 25)]
         public byte? stDescPISCOFINSSuframa
         {
             get { return _stDescPISCOFINSSuframa; }
@@ -769,7 +747,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int _idMoeda;
-        [ParameterOrder(Order = 27)]
+        [ParameterOrder(Order = 26)]
         public int idMoeda
         {
             get { return _idMoeda; }
@@ -780,7 +758,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int _idFuncionarioRepresentante;
-        [ParameterOrder(Order = 28)]
+        [ParameterOrder(Order = 27)]
         public int idFuncionarioRepresentante
         {
             get { return _idFuncionarioRepresentante; }
@@ -791,7 +769,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private string _cIdentificacao;
-        [ParameterOrder(Order = 29)]
+        [ParameterOrder(Order = 28)]
         public string cIdentificacao
         {
             get { return _cIdentificacao; }
@@ -801,9 +779,9 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "cIdentificacao");
             }
         }
-        private int _idContaContabil;
-        [ParameterOrder(Order = 30)]
-        public int idContaContabil
+        private int? _idContaContabil;
+        [ParameterOrder(Order = 29)]
+        public int? idContaContabil
         {
             get { return _idContaContabil; }
             set
@@ -813,13 +791,13 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int _idTipoDocumento;
-        [ParameterOrder(Order = 31)]
+        [ParameterOrder(Order = 30)]
         public int idTipoDocumento
         {
             get { return _idTipoDocumento; }
             set
             {
-                if (this.lOrcamento_Itens.Count > 0)
+                if (this.lOrcamento_Itens.Count > 0 && this.GetOperationModel() == OperationModel.updating)
                 {
                     if (MessageHlp.Show(stMessage: StMessage.stYesNo, xMessageToUser: "Esta alteração mudará operações válidas dos itens, deseja continuar?")
                          == MessageBoxResult.Yes)
@@ -834,23 +812,15 @@ namespace HLP.Sales.Model.Models.Comercial
 
                         if (retorno != null)
                         {
-                            List<modelToComboBox> lDocumentoOperacaoValida = new List<modelToComboBox>();
-
-                            foreach (Tipo_documento_oper_validaModel item in (retorno as List<Tipo_documento_oper_validaModel>))
-                            {
-                                lDocumentoOperacaoValida.Add(item:
-                                    new modelToComboBox
-                                    {
-                                        id = item.idTipoDocumentoOperValida ?? 0,
-                                        display = item.idTipoOperacao.ToString()
-                                    });
-                            }
 
                             foreach (Orcamento_ItemModel item in this.lOrcamento_Itens)
                             {
                                 item.lTipoOperacao = new ObservableCollection<modelToComboBox>
-                                (list: lDocumentoOperacaoValida);
+                                (list: retorno as List<modelToComboBox>);
+                                if (item.lTipoOperacao.Count > 0)
+                                    item.idTipoOperacao = item.lTipoOperacao.FirstOrDefault().id;
                             }
+
                         }
 
                         base.NotifyPropertyChanged(propertyName: "idTipoDocumento");
@@ -863,8 +833,9 @@ namespace HLP.Sales.Model.Models.Comercial
                 }
             }
         }
+
         private int _idEmpresa;
-        [ParameterOrder(Order = 32)]
+        [ParameterOrder(Order = 31)]
         public int idEmpresa
         {
             get { return _idEmpresa; }
@@ -875,7 +846,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int? _idContato;
-        [ParameterOrder(Order = 33)]
+        [ParameterOrder(Order = 32)]
         public int? idContato
         {
             get { return _idContato; }
@@ -886,7 +857,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private string _nPedidoCliente;
-        [ParameterOrder(Order = 34)]
+        [ParameterOrder(Order = 33)]
         public string nPedidoCliente
         {
             get { return _nPedidoCliente; }
@@ -897,7 +868,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private byte _stContribuinteIcms;
-        [ParameterOrder(Order = 35)]
+        [ParameterOrder(Order = 34)]
         public byte stContribuinteIcms
         {
             get { return _stContribuinteIcms; }
@@ -908,7 +879,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int? _idOrcamentoOrigem;
-        [ParameterOrder(Order = 36)]
+        [ParameterOrder(Order = 35)]
         public int? idOrcamentoOrigem
         {
             get { return _idOrcamentoOrigem; }
@@ -919,7 +890,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private string _xVersaoOrcamento;
-        [ParameterOrder(Order = 37)]
+        [ParameterOrder(Order = 36)]
         public string xVersaoOrcamento
         {
             get { return _xVersaoOrcamento; }
@@ -929,33 +900,8 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "xVersaoOrcamento");
             }
         }
-        private int? _idSite;
-        [ParameterOrder(Order = 38)]
-        public int? idSite
-        {
-            get { return _idSite; }
-            set
-            {
-                _idSite = value;
-
-                if (value != 0 && value != null)
-                {
-                    if (Sistema.stSender != TipoSender.WCF)
-                    {
-                        if (this._lOrcamento_Itens != null)
-                        {
-                            foreach (Orcamento_ItemModel item in this._lOrcamento_Itens)
-                            {
-                                item.idSite = (int)value;
-                            }
-                        }
-                    }
-                }
-                base.NotifyPropertyChanged(propertyName: "idSite");
-            }
-        }
         private int? _idFuncionario;
-        [ParameterOrder(Order = 39)]
+        [ParameterOrder(Order = 37)]
         public int? idFuncionario
         {
             get { return _idFuncionario; }
@@ -966,7 +912,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int? _idFuncionarioResponsavel;
-        [ParameterOrder(Order = 40)]
+        [ParameterOrder(Order = 38)]
         public int? idFuncionarioResponsavel
         {
             get { return _idFuncionarioResponsavel; }
@@ -977,7 +923,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private byte? _stWeb;
-        [ParameterOrder(Order = 41)]
+        [ParameterOrder(Order = 39)]
         public byte? stWeb
         {
             get { return _stWeb; }
@@ -988,7 +934,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
         private int? _idTransportador;
-        [ParameterOrder(Order = 42)]
+        [ParameterOrder(Order = 40)]
         public int? idTransportador
         {
             get { return _idTransportador; }
@@ -1059,14 +1005,20 @@ namespace HLP.Sales.Model.Models.Comercial
 
     public partial class Orcamento_ItemModel : modelBase, ICloneable
     {
+        Familia_produtoModel objFamiliaProduto;
+        ProdutoModel objProduto;
+
         public Orcamento_ItemModel()
             : base(xTabela: "Orcamento_Item")
         {
 
             this.objImposto = new Orcamento_Item_ImpostosModel();
+            objFamiliaProduto = new Familia_produtoModel();
+            objProduto = new ProdutoModel();
 
             Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
 
+            this.bXComercialEnabled = false;
 
             if (w != null)
             {
@@ -1079,11 +1031,27 @@ namespace HLP.Sales.Model.Models.Comercial
 
                     if (currentModel != null)
                     {
-                        if ((currentModel as Orcamento_ideModel).lOrcamento_Itens.Count
-                            > 0)
-                            this.nItem = (currentModel as Orcamento_ideModel).lOrcamento_Itens.Max(i => i.nItem).Value + 1;
-                        else
-                            this.nItem = 1;
+                        if ((currentModel as modelBase).GetOperationModel() == OperationModel.searching)
+                        {
+                            if ((currentModel as Orcamento_ideModel).lOrcamento_Itens.Count
+                                > 0)
+                                this.nItem = (currentModel as Orcamento_ideModel).lOrcamento_Itens.Max(i => i.nItem).Value + 1;
+                            else
+                                this.nItem = 1;
+                        }
+                        MethodInfo mi = w.DataContext.GetType().GetMethod(name: "GetOperacoesValidas");
+
+                        object retorno = mi.Invoke(obj: w.DataContext, parameters: new object[] { (currentModel as Orcamento_ideModel).idTipoDocumento });
+
+                        if (retorno != null)
+                        {
+
+                            this.lTipoOperacao = new ObservableCollection<modelToComboBox>(
+                                list: retorno as List<modelToComboBox>);
+
+                            if (lTipoOperacao.Count > 0)
+                                this.idTipoOperacao = lTipoOperacao.FirstOrDefault().id;
+                        }
                     }
                 }
             }
@@ -1204,6 +1172,33 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _idProduto = value;
+
+                Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
+
+                if (w != null)
+                {
+                    MethodInfo miGetProduto = w.DataContext.GetType().GetMethod(name: "GetProduto");
+
+                    this.objProduto = miGetProduto.Invoke(obj: w.DataContext, parameters: new object[] { value }) as ProdutoModel;
+
+                    if (objProduto != null)
+                    {
+                        MethodInfo mi = w.DataContext.GetType().GetMethod(name: "GetFamiliaProduto");
+
+                        this.objFamiliaProduto = mi.Invoke(obj: w.DataContext, parameters: new object[] { this.objProduto.idFamiliaProduto })
+                            as Familia_produtoModel;
+
+                        if (objFamiliaProduto != null)
+                        {
+                            if (objFamiliaProduto.stAlteraDescricaoComercialProdutoVenda
+                                == 0)
+                                this.bXComercialEnabled = false;
+                            else
+                                this.bXComercialEnabled = true;
+                        }
+                    }
+                }
+
                 base.NotifyPropertyChanged(propertyName: "idProduto");
             }
         }
