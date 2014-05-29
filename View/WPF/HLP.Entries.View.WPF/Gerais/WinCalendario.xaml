@@ -219,9 +219,9 @@
                             <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Components:CustomTextBlock Text="Dia sem Programação" Grid.Column="1" Grid.Row="1" FontFamily="Calibri" FontWeight="Black" FontSize="14"/>
-                        <Components:HlpDatePicker
-                        Grid.Row="1" Grid.Column="2" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
+                        <Components:CustomTextBlock Text="Dia sem Programação" Grid.Column="1" Grid.Row="1" FontFamily="Calibri"  FontWeight="Black" FontSize="14"/>
+                        <Components:HlpDatePicker 
+                        Grid.Row="1" Grid.Column="2" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date" stCompPosicao="last" IsEnabled="{Binding bIsEnabled}"
                         x:Name="txtDiaSemProg"                                                                            
                         xTextDate="{Binding diaSemProgramacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
                             <Components:HlpDatePicker.InputBindings>
