@@ -124,14 +124,14 @@ namespace HLP.Components.View.WPF
         }
 
 
-        public bool IsEnabled
+        new public bool IsEnabled
         {
             get { return (bool)GetValue(IsEnabledProperty); }
             set { SetValue(IsEnabledProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for IsEnabled.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsEnabledProperty =
+        new public static readonly DependencyProperty IsEnabledProperty =
             DependencyProperty.Register("IsEnabled", typeof(bool), typeof(CustomTextBox),
             new PropertyMetadata(defaultValue: false));
     }

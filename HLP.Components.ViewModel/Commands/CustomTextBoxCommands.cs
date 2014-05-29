@@ -79,10 +79,10 @@ namespace HLP.Components.ViewModel.Commands
         private bool SearchCanExecute(object o)
         {
             if (o == null)
-                return false;
+                return true;
 
             if ((o as Control).DataContext == null)
-                return false;
+                return true;
 
             PropertyInfo piModel = (o as Control).DataContext.GetType().GetProperty(
                 name: "currentModel");
@@ -90,10 +90,15 @@ namespace HLP.Components.ViewModel.Commands
             if (piModel == null)
                 return true;
 
+            Button btn = (o as Control).Template.FindName(name: "btn", templatedParent: (o as FrameworkElement)) as Button;
+
             object _value = piModel.GetValue(obj: (o as Control).DataContext);
 
             if (_value == null)
+            {
+                btn.Visibility = Visibility.Visible;
                 return true;
+            }
 
 
             bool retorno = (_value as modelBase).GetOperationModel()
@@ -110,9 +115,7 @@ namespace HLP.Components.ViewModel.Commands
                 stVisibilityBtnQuickSearch = (StVisibilityButtonQuickSearch)stVisibilityBtnQuickSearchProperty.GetValue(
                     obj: o);
 
-            Button btn = (o as Control).Template.FindName(name: "btn", templatedParent: (o as FrameworkElement)) as Button;
-
-            if ((btn != null && !retorno) 
+            if ((btn != null && !retorno)
                 || stVisibilityBtnQuickSearch == StVisibilityButtonQuickSearch.notVisible)
             {
                 btn.Visibility = Visibility.Collapsed;
@@ -122,7 +125,7 @@ namespace HLP.Components.ViewModel.Commands
                 btn.Visibility = Visibility.Visible;
             }
 
-            return retorno;
+            return true;
         }
     }
 }
