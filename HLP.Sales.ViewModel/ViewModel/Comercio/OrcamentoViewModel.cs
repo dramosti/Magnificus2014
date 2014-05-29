@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Sales.Model.Models.Comercial;
@@ -128,6 +129,11 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public FuncionarioModel GetFuncionario(int idFuncionario)
         {
             return comm.GetFuncionario(idFuncionario: idFuncionario);
+        }
+
+        public List<Tipo_documento_oper_validaModel> GetOperacoesValidas(int idTipoDocumento)
+        {
+            return comm.GetOperacoesValidas(idTipoDocumento: idTipoDocumento);
         }
 
         #region Métodos Públicos

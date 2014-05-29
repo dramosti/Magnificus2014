@@ -17,12 +17,11 @@ namespace HLP.Resources.View.WPF.Styles.Components.Converters
 
             if (currentOp != null)
             {
-                if (((OperacaoCadastro)currentOp) == OperacaoCadastro.pesquisando
-                    || ((OperacaoCadastro)currentOp) == OperacaoCadastro.livre)
-                    return Visibility.Visible;
+                if (((OperationModel)currentOp) == OperationModel.updating)
+                    return Visibility.Collapsed;
             }
 
-            return Visibility.Collapsed;
+            return Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

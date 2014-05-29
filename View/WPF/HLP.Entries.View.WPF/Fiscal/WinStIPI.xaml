@@ -19,7 +19,7 @@
                     <ColumnDefinition Width="10"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
@@ -59,7 +59,7 @@
 					ToolTip="Descrição do código da Situação Tributária de Cofins">
                 </Components:CustomTextBox>
                 <Components:CustomCheckBox
-                    Grid.Column="2" Grid.Row="4"
+                    Grid.Column="2" Grid.Row="4" stCompPosicao="last"
                     IsChecked="{Binding currentModel.stSimplesNacional, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Informar se a Situação Tributária de Cofins é de Simples Nacional.">

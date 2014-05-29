@@ -42,6 +42,7 @@
             <Grid Grid.Column="1" Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="53"></ColumnDefinition>
                     <ColumnDefinition Width="20"></ColumnDefinition>
                     <ColumnDefinition Width="53"></ColumnDefinition>
@@ -52,10 +53,10 @@
                     <RowDefinition Height="53"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>                    
                 </Grid.RowDefinitions>
-                <Button x:Name="btn" Grid.Column="3" Grid.Row="1" Style="{StaticResource Button_OK}"
+                <Button x:Name="btn" Grid.Column="4" Grid.Row="1" Style="{StaticResource Button_OK}"
                         Command="{Binding commOk}" Content="OK" CommandParameter="{Binding ElementName=wdError}"></Button>
                 <Button Grid.Column="0" Grid.Row="2" Command="{Binding commCopy}"
-                        Content="Clique aqui para copiar rastreamento do erro."></Button>
+                        Content="Copiar Erro"></Button>
             </Grid>
         </Grid>
     </Border>

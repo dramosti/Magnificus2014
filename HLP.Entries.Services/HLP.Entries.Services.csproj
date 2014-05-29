@@ -77,6 +77,7 @@
     <Compile Include="Fiscal\Situacao_Tributaria_IpiService.cs" />
     <Compile Include="Fiscal\Situacao_Tributaria_PisService.cs" />
     <Compile Include="Fiscal\Tipo_DocumentoService.cs" />
+    <Compile Include="Fiscal\Tipo_Documento_Operacao_ValidaService.cs" />
     <Compile Include="Fiscal\Tipo_OperacaoService.cs" />
     <Compile Include="Gerais\CalendarioService.cs" />
     <Compile Include="Gerais\CargoService.cs" />
@@ -342,6 +343,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wcf_TipoDocumentoOperacaoValida\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_TipoDocumento\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -412,6 +418,7 @@
     <None Include="Properties\DataSources\HLP.Components.Model.Models.modelToTreeView1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Comercial.Tipo_produtoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Fiscal.Tipo_documentoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Fiscal.Tipo_documento_oper_validaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Canal_vendaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Cliente_fornecedorModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.JurosModel.datasource" />
@@ -1270,6 +1277,22 @@
     <None Include="Service References\wcf_StIpi\wcf_StIpi4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida.wsdl" />
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento.wsdl" />
     <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento.xsd">
       <SubType>Designer</SubType>
@@ -1435,6 +1458,7 @@
     <WCFMetadataStorage Include="Service References\wcf_StCofins\" />
     <WCFMetadataStorage Include="Service References\wcf_StIcms\" />
     <WCFMetadataStorage Include="Service References\wcf_StIpi\" />
+    <WCFMetadataStorage Include="Service References\wcf_TipoDocumentoOperacaoValida\" />
     <WCFMetadataStorage Include="Service References\wcf_TipoDocumento\" />
     <WCFMetadataStorage Include="Service References\wcf_TipoOperacao\" />
     <WCFMetadataStorage Include="Service References\wcf_TipoProduto\" />
@@ -2264,6 +2288,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Login\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
