@@ -71,7 +71,7 @@
 					ToolTip="Chave principal do registro calendário">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox stCompPosicao="first"
-                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
+                    Grid.Column="2" Grid.Row="2"
                     Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Insira resumidamente o nome do calendário">
@@ -221,7 +221,7 @@
                         </Grid.RowDefinitions>
                         <Components:CustomTextBlock Text="Dia sem Programação" Grid.Column="1" Grid.Row="1" FontFamily="Calibri" FontWeight="Black" FontSize="14"/>
                         <Components:HlpDatePicker
-                        Grid.Row="1" Grid.Column="2" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"  
+                        Grid.Row="1" Grid.Column="2" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
                         x:Name="txtDiaSemProg"                                                                            
                         xTextDate="{Binding diaSemProgramacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
                             <Components:HlpDatePicker.InputBindings>
@@ -271,7 +271,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <Button  Content="Gerar Detalhamento" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="2"
-                         Command="{Binding commandGerarDetalhamento}"
+                         Command="{Binding commandGerarDetalhamento}" Style="{StaticResource ButtonsStyle_Padrao}" IsEnabled="{Binding bIsEnabled}"
                          CommandParameter="{Binding ElementName=winCalendario}"
                          />
                     </Grid>
