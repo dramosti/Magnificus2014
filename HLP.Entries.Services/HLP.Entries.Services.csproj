@@ -90,7 +90,6 @@
     <Compile Include="Gerais\FamiliaProdutoService.cs" />
     <Compile Include="Gerais\FuncionarioService.cs" />
     <Compile Include="Gerais\Funcionario_AcessoService.cs" />
-    <Compile Include="Gerais\LoginService.cs" />
     <Compile Include="Gerais\MoedaService.cs" />
     <Compile Include="Gerais\Plano_PagamentoService.cs" />
     <Compile Include="Gerais\Ramo_AtividadeService.cs" />

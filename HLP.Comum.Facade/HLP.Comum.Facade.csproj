@@ -54,7 +54,6 @@
   <ItemGroup>
     <Compile Include="Magnificus\ImpostosFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sales\OrcamentoFacade.cs" />
     <Compile Include="Service References\Canal_VendaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

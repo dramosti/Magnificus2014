@@ -11,7 +11,7 @@ namespace HLP.Sales.Services.Comercial
 {
     public class OrcamentoService
     {
-        const string xTabela = "Orcamento_ide;Orcamento_retTransp;Orcamento_Total_Impostos;";
+        const string xTabela = "Orcamento_ide;Orcamento_retTransp;Orcamento_Total_Impostos;Orcamento_Item;Orcamento_Item_Impostos;";
         HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
         wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
 

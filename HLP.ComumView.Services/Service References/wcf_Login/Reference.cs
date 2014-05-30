@@ -8,68 +8,68 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Comum.Facade.loginService {
+namespace HLP.ComumView.Services.wcf_Login {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="loginService.IserviceLogin")]
-    public interface IserviceLogin {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcf_Login.Iwcf_Login")]
+    public interface Iwcf_Login {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/ValidaUsuario", ReplyAction="http://tempuri.org/IserviceLogin/ValidaUsuarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Login/ValidaUsuario", ReplyAction="http://tempuri.org/Iwcf_Login/ValidaUsuarioResponse")]
         int ValidaUsuario(string xId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/ValidaUsuario", ReplyAction="http://tempuri.org/IserviceLogin/ValidaUsuarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Login/ValidaUsuario", ReplyAction="http://tempuri.org/Iwcf_Login/ValidaUsuarioResponse")]
         System.Threading.Tasks.Task<int> ValidaUsuarioAsync(string xId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/ValidaAcesso", ReplyAction="http://tempuri.org/IserviceLogin/ValidaAcessoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Login/ValidaAcesso", ReplyAction="http://tempuri.org/Iwcf_Login/ValidaAcessoResponse")]
         int ValidaAcesso(int idEmpresa, string xId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/ValidaAcesso", ReplyAction="http://tempuri.org/IserviceLogin/ValidaAcessoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Login/ValidaAcesso", ReplyAction="http://tempuri.org/Iwcf_Login/ValidaAcessoResponse")]
         System.Threading.Tasks.Task<int> ValidaAcessoAsync(int idEmpresa, string xId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/ValidaLogin", ReplyAction="http://tempuri.org/IserviceLogin/ValidaLoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Login/ValidaLogin", ReplyAction="http://tempuri.org/Iwcf_Login/ValidaLoginResponse")]
         int ValidaLogin(string xId, string xSenha);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/ValidaLogin", ReplyAction="http://tempuri.org/IserviceLogin/ValidaLoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Login/ValidaLogin", ReplyAction="http://tempuri.org/Iwcf_Login/ValidaLoginResponse")]
         System.Threading.Tasks.Task<int> ValidaLoginAsync(string xId, string xSenha);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/GetIdFuncionarioByXid", ReplyAction="http://tempuri.org/IserviceLogin/GetIdFuncionarioByXidResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Login/GetIdFuncionarioByXid", ReplyAction="http://tempuri.org/Iwcf_Login/GetIdFuncionarioByXidResponse")]
         int GetIdFuncionarioByXid(string xId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/GetIdFuncionarioByXid", ReplyAction="http://tempuri.org/IserviceLogin/GetIdFuncionarioByXidResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Login/GetIdFuncionarioByXid", ReplyAction="http://tempuri.org/Iwcf_Login/GetIdFuncionarioByXidResponse")]
         System.Threading.Tasks.Task<int> GetIdFuncionarioByXidAsync(string xId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/ValidaAdministrador", ReplyAction="http://tempuri.org/IserviceLogin/ValidaAdministradorResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Login/ValidaAdministrador", ReplyAction="http://tempuri.org/Iwcf_Login/ValidaAdministradorResponse")]
         int ValidaAdministrador(string xID, string xSenha, int idEmpresa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/ValidaAdministrador", ReplyAction="http://tempuri.org/IserviceLogin/ValidaAdministradorResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Login/ValidaAdministrador", ReplyAction="http://tempuri.org/Iwcf_Login/ValidaAdministradorResponse")]
         System.Threading.Tasks.Task<int> ValidaAdministradorAsync(string xID, string xSenha, int idEmpresa);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceLoginChannel : HLP.Comum.Facade.loginService.IserviceLogin, System.ServiceModel.IClientChannel {
+    public interface Iwcf_LoginChannel : HLP.ComumView.Services.wcf_Login.Iwcf_Login, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceLoginClient : System.ServiceModel.ClientBase<HLP.Comum.Facade.loginService.IserviceLogin>, HLP.Comum.Facade.loginService.IserviceLogin {
+    public partial class Iwcf_LoginClient : System.ServiceModel.ClientBase<HLP.ComumView.Services.wcf_Login.Iwcf_Login>, HLP.ComumView.Services.wcf_Login.Iwcf_Login {
         
-        public IserviceLoginClient() {
+        public Iwcf_LoginClient() {
         }
         
-        public IserviceLoginClient(string endpointConfigurationName) : 
+        public Iwcf_LoginClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public IserviceLoginClient(string endpointConfigurationName, string remoteAddress) : 
+        public Iwcf_LoginClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceLoginClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Iwcf_LoginClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceLoginClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Iwcf_LoginClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         

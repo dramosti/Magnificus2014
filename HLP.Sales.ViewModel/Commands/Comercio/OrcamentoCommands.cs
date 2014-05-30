@@ -7,8 +7,10 @@ using HLP.Components.Services;
 using HLP.Comum.View.Formularios;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Services.Comercial;
+using HLP.Entries.Services.Financeiro;
 using HLP.Entries.Services.Fiscal;
 using HLP.Entries.Services.Gerais;
 using HLP.Sales.Model.Models.Comercial;
@@ -39,6 +41,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         FillComboBoxService objFillComboBoxService;
         FamiliaProdutoService objFamiliaProdutoService;
         ProdutoService objProdutoService;
+        Lista_PrecoService objListaPrecoService;
+        Descontos_AvistaService objDescontoService;
 
         public OrcamentoCommands(OrcamentoViewModel objViewModel)
         {
@@ -49,6 +53,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             this.objFillComboBoxService = new FillComboBoxService();
             this.objFamiliaProdutoService = new FamiliaProdutoService();
             this.objProdutoService = new ProdutoService();
+            this.objListaPrecoService = new Lista_PrecoService();
+            this.objDescontoService = new Descontos_AvistaService();
 
             this.objViewModel = objViewModel;
 
@@ -643,6 +649,23 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             return objProdutoService.GetObjeto(id: idProduto);
         }
+
+        public List<modelToComboBox> GetListUnidadeMedida(int idProduto)
+        {
+            return this.objFillComboBoxService.GetAllValuesToComboBox(
+                sNameView: "getUnidadeMedidaToComboBox", sParameter: idProduto.ToString());
+        }
+
+        public Lista_Preco_PaiModel GetListaPreco(int idListaPreco)
+        {
+            return this.objListaPrecoService.GetObjeto(id: idListaPreco);
+        }
+
+        public Descontos_AvistaModel GetDesconto(int idDesconto)
+        {
+            return this.objDescontoService.GetObject(id: idDesconto);
+        }
+
         #endregion
     }
 }
