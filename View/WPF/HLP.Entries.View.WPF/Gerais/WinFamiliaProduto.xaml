@@ -44,10 +44,10 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="210" MinWidth="210"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="160" MinWidth="160"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="230" MinWidth="230"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
@@ -63,7 +63,7 @@
                                 <!--Label-->
 
                                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Código da Família de Produto" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Código Alternativo" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Sigla" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Grau" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
@@ -186,27 +186,27 @@
 								    IsEnabled="{Binding bIsEnabled}"
 								    ToolTip="Informar um percentual de acréscimo máximo para a linha inteira de produto, quando a linha de produto for sintético não é permitido a inclusão do valor. Lembrando que o sistema pegara em primeiro plano o percentual de acréscimo do item, caso não tenha o sistema buscará o % da Lista de preço e por fim da família do produto.">
                                 </Components:CustomTextBox>
-                                <Components:HlpPesquisa 
+                                <Components:CustomPesquisa 
 								Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-								Text="{Binding currentModel.idContaContabil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								xIdPesquisa="{Binding currentModel.idContaContabil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Informar a conta contábil para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. " Table="idConta_contabil" WidthLabel="0" FieldPesquisa="ID" TableView="vwContaContabil">
-                                    <Components:HlpPesquisa.Items>
+								ToolTip="Informar a conta contábil para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. " FieldPesquisa="ID" TableView="vwContaContabil">
+                                    <Components:CustomPesquisa.Items>
                                         <System:String>TESTE</System:String>
-                                    </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
-                                <Components:HlpPesquisa 
+                                    </Components:CustomPesquisa.Items>
+                                </Components:CustomPesquisa>
+                                <Components:CustomPesquisa 
 								Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-								Text="{Binding currentModel.idCentroCusto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								xIdPesquisa="{Binding currentModel.idCentroCusto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Informar o centro de custo para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. " Table="Centro_Custo"
-                                WidthLabel="0" FieldPesquisa="ID" TableView="vwCentroCusto">
-                                    <Components:HlpPesquisa.Items>
+								ToolTip="Informar o centro de custo para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. "
+                                FieldPesquisa="ID" TableView="vwCentroCusto">
+                                    <Components:CustomPesquisa.Items>
                                         <System:String>TESTE</System:String>
-                                    </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
+                                    </Components:CustomPesquisa.Items>
+                                </Components:CustomPesquisa>
                                 <Components:CustomCheckBox
-                                    Grid.Column="2" Grid.Row="5"
+                                    Grid.Column="2" Grid.Row="5" stCompPosicao="last"
                                     IsChecked="{Binding currentModel.stAlteraDescricaoComercialProdutoVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								    IsEnabled="{Binding bIsEnabled}"
 								    ToolTip="Informar ao sistema se poderá ou não alterar a descrição do produto no módulo comercial (Orçamento, Vendas, Faturamento).">

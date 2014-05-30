@@ -108,7 +108,7 @@
 					ToolTip="Caso esta opção esteja selecionada, os encargos de remessa serão cancelados, se o valor da nota fiscal ultrapassar um determinado valor">
                 </Components:CustomCheckBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="7"
+                    Grid.Column="2" Grid.Row="7" stCompPosicao="last"
                     ToolTip="Se a caixa de seleção Aplicar mínimo grátis estiver marcada como sim, insira o valor mínimo da nota fiscal de venda para o qual os encargos de remessa serão cancelados. Este é o valor de vendas antes de impostos, frete e encargos diversos">
                     <Components:CustomTextBox.Text>
                         <Binding Path="currentModel.vMinimoGratis"

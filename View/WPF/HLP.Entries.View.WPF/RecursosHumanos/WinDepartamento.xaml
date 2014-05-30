@@ -59,17 +59,17 @@
                                        Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                        IsEnabled="{Binding bIsEnabled}"
                                        ToolTip="Descrição do Departamento"/>                
-                <Components:HlpPesquisa Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Height="20" Margin="0,0,0,3"
-                    Text="{Binding currentModel.idSetor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"            
+                <Components:CustomPesquisa Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Height="20" Margin="0,0,0,3"
+                    xIdPesquisa="{Binding currentModel.idSetor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"            
                     x:Name="teste" TableView="vwSetor" FieldPesquisa="ID"
-                                 IsEnabled="{Binding bIsEnabled}" WidthLabel="0" nameWindow="WinSetor">
-                    <Components:HlpPesquisa.Items>
+                                 IsEnabled="{Binding bIsEnabled}" NameWindowCadastro="WinSetor">
+                    <Components:CustomPesquisa.Items>
                         <System:String>xSetor</System:String>
                         <System:String>xDescricao</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
+                    </Components:CustomPesquisa.Items>
+                </Components:CustomPesquisa>
                 <Components:CustomTextBox
-                                       Grid.Column="2"  Grid.Row="5" Grid.ColumnSpan="3"
+                                       Grid.Column="2"  Grid.Row="5" Grid.ColumnSpan="3" stCompPosicao="last"
                                        Text="{Binding currentModel.xEmail, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                        IsEnabled="{Binding bIsEnabled}"
                                        ToolTip="Informar o e-mail padrão para o Departamento, caso haja.">

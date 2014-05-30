@@ -69,18 +69,18 @@
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Informe a Descrição desejada para essa Rota.">
                 </Components:CustomTextBox>
-                <Components:HlpPesquisa	
-                        Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-						Text="{Binding currentModel.idListaPrecoPai, Mode=TwoWay,
+                <Components:CustomPesquisa	
+                        Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2" stCompPosicao="last"
+						xIdPesquisa="{Binding currentModel.idListaPrecoPai, Mode=TwoWay,
                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						ToolTip="Informe a Lista de Preço desejada para essa Rota, quando selecionado o cliente o sistema usará como padrão a lista definido em Rota e não o definido no Cadastro do Cliente ou a Lista Padrão." 
-                        WidthLabel="0" FieldPesquisa="ID" TableView="vwListaPrecoPai" nameWindow="WinListaPreco">
-                    <Components:HlpPesquisa.Items>
+                        FieldPesquisa="ID" TableView="vwListaPrecoPai" NameWindowCadastro="WinListaPreco">
+                    <Components:CustomPesquisa.Items>
                         <System:String>xLista</System:String>
                         <System:String>xCodigoListaPreco</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
+                    </Components:CustomPesquisa.Items>
+                </Components:CustomPesquisa>
                 <Components:CustomCheckBox
                     Grid.Column="2" Grid.Row="4"
                     IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

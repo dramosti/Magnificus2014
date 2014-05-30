@@ -19,7 +19,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="130" MinWidth="130"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="90" MinWidth="70"></ColumnDefinition>
                     <ColumnDefinition MinWidth="120" MaxWidth="300"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
@@ -51,7 +51,7 @@
                                           Text="{Binding currentModel.xDescricao, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
                                           IsEnabled="{Binding bIsEnabled}" 
                                           ToolTip="Informar uma descricao mais detalhada do Setor da Empresa"/>                
-                <Components:CustomTextBox Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
+                <Components:CustomTextBox Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" stCompPosicao="last"
                                           Text="{Binding currentModel.xEmail, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
                                           IsEnabled="{Binding bIsEnabled}"
                                           ToolTip="Informar um e-mail geral caso tenha do setor."/>                

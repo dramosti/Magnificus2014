@@ -15,9 +15,7 @@
             <conv:ByteToIntConverter x:Key="byteToIntConverter"/>
         </ResourceDictionary>        
     </Window.Resources>
-    <DockPanel LastChildFill="True">
-        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <TabItem Header="Principal">
+    <DockPanel LastChildFill="True">        
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -108,8 +106,6 @@
                             </Components:CustomComboBox>                            
                         </Grid>
                     </Expander>
-                </Grid>
-            </TabItem>
-        </TabControl>
+                </Grid>           
     </DockPanel>
 </runtime:WindowsBase>
