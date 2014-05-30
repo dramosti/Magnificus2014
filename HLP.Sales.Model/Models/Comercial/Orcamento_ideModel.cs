@@ -1085,52 +1085,61 @@ namespace HLP.Sales.Model.Models.Comercial
                         if ((currentModel as modelBase).GetOperationModel() == OperationModel.updating)
                         {
                             Lista_precoModel objItemListaPreco = null;
-                            if (p < 0) //Desconto
+                            if ((currentModel as Orcamento_ideModel).objListaPreco != null)
                             {
-                                decimal pDescontoMaximo = 100;
+                                if (p < 0) //Desconto
+                                {
+                                    decimal pDescontoMaximo = 100;
 
-                                if ((currentModel as Lista_Preco_PaiModel).pDescontoMaximo != null)
-                                {
-                                    pDescontoMaximo = (decimal)(currentModel as Lista_Preco_PaiModel).pDescontoMaximo;
-                                }
-                                else
-                                {
-                                    if ((currentModel as Lista_Preco_PaiModel).lLista_preco != null)
+                                    if ((currentModel as Orcamento_ideModel).objListaPreco.pDescontoMaximo != null)
                                     {
-                                        objItemListaPreco = (currentModel as Lista_Preco_PaiModel).lLista_preco.FirstOrDefault(
-                                            i => i.idProduto == this.idProduto);
+                                        pDescontoMaximo = (decimal)(currentModel as Orcamento_ideModel).objListaPreco.pDescontoMaximo;
+                                    }
+                                    else
+                                    {
+                                        if ((currentModel as Orcamento_ideModel).objListaPreco.lLista_preco != null)
+                                        {
+                                            objItemListaPreco = (currentModel as Lista_Preco_PaiModel).lLista_preco.FirstOrDefault(
+                                                i => i.idProduto == this.idProduto);
 
-                                        pDescontoMaximo = objItemListaPreco.pDescontoMaximo ?? 0;
+                                            pDescontoMaximo = objItemListaPreco.pDescontoMaximo ?? 0;
+                                        }
+                                    }
+
+                                    if (Math.Abs(value: p) > Math.Abs(value: pDescontoMaximo))
+                                    {
+                                        bool b = (bool)Sistema.ExecuteMethodByReflection(xNamespace: "HLP.Comum.View.WPF",
+                                            xType: "wdSenhaSupervisor", xMethod: "WindowShowDialog", parameters: new object[] { });
+
+                                        if (!b)
+                                            return false;
+                                        //TODO: Continuar deste ponto
+                                        //TODO: chamar tela de aprovação de gerente
                                     }
                                 }
+                                else //Acréscimo
+                                {
+                                    decimal pAcrescimoMaximo = 100;
 
-                                if (p > pDescontoMaximo)
-                                {
-                                    //TODO: chamar tela de aprovação de gerente
-                                }
-                            }
-                            else //Acréscimo
-                            {
-                                decimal pAcrescimoMaximo = 100;
-
-                                if ((currentModel as Lista_Preco_PaiModel).pAcressimoMaximo != null)
-                                {
-                                    pAcrescimoMaximo = (decimal)(currentModel as Lista_Preco_PaiModel).pAcressimoMaximo;
-                                }
-                                else
-                                {
-                                    if ((currentModel as Lista_Preco_PaiModel).lLista_preco != null)
+                                    if ((currentModel as Orcamento_ideModel).objListaPreco.pAcressimoMaximo != null)
                                     {
-                                        objItemListaPreco = (currentModel as Lista_Preco_PaiModel).lLista_preco.FirstOrDefault(
-                                            i => i.idProduto == this.idProduto);
-
-                                        pAcrescimoMaximo = objItemListaPreco.pAcrescimoMaximo ?? 0;
+                                        pAcrescimoMaximo = (decimal)(currentModel as Orcamento_ideModel).objListaPreco.pAcressimoMaximo;
                                     }
-                                }
+                                    else
+                                    {
+                                        if ((currentModel as Orcamento_ideModel).objListaPreco.lLista_preco != null)
+                                        {
+                                            objItemListaPreco = (currentModel as Orcamento_ideModel).objListaPreco.lLista_preco.FirstOrDefault(
+                                                i => i.idProduto == this.idProduto);
 
-                                if (p > pAcrescimoMaximo)
-                                {
-                                    //TODO: chamar tela de aprovação de gerente
+                                            pAcrescimoMaximo = objItemListaPreco.pAcrescimoMaximo ?? 0;
+                                        }
+                                    }
+
+                                    if (p > pAcrescimoMaximo)
+                                    {
+                                        //TODO: chamar tela de aprovação de gerente
+                                    }
                                 }
                             }
                         }

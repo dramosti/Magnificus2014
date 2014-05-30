@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HLP.Entries.Services.Gerais
+namespace HLP.ComumView.Services
 {
     public class LoginService
     {
@@ -14,9 +14,9 @@ namespace HLP.Entries.Services.Gerais
 
         HLP.Wcf.Entries.wcf_Login serviceNetwork;
         wcf_Login.Iwcf_LoginClient serviceWeb;
-        //Namespace Web serviceWeb;
 
-        HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;        
+        HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
+        wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
 
         public LoginService()
         {
@@ -25,12 +25,43 @@ namespace HLP.Entries.Services.Gerais
                 case StConnection.OnlineNetwork:
                     {
                         serviceNetwork = new Wcf.Entries.wcf_Login();
-                     //   serviceCamposBaseDadosNetwork = new Wcf.Entries.wcf_CamposBaseDados();
+                        serviceCamposBaseDadosNetwork = new Wcf.Entries.wcf_CamposBaseDados();
+                        #region Validação
+
+                        foreach (string str in xTabela.Split(';').ToArray())
+                        {
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosNetwork.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
+                        }
+
+                        #endregion
                     }
                     break;
                 case StConnection.OnlineWeb:
                     {
-                        serviceWeb = new wcf_Login.Iwcf_LoginClient(); 
+                        serviceWeb = new wcf_Login.Iwcf_LoginClient();
+                        serviceCamposBaseDadosWeb = new wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient();
+                        #region Validação
+
+                        foreach (string str in xTabela.Split(';').ToArray())
+                        {
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
+                        }
+
+                        #endregion
                     }
                     break;
                 case StConnection.Offline:
@@ -99,5 +130,26 @@ namespace HLP.Entries.Services.Gerais
                     }
             }
         }
+
+        public int ValidaAdministrador(string xID, string xSenha, int idEmpresa)
+        {
+            switch (Sistema.bOnline)
+            {
+                case StConnection.OnlineNetwork:
+                    {
+                        return this.serviceNetwork.ValidaAdministrador(xID: xID, xSenha: xSenha, idEmpresa: idEmpresa);
+                    }
+                case StConnection.OnlineWeb:
+                    {
+                        return this.serviceWeb.ValidaAdministrador(xID: xID, xSenha: xSenha, idEmpresa: idEmpresa);
+                    }
+                case StConnection.Offline:
+                default:
+                    {
+                        return 0;
+                    }
+            }
+        }
+
     }
 }

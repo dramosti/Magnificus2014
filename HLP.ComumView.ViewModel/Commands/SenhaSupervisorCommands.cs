@@ -1,4 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
+using HLP.ComumView.Services;
 using HLP.ComumView.ViewModel.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -13,15 +15,16 @@ namespace HLP.ComumView.ViewModel.Commands
     public class SenhaSupervisorCommands
     {
         SenhaSupervisorViewModel objViewModel;
+        LoginService objService;
 
         public SenhaSupervisorCommands(SenhaSupervisorViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
-            //if (loginFacade.loginClient == null)
-            //    loginFacade.loginClient
-            //        = new Facade.loginService.IserviceLoginClient();
+            objService = new LoginService();
             this.objViewModel.autorizarCommand = new RelayCommand(execute: execute => this.AutorizarExecute(o: execute),
                 canExecute: canExecute => this.AutorizarCanExecute(o: canExecute));
+            this.objViewModel.closeCommand = new RelayCommand(execute: e => this.CloseExecute(o: e),
+                canExecute: cE => true);
         }
 
         private void AutorizarExecute(object o)
@@ -32,20 +35,19 @@ namespace HLP.ComumView.ViewModel.Commands
             {
                 if (item.GetType() == typeof(PasswordBox))
                 {
-
-                    //if (loginFacade.loginClient.ValidaLogin(xId: this.objViewModel.currentModel.xId,
-                    //    xSenha: (item as PasswordBox).Password) < 1)
-                    //    this.objViewModel.error = "* Senha incorreta!";
-                    //else if (loginFacade.loginClient.ValidaAdministrador(xID: this.objViewModel.currentModel.xId, xSenha: (item as PasswordBox).Password,
-                    //    idEmpresa: CompanyData.idEmpresa) < 1)
-                    //{
-                    //    this.objViewModel.error = "* Usuário não é administrador!";
-                    //}
-                    //else
-                    //{
-                    //    (o as Window).DialogResult = true;
-                    //    (o as Window).Close();
-                    //}
+                    if (objService.ValidaLogin(xId: this.objViewModel.currentModel.xId,
+                        xSenha: (item as PasswordBox).Password) < 1)
+                        this.objViewModel.error = "* Senha incorreta!";
+                    else if (objService.ValidaAdministrador(xID: this.objViewModel.currentModel.xId, xSenha: (item as PasswordBox).Password,
+                        idEmpresa: CompanyData.idEmpresa) < 1)
+                    {
+                        this.objViewModel.error = "* Usuário não é administrador!";
+                    }
+                    else
+                    {
+                        (o as Window).DialogResult = true;
+                        (o as Window).Close();
+                    }
                 }
             }
 
@@ -55,6 +57,12 @@ namespace HLP.ComumView.ViewModel.Commands
         private bool AutorizarCanExecute(object o)
         {
             return true;
+        }
+
+        private void CloseExecute(object o)
+        {
+            (o as Window).DialogResult = false;
+            (o as Window).Close();
         }
     }
 }

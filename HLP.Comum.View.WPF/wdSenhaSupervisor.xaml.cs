@@ -20,6 +20,13 @@ namespace HLP.Comum.View.WPF
     /// </summary>
     public partial class wdSenhaSupervisor : Window
     {
+        public static bool WindowShowDialog()
+        {
+            wdSenhaSupervisor wd = new wdSenhaSupervisor();
+
+            return wd.ShowDialog() ?? false;
+        }
+
         public wdSenhaSupervisor()
         {
             InitializeComponent();
