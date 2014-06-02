@@ -19,7 +19,8 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="190" MinWidth="190"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="210" MinWidth="210
+                                      "></ColumnDefinition>
                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
@@ -74,17 +75,17 @@
                         <System:String>3-Via aéria</System:String>
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
-                <Components:HlpPesquisa
-                    Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-					Text="{Binding currentModel.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					
-					ToolTip="Indentificar o transportador para esse modo de entrega quando o Tipo de Serviço estiver preenchido com Diversos, Terrestre ou Via Aérea. " WidthLabel="0"
-                    FieldPesquisa="ID" TableView="vwTransportador" nameWindow="WinTransportadora">
-                    <Components:HlpPesquisa.Items>
+                <Components:CustomPesquisa
+                    Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3" stCompPosicao="last"
+					xIdPesquisa="{Binding currentModel.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					
+					ToolTip="Indentificar o transportador para esse modo de entrega quando o Tipo de Serviço estiver preenchido com Diversos, Terrestre ou Via Aérea. "
+                    FieldPesquisa="ID" TableView="vwTransportador" NameWindowCadastro="WinTransportadora">
+                    <Components:CustomPesquisa.Items>
                         <System:String>xNome</System:String>
                         <System:String>xCodigoAlternativo</System:String>
-                    </Components:HlpPesquisa.Items>
-                    <Components:HlpPesquisa.Style>
-                        <Style>
+                    </Components:CustomPesquisa.Items>
+                    <Components:CustomPesquisa.Style>
+                        <Style BasedOn="{StaticResource TextBox_PESQUISA}" TargetType="TextBox">
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding bIsEnabled}" Value="False">
                                     <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
@@ -94,8 +95,8 @@
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
-                    </Components:HlpPesquisa.Style>
-                </Components:HlpPesquisa>
+                    </Components:CustomPesquisa.Style>
+                </Components:CustomPesquisa>
 
             </Grid>
         </Expander>

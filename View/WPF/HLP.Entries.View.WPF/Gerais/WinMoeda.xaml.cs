@@ -32,6 +32,7 @@ namespace HLP.Entries.View.WPF.Gerais
             lMoedaPadrao = new ObservableCollection<padraoMoeda>
             {
 #region inclusão de itens
+                new padraoMoeda{xCodigo="	CODIGO	", nNumero=	000	,dCasasDecimais=	2	,xMoeda="	NOME DA MOEDA", xPais="	 NOME DO PAÍS	"},
                 new padraoMoeda{xCodigo="	AED	", nNumero=	784	,dCasasDecimais=	2	,xMoeda="	Dirham dos Emirados	", xPais="	 Emirados Árabes Unidos	"},
                 new padraoMoeda{xCodigo="	AFN	", nNumero=	971	,dCasasDecimais=	2	,xMoeda="	Afegane	", xPais="	 Afeganistão	"},
                 new padraoMoeda{xCodigo="	ALL	", nNumero=	8	,dCasasDecimais=	2	,xMoeda="	Lek	", xPais="	 Albânia	"},

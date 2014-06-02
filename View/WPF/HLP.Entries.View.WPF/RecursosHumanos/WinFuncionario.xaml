@@ -131,29 +131,29 @@
 								            IsEnabled="{Binding bIsEnabled}"
 								            ToolTip="Informe o nome do funcionário">
                                     </Components:CustomTextBox>
-                                    <Components:HlpPesquisa
+                                    <Components:CustomPesquisa 
                                             Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" Height="20" Margin="0,0,0,3"
-                                            nameWindow="WinCargo"
-								            Text="{Binding currentModel.idCargo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            NameWindowCadastro="WinCargo"
+								            xIdPesquisa="{Binding currentModel.idCargo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								            IsEnabled="{Binding bIsEnabled}"
-							                Field="idCargo" ToolTip="Informe o Cargo do funcionário" Table="Cargo" WidthLabel="0" TableView="vwCargo" FieldPesquisa="ID">
-                                        <Components:HlpPesquisa.Items>
+							                ToolTip="Informe o Cargo do funcionário" TableView="vwCargo" FieldPesquisa="ID">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xCargo</System:String>
                                             <System:String>xDescricao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
-                                    <Components:HlpPesquisa
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
+                                    <Components:CustomPesquisa
                                             Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="4" Height="20" Margin="0,0,0,3"
-								            nameWindow="WinDepartamento"
-								            Text="{Binding currentModel.idDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								            NameWindowCadastro="WinDepartamento"
+								            xIdPesquisa="{Binding currentModel.idDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								            IsEnabled="{Binding bIsEnabled}"
-								            Field="idDepartamento" ToolTip="Informar o Departamento do funcionário" Table="Departamento" WidthLabel="0" FieldPesquisa="ID" TableView="vwDepartamento">
-                                        <Components:HlpPesquisa.Items>
+								            ToolTip="Informar o Departamento do funcionário" TableView="vwDepartamento">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xDepartamento</System:String>
                                             <System:String>xDescricao</System:String>
                                             <System:String>xSetor</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
                                     <Components:HlpUserControlBtnImage  Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="8" Margin="0,0,0,3"
                                         IsEnabled="{Binding bIsEnabled}" 
                                         byteImage="{Binding currentModel.imgFoto, Mode=TwoWay}">
@@ -206,18 +206,18 @@
                                             <System:String>3-Representante</System:String>
                                         </Components:CustomComboBox.Items>
                                     </Components:CustomComboBox>
-                                    <Components:HlpPesquisa
+                                    <Components:CustomPesquisa
                                 Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
-								nameWindow="WinCalendario"
-								Text="{Binding currentModel.idCalendario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								NameWindowCadastro="WinCalendario"
+								xIdPesquisa="{Binding currentModel.idCalendario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Informe um tipo de Calendário para o funcionário." Table="Calendario" WidthLabel="0" FieldPesquisa="ID" TableView="vwCalendario"
+								ToolTip="Informe um tipo de Calendário para o funcionário." FieldPesquisa="ID" TableView="vwCalendario"
                                         >
-                                        <Components:HlpPesquisa.Items>
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xNome</System:String>
                                             <System:String>xDescricao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
                                 </Grid>
                             </Expander>
                             <Expander Grid.Row="1" IsExpanded="True" Header="Requisição de Compras" Style="{StaticResource ExpanderPadrao}">
@@ -246,30 +246,30 @@
 
                                     <!--Components-->
 
-                                    <Components:HlpPesquisa
+                                    <Components:CustomPesquisa
                                         Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
-								        nameWindow="WinSite"        
-								        Text="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								        NameWindowCadastro="WinSite"        
+								        xIdPesquisa="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								        IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Selecione um site. Quando um funcionário criar uma requisição de compra, o site será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra." 
-                                        Table="Site" WidthLabel="0" FieldPesquisa="ID" TableView="vwSite" Grid.ColumnSpan="2">
-                                        <Components:HlpPesquisa.Items>
+								        ToolTip="Selecione um site. Quando um funcionário criar uma requisição de compra, o site será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra." 
+                                        FieldPesquisa="ID" TableView="vwSite" Grid.ColumnSpan="2">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xSite</System:String>
                                             <System:String>xDescricao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
-                                    <Components:HlpPesquisa
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
+                                    <Components:CustomPesquisa
                                 Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
-								nameWindow="WinDeposito"
-								Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								NameWindowCadastro="WinDeposito"
+								xIdPesquisa="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Selecione um depósito. Quando um funcionário criar uma requisição de compra, o depósito será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra" Table="Deposito" 
-                                        WidthLabel="0" FieldPesquisa="ID" TableView="vwDeposito" Grid.ColumnSpan="2">
-                                        <Components:HlpPesquisa.Items>
+								ToolTip="Selecione um depósito. Quando um funcionário criar uma requisição de compra, o depósito será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra" 
+                                FieldPesquisa="ID" TableView="vwDeposito" Grid.ColumnSpan="2">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xDeposito</System:String>
                                             <System:String>xDescricao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
                                     <Components:CustomTextBox
                                 Grid.Column="2" Grid.Row="3"
                                 Text="{Binding currentModel.xInformacaoAtencao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -389,20 +389,20 @@
 									    IsEnabled="{Binding bIsEnabled}"
 									    ToolTip="Informar o nome dos filhos do funcionário, quando houver.">
                                     </Components:CustomTextBox>
-                                    <Components:HlpPesquisa
+                                    <Components:CustomPesquisa
                                         Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="3" Height="20" Margin="0,0,0,3"
-									    nameWindow="WinContaBancaria"
-									    Text="{Binding currentModel.idContaBancaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									    NameWindowCadastro="WinContaBancaria"
+									    xIdPesquisa="{Binding currentModel.idContaBancaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									    IsEnabled="{Binding bIsEnabled}"
 									    ToolTip="Informar a conta bancária do funcionário para eventual pagamento ou recebidos."
-                                        Table="Funcionario" WidthLabel="0" FieldPesquisa="ID" TableView="vwContaBancaria">
-                                        <Components:HlpPesquisa.Items>
+                                        FieldPesquisa="ID" TableView="vwContaBancaria">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xNumeroConta</System:String>
                                             <System:String>Agencia</System:String>
                                             <System:String>Banco</System:String>
                                             <System:String>stConta</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
                                     <Components:CustomComboBox 
                                         Grid.Column="2" Grid.Row="9"
                                         IsEnabled="{Binding bIsEnabled}"
@@ -546,17 +546,17 @@
                                             </Style>
                                         </Components:CustomTextBox.Style>
                                     </Components:CustomTextBox>
-                                    <Components:HlpPesquisa Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="6" Height="20" Margin="0,0,0,3"
-									    nameWindow="WinFuncionario"
-									    Text="{Binding currentModel.idResponsavel, Mode=TwoWay, TargetNullValue={x:Null}, FallbackValue={x:Null},
+                                    <Components:CustomPesquisa Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="6" Height="20" Margin="0,0,0,3"
+									    NameWindowCadastro="WinFuncionario"
+									    xIdPesquisa="{Binding currentModel.idResponsavel, Mode=TwoWay, TargetNullValue={x:Null}, FallbackValue={x:Null},
                                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									    IsEnabled="{Binding bIsEnabled}"	
-									    ToolTip="Informar o responsável pelo funcionário na empresa" Table="Funcionario" WidthLabel="0" FieldPesquisa="ID" TableView="vwFuncionario">
-                                        <Components:HlpPesquisa.Items>
+									    ToolTip="Informar o responsável pelo funcionário na empresa" FieldPesquisa="ID" TableView="vwFuncionario">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xCodigoAlternativo</System:String>
                                             <System:String>xNome</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
                                 </Grid>
                             </Expander>
                             <Expander Visibility="Hidden" Grid.Row="1" IsExpanded="True" Header="Quantidade de Horas de Trabalho" Style="{StaticResource ExpanderPadrao}">
@@ -654,7 +654,7 @@
                     </Grid>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Informação de Contato">
+            <TabItem Header="Informação de Contato" Margin="-4,0,4,0">
                 <AdornerDecorator>
                     <Grid>
                         <Grid.ColumnDefinitions>

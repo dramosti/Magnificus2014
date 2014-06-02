@@ -71,9 +71,9 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="220" MinWidth="220"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="240" MinWidth="240"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="50" MinWidth="50"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
@@ -257,7 +257,7 @@
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
                 <Components:CustomCheckBox
-                    Grid.Column="2" Grid.Row="10"                     									 
+                    Grid.Column="2" Grid.Row="10" stCompPosicao="last"                  									 
 				    IsChecked="{Binding currentModel.stPrimeiroPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Informar se para essa condição a primeira condição é aVista, se será pago no ato da venda.">

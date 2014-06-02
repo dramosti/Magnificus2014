@@ -71,7 +71,7 @@
 					ToolTip="Símbolo da moeda selecionada são usados frequentemente nos relatórios.">
                 </Components:CustomTextBox>
                 <Components:CustomComboBox 
-                    IsEnabled="{Binding bIsEnabled}"                    
+                    IsEnabled="{Binding bIsEnabled}" stCompPosicao="last"  
                     x:Name="cbxMoedaPadrao" Height="24" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3"
                     ItemsSource="{Binding ElementName=wdMoeda, Path=lMoedaPadrao}" >
                     <Components:CustomComboBox.SelectedIndex>

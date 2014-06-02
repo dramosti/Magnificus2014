@@ -67,13 +67,16 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.xTelefone)
                                  .DoNotMap(i => i.idRamoAtividade)
                                  .DoNotMap(i => i.idCanalVenda)
-                                .DoNotMap(i => i.bListaPrecoItemHabil)
                                 .DoNotMap(i => i.bCriado)
                                 .DoNotMap(i => i.bEnviado)
                                 .DoNotMap(i => i.bCancelado)
                                 .DoNotMap(i => i.bPerdido)
                                 .DoNotMap(i => i.bConfirmado)
                                 .DoNotMap(i => i.bTodos)
+                                .DoNotMap(i => i.objCliente)
+                                .DoNotMap(i => i.objFuncionario)
+                                .DoNotMap(i => i.bIsEnabledClListaPreco)
+                                .DoNotMap(i => i.objListaPreco)
                                  .Build());
             }
 
@@ -95,13 +98,14 @@ namespace HLP.Sales.Model.Repository.Implementation
             .DoNotMap(i => i.xTelefone)
             .DoNotMap(i => i.idRamoAtividade)
             .DoNotMap(i => i.idCanalVenda)
-            .DoNotMap(i => i.bListaPrecoItemHabil)
+            .DoNotMap(i => i.bIsEnabledClListaPreco)
                                 .DoNotMap(i => i.bCriado)
                                 .DoNotMap(i => i.bEnviado)
                                 .DoNotMap(i => i.bCancelado)
                                 .DoNotMap(i => i.bPerdido)
                                 .DoNotMap(i => i.bConfirmado)
                                 .DoNotMap(i => i.bTodos)
+                                .DoNotMap(i => i.objListaPreco)
             .Build());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
@@ -121,13 +125,14 @@ namespace HLP.Sales.Model.Repository.Implementation
             .DoNotMap(i => i.xTelefone)
             .DoNotMap(i => i.idRamoAtividade)
             .DoNotMap(i => i.idCanalVenda)
-            .DoNotMap(i => i.bListaPrecoItemHabil)
             .DoNotMap(i => i.bCriado)
+            .DoNotMap(i => i.bIsEnabledClListaPreco)
                                 .DoNotMap(i => i.bEnviado)
                                 .DoNotMap(i => i.bCancelado)
                                 .DoNotMap(i => i.bPerdido)
                                 .DoNotMap(i => i.bConfirmado)
                                 .DoNotMap(i => i.bTodos)
+                                .DoNotMap(i => i.objListaPreco)
             .Build());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
@@ -145,13 +150,14 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.xUf)
                                 .DoNotMap(i => i.xTelefone)
                                 .DoNotMap(i => i.idRamoAtividade)
-                                .DoNotMap(i => i.bListaPrecoItemHabil)
                                 .DoNotMap(i => i.bCriado)
                                 .DoNotMap(i => i.bEnviado)
                                 .DoNotMap(i => i.bCancelado)
                                 .DoNotMap(i => i.bPerdido)
                                 .DoNotMap(i => i.bConfirmado)
                                 .DoNotMap(i => i.bTodos)
+                                .DoNotMap(i => i.bIsEnabledClListaPreco)
+                                .DoNotMap(i => i.objListaPreco)
                                 .Build());
             }
             return regAllOrcamento_ideAccessor.Execute().ToList();

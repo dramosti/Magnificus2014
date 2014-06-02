@@ -59,7 +59,7 @@
 					ToolTip="Descrição mais ampla do Ramo de Atividade ">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="4"
+                    Grid.Column="2" Grid.Row="4" stCompPosicao="last"
                     Text="{Binding currentModel.xCnae, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Informar a Classificação Nacional de Atividades Econômicas">

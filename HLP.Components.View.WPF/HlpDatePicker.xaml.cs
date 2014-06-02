@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Base.EnumsBases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -74,6 +75,13 @@ namespace HLP.Components.View.WPF
         public static readonly DependencyProperty HelpProperty =
             DependencyProperty.Register("Help", typeof(string), typeof(HlpDatePicker), new PropertyMetadata(string.Empty));
 
+        private statusComponentePosicao _stCompPosicao;
+
+        public statusComponentePosicao stCompPosicao
+        {
+            get { return _stCompPosicao; }
+            set { _stCompPosicao = value; }
+        }
 
         private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {

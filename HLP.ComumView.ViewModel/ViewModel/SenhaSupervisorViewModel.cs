@@ -14,6 +14,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
     public class SenhaSupervisorViewModel : ViewModelBase<loginModel>
     {
         public ICommand autorizarCommand { get; set; }
+        public ICommand closeCommand { get; set; }
 
         public SenhaSupervisorViewModel()
         {
@@ -30,7 +31,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
             set
             {
                 _error = value;
-                base.NotifyPropertyChanged(propertyName: "status");
+                base.NotifyPropertyChanged(propertyName: "error");
             }
         }
 

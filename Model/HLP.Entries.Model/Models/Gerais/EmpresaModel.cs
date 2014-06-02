@@ -1,6 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
-using HLP.Comum.Resources.RecursosBases;
 using HLP.Entries.Model.Models.Parametros;
 using System;
 using System.Collections.Generic;

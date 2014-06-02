@@ -325,10 +325,6 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Comum\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
-      <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
-      <Name>HLP.Comum.Resources</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\HLP.Base\HLP.Base.csproj">
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>

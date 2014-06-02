@@ -70,8 +70,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Site_Endereco]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idEndereco"),
                    MapBuilder<Site_enderecoModel>.MapAllProperties()
-                   .DoNotMap(i => i.enumTipoEndereco)
-                   .DoNotMap(i => i.enumTipoLogradouro)
                    .DoNotMap(i => i.status).Build());
             }
             return regAcessor.Execute(idEndereco).FirstOrDefault();
@@ -82,8 +80,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             DataAccessor<Site_enderecoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Site_Endereco WHERE idSite = @idSite", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idSite"),
             MapBuilder<Site_enderecoModel>.MapAllProperties()
-            .DoNotMap(i => i.enumTipoEndereco)
-            .DoNotMap(i => i.enumTipoLogradouro)
             .DoNotMap(i => i.status).Build());
 
             return reg.Execute(idSite).ToList();

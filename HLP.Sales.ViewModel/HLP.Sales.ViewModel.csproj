@@ -69,6 +69,14 @@
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.Components.Model\HLP.Components.Model.csproj">
+      <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
+      <Name>HLP.Components.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Components.Services\HLP.Components.Services.csproj">
+      <Project>{07b054e3-2fcc-4927-9e61-993983d02edf}</Project>
+      <Name>HLP.Components.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Entries.Services\HLP.Entries.Services.csproj">
       <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>
       <Name>HLP.Entries.Services</Name>

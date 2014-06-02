@@ -2193,7 +2193,7 @@
                                         <Components:HlpPesquisa 
                                             Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="13" Grid.ColumnSpan="3"                                          
                                             nameWindow="WinModoEntrega"
-			                                Text="{Binding currentModel.idModosentrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+			                                Text="{Binding currentModel.idModosEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 			                                IsEnabled="{Binding bIsEnabled}"
 			                                TableView="vwModoEntrega" FieldPesquisa="ID" WidthLabel="0">
                                             <Components:HlpPesquisa.Items>

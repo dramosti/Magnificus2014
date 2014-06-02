@@ -47,7 +47,7 @@
                     Text="{Binding currentModel.xCargo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" stCompPosicao="last"
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, 
                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     IsEnabled="{Binding bIsEnabled}">

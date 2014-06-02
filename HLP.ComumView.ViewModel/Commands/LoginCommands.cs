@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using HLP.Entries.Services.Gerais;
+using HLP.ComumView.Services;
 
 namespace HLP.ComumView.ViewModel.Commands
 {

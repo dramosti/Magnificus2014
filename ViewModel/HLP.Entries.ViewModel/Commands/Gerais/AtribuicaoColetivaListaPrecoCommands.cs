@@ -1,5 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
-using HLP.Comum.Resources.Util;
+using HLP.Base.Static;
 using HLP.Entries.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
@@ -43,10 +43,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
                         if (r != null)
                         {
-                            cell = StaticUtil.GetCell((DataGrid)o, r, 0);
+                            cell = Util.GetCell((DataGrid)o, r, 0);
                             if ((bool)((CheckBox)((DataGridCell)cell).Content).IsChecked)
                             {
-                                cell = StaticUtil.GetCell((DataGrid)o, r, 1);
+                                cell = Util.GetCell((DataGrid)o, r, 1);
                                 //id = Convert.ToInt32(value: ((DataGridCell)cell).Content);
 
                                 var v = ((ComboBox)((DataGridCell)cell).Content).SelectedValue;

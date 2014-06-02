@@ -97,7 +97,7 @@
 				Foreground="White"
 				Width="150"
 				x:Name="exLogin"
-				FlowDirection="RightToLeft"
+                FlowDirection="RightToLeft"
 				ContextMenuService.Placement="Bottom"
 				IsExpanded="False"
 				Header="{Binding currentFuncionario.xID}"
@@ -105,94 +105,45 @@
                 Style="{StaticResource ExpanderStyle1}"
 				Expanded="exLogin_Expanded">
                 <Expander.ContextMenu>
-                    <ContextMenu  x:Name="ctxLogin" Focusable="False">
+                    <ContextMenu  x:Name="ctxLogin" Focusable="False" BorderBrush="{StaticResource BlueStandard}" BorderThickness="2" Background="{StaticResource BlueStandard}">
                         <MenuItem
-                            Focusable="False"
-							Style="{StaticResource MenuItemExpander}"                            
-							Height="100">
+                            Focusable="False" Width="230" Height="150" BorderThickness="0">
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Grid
-                                        Focusable="False"
-                                        x:Name="gridLogin"
-                                        Background="{StaticResource colorItemsExpander}">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="40"></RowDefinition>
-                                            <RowDefinition Height="40"></RowDefinition>
-                                        </Grid.RowDefinitions>
+                                    <Grid Width="230" Height="150">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="150"></ColumnDefinition>
+                                            <ColumnDefinition Width="5"></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="5"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <Image
-                                            Grid.RowSpan="2"
-                                            Grid.Column="1"
-                                            Grid.Row="0"
-											Height="50"
-                                            >
-                                            <Image.Source>
-                                                <BitmapImage
-													UriSource="pack://application:,,,/HLP.Comum.Resources;component/Images/UserSilhouette.png"/>
-                                            </Image.Source>
-                                        </Image>
-                                        <TextBlock
-                                            x:Name="funcName"
-                                            
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Center"
-                                            TextWrapping="Wrap"
-                                            Grid.Column="0"
-                                            Grid.Row="0"                                            
-                                            Text="{Binding currentFuncionario.xNome, Converter={StaticResource TextFormatConv}, ConverterParameter=Upper}"
-											></TextBlock>
-                                        <TextBlock
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Center"
-                                            TextWrapping="Wrap"
-                                            Grid.Column="0"
-                                            Grid.Row="1"                                            
-                                            Text="{Binding currentEmpresa.xNome, Converter={StaticResource TextFormatConv}, ConverterParameter=Upper}"
-											></TextBlock>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="5"></RowDefinition>
+                                            <RowDefinition Height="20"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition Height="5"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Border Background="White" Grid.ColumnSpan="10" Grid.RowSpan="10"/>
+                                        <TextBlock FontFamily="Segoe Ui Light" Grid.Row="1" Grid.ColumnSpan="2" Foreground="#FF545454" Text="{Binding currentEmpresa.xNome, Converter={StaticResource TextFormatConv}, ConverterParameter=Upper}" HorizontalAlignment="Center"></TextBlock>
+                                        <Grid Grid.Column="1" Grid.Row="2">
+                                            <Grid.RowDefinitions>                                                
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>                                            
+                                            <Border Grid.Row="2" Background="#FF8C8C8C"></Border>
+                                            <Path x:Name="Path" Stretch="Fill" Grid.Row="2" Height="100" Width="50" VerticalAlignment="Bottom" StrokeLineJoin="Round" Stroke="#FFFFFFFF" Fill="White" Data="F1 M 15.0625,0.5C 20.6314,0.5 25.1875,3.99362 25.1875,9.5625C 25.1875,13.7444 23.2976,20.2496 19.6042,23.1875C 26.3465,26.8794 28.8333,38.8024 28.8333,47.5C 28.8333,57.9014 25.4375,56.8958 14.3542,56.8958C 3.77083,56.8958 0.5,58.4014 0.5,48C 0.5,39.1193 3.59406,26.4522 10.4792,22.9375C 7.02175,19.9166 5.33333,14.0143 5.33333,9.9375C 5.33333,4.36862 9.49362,0.5 15.0625,0.5 Z " Margin="15,0,15,-3.33"/>
+                                        </Grid>
+                                        <Grid Grid.Column="2" Grid.Row="2">
+                                            <Grid.RowDefinitions>                                                
+                                                <RowDefinition Height="Auto" MaxHeight="33"></RowDefinition>
+                                                <RowDefinition Height="Auto" MaxHeight="33"></RowDefinition>
+                                                <RowDefinition Height="Auto" MaxHeight="33"></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Button Grid.Row="0" Height="30" Margin="0,0,0,3" Style="{StaticResource Button_CONTEXTMENU}" Click="trocarUsuario_Click" x:Name="trocarUsuario" Content="Trocar Usuário"/>
+                                            <Button Grid.Row="1" Height="30" Margin="0,0,0,3" Style="{StaticResource Button_CONTEXTMENU}" Click="trocarEmpresa_Click" x:Name="trocarEmpresa" Content="Trocar Empresa"/>
+                                            <Button Grid.Row="2" Height="30" Margin="0,0,0,3" Style="{StaticResource Button_CONTEXTMENU}" Content="Sair" Command="{Binding fecharCommand}"/>
+                                        </Grid>
                                     </Grid>
-                                </ControlTemplate>
-                            </MenuItem.Template>
-                        </MenuItem>
-                        <MenuItem
-                            Background="{StaticResource colorItemsExpander}">
-                            <MenuItem.Template>
-                                <ControlTemplate>
-                                    <DockPanel LastChildFill="True"
-                                               Background="{StaticResource colorItemsExpander}">
-                                        <Separator></Separator>
-                                    </DockPanel>
-                                </ControlTemplate>
-                            </MenuItem.Template>
-                        </MenuItem>
-                        <MenuItem
-                            >
-                            <MenuItem.Template>
-                                <ControlTemplate>
-                                    <Button 
-										Style="{StaticResource ButtonStyleExpander}"
-										Click="trocarUsuario_Click" x:Name="trocarUsuario" Content="Trocar Usuário"/>
-                                </ControlTemplate>
-                            </MenuItem.Template>
-                        </MenuItem>
-                        <MenuItem>
-                            <MenuItem.Template>
-                                <ControlTemplate>
-                                    <Button 
-										Style="{StaticResource ButtonStyleExpander}"
-										Click="trocarEmpresa_Click" x:Name="trocarEmpresa" Content="Trocar Empresa"/>
-                                </ControlTemplate>
-                            </MenuItem.Template>
-                        </MenuItem>
-                        <MenuItem>
-                            <MenuItem.Template>
-                                <ControlTemplate>
-                                    <Button 
-										Style="{StaticResource ButtonStyleExpander}"
-										Content="Sair" Command="{Binding fecharCommand}"/>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>

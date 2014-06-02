@@ -1,6 +1,9 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Components.Model.Models;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Model.Models.Financeiro;
+using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.Commands.Comercio;
@@ -82,16 +85,6 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             this.Botoes.Children.Add(element: btnGerarVersao);
         }
 
-        public bool bListaPrecoHabilitado
-        {
-            get
-            {
-                if (currentModel != null)
-                    return !this.currentModel.bListaPrecoItemHabil;
-                return false;
-            }
-        }
-
         private Orcamento_ItemModel _currentItem;
 
         public Orcamento_ItemModel currentItem
@@ -121,6 +114,13 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             }
         }
 
+        #region GetObjectsInModel
+
+        public EmpresaModel GetEmpresa(int idEmpresa)
+        {
+            return comm.GetEmpresa(idEmpresa: idEmpresa);
+        }
+
         public Cliente_fornecedorModel GetCliente(int idCliente)
         {
             return comm.GetCliente(idCliente: idCliente);
@@ -131,10 +131,52 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             return comm.GetFuncionario(idFuncionario: idFuncionario);
         }
 
-        public List<Tipo_documento_oper_validaModel> GetOperacoesValidas(int idTipoDocumento)
+        public List<modelToComboBox> GetOperacoesValidas(int idTipoDocumento)
         {
             return comm.GetOperacoesValidas(idTipoDocumento: idTipoDocumento);
         }
+
+        public Familia_produtoModel GetFamiliaProduto(int idFamiliaProduto)
+        {
+            return comm.GetFamiliaProduto(idFamiliaProduto: idFamiliaProduto);
+        }
+
+        public ProdutoModel GetProduto(int idProduto)
+        {
+            return comm.GetProduto(idProduto: idProduto);
+        }
+
+        public List<modelToComboBox> GetListUnidadeMedida(int idProduto)
+        {
+            return comm.GetListUnidadeMedida(idProduto: idProduto);
+        }
+
+        public Lista_Preco_PaiModel GetListaPreco(int idListaPreco)
+        {
+            return comm.GetListaPreco(idListaPreco: idListaPreco);
+        }
+
+        public Descontos_AvistaModel GetDesconto(int idDesconto)
+        {
+            return comm.GetDesconto(idDesconto: idDesconto);
+        }
+
+        public Condicao_pagamentoModel GetCondicaoPagamento(int idCondicaoPagamento)
+        {
+            return comm.GetCondicaoPagamento(idCondicaoPagamento: idCondicaoPagamento);
+        }
+
+        public CidadeModel GetCidade(int idCidade)
+        {
+            return comm.GetCidade(idCidade: idCidade);
+        }
+
+        public Tipo_operacaoModel GetTipoOperacao(int idTipoOperacao)
+        {
+            return comm.GetTipoOperacao(idTipoOperacao: idTipoOperacao);
+        }
+
+        #endregion
 
         #region Métodos Públicos
         public void AtualizarTotais()
