@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Calendario.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Calendario.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+  <xs:complexType name="CalendarioModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dtFinal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dtInicial" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="idCalendario" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idCalendarioBase" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+          <xs:element minOccurs="0" name="lCalendario_DetalheModel" nillable="true" type="tns:ArrayOfCalendario_DetalheModel" />
+          <xs:element minOccurs="0" name="lCalendario_IntervaloModel" nillable="true" type="tns:ArrayOfCalendario_IntervalosModel" />
+          <xs:element minOccurs="0" name="stDomingo" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stSabado" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="tHoraFinalDom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tHoraFinalSab" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tHoraFinalSegQui" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tHoraFinalSex" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tHoraInicialDom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tHoraInicialSab" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tHoraInicialSegQui" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tHoraInicialSex" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="xDescricao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xDiasSemProgramacao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNome" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CalendarioModel" nillable="true" type="tns:CalendarioModel" />
+  <xs:complexType name="ArrayOfCalendario_DetalheModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Calendario_DetalheModel" nillable="true" type="tns:Calendario_DetalheModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCalendario_DetalheModel" nillable="true" type="tns:ArrayOfCalendario_DetalheModel" />
+  <xs:complexType name="Calendario_DetalheModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q2:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dCalendario" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="idCalendario" type="xs:int" />
+          <xs:element minOccurs="0" name="idCalendarioDetalhe" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="tHoraInicio" type="ser:duration" />
+          <xs:element minOccurs="0" name="tHoraTermino" type="ser:duration" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Calendario_DetalheModel" nillable="true" type="tns:Calendario_DetalheModel" />
+  <xs:complexType name="ArrayOfCalendario_IntervalosModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Calendario_IntervalosModel" nillable="true" type="tns:Calendario_IntervalosModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCalendario_IntervalosModel" nillable="true" type="tns:ArrayOfCalendario_IntervalosModel" />
+  <xs:complexType name="Calendario_IntervalosModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q3:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idCalendario" type="xs:int" />
+          <xs:element minOccurs="0" name="idCalendarioIntervalo" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="stTipoIntervalo" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="tFinal" type="ser:duration" />
+          <xs:element minOccurs="0" name="tInicio" type="ser:duration" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Calendario_IntervalosModel" nillable="true" type="tns:Calendario_IntervalosModel" />
+</xs:schema>
