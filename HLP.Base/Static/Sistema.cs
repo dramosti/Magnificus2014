@@ -229,7 +229,7 @@ namespace HLP.Base.Static
 
             try
             {
-                lBindingsToAdd = lBindingsToAdd.Distinct().ToList();
+                    lBindingsToAdd = lBindingsToAdd.Distinct().ToList();
                 foreach (BasicHttpBindingElement i in lBindingsToAdd.Distinct())
                 {
                     serviceModeGroupLocal.Bindings.BasicHttpBinding.Bindings.Add(element:

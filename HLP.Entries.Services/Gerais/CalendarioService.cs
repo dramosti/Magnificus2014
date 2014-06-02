@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Base.Static;
 using HLP.Base.ClassesBases;
+using System.Configuration;
+using System.ServiceModel.Configuration;
 
 namespace HLP.Entries.Services.Gerais
 {
@@ -15,7 +17,7 @@ namespace HLP.Entries.Services.Gerais
         const string xTabela = "Calendario";
 
         Wcf.Entries.wcf_Calendario serviceNetwork;
-        wcf_Calendario.Iwcf_CalendarioClient serviceWeb;
+        wcf_Calendario.Iwcf_CalendarioClient serviceWeb;        
 
         HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
         wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
@@ -46,8 +48,14 @@ namespace HLP.Entries.Services.Gerais
                     break;
                 case StConnection.OnlineWeb:
                     {
-                        serviceWeb = new wcf_Calendario.Iwcf_CalendarioClient();
+                        Configuration localConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                        string nameBinding = string.Empty;
+
+                        var b = ((localConfig.SectionGroups[9].Sections[10] as BindingsSection).BindingCollections[0] as BasicHttpBindingCollectionElement).
+                            ConfiguredBindings.FirstOrDefault(i => i.Name == "BasicHttpBinding_Iwcf_Calendario");
+
                         serviceCamposBaseDadosWeb = new wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient();
+                        serviceWeb = new wcf_Calendario.Iwcf_CalendarioClient();                        
 
                         #region Validação
 

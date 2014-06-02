@@ -225,6 +225,9 @@
                                 </ContextMenu>
                             </StatusBarItem.ContextMenu>                           
                         </StatusBarItem>
+                        <StatusBarItem Grid.Column="3">
+                            <Button Click="Button_Click">Teste</Button>
+                        </StatusBarItem>
                     </StatusBar>
 
                     <Grid Focusable="False" Background="White">

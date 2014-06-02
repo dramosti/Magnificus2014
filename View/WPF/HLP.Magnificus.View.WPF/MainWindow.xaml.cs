@@ -16,6 +16,8 @@ using HLP.Entries.View.WPF.Gerais;
 using HLP.Base.Modules;
 using HLP.Base.Static;
 using HLP.ComumView.ViewModel.ViewModel;
+using System.Configuration;
+using System.ServiceModel.Configuration;
 
 namespace HLP.Magnificus.View.WPF
 {
@@ -34,8 +36,8 @@ namespace HLP.Magnificus.View.WPF
                 this._viewModel.CarregaMenu(m: this.menuPrincipal);
                 this._viewModel.tabWindows = this.tabControlItens;
 
-               
-               
+
+
 
 
             }
@@ -87,6 +89,10 @@ namespace HLP.Magnificus.View.WPF
         private void manWin_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             this._viewModel.heightWindow = this.dockPrinc.ActualHeight - this.statusBarPrinc.ActualHeight;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {            
         }
     }
 }
