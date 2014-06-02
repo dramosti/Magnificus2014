@@ -31,7 +31,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
             set
             {
                 _error = value;
-                base.NotifyPropertyChanged(propertyName: "status");
+                base.NotifyPropertyChanged(propertyName: "error");
             }
         }
 

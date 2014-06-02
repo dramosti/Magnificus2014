@@ -742,11 +742,13 @@
 										Header="Vl.Item" Width="100"/>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
+                                        IsReadOnly="True"
 										Binding="{Binding Path=vTotalSemDescontoItem, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Total Item Origem" Width="125"/>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
+                                        IsReadOnly="True"
 										Binding="{Binding Path=vTotalItem, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Total Item" Width="100"/>

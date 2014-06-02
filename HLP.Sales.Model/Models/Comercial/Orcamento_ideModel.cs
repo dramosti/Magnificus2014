@@ -20,6 +20,7 @@ using HLP.Entries.Model.Models.Comercial;
 using System.Reflection;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Model.Models.Financeiro;
+using HLP.Entries.Model.Models.Fiscal;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
@@ -52,6 +53,57 @@ namespace HLP.Sales.Model.Models.Comercial
                 {
                     this.idFuncionarioRepresentante = this.objFuncionario.idResponsavel ?? 0;
                 }
+
+                MethodInfo miGetEmpresa = w.DataContext.GetType().GetMethod(name: "GetEmpresa");
+
+                this.objEmpresa = miGetEmpresa.Invoke(obj: w.DataContext, parameters: new object[] { CompanyData.idEmpresa }) as EmpresaModel;
+
+
+                if (this.GetOperationModel() == OperationModel.updating)
+                {
+                    //Criei esta validação para facilitar em todas as partes do código que precise ser validado se é venda no estado ou não. Valor será setado na variável 'this.VendaNoEstado'
+                    #region Venda no Estado?
+
+
+                    EnderecoModel objEnderecoEmpresa = this.objEmpresa.lEmpresa_endereco.FirstOrDefault(i => i.stPrincipal == ((byte)1));
+
+                    if (objEnderecoEmpresa == null)
+                        objEnderecoEmpresa = this.objEmpresa.lEmpresa_endereco.FirstOrDefault();
+
+                    int idUfEnderecoEmpresa = 0;
+
+                    MethodInfo miGetCidade = w.DataContext.GetType().GetMethod(name: "GetCidade");
+                    CidadeModel objCidade = null;
+
+                    if (objEnderecoEmpresa != null)
+                    {
+                        objCidade =
+                            miGetCidade.Invoke(obj: w.DataContext, parameters: new object[] { objEnderecoEmpresa.idCidade }) as CidadeModel;
+
+                        if (objCidade != null)
+                            idUfEnderecoEmpresa = objCidade.idUF;
+                    }
+
+                    EnderecoModel objEnderecoCliente = this.objCliente.lCliente_fornecedor_Endereco.FirstOrDefault(i => i.stPrincipal == ((byte)1));
+
+                    int idUfEnderecoCliente = 0;
+
+                    if (objEnderecoCliente != null)
+                        objEnderecoCliente = this.objCliente.lCliente_fornecedor_Endereco.FirstOrDefault();
+
+                    if (objEnderecoCliente != null)
+                    {
+                        objCidade =
+                            miGetCidade.Invoke(obj: w.DataContext, parameters: new object[] { objEnderecoCliente.idCidade }) as CidadeModel;
+
+                        if (objCidade != null)
+                            idUfEnderecoCliente = objCidade.idUF;
+                    }
+
+                    this.VendaNoEstado = idUfEnderecoCliente == idUfEnderecoEmpresa;
+
+                    #endregion
+                }
             }
             catch (Exception)
             {
@@ -59,6 +111,12 @@ namespace HLP.Sales.Model.Models.Comercial
                 throw;
             }
         }
+
+        #region Propriedades para Regras de Negócio
+
+        public bool VendaNoEstado { get; set; }
+
+        #endregion
 
         #region Propriedades apenas para visualização na tela
 
@@ -273,6 +331,15 @@ namespace HLP.Sales.Model.Models.Comercial
 
         #region Models Relacionadas a Orçamento
 
+        private EmpresaModel _objEmpresa;
+
+        public EmpresaModel objEmpresa
+        {
+            get { return _objEmpresa; }
+            set { _objEmpresa = value; }
+        }
+
+
         private Cliente_fornecedorModel _objCliente;
 
         public Cliente_fornecedorModel objCliente
@@ -288,6 +355,15 @@ namespace HLP.Sales.Model.Models.Comercial
             get { return _objFuncionario; }
             set { _objFuncionario = value; }
         }
+
+        private FuncionarioModel _objFuncionarioRepresentante;
+
+        public FuncionarioModel objFuncionarioRepresentante
+        {
+            get { return _objFuncionarioRepresentante; }
+            set { _objFuncionarioRepresentante = value; }
+        }
+
 
         private Lista_Preco_PaiModel _objListaPreco;
 
@@ -305,6 +381,13 @@ namespace HLP.Sales.Model.Models.Comercial
             set { _objDesconto = value; }
         }
 
+        private Condicao_pagamentoModel _objCondicaoPagamento;
+
+        public Condicao_pagamentoModel objCondicaoPagamento
+        {
+            get { return _objCondicaoPagamento; }
+            set { _objCondicaoPagamento = value; }
+        }
 
         #endregion
 
@@ -631,6 +714,15 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _idCondicaoPagamento = value;
+
+                Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
+
+                MethodInfo mi = w.DataContext.GetType().GetMethod(name: "GetCondicaoPagamento");
+
+                object retorno = mi.Invoke(obj: w.DataContext, parameters: new object[] { value });
+
+                this.objCondicaoPagamento = retorno as Condicao_pagamentoModel;
+
                 base.NotifyPropertyChanged(propertyName: "idCondicaoPagamento");
             }
         }
@@ -763,6 +855,13 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _idFuncionarioRepresentante = value;
+
+                Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
+
+                MethodInfo mi = w.DataContext.GetType().GetMethod(name: "GetFuncionario");
+
+                this.objFuncionarioRepresentante = mi.Invoke(obj: w.DataContext, parameters: new object[] { value }) as FuncionarioModel;
+
                 base.NotifyPropertyChanged(propertyName: "idFuncionarioRepresentante");
             }
         }
@@ -1005,6 +1104,7 @@ namespace HLP.Sales.Model.Models.Comercial
     {
         Familia_produtoModel objFamiliaProduto;
         ProdutoModel objProduto;
+        Tipo_operacaoModel objTipoOperacao;
 
         public Orcamento_ItemModel()
             : base(xTabela: "Orcamento_Item")
@@ -1024,8 +1124,8 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 if (objDataContext != null)
                 {
-                    object currentModel = objDataContext.GetType().GetProperty(name: "currentModel").GetValue(
-                        obj: objDataContext);
+                    Orcamento_ideModel currentModel = objDataContext.GetType().GetProperty(name: "currentModel").GetValue(
+                        obj: objDataContext) as Orcamento_ideModel;
 
                     if (currentModel != null)
                     {
@@ -1043,6 +1143,8 @@ namespace HLP.Sales.Model.Models.Comercial
 
                             if ((currentModel as Orcamento_ideModel).objDesconto != null)
                                 this.pDesconto = (currentModel as Orcamento_ideModel).objDesconto.pDesconto ?? 0;
+
+                            this.idFuncionarioRepresentante = (currentModel as Orcamento_ideModel).idFuncionarioRepresentante;
                         }
 
                         MethodInfo mi = w.DataContext.GetType().GetMethod(name: "GetOperacoesValidas");
@@ -1113,7 +1215,6 @@ namespace HLP.Sales.Model.Models.Comercial
 
                                         if (!b)
                                             return false;
-                                        //TODO: Continuar deste ponto
                                         //TODO: chamar tela de aprovação de gerente
                                     }
                                 }
@@ -1148,6 +1249,35 @@ namespace HLP.Sales.Model.Models.Comercial
             }
 
             return true;
+        }
+
+        private void SetTotalItem()
+        {
+            Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
+
+            if (w != null)
+            {
+                object objDataContext = w.DataContext;
+
+                if (objDataContext != null)
+                {
+                    object currentModel = objDataContext.GetType().GetProperty(name: "currentModel").GetValue(
+                        obj: objDataContext);
+
+                    if (currentModel != null)
+                    {
+                        if ((currentModel as modelBase).GetOperationModel() == OperationModel.updating)
+                        {
+                            this._vTotalSemDescontoItem = (this._qProduto * this._vVendaSemDesconto);
+
+                            this._vTotalItem = (this._vVenda + this._vDesconto) * this._qProduto;
+
+                            base.NotifyPropertyChanged(propertyName: "vTotalSemDescontoItem");
+                            base.NotifyPropertyChanged(propertyName: "vTotalItem");
+                        }
+                    }
+                }
+            }
         }
 
         #endregion
@@ -1299,6 +1429,17 @@ namespace HLP.Sales.Model.Models.Comercial
                             if ((currentModel as modelBase).GetOperationModel() == OperationModel.updating)
                             {
                                 this.xComercial = this.objProduto.xComercial;
+
+                                if ((currentModel as Orcamento_ideModel).objListaPreco != null)
+                                {
+                                    Lista_precoModel objListaItem = (currentModel as Orcamento_ideModel).objListaPreco.lLista_preco
+                                        .FirstOrDefault(i => i.idProduto == value);
+
+                                    if (objListaItem != null)
+                                    {
+                                        this.vVendaSemDesconto = this.vVenda = objListaItem.vVenda;
+                                    }
+                                }
                             }
                         }
                     }
@@ -1326,6 +1467,26 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _idTipoOperacao = value;
+
+                Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
+
+                if (w != null)
+                {
+                    Orcamento_ideModel currentModel = w.DataContext.GetType().GetProperty(name: "currentModel").GetValue(
+                            obj: w.DataContext) as Orcamento_ideModel;
+
+                    MethodInfo miGetTipoOperacao = w.DataContext.GetType().GetMethod(name: "GetTipoOperacao");
+
+                    Tipo_operacaoModel objTipoOperacao = miGetTipoOperacao.Invoke(obj: w.DataContext, parameters: new object[] { value }) as Tipo_operacaoModel;
+
+                    if (currentModel != null)
+                    {
+                        if ((currentModel as modelBase).GetOperationModel() == OperationModel.updating)
+                        {
+                            this.idCfop = currentModel.VendaNoEstado ? objTipoOperacao.cCfopNaUf : objTipoOperacao.cCfopOutraUf;
+                        }
+                    }
+                }
 
                 base.NotifyPropertyChanged(propertyName: "idTipoOperacao");
             }
@@ -1416,9 +1577,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _vVendaSemDesconto = value;
-                this._vTotalSemDescontoItem = this._vVendaSemDesconto * this._qProduto;
                 base.NotifyPropertyChanged(propertyName: "vVendaSemDesconto");
-                base.NotifyPropertyChanged(propertyName: "vTotalSemDescontoItem");
             }
         }
         private decimal _vVenda;
@@ -1429,9 +1588,11 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _vVenda = value;
-                this.vTotalItem = (this._vVenda + this._vDesconto) * this._qProduto;
+
+                this.pDesconto = this._pDesconto;
+
+                this.SetTotalItem();
                 base.NotifyPropertyChanged(propertyName: "vVenda");
-                base.NotifyPropertyChanged(propertyName: "vTotalItem");
             }
         }
         private decimal _qProduto;
@@ -1443,10 +1604,7 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _qProduto = value;
                 base.NotifyPropertyChanged(propertyName: "qProduto");
-                this._vTotalSemDescontoItem = this._qProduto * this._vVendaSemDesconto;
-                this.vTotalItem = this._qProduto * (this._vVenda + this._vDesconto);
-                base.NotifyPropertyChanged(propertyName: "vTotalSemDescontoItem");
-                base.NotifyPropertyChanged(propertyName: "vTotalItem");
+                this.SetTotalItem();
             }
         }
         private decimal _pDesconto;
@@ -1459,6 +1617,8 @@ namespace HLP.Sales.Model.Models.Comercial
                 if (this.DescValidated(p: value))
                 {
                     _pDesconto = value;
+                    this._vDesconto = (this._vVenda * (this._pDesconto / 100));
+                    this.SetTotalItem();
                 }
 
                 base.NotifyPropertyChanged(propertyName: "pDesconto");
@@ -1472,17 +1632,19 @@ namespace HLP.Sales.Model.Models.Comercial
             get { return _vDesconto; }
             set
             {
-                if (Sistema.stSender != TipoSender.WCF)
-                {
-                    if (this._vVenda != 0)
-                        this._pDesconto = (value / this._vVenda) * 100;
+                decimal pDesconto = decimal.Zero;
 
-                    this.vTotalItem = (this._vVenda + value) * this._qProduto;
+                if (this._vTotalItem > 0)
+                    pDesconto = (value / this._vVenda) * 100;
+
+                if (this.DescValidated(p: pDesconto))
+                {
+                    _vDesconto = value;
+                    this._pDesconto = pDesconto;
+                    this.SetTotalItem();
+                    base.NotifyPropertyChanged(propertyName: "vDesconto");
+                    base.NotifyPropertyChanged(propertyName: "pDesconto");
                 }
-                _vDesconto = value;
-                base.NotifyPropertyChanged(propertyName: "vDesconto");
-                base.NotifyPropertyChanged(propertyName: "pDesconto");
-                base.NotifyPropertyChanged(propertyName: "vVenda");
             }
         }
         private decimal _vTotalSemDescontoItem;
@@ -1684,6 +1846,131 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _idFuncionarioRepresentante = value;
                 base.NotifyPropertyChanged(propertyName: "idFuncionarioRepresentante");
+
+                if (this.GetOperationModel() == OperationModel.updating)
+                {
+                    #region Cálculo de Comissão
+                    Window wd = Sistema.GetOpenWindow(xName: "WinOrcamento");
+
+                    if (wd != null)
+                    {
+                        Orcamento_ideModel objOrcamento_ide = wd.DataContext.GetType().GetProperty(name: "currentModel").GetValue(obj: wd.DataContext)
+                            as Orcamento_ideModel;
+
+                        if (objOrcamento_ide != null)
+                        {
+                            byte stVistaPrazo = 0;
+                            byte stComissao = 1;
+
+                            if (objOrcamento_ide.objCondicaoPagamento != null)
+                            {
+                                stVistaPrazo = objOrcamento_ide.objCondicaoPagamento.stCondicao; // 0 - a Vista : 1 - a Prazo
+                            }
+
+                            if (objOrcamento_ide.objFuncionarioRepresentante != null)
+                            {
+                                stComissao = objOrcamento_ide.objFuncionarioRepresentante.stComissao ?? 1;
+                            }
+
+                            switch (stComissao)
+                            {
+                                case 0:
+                                    {
+                                        switch (stVistaPrazo)
+                                        {
+                                            case 0:
+                                                {
+                                                    this.pComissao = objOrcamento_ide.objFuncionarioRepresentante.pComissaoAvista;
+                                                } break;
+                                            case 1:
+                                                {
+                                                    this.pComissao = objOrcamento_ide.objFuncionarioRepresentante.pComissaoAprazo;
+                                                } break;
+                                        }
+                                    } break;
+                                case 1:
+                                    {
+                                        Lista_precoModel objListaItem = objOrcamento_ide.objListaPreco.lLista_preco.
+                                            FirstOrDefault(i => i.idProduto == this.idProduto);
+
+                                        if (objListaItem != null)
+                                        {
+
+                                            switch (stVistaPrazo)
+                                            {
+                                                case 0:
+                                                    {
+                                                        this.pComissao = objListaItem.pComissaoAvista;
+                                                    } break;
+                                                case 1:
+                                                    {
+                                                        this.pComissao = objListaItem.pComissaoAprazo;
+                                                    } break;
+                                            }
+                                        }
+                                    } break;
+                                case 2:
+                                    {
+                                        MethodInfo miGetFamiliaProduto = wd.DataContext.GetType().GetMethod(name: "GetFamiliaProduto");
+                                        Familia_produtoModel objFamiliaProduto = miGetFamiliaProduto.Invoke(
+                                            obj: wd, parameters: new object[] { this.objProduto.idFamiliaProduto }) as Familia_produtoModel;
+                                        //TODO: Continuar deste ponto
+                                        switch (stVistaPrazo)
+                                        {
+                                            case 0:
+                                                {
+                                                    this.pComissao = objFamiliaProduto.pComissaoAvista;
+                                                } break;
+                                            case 1:
+                                                {
+                                                    this.pComissao = objFamiliaProduto.pComissaoAprazo;
+                                                } break;
+                                        }
+                                    } break;
+                                case 3:
+                                    {
+                                        Funcionario_Comissao_ProdutoModel objFuncionarioComissaoProduto = objOrcamento_ide.objFuncionarioRepresentante.lFuncionario_Comissao_Produto
+                                                        .FirstOrDefault(i => i.idProduto == this.idProduto);
+                                        switch (stVistaPrazo)
+                                        {
+                                            case 0:
+                                                {
+                                                    this.pComissao = objFuncionarioComissaoProduto.pComissaoAvista;
+                                                } break;
+                                            case 1:
+                                                {
+                                                    this.pComissao = objFuncionarioComissaoProduto.pComissaoAprazo;
+                                                } break;
+                                        }
+                                    } break;
+                                case 4:
+                                    {
+                                        decimal pLucro = decimal.Zero;
+
+                                        if (this.vVenda > 0)
+                                            pLucro = (1 - (this.objProduto.vCompra / this.vVenda)) * 100;
+
+                                        Funcionario_Margem_Lucro_ComissaoModel objFuncionarioMargemLucroComissao = objOrcamento_ide.objFuncionarioRepresentante.
+                                            lFuncionario_Margem_Lucro_Comissao.FirstOrDefault(i => i.pDeMargemVenda >= pLucro ||
+                                            i.pAteMargemVenda <= pLucro);
+
+                                        switch (stVistaPrazo)
+                                        {
+                                            case 0:
+                                                {
+                                                    this.pComissao = objFuncionarioMargemLucroComissao.pComissaoAvista;
+                                                } break;
+                                            case 1:
+                                                {
+                                                    this.pComissao = objFuncionarioMargemLucroComissao.pComissaoAprazo;
+                                                } break;
+                                        }
+                                    } break;
+                            }
+                        }
+                    }
+                    #endregion
+                }
             }
         }
         private decimal? _pComissao;

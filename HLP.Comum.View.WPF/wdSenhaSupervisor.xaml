@@ -241,7 +241,7 @@
             <TextBox x:Name="txtUser" Grid.Column="1"  Grid.Row="3" Grid.ColumnSpan="4" Text="{Binding currentModel.xId}"
                      Foreground="{DynamicResource CinzaEscuro}" Tag="Usuário" Style="{StaticResource TextBoxLogin}" Height="30" Margin="0,5"></TextBox>
             <PasswordBox Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="4" Height="30" Margin="0,5" Style="{StaticResource PasswordSupervisor}"/>
-            <TextBlock Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="4" FontFamily="Segoe UI Light" Text="{Binding currentModel.xError,Mode=OneWay}" Height="20" Margin="0,0,0,1" VerticalAlignment="Top" Foreground="#FFD2535A"/>
+            <TextBlock Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="4" FontFamily="Segoe UI Light" Text="{Binding error, Mode=OneWay}" Height="20" Margin="0,0,0,1" VerticalAlignment="Top" Foreground="#FFD2535A"/>
             <Button Grid.Column="6" Content="x" FontFamily="Segoe UI Symbol" Grid.Row="1" FontSize="14.667" Style="{DynamicResource Button_Sair}"
                     Command="{Binding closeCommand}" CommandParameter="{Binding ElementName=wdSupervisor}"/>
         </Grid>

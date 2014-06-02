@@ -8,6 +8,7 @@ using HLP.Comum.View.Formularios;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Financeiro;
+using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Services.Comercial;
 using HLP.Entries.Services.Financeiro;
@@ -43,6 +44,10 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         ProdutoService objProdutoService;
         Lista_PrecoService objListaPrecoService;
         Descontos_AvistaService objDescontoService;
+        Condicao_PagamentoService objCondicaoPagamentoService;
+        EmpresaService objEmpresaService;
+        CidadeService objCidadeService;
+        Tipo_OperacaoService objTipoOperacaoService;
 
         public OrcamentoCommands(OrcamentoViewModel objViewModel)
         {
@@ -50,11 +55,15 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             objClienteService = new ClienteService();
             objFuncionarioService = new FuncionarioService();
             objTipoDocumentoOperacaoValidaService = new Tipo_Documento_Operacao_ValidaService();
+            objEmpresaService = new EmpresaService();
+            objCidadeService = new CidadeService();
             this.objFillComboBoxService = new FillComboBoxService();
             this.objFamiliaProdutoService = new FamiliaProdutoService();
             this.objProdutoService = new ProdutoService();
             this.objListaPrecoService = new Lista_PrecoService();
             this.objDescontoService = new Descontos_AvistaService();
+            this.objCondicaoPagamentoService = new Condicao_PagamentoService();
+            this.objTipoOperacaoService = new Tipo_OperacaoService();
 
             this.objViewModel = objViewModel;
 
@@ -624,6 +633,11 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         #region Métodos para utilização via Model
 
+        public EmpresaModel GetEmpresa(int idEmpresa)
+        {
+            return objEmpresaService.GetObject(id: idEmpresa);
+        }
+
         public Cliente_fornecedorModel GetCliente(int idCliente)
         {
             return objClienteService.GetObjeto(id: idCliente);
@@ -666,6 +680,20 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             return this.objDescontoService.GetObject(id: idDesconto);
         }
 
+        public Condicao_pagamentoModel GetCondicaoPagamento(int idCondicaoPagamento)
+        {
+            return this.objCondicaoPagamentoService.GetObject(id: idCondicaoPagamento);
+        }
+
+        public CidadeModel GetCidade(int idCidade)
+        {
+            return this.objCidadeService.GetObject(id: idCidade);
+        }
+
+        public Tipo_operacaoModel GetTipoOperacao(int idTipoOperacao)
+        {
+            return this.objTipoOperacaoService.GetObject(id: idTipoOperacao);
+        }
         #endregion
     }
 }

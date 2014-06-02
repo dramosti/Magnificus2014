@@ -3,6 +3,7 @@ using HLP.Components.Model.Models;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Financeiro;
+using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.Commands.Comercio;
@@ -115,6 +116,11 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
 
         #region GetObjectsInModel
 
+        public EmpresaModel GetEmpresa(int idEmpresa)
+        {
+            return comm.GetEmpresa(idEmpresa: idEmpresa);
+        }
+
         public Cliente_fornecedorModel GetCliente(int idCliente)
         {
             return comm.GetCliente(idCliente: idCliente);
@@ -153,6 +159,21 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public Descontos_AvistaModel GetDesconto(int idDesconto)
         {
             return comm.GetDesconto(idDesconto: idDesconto);
+        }
+
+        public Condicao_pagamentoModel GetCondicaoPagamento(int idCondicaoPagamento)
+        {
+            return comm.GetCondicaoPagamento(idCondicaoPagamento: idCondicaoPagamento);
+        }
+
+        public CidadeModel GetCidade(int idCidade)
+        {
+            return comm.GetCidade(idCidade: idCidade);
+        }
+
+        public Tipo_operacaoModel GetTipoOperacao(int idTipoOperacao)
+        {
+            return comm.GetTipoOperacao(idTipoOperacao: idTipoOperacao);
         }
 
         #endregion
