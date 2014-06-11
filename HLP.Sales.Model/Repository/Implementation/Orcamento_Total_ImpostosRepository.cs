@@ -58,6 +58,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  MapBuilder<Orcamento_Total_ImpostosModel>
                                  .MapAllProperties()
                                  .DoNotMap(i => i.status)
+                                 .DoNotMap(i => i.xIM)
                                  .Build());
             }
 
@@ -72,6 +73,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 MapBuilder<Orcamento_Total_ImpostosModel>
                                 .MapAllProperties()
                                 .DoNotMap(i => i.status)
+                                .DoNotMap(i => i.xIM)
                                 .Build());
             }
             return regAllOrcamento_Total_ImpostosAccessor.Execute().ToList();
@@ -88,6 +90,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  MapBuilder<Orcamento_Total_ImpostosModel>
                                  .MapAllProperties()
                                  .DoNotMap(i => i.status)
+                                 .DoNotMap(i => i.xIM)
                                  .Build());
             }
 

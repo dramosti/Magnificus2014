@@ -154,6 +154,26 @@ namespace HLP.Entries.Services.Fiscal
                     }
             }
         }
+
+        public Codigo_IcmsModel GetObjectByUf(int id, int idUf)
+        {
+            switch (Sistema.bOnline)
+            {
+                case StConnection.OnlineNetwork:
+                    {
+                        return this.serviceNetwork.GetObjectByUf(id: id, idUf: idUf);
+                    }
+                case StConnection.OnlineWeb:
+                    {
+                        return this.serviceWeb.GetObjectByUf(id: id, idUf: idUf);
+                    }
+                case StConnection.Offline:
+                default:
+                    {
+                        return null;
+                    }
+            }
+        }
     }
 
 }

@@ -5,6 +5,7 @@ using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Model.Models.Transportes;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.Commands.Comercio;
 using System;
@@ -34,6 +35,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public ICommand aprovarDescontosCommand { get; set; }
         public ICommand alterarStatusItenCommand { get; set; }
         public ICommand gerarVersaoCommand { get; set; }
+        public ICommand moveItensCommand { get; set; }
 
         #endregion
 
@@ -94,23 +96,9 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             {
                 if (value != null)
                 {
-                    _currentItem = value;
-                    this.currentItemImposto = value.objImposto;
+                    _currentItem = value;                    
                     base.NotifyPropertyChanged(propertyName: "currentItem");
                 }
-            }
-        }
-
-
-        private Orcamento_Item_ImpostosModel _currentItemImposto;
-
-        public Orcamento_Item_ImpostosModel currentItemImposto
-        {
-            get { return _currentItemImposto; }
-            set
-            {
-                _currentItemImposto = value;
-                base.NotifyPropertyChanged(propertyName: "currentItemImposto");
             }
         }
 
@@ -174,6 +162,41 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public Tipo_operacaoModel GetTipoOperacao(int idTipoOperacao)
         {
             return comm.GetTipoOperacao(idTipoOperacao: idTipoOperacao);
+        }
+
+        public Classificacao_fiscalModel GetClassificacaoFiscal(int idClassificacaoFiscal)
+        {
+            return comm.GetClassificacaoFiscal(idClassificacaoFiscal: idClassificacaoFiscal);
+        }
+
+        public Codigo_IcmsModel GetCodigoIcmsByUf(int idCodigoIcmsPai, int idUf)
+        {
+            return comm.GetCodigoIcmsByUf(idCodigoIcmsPai: idCodigoIcmsPai, idUf: idUf);
+        }
+
+        public Ramo_atividadeModel GetRamoAtividade(int idRamoAtividade)
+        {
+            return comm.GetRamoAtividade(idRamoAtividade: idRamoAtividade);
+        }
+
+        public UFModel GetUf(int idUf)
+        {
+            return comm.GetUf(idUf: idUf);
+        }
+
+        public Unidade_medidaModel GetUnidadeMedida(int idUnidadeMedida)
+        {
+            return comm.GetUnidadeMedida(idUnidadeMedida: idUnidadeMedida);
+        }
+
+        public TransportadorModel GetTransportador(int idTransportador)
+        {
+            return comm.GetTransportador(idTransportador: idTransportador);
+        }
+
+        public Tipo_documentoModel GetTipoDocumento(int idTipoDocumento)
+        {
+            return comm.GetTipoDocumento(idTipoDocumento: idTipoDocumento);
         }
 
         #endregion

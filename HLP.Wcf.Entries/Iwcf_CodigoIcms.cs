@@ -23,5 +23,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         Codigo_Icms_paiModel CopyObject(Codigo_Icms_paiModel obj);
+
+        [OperationContract]
+        Codigo_IcmsModel GetObjectByUf(int id, int idUf);
     }
 }

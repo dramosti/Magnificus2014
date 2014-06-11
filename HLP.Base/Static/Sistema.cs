@@ -171,7 +171,7 @@ namespace HLP.Base.Static
             XmlNodeList nodeList;
             List<BasicHttpBindingElement> lBindingsToAdd = new List<BasicHttpBindingElement>();
             List<ChannelEndpointElement> lChannelsToAdd = new List<ChannelEndpointElement>();
-
+            XmlAttribute attName = null;
             foreach (string paths in arrayPaths)
             {
                 if (paths != localConfig.FilePath)
@@ -181,10 +181,13 @@ namespace HLP.Base.Static
 
                     foreach (XmlNode node in nodeList)
                     {
-                        lBindings.Add(item: new BasicHttpBindingElement
-                        {
-                            Name = node.Attributes[name: "name"].Value
-                        });
+                        attName = node.Attributes[name: "name"];
+
+                        if (attName != null)
+                            lBindings.Add(item: new BasicHttpBindingElement
+                            {
+                                Name = attName.Value
+                            });
                     }
 
                     nodeList = configXml.SelectNodes(xpath: "/configuration/system.serviceModel/client/endpoint");
@@ -201,9 +204,9 @@ namespace HLP.Base.Static
                         });
                     }
 
-                  
 
-                    
+
+
 
 
                     List<string> lLocal = lBindingsLocalConfig.Select(c => c.Name).ToList();
@@ -227,9 +230,10 @@ namespace HLP.Base.Static
                 }
             }
 
+
             try
             {
-                    lBindingsToAdd = lBindingsToAdd.Distinct().ToList();
+                lBindingsToAdd = lBindingsToAdd.Distinct().ToList();
                 foreach (BasicHttpBindingElement i in lBindingsToAdd.Distinct())
                 {
                     serviceModeGroupLocal.Bindings.BasicHttpBinding.Bindings.Add(element:

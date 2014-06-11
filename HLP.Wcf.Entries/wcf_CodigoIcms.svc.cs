@@ -50,6 +50,19 @@ namespace HLP.Wcf.Entries
             }
         }
 
+        public Codigo_IcmsModel GetObjectByUf(int id, int idUf)
+        {
+            try
+            {
+                return iCodigo_IcmsRepository.GetCodigo_IcmsByUf(idCodigoIcmsPai: id, idUf: idUf);
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+        }
+
         public Codigo_Icms_paiModel SaveObject(Codigo_Icms_paiModel obj)
         {
             try

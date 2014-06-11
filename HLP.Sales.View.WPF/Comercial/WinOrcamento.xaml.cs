@@ -25,6 +25,7 @@ namespace HLP.Sales.View.WPF.Comercial
         {
             InitializeComponent();
             this.ViewModel = new OrcamentoViewModel();
+            this.tcPrincipal.KeyUp += base.TabControl_KeyUp;
         }
 
         public OrcamentoViewModel ViewModel

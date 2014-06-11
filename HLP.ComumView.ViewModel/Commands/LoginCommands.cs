@@ -9,8 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using HLP.Entries.Services.Gerais;
 using HLP.ComumView.Services;
+using HLP.Entries.Services.Parametros;
 
 namespace HLP.ComumView.ViewModel.Commands
 {
@@ -18,7 +18,7 @@ namespace HLP.ComumView.ViewModel.Commands
     {
         LoginViewModel objViewModel;
         LoginService objService;
-        EmpresaService objServiceEmpresa;
+        EmpresaParametrosService objServiceEmpresa;
 
         public LoginCommands(LoginViewModel objViewModel)
         {
@@ -27,7 +27,7 @@ namespace HLP.ComumView.ViewModel.Commands
             objViewModel.loginCommand = new RelayCommand(execute: i => this.LoginExec(objDependency: i),
                 canExecute: i => this.LoginCanExec(objDependency: i));
             objService = new LoginService();
-            objServiceEmpresa = new EmpresaService();
+            objServiceEmpresa = new EmpresaParametrosService();
         }
 
         private void FecharExec()

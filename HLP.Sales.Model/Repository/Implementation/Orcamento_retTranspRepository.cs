@@ -58,6 +58,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  MapBuilder<Orcamento_retTranspModel>
                                  .MapAllProperties()
                                  .DoNotMap(i => i.status)
+                                 .DoNotMap(i => i.objTransportador)
                                  .Build());
             }
 
@@ -72,6 +73,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 MapBuilder<Orcamento_retTranspModel>
                                 .MapAllProperties()
                                 .DoNotMap(i => i.status)
+                                .DoNotMap(i => i.objTransportador)
                                 .Build());
             }
             return regAllOrcamento_retTranspAccessor.Execute().ToList();
@@ -87,6 +89,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .AddParameter<int>("idOrcamento"),
                                  MapBuilder<Orcamento_retTranspModel>.MapAllProperties()
                                  .DoNotMap(i => i.status)
+                                 .DoNotMap(i => i.objTransportador)
                                  .Build());
             }
             return regOrcamento_retTranspAccessor.Execute(idOrcamento).FirstOrDefault();

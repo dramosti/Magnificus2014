@@ -15,5 +15,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Fiscal
         void Copy(Codigo_IcmsModel objCodigo_Icms);
         Codigo_IcmsModel GetCodigo_Icms(int idCodigoIcms);
         List<Codigo_IcmsModel> GetAllCodigo_Icms(int idCodigoIcmsPai);
+        Codigo_IcmsModel GetCodigo_IcmsByUf(int idCodigoIcmsPai, int idUf);
     }
 }

@@ -78,28 +78,6 @@ namespace HLP.Wcf.Sales
                     }
                 }
                 Log.AddLog(xLog: "Item Salvo");
-                foreach (HLP.Sales.Model.Models.Comercial.Orcamento_Item_ImpostosModel item in objModel.lOrcamento_Item_Impostos)
-                {
-                    switch (item.status)
-                    {
-                        case statusModel.nenhum:
-                            break;
-                        case statusModel.criado:
-                        case statusModel.alterado:
-                            {
-                                this.IOrcamento_Item_ImpostosRepository.Save(objOrcamento_Item_Impostos: item);
-                            }
-                            break;
-                        case statusModel.excluido:
-                            {
-                                this.IOrcamento_Item_ImpostosRepository.Delete(idOrcamentoTotalizadorImpostos: (int)item.idOrcamentoTotalizadorImpostos);
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                Log.AddLog(xLog: "Imposto Salvo");
                 if (objModel.orcamento_retTransp != null)
                     this.orcamento_retTranspRepository.Save(objOrcamento_retTransp: objModel.orcamento_retTransp);
                 Log.AddLog(xLog: "Transportes Salvo");
@@ -131,10 +109,7 @@ namespace HLP.Wcf.Sales
 
                 objOrcamento.lOrcamento_Itens = new ObservableCollectionBaseCadastros<HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel>(
                     list: this.orcamento_itemRepository.GetAllOrcamento_Item(idOrcamento: (int)objOrcamento.idOrcamento));
-
-                objOrcamento.lOrcamento_Item_Impostos = new ObservableCollectionBaseCadastros<HLP.Sales.Model.Models.Comercial.Orcamento_Item_ImpostosModel>(
-                    list: this.IOrcamento_Item_ImpostosRepository.GetAllOrcamento_Item_ImpostosByOrcamento(idOrcamento: (int)objOrcamento.idOrcamento));
-
+                
                 objOrcamento.orcamento_retTransp = this.orcamento_retTranspRepository.GetOrcamento_retTranspByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento);
 
                 objOrcamento.orcamento_Total_Impostos = this.orcamento_Total_ImpostosRepository.GetOrcamento_Total_ImpostosByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento);
