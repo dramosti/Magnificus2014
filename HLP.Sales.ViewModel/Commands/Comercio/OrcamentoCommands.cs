@@ -491,18 +491,19 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             try
             {
-                bool bCarregado = false;
+                e.Result = this.objServico.GetObjeto(id: this.objViewModel.currentID);
+                //bool bCarregado = false;
 
-                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                    {
-                        e.Result = this.objServico.GetObjeto(id: this.objViewModel.currentID);
-                        bCarregado = true;
-                    }));
+                //Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                //    {
+                        
+                //        bCarregado = true;
+                //    }));
 
-                while (!bCarregado)
-                {
-                    Thread.Sleep(millisecondsTimeout: 500);
-                }
+                //while (!bCarregado)
+                //{
+                //    Thread.Sleep(millisecondsTimeout: 500);
+                //}
             }
             catch (Exception ex)
             {
