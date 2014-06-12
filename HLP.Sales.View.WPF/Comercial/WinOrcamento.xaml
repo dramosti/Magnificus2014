@@ -194,17 +194,17 @@
 					IsEnabled="False"
 					ToolTip="O Sistema preenche automaticamente com a data e hora (dd/mm/aaaa - hh:mm) em que foi criado o orçamento.">
                 </Components:HlpDatePicker>
-                <Components:HlpPesquisa 
+                <Components:CustomPesquisa 
                     x:Name="pesquisaCliente" Height="20" Margin="0,0,0,3" Grid.Column="5" Grid.Row="2"                   
-                    nameWindow="WinCliente"
-					Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    NameWindowCadastro="WinCliente"
+					xIdPesquisa="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="Informar ao orçamento de vendas o cliente." TableView="vwCliente" FieldPesquisa="ID" WidthLabel="0">
-                    <Components:HlpPesquisa.Items>
+					ToolTip="Informar ao orçamento de vendas o cliente." TableView="vwCliente" FieldPesquisa="ID">
+                    <Components:CustomPesquisa.Items>
                         <System:String>xNome</System:String>
                         <System:String>xFantasia</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
+                    </Components:CustomPesquisa.Items>
+                </Components:CustomPesquisa>
                 <Components:CustomComboBox Grid.Column="7" Grid.Row="2" IsEnabled="{Binding bIsEnabled}"
                                            ItemsSource="{Binding Source={StaticResource lResultTipoDocumento}}"
                                            SelectedValue="{Binding currentModel.idTipoDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -218,26 +218,26 @@
 					Text="{Binding currentModel.idEmpresa, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 					ToolTip="Código da Empresa em que o sistema esta lançando o orçamento">
                 </Components:CustomTextBox>
-                <Components:HlpPesquisa
+                <Components:CustomPesquisa
                     Grid.Column="5" Grid.Row="4" Height="20" Margin="0,0,0,3"
-                    Text="{Binding currentModel.idFuncionarioRepresentante, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="Informar o representante do orçamento de vendas" TableView="vwFuncionarioRepresentante" FieldPesquisa="ID" WidthLabel="0">
-                    <Components:HlpPesquisa.Items>
+                    xIdPesquisa="{Binding currentModel.idFuncionarioRepresentante, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}" NameWindowCadastro="WinFuncionario"
+					ToolTip="Informar o representante do orçamento de vendas" TableView="vwFuncionarioRepresentante" FieldPesquisa="ID">
+                    <Components:CustomPesquisa.Items>
                         <System:String>xCodigoAlternativo</System:String>
                         <System:String>xNome</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
-                <Components:HlpPesquisa
+                    </Components:CustomPesquisa.Items>
+                </Components:CustomPesquisa>
+                <Components:CustomPesquisa
                     Grid.Column="7" Grid.Row="4" Height="20" Margin="0,0,0,3"
-                    Text="{Binding currentModel.idCondicaoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    xIdPesquisa="{Binding currentModel.idCondicaoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="Informar o representante do orçamento de vendas" TableView="vwCondicaoPagamento" FieldPesquisa="ID" WidthLabel="0" nameWindow="WinCondicaoPagamento">
-                    <Components:HlpPesquisa.Items>
+					ToolTip="Informar o representante do orçamento de vendas" TableView="vwCondicaoPagamento" FieldPesquisa="ID" NameWindowCadastro="WinCondicaoPagamento">
+                    <Components:CustomPesquisa.Items>
                         <System:String>xCondicaoPagamento</System:String>
                         <System:String>xDescricao</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
+                    </Components:CustomPesquisa.Items>
+                </Components:CustomPesquisa>
             </Grid>
         </Expander>
         <TabControl Grid.Row="1" x:Name="tcPrincipal">
@@ -284,29 +284,29 @@
 
                                     <!--Components-->
 
-                                    <Components:HlpPesquisa 
+                                    <Components:CustomPesquisa 
                                         Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="1"                                                           
-                                        nameWindow="WinContato"
-			                            Text="{Binding currentModel.idContato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                        NameWindowCadastro="WinContato"
+			                            xIdPesquisa="{Binding currentModel.idContato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 			                            IsEnabled="{Binding bIsEnabled}"
-			                            ToolTip="Informar a pessoa de contato externo para quem o orçamento é emitido" TableView="vwContato" FieldPesquisa="ID" WidthLabel="0">
-                                        <Components:HlpPesquisa.Items>
+			                            ToolTip="Informar a pessoa de contato externo para quem o orçamento é emitido" TableView="vwContato" FieldPesquisa="ID">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xNome</System:String>
                                             <System:String>xDepartamento</System:String>
                                             <System:String>xTelefoneComercial</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
-                                    <Components:HlpPesquisa 
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
+                                    <Components:CustomPesquisa 
                                         Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="2"                                                           
-                                        nameWindow="WinContato"
-			                            Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                        NameWindowCadastro="WinContato"
+			                            xIdPesquisa="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 			                            IsEnabled="{Binding bIsEnabled}"
-			                            TableView="vwRamoAtividade" FieldPesquisa="ID" WidthLabel="0">
-                                        <Components:HlpPesquisa.Items>
+			                            TableView="vwRamoAtividade" FieldPesquisa="ID">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xRamo</System:String>
                                             <System:String>xDescricao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
 
                                 </Grid>
                             </Expander>
@@ -339,16 +339,16 @@
 
                                     <!--Components-->
 
-                                    <Components:HlpPesquisa 
+                                    <Components:CustomPesquisa 
                                         Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="1"                                                        
-			                            Text="{Binding currentModel.idTipoOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+			                            xIdPesquisa="{Binding currentModel.idTipoOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 			                            IsEnabled="{Binding bIsEnabled}"
-			                            TableView="vwTipoOrcamento" FieldPesquisa="ID" WidthLabel="0">
-                                        <Components:HlpPesquisa.Items>
+			                            TableView="vwTipoOrcamento" FieldPesquisa="ID">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xTipoOrcamento</System:String>
                                             <System:String>xDescricao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
                                     <Components:HlpDatePicker
                                         Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
                                         xTextDate="{Binding currentModel.dVencimento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -367,16 +367,16 @@
 				                        IsEnabled="{Binding bIsEnabled}"
 				                        ToolTip="A data em que o orçamento de venda expira e não é mais válida">
                                     </Components:HlpDatePicker>
-                                    <Components:HlpPesquisa 
+                                    <Components:CustomPesquisa 
                                         Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="5"                                                        
-			                            Text="{Binding currentModel.idTipoOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			                            
-			                            TableView="vwMotivoPerdaOrcam" FieldPesquisa="ID" WidthLabel="0">
-                                        <Components:HlpPesquisa.Items>
+			                            xIdPesquisa="{Binding currentModel.idTipoOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			                            
+			                            TableView="vwMotivoPerdaOrcam" FieldPesquisa="ID">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xMotivo</System:String>
                                             <System:String>xDescricao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                        <Components:HlpPesquisa.Style>
-                                            <Style>
+                                        </Components:CustomPesquisa.Items>
+                                        <Components:CustomPesquisa.Style>
+                                            <Style BasedOn="{StaticResource TextBox_PESQUISA}" TargetType="TextBox">
                                                 <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
                                                 <Style.Triggers>
                                                     <MultiDataTrigger>
@@ -395,8 +395,8 @@
                                                     </MultiDataTrigger>
                                                 </Style.Triggers>
                                             </Style>
-                                        </Components:HlpPesquisa.Style>
-                                    </Components:HlpPesquisa>
+                                        </Components:CustomPesquisa.Style>
+                                    </Components:CustomPesquisa>
                                 </Grid>
                             </Expander>
                             <Expander Header="Pedido de Compras do Cliente" IsExpanded="True" Grid.Row="2" Style="{StaticResource ExpanderPadrao}">
@@ -493,15 +493,15 @@
                                             <System:String>xCodigoAlternativo</System:String>
                                         </Components:HlpPesquisa.Items>
                                     </Components:HlpPesquisa>
-                                    <Components:HlpPesquisa 
+                                    <Components:CustomPesquisa 
                                         Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"                                                       
-			                            Text="{Binding currentModel.idUnidadeVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+			                            xIdPesquisa="{Binding currentModel.idUnidadeVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 			                            IsEnabled="{Binding bIsEnabled}"
-			                            TableView="vwUnidadeVenda" FieldPesquisa="ID" WidthLabel="0">
-                                        <Components:HlpPesquisa.Items>
+			                            TableView="vwUnidadeVenda" FieldPesquisa="ID">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xDescricaoUnidadeVenda</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
                                     <Components:CustomPesquisa Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
                                         TableView="vwCanalVenda" NameWindowCadastro="WinCanalVenda" 
                                         xIdPesquisa="{Binding currentModel.idRamoAtividade, Mode=OneWay}" FieldPesquisa="ID"
@@ -511,16 +511,16 @@
                                             <System:String>cCanalVenda</System:String>
                                         </Components:CustomPesquisa.Items>
                                     </Components:CustomPesquisa>
-                                    <Components:HlpPesquisa 
+                                    <Components:CustomPesquisa 
                                         Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"                                                        
-			                            Text="{Binding currentModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-			                            IsEnabled="{Binding bIsEnabled}"
-			                            TableView="vwMoeda" FieldPesquisa="ID" WidthLabel="0">
-                                        <Components:HlpPesquisa.Items>
+			                            xIdPesquisa="{Binding currentModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+			                            IsEnabled="{Binding bIsEnabled}" NameWindowCadastro="WinMoeda"
+			                            TableView="vwMoeda" FieldPesquisa="ID">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xSiglaMoeda</System:String>
                                             <System:String>xMoeda</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
                                     <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2"
                                             Text="{Binding currentModel.xObservacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -559,36 +559,36 @@
 
                                     <!--Components-->
 
-                                    <Components:HlpPesquisa 
+                                    <Components:CustomPesquisa 
                                         Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="1"                                                       
-			                            Text="{Binding currentModel.idDescontos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-			                            IsEnabled="{Binding bIsEnabled}"
-			                            TableView="vwDescontosAvista" FieldPesquisa="ID" WidthLabel="0">
-                                        <Components:HlpPesquisa.Items>
+			                            xIdPesquisa="{Binding currentModel.idDescontos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+			                            IsEnabled="{Binding bIsEnabled}" NameWindowCadastro="WinDesconto"
+			                            TableView="vwDescontosAvista" FieldPesquisa="ID">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xDesconto</System:String>
                                             <System:String>xDescricao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
-                                    <Components:HlpPesquisa 
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
+                                    <Components:CustomPesquisa 
                                         Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="2"                                                        
-			                            Text="{Binding currentModel.idMulta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-			                            IsEnabled="{Binding bIsEnabled}"
-			                            TableView="vwMultas" FieldPesquisa="ID" WidthLabel="0">
-                                        <Components:HlpPesquisa.Items>
+			                            xIdPesquisa="{Binding currentModel.idMulta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+			                            IsEnabled="{Binding bIsEnabled}" NameWindowCadastro="WinMulta"
+			                            TableView="vwMultas" FieldPesquisa="ID">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xNome</System:String>
                                             <System:String>xDescricao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
-                                    <Components:HlpPesquisa 
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
+                                    <Components:CustomPesquisa 
                                         Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="3"                                                        
-			                            Text="{Binding currentModel.idJuros, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-			                            IsEnabled="{Binding bIsEnabled}"
-			                            TableView="vwJuros" FieldPesquisa="ID" WidthLabel="0">
-                                        <Components:HlpPesquisa.Items>
+			                            xIdPesquisa="{Binding currentModel.idJuros, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+			                            IsEnabled="{Binding bIsEnabled}" NameWindowCadastro="WinJuros"
+			                            TableView="vwJuros" FieldPesquisa="ID">
+                                        <Components:CustomPesquisa.Items>
                                             <System:String>xNome</System:String>
                                             <System:String>xDescricao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
+                                        </Components:CustomPesquisa.Items>
+                                    </Components:CustomPesquisa>
 
                                 </Grid>
                             </Expander>
@@ -1213,10 +1213,10 @@
                             <Components:CustomTextBox Text="{Binding currentItem.qProduto}" IsEnabled="{Binding bIsEnabled}"
                                     Grid.Column="7" Grid.Row="3">
                             </Components:CustomTextBox>
-                            <Components:CustomTextBox Text="{Binding currentItem.vVenda}" IsEnabled="{Binding bIsEnabled}"
+                            <Components:CustomTextBox Text="{Binding currentItem.vVenda, FallbackValue=0 ,TargetNullValue=0 , Converter={StaticResource moedaConverter}}" IsEnabled="{Binding bIsEnabled}"
                                     Grid.Column="9" Grid.Row="3" >
                             </Components:CustomTextBox>
-                            <Components:CustomTextBox Text="{Binding currentItem.vTotalItem}" IsEnabled="False"
+                            <Components:CustomTextBox Text="{Binding currentItem.vTotalItem , FallbackValue=0 ,TargetNullValue=0 , Converter={StaticResource moedaConverter}}" IsEnabled="False"
                                     Grid.Column="11" Grid.Row="3" Grid.ColumnSpan="2" Margin="10,0,5,3">
                             </Components:CustomTextBox>
                             <Components:CustomCheckBox
@@ -1303,16 +1303,16 @@
 										    IsEnabled="{Binding bIsEnabled}"
 										    ToolTip="Calcula IPI (Imposto sobre produto Industrializado)">
                                         </Components:CustomCheckBox>
-                                        <Components:HlpPesquisa
+                                        <Components:CustomPesquisa
                                             Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"      
-											Text="{Binding currentItem.objImposto.idClassificacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											xIdPesquisa="{Binding currentItem.objImposto.idClassificacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" FieldPesquisa="ID" TableView="vwClassificacaoFiscal" nameWindow="WinClassificacaoFiscal">
-                                            <Components:HlpPesquisa.Items>
+											FieldPesquisa="ID" TableView="vwClassificacaoFiscal" NameWindowCadastro="WinClassificacaoFiscal">
+                                            <Components:CustomPesquisa.Items>
                                                 <System:String>xClassificacaoFiscal</System:String>
                                                 <System:String>cNCM</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
+                                            </Components:CustomPesquisa.Items>
+                                        </Components:CustomPesquisa>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="3"
                                             Text="{Binding currentItem.objImposto.xNcm, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -1320,7 +1320,7 @@
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="4"
-                                            Text="{Binding currentItem.objImposto.IPI_pIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            Text="{Binding currentItem.objImposto.IPI_pIPI, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomTextBox>
                                         <Components:CustomComboBox
@@ -1334,24 +1334,24 @@
                                                 <System:String>3-NENHUM</System:String>
                                             </Components:CustomComboBox.Items>
                                         </Components:CustomComboBox>
-                                        <Components:HlpPesquisa
+                                        <Components:CustomPesquisa
                                             Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"        
-											Text="{Binding currentItem.objImposto.idCSTIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											xIdPesquisa="{Binding currentItem.objImposto.idCSTIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" FieldPesquisa="ID" TableView="vwStIPI" nameWindow="WinStIPI">
-                                            <Components:HlpPesquisa.Items>
+											FieldPesquisa="ID" TableView="vwStIPI" NameWindowCadastro="WinStIPI">
+                                            <Components:CustomPesquisa.Items>
                                                 <System:String>cCSTIpi</System:String>
                                                 <System:String>xCSTIpi</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
+                                            </Components:CustomPesquisa.Items>
+                                        </Components:CustomPesquisa>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="7"
-                                            Text="{Binding currentItem.objImposto.IPI_vBaseCalculo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            Text="{Binding currentItem.objImposto.IPI_vBaseCalculo, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="8"
-                                            Text="{Binding currentItem.objImposto.IPI_vIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            Text="{Binding currentItem.objImposto.IPI_vIPI, Mode=TwoWay,FallbackValue=0,TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomTextBox>
                                     </Grid>
@@ -1447,24 +1447,24 @@
                                             IsChecked="{Binding currentItem.objImposto.ICMS_stCalculaIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									        IsEnabled="{Binding bIsEnabled}">
                                             </Components:CustomCheckBox>
-                                            <Components:HlpPesquisa
+                                            <Components:CustomPesquisa
                                             Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-                                            Text="{Binding currentItem.objImposto.idCodigoIcmsPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					                        IsEnabled="{Binding bIsEnabled}" nameWindow="WinCodigoICMS"
-					                        ToolTip="Informar ao sistema qual código do ICMS " TableView="vwCodigoIcmsPai" FieldPesquisa="ID" WidthLabel="0">
-                                                <Components:HlpPesquisa.Items>
+                                            xIdPesquisa="{Binding currentItem.objImposto.idCodigoIcmsPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					                        IsEnabled="{Binding bIsEnabled}" NameWindowCadastro="WinCodigoICMS" 
+					                        ToolTip="Informar ao sistema qual código do ICMS " TableView="vwCodigoIcmsPai" FieldPesquisa="ID">
+                                                <Components:CustomPesquisa.Items>
                                                     <System:String>cIcms</System:String>
-                                                </Components:HlpPesquisa.Items>
-                                            </Components:HlpPesquisa>
-                                            <Components:HlpPesquisa
+                                                </Components:CustomPesquisa.Items>
+                                            </Components:CustomPesquisa>
+                                            <Components:CustomPesquisa
                                             Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-                                            Text="{Binding currentItem.objImposto.idCSTIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            xIdPesquisa="{Binding currentItem.objImposto.idCSTIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					                        IsEnabled="{Binding bIsEnabled}"
-					                        ToolTip="Código de Situação Tributária ou CST" TableView="vwStICMS" FieldPesquisa="ID" WidthLabel="0" nameWindow="WinStICMS">
-                                                <Components:HlpPesquisa.Items>
+					                        ToolTip="Código de Situação Tributária ou CST" TableView="vwStICMS" FieldPesquisa="ID" NameWindowCadastro="WinStICMS">
+                                                <Components:CustomPesquisa.Items>
                                                     <System:String>cCSTIcms</System:String>
-                                                </Components:HlpPesquisa.Items>
-                                            </Components:HlpPesquisa>
+                                                </Components:CustomPesquisa.Items>
+                                            </Components:CustomPesquisa>
                                             <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="6" 
                                             IsEnabled="{Binding bIsEnabled}"
@@ -1475,7 +1475,7 @@
                                             <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="7"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_pReduzBase, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding currentItem.objImposto.ICMS_pReduzBase, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informar a porcentagem da Redução de base de calculo do ICMS">
                                             </Components:CustomTextBox>
                                             <Components:CustomComboBox
@@ -1493,25 +1493,25 @@
                                             <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="9"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_vBaseCalculo, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding currentItem.objImposto.ICMS_vBaseCalculo, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Valor da base de calculo do ICMS do item do orçamento de vendas">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="10"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_vICMS, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding currentItem.objImposto.ICMS_vICMS, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Valor do ICMS calculado no item">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="11"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_vBaseCalculoIcmsProprio, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding currentItem.objImposto.ICMS_vBaseCalculoIcmsProprio, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Valor da base de Calculo do ICMS próprio">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="1"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_vIcmsProprio, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding currentItem.objImposto.ICMS_vIcmsProprio, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Valor do ICMS próprio calculado no item">
                                             </Components:CustomTextBox>
                                             <Components:CustomCheckBox
@@ -1522,37 +1522,37 @@
                                             <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="3"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_pReduzBaseSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding currentItem.objImposto.ICMS_pReduzBaseSubstituicaoTributaria, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informar a porcentagem da redução da base de Cálculo da Substituição Tributária do ICMS">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="4"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_vBaseCalculoSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding currentItem.objImposto.ICMS_vBaseCalculoSubstituicaoTributaria, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informa o valor redução da base de Cálculo da Substituição Tributária do ICMS">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="5"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_pSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-					                        ToolTip="Informar a porcentagem da Substituição tributária">
+                                            Text="{Binding currentItem.objImposto.ICMS_pSubstituicaoTributaria, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Informar a porcentagem da Substituição tributária" Margin="0,2">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="6"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_pIcmsInterno, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding currentItem.objImposto.ICMS_pIcmsInterno, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Aliquota do ICMS interno destino">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="7"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_pMvaSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding currentItem.objImposto.ICMS_pMvaSubstituicaoTributaria, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Aliquota do ICMS interno destino">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="8"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_pCargaTributariaMedia, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding currentItem.objImposto.ICMS_pCargaTributariaMedia, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informa a porcentagem da Carga Tributária Média">
                                             </Components:CustomTextBox>
                                             <Components:CustomComboBox
@@ -1571,13 +1571,13 @@
                                             <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="10"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_vBaseCalculoSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding currentItem.objImposto.ICMS_vBaseCalculoSubstituicaoTributaria, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informa o valor da base de calculo do ICMS Substituição tributária">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="11"
                                             IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentItem.objImposto.ICMS_vSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                            Text="{Binding currentItem.objImposto.ICMS_vSubstituicaoTributaria, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informa o valor do ICMS Substituição Tributária">
                                             </Components:CustomTextBox>
                                         </Grid>
@@ -1630,7 +1630,7 @@
                                         <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="% PIS"></Components:CustomTextBlock>
                                         <Components:CustomTextBlock Grid.Column="1" Grid.Row="8" Text="Valor do PIS"></Components:CustomTextBlock>
                                         <Components:CustomTextBlock Grid.Column="6" Grid.Row="1" Text="Base de cálculo PIS"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="2" Text="Coeficiente de Subst. Trib. do COFINS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="2" Text="% de Subst. Trib. do COFINS "></Components:CustomTextBlock>
                                         <Components:CustomTextBlock Grid.Column="6" Grid.Row="3" Text="Código Subst. Trib. do COFINS"></Components:CustomTextBlock>
                                         <Components:CustomTextBlock Grid.Column="6" Grid.Row="4" Text="Compõe a base de cálculo da Subst. Trib. do COFINS?"></Components:CustomTextBlock>
                                         <Components:CustomTextBlock Grid.Column="6" Grid.Row="5" Text="% COFINS"></Components:CustomTextBlock>
@@ -1677,16 +1677,16 @@
                                             Text="{Binding currentItem.objImposto.PIS_nCoeficienteSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}" ToolTip="Informa o coeficiente usado para o calculo de substituição tributária do PIS ">
                                         </Components:CustomTextBox>
-                                        <Components:HlpPesquisa
+                                        <Components:CustomPesquisa
                                             Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"   
-											Text="{Binding currentItem.objImposto.idCSTPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											xIdPesquisa="{Binding currentItem.objImposto.idCSTPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" FieldPesquisa="ID" TableView="vwStPIS" nameWindow="WinStPIS">
-                                            <Components:HlpPesquisa.Items>
+											FieldPesquisa="ID" TableView="vwStPIS" NameWindowCadastro="WinStPIS">
+                                            <Components:CustomPesquisa.Items>
                                                 <System:String>cCSTPis</System:String>
                                                 <System:String>xCSTPis</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
+                                            </Components:CustomPesquisa.Items>
+                                        </Components:CustomPesquisa>
                                         <Components:CustomComboBox
                                             Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2"
                                             SelectedIndex="{Binding currentItem.objImposto.PIS_stCompoeBaseCalculoSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -1701,34 +1701,34 @@
                                         </Components:CustomComboBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="7"
-                                            Text="{Binding currentItem.objImposto.PIS_pPIS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            Text="{Binding currentItem.objImposto.PIS_pPIS, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}" ToolTip="É informado a alíquota do PIS (Programa de Integração Social).">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="8"
-                                            Text="{Binding currentItem.objImposto.PIS_vPIS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            Text="{Binding currentItem.objImposto.PIS_vPIS, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="1"
-                                            Text="{Binding currentItem.objImposto.PIS_vBaseCalculo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            Text="{Binding currentItem.objImposto.PIS_vBaseCalculo, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="2"
-                                            Text="{Binding currentItem.objImposto.COFINS_nCoeficienteSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            Text="{Binding currentItem.objImposto.COFINS_nCoeficienteSubstituicaoTributaria, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomTextBox>
-                                        <Components:HlpPesquisa
+                                        <Components:CustomPesquisa
                                             Grid.Column="7" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"   
-											Text="{Binding currentItem.objImposto.idCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" FieldPesquisa="ID" TableView="vwStCOFINS">
-                                            <Components:HlpPesquisa.Items>
+											xIdPesquisa="{Binding currentItem.objImposto.idCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}" NameWindowCadastro="WinStCofins"
+											FieldPesquisa="ID" TableView="vwStCOFINS">
+                                            <Components:CustomPesquisa.Items>
                                                 <System:String>cCSTCofins</System:String>
                                                 <System:String>xCSTCofins</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
+                                            </Components:CustomPesquisa.Items>
+                                        </Components:CustomPesquisa>
                                         <Components:CustomComboBox
                                             Grid.Column="7" Grid.Row="4" Grid.ColumnSpan="2"
                                             SelectedIndex="{Binding currentItem.objImposto.COFINS_stCompoeBaseCalculoSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -1743,17 +1743,17 @@
                                         </Components:CustomComboBox>
                                         <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="5"
-                                            Text="{Binding currentItem.objImposto.COFINS_pCOFINS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            Text="{Binding currentItem.objImposto.COFINS_pCOFINS, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="6"
-                                            Text="{Binding currentItem.objImposto.COFINS_vCOFINS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            Text="{Binding currentItem.objImposto.COFINS_vCOFINS, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="7" Grid.Row="7"
-                                            Text="{Binding currentItem.objImposto.COFINS_vBaseCalculo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            Text="{Binding currentItem.objImposto.COFINS_vBaseCalculo, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomTextBox>
                                     </Grid>
@@ -1814,17 +1814,17 @@
                                                     </Components:CustomCheckBox>
                                                     <Components:CustomTextBox
                                                             Grid.Column="2" Grid.Row="2"
-                                                            Text="{Binding currentItem.objImposto.ISS_pIss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                            Text="{Binding currentItem.objImposto.ISS_pIss, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											                IsEnabled="{Binding bIsEnabled}">
                                                     </Components:CustomTextBox>
                                                     <Components:CustomTextBox
                                                             Grid.Column="2" Grid.Row="3"
-                                                            Text="{Binding currentItem.objImposto.ISS_vIss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                            Text="{Binding currentItem.objImposto.ISS_vIss, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											                IsEnabled="{Binding bIsEnabled}">
                                                     </Components:CustomTextBox>
                                                     <Components:CustomTextBox
                                                             Grid.Column="2" Grid.Row="4"
-                                                            Text="{Binding currentItem.objImposto.ISS_vBaseCalculo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                            Text="{Binding currentItem.objImposto.ISS_vBaseCalculo, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											                IsEnabled="{Binding bIsEnabled}">
                                                     </Components:CustomTextBox>
 
@@ -1859,17 +1859,17 @@
 
                                                     <Components:CustomTextBox
                                                         Grid.Column="2" Grid.Row="1"
-                                                        Text="{Binding currentItem.vFreteItem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                        Text="{Binding currentItem.vFreteItem, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											            IsEnabled="{Binding bIsEnabled}">
                                                     </Components:CustomTextBox>
                                                     <Components:CustomTextBox
                                                         Grid.Column="2" Grid.Row="2"
-                                                        Text="{Binding currentItem.nPesoLiquido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                        Text="{Binding currentItem.nPesoLiquido, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											            IsEnabled="{Binding bIsEnabled}">
                                                     </Components:CustomTextBox>
                                                     <Components:CustomTextBox
                                                         Grid.Column="2" Grid.Row="3"
-                                                        Text="{Binding currentItem.nPesoBruto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                        Text="{Binding currentItem.nPesoBruto, Mode=TwoWay,FallbackValue=0,TargetNullValue=0, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											            IsEnabled="{Binding bIsEnabled}">
                                                     </Components:CustomTextBox>
 
@@ -1907,7 +1907,7 @@
 
                                                     <Components:CustomTextBox
                                                         Grid.Column="2" Grid.Row="1"
-                                                        Text="{Binding currentItem.vDescontoSuframa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                        Text="{Binding currentItem.vDescontoSuframa, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											            IsEnabled="{Binding bIsEnabled}">
                                                     </Components:CustomTextBox>
 
@@ -1970,12 +1970,12 @@
 
                                                     <Components:CustomTextBox
                                                         Grid.Column="2" Grid.Row="1"
-                                                        Text="{Binding currentItem.vSegurosItem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                        Text="{Binding currentItem.vSegurosItem, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											            IsEnabled="{Binding bIsEnabled}">
                                                     </Components:CustomTextBox>
                                                     <Components:CustomTextBox
                                                         Grid.Column="2" Grid.Row="2"
-                                                        Text="{Binding currentItem.vOutrasDespesasItem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                        Text="{Binding currentItem.vOutrasDespesasItem, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											            IsEnabled="{Binding bIsEnabled}">
                                                     </Components:CustomTextBox>
 
@@ -2357,17 +2357,17 @@
 
                                         <!--Components-->
 
-                                        <Components:HlpPesquisa 
+                                        <Components:CustomPesquisa 
                                             Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3"                                        
-                                            nameWindow="WinTransportadora"
-			                                Text="{Binding currentModel.orcamento_retTransp.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            NameWindowCadastro="WinTransportadora"
+			                                xIdPesquisa="{Binding currentModel.orcamento_retTransp.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 			                                IsEnabled="{Binding bIsEnabled}"
-			                                ToolTip="Informa a transportadora para esse orçamento" TableView="vwTransportador" FieldPesquisa="ID" WidthLabel="0">
-                                            <Components:HlpPesquisa.Items>
+			                                ToolTip="Informa a transportadora para esse orçamento" TableView="vwTransportador" FieldPesquisa="ID">
+                                            <Components:CustomPesquisa.Items>
                                                 <System:String>xCodigoAlternativo</System:String>
                                                 <System:String>xNome</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
+                                            </Components:CustomPesquisa.Items>
+                                        </Components:CustomPesquisa>
                                         <Components:CustomComboBox
                                             Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2" ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
                                             SelectedIndex="{Binding currentModel.orcamento_retTransp.stFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -2380,17 +2380,17 @@
                                                 <System:String>9-SEM FRETE</System:String>
                                             </Components:CustomComboBox.Items>
                                         </Components:CustomComboBox>
-                                        <Components:HlpPesquisa 
+                                        <Components:CustomPesquisa 
                                             Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"                                        
-                                            nameWindow="WinTransportadora"
-			                                Text="{Binding currentModel.orcamento_retTransp.idRedespacho, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            NameWindowCadastro="WinTransportadora"
+			                                xIdPesquisa="{Binding currentModel.orcamento_retTransp.idRedespacho, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 			                                IsEnabled="{Binding bIsEnabled}"
-			                                ToolTip="Informar a transportadora para Redespacho" TableView="vwTransportador" FieldPesquisa="ID" WidthLabel="0">
-                                            <Components:HlpPesquisa.Items>
+			                                ToolTip="Informar a transportadora para Redespacho" TableView="vwTransportador" FieldPesquisa="ID">
+                                            <Components:CustomPesquisa.Items>
                                                 <System:String>xCodigoAlternativo</System:String>
                                                 <System:String>xNome</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
+                                            </Components:CustomPesquisa.Items>
+                                        </Components:CustomPesquisa>
                                         <Components:CustomComboBox
                                             Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2" ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
                                             SelectedIndex="{Binding currentModel.orcamento_retTransp.stFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -2450,28 +2450,28 @@
                                                 <System:String>9-OUTROS</System:String>
                                             </Components:CustomComboBox.Items>
                                         </Components:CustomComboBox>
-                                        <Components:HlpPesquisa 
+                                        <Components:CustomPesquisa 
                                             Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="13" Grid.ColumnSpan="3"                                          
-                                            nameWindow="WinModoEntrega"
-			                                Text="{Binding currentModel.idModosEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            NameWindowCadastro="WinModoEntrega"
+			                                xIdPesquisa="{Binding currentModel.idModosEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 			                                IsEnabled="{Binding bIsEnabled}"
-			                                TableView="vwModoEntrega" FieldPesquisa="ID" WidthLabel="0">
-                                            <Components:HlpPesquisa.Items>
+			                                TableView="vwModoEntrega" FieldPesquisa="ID">
+                                            <Components:CustomPesquisa.Items>
                                                 <System:String>xModosEntrega</System:String>
                                                 <System:String>xDescricao</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
-                                        <Components:HlpPesquisa 
+                                            </Components:CustomPesquisa.Items>
+                                        </Components:CustomPesquisa>
+                                        <Components:CustomPesquisa 
                                             Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="3"                                            
-                                            nameWindow="WinCondicaoEntrega"
-			                                Text="{Binding currentModel.idCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            NameWindowCadastro="WinCondicaoEntrega"
+			                                xIdPesquisa="{Binding currentModel.idCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 			                                IsEnabled="{Binding bIsEnabled}"
-			                                TableView="vwCondicaoEntrega" FieldPesquisa="ID" WidthLabel="0">
-                                            <Components:HlpPesquisa.Items>
+			                                TableView="vwCondicaoEntrega" FieldPesquisa="ID">
+                                            <Components:CustomPesquisa.Items>
                                                 <System:String>xCondicaoEntrega</System:String>
                                                 <System:String>xDescricao</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
+                                            </Components:CustomPesquisa.Items>
+                                        </Components:CustomPesquisa>
                                         <Components:CustomComboBox
                                             Grid.Column="2" Grid.Row="15" Height="20" Grid.ColumnSpan="2" Margin="0,0,0,3" ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
                                             SelectedIndex="{Binding currentModel.orcamento_retTransp.stRateioFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
