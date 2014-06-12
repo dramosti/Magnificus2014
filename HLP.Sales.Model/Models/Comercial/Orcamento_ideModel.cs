@@ -46,17 +46,21 @@ namespace HLP.Sales.Model.Models.Comercial
             return _objDataContext;
         }
 
-        private object GetMethodDataContextWindowValue(string xname, object[] _parameters)
+        private static List<MethodInfo> lMethods;
+
+        public static object GetMethodDataContextWindowValue(string xname, object[] _parameters)
         {
-            Log.xPath = @"C:\logMagnificusES";
-            Log.AddLog(xLog: string.Format(format: "Nome método: {0}",
-                arg0: xname));
-
             MethodInfo mi = null;
-
             object o = GetDataContextWindow().Result;
 
-            mi = o.GetType().GetMethod(name: xname);
+            mi = lMethods.FirstOrDefault(i =>
+                i.Name == xname);
+
+            if (mi == null)
+            {                
+                mi = o.GetType().GetMethod(name: xname);
+                lMethods.Add(item: mi);
+            }
 
             bool bProcessed = false;
             object _value = null;
@@ -67,11 +71,24 @@ namespace HLP.Sales.Model.Models.Comercial
             return _value;
         }
 
+        private static Orcamento_ideModel _currentModel;
+
+        public static Orcamento_ideModel currentModel
+        {
+            get { return _currentModel; }
+            set { _currentModel = value; }
+        }
+
+
         public Orcamento_ideModel()
             : base("Orcamento_ide")
         {
             try
             {
+                currentModel = this;
+
+                lMethods = new List<MethodInfo>();
+
                 this.orcamento_Total_Impostos = new Orcamento_Total_ImpostosModel();
                 this.orcamento_retTransp = new Orcamento_retTranspModel();
                 //this.bTodos = true;
@@ -79,7 +96,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 this.idFuncionario = UserData.idUser;
                 this.dDataHora = DateTime.Now;
 
-                object retorno = this.GetMethodDataContextWindowValue(xname: "GetFuncionario", _parameters: new object[] { this.idFuncionario });
+                object retorno = GetMethodDataContextWindowValue(xname: "GetFuncionario", _parameters: new object[] { this.idFuncionario });
 
                 if (retorno != null)
                     this.objFuncionario = retorno as FuncionarioModel;
@@ -92,7 +109,7 @@ namespace HLP.Sales.Model.Models.Comercial
 
 
                 EnderecoModel objEnderecoEmpresa = null;
-                this.objEmpresa = this.GetMethodDataContextWindowValue(xname: "GetEmpresa", _parameters: new object[] { CompanyData.idEmpresa }) as EmpresaModel;
+                this.objEmpresa = GetMethodDataContextWindowValue(xname: "GetEmpresa", _parameters: new object[] { CompanyData.idEmpresa }) as EmpresaModel;
 
                 objEnderecoEmpresa = this.objEmpresa.lEmpresa_endereco.FirstOrDefault(i => i.stPrincipal == ((byte)1));
 
@@ -104,7 +121,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 if (objEnderecoEmpresa != null)
                 {
                     objCidade =
-                        this.GetMethodDataContextWindowValue(xname: "GetCidade",
+                        GetMethodDataContextWindowValue(xname: "GetCidade",
                         _parameters: new object[] { objEnderecoEmpresa.idCidade }) as CidadeModel;
 
                     if (objCidade != null)
@@ -501,7 +518,7 @@ namespace HLP.Sales.Model.Models.Comercial
 
         public void LoadListTipoDocumento()
         {
-            object retorno = this.GetMethodDataContextWindowValue(xname: "GetOperacoesValidas",
+            object retorno = GetMethodDataContextWindowValue(xname: "GetOperacoesValidas",
                 _parameters: new object[] { this._idTipoDocumento });
 
             if (retorno != null)
@@ -550,7 +567,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 if (this.objCliente == null)
                     this.objCliente = new Cliente_fornecedorModel();
 
-                object retorno = this.GetMethodDataContextWindowValue(xname: "GetCliente",
+                object retorno = GetMethodDataContextWindowValue(xname: "GetCliente",
                    _parameters: new object[] { value });
 
                 if (retorno != null)
@@ -560,11 +577,11 @@ namespace HLP.Sales.Model.Models.Comercial
                 {
                     this.bIsEnabledClListaPreco = this.objCliente.stObrigaListaPreco != (byte)1;
 
-                    this.objListaPreco = this.GetMethodDataContextWindowValue(xname: "GetListaPreco",
+                    this.objListaPreco = GetMethodDataContextWindowValue(xname: "GetListaPreco",
                         _parameters: new object[] { objCliente.idListaPrecoPai }) as Lista_Preco_PaiModel;
 
 
-                    this.objDesconto = this.GetMethodDataContextWindowValue(xname: "GetDesconto", _parameters:
+                    this.objDesconto = GetMethodDataContextWindowValue(xname: "GetDesconto", _parameters:
                         new object[] { objCliente.idDescontos }) as Descontos_AvistaModel;
 
                     //Criei esta validação para facilitar em todas as partes do código que precise ser validado se é venda no estado ou não. Valor será setado na variável 'this.VendaNoEstado'
@@ -578,7 +595,7 @@ namespace HLP.Sales.Model.Models.Comercial
 
                     if (objEnderecoCliente != null)
                         objCidade =
-                            this.GetMethodDataContextWindowValue(xname: "GetCidade", _parameters: new object[] { objEnderecoCliente.idCidade }) as CidadeModel;
+                            GetMethodDataContextWindowValue(xname: "GetCidade", _parameters: new object[] { objEnderecoCliente.idCidade }) as CidadeModel;
 
                     if (objCidade != null)
                     {
@@ -766,7 +783,7 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _idCondicaoPagamento = value;
 
-                object retorno = this.GetMethodDataContextWindowValue(xname: "GetCondicaoPagamento",
+                object retorno = GetMethodDataContextWindowValue(xname: "GetCondicaoPagamento",
                         _parameters: new object[] { value });
 
                 this.objCondicaoPagamento = retorno as Condicao_pagamentoModel;
@@ -904,7 +921,7 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _idFuncionarioRepresentante = value;
 
-                this.objFuncionarioRepresentante = this.GetMethodDataContextWindowValue(
+                this.objFuncionarioRepresentante = GetMethodDataContextWindowValue(
                         xname: "GetFuncionario", _parameters: new object[] { value }) as FuncionarioModel;
 
                 base.NotifyPropertyChanged(propertyName: "idFuncionarioRepresentante");
@@ -946,7 +963,7 @@ namespace HLP.Sales.Model.Models.Comercial
                     {
                         _idTipoDocumento = value;
 
-                        this.objTipoDocumento = this.GetMethodDataContextWindowValue(
+                        this.objTipoDocumento = GetMethodDataContextWindowValue(
                                     xname: "GetTipoDocumento", _parameters: new object[] { value }) as Tipo_documentoModel;
 
                         if (objTipoDocumento != null)
@@ -1149,19 +1166,8 @@ namespace HLP.Sales.Model.Models.Comercial
 
         private object GetMethodDataContextWindowValue(string xname, object[] _parameters)
         {
-            MethodInfo mi = null;
-
-            object o = this.GetDataContextWindow();
-
-            mi = o.GetType().GetMethod(name: xname);
-
-            bool bProcessed = false;
-            object _value = null;
-
-            _value = mi.Invoke(obj: o,
-                    parameters: _parameters);
-
-            return _value;
+            return Orcamento_ideModel.GetMethodDataContextWindowValue(xname: xname,
+                _parameters: _parameters);
         }
 
         public Orcamento_ItemModel()
@@ -1180,8 +1186,7 @@ namespace HLP.Sales.Model.Models.Comercial
 
             if (objDataContext != null)
             {
-                Orcamento_ideModel currentModel = objDataContext.GetType().GetProperty(name: "currentModel").GetValue(
-                    obj: objDataContext) as Orcamento_ideModel;
+                Orcamento_ideModel currentModel = Orcamento_ideModel.currentModel;
 
                 if (currentModel != null)
                 {
@@ -1240,8 +1245,7 @@ namespace HLP.Sales.Model.Models.Comercial
 
             if (objDataContext != null)
             {
-                object currentModel = objDataContext.GetType().GetProperty(name: "currentModel").GetValue(
-                    obj: objDataContext);
+                object currentModel = Orcamento_ideModel.currentModel;
 
                 if (currentModel != null)
                 {
@@ -1332,8 +1336,7 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 if (objDataContext != null)
                 {
-                    object currentModel = objDataContext.GetType().GetProperty(name: "currentModel").GetValue(
-                        obj: objDataContext);
+                    object currentModel = Orcamento_ideModel.currentModel;
 
                     if (currentModel != null)
                     {
@@ -1461,8 +1464,7 @@ namespace HLP.Sales.Model.Models.Comercial
 
         private Orcamento_ideModel GetOrcamentoIde()
         {
-            Orcamento_ideModel objOrcamento_ide = this.GetDataContextWindow().GetType().GetProperty(name: "currentModel").GetValue(obj: this.GetDataContextWindow())
-                            as Orcamento_ideModel;
+            Orcamento_ideModel objOrcamento_ide = Orcamento_ideModel.currentModel;
             return objOrcamento_ide ?? new Orcamento_ideModel();
         }
 
@@ -1942,8 +1944,7 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _stOrcamentoItem = value;
 
-                Orcamento_ideModel objOrcamento_ide = this.GetDataContextWindow().GetType().GetProperty(name: "currentModel").GetValue(obj: this.GetDataContextWindow())
-                        as Orcamento_ideModel;
+                Orcamento_ideModel objOrcamento_ide = Orcamento_ideModel.currentModel;
 
                 if (objOrcamento_ide != null)
                 {
@@ -2067,8 +2068,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 if (this.GetOperationModel() == OperationModel.updating)
                 {
                     #region Cálculo de Comissão
-                    Orcamento_ideModel objOrcamento_ide = this.GetDataContextWindow().GetType().GetProperty(name: "currentModel").GetValue(obj: this.GetDataContextWindow())
-                            as Orcamento_ideModel;
+                    Orcamento_ideModel objOrcamento_ide = Orcamento_ideModel.currentModel;
 
                     if (objOrcamento_ide != null)
                     {
@@ -2246,28 +2246,15 @@ namespace HLP.Sales.Model.Models.Comercial
 
         private object GetMethodDataContextWindowValue(string xname, object[] _parameters)
         {
-            MethodInfo mi = null;
-
-            object o = this.GetDataContextWindow();
-
-            mi = o.GetType().GetMethod(name: xname);
-
-            bool bProcessed = false;
-            object _value = null;
-
-            _value = mi.Invoke(obj: o,
-                    parameters: _parameters);
-
-            return _value;
+            return Orcamento_ideModel.GetMethodDataContextWindowValue(xname: xname,
+                _parameters: _parameters);
         }
 
         private Orcamento_ideModel GetOrcamentoIde()
         {
             Orcamento_ideModel objOrcamento_ide = null;
 
-            objOrcamento_ide = this.GetDataContextWindow().GetType().GetProperty(name: "currentModel")
-                .GetValue(obj: this.GetDataContextWindow())
-                            as Orcamento_ideModel;
+            objOrcamento_ide = Orcamento_ideModel.currentModel;
             return objOrcamento_ide ?? new Orcamento_ideModel();
         }
 
@@ -3747,26 +3734,13 @@ namespace HLP.Sales.Model.Models.Comercial
 
         private object GetMethodDataContextWindowValue(string xname, object[] _parameters)
         {
-            MethodInfo mi = null;
-
-            object o = this.GetDataContextWindow();
-
-            mi = o.GetType().GetMethod(name: xname);
-
-            bool bProcessed = false;
-            object _value = null;
-
-            _value = mi.Invoke(obj: o,
-                    parameters: _parameters);
-
-            return _value;
+            return Orcamento_ideModel.GetMethodDataContextWindowValue(xname: xname,
+                _parameters: _parameters);
         }
 
         private Orcamento_ideModel GetOrcamentoIde()
         {
-            Orcamento_ideModel objOrcamento_ide = this.GetDataContextWindow()
-                .GetType().GetProperty(name: "currentModel").GetValue(obj: this.GetDataContextWindow())
-                            as Orcamento_ideModel;
+            Orcamento_ideModel objOrcamento_ide = Orcamento_ideModel.currentModel;
             return objOrcamento_ide ?? new Orcamento_ideModel();
         }
 
@@ -5170,25 +5144,13 @@ namespace HLP.Sales.Model.Models.Comercial
 
         private object GetMethodDataContextWindowValue(string xname, object[] _parameters)
         {
-            MethodInfo mi = null;
-
-            object o = this.GetDataContextWindow();
-
-            mi = o.GetType().GetMethod(name: xname);
-
-            bool bProcessed = false;
-            object _value = null;
-
-            _value = mi.Invoke(obj: o,
-                    parameters: _parameters);
-
-            return _value;
+            return Orcamento_ideModel.GetMethodDataContextWindowValue(xname: xname,
+                _parameters: _parameters);
         }
 
         private Orcamento_ideModel GetOrcamentoIde()
         {
-            Orcamento_ideModel objOrcamento_ide = this.GetDataContextWindow().GetType().GetProperty(name: "currentModel").GetValue(obj: this.GetDataContextWindow())
-                            as Orcamento_ideModel;
+            Orcamento_ideModel objOrcamento_ide = Orcamento_ideModel.currentModel;
             return objOrcamento_ide ?? new Orcamento_ideModel();
         }
 
