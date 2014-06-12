@@ -18,7 +18,7 @@ namespace HLP.Entries.Services.Comercial
         wcf_Cliente.Iwcf_ClienteClient servicoInternet;
         DepositoService objDepositoService;
         RotaService objServico;
-        const string xTabela = "Cliente_fornecedor;Cliente_Fornecedor_Alteracoes;Cliente_Fornecedor_Arquivo;Cliente_Fornecedor_Certificado;Cliente_fornecedor_contato;Enderecos;Cliente_fornecedor_fiscal;Cliente_Fornecedor_Observacao;Cliente_fornecedor_produto;Cliente_fornecedor_representante";
+        const string xTabela = "Cliente_fornecedor;Contato;Cliente_Fornecedor_Alteracoes;Cliente_Fornecedor_Arquivo;Cliente_Fornecedor_Certificado;Enderecos;Cliente_fornecedor_fiscal;Cliente_Fornecedor_Observacao;Cliente_fornecedor_produto;Cliente_fornecedor_representante";
         HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
         wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
 

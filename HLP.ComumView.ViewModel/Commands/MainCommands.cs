@@ -64,7 +64,7 @@ namespace HLP.ComumView.ViewModel.Commands
                     this.objviewModel.stConnection = Sistema.bOnline = StConnection.OnlineWeb;
                 else
                     if (Sistema.bOnline == StConnection.OnlineWeb)
-                        this.objviewModel.stConnection = Sistema.bOnline = StConnection.OnlineNetwork;
+                        this.objviewModel.stConnection = Sistema.bOnline = StConnection.OnlineNetwork;                
             }
             else
             {

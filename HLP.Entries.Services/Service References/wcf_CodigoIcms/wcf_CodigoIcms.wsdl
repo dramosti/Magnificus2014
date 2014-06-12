@@ -33,6 +33,12 @@
   <wsdl:message name="Iwcf_CodigoIcms_CopyObject_OutputMessage">
     <wsdl:part name="parameters" element="tns:CopyObjectResponse" />
   </wsdl:message>
+  <wsdl:message name="Iwcf_CodigoIcms_GetObjectByUf_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetObjectByUf" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_CodigoIcms_GetObjectByUf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetObjectByUfResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iwcf_CodigoIcms">
     <wsdl:operation name="GetObject">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_CodigoIcms/GetObject" message="tns:Iwcf_CodigoIcms_GetObject_InputMessage" />
@@ -49,6 +55,10 @@
     <wsdl:operation name="CopyObject">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_CodigoIcms/CopyObject" message="tns:Iwcf_CodigoIcms_CopyObject_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_CodigoIcms/CopyObjectResponse" message="tns:Iwcf_CodigoIcms_CopyObject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectByUf">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_CodigoIcms/GetObjectByUf" message="tns:Iwcf_CodigoIcms_GetObjectByUf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_CodigoIcms/GetObjectByUfResponse" message="tns:Iwcf_CodigoIcms_GetObjectByUf_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_CodigoIcms" type="tns:Iwcf_CodigoIcms">
@@ -82,6 +92,15 @@
     </wsdl:operation>
     <wsdl:operation name="CopyObject">
       <soap:operation soapAction="http://tempuri.org/Iwcf_CodigoIcms/CopyObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectByUf">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_CodigoIcms/GetObjectByUf" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

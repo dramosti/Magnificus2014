@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\bin\</OutputPath>
+    <OutputPath>G:\CSharp\Desenvolvimento\Projetos\Magnificus\dlls\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -116,9 +116,6 @@
     </Compile>
     <Compile Include="Comercial\WinListaPreco.xaml.cs">
       <DependentUpon>WinListaPreco.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Comercial\WinOrcamento.xaml.cs">
-      <DependentUpon>WinOrcamento.xaml</DependentUpon>
     </Compile>
     <Compile Include="Comercial\WinProduto.xaml.cs">
       <DependentUpon>WinProduto.xaml</DependentUpon>
@@ -317,10 +314,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Comercial\WinListaPreco.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Comercial\WinOrcamento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

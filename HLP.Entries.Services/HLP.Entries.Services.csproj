@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>G:\CSharp\Desenvolvimento\Projetos\Magnificus\dlls\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -41,6 +41,7 @@
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -117,7 +118,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\wcf_Calendarios\Reference.cs">
+    <Compile Include="Service References\wcf_Calendario\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -383,10 +384,10 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="St_CofinsService.cs" />
-    <Compile Include="Transportes\CondicaoEntregaService.cs" />
-    <Compile Include="Transportes\ModoEntregaService.cs" />
-    <Compile Include="Transportes\RotaService.cs" />
-    <Compile Include="Transportes\TransportadoraService.cs" />
+    <Compile Include="RecursosHumanos\Transportes\CondicaoEntregaService.cs" />
+    <Compile Include="RecursosHumanos\Transportes\ModoEntregaService.cs" />
+    <Compile Include="RecursosHumanos\Transportes\RotaService.cs" />
+    <Compile Include="RecursosHumanos\Transportes\TransportadoraService.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -435,6 +436,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Carga_trib_media_st_icmsModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.CfopModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Classificacao_fiscalModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Codigo_IcmsModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_cofinsModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_icmsModel.datasource" />
@@ -443,6 +445,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Calendario_IntervalosModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ConversaoModel.datasource" />
@@ -529,20 +532,20 @@
     <None Include="Service References\wcf_Banco\wcf_Banco5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendarios\wcf_Calendario.wsdl" />
-    <None Include="Service References\wcf_Calendarios\wcf_Calendario.xsd">
+    <None Include="Service References\wcf_Calendario\wcf_Calendario.wsdl" />
+    <None Include="Service References\wcf_Calendario\wcf_Calendario.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendarios\wcf_Calendario1.xsd">
+    <None Include="Service References\wcf_Calendario\wcf_Calendario1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendarios\wcf_Calendario2.xsd">
+    <None Include="Service References\wcf_Calendario\wcf_Calendario2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendarios\wcf_Calendario3.xsd">
+    <None Include="Service References\wcf_Calendario\wcf_Calendario3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendarios\wcf_Calendario4.xsd">
+    <None Include="Service References\wcf_Calendario\wcf_Calendario4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados1.wsdl" />
@@ -1412,7 +1415,7 @@
     <WCFMetadataStorage Include="Service References\wcf_Acesso\" />
     <WCFMetadataStorage Include="Service References\wcf_Agencia\" />
     <WCFMetadataStorage Include="Service References\wcf_Banco\" />
-    <WCFMetadataStorage Include="Service References\wcf_Calendarios\" />
+    <WCFMetadataStorage Include="Service References\wcf_Calendario\" />
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
     <WCFMetadataStorage Include="Service References\wcf_CanalDeVenda\" />
     <WCFMetadataStorage Include="Service References\wcf_CargaTribMediaStIcms\" />
@@ -1552,21 +1555,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_DescontoAVista\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Calendarios\wcf_Calendario.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Calendarios\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Calendarios\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Calendarios\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -2302,6 +2290,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_TipoDocumentoOperacaoValida\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Calendario\wcf_Calendario.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Calendario\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Calendario\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Calendario\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

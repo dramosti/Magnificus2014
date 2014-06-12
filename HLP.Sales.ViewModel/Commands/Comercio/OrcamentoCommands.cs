@@ -8,11 +8,14 @@ using HLP.Comum.View.Formularios;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Financeiro;
+using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.Services.Comercial;
 using HLP.Entries.Services.Financeiro;
 using HLP.Entries.Services.Fiscal;
 using HLP.Entries.Services.Gerais;
+using HLP.Entries.Services.Transportes;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.Services.Comercial;
 using HLP.Sales.ViewModel.ViewModel.Comercio;
@@ -21,9 +24,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Threading;
 
@@ -33,7 +38,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
     {
         OrcamentoViewModel objViewModel;
         BackgroundWorker bWorkerAcoes;
-        Window wd = null;
         OrcamentoService objServico;
         ClienteService objClienteService;
         FuncionarioService objFuncionarioService;
@@ -43,6 +47,17 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         ProdutoService objProdutoService;
         Lista_PrecoService objListaPrecoService;
         Descontos_AvistaService objDescontoService;
+        Condicao_PagamentoService objCondicaoPagamentoService;
+        EmpresaService objEmpresaService;
+        CidadeService objCidadeService;
+        Tipo_OperacaoService objTipoOperacaoService;
+        Classificacao_FiscalService objClassificacaoFiscalService;
+        Codigo_IcmsService objCodigoIcmsService;
+        Ramo_AtividadeService objRamoAtividadeService;
+        UfService objUfService;
+        Unidade_MedidaService objUnidadeMedidaService;
+        TransportadoraService objTransportadoraService;
+        Tipo_DocumentoService objTipoDocumentoService;
 
         public OrcamentoCommands(OrcamentoViewModel objViewModel)
         {
@@ -50,11 +65,22 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             objClienteService = new ClienteService();
             objFuncionarioService = new FuncionarioService();
             objTipoDocumentoOperacaoValidaService = new Tipo_Documento_Operacao_ValidaService();
+            objEmpresaService = new EmpresaService();
+            objCidadeService = new CidadeService();
             this.objFillComboBoxService = new FillComboBoxService();
             this.objFamiliaProdutoService = new FamiliaProdutoService();
             this.objProdutoService = new ProdutoService();
             this.objListaPrecoService = new Lista_PrecoService();
             this.objDescontoService = new Descontos_AvistaService();
+            this.objCondicaoPagamentoService = new Condicao_PagamentoService();
+            this.objTipoOperacaoService = new Tipo_OperacaoService();
+            this.objClassificacaoFiscalService = new Classificacao_FiscalService();
+            this.objCodigoIcmsService = new Codigo_IcmsService();
+            this.objRamoAtividadeService = new Ramo_AtividadeService();
+            this.objUfService = new UfService();
+            this.objUnidadeMedidaService = new Unidade_MedidaService();
+            this.objTransportadoraService = new TransportadoraService();
+            this.objTipoDocumentoService = new Tipo_DocumentoService();
 
             this.objViewModel = objViewModel;
 
@@ -90,9 +116,70 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             this.objViewModel.gerarVersaoCommand = new RelayCommand(execute: ex => this.GerarVersaoExecute(),
                 canExecute: canEx => this.GerarVersaoCanExecute());
+
+            this.objViewModel.moveItensCommand = new RelayCommand(execute: ex => this.MoveExec(xAction: ex),
+                canExecute: canExec => this.MoveCanExec(xAcao: canExec));
+
+            this.objViewModel.bWorkerPesquisa = new BackgroundWorker();
+            this.objViewModel.bWorkerPesquisa.DoWork += this.getOrcamento;
+            this.objViewModel.bWorkerPesquisa.RunWorkerCompleted += this.bw_RunWorkerCompleted;
         }
 
         #region Implementação Commands
+
+        public void MoveExec(object xAction)
+        {
+            int index = this.objViewModel.currentModel.lOrcamento_Itens.IndexOf(item: this.objViewModel.currentItem);
+
+            switch (xAction.ToString())
+            {
+                case "first":
+                    {
+                        this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.First();
+                    }; break;
+                case "last":
+                    {
+                        this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.Last();
+                    }; break;
+                case "next":
+                    {
+                        if ((index + 1) < this.objViewModel.currentModel.lOrcamento_Itens.Count)
+                        {
+                            this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.ElementAt(index: index + 1);
+                        }
+                        else
+                            this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.Last();
+                    }; break;
+                case "prior":
+                    {
+                        if (index > 0)
+                        {
+                            this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.ElementAt(index: index - 1);
+                        }
+                        else
+                        {
+                            this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.First();
+                        }
+                    }; break;
+            }
+        }
+
+        private bool MoveCanExec(object xAcao)
+        {
+            if (this.objViewModel.currentModel == null)
+                return false;
+
+            if (this.objViewModel.currentModel.lOrcamento_Itens == null)
+                return false;
+
+            if (this.objViewModel.currentModel.lOrcamento_Itens.Count == 0)
+                return false;
+
+            if (this.objViewModel.currentItem == null)
+                return false;
+
+            return true;
+        }
 
         public void Save(object _panel)
         {
@@ -172,8 +259,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             if (this.objViewModel.currentModel != null)
             {
-                this.objViewModel.currentModel.lOrcamento_Item_Impostos.CollectionCarregada();
-                this.objViewModel.currentModel.lOrcamento_Itens.CollectionCarregada();
+                if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                    this.objViewModel.currentModel.lOrcamento_Itens.CollectionCarregada();
             }
         }
 
@@ -244,6 +331,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
+            this.objViewModel.currentModel.bTodos = true;
             Sistema.stSender = TipoSender.Sistema;
         }
         private bool NovoCanExecute()
@@ -378,10 +466,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         private void PesquisarRegistro(int id)
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.getOrcamento);
-            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-            bw.RunWorkerAsync(id);
+            this.objViewModel.bWorkerPesquisa.RunWorkerAsync(argument: id);
         }
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -394,21 +479,11 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             {
                 this.IniciaCollection();
                 this.objViewModel.currentModel = e.Result as Orcamento_ideModel;
+                this.objViewModel.currentModel.LoadListTipoDocumento();
+                this.objViewModel.currentModel.bTodos = true;
 
-                if (this.objViewModel.currentModel != null)
-                {
-                    foreach (Orcamento_ItemModel item in this.objViewModel.currentModel.lOrcamento_Itens)
-                    {
-                        if (item.objImposto != null)
-                        {
-                            item.objImposto = this.objViewModel.currentModel.lOrcamento_Item_Impostos
-                                .FirstOrDefault(i => i.idOrcamentoItem == item.idOrcamentoItem);
-                            item.objImposto.stOrcamentoImpostos = item.stOrcamentoItem;
-                            item.objImposto.vTotalItem = item.vTotalItem;
-                        }
-                    }
-                    //this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentID);
-                }
+                if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                    this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault();
             }
         }
 
@@ -416,14 +491,19 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             try
             {
-                if ((int)e.Argument != 0)
-                {
-                    Application.Current.Dispatcher.Invoke(
-                        (Action)(() =>
-    {
-        e.Result = this.objServico.GetObjeto(id: (int)e.Argument);
-    }));
-                }
+                e.Result = this.objServico.GetObjeto(id: this.objViewModel.currentID);
+                //bool bCarregado = false;
+
+                //Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                //    {
+                        
+                //        bCarregado = true;
+                //    }));
+
+                //while (!bCarregado)
+                //{
+                //    Thread.Sleep(millisecondsTimeout: 500);
+                //}
             }
             catch (Exception ex)
             {
@@ -499,7 +579,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     if (item.quantItens == item.quantEnvPend)
                     {
                         this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).stOrcamentoItem =
-                    this.objViewModel.currentModel.lOrcamento_Item_Impostos.FirstOrDefault(i => i.nItem == item.codItem).stOrcamentoImpostos =
                             this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).objImposto.stOrcamentoImpostos
                             = novoStatus;
                     }
@@ -567,13 +646,22 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         private void AprovarDescontosExecute()
         {
-            wdSenhaSupervisor wdSenhaSupervisor = new wdSenhaSupervisor();
-            if (wdSenhaSupervisor.ShowDialog() == true)
+            if ((bool)Sistema.ExecuteMethodByReflection(xNamespace: "HLP.Comum.View.WPF",
+                                                xType: "wdSenhaSupervisor", xMethod: "WindowShowDialog", parameters: new object[] { }))
             {
                 foreach (var item in this.objViewModel.currentModel.lOrcamento_Itens)
                 {
                     item.bPermitePorcentagem = true;
-                    item.pDesconto = item.pDesconto;
+                    item.ValidateProperty(columnName: "pDesconto");
+                    item.status = statusModel.alterado;
+                }
+
+                Window wd = Sistema.GetOpenWindow(xName: "WinOrcamento");
+
+                if (wd != null)
+                {
+                    CollectionViewSource lItens = wd.FindResource("cvsItens") as CollectionViewSource;
+                    lItens.View.Refresh();
                 }
             }
         }
@@ -583,39 +671,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             if (this.objViewModel.bIsEnabled)
             {
-                wd = Sistema.GetOpenWindow(xName: "WinOrcamento");
-                if (wd != null)
-                {
-                    DataGrid dg = wd.FindName(name: "dgItens") as DataGrid;
-
-
-                    DataGridRow row = null;
-                    DataGridColumn column = dg.Columns.FirstOrDefault(i => i.Header.ToString() == "% Desc"); ;
-                    DataGridCell c = null;
-                    object o;
-
-                    if (dg.ItemsSource != null)
-                    {
-                        foreach (var item in dg.ItemsSource)
-                        {
-                            row = dg.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
-                            if (row != null)
-                            {
-                                c = Util.GetCell(grid: dg, row: row, column: column.DisplayIndex);
-                                if (c != null)
-                                {
-                                    o = c.Content;
-
-                                    if (o.GetType().Name.ToString() == "TextBlock")
-                                    {
-                                        if (Validation.GetHasError(o as TextBlock))
-                                            return true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                if (this.objViewModel.currentModel.lOrcamento_Itens.Count(i => !i.bPermitePorcentagem) > 0)
+                    return true;
             }
             return false;
         }
@@ -623,6 +680,11 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         #endregion
 
         #region Métodos para utilização via Model
+
+        public EmpresaModel GetEmpresa(int idEmpresa)
+        {
+            return objEmpresaService.GetObject(id: idEmpresa);
+        }
 
         public Cliente_fornecedorModel GetCliente(int idCliente)
         {
@@ -664,6 +726,56 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         public Descontos_AvistaModel GetDesconto(int idDesconto)
         {
             return this.objDescontoService.GetObject(id: idDesconto);
+        }
+
+        public Condicao_pagamentoModel GetCondicaoPagamento(int idCondicaoPagamento)
+        {
+            return this.objCondicaoPagamentoService.GetObject(id: idCondicaoPagamento);
+        }
+
+        public CidadeModel GetCidade(int idCidade)
+        {
+            return this.objCidadeService.GetObject(id: idCidade);
+        }
+
+        public Tipo_operacaoModel GetTipoOperacao(int idTipoOperacao)
+        {
+            return this.objTipoOperacaoService.GetObject(id: idTipoOperacao);
+        }
+
+        public Classificacao_fiscalModel GetClassificacaoFiscal(int idClassificacaoFiscal)
+        {
+            return this.objClassificacaoFiscalService.GetObject(id: idClassificacaoFiscal);
+        }
+
+        public Codigo_IcmsModel GetCodigoIcmsByUf(int idCodigoIcmsPai, int idUf)
+        {
+            return this.objCodigoIcmsService.GetObjectByUf(id: idCodigoIcmsPai, idUf: idUf);
+        }
+
+        public Ramo_atividadeModel GetRamoAtividade(int idRamoAtividade)
+        {
+            return this.objRamoAtividadeService.GetObject(id: idRamoAtividade);
+        }
+
+        public UFModel GetUf(int idUf)
+        {
+            return this.objUfService.GetObject(id: idUf);
+        }
+
+        public Unidade_medidaModel GetUnidadeMedida(int idUnidadeMedida)
+        {
+            return this.objUnidadeMedidaService.GetObject(id: idUnidadeMedida);
+        }
+
+        public TransportadorModel GetTransportador(int idTransportador)
+        {
+            return this.objTransportadoraService.GetObject(id: idTransportador);
+        }
+
+        public Tipo_documentoModel GetTipoDocumento(int idTipoDocumento)
+        {
+            return this.objTipoDocumentoService.GetObject(id: idTipoDocumento);
         }
 
         #endregion

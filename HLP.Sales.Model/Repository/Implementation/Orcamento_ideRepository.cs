@@ -77,6 +77,13 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.objFuncionario)
                                 .DoNotMap(i => i.bIsEnabledClListaPreco)
                                 .DoNotMap(i => i.objListaPreco)
+                                .DoNotMap(i => i.idUfEnderecoCliente)
+                                .DoNotMap(i => i.idUfEnderecoEmpresa)
+                                .DoNotMap(i => i.objEmpresa)
+                                .DoNotMap(i => i.objCondicaoPagamento)
+                                .DoNotMap(i => i.objDesconto)
+                                .DoNotMap(i => i.objFuncionarioRepresentante)   
+                                .DoNotMap(i => i.objTipoDocumento)
                                  .Build());
             }
 
@@ -106,6 +113,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.bConfirmado)
                                 .DoNotMap(i => i.bTodos)
                                 .DoNotMap(i => i.objListaPreco)
+                                .DoNotMap(i => i.objTipoDocumento)
             .Build());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
@@ -133,6 +141,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.bConfirmado)
                                 .DoNotMap(i => i.bTodos)
                                 .DoNotMap(i => i.objListaPreco)
+                                .DoNotMap(i => i.objTipoDocumento)
             .Build());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }

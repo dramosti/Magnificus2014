@@ -27,11 +27,11 @@
   <wsdl:message name="Iwcf_Calendario_Delete_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteResponse" />
   </wsdl:message>
-  <wsdl:message name="Iwcf_Calendario_Copy_InputMessage">
-    <wsdl:part name="parameters" element="tns:Copy" />
+  <wsdl:message name="Iwcf_Calendario_GetIntervalos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIntervalos" />
   </wsdl:message>
-  <wsdl:message name="Iwcf_Calendario_Copy_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CopyResponse" />
+  <wsdl:message name="Iwcf_Calendario_GetIntervalos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIntervalosResponse" />
   </wsdl:message>
   <wsdl:portType name="Iwcf_Calendario">
     <wsdl:operation name="Save">
@@ -46,9 +46,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Calendario/Delete" message="tns:Iwcf_Calendario_Delete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Calendario/DeleteResponse" message="tns:Iwcf_Calendario_Delete_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Copy">
-      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Calendario/Copy" message="tns:Iwcf_Calendario_Copy_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Calendario/CopyResponse" message="tns:Iwcf_Calendario_Copy_OutputMessage" />
+    <wsdl:operation name="GetIntervalos">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Calendario/GetIntervalos" message="tns:Iwcf_Calendario_GetIntervalos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Calendario/GetIntervalosResponse" message="tns:Iwcf_Calendario_GetIntervalos_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_Calendario" type="tns:Iwcf_Calendario">
@@ -80,8 +80,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Copy">
-      <soap:operation soapAction="http://tempuri.org/Iwcf_Calendario/Copy" style="document" />
+    <wsdl:operation name="GetIntervalos">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Calendario/GetIntervalos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

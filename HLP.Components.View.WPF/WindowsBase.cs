@@ -19,12 +19,87 @@ namespace HLP.Components.View.WPF
     public class WindowsBase : System.Windows.Window
     {
         BackgroundWorker bwSetFocusFirstCtrl;
+
+        List<TabItem> lTabItens;
+
+
         public WindowsBase()
         {
-            IEnumerable<TabControl> lTab = Util.FindVisualChildren<TabControl>(depObj: this);
             bwSetFocusFirstCtrl = new BackgroundWorker();
             bwSetFocusFirstCtrl.DoWork += bwSetFocusFirstCtrl_DoWork;
             bwSetFocusFirstCtrl.RunWorkerCompleted += bwSetFocusFirstCtrl_RunWorkerCompleted;
+        }
+
+        public void TabControl_KeyUp(object sender, KeyEventArgs e)
+        {
+            object parent = null;
+
+            if (lTabItens == null)
+            {
+                lTabItens = new List<TabItem>();
+                this.GetAllTabItens(tabControl: sender as TabControl, lTabItens: lTabItens);
+            }
+
+            if (e.KeyboardDevice.IsKeyDown(key: Key.LeftCtrl) || e.KeyboardDevice.IsKeyDown(key: Key.RightCtrl))
+            {
+                foreach (TabItem ti in lTabItens)
+                {
+                    var txt = Util.FindVisualChildren<TextBlock>(depObj: ti);
+                    if (txt != null)
+                    {
+                        TextBlock _txt = txt.FirstOrDefault();
+
+                        if (_txt != null)
+                            foreach (Inline item in _txt.Inlines)
+                            {
+                                if (item.GetType().Name == "Underline")
+                                {
+                                    if (e.Key.ToString() == ((item as Underline).Inlines.FirstOrDefault() as Run).Text.ToUpper())
+                                    {
+                                        parent = ti;
+                                        while (true)
+                                        {
+                                            if (parent.GetType() == typeof(TabControl))
+                                            {
+                                                (parent as TabControl).SelectedItem = ti;
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                parent = (parent as Control).Parent;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
+                    }
+                }
+            }
+        }
+
+        private void GetAllTabItens(TabControl tabControl, List<TabItem> lTabItens)
+        {
+            foreach (TabItem item in tabControl.Items)
+            {
+                lTabItens.Add(item: item);
+                IEnumerable<TabControl> lTabControls;
+
+                if (item.Content.GetType() == typeof(AdornerDecorator))
+                {
+                    lTabControls = Util.FindVisualChildren<TabControl>(depObj: (item.Content as AdornerDecorator).Child);
+                }
+                else
+                {
+                    lTabControls = null;
+                }
+
+                if (lTabControls != null)
+                    foreach (TabControl _tabControl in lTabControls)
+                    {
+                        GetAllTabItens(tabControl: _tabControl, lTabItens: lTabItens);
+                    }
+            }
         }
 
         #region Focus
@@ -127,6 +202,7 @@ namespace HLP.Components.View.WPF
                 }
             }
         }
+
 
         public void TabControl_KeyDownGeneric(object sender, System.Windows.Input.KeyEventArgs e)
         {

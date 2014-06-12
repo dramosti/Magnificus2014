@@ -54,12 +54,12 @@ namespace HLP.Components.ViewModel.Commands
                 if (currentModelProperty != null)
                     currentModelProperty.SetValue(obj: _dataContext, value: null);
 
-                MethodInfo miSetOp = _dataContext.GetType().GetMethod(
-                    name: "SetValorCurrentOp");
+                //MethodInfo miSetOp = _dataContext.GetType().GetMethod(
+                //    name: "SetValorCurrentOp");
 
-                object[] _paramsPesquisa = new object[] { OperationModel.searching };
+                //object[] _paramsPesquisa = new object[] { OperationModel.searching };
 
-                miSetOp.Invoke(obj: _dataContext, parameters: _paramsPesquisa);
+                //miSetOp.Invoke(obj: _dataContext, parameters: _paramsPesquisa);
 
                 _dataContext.GetType().GetProperty(name: "bIsEnabled")
                     .SetValue(obj: _dataContext, value: false);

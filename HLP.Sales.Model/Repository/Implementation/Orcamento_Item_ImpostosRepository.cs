@@ -66,11 +66,9 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .MapAllProperties()
                                  .DoNotMap(i => i.status)
                                  .DoNotMap(i => i.xNcm)
-                                 .DoNotMap(i => i.vTotalItem)
-                                 .DoNotMap(i => i.vFreteItem)
-                                 .DoNotMap(i => i.vSeguroItem)
-                                 .DoNotMap(i => i.vOutrasDespesasItem)
                                  .DoNotMap(i => i.stOrcamentoImpostos)
+                                 .DoNotMap(i => i.objClassificacaoFiscal)
+                                 .DoNotMap(i => i.objTipoOperacao)
                                  .Build());
             }
 
@@ -86,11 +84,9 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .MapAllProperties()
                                 .DoNotMap(i => i.status)
                                 .DoNotMap(i => i.xNcm)
-                                .DoNotMap(i => i.vTotalItem)
-                                 .DoNotMap(i => i.vFreteItem)
-                                 .DoNotMap(i => i.vSeguroItem)
-                                 .DoNotMap(i => i.vOutrasDespesasItem)
                                  .DoNotMap(i => i.stOrcamentoImpostos)
+                                 .DoNotMap(i => i.objClassificacaoFiscal)
+                                 .DoNotMap(i => i.objTipoOperacao)
                                 .Build());
             }
             return regAllOrcamento_Item_ImpostosAccessor.Execute().ToList();
@@ -107,11 +103,9 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .MapAllProperties()
                                 .DoNotMap(i => i.status)
                                 .DoNotMap(i => i.xNcm)
-                                .DoNotMap(i => i.vTotalItem)
-                                 .DoNotMap(i => i.vFreteItem)
-                                 .DoNotMap(i => i.vSeguroItem)
-                                 .DoNotMap(i => i.vOutrasDespesasItem)
                                  .DoNotMap(i => i.stOrcamentoImpostos)
+                                 .DoNotMap(i => i.objClassificacaoFiscal)
+                                 .DoNotMap(i => i.objTipoOperacao)
                                 .Build());
             }
             return regAllOrcamento_Item_ImpostosAccessor.Execute(idOrcamento).ToList();
@@ -127,11 +121,9 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .MapAllProperties()
                                 .DoNotMap(i => i.status)
                                 .DoNotMap(i => i.xNcm)
-                                .DoNotMap(i => i.vTotalItem)
-                                 .DoNotMap(i => i.vFreteItem)
-                                 .DoNotMap(i => i.vSeguroItem)
-                                 .DoNotMap(i => i.vOutrasDespesasItem)
                                  .DoNotMap(i => i.stOrcamentoImpostos)
+                                 .DoNotMap(i => i.objClassificacaoFiscal)
+                                 .DoNotMap(i => i.objTipoOperacao)
                                 .Build());
             }
             return regAllOrcamento_Item_ImpostosAccessor.Execute(idOrcamento_Item).FirstOrDefault();

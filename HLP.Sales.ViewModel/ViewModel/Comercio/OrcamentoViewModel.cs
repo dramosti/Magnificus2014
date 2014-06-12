@@ -3,7 +3,9 @@ using HLP.Components.Model.Models;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Financeiro;
+using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Model.Models.Transportes;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.Commands.Comercio;
 using System;
@@ -33,6 +35,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public ICommand aprovarDescontosCommand { get; set; }
         public ICommand alterarStatusItenCommand { get; set; }
         public ICommand gerarVersaoCommand { get; set; }
+        public ICommand moveItensCommand { get; set; }
 
         #endregion
 
@@ -93,27 +96,18 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             {
                 if (value != null)
                 {
-                    _currentItem = value;
-                    this.currentItemImposto = value.objImposto;
+                    _currentItem = value;                    
                     base.NotifyPropertyChanged(propertyName: "currentItem");
                 }
             }
         }
 
-
-        private Orcamento_Item_ImpostosModel _currentItemImposto;
-
-        public Orcamento_Item_ImpostosModel currentItemImposto
-        {
-            get { return _currentItemImposto; }
-            set
-            {
-                _currentItemImposto = value;
-                base.NotifyPropertyChanged(propertyName: "currentItemImposto");
-            }
-        }
-
         #region GetObjectsInModel
+
+        public EmpresaModel GetEmpresa(int idEmpresa)
+        {
+            return comm.GetEmpresa(idEmpresa: idEmpresa);
+        }
 
         public Cliente_fornecedorModel GetCliente(int idCliente)
         {
@@ -153,6 +147,56 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public Descontos_AvistaModel GetDesconto(int idDesconto)
         {
             return comm.GetDesconto(idDesconto: idDesconto);
+        }
+
+        public Condicao_pagamentoModel GetCondicaoPagamento(int idCondicaoPagamento)
+        {
+            return comm.GetCondicaoPagamento(idCondicaoPagamento: idCondicaoPagamento);
+        }
+
+        public CidadeModel GetCidade(int idCidade)
+        {
+            return comm.GetCidade(idCidade: idCidade);
+        }
+
+        public Tipo_operacaoModel GetTipoOperacao(int idTipoOperacao)
+        {
+            return comm.GetTipoOperacao(idTipoOperacao: idTipoOperacao);
+        }
+
+        public Classificacao_fiscalModel GetClassificacaoFiscal(int idClassificacaoFiscal)
+        {
+            return comm.GetClassificacaoFiscal(idClassificacaoFiscal: idClassificacaoFiscal);
+        }
+
+        public Codigo_IcmsModel GetCodigoIcmsByUf(int idCodigoIcmsPai, int idUf)
+        {
+            return comm.GetCodigoIcmsByUf(idCodigoIcmsPai: idCodigoIcmsPai, idUf: idUf);
+        }
+
+        public Ramo_atividadeModel GetRamoAtividade(int idRamoAtividade)
+        {
+            return comm.GetRamoAtividade(idRamoAtividade: idRamoAtividade);
+        }
+
+        public UFModel GetUf(int idUf)
+        {
+            return comm.GetUf(idUf: idUf);
+        }
+
+        public Unidade_medidaModel GetUnidadeMedida(int idUnidadeMedida)
+        {
+            return comm.GetUnidadeMedida(idUnidadeMedida: idUnidadeMedida);
+        }
+
+        public TransportadorModel GetTransportador(int idTransportador)
+        {
+            return comm.GetTransportador(idTransportador: idTransportador);
+        }
+
+        public Tipo_documentoModel GetTipoDocumento(int idTipoDocumento)
+        {
+            return comm.GetTipoDocumento(idTipoDocumento: idTipoDocumento);
         }
 
         #endregion

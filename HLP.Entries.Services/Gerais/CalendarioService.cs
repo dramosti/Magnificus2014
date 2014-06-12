@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Base.Static;
 using HLP.Base.ClassesBases;
+using System.Configuration;
+using System.ServiceModel.Configuration;
 
 namespace HLP.Entries.Services.Gerais
 {
@@ -15,7 +17,7 @@ namespace HLP.Entries.Services.Gerais
         const string xTabela = "Calendario";
 
         Wcf.Entries.wcf_Calendario serviceNetwork;
-        wcf_Calendarios.Iwcf_CalendarioClient serviceWeb;
+        wcf_Calendario.Iwcf_CalendarioClient serviceWeb;        
 
         HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
         wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
@@ -46,8 +48,14 @@ namespace HLP.Entries.Services.Gerais
                     break;
                 case StConnection.OnlineWeb:
                     {
-                        serviceWeb = new wcf_Calendarios.Iwcf_CalendarioClient();
+                        Configuration localConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                        string nameBinding = string.Empty;
+
+                        var b = ((localConfig.SectionGroups[9].Sections[10] as BindingsSection).BindingCollections[0] as BasicHttpBindingCollectionElement).
+                            ConfiguredBindings.FirstOrDefault(i => i.Name == "BasicHttpBinding_Iwcf_Calendario");
+
                         serviceCamposBaseDadosWeb = new wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient();
+                        serviceWeb = new wcf_Calendario.Iwcf_CalendarioClient();                        
 
                         #region Validação
 
@@ -81,7 +89,7 @@ namespace HLP.Entries.Services.Gerais
                     }
                 case StConnection.OnlineWeb:
                     {
-                        return this.serviceWeb.GetObjeto(idObjeto: id);
+                        return this.serviceWeb.GetObjeto(idObjeto: id, bGetChild: bGetChild);
                     }
                 case StConnection.Offline:
                 default:
@@ -101,7 +109,7 @@ namespace HLP.Entries.Services.Gerais
                     }
                 case StConnection.OnlineWeb:
                     {
-                        return this.serviceWeb.Save(obj);
+                        return this.serviceWeb.Save(obj, UserData.idUser);
                     }
                 case StConnection.Offline:
                 default:
@@ -121,7 +129,7 @@ namespace HLP.Entries.Services.Gerais
                     }
                 case StConnection.OnlineWeb:
                     {
-                        return this.serviceWeb.Delete(obj);
+                        return this.serviceWeb.Delete(obj, UserData.idUser);
                     }
                 case StConnection.Offline:
                 default:
@@ -142,8 +150,8 @@ namespace HLP.Entries.Services.Gerais
                     }
                 case StConnection.OnlineWeb:
                     {
-                        //return this.serviceWeb.GetIntervalos(idCalendario);
-                        return new List<Calendario_IntervalosModel>();
+                        return this.serviceWeb.GetIntervalos(idCalendario);
+                        //return new List<Calendario_IntervalosModel>();
                     }
                 case StConnection.Offline:
                 default:
