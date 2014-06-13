@@ -84,7 +84,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             this.Botoes.Children.Add(element: btnConfirmarItens);
             this.Botoes.Children.Add(element: btnItensPerdidos);
             this.Botoes.Children.Add(element: btnItensCancelados);
-            this.Botoes.Children.Add(element: btnGerarVersao);
+            this.Botoes.Children.Add(element: btnGerarVersao);            
         }
 
         private Orcamento_ItemModel _currentItem;

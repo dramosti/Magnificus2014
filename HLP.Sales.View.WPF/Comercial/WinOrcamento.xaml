@@ -172,7 +172,15 @@
                 </Grid.RowDefinitions>
 
                 <!--Label-->
-
+                <Components:CustomHlpStatus Grid.Column="9" Grid.ColumnSpan="3" Grid.RowSpan="2" selectedStatus="{Binding currentModel.stOrcamento}">
+                    <Components:CustomHlpStatus.lStatus>
+                        <System:String>Criado</System:String>
+                        <System:String>Enviado</System:String>
+                        <System:String>Confirmado</System:String>
+                    </Components:CustomHlpStatus.lStatus>
+                </Components:CustomHlpStatus>
+                <Components:CustomHlpVersoes Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="2"
+                                             ItemsSourceVersao="{Binding lItensHierarquia, Mode=TwoWay}"></Components:CustomHlpVersoes>
                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Data e Hora Criada" Grid.Column="3" Grid.Row="1"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Cliente" Grid.Column="5" Grid.Row="1"></Components:CustomTextBlock>

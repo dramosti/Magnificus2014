@@ -21,7 +21,7 @@ namespace HLP.Components.View.WPF.Converter
                 d = decimal.Zero;
             }
 
-            return String.Format("{0:C}", d);
+            return String.Format("{0:C4}", d);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

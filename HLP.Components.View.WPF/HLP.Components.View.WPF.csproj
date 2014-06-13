@@ -91,6 +91,7 @@
     <Compile Include="CustomDataGrid.cs" />
     <Compile Include="CustomDockPanelSplitter.cs" />
     <Compile Include="CustomHlpStatus.cs" />
+    <Compile Include="CustomHlpVersoes.cs" />
     <Compile Include="CustomPesquisa.cs" />
     <Compile Include="CustomTextBlock.cs" />
     <Compile Include="CustomTextBox.cs" />

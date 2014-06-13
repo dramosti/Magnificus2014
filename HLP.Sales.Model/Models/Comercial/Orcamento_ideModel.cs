@@ -57,7 +57,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 i.Name == xname);
 
             if (mi == null)
-            {                
+            {
                 mi = o.GetType().GetMethod(name: xname);
                 lMethods.Add(item: mi);
             }
@@ -1950,16 +1950,23 @@ namespace HLP.Sales.Model.Models.Comercial
                 {
                     if (objOrcamento_ide.lOrcamento_Itens != null)
                     {
-                        if (objOrcamento_ide.lOrcamento_Itens.Count == objOrcamento_ide.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 0))
-                            objOrcamento_ide.stOrcamento = 0;
-                        else if (objOrcamento_ide.lOrcamento_Itens.Count == objOrcamento_ide.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 1))
-                            objOrcamento_ide.stOrcamento = 1;
-                        else if (objOrcamento_ide.lOrcamento_Itens.Count == objOrcamento_ide.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 2))
-                            objOrcamento_ide.stOrcamento = 2;
-                        else if (objOrcamento_ide.lOrcamento_Itens.Count == objOrcamento_ide.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 3))
-                            objOrcamento_ide.stOrcamento = 3;
-                        else if (objOrcamento_ide.lOrcamento_Itens.Count == objOrcamento_ide.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 4))
-                            objOrcamento_ide.stOrcamento = 4;
+                        if (objOrcamento_ide.GetOperationModel() == OperationModel.updating)
+                        {
+                            List<int> lCountStatus = new List<int>();
+
+                            lCountStatus.Add(item: objOrcamento_ide.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 0));
+                            lCountStatus.Add(item: objOrcamento_ide.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 1));
+                            lCountStatus.Add(item: objOrcamento_ide.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 2));
+                            lCountStatus.Add(item: objOrcamento_ide.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 3));
+                            lCountStatus.Add(item: objOrcamento_ide.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 4));
+
+                            byte vStOrcamentoItem = 0;
+
+                            byte.TryParse(s: lCountStatus.IndexOf(item: lCountStatus.FirstOrDefault(
+                                i => i == lCountStatus.Max())).ToString(), result: out vStOrcamentoItem);
+
+                            Orcamento_ideModel.currentModel.stOrcamento = vStOrcamentoItem;
+                        }
                     }
                 }
 

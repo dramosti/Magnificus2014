@@ -484,6 +484,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
                 if (this.objViewModel.currentModel.lOrcamento_Itens != null)
                     this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault();
+
+                this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
             }
         }
 

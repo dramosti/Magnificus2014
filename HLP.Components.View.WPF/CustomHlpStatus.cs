@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,22 +52,42 @@ namespace HLP.Components.View.WPF
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomHlpStatus), new FrameworkPropertyMetadata(typeof(CustomHlpStatus)));
         }
 
-        private List<string> _lStatus;
+        public CustomHlpStatus()
+        {
+            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
+    new DependencyObject());
 
-        public List<string> lStatus
+            if (!designTime)
+            {
+                this.Orientation = System.Windows.Controls.Orientation.Horizontal;
+                this.lStatus = new ObservableCollection<string>();
+
+                this.lStatus.CollectionChanged += lStatus_CollectionChanged;
+            }
+        }
+
+        void lStatus_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            CheckBox cb = null;
+            foreach (string item in e.NewItems)
+            {
+                cb = new CheckBox();
+                cb.Content = item;
+                cb.IsEnabled = false;
+                this.Children.Add(
+                    element: cb);
+            }
+        }
+
+
+        private ObservableCollection<string> _lStatus;
+
+        public ObservableCollection<string> lStatus
         {
             get { return _lStatus; }
             set
             {
                 _lStatus = value;
-                CheckBox cb = null;
-                foreach (string item in _lStatus)
-                {
-                    cb = new CheckBox();
-                    cb.Content = item;
-                    this.Children.Add(
-                        element: cb);
-                }
             }
         }
 
@@ -78,7 +99,38 @@ namespace HLP.Components.View.WPF
 
         // Using a DependencyProperty as the backing store for selectedStatus.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty selectedStatusProperty =
-            DependencyProperty.Register("selectedStatus", typeof(byte), typeof(CustomHlpStatus), new PropertyMetadata(null));
+            DependencyProperty.Register("selectedStatus", typeof(byte), typeof(CustomHlpStatus), new PropertyMetadata(defaultValue: byte.MaxValue,
+                propertyChangedCallback: new PropertyChangedCallback(SelectedStatusChanged)));
+
+        private static void SelectedStatusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
+    new DependencyObject());
+
+            if (!designTime)
+            {
+                if (e.NewValue != null)
+                {
+                    if ((d as StackPanel).Children != null)
+                    {
+                        int count = 0;
+                        int iSelectedStatus = 0;
+
+                        int.TryParse(s: e.NewValue.ToString(), result: out iSelectedStatus);
+
+                        foreach (CheckBox cb in (d as StackPanel).Children)
+                        {
+                            if (count > iSelectedStatus)
+                                cb.IsChecked = false;
+                            else
+                                cb.IsChecked = true;
+                            count++;
+                        }
+                    }
+
+                }
+            }
+        }
 
     }
 }

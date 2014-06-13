@@ -9,6 +9,12 @@ namespace HLP.Base.ClassesBases
 {
     public class MyObservableCollection<T> : ObservableCollection<T>
     {
+        public MyObservableCollection()
+            : base()
+        {
+
+        }
+
         public MyObservableCollection(List<T> list)
             : base(list)
         {
