@@ -7412,6 +7412,8 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <!--CheckBox-->
 
     <Style x:Key="CheckBoxStatus_COM_ANIMACAO" TargetType="{x:Type CheckBox}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -7568,11 +7570,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-
-
-
-
-
-
+    
 </ResourceDictionary>
