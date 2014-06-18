@@ -65,8 +65,9 @@ namespace HLP.Sales.Model.Models.Comercial
             bool bProcessed = false;
             object _value = null;
 
-            _value = mi.Invoke(obj: o,
-                    parameters: _parameters);
+            if (mi != null)
+                _value = mi.Invoke(obj: o,
+                        parameters: _parameters);
 
             return _value;
         }
@@ -1147,7 +1148,7 @@ namespace HLP.Sales.Model.Models.Comercial
     public partial class Orcamento_ItemModel : modelBase, ICloneable
     {
         Familia_produtoModel objFamiliaProduto;
-        ProdutoModel objProduto;
+        public ProdutoModel objProduto;
 
         private object _objDataContext;
 
@@ -1177,6 +1178,17 @@ namespace HLP.Sales.Model.Models.Comercial
             this.objImposto = new Orcamento_Item_ImpostosModel();
             objFamiliaProduto = new Familia_produtoModel();
             objProduto = new ProdutoModel();
+
+
+            if (Orcamento_ideModel.currentModel.GetOperationModel() == OperationModel.updating)
+            {
+                ObservableCollectionBaseCadastros<Orcamento_Item_RepresentantesModel> lRepresentantes = new ObservableCollectionBaseCadastros<Orcamento_Item_RepresentantesModel>()
+                {
+                    new Orcamento_Item_RepresentantesModel
+                    {  idRepresentante = Orcamento_ideModel.currentModel.idFuncionarioRepresentante }
+                };
+                this.lOrcamentoItemsRepresentantes = lRepresentantes;
+            }
 
             object objDataContext = null;
 
@@ -1238,6 +1250,30 @@ namespace HLP.Sales.Model.Models.Comercial
         }
 
         #region Métodos de Cálculos
+
+        public void setxRepresentante()
+        {
+            if (this.lOrcamentoItemsRepresentantes == null)
+            {
+                this.xRepresentanteItem = string.Empty;
+            }
+            else if (this.lOrcamentoItemsRepresentantes.Count() > 1)
+            {
+                this.xRepresentanteItem = "Vários";
+            }
+            else if (this.lOrcamentoItemsRepresentantes.Count() == 0)
+            {
+                this.xRepresentanteItem = string.Empty;
+            }
+            else
+            {
+                FuncionarioModel f = (this.GetMethodDataContextWindowValue(
+                            xname: "GetFuncionario", _parameters: new object[] { 
+                                this.lOrcamentoItemsRepresentantes.FirstOrDefault().idRepresentante }) as FuncionarioModel);
+
+                this.xRepresentanteItem = f.idFuncionario.ToString() + " - " + f.xNome;
+            }
+        }
 
         public void DescValidated(decimal p, bool bShowWdSupervisor = true)
         {
@@ -1459,6 +1495,20 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "xUnidadeMedida");
             }
         }
+
+
+        private string _xRepresentanteItem;
+
+        public string xRepresentanteItem
+        {
+            get { return _xRepresentanteItem; }
+            set
+            {
+                _xRepresentanteItem = value;
+                base.NotifyPropertyChanged(propertyName: "xRepresentanteItem");
+            }
+        }
+
 
         #endregion
 
@@ -2072,125 +2122,6 @@ namespace HLP.Sales.Model.Models.Comercial
                 _idFuncionarioRepresentante = value;
                 base.NotifyPropertyChanged(propertyName: "idFuncionarioRepresentante");
 
-                if (this.GetOperationModel() == OperationModel.updating)
-                {
-                    #region Cálculo de Comissão
-                    Orcamento_ideModel objOrcamento_ide = Orcamento_ideModel.currentModel;
-
-                    if (objOrcamento_ide != null)
-                    {
-                        byte stVistaPrazo = 0;
-                        byte stComissao = 1;
-
-                        if (objOrcamento_ide.objCondicaoPagamento != null)
-                        {
-                            stVistaPrazo = objOrcamento_ide.objCondicaoPagamento.stCondicao; // 0 - a Vista : 1 - a Prazo
-                        }
-
-                        if (objOrcamento_ide.objFuncionarioRepresentante != null)
-                        {
-                            stComissao = objOrcamento_ide.objFuncionarioRepresentante.stComissao ?? 1;
-                        }
-
-                        switch (stComissao)
-                        {
-                            case 0:
-                                {
-                                    switch (stVistaPrazo)
-                                    {
-                                        case 0:
-                                            {
-                                                this.pComissao = objOrcamento_ide.objFuncionarioRepresentante.pComissaoAvista;
-                                            } break;
-                                        case 1:
-                                            {
-                                                this.pComissao = objOrcamento_ide.objFuncionarioRepresentante.pComissaoAprazo;
-                                            } break;
-                                    }
-                                } break;
-                            case 1:
-                                {
-                                    Lista_precoModel objListaItem = objOrcamento_ide.objListaPreco.lLista_preco.
-                                        FirstOrDefault(i => i.idProduto == this.idProduto);
-
-                                    if (objListaItem != null)
-                                    {
-
-                                        switch (stVistaPrazo)
-                                        {
-                                            case 0:
-                                                {
-                                                    this.pComissao = objListaItem.pComissaoAvista;
-                                                } break;
-                                            case 1:
-                                                {
-                                                    this.pComissao = objListaItem.pComissaoAprazo;
-                                                } break;
-                                        }
-                                    }
-                                } break;
-                            case 2:
-                                {
-                                    Familia_produtoModel objFamiliaProduto = null;
-
-                                    objFamiliaProduto = this.GetMethodDataContextWindowValue(
-                                            xname: "GetFamiliaProduto", _parameters: new object[] { this.objProduto.idFamiliaProduto }) as Familia_produtoModel;
-
-                                    switch (stVistaPrazo)
-                                    {
-                                        case 0:
-                                            {
-                                                this.pComissao = objFamiliaProduto.pComissaoAvista;
-                                            } break;
-                                        case 1:
-                                            {
-                                                this.pComissao = objFamiliaProduto.pComissaoAprazo;
-                                            } break;
-                                    }
-                                } break;
-                            case 3:
-                                {
-                                    Funcionario_Comissao_ProdutoModel objFuncionarioComissaoProduto = objOrcamento_ide.objFuncionarioRepresentante.lFuncionario_Comissao_Produto
-                                                    .FirstOrDefault(i => i.idProduto == this.idProduto);
-                                    switch (stVistaPrazo)
-                                    {
-                                        case 0:
-                                            {
-                                                this.pComissao = objFuncionarioComissaoProduto.pComissaoAvista;
-                                            } break;
-                                        case 1:
-                                            {
-                                                this.pComissao = objFuncionarioComissaoProduto.pComissaoAprazo;
-                                            } break;
-                                    }
-                                } break;
-                            case 4:
-                                {
-                                    decimal pLucro = decimal.Zero;
-
-                                    if (this.vVenda > 0)
-                                        pLucro = (1 - (this.objProduto.vCompra / this.vVenda)) * 100;
-
-                                    Funcionario_Margem_Lucro_ComissaoModel objFuncionarioMargemLucroComissao = objOrcamento_ide.objFuncionarioRepresentante.
-                                        lFuncionario_Margem_Lucro_Comissao.FirstOrDefault(i => i.pDeMargemVenda >= pLucro ||
-                                        i.pAteMargemVenda <= pLucro);
-
-                                    switch (stVistaPrazo)
-                                    {
-                                        case 0:
-                                            {
-                                                this.pComissao = objFuncionarioMargemLucroComissao.pComissaoAvista;
-                                            } break;
-                                        case 1:
-                                            {
-                                                this.pComissao = objFuncionarioMargemLucroComissao.pComissaoAprazo;
-                                            } break;
-                                    }
-                                } break;
-                        }
-                    }
-                    #endregion
-                }
             }
         }
         private decimal? _pComissao;
@@ -2227,6 +2158,21 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "nItem");
             }
         }
+
+
+        private ObservableCollectionBaseCadastros<Orcamento_Item_RepresentantesModel> _lOrcamentoItemsRepresentantes;
+
+        public ObservableCollectionBaseCadastros<Orcamento_Item_RepresentantesModel> lOrcamentoItemsRepresentantes
+        {
+            get { return _lOrcamentoItemsRepresentantes; }
+            set
+            {
+                _lOrcamentoItemsRepresentantes = value;
+                this.setxRepresentante();
+                base.NotifyPropertyChanged(propertyName: "lOrcamentoItemsRepresentantes");
+            }
+        }
+
 
         public object Clone()
         {
@@ -2519,7 +2465,7 @@ namespace HLP.Sales.Model.Models.Comercial
                     == OperationModel.updating)
             {
                 Codigo_IcmsModel objCodigoIcms =
-                    this.GetMethodDataContextWindowValue(xname: "", _parameters:
+                    this.GetMethodDataContextWindowValue(xname: "GetCodigoIcmsByUf", _parameters:
                         new object[] { this.idCodigoIcmsPai,
                                         this.GetOrcamentoIde().idUfEnderecoCliente}) as Codigo_IcmsModel;
                 if (objCodigoIcms != null)
@@ -3713,6 +3659,208 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _nItem = value;
                 base.NotifyPropertyChanged(propertyName: "nItem");
+            }
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
+
+    public partial class Orcamento_Item_RepresentantesModel : modelBase, ICloneable
+    {
+        private object GetDataContextWindow()
+        {
+            return Orcamento_ideModel.GetDataContextWindow().Result;
+        }
+
+        private object GetMethodDataContextWindowValue(string xname, object[] _parameters)
+        {
+            return Orcamento_ideModel.GetMethodDataContextWindowValue(xname: xname,
+                _parameters: _parameters);
+        }
+
+        public Orcamento_Item_RepresentantesModel()
+        {
+        }
+
+        private int _idOrcamentoItemRepresentate;
+        [ParameterOrder(Order = 1)]
+        public int idOrcamentoItemRepresentate
+        {
+            get { return _idOrcamentoItemRepresentate; }
+            set
+            {
+                _idOrcamentoItemRepresentate = value;
+                base.NotifyPropertyChanged(propertyName: "idOrcamentoItemRepresentate");
+            }
+        }
+        private int _idRepresentante;
+        [ParameterOrder(Order = 2)]
+        public int idRepresentante
+        {
+            get { return _idRepresentante; }
+            set
+            {
+                _idRepresentante = value;
+
+                if (Orcamento_ideModel.currentModel.GetOperationModel() == OperationModel.updating)
+                {
+                    #region Cálculo de Comissão
+                    Orcamento_ideModel objOrcamento_ide = Orcamento_ideModel.currentModel;
+
+                    if (objOrcamento_ide != null)
+                    {
+                        Orcamento_ItemModel currentItem = null;
+
+                        foreach (Orcamento_ItemModel it in objOrcamento_ide.lOrcamento_Itens)
+                        {
+                            if (it.lOrcamentoItemsRepresentantes.Contains(item: this))
+                                currentItem = it;
+                        }
+
+                        if (currentItem != null)
+                        {
+
+
+                            byte stVistaPrazo = 0;
+                            byte stComissao = 1;
+
+                            if (objOrcamento_ide.objCondicaoPagamento != null)
+                            {
+                                stVistaPrazo = objOrcamento_ide.objCondicaoPagamento.stCondicao; // 0 - a Vista : 1 - a Prazo
+                            }
+
+                            if (objOrcamento_ide.objFuncionarioRepresentante != null)
+                            {
+                                stComissao = objOrcamento_ide.objFuncionarioRepresentante.stComissao ?? 1;
+                            }
+
+                            switch (stComissao)
+                            {
+                                case 0:
+                                    {
+                                        switch (stVistaPrazo)
+                                        {
+                                            case 0:
+                                                {
+                                                    this.pComissao = objOrcamento_ide.objFuncionarioRepresentante.pComissaoAvista;
+                                                } break;
+                                            case 1:
+                                                {
+                                                    this.pComissao = objOrcamento_ide.objFuncionarioRepresentante.pComissaoAprazo;
+                                                } break;
+                                        }
+                                    } break;
+                                case 1:
+                                    {
+                                        Lista_precoModel objListaItem = objOrcamento_ide.objListaPreco.lLista_preco.
+                                            FirstOrDefault(i => i.idProduto == currentItem.idProduto);
+
+                                        if (objListaItem != null)
+                                        {
+
+                                            switch (stVistaPrazo)
+                                            {
+                                                case 0:
+                                                    {
+                                                        this.pComissao = objListaItem.pComissaoAvista;
+                                                    } break;
+                                                case 1:
+                                                    {
+                                                        this.pComissao = objListaItem.pComissaoAprazo;
+                                                    } break;
+                                            }
+                                        }
+                                    } break;
+                                case 2:
+                                    {
+                                        Familia_produtoModel objFamiliaProduto = null;
+
+                                        objFamiliaProduto = this.GetMethodDataContextWindowValue(
+                                                xname: "GetFamiliaProduto", _parameters: new object[] { currentItem.objProduto.idFamiliaProduto }) as Familia_produtoModel;
+
+                                        switch (stVistaPrazo)
+                                        {
+                                            case 0:
+                                                {
+                                                    this.pComissao = objFamiliaProduto.pComissaoAvista;
+                                                } break;
+                                            case 1:
+                                                {
+                                                    this.pComissao = objFamiliaProduto.pComissaoAprazo;
+                                                } break;
+                                        }
+                                    } break;
+                                case 3:
+                                    {
+                                        Funcionario_Comissao_ProdutoModel objFuncionarioComissaoProduto = objOrcamento_ide.objFuncionarioRepresentante.lFuncionario_Comissao_Produto
+                                                        .FirstOrDefault(i => i.idProduto == currentItem.idProduto);
+                                        switch (stVistaPrazo)
+                                        {
+                                            case 0:
+                                                {
+                                                    this.pComissao = objFuncionarioComissaoProduto.pComissaoAvista;
+                                                } break;
+                                            case 1:
+                                                {
+                                                    this.pComissao = objFuncionarioComissaoProduto.pComissaoAprazo;
+                                                } break;
+                                        }
+                                    } break;
+                                case 4:
+                                    {
+                                        decimal pLucro = decimal.Zero;
+
+                                        if (currentItem.vVenda > 0)
+                                            pLucro = (1 - (currentItem.objProduto.vCompra / currentItem.vVenda)) * 100;
+
+                                        Funcionario_Margem_Lucro_ComissaoModel objFuncionarioMargemLucroComissao = objOrcamento_ide.objFuncionarioRepresentante.
+                                            lFuncionario_Margem_Lucro_Comissao.FirstOrDefault(i => i.pDeMargemVenda >= pLucro ||
+                                            i.pAteMargemVenda <= pLucro);
+
+                                        switch (stVistaPrazo)
+                                        {
+                                            case 0:
+                                                {
+                                                    this.pComissao = objFuncionarioMargemLucroComissao.pComissaoAvista;
+                                                } break;
+                                            case 1:
+                                                {
+                                                    this.pComissao = objFuncionarioMargemLucroComissao.pComissaoAprazo;
+                                                } break;
+                                        }
+                                    } break;
+                            }
+                        }
+                    }
+                    #endregion
+                }
+
+                base.NotifyPropertyChanged(propertyName: "idRepresentante");
+            }
+        }
+        private decimal? _pComissao;
+        [ParameterOrder(Order = 3)]
+        public decimal? pComissao
+        {
+            get { return _pComissao; }
+            set
+            {
+                _pComissao = value;
+                base.NotifyPropertyChanged(propertyName: "pComissao");
+            }
+        }
+        private int? _idOrcamentoItem;
+        [ParameterOrder(Order = 4)]
+        public int? idOrcamentoItem
+        {
+            get { return _idOrcamentoItem; }
+            set
+            {
+                _idOrcamentoItem = value;
+                base.NotifyPropertyChanged(propertyName: "idOrcamentoItem");
             }
         }
 

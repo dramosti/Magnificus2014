@@ -32,6 +32,9 @@ namespace HLP.Wcf.Sales
         [Inject]
         public IOrcamento_Total_ImpostosRepository orcamento_Total_ImpostosRepository { get; set; }
 
+        [Inject]
+        public IOrcamento_Item_RepresentantesRepository orcamento_Item_RepresentantesRepository { get; set; }
+
         public wcf_Orcamento()
         {
             try
@@ -64,18 +67,18 @@ namespace HLP.Wcf.Sales
                         case statusModel.alterado:
                             {
                                 item.idOrcamento = (int)objModel.idOrcamento;
-                                this.orcamento_itemRepository.Save(objOrcamento_Item: item);                                
+                                this.orcamento_itemRepository.Save(objOrcamento_Item: item);
                             }
                             break;
                         case statusModel.excluido:
-                            {                                
+                            {
                                 this.orcamento_itemRepository.Delete(idOrcamentoItem: (int)item.idOrcamentoItem);
                             }
                             break;
                     }
 
                     switch (item.objImposto.status)
-                    {                        
+                    {
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
@@ -88,6 +91,27 @@ namespace HLP.Wcf.Sales
                                 this.IOrcamento_Item_ImpostosRepository.DeleteByIdOrcamento(idOrcamentoItem: (int)item.idOrcamentoItem);
                             }
                             break;
+                    }
+
+                    foreach (var itemRepresentantes in item.lOrcamentoItemsRepresentantes)
+                    {
+                        switch (itemRepresentantes.status)
+                        {
+                            case statusModel.criado:
+                            case statusModel.alterado:
+                                {
+                                    itemRepresentantes.idOrcamentoItem = item.idOrcamentoItem;
+                                    orcamento_Item_RepresentantesRepository.Save(objOrcamento_Item_Representantes:
+                                        itemRepresentantes);
+                                }
+                                break;
+                            case statusModel.excluido:
+                                {
+                                    orcamento_Item_RepresentantesRepository.Delete(idOrcamentoItemRepresentate: itemRepresentantes
+                                        .idOrcamentoItemRepresentate);
+                                }
+                                break;
+                        }
                     }
                 }
                 if (objModel.orcamento_retTransp != null)
@@ -132,6 +156,9 @@ namespace HLP.Wcf.Sales
                     {
                         item.objImposto.stOrcamentoImpostos = item.stOrcamentoItem;
                     }
+
+                    item.lOrcamentoItemsRepresentantes = new ObservableCollectionBaseCadastros<HLP.Sales.Model.Models.Comercial.Orcamento_Item_RepresentantesModel>(list:
+                        this.orcamento_Item_RepresentantesRepository.GetOrcamento_Item_Representantes_ByIdOrcamentoItem(idOrcamentoItem: item.idOrcamentoItem ?? 0));
                 }
 
                 objOrcamento.orcamento_retTransp = this.orcamento_retTranspRepository.GetOrcamento_retTranspByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento);

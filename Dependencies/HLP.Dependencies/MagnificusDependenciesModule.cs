@@ -149,6 +149,7 @@ namespace HLP.Dependencies
             Bind<IOrcamento_ItemRepository>().To<Orcamento_ItemRepository>();
             Bind<IOrcamento_retTranspRepository>().To<Orcamento_retTranspRepository>();
             Bind<IOrcamento_Total_ImpostosRepository>().To<Orcamento_Total_ImpostosRepository>();
+            Bind<IOrcamento_Item_RepresentantesRepository>().To<Orcamento_Item_RepresentantesRepository>();
 
             //#endregion
 

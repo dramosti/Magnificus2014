@@ -120,12 +120,28 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             this.objViewModel.moveItensCommand = new RelayCommand(execute: ex => this.MoveExec(xAction: ex),
                 canExecute: canExec => this.MoveCanExec(xAcao: canExec));
 
+            this.objViewModel.itensRepresentantesCommands = new RelayCommand(execute: ex => this.ItensRepresentantesExecute());
+
             this.objViewModel.bWorkerPesquisa = new BackgroundWorker();
             this.objViewModel.bWorkerPesquisa.DoWork += this.getOrcamento;
             this.objViewModel.bWorkerPesquisa.RunWorkerCompleted += this.bw_RunWorkerCompleted;
         }
 
         #region Implementação Commands
+
+        public void ItensRepresentantesExecute()
+        {
+            object ret = Sistema.ExecuteMethodByReflection(xNamespace: "HLP.Sales.View.WPF", xType: "WinItensRepresentantes", xMethod: "WindowShowDialog",
+                parameters: new object[] { this.objViewModel.currentItem.lOrcamentoItemsRepresentantes });
+
+            if (ret != null)
+            {
+                this.objViewModel.currentItem.lOrcamentoItemsRepresentantes = new ObservableCollectionBaseCadastros<Orcamento_Item_RepresentantesModel>(
+                    list: (ret as OrcamentoItensRepresentanteViewModel)
+                    .orcamentoItensRepresentantes);
+                this.objViewModel.currentItem.setxRepresentante();
+            }
+        }
 
         public void MoveExec(object xAction)
         {
@@ -486,6 +502,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault();
 
                 this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
+
+                this.objViewModel.GenerateItensComissoes();
             }
         }
 
@@ -498,7 +516,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
                 //Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                 //    {
-                        
+
                 //        bCarregado = true;
                 //    }));
 
@@ -695,7 +713,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         public FuncionarioModel GetFuncionario(int idFuncionario)
         {
-            return objFuncionarioService.GetObject(id: idFuncionario, bGetChild: false);
+            return objFuncionarioService.GetObject(id: idFuncionario, bGetChild: false) ?? new FuncionarioModel();
         }
 
         public List<modelToComboBox> GetOperacoesValidas(int idTipoDocumento)
