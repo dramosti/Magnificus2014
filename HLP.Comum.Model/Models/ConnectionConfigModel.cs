@@ -10,11 +10,12 @@ namespace HLP.Comum.Model.Models
 {
     public partial class ConnectionConfigModel : modelBase
     {
-        public ConnectionConfigModel() : base("") 
+        public ConnectionConfigModel()
+            : base("")
         {
             this._xServerName = "";
         }
-        private string _xServerName= "";
+        private string _xServerName = "";
         public string xServerName
         {
             get { return _xServerName; }
@@ -33,6 +34,11 @@ namespace HLP.Comum.Model.Models
             {
                 _Autentication = value;
                 base.NotifyPropertyChanged(propertyName: "Autentication");
+                if (value)
+                {
+                    this.xLogin = "";
+                    this.xPassword = "";
+                }
             }
         }
 
@@ -92,7 +98,7 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-        
+
         private string _urlWebService = "";
 
         public string urlWebService
@@ -104,8 +110,6 @@ namespace HLP.Comum.Model.Models
                 base.NotifyPropertyChanged(propertyName: "urlWebService");
             }
         }
-        
-
 
         public string ConnectionString
         {
@@ -171,7 +175,7 @@ namespace HLP.Comum.Model.Models
                         return sAviso;
                 if (columnName == "urlWebService")
                     if (this.urlWebService == "")
-                        return sAviso;                
+                        return sAviso;
                 return base[columnName];
             }
         }
