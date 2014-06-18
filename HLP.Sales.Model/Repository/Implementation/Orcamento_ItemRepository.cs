@@ -64,7 +64,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.stServico)
                                  .DoNotMap(i => i.bPermitePorcentagem)
                                  .DoNotMap(i => i.bPedidoClienteEnabled)
-                                 .DoNotMap(i => i.xRepresentanteItem)
+                                 .DoNotMap(i => i.xRepresentanteItem)                                 
                                  .Build());
             }
 
