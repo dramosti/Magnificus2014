@@ -333,22 +333,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             this.objViewModel.currentModel = new Orcamento_ideModel();
             this.objViewModel.currentModel.dDataHora = DateTime.Now;
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwNovo_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
 
-        }
-        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-            this.objViewModel.currentModel.bTodos = true;
-            Sistema.stSender = TipoSender.Sistema;
         }
         private bool NovoCanExecute()
         {
@@ -357,21 +342,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         private void Alterar(object _panel)
         {
-            this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwAlterar_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
-        }
-        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-            Sistema.stSender = TipoSender.Sistema;
+            this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);            
         }
         private bool AlterarCanExecute()
         {

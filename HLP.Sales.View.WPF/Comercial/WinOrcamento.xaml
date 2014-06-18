@@ -9,7 +9,7 @@
         xmlns:dat="clr-namespace:System.Windows.Data;assembly=PresentationFramework"
         xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:util="clr-namespace:HLP.Base.ClassesBases;assembly=HLP.Base"
-        Title="Orçamento" Height="660" Width="1200" NameView="vwOrcamento">
+        Title="Orçamento de Vendas" Height="660" Width="1200" NameView="vwOrcamento">
     <runtime:WindowsBase.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -1103,11 +1103,11 @@
 										Header="Ordem Prod. Cliente" Width="125"/>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.xCodigoProdutoCliente, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=xCodigoProdutoCliente, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Cód.Prod Cliente" Width="125"/>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.vFreteItem, Converter={StaticResource moedaConverter},
+										Binding="{Binding Path=vFreteItem, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vl. Frete" Width="100"/>
                                 <DataGridTemplateColumn Header="Status Item" Width="150">
@@ -2026,12 +2026,12 @@
                                     </Grid.RowDefinitions>
                                     <StackPanel
                             Orientation="Horizontal">
-                                        <CheckBox Content="Criado" IsChecked="{Binding currentModel.bCriado, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
-                                        <CheckBox Content="Enviado" IsChecked="{Binding currentModel.bEnviado, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
-                                        <CheckBox Content="Confirmado" IsChecked="{Binding currentModel.bConfirmado, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
-                                        <CheckBox Content="Perdido" IsChecked="{Binding currentModel.bPerdido, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
-                                        <CheckBox Content="Cancelado" IsChecked="{Binding currentModel.bCancelado, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
-                                        <CheckBox Content="Todos" IsChecked="{Binding currentModel.bTodos, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
+                                        <CheckBox Content="Criado" IsChecked="{Binding currentModel.bCriadoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
+                                        <CheckBox Content="Enviado" IsChecked="{Binding currentModel.bEnviadoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
+                                        <CheckBox Content="Confirmado" IsChecked="{Binding currentModel.bConfirmadoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
+                                        <CheckBox Content="Perdido" IsChecked="{Binding currentModel.bPerdidoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
+                                        <CheckBox Content="Cancelado" IsChecked="{Binding currentModel.bCanceladoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
+                                        <CheckBox Content="Todos" IsChecked="{Binding currentModel.bTodosTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
                                     </StackPanel>
 
                                     <Grid Grid.Row="1">

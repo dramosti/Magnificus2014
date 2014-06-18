@@ -38,10 +38,10 @@ namespace HLP.Sales.Model.Models.Comercial
                 winOrcamento = Sistema.GetOpenWindow(xName: "WinOrcamento");
 
             if (_objDataContext == null)
-                await Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                 {
                     _objDataContext = winOrcamento.DataContext;
-                }));
+                })).Wait(timeout: new TimeSpan(hours: 0, minutes: 0, seconds: 5));
 
             return _objDataContext;
         }
@@ -160,7 +160,6 @@ namespace HLP.Sales.Model.Models.Comercial
                     base.NotifyPropertyChanged(propertyName: "bTodos");
                 }
                 this.FiltrarItems();
-                this.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "bCriado");
             }
         }
@@ -179,7 +178,6 @@ namespace HLP.Sales.Model.Models.Comercial
                     base.NotifyPropertyChanged(propertyName: "bTodos");
                 }
                 this.FiltrarItems();
-                this.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "bEnviado");
             }
         }
@@ -198,7 +196,6 @@ namespace HLP.Sales.Model.Models.Comercial
                     base.NotifyPropertyChanged(propertyName: "bTodos");
                 }
                 this.FiltrarItems();
-                this.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "bConfirmado");
             }
         }
@@ -217,7 +214,6 @@ namespace HLP.Sales.Model.Models.Comercial
                     base.NotifyPropertyChanged(propertyName: "bTodos");
                 }
                 this.FiltrarItems();
-                this.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "bPerdido");
             }
         }
@@ -236,7 +232,6 @@ namespace HLP.Sales.Model.Models.Comercial
                     base.NotifyPropertyChanged(propertyName: "bTodos");
                 }
                 this.FiltrarItems();
-                this.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "bCancelado");
             }
         }
@@ -250,14 +245,122 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _bTodos = this._bCriado = this._bEnviado = this._bConfirmado = this._bPerdido = this._bCancelado = value;
                 this.FiltrarItems();
-                if (orcamento_Total_Impostos != null)
-                    this.orcamento_Total_Impostos.CalcularTotais();
+                
                 this.NotifyPropertyChanged(propertyName: "bCriado");
                 this.NotifyPropertyChanged(propertyName: "bEnviado");
                 this.NotifyPropertyChanged(propertyName: "bConfirmado");
                 this.NotifyPropertyChanged(propertyName: "bPerdido");
                 this.NotifyPropertyChanged(propertyName: "bCancelado");
                 this.NotifyPropertyChanged(propertyName: "bTodos");
+            }
+        }
+
+        private bool _bCriadoTotais;
+
+        public bool bCriadoTotais
+        {
+            get { return _bCriadoTotais; }
+            set
+            {
+                _bCriadoTotais = value;
+                if (!value)
+                {
+                    this._bTodosTotais = false;
+                    base.NotifyPropertyChanged(propertyName: "bTodosTotais");
+                }
+                this.orcamento_Total_Impostos.CalcularTotais();
+                base.NotifyPropertyChanged(propertyName: "bCriadoTotais");
+            }
+        }
+
+        private bool _bEnviadoTotais;
+
+        public bool bEnviadoTotais
+        {
+            get { return _bEnviadoTotais; }
+            set
+            {
+                _bEnviadoTotais = value;
+                if (!value)
+                {
+                    this._bTodosTotais = false;
+                    base.NotifyPropertyChanged(propertyName: "bTodosTotais");
+                }                
+                this.orcamento_Total_Impostos.CalcularTotais();
+                base.NotifyPropertyChanged(propertyName: "bEnviadoTotais");
+            }
+        }
+
+        private bool _bConfirmadoTotais;
+
+        public bool bConfirmadoTotais
+        {
+            get { return _bConfirmadoTotais; }
+            set
+            {
+                _bConfirmadoTotais = value;
+                if (!value)
+                {
+                    this._bTodosTotais = false;
+                    base.NotifyPropertyChanged(propertyName: "bTodosTotais");
+                }                
+                this.orcamento_Total_Impostos.CalcularTotais();
+                base.NotifyPropertyChanged(propertyName: "bConfirmadoTotais");
+            }
+        }
+
+        private bool _bPerdidoTotais;
+
+        public bool bPerdidoTotais
+        {
+            get { return _bPerdidoTotais; }
+            set
+            {
+                _bPerdidoTotais = value;
+                if (!value)
+                {
+                    this._bTodosTotais = false;
+                    base.NotifyPropertyChanged(propertyName: "bTodosTotais");
+                }
+                this.orcamento_Total_Impostos.CalcularTotais();
+                base.NotifyPropertyChanged(propertyName: "bPerdidoTotais");
+            }
+        }
+
+        private bool _bCanceladoTotais;
+
+        public bool bCanceladoTotais
+        {
+            get { return _bCanceladoTotais; }
+            set
+            {
+                _bCanceladoTotais = value;
+                if (!value)
+                {
+                    this._bTodosTotais = false;
+                    base.NotifyPropertyChanged(propertyName: "bTodosTotais");
+                }
+                this.orcamento_Total_Impostos.CalcularTotais();
+                base.NotifyPropertyChanged(propertyName: "bCanceladoTotais");
+            }
+        }
+
+        private bool _bTodosTotais;
+
+        public bool bTodosTotais
+        {
+            get { return _bTodosTotais; }
+            set
+            {
+                _bTodosTotais = this._bCriadoTotais = this._bEnviadoTotais = this._bConfirmadoTotais = this._bPerdidoTotais = this._bCanceladoTotais = value;
+                if (orcamento_Total_Impostos != null)
+                    this.orcamento_Total_Impostos.CalcularTotais();
+                this.NotifyPropertyChanged(propertyName: "bCriadoTotais");
+                this.NotifyPropertyChanged(propertyName: "bEnviadoTotais");
+                this.NotifyPropertyChanged(propertyName: "bConfirmadoTotais");
+                this.NotifyPropertyChanged(propertyName: "bPerdidoTotais");
+                this.NotifyPropertyChanged(propertyName: "bCanceladoTotais");
+                this.NotifyPropertyChanged(propertyName: "bTodosTotais");
             }
         }
 
@@ -1380,7 +1483,7 @@ namespace HLP.Sales.Model.Models.Comercial
                         {
                             this.vTotalSemDescontoItem = (this._qProduto * this._vVendaSemDesconto);
 
-                            this.vTotalItem = (this._vVenda + this._vDesconto) * this._qProduto;
+                            this.vTotalItem = (this._vVenda + this._vDesconto + this._vFreteItem + this._vSegurosItem + this._vOutrasDespesasItem) * this._qProduto;
 
                             this.objImposto.CalculateBaseIpi();
 
@@ -1914,6 +2017,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 this.objImposto.CalculateBasePis();
                 this.objImposto.CalculateBaseCofins();
                 this.CalculateVlrDescontoSuframa();
+                Orcamento_ideModel.currentModel.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "vTotalItem");
             }
         }
@@ -1931,6 +2035,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 this.objImposto.CalculateBaseIcmsSubstTributaria();
                 this.objImposto.CalculateBasePis();
                 this.objImposto.CalculateBaseCofins();
+                this.SetTotalItem();
                 base.NotifyPropertyChanged(propertyName: "vFreteItem");
             }
         }
@@ -2081,6 +2186,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 this.objImposto.CalculateBaseIcmsSubstTributaria();
                 this.objImposto.CalculateBasePis();
                 this.objImposto.CalculateBaseCofins();
+                this.SetTotalItem();
                 base.NotifyPropertyChanged(propertyName: "vSegurosItem");
             }
         }
@@ -2098,6 +2204,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 this.objImposto.CalculateBaseIcmsSubstTributaria();
                 this.objImposto.CalculateBasePis();
                 this.objImposto.CalculateBaseCofins();
+                this.SetTotalItem();
                 base.NotifyPropertyChanged(propertyName: "vOutrasDespesasItem");
             }
         }
@@ -2143,6 +2250,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _vDescontoSuframa = value;
+                Orcamento_ideModel.currentModel.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "vDescontoSuframa");
             }
         }
@@ -2972,6 +3080,21 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
 
+        public void CalculateVlrIss()
+        {
+            if (Orcamento_ideModel.currentModel.GetOperationModel() == OperationModel.updating)
+            {
+                if (this.ISS_stCalculaIss == (byte)1)
+                {
+                    this.ISS_vIss = this.ISS_vBaseCalculo * (this.ISS_pIss / 100);
+                }
+                else
+                {
+                    this.ISS_vIss = decimal.Zero;
+                }
+            }
+        }
+
         #endregion
 
         #region Propriedades não Mapeadas
@@ -3064,7 +3187,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _ICMS_vICMS = value;
-                this.CalculateVlrIcmsSubstTributaria();
+                Orcamento_ideModel.currentModel.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "ICMS_vICMS");
             }
         }
@@ -3123,6 +3246,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _ICMS_vSubstituicaoTributaria = value;
+                Orcamento_ideModel.currentModel.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "ICMS_vSubstituicaoTributaria");
             }
         }
@@ -3222,6 +3346,7 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _ICMS_vIcmsProprio = value;
                 this.CalculateBaseIcmsSubstTributaria();
+                Orcamento_ideModel.currentModel.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "ICMS_vIcmsProprio");
             }
         }
@@ -3356,6 +3481,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 this.CalculateBaseIcmsSubstTributaria();
                 this.CalculateBasePis();
                 this.CalculateBaseCofins();
+                Orcamento_ideModel.currentModel.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "IPI_vIPI");
             }
         }
@@ -3423,7 +3549,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _ISS_vBaseCalculo = value;
-                this.ISS_vIss = value * (this.ISS_pIss / 100);
+                this.CalculateVlrIss();
                 base.NotifyPropertyChanged(propertyName: "ISS_vBaseCalculo");
             }
         }
@@ -3435,7 +3561,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _ISS_pIss = value;
-                this.ISS_vIss = this.ISS_vBaseCalculo * (value / 100);
+                this.CalculateVlrIss();
                 base.NotifyPropertyChanged(propertyName: "ISS_pIss");
             }
         }
@@ -3447,6 +3573,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _ISS_vIss = value;
+                Orcamento_ideModel.currentModel.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "ISS_vIss");
             }
         }
@@ -3458,6 +3585,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _ISS_stCalculaIss = value;
+                this.CalculateVlrIss();
                 base.NotifyPropertyChanged(propertyName: "ISS_stCalculaIss");
             }
         }
@@ -3504,6 +3632,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _PIS_vPIS = value;
+                Orcamento_ideModel.currentModel.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "PIS_vPIS");
             }
         }
@@ -3610,6 +3739,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _COFINS_vCOFINS = value;
+                Orcamento_ideModel.currentModel.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "COFINS_vCOFINS");
             }
         }
@@ -3944,39 +4074,39 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dTotalProdutos = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalProdutos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => !i.stServico && i.stOrcamentoItem == 0)
-                        .Sum(i => (i.vVenda * i.qProduto));
+                        .Sum(i => i.vTotalItem);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalProdutos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => !i.stServico && i.stOrcamentoItem == 1)
-                        .Sum(i => (i.vVenda * i.qProduto));
+                        .Sum(i => i.vTotalItem);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalProdutos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => !i.stServico && i.stOrcamentoItem == 2)
-                        .Sum(i => (i.vVenda * i.qProduto));
+                        .Sum(i => i.vTotalItem);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalProdutos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => !i.stServico && i.stOrcamentoItem == 3)
-                        .Sum(i => (i.vVenda * i.qProduto));
+                        .Sum(i => i.vTotalItem);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalProdutos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => !i.stServico && i.stOrcamentoItem == 4)
-                        .Sum(i => (i.vVenda * i.qProduto));
+                        .Sum(i => i.vTotalItem);
                 }
 
                 this._vProdutoTotal = dTotalProdutos;
@@ -3988,39 +4118,39 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dTotalServicos = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalServicos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stServico && i.stOrcamentoItem == 0)
-                        .Sum(i => (i.vVenda * i.qProduto));
+                        .Sum(i => i.vTotalItem);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalServicos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stServico && i.stOrcamentoItem == 1)
-                        .Sum(i => (i.vVenda * i.qProduto));
+                        .Sum(i => i.vTotalItem);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalServicos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stServico && i.stOrcamentoItem == 2)
-                        .Sum(i => (i.vVenda * i.qProduto));
+                        .Sum(i => i.vTotalItem);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalServicos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stServico && i.stOrcamentoItem == 3)
-                        .Sum(i => (i.vVenda * i.qProduto));
+                        .Sum(i => i.vTotalItem);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalServicos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stServico && i.stOrcamentoItem == 4)
-                        .Sum(i => (i.vVenda * i.qProduto));
+                        .Sum(i => i.vTotalItem);
                 }
 
                 if (dTotalServicos > 0)
@@ -4041,35 +4171,35 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dTotalVlrDescontos = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalVlrDescontos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0)
                         .Sum(i => i.vDesconto * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalVlrDescontos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1)
                         .Sum(i => i.vDesconto * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalVlrDescontos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2)
                         .Sum(i => i.vDesconto * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalVlrDescontos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3)
                         .Sum(i => i.vDesconto * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalVlrDescontos += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4)
@@ -4091,35 +4221,35 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 //decimal dTotalPorcDescontos = decimal.Zero;
 
-                //if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                //if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 //{
                 //    dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
                 //        .Where(i => i.stOrcamentoItem == 0)
                 //        .Sum(i => i.pDesconto);
                 //}
 
-                //if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                //if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 //{
                 //    dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
                 //        .Where(i => i.stOrcamentoItem == 1)
                 //        .Sum(i => i.pDesconto);
                 //}
 
-                //if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                //if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 //{
                 //    dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
                 //        .Where(i => i.stOrcamentoItem == 2)
                 //        .Sum(i => i.pDesconto);
                 //}
 
-                //if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                //if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 //{
                 //    dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
                 //        .Where(i => i.stOrcamentoItem == 3)
                 //        .Sum(i => i.pDesconto);
                 //}
 
-                //if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                //if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 //{
                 //    dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
                 //        .Where(i => i.stOrcamentoItem == 4)
@@ -4135,35 +4265,35 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dTotalDescSuframa = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalDescSuframa += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0)
                         .Sum(i => i.vDescontoSuframa ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalDescSuframa += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1)
                         .Sum(i => i.vDescontoSuframa ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalDescSuframa += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2)
                         .Sum(i => i.vDescontoSuframa ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalDescSuframa += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3)
                         .Sum(i => i.vDescontoSuframa ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalDescSuframa += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4)
@@ -4179,39 +4309,39 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dTotalFrete = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalFrete += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0)
-                        .Sum(i => i.vFreteItem);
+                        .Sum(i => i.vFreteItem * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalFrete += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1)
-                        .Sum(i => i.vFreteItem);
+                        .Sum(i => i.vFreteItem * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalFrete += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2)
-                        .Sum(i => i.vFreteItem);
+                        .Sum(i => i.vFreteItem * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalFrete += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3)
-                        .Sum(i => i.vFreteItem);
+                        .Sum(i => i.vFreteItem * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalFrete += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4)
-                        .Sum(i => i.vFreteItem);
+                        .Sum(i => i.vFreteItem * i.qProduto);
                 }
 
                 this._vFreteTotal = dTotalFrete;
@@ -4223,39 +4353,39 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dTotalSeguro = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalSeguro += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0)
-                        .Sum(i => i.vSegurosItem);
+                        .Sum(i => i.vSegurosItem * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalSeguro += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1)
-                        .Sum(i => i.vSegurosItem);
+                        .Sum(i => i.vSegurosItem * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalSeguro += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2)
-                        .Sum(i => i.vSegurosItem);
+                        .Sum(i => i.vSegurosItem * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalSeguro += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3)
-                        .Sum(i => i.vSegurosItem);
+                        .Sum(i => i.vSegurosItem * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dTotalSeguro += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4)
-                        .Sum(i => i.vSegurosItem);
+                        .Sum(i => i.vSegurosItem * i.qProduto);
                 }
 
                 this._vSeguroTotal = dTotalSeguro;
@@ -4267,39 +4397,39 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dOutrasDespesas = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dOutrasDespesas += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0)
-                        .Sum(i => i.vOutrasDespesasItem);
+                        .Sum(i => i.vOutrasDespesasItem * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dOutrasDespesas += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1)
-                        .Sum(i => i.vOutrasDespesasItem);
+                        .Sum(i => i.vOutrasDespesasItem * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dOutrasDespesas += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2)
-                        .Sum(i => i.vOutrasDespesasItem);
+                        .Sum(i => i.vOutrasDespesasItem * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dOutrasDespesas += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3)
-                        .Sum(i => i.vOutrasDespesasItem);
+                        .Sum(i => i.vOutrasDespesasItem * i.qProduto);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dOutrasDespesas += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4)
-                        .Sum(i => i.vOutrasDespesasItem);
+                        .Sum(i => i.vOutrasDespesasItem * i.qProduto);
                 }
 
                 this._vOutrasDespesasTotal = dOutrasDespesas;
@@ -4311,31 +4441,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dBaseCalcIcms = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dBaseCalcIcms += objOrcamento_ide.lOrcamento_Itens.Where(i => i.stOrcamentoItem == 0).
                     Sum(i => i.objImposto.ICMS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dBaseCalcIcms += objOrcamento_ide.lOrcamento_Itens.Where(i => i.stOrcamentoItem == 1).
                     Sum(i => i.objImposto.ICMS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dBaseCalcIcms += objOrcamento_ide.lOrcamento_Itens.Where(i => i.stOrcamentoItem == 2).
                     Sum(i => i.objImposto.ICMS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dBaseCalcIcms += objOrcamento_ide.lOrcamento_Itens.Where(i => i.stOrcamentoItem == 3).
                     Sum(i => i.objImposto.ICMS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dBaseCalcIcms += objOrcamento_ide.lOrcamento_Itens.Where(i => i.stOrcamentoItem == 4).
                     Sum(i => i.objImposto.ICMS_vBaseCalculo ?? 0);
@@ -4350,31 +4480,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrIcms = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIcms += objOrcamento_ide.lOrcamento_Itens.Where(i => i.stOrcamentoItem == 0)
                         .Sum(i => i.objImposto.ICMS_vICMS ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIcms += objOrcamento_ide.lOrcamento_Itens.Where(i => i.stOrcamentoItem == 1)
                         .Sum(i => i.objImposto.ICMS_vICMS ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIcms += objOrcamento_ide.lOrcamento_Itens.Where(i => i.stOrcamentoItem == 2)
                         .Sum(i => i.objImposto.ICMS_vICMS ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIcms += objOrcamento_ide.lOrcamento_Itens.Where(i => i.stOrcamentoItem == 3)
                         .Sum(i => i.objImposto.ICMS_vICMS ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIcms += objOrcamento_ide.lOrcamento_Itens.Where(i => i.stOrcamentoItem == 4)
                         .Sum(i => i.objImposto.ICMS_vICMS ?? 0);
@@ -4389,31 +4519,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrBaseIcmsProprio = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseIcmsProprio += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0).Sum(i => i.objImposto.ICMS_vBaseCalculoIcmsProprio ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseIcmsProprio += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1).Sum(i => i.objImposto.ICMS_vBaseCalculoIcmsProprio ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseIcmsProprio += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2).Sum(i => i.objImposto.ICMS_vBaseCalculoIcmsProprio ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseIcmsProprio += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3).Sum(i => i.objImposto.ICMS_vBaseCalculoIcmsProprio ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseIcmsProprio += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4).Sum(i => i.objImposto.ICMS_vBaseCalculoIcmsProprio ?? 0);
@@ -4428,31 +4558,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrIcmsPróprio = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIcmsPróprio += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0).Sum(i => i.objImposto.ICMS_vIcmsProprio ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIcmsPróprio += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1).Sum(i => i.objImposto.ICMS_vIcmsProprio ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIcmsPróprio += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2).Sum(i => i.objImposto.ICMS_vIcmsProprio ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIcmsPróprio += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3).Sum(i => i.objImposto.ICMS_vIcmsProprio ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIcmsPróprio += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4).Sum(i => i.objImposto.ICMS_vIcmsProprio ?? 0);
@@ -4467,31 +4597,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrBaseCalculoIpi = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalculoIpi += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0).Sum(i => i.objImposto.IPI_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalculoIpi += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1).Sum(i => i.objImposto.IPI_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalculoIpi += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2).Sum(i => i.objImposto.IPI_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalculoIpi += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3).Sum(i => i.objImposto.IPI_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalculoIpi += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4).Sum(i => i.objImposto.IPI_vBaseCalculo ?? 0);
@@ -4506,31 +4636,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrIpi = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIpi += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0).Sum(i => i.objImposto.IPI_vIPI ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIpi += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1).Sum(i => i.objImposto.IPI_vIPI ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIpi += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2).Sum(i => i.objImposto.IPI_vIPI ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIpi += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3).Sum(i => i.objImposto.IPI_vIPI ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIpi += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4).Sum(i => i.objImposto.IPI_vIPI ?? 0);
@@ -4545,31 +4675,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrBaseSubstTribut = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseSubstTribut += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0).Sum(i => i.objImposto.ICMS_vBaseCalculoSubstituicaoTributaria ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseSubstTribut += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1).Sum(i => i.objImposto.ICMS_vBaseCalculoSubstituicaoTributaria ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseSubstTribut += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2).Sum(i => i.objImposto.ICMS_vBaseCalculoSubstituicaoTributaria ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseSubstTribut += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3).Sum(i => i.objImposto.ICMS_vBaseCalculoSubstituicaoTributaria ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseSubstTribut += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4).Sum(i => i.objImposto.ICMS_vBaseCalculoSubstituicaoTributaria ?? 0);
@@ -4584,31 +4714,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrSubsTrib = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrSubsTrib += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0).Sum(i => i.objImposto.ICMS_vSubstituicaoTributaria ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrSubsTrib += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1).Sum(i => i.objImposto.ICMS_vSubstituicaoTributaria ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrSubsTrib += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2).Sum(i => i.objImposto.ICMS_vSubstituicaoTributaria ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrSubsTrib += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3).Sum(i => i.objImposto.ICMS_vSubstituicaoTributaria ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrSubsTrib += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4).Sum(i => i.objImposto.ICMS_vSubstituicaoTributaria ?? 0);
@@ -4623,31 +4753,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrBaseCalcPis = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcPis += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0).Sum(i => i.objImposto.PIS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcPis += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1).Sum(i => i.objImposto.PIS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcPis += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2).Sum(i => i.objImposto.PIS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcPis += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3).Sum(i => i.objImposto.PIS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcPis += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4).Sum(i => i.objImposto.PIS_vBaseCalculo ?? 0);
@@ -4662,31 +4792,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrPis = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrPis += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0).Sum(i => i.objImposto.PIS_vPIS ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrPis += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1).Sum(i => i.objImposto.PIS_vPIS ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrPis += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2).Sum(i => i.objImposto.PIS_vPIS ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrPis += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3).Sum(i => i.objImposto.PIS_vPIS ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrPis += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4).Sum(i => i.objImposto.PIS_vPIS ?? 0);
@@ -4701,31 +4831,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrBaseCalcCofins = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcCofins += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0).Sum(i => i.objImposto.COFINS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcCofins += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1).Sum(i => i.objImposto.COFINS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcCofins += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2).Sum(i => i.objImposto.COFINS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcCofins += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3).Sum(i => i.objImposto.COFINS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcCofins += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4).Sum(i => i.objImposto.COFINS_vBaseCalculo ?? 0);
@@ -4740,31 +4870,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrCofins = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrCofins += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0).Sum(i => i.objImposto.COFINS_vCOFINS ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrCofins += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1).Sum(i => i.objImposto.COFINS_vCOFINS ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrCofins += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2).Sum(i => i.objImposto.COFINS_vCOFINS ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrCofins += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3).Sum(i => i.objImposto.COFINS_vCOFINS ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrCofins += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4).Sum(i => i.objImposto.COFINS_vCOFINS ?? 0);
@@ -4779,31 +4909,31 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrBaseCalcIss = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcIss += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 0).Sum(i => i.objImposto.ISS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcIss += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1).Sum(i => i.objImposto.ISS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcIss += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2).Sum(i => i.objImposto.ISS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcIss += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3).Sum(i => i.objImposto.ISS_vBaseCalculo ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrBaseCalcIss += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4).Sum(i => i.objImposto.ISS_vBaseCalculo ?? 0);
@@ -4818,30 +4948,30 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 decimal dVlrIss = decimal.Zero;
 
-                if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCriadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIss += objOrcamento_ide.lOrcamento_Itens.Where(i => i.stOrcamentoItem == 0).Sum(i => i.objImposto.ISS_vIss ?? 0);
                 }
 
-                if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bEnviadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIss += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 1).Sum(i => i.objImposto.ISS_vIss ?? 0);
                 }
 
-                if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bConfirmadoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIss += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 2).Sum(i => i.objImposto.ISS_vIss ?? 0);
                 }
 
-                if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bPerdidoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIss += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 3).Sum(i => i.objImposto.ISS_vIss ?? 0);
                 }
 
-                if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                if (objOrcamento_ide.bCanceladoTotais || objOrcamento_ide.bTodosTotais)
                 {
                     dVlrIss += objOrcamento_ide.lOrcamento_Itens
                         .Where(i => i.stOrcamentoItem == 4).Sum(i => i.objImposto.ISS_vIss ?? 0);
@@ -4940,9 +5070,9 @@ namespace HLP.Sales.Model.Models.Comercial
                 _vFreteTotal = value;
 
 
-                if (this.GetOperationModel() == OperationModel.updating)
+                if (Orcamento_ideModel.currentModel.GetOperationModel() == OperationModel.updating)
                 {
-                    decimal vTotal = (this._vProdutoTotal + (this._vServicoTotal ?? 0));
+                    decimal vTotal = Orcamento_ideModel.currentModel.lOrcamento_Itens.Select(i => (i.qProduto * i.vVenda)).Sum();
 
                     if (vTotal != 0)
                     {
@@ -4952,7 +5082,7 @@ namespace HLP.Sales.Model.Models.Comercial
                         {
                             foreach (Orcamento_ItemModel item in objOrcamento_ide.lOrcamento_Itens)
                             {
-                                item.vFreteItem = (((item.vVenda * item.qProduto) / vTotal) * value);
+                                item.vFreteItem = (((item.vVenda * item.qProduto) / vTotal) * value) / item.qProduto;
                             }
                         }
                     }
@@ -4968,9 +5098,9 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _vSeguroTotal = value;
-                if (this.GetOperationModel() == OperationModel.updating)
+                if (Orcamento_ideModel.currentModel.GetOperationModel() == OperationModel.updating)
                 {
-                    decimal vTotal = (this._vProdutoTotal + (this._vServicoTotal ?? 0));
+                    decimal vTotal = Orcamento_ideModel.currentModel.lOrcamento_Itens.Select(i => (i.qProduto * i.vVenda)).Sum();
 
                     if (vTotal != 0)
                     {
@@ -4980,7 +5110,7 @@ namespace HLP.Sales.Model.Models.Comercial
                         {
                             foreach (Orcamento_ItemModel item in objOrcamento_ide.lOrcamento_Itens)
                             {
-                                item.vSegurosItem = (((item.vVenda * item.qProduto) / vTotal) * value);
+                                item.vSegurosItem = (((item.vVenda * item.qProduto) / vTotal) * value) / item.qProduto;
                             }
                         }
                     }
@@ -5113,9 +5243,9 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _vOutrasDespesasTotal = value;
-                if (this.GetOperationModel() == OperationModel.updating)
+                if (Orcamento_ideModel.currentModel.GetOperationModel() == OperationModel.updating)
                 {
-                    decimal vTotal = (this._vProdutoTotal + (this._vServicoTotal ?? 0));
+                    decimal vTotal = Orcamento_ideModel.currentModel.lOrcamento_Itens.Select(i => (i.qProduto * i.vVenda)).Sum();
 
                     if (vTotal != 0)
                     {
@@ -5125,7 +5255,7 @@ namespace HLP.Sales.Model.Models.Comercial
                         {
                             foreach (Orcamento_ItemModel item in objOrcamento_ide.lOrcamento_Itens)
                             {
-                                item.vOutrasDespesasItem = (((item.vVenda * item.qProduto) / vTotal) * value);
+                                item.vOutrasDespesasItem = (((item.vVenda * item.qProduto) / vTotal) * value) / item.qProduto;
                             }
                         }
                     }
