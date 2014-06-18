@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Base.Static;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,37 @@ namespace HLP.Components.View.WPF.Converter
                 d = decimal.Zero;
             }
 
-            return String.Format("{0:C}", d);
+            string sFormat = "{0:C2}";
+
+            if (parameter != null)
+            {
+                object objEmpresa = CompanyData.objEmpresaModel;
+
+                if (objEmpresa != null)
+                {
+                    object objParametrosEmpresa = objEmpresa.GetType().GetProperty(name: "empresaParametros").GetValue(obj: objEmpresa);
+
+                    if (objParametrosEmpresa != null)
+                    {
+                        object objParametrosComercial = objParametrosEmpresa.GetType().GetProperty(name: "ObjParametro_ComercialModel")
+                            .GetValue(obj: objParametrosEmpresa);
+
+                        string xNameProperty = "";
+
+                        if (objParametrosComercial != null)
+                        {
+                            xNameProperty = parameter.ToString();
+                            byte vCasasDecimais = objParametrosComercial.GetType().
+                                GetProperty(name: xNameProperty).GetValue(obj: objParametrosComercial) as byte? ?? 0;
+
+                            sFormat = "{0:C" + vCasasDecimais.ToString() + "}";
+                        }
+                    }
+                }
+            }
+
+
+            return String.Format(sFormat, d);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

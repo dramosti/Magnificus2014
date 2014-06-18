@@ -50,6 +50,39 @@ namespace HLP.Entries.Model.Models.Parametros
         public byte stUtilizaVendaKitMaterial { get; set; }
         [ParameterOrder(Order = 18)]
         public byte stRateioFrete { get; set; }
+        private byte? _nCasasDecimaisItem;
+        [ParameterOrder(Order = 19)]
+        public byte? nCasasDecimaisItem
+        {
+            get { return _nCasasDecimaisItem; }
+            set
+            {
+                _nCasasDecimaisItem = value;
+                base.NotifyPropertyChanged(propertyName: "nCasasDecimaisItem");
+            }
+        }
+        private byte? _nCasasDecimaisTotalItem;
+        [ParameterOrder(Order = 20)]
+        public byte? nCasasDecimaisTotalItem
+        {
+            get { return _nCasasDecimaisTotalItem; }
+            set
+            {
+                _nCasasDecimaisTotalItem = value;
+                base.NotifyPropertyChanged(propertyName: "nCasasDecimaisTotalItem");
+            }
+        }
+        private byte? _nCasasDecimaisTotalNota;
+        [ParameterOrder(Order = 21)]
+        public byte? nCasasDecimaisTotalNota
+        {
+            get { return _nCasasDecimaisTotalNota; }
+            set
+            {
+                _nCasasDecimaisTotalNota = value;
+                base.NotifyPropertyChanged(propertyName: "nCasasDecimaisTotalNota");
+            }
+        }
     }
 
     public partial class Parametro_ComercialModel

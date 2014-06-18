@@ -294,7 +294,6 @@ namespace HLP.Components.View.WPF
                 dataGrid.ScrollIntoView(item);
                 row = dataGrid.ItemContainerGenerator.ContainerFromIndex(rowIndex) as DataGridRow;
             }
-            //TODO: Retrieve and focus a DataGridCell object
         }
 
         private void columnHeader_Click(object sender, RoutedEventArgs e)

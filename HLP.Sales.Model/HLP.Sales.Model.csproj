@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>G:\CSharp\Desenvolvimento\Projetos\Magnificus\dlls\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>1</WarningLevel>
@@ -94,11 +94,13 @@
     <Compile Include="Repository\Implementation\Orcamento_ideRepository.cs" />
     <Compile Include="Repository\Implementation\Orcamento_ItemRepository.cs" />
     <Compile Include="Repository\Implementation\Orcamento_Item_ImpostosRepository.cs" />
+    <Compile Include="Repository\Implementation\Orcamento_Item_RepresentantesRepository.cs" />
     <Compile Include="Repository\Implementation\Orcamento_retTranspRepository.cs" />
     <Compile Include="Repository\Implementation\Orcamento_Total_ImpostosRepository.cs" />
     <Compile Include="Repository\Interfaces\IOrcamento_ideRepository.cs" />
     <Compile Include="Repository\Interfaces\IOrcamento_ItemRepository.cs" />
     <Compile Include="Repository\Interfaces\IOrcamento_Item_ImpostosRepository.cs" />
+    <Compile Include="Repository\Interfaces\IOrcamento_Item_RepresentantesRepository.cs" />
     <Compile Include="Repository\Interfaces\IOrcamento_retTranspRepository.cs" />
     <Compile Include="Repository\Interfaces\IOrcamento_Total_ImpostosRepository.cs" />
   </ItemGroup>

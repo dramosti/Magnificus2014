@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>G:\CSharp\Desenvolvimento\Projetos\Magnificus\dlls\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -90,6 +90,8 @@
     <Compile Include="CustomComboBox.cs" />
     <Compile Include="CustomDataGrid.cs" />
     <Compile Include="CustomDockPanelSplitter.cs" />
+    <Compile Include="CustomHlpStatus.cs" />
+    <Compile Include="CustomHlpVersoes.cs" />
     <Compile Include="CustomPesquisa.cs" />
     <Compile Include="CustomTextBlock.cs" />
     <Compile Include="CustomTextBox.cs" />

@@ -100,7 +100,7 @@ namespace HLP.Base.ClassesBases
 
         public string Error
         {
-            get { throw new NotImplementedException(); }
+            get { return string.Empty; }
         }
 
         public virtual string this[string columnName]

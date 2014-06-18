@@ -25,6 +25,7 @@ namespace HLP.Sales.View.WPF.Comercial
         {
             InitializeComponent();
             this.ViewModel = new OrcamentoViewModel();
+            this.tcPrincipal.KeyUp += base.TabControl_KeyUp;
         }
 
         public OrcamentoViewModel ViewModel
@@ -37,6 +38,11 @@ namespace HLP.Sales.View.WPF.Comercial
             {
                 this.DataContext = value;
             }
+        }
+
+        private void TabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this.ViewModel.GenerateItensComissoes();
         }
     }
 }

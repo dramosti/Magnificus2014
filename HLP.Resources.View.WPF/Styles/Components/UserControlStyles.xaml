@@ -5317,7 +5317,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Button_REFRESH" TargetType="{x:Type Button}">
+    <Style x:Key="Button_REFRESH_OLD" TargetType="{x:Type Button}">
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Cursor" Value="Hand"></Setter>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -5351,6 +5351,66 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="Tag" Value="1">
                             <Setter Property="Cursor" Value="Hand"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Button_REFRESH" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="contentPresenter">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="180"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="360"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="17"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="border" Grid.RowSpan="2" BorderThickness="1" BorderBrush="White" Background="White"></Border>
+                        <Path x:Name="path" Width="23" Height="28" Stretch="Fill" Fill="#FF626262" Data="F1 M 38,20.5833C 42.9908,20.5833 47.4912,22.6825 50.6667,26.046L 50.6667,17.4167L 55.4166,22.1667L 55.4167,34.8333L 42.75,34.8333L 38,30.0833L 46.8512,30.0833C 44.6768,27.6539 41.517,26.125 38,26.125C 31.9785,26.125 27.0037,30.6068 26.2296,36.4167L 20.6543,36.4167C 21.4543,27.5397 28.9148,20.5833 38,20.5833 Z M 38,49.875C 44.0215,49.875 48.9963,45.3932 49.7703,39.5833L 55.3457,39.5833C 54.5457,48.4603 47.0852,55.4167 38,55.4167C 33.0092,55.4167 28.5088,53.3175 25.3333,49.954L 25.3333,58.5833L 20.5833,53.8333L 20.5833,41.1667L 33.25,41.1667L 38,45.9167L 29.1487,45.9167C 31.3231,48.3461 34.483,49.875 38,49.875 Z " Margin="10.333,0,11.666,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <ContentPresenter x:Name="contentPresenter" Grid.Row="1" TextElement.FontFamily="Segoe Ui Light" VerticalAlignment="Center" HorizontalAlignment="Center" TextElement.Foreground="#FF626262"></ContentPresenter>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
                             </Trigger.EnterActions>
@@ -7352,11 +7412,163 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <!--CheckBox-->
 
+    <Style x:Key="CheckBoxStatus_COM_ANIMACAO" TargetType="{x:Type CheckBox}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1" RepeatBehavior="Forever">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rectangle1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50.011"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle1">
+                                <EasingColorKeyFrame KeyTime="0:0:2.5" Value="#FF84E40F"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Fill="Transparent" StrokeThickness="1.5" Stroke="#FF626262"></Ellipse>
+                        <Path x:Name="path" Height="13" Width="15" Stretch="Fill" Fill="#FF626262" Data="F1 M 23.7501,33.25L 34.8334,44.3333L 52.2499,22.1668L 56.9999,26.9168L 34.8334,53.8333L 19.0001,38L 23.7501,33.25 Z "/>
+                        <Rectangle x:Name="rectangle" Grid.Column="1" Height="1.5" Fill="#FF626262"/>
+                        <Rectangle x:Name="rectangle1" Grid.Column="1" Height="1.5" Width="10" HorizontalAlignment="Left" Fill="Transparent" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                        <ContentPresenter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextElement.FontFamily="Segoe Ui Light" TextElement.Foreground="#FF626262"></ContentPresenter>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Fill" TargetName="ellipse" Value="#FF79C918"/>
+                            <Setter Property="Stroke" TargetName="ellipse" Value="#FF79C918"/>
+                            <Setter Property="Fill" TargetName="path" Value="White"/>
+                            <Setter Property="Fill" TargetName="rectangle" Value="#FF79C918"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
- 
+    <Style x:Key="CheckBoxStatus_SEM_ANIMACAO" TargetType="{x:Type CheckBox}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Fill="Transparent" StrokeThickness="1.5" Stroke="#FF626262"></Ellipse>
+                        <Path x:Name="path" Height="13" Width="15" Stretch="Fill" Fill="#FF626262" Data="F1 M 23.7501,33.25L 34.8334,44.3333L 52.2499,22.1668L 56.9999,26.9168L 34.8334,53.8333L 19.0001,38L 23.7501,33.25 Z "/>
+                        <Rectangle x:Name="rectangle" Grid.Column="1" Height="1.5" Fill="#FF626262"/>
+                        <ContentPresenter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextElement.FontFamily="Segoe Ui Light" TextElement.Foreground="#FF626262"></ContentPresenter>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Fill" TargetName="ellipse" Value="#FF79C918"/>
+                            <Setter Property="Stroke" TargetName="ellipse" Value="#FF79C918"/>
+                            <Setter Property="Fill" TargetName="path" Value="White"/>
+                            <Setter Property="Fill" TargetName="rectangle" Value="#FF79C918"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
+    <Style x:Key="CheckBoxStatusSimples" TargetType="{x:Type CheckBox}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Fill="Transparent" StrokeThickness="1.5" Stroke="#FF626262"></Ellipse>
+                        <Path x:Name="path" Height="13" Width="15" Stretch="Fill" Fill="#FF626262" Data="F1 M 23.7501,33.25L 34.8334,44.3333L 52.2499,22.1668L 56.9999,26.9168L 34.8334,53.8333L 19.0001,38L 23.7501,33.25 Z "/>
+                        <Rectangle Grid.Column="1" Height="1.5" Visibility="Collapsed" Fill="#FF626262"/>
+                        <ContentPresenter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextElement.FontFamily="Segoe Ui Light" TextElement.Foreground="#FF626262"></ContentPresenter>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Fill" TargetName="ellipse" Value="#FF79C918"/>
+                            <Setter Property="Stroke" TargetName="ellipse" Value="#FF79C918"/>
+                            <Setter Property="Fill" TargetName="path" Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-
-
+    <Style x:Key="CheckBox_CANCELADO" TargetType="{x:Type CheckBox}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Fill="Transparent" StrokeThickness="1.5" Stroke="#FF626262"></Ellipse>
+                        <Path x:Name="path2" Height="13" Width="13" Stretch="Fill" Fill="#FF626262" Data="F1 M 56.0143,57L 45.683,57L 39.0246,44.6245C 38.7758,44.1665 38.5156,43.3183 38.2442,42.0799L 38.1339,42.0799C 38.0095,42.6623 37.7127,43.5473 37.2433,44.7348L 30.5594,57L 20.1857,57L 32.5018,38L 21.2714,19L 31.8487,19L 37.3621,30.3915C 37.7918,31.2963 38.1763,32.365 38.5156,33.5977L 38.6259,33.5977C 38.8408,32.857 39.2394,31.7543 39.8219,30.2897L 45.8951,19L 55.4714,19L 44.0969,37.8388L 56.0143,57 Z "/>
+                        <Path x:Name="path" Height="13" Width="15" Visibility="Collapsed" Stretch="Fill" Fill="#FF626262" Data="F1 M 23.7501,33.25L 34.8334,44.3333L 52.2499,22.1668L 56.9999,26.9168L 34.8334,53.8333L 19.0001,38L 23.7501,33.25 Z "/>
+                        <Rectangle Grid.Column="1" Height="1.5" Visibility="Collapsed" Fill="#FF626262"/>
+                        <ContentPresenter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextElement.FontFamily="Segoe Ui Light" TextElement.Foreground="#FF626262"></ContentPresenter>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Fill" TargetName="ellipse" Value="#FFD65532"/>
+                            <Setter Property="Stroke" TargetName="ellipse" Value="#FFD65532"/>
+                            <Setter Property="Fill" TargetName="path2" Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
 </ResourceDictionary>

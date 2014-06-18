@@ -296,7 +296,6 @@ namespace HLP.Comum.View.Components
                     dataGrid.ScrollIntoView(item);
                     row = dataGrid.ItemContainerGenerator.ContainerFromIndex(rowIndex) as DataGridRow;
                 }
-                //TODO: Retrieve and focus a DataGridCell object
             }
         }
 

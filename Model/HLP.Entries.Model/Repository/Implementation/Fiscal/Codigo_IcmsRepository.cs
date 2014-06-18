@@ -42,7 +42,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(
                 UndTrabalho.dbTransaction,
-                "[dbo].[Proc_delete_Codigo_Icms]",                
+                "[dbo].[Proc_delete_Codigo_Icms]",
                   UserData.idUser,
                   objCodigo_Icms.idCodigoIcms);
         }
@@ -70,9 +70,19 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
             {
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Codigo_Icms]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idCodigoIcms"),
-                   MapBuilder<Codigo_IcmsModel>.MapAllProperties().DoNotMap(c=>c.status).Build());
+                   MapBuilder<Codigo_IcmsModel>.MapAllProperties().DoNotMap(c => c.status).Build());
             }
             return regAcessor.Execute(idCodigoIcms).FirstOrDefault();
+        }
+
+        public Codigo_IcmsModel GetCodigo_IcmsByUf(int idCodigoIcmsPai, int idUf)
+        {
+            DataAccessor<Codigo_IcmsModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
+            ("SELECT * FROM Codigo_Icms WHERE idCodigoIcmsPai = @idCodigoIcmsPai and idUf = @idUf",
+            new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idCodigoIcmsPai").AddParameter<int>("idUf"),
+            MapBuilder<Codigo_IcmsModel>.MapAllProperties().DoNotMap(c => c.status).Build());
+
+            return reg.Execute(idCodigoIcmsPai, idUf).FirstOrDefault();
         }
 
         public List<Codigo_IcmsModel> GetAllCodigo_Icms(int idCodigoIcmsPai)

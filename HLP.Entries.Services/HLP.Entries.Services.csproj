@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>G:\CSharp\Desenvolvimento\Projetos\Magnificus\dlls\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -436,6 +436,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Carga_trib_media_st_icmsModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.CfopModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Classificacao_fiscalModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Codigo_IcmsModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_cofinsModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_icmsModel.datasource" />

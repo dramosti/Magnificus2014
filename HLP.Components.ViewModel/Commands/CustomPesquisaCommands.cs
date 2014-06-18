@@ -151,12 +151,12 @@ namespace HLP.Components.ViewModel.Commands
                                         _DataContext, value: null);
                                 }
 
-                                MethodInfo miSetOp = _DataContext.GetType().GetMethod(
-                                    name: "SetValorCurrentOp");
+                                //MethodInfo miSetOp = _DataContext.GetType().GetMethod(
+                                //    name: "SetValorCurrentOp");
 
-                                object[] _params = new object[] { OperationModel.searching };
+                                //object[] _params = new object[] { OperationModel.searching };
 
-                                miSetOp.Invoke(obj: _DataContext, parameters: _params);
+                                //miSetOp.Invoke(obj: _DataContext, parameters: _params);
 
                                 _DataContext.GetType().GetProperty(name: "bIsEnabled")
                                     .SetValue(obj: _DataContext, value: false);

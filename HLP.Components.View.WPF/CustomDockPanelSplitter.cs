@@ -187,7 +187,6 @@ namespace HLP.Components.View.WPF
             if (newWidth > element.MaxWidth)
                 newWidth = element.MaxWidth;
 
-            // todo - constrain the width of the element to the available client area
             Panel dp = Parent as Panel;
             Dock dock = DockPanel.GetDock(this);
             MatrixTransform t = element.TransformToAncestor(dp) as MatrixTransform;
@@ -204,7 +203,6 @@ namespace HLP.Components.View.WPF
             if (newHeight > element.MaxHeight)
                 newHeight = element.MaxHeight;
 
-            // todo - constrain the height of the element to the available client area
             Panel dp = Parent as Panel;
             Dock dock = DockPanel.GetDock(this);
             MatrixTransform t = element.TransformToAncestor(dp) as MatrixTransform;
