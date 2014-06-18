@@ -2386,7 +2386,14 @@ namespace HLP.Sales.Model.Models.Comercial
             if (this.GetOrcamentoIde().GetOperationModel()
                     == OperationModel.updating && this._ICMS_stCalculaSubstituicaoTributaria == (byte)0)
             {
-                this.ICMS_vICMS = this._ICMS_vBaseCalculo * (this._ICMS_pICMS / 100);
+                if (this.ICMS_stCalculaIcms == (byte)0)
+                {
+                    this.ICMS_vICMS = decimal.Zero;
+                }
+                else
+                {
+                    this.ICMS_vICMS = this._ICMS_vBaseCalculo * (this._ICMS_pICMS / 100);
+                }
             }
         }
 
@@ -3162,6 +3169,9 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _ICMS_stCalculaIcms = value;
+
+                this.CalculateVlrIcms();
+
                 base.NotifyPropertyChanged(propertyName: "ICMS_stCalculaIcms");
             }
         }
@@ -3685,9 +3695,9 @@ namespace HLP.Sales.Model.Models.Comercial
         {
         }
 
-        private int _idOrcamentoItemRepresentate;
+        private int? _idOrcamentoItemRepresentate;
         [ParameterOrder(Order = 1)]
-        public int idOrcamentoItemRepresentate
+        public int? idOrcamentoItemRepresentate
         {
             get { return _idOrcamentoItemRepresentate; }
             set

@@ -319,7 +319,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             try
             {
                 return this.objViewModel.deletarBaseCommand.CanExecute(null)
-                    && !this.objServico.PossuiFilho(idOrcamento: this.objViewModel.selectedId);
+                    && !this.objServico.PossuiFilho(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
             }
             catch (Exception)
             {
@@ -376,7 +376,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         private bool AlterarCanExecute()
         {
             return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null)
-                && !this.objServico.PossuiFilho(idOrcamento: this.objViewModel.selectedId);
+                && !this.objServico.PossuiFilho(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
         }
 
         private void Cancelar()
@@ -495,15 +495,18 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             {
                 this.IniciaCollection();
                 this.objViewModel.currentModel = e.Result as Orcamento_ideModel;
-                this.objViewModel.currentModel.LoadListTipoDocumento();
-                this.objViewModel.currentModel.bTodos = true;
+                if (objViewModel.currentModel != null)
+                {
+                    this.objViewModel.currentModel.LoadListTipoDocumento();
+                    this.objViewModel.currentModel.bTodos = true;
 
-                if (this.objViewModel.currentModel.lOrcamento_Itens != null)
-                    this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault();
+                    if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                        this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault();
 
-                this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
+                    this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
 
-                this.objViewModel.GenerateItensComissoes();
+                    this.objViewModel.GenerateItensComissoes();
+                }
             }
         }
 

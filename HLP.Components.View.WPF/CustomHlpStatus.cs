@@ -61,6 +61,7 @@ namespace HLP.Components.View.WPF
             {
                 this.Orientation = System.Windows.Controls.Orientation.Horizontal;
                 this.lStatus = new ObservableCollection<string>();
+                this.lStatusInterrompidos = new ObservableCollection<int>();
 
                 this.lStatus.CollectionChanged += lStatus_CollectionChanged;
             }
@@ -69,14 +70,37 @@ namespace HLP.Components.View.WPF
         void lStatus_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             CheckBox cb = null;
+
             foreach (string item in e.NewItems)
             {
                 cb = new CheckBox();
                 cb.Content = item;
                 cb.IsEnabled = false;
+                cb.Width = 60;
+
+                ResourceDictionary resource = new ResourceDictionary
+                {
+                    Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
+                };
+
+                foreach (CheckBox cbInStk in this.Children)
+                {
+                    cbInStk.Style = resource["CheckBoxStatus_SEM_ANIMACAO"] as Style;
+                }
+
                 this.Children.Add(
                     element: cb);
+
+                cb.Style = cb.Style = resource["CheckBoxStatusSimples"] as Style;
             }
+        }
+
+        private ObservableCollection<int> _lStatusInterrompidos;
+
+        public ObservableCollection<int> lStatusInterrompidos
+        {
+            get { return _lStatusInterrompidos; }
+            set { _lStatusInterrompidos = value; }
         }
 
 
@@ -111,8 +135,13 @@ namespace HLP.Components.View.WPF
             {
                 if (e.NewValue != null)
                 {
+
                     if ((d as StackPanel).Children != null)
                     {
+                        ResourceDictionary resource = new ResourceDictionary
+                        {
+                            Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
+                        };
                         int count = 0;
                         int iSelectedStatus = 0;
 
@@ -121,10 +150,38 @@ namespace HLP.Components.View.WPF
                         foreach (CheckBox cb in (d as StackPanel).Children)
                         {
                             if (count > iSelectedStatus)
+                            {
                                 cb.IsChecked = false;
+                            }
                             else
+                            {
                                 cb.IsChecked = true;
+                            }
+
+                            if ((count + 1) == (d as StackPanel).Children.Count)
+                            {
+                                cb.Style = resource["CheckBoxStatusSimples"] as Style;
+                            }
+                            else if (count == iSelectedStatus)
+                            {
+                                cb.Style = resource["CheckBoxStatus_COM_ANIMACAO"] as Style;
+                            }
+                            else
+                            {
+                                cb.Style = resource["CheckBoxStatus_SEM_ANIMACAO"] as Style;
+                            }
                             count++;
+                        }
+
+                        foreach (int stInterrompidos in (d as CustomHlpStatus).lStatusInterrompidos)
+                        {
+                            if (iSelectedStatus == stInterrompidos)
+                            {
+
+                                CheckBox cb = (d as CustomHlpStatus).Children[index: ((d as CustomHlpStatus).Children.Count - 1)] as CheckBox;
+
+                                cb.Style = resource["CheckBox_CANCELADO"] as Style;
+                            }
                         }
                     }
 
