@@ -859,7 +859,9 @@
                                 <RowDefinition Height="Auto" MaxHeight="23"/>
                                 <RowDefinition Height="Auto" MaxHeight="23"/>
                                 <RowDefinition Height="Auto" MaxHeight="23"/>
-                                <RowDefinition Height="Auto" MaxHeight="23"/>                                
+                                <RowDefinition Height="Auto" MaxHeight="23"/>
+                                <RowDefinition Height="Auto" MaxHeight="23"/>
+                                <RowDefinition Height="Auto" MaxHeight="23"/>
                                 
                             </Grid.RowDefinitions>
 
@@ -874,13 +876,16 @@
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Obriga o uso da Lista de Preço"/>
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="8" Text="Conceder desconto baseado em?" />
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="9" Text="Tipo de Desconto" />
-                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="1" Text="Usar projeto no Orçamento"/>
-                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="2" Text="Obrigar a aprovação do Pedido de Vendas" />
-                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="3" Text="Moeda padrão para todo o módulo Comercial"/>
-                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="4" Text="Origem da Lista de Preço"/>
-                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="5" Text="Utiliza venda casada?"/>
-                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="6" Text="Utiliza venda de Kit?" />
-                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="7" Text="Tipo de Rateio sobre o Frete"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="10" Text="Usar projeto no Orçamento"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="1" Text="Obrigar a aprovação do Pedido de Vendas" />
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="2" Text="Moeda padrão para todo o módulo Comercial"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="3" Text="Origem da Lista de Preço"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="4" Text="Utiliza venda casada?"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="5" Text="Utiliza venda de Kit?" />
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="6" Text="Tipo de Rateio sobre o Frete"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="7" Text="Número de casas decimais unitário do item"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="8" Text="Número de casas decimais total do item"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="9" Text="Número de casas decimais total da nota"/>
 
                             <!--Fim Label-->
 
@@ -947,19 +952,19 @@
                                 </Components:CustomComboBox.Items>
                             </Components:CustomComboBox>
                             <Components:CustomCheckBox
-                                Grid.Column="6" Grid.Row="1"
+                                Grid.Column="2" Grid.Row="10"
                                 IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stOrcamentoProjeto,
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="É o mesmo esquema hoje do magnificus, daquele que ao lançar um item no orçamento aparece a pergunta? Se for não será necessário o campo iremos montar uma tela só para projetos, não servirá só para projetos de produtos e sim até para serviços. Pensaremos nisso mais para frente quando chegar Ordem de produção." />
                             <Components:CustomCheckBox
-                                Grid.Column="6" Grid.Row="2" 
+                                Grid.Column="6" Grid.Row="1" 
                                 IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAprovacaoPedidoVenda, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Informar se o sistema irá obrigar a aprovação do Pedido de Vendas, após confirmado a obrigação (1-Sim) o sistema não deixará prosseguir os processos após a venda, tais como a emissão do faturamento, geração de Ordem de produção, impressão da Nota Fiscal, etc..."/>
                             <Components:HlpPesquisa 
-									Grid.Column="6" Grid.Row="3" Height="20" Margin="0,0,0,3"
+									Grid.Column="6" Grid.Row="2" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informar qual moeda será padrão para emissão de orçamento, pedido de vendas e faturamento, mesmo trazendo a moeda nada impede que o usuário troque no ato da montagem das ordens." WidthLabel="0" FieldPesquisa="ID" TableView="vwMoeda">
@@ -969,7 +974,7 @@
                                 </Components:HlpPesquisa.Items>
                             </Components:HlpPesquisa>
                             <Components:CustomComboBox
-                                Grid.Column="6" Grid.Row="4"
+                                Grid.Column="6" Grid.Row="3"
                                 SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stOrigemListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Informar de onde vem a lista padrão de preço, assim temos">
@@ -980,19 +985,19 @@
                                 </Components:CustomComboBox.Items>
                             </Components:CustomComboBox>
                             <Components:CustomCheckBox
-                                Grid.Column="6" Grid.Row="5" 
+                                Grid.Column="6" Grid.Row="4" 
                                 IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stUtilizaVendaCasada, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Sem especificação"/>
                             <Components:CustomCheckBox
-                                Grid.Column="6" Grid.Row="6"
+                                Grid.Column="6" Grid.Row="5"
                                 IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stUtilizaVendaKitMaterial, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Sem especificação"/>
                             <Components:CustomComboBox
-                                Grid.Column="6" Grid.Row="7"
+                                Grid.Column="6" Grid.Row="6"
                                 SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stRateioFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                                	IsEnabled="{Binding bIsEnabled}"
                                 ToolTip="Informar qual será a situação do rateio sobre o frete.">
@@ -1001,6 +1006,21 @@
                                     <System:String>1-Pelo Valor Total do Item</System:String>
                                 </Components:CustomComboBox.Items>
                             </Components:CustomComboBox>
+                            <Components:CustomTextBox
+                                Grid.Column="6" Grid.Row="7"
+                                Text="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.nCasasDecimaisItem}"
+							    IsEnabled="{Binding bIsEnabled}"
+						    	ToolTip="Informe o número de casas decimais para o valor unitário do item"/>
+                            <Components:CustomTextBox
+                                Grid.Column="6" Grid.Row="8"
+                                Text="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.nCasasDecimaisTotalItem}"
+							    IsEnabled="{Binding bIsEnabled}"
+						    	ToolTip="Informe o número de casas decimais para o valor total do item"/>
+                            <Components:CustomTextBox
+                                Grid.Column="6" Grid.Row="9"
+                                Text="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.nCasasDecimaisTotalNota}"
+							    IsEnabled="{Binding bIsEnabled}"
+						    	ToolTip="Informe o número de casas decimais para o valor total do item"/>
                             <!--Fim Componentes-->
                         </Grid>
                     </Expander>

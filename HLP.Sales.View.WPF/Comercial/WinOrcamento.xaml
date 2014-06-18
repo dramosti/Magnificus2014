@@ -177,7 +177,7 @@
                 </Grid.RowDefinitions>
 
                 <!--Label-->
-                <Components:CustomHlpStatus Grid.Column="9" Grid.ColumnSpan="3" Grid.RowSpan="2" selectedStatus="{Binding currentModel.stOrcamento}">
+                <Components:CustomHlpStatus Grid.Column="9" Grid.ColumnSpan="3" Grid.RowSpan="3" Height="50" VerticalAlignment="Center" selectedStatus="{Binding currentModel.stOrcamento}">
                     <Components:CustomHlpStatus.lStatus>
                         <System:String>Criado</System:String>
                         <System:String>Enviado</System:String>
