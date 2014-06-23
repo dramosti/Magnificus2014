@@ -179,47 +179,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <ControlTemplate.Resources>
-                                <Storyboard x:Key="Storyboard1">
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
-                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
-                                    </ColorAnimationUsingKeyFrames>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="border">
-                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
-                                    </ColorAnimationUsingKeyFrames>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="contentPresenter">
-                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
-                                    </ColorAnimationUsingKeyFrames>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
-                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
-                                    </ColorAnimationUsingKeyFrames>
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
-                                        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                        <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="360"/>
-                                    </DoubleAnimationUsingKeyFrames>
-                                </Storyboard>
-                                <Storyboard x:Key="Storyboard2">
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
-                                        <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
-                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004774B5"/>
-                                    </ColorAnimationUsingKeyFrames>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="border">
-                                        <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
-                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004774B5"/>
-                                    </ColorAnimationUsingKeyFrames>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
-                                        <EasingColorKeyFrame KeyTime="0" Value="White"/>
-                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF626262"/>
-                                    </ColorAnimationUsingKeyFrames>
-                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="contentPresenter">
-                                        <EasingColorKeyFrame KeyTime="0" Value="White"/>
-                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF626262"/>
-                                    </ColorAnimationUsingKeyFrames>
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
-                                        <EasingDoubleKeyFrame KeyTime="0" Value="360"/>
-                                        <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
-                                    </DoubleAnimationUsingKeyFrames>
-                                </Storyboard>
+                            <ControlTemplate.Resources>                                
                             </ControlTemplate.Resources>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -241,12 +201,35 @@
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Trigger.ExitActions>
-                                        <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
-                                    </Trigger.ExitActions>
-                                    <Trigger.EnterActions>
-                                        <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
-                                    </Trigger.EnterActions>
+                                    <Setter Property="Fill" TargetName="path" Value="#FF4774B5"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="Button_CORRIGIR" TargetType="{x:Type Button}">
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">                           
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="17"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Border x:Name="border" Grid.RowSpan="2" BorderThickness="1" BorderBrush="Transparent" Background="Transparent"></Border>                                
+                                <ContentPresenter x:Name="contentPresenter" Grid.Row="1" TextElement.FontFamily="Segoe Ui Light" VerticalAlignment="Center" HorizontalAlignment="Center" TextElement.Foreground="#FF626262"></ContentPresenter>
+                                <Path Name="path2" Width="23" Height="28" Stretch="Fill" Fill="#FF626262" Data="F1 M 23,54L 23,26C 23,24.3432 24.3431,23 26,23L 30.5001,22.9999C 30.5001,22.9999 31.4999,22.8807 31.4999,21.5C 31.4999,20.1193 33.1191,19 34.4998,19L 41.5001,19C 42.8809,19 44.5001,20.1193 44.5001,21.5C 44.5001,22.8807 45.4999,22.9999 45.4999,22.9999L 50,23.0001C 51.6569,23.0001 53,24.3432 53,26.0001L 53,54.0001C 53,55.6569 51.6568,57 50,57.0001L 26,57C 24.3431,57 23,55.6569 23,54 Z M 35.9997,22.0002C 34.619,22.0002 33.4997,23.1195 33.4997,24.5002C 33.4997,25.8809 32.4999,27.0001 32.4999,27.0001L 43.5,27.0001C 43.5,27.0001 42.5002,25.8809 42.5002,24.5002C 42.5002,23.1195 41.3809,22.0002 40.0002,22.0002L 35.9997,22.0002 Z M 28.5,30.0001L 30,26L 26,26L 26,54L 50,54L 50,26.0001L 46,26.0001L 47.5,30.0001L 28.5,30.0001 Z M 28.8533,44.2903L 28.194,43.5726C 28.0188,43.383 28.0281,43.0851 28.2202,42.9074L 30.1347,41.1292C 30.2218,41.0479 30.3361,41.0031 30.4554,41.0031C 30.5875,41.0031 30.7093,41.0572 30.799,41.1529L 36.0556,46.8124L 45.0971,35.1794C 45.1868,35.0669 45.3239,35 45.4695,35L 45.7589,35.099L 47.8231,36.702C 47.9204,36.779 47.9839,36.8908 48,37.0177C 48.0152,37.1413 47.9822,37.2648 47.9077,37.3621L 36.2901,52.3L 28.8533,44.2903 Z "/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Fill" TargetName="path2" Value="#FF4774B5"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -339,7 +322,7 @@
                         </Button>
                     </DockPanel>
                     <Button x:Name="btnCarregar" Command="{Binding carregarCommand}"  Grid.Row="1" Width="48" HorizontalAlignment="Left"  Margin="0,0,0,3" Grid.Column="4" Content="Carregar" Style="{StaticResource Button_REFRESH}"/>
-                    <Button x:Name="btnCorrigirUltimoPonto" Command="{Binding CorrigirSaidaCommand}"  Grid.Row="1" Width="70"   Margin="10,0,0,3" Grid.Column="4" Content="Corrigir Saída" Style="{StaticResource Button_REFRESH}"/>
+                    <Button x:Name="btnCorrigirUltimoPonto" Command="{Binding CorrigirSaidaCommand}"  Grid.Row="1" Width="70"   Margin="10,0,0,3" Grid.Column="4" Content="Corrigir Saída" Style="{StaticResource Button_CORRIGIR}"/>
                     <Grid Grid.Column="6" Grid.Row="1" Grid.RowSpan="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
