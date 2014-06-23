@@ -132,6 +132,7 @@
     <Compile Include="Models\Parametros\Parametro_FinanceiroModel.cs" />
     <Compile Include="Models\Parametros\Parametro_FiscalModel.cs" />
     <Compile Include="Models\Parametros\Parametro_Ordem_ProducaoModel.cs" />
+    <Compile Include="Models\RecursosHumanos\CorrigeUltimoPontoModel.cs" />
     <Compile Include="Models\RecursosHumanos\EspelhoPontoPrintModel.cs" />
     <Compile Include="Models\Transportes\Condicoes_entregaModel.cs" />
     <Compile Include="Models\Gerais\DataContract.cs" />

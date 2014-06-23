@@ -29,6 +29,23 @@ namespace HLP.Entries.Services.RecursosHumanos
                     break;
             }
         }
+        public Funcionario_Controle_Horas_PontoModel GetLastFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime data)
+        {
+            switch (Sistema.bOnline)
+            {
+                case StConnection.OnlineNetwork:
+                    {
+                        return this.servicoRede.GetLastFuncionario_Controle_Horas_PontoDia(idFuncionario, data);
+                    }
+                case StConnection.OnlineWeb:
+                    {
+                       // return this.servicoInternet.GetLastFuncionario_Controle_Horas_PontoDia(idFuncionario, data);
+                        return new Funcionario_Controle_Horas_PontoModel();
+                    }
+            }
+            return null;
+
+        }
 
         public List<Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_Ponto(int idFuncionario, DateTime data)
         {

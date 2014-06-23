@@ -31,6 +31,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand commandFecharMes { get; set; }
         public ICommand commandReabrirMes { get; set; }
         public ICommand commandNavegaData { get; set; }
+        public ICommand CorrigirSaidaCommand { get; set; }
 
 
         #endregion

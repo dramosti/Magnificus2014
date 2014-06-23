@@ -86,6 +86,14 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             return regAllFuncionario_Controle_Horas_PontoAccessorDia.Execute().ToList();
         }
 
+        public Funcionario_Controle_Horas_PontoModel GetLastFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia)
+        {
+            regAllFuncionario_Controle_Horas_PontoAccessorDia = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT top 1 * FROM Funcionario_Controle_Horas_Ponto "
+                + string.Format("where idFuncionario = {0} and dRelogioPonto = '{1}' order by idSequenciaInterna desc", idFuncionario, dtDia.Date.ToString("yyyy-MM-dd")),
+                            MapBuilder<Funcionario_Controle_Horas_PontoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+            return regAllFuncionario_Controle_Horas_PontoAccessorDia.Execute().FirstOrDefault();
+        }
+
         public List<EspelhoPontoModel> GetHorasTrabalhadasDia(int idFuncionario, DateTime dRelogioPonto)
         {
             try
@@ -281,5 +289,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 throw ex;
             }
         }
+
+
     }
 }

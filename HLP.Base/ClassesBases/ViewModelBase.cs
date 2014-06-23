@@ -707,6 +707,7 @@ namespace HLP.Base.ClassesBases
                             Thread.Sleep(millisecondsTimeout: 300);
                         }
                         bwFocus.RunWorkerAsync(argument: lTabControlsTabItem);
+                      
                     }
                 }
             }
@@ -755,25 +756,27 @@ namespace HLP.Base.ClassesBases
             bool bFocado = false;
 
 
-            Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-            {
-                while (lTabControlsTabItem.Count > 1)
-                {
-                    UIElement comp = lTabControlsTabItem.Pop();
 
-                    if (comp.GetType() == typeof(TabItem))
-                    {
-                        ((comp as TabItem).Parent as TabControl).SelectedItem = comp;
-                    }
+            while (lTabControlsTabItem.Count > 1)
+            {
+                UIElement comp = lTabControlsTabItem.Pop();
+
+                if (comp.GetType() == typeof(TabItem))
+                {
+                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                       {
+                           ((comp as TabItem).Parent as TabControl).SelectedItem = comp;
+                       }));
                 }
-                bFocado = true;
-            }));
+            }
+            bFocado = true;
 
             while (!bFocado)
             {
                 e.Result = lTabControlsTabItem;
                 Thread.Sleep(millisecondsTimeout: 300);
             }
+
         }
 
         private void SearchTabControlsTabItemToFocus(Stack<UIElement> lTabControlsTabItem, FrameworkElement ctrl)

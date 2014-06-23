@@ -41,6 +41,7 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
         public int iTotalDiasTrabalhados { get; set; }
         public string xHorasTrabalhadas { get; set; }
         public string xHorasAtrabalhar { get; set; }
+        public string xSaldoMes { get; set; }
         public string xBancoHoras { get; set; }
 
         public List<ItemsPontoModel> itemsPonto { get; set; }

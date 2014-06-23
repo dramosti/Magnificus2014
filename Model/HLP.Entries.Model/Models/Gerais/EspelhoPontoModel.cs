@@ -35,6 +35,7 @@ namespace HLP.Entries.Model.Models.Gerais
             get { return ((tEntrada != new TimeSpan()) && tSaida != new TimeSpan()) ? _tTotal : new TimeSpan(); }
             set { _tTotal = value; base.NotifyPropertyChanged("tTotal"); }
         }
+                
 
     }
 
