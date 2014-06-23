@@ -771,11 +771,11 @@ namespace HLP.Base.ClassesBases
             }
             bFocado = true;
 
-            while (!bFocado)
+            do
             {
                 e.Result = lTabControlsTabItem;
                 Thread.Sleep(millisecondsTimeout: 300);
-            }
+            } while (!bFocado);
 
         }
 

@@ -324,7 +324,6 @@
                             <System:String>xCodigoAlternativo</System:String>
                         </Components:CustomPesquisa.Items>
                     </Components:CustomPesquisa>
-                    <Components:CustomTextBox stCompPosicao="first" Visibility="Hidden"/>
                     <Components:CustomTextBox 
                           stCompPosicao="first"
                           stVisibilityBtnQuickSearch="notVisible"
