@@ -32,6 +32,9 @@ namespace HLP.Wcf.Sales
         [Inject]
         public IOrcamento_Total_ImpostosRepository orcamento_Total_ImpostosRepository { get; set; }
 
+        [Inject]
+        public IOrcamento_Item_RepresentantesRepository orcamento_Item_RepresentantesRepository { get; set; }
+
         public wcf_Orcamento()
         {
             try
@@ -64,18 +67,18 @@ namespace HLP.Wcf.Sales
                         case statusModel.alterado:
                             {
                                 item.idOrcamento = (int)objModel.idOrcamento;
-                                this.orcamento_itemRepository.Save(objOrcamento_Item: item);                                
+                                this.orcamento_itemRepository.Save(objOrcamento_Item: item);
                             }
                             break;
                         case statusModel.excluido:
-                            {                                
+                            {
                                 this.orcamento_itemRepository.Delete(idOrcamentoItem: (int)item.idOrcamentoItem);
                             }
                             break;
                     }
 
                     switch (item.objImposto.status)
-                    {                        
+                    {
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
@@ -88,6 +91,27 @@ namespace HLP.Wcf.Sales
                                 this.IOrcamento_Item_ImpostosRepository.DeleteByIdOrcamento(idOrcamentoItem: (int)item.idOrcamentoItem);
                             }
                             break;
+                    }
+
+                    foreach (var itemRepresentantes in item.lOrcamentoItemsRepresentantes)
+                    {
+                        switch (itemRepresentantes.status)
+                        {
+                            case statusModel.criado:
+                            case statusModel.alterado:
+                                {
+                                    itemRepresentantes.idOrcamentoItem = item.idOrcamentoItem;
+                                    orcamento_Item_RepresentantesRepository.Save(objOrcamento_Item_Representantes:
+                                        itemRepresentantes);
+                                }
+                                break;
+                            case statusModel.excluido:
+                                {
+                                    orcamento_Item_RepresentantesRepository.Delete(idOrcamentoItemRepresentate: itemRepresentantes
+                                        .idOrcamentoItemRepresentate ?? 0);
+                                }
+                                break;
+                        }
                     }
                 }
                 if (objModel.orcamento_retTransp != null)
@@ -120,24 +144,28 @@ namespace HLP.Wcf.Sales
 
                 HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objOrcamento =
                     this.orcamento_ideRepository.GetOrcamento_ide(idOrcamento: idObjeto);
-
-                objOrcamento.lOrcamento_Itens = new ObservableCollectionBaseCadastros<HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel>(
-                    list: this.orcamento_itemRepository.GetAllOrcamento_Item(idOrcamento: (int)objOrcamento.idOrcamento));
-
-                foreach (var item in objOrcamento.lOrcamento_Itens)
+                if (objOrcamento != null)
                 {
-                    item.objImposto =
-                        this.IOrcamento_Item_ImpostosRepository.GetOrcamento_Item_ImpostosByItem(idOrcamento_Item: item.idOrcamentoItem ?? 0);
-                    if (item.objImposto != null)
+                    objOrcamento.lOrcamento_Itens = new ObservableCollectionBaseCadastros<HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel>(
+                        list: this.orcamento_itemRepository.GetAllOrcamento_Item(idOrcamento: (int)objOrcamento.idOrcamento));
+
+                    foreach (var item in objOrcamento.lOrcamento_Itens)
                     {
-                        item.objImposto.stOrcamentoImpostos = item.stOrcamentoItem;
+                        item.objImposto =
+                            this.IOrcamento_Item_ImpostosRepository.GetOrcamento_Item_ImpostosByItem(idOrcamento_Item: item.idOrcamentoItem ?? 0);
+                        if (item.objImposto != null)
+                        {
+                            item.objImposto.stOrcamentoImpostos = item.stOrcamentoItem;
+                        }
+
+                        item.lOrcamentoItemsRepresentantes = new ObservableCollectionBaseCadastros<HLP.Sales.Model.Models.Comercial.Orcamento_Item_RepresentantesModel>(list:
+                            this.orcamento_Item_RepresentantesRepository.GetOrcamento_Item_Representantes_ByIdOrcamentoItem(idOrcamentoItem: item.idOrcamentoItem ?? 0));
                     }
+
+                    objOrcamento.orcamento_retTransp = this.orcamento_retTranspRepository.GetOrcamento_retTranspByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento);
+
+                    objOrcamento.orcamento_Total_Impostos = this.orcamento_Total_ImpostosRepository.GetOrcamento_Total_ImpostosByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento);
                 }
-
-                objOrcamento.orcamento_retTransp = this.orcamento_retTranspRepository.GetOrcamento_retTranspByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento);
-
-                objOrcamento.orcamento_Total_Impostos = this.orcamento_Total_ImpostosRepository.GetOrcamento_Total_ImpostosByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento);
-
                 return objOrcamento;
             }
             catch (Exception ex)
@@ -228,6 +256,14 @@ namespace HLP.Wcf.Sales
                     item.objImposto.idOrcamentoTotalizadorImpostos = null;
                     item.objImposto.idOrcamentoItem = item.idOrcamentoItem ?? 0;
                     this.IOrcamento_Item_ImpostosRepository.Save(objOrcamento_Item_Impostos: item.objImposto);
+
+
+                    foreach (var itemRepresentante in item.lOrcamentoItemsRepresentantes)
+                    {
+                        itemRepresentante.idOrcamentoItemRepresentate = null;
+                        itemRepresentante.idOrcamentoItem = item.idOrcamentoItem;
+                        this.orcamento_Item_RepresentantesRepository.Save(objOrcamento_Item_Representantes: itemRepresentante);
+                    }
                 }
 
                 objModel.orcamento_retTransp.idRetTransp = null;

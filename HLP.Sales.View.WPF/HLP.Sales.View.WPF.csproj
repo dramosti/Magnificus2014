@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>G:\CSharp\Desenvolvimento\Projetos\Magnificus\dlls\bin\</OutputPath>
+    <OutputPath>..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -67,12 +67,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Comercial\WinItensRepresentantes.xaml.cs">
+      <DependentUpon>WinItensRepresentantes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Comercial\WinOrcamento.xaml.cs">
       <DependentUpon>WinOrcamento.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\CanUserAddOrcamentoItemConverter.cs" />
     <Compile Include="Converters\IdMotivoVisibilityConverter.cs" />
     <Compile Include="Converters\StatusOrcamentoConverter.cs" />
+    <Compile Include="Converters\SumPorcItemsConverter.cs" />
     <Compile Include="Util\BindingProxy.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +138,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Comercial\StatusItensOrcamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comercial\WinItensRepresentantes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

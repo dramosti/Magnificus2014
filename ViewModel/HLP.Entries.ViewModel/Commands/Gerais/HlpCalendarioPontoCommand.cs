@@ -29,7 +29,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         public void CarregaDados()
         {
             try
-            {
+                {
                 objViewModel.styleDSR = objViewModel.resource["ListBox_Calendario_Ponto_Padrao"] as Style;
                 // verifica se tem calendario no dia.
                 if (objViewModel.idFuncionario != 0)

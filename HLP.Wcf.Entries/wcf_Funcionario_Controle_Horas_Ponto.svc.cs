@@ -92,6 +92,11 @@ namespace HLP.Wcf.Entries
             return this.funcionario_Controle_Horas_PontoRepository.GetAllFuncionario_Controle_Horas_PontoDia(idFuncionario, dtDia);
         }
 
+        public HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel GetLastFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia)
+        {
+            return this.funcionario_Controle_Horas_PontoRepository.GetLastFuncionario_Controle_Horas_PontoDia(idFuncionario, dtDia);
+        }
+
         public int GetTotalDiasTrabalhadosMes(int idFuncionario, DateTime dtMes)
         {
             return funcionario_Controle_Horas_PontoRepository.GetTotalDiasTrabalhadosMes(idFuncionario, dtMes);

@@ -24,6 +24,8 @@ namespace HLP.Wcf.Entries
         [OperationContract]
         List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia);
         [OperationContract]
+        HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel GetLastFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia);
+        [OperationContract]
         int GetTotalDiasTrabalhadosMes(int idFuncionario, DateTime dtMes);
         [OperationContract]
         TimeSpan GetHorasATrabalharMes(int idFuncionario, DateTime dtMes);

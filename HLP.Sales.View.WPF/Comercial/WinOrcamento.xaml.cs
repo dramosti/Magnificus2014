@@ -39,5 +39,10 @@ namespace HLP.Sales.View.WPF.Comercial
                 this.DataContext = value;
             }
         }
+
+        private void TabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this.ViewModel.GenerateItensComissoes();
+        }
     }
 }

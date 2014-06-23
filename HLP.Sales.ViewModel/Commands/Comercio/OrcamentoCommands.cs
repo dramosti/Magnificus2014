@@ -120,12 +120,28 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             this.objViewModel.moveItensCommand = new RelayCommand(execute: ex => this.MoveExec(xAction: ex),
                 canExecute: canExec => this.MoveCanExec(xAcao: canExec));
 
+            this.objViewModel.itensRepresentantesCommands = new RelayCommand(execute: ex => this.ItensRepresentantesExecute());
+
             this.objViewModel.bWorkerPesquisa = new BackgroundWorker();
             this.objViewModel.bWorkerPesquisa.DoWork += this.getOrcamento;
             this.objViewModel.bWorkerPesquisa.RunWorkerCompleted += this.bw_RunWorkerCompleted;
         }
 
         #region Implementação Commands
+
+        public void ItensRepresentantesExecute()
+        {
+            object ret = Sistema.ExecuteMethodByReflection(xNamespace: "HLP.Sales.View.WPF", xType: "WinItensRepresentantes", xMethod: "WindowShowDialog",
+                parameters: new object[] { this.objViewModel.currentItem.lOrcamentoItemsRepresentantes });
+
+            if (ret != null)
+            {
+                this.objViewModel.currentItem.lOrcamentoItemsRepresentantes = new ObservableCollectionBaseCadastros<Orcamento_Item_RepresentantesModel>(
+                    list: (ret as OrcamentoItensRepresentanteViewModel)
+                    .orcamentoItensRepresentantes);
+                this.objViewModel.currentItem.setxRepresentante();
+            }
+        }
 
         public void MoveExec(object xAction)
         {
@@ -195,7 +211,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         });
                 }
 
-                this.objViewModel.currentModel.bTodos = true;
+                this.objViewModel.currentModel.bTodos = this.objViewModel.currentModel.bTodosTotais = true;
                 objViewModel.SetFocusFirstTab(_panel as Panel);
                 bWorkerAcoes = new BackgroundWorker();
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
@@ -303,7 +319,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             try
             {
                 return this.objViewModel.deletarBaseCommand.CanExecute(null)
-                    && !this.objServico.PossuiFilho(idOrcamento: this.objViewModel.selectedId);
+                    && !this.objServico.PossuiFilho(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
             }
             catch (Exception)
             {
@@ -317,22 +333,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             this.objViewModel.currentModel = new Orcamento_ideModel();
             this.objViewModel.currentModel.dDataHora = DateTime.Now;
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwNovo_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.currentModel.bTodos = this.objViewModel.currentModel.bTodosTotais = true;
 
-        }
-        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-            this.objViewModel.currentModel.bTodos = true;
-            Sistema.stSender = TipoSender.Sistema;
         }
         private bool NovoCanExecute()
         {
@@ -342,25 +344,12 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwAlterar_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
-        }
-        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-            Sistema.stSender = TipoSender.Sistema;
+            this.objViewModel.currentModel.bTodosTotais = true;
         }
         private bool AlterarCanExecute()
         {
             return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null)
-                && !this.objServico.PossuiFilho(idOrcamento: this.objViewModel.selectedId);
+                && !this.objServico.PossuiFilho(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
         }
 
         private void Cancelar()
@@ -479,13 +468,18 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             {
                 this.IniciaCollection();
                 this.objViewModel.currentModel = e.Result as Orcamento_ideModel;
-                this.objViewModel.currentModel.LoadListTipoDocumento();
-                this.objViewModel.currentModel.bTodos = true;
+                if (objViewModel.currentModel != null)
+                {
+                    this.objViewModel.currentModel.LoadListTipoDocumento();
+                    this.objViewModel.currentModel.bTodos = this.objViewModel.currentModel.bTodosTotais = true;
 
-                if (this.objViewModel.currentModel.lOrcamento_Itens != null)
-                    this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault();
+                    if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                        this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault();
 
-                this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
+                    this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
+
+                    this.objViewModel.GenerateItensComissoes();
+                }
             }
         }
 
@@ -498,7 +492,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
                 //Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                 //    {
-                        
+
                 //        bCarregado = true;
                 //    }));
 
@@ -695,7 +689,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         public FuncionarioModel GetFuncionario(int idFuncionario)
         {
-            return objFuncionarioService.GetObject(id: idFuncionario, bGetChild: false);
+            return objFuncionarioService.GetObject(id: idFuncionario, bGetChild: false) ?? new FuncionarioModel();
         }
 
         public List<modelToComboBox> GetOperacoesValidas(int idTipoDocumento)

@@ -310,7 +310,7 @@
                     <!--Label-->
 
                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Período" Margin="0,12,0,16" Height="Auto"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="Nome do Funcionário" Height="Auto"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="Nome do Funcionário" Height="Auto"></Components:CustomTextBlock>
 
                     <!--Components-->
 
@@ -325,7 +325,8 @@
                         </Components:CustomPesquisa.Items>
                     </Components:CustomPesquisa>
                     <Components:CustomTextBox stCompPosicao="first" Visibility="Hidden"/>
-                    <Components:CustomTextBox  
+                    <Components:CustomTextBox 
+                          stCompPosicao="first"
                           stVisibilityBtnQuickSearch="notVisible"
                           IsEnabled="{Binding bIsEnabled}"
                           x:Name="txtPeriodo"                                 
@@ -338,6 +339,7 @@
                         </Button>
                     </DockPanel>
                     <Button x:Name="btnCarregar" Command="{Binding carregarCommand}"  Grid.Row="1" Width="48" HorizontalAlignment="Left"  Margin="0,0,0,3" Grid.Column="4" Content="Carregar" Style="{StaticResource Button_REFRESH}"/>
+                    <Button x:Name="btnCorrigirUltimoPonto" Command="{Binding CorrigirSaidaCommand}"  Grid.Row="1" Width="70"   Margin="10,0,0,3" Grid.Column="4" Content="Corrigir Saída" Style="{StaticResource Button_REFRESH}"/>
                     <Grid Grid.Column="6" Grid.Row="1" Grid.RowSpan="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>

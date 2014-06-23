@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>G:\CSharp\Desenvolvimento\Projetos\Magnificus\dlls\bin\</OutputPath>
+    <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -132,6 +132,7 @@
     <Compile Include="Models\Parametros\Parametro_FinanceiroModel.cs" />
     <Compile Include="Models\Parametros\Parametro_FiscalModel.cs" />
     <Compile Include="Models\Parametros\Parametro_Ordem_ProducaoModel.cs" />
+    <Compile Include="Models\RecursosHumanos\CorrigeUltimoPontoModel.cs" />
     <Compile Include="Models\RecursosHumanos\EspelhoPontoPrintModel.cs" />
     <Compile Include="Models\Transportes\Condicoes_entregaModel.cs" />
     <Compile Include="Models\Gerais\DataContract.cs" />

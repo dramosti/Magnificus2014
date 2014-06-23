@@ -11,6 +11,7 @@ using HLP.Sales.ViewModel.Commands.Comercio;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public ICommand alterarStatusItenCommand { get; set; }
         public ICommand gerarVersaoCommand { get; set; }
         public ICommand moveItensCommand { get; set; }
+        public ICommand itensRepresentantesCommands { get; set; }
 
         #endregion
 
@@ -84,7 +86,9 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             this.Botoes.Children.Add(element: btnConfirmarItens);
             this.Botoes.Children.Add(element: btnItensPerdidos);
             this.Botoes.Children.Add(element: btnItensCancelados);
-            this.Botoes.Children.Add(element: btnGerarVersao);            
+            this.Botoes.Children.Add(element: btnGerarVersao);
+
+            this.itensComissoes = new ItensComissoes();
         }
 
         private Orcamento_ItemModel _currentItem;
@@ -96,7 +100,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             {
                 if (value != null)
                 {
-                    _currentItem = value;                    
+                    _currentItem = value;
                     base.NotifyPropertyChanged(propertyName: "currentItem");
                 }
             }
@@ -208,6 +212,135 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
                 this.currentModel.orcamento_Total_Impostos.CalcularTotais();
         }
 
+        private int? _idFuncionarioRepresentante;
+        public int? idFuncionarioRepresentante
+        {
+            get { return _idFuncionarioRepresentante; }
+            set
+            {
+                _idFuncionarioRepresentante = value;
+
+                base.NotifyPropertyChanged(propertyName: "idFuncionarioRepresentante");
+
+            }
+        }
+
+        private ItensComissoes _itensComissoes;
+
+        public ItensComissoes itensComissoes
+        {
+            get { return _itensComissoes; }
+            set
+            {
+                _itensComissoes = value;
+                base.NotifyPropertyChanged(propertyName: "itensComissoes");
+            }
+        }
+
+        public void GenerateItensComissoes()
+        {
+            CollectionViewSource cvs = HLP.Base.Static.Sistema.GetOpenWindow(xName: "WinOrcamento")
+                .FindResource(resourceKey: "cvsComissoes") as CollectionViewSource;
+
+            if (cvs != null)
+            {
+                (cvs.Source as ObservableCollection<ItensComissoes>).Clear();
+
+                foreach (Orcamento_ItemModel orcamentoItem in this.currentModel.lOrcamento_Itens)
+                {
+                    foreach (Orcamento_Item_RepresentantesModel orcamentoItemRepresentante in orcamentoItem.lOrcamentoItemsRepresentantes)
+                    {
+                        (cvs.Source as ObservableCollection<ItensComissoes>).Add(item: new ItensComissoes
+                            {
+                                xProduto = orcamentoItem.nItem + " - " + (orcamentoItem.objProduto != null ?
+                                orcamentoItem.objProduto.xComercial : ""),
+                                xRepresentante = orcamentoItemRepresentante.idRepresentante.ToString() + " - " + comm.GetFuncionario(idFuncionario:
+                                orcamentoItemRepresentante.idRepresentante).xNome,
+                                pComissao = orcamentoItemRepresentante.pComissao ?? 0,
+                                vComissao = orcamentoItem.vTotalItem * (orcamentoItemRepresentante.pComissao ?? 0) / 100
+                            });
+                    }
+                }
+            }
+        }
+
+        public decimal GetPorcItems(object lItensGroup)
+        {
+            return (lItensGroup as ObservableCollection<ItensComissoes>).Sum(i => i.vComissao);
+        }
+
         #endregion
+    }
+
+    public class ItensComissoes : ObservableCollection<ItensComissoes>, INotifyPropertyChanged
+    {
+        public ItensComissoes()
+        {
+
+        }
+
+
+        private string _xProduto;
+
+        public string xProduto
+        {
+            get { return _xProduto; }
+            set
+            {
+                _xProduto = value;
+                this.NotifyPropertyChanged(propertyName: "xProduto");
+            }
+        }
+
+        private decimal _pComissao;
+
+        public decimal pComissao
+        {
+            get { return _pComissao; }
+            set
+            {
+                _pComissao = value;
+                this.NotifyPropertyChanged(propertyName: "pComissao");
+            }
+        }
+
+
+        private decimal _vComissao;
+
+        public decimal vComissao
+        {
+            get { return _vComissao; }
+            set
+            {
+                _vComissao = value;
+                this.NotifyPropertyChanged(propertyName: "vComissao");
+            }
+        }
+
+
+
+        private string _xRepresentante;
+
+        public string xRepresentante
+        {
+            get { return _xRepresentante; }
+            set
+            {
+                _xRepresentante = value;
+                this.NotifyPropertyChanged(propertyName: "xRepresentante");
+            }
+        }
+
+        #region NotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
+
     }
 }

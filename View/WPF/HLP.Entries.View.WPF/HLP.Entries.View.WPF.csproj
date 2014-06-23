@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>G:\CSharp\Desenvolvimento\Projetos\Magnificus\dlls\bin\</OutputPath>
+    <OutputPath>..\..\..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -265,6 +265,9 @@
     <Compile Include="RecursosHumanos\WinCargo.xaml.cs">
       <DependentUpon>WinCargo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RecursosHumanos\WinCorrigirUltimoPonto.xaml.cs">
+      <DependentUpon>WinCorrigirUltimoPonto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RecursosHumanos\WinDepartamento.xaml.cs">
       <DependentUpon>WinDepartamento.xaml</DependentUpon>
     </Compile>
@@ -502,6 +505,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RecursosHumanos\WinCargo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RecursosHumanos\WinCorrigirUltimoPonto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Reflection;
 using System.Windows.Threading;
-using System.Threading;
 using System.Windows;
 using HLP.Base.ClassesBases;
 using HLP.Base.Static;
@@ -18,7 +15,6 @@ using HLP.Entries.Model.Models.RecursosHumanos;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Components.Model.Models;
 using HLP.Entries.Services.Gerais;
-using System.Windows.Input;
 using System.IO;
 using CrystalDecisions.CrystalReports.Engine;
 using System.Data;
@@ -79,6 +75,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.commandImprimir = new RelayCommand(execute: paramExec => this.PreviewReport(),
                canExecute: paramCan => this.CanCarregaFormulario());
 
+            this.objViewModel.CorrigirSaidaCommand = new RelayCommand(execute: paramExec => this.CorrigirSaida(),
+              canExecute: paramCan => this.CanCarregaFormulario());
+
+            //
+
 
             foreach (Control ctr in objViewModel.lControlsPonto)
             {
@@ -101,6 +102,24 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         }
 
+        private void CorrigirSaida()
+        {
+            object win = Sistema.ExecuteMethodByReflection
+                      (xNamespace: "HLP.Entries.View.WPF",
+                      xType: "WinCorrigirUltimoPonto",
+                      xMethod: "ShowWindow",
+                      parameters: new object[] { this.objViewModel.currentModel.data, this.objViewModel.currentModel.idFuncionario });
+
+            Type tipo = win.GetType();
+            MethodInfo met = tipo.GetMethod(name: "RefreshWindowPrincipal");
+            met.Invoke(win, new object[] { (Action)this.CarragaFormulario });
+        }
+
+
+
+
+
+
         void bWorkerPrint_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Window winReport = GerenciadorModulo.Instancia.CarregaForm("WinPreviewReport", Base.InterfacesBases.TipoExibeForm.Modal);
@@ -117,7 +136,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 //rpt.Database.Tables["Imagens"].SetDataSource(img.Tables[0]);
                 winReport.SetPropertyValue("rpt", rpt);
                 rpt.Refresh();
-                winReport.WindowState = WindowState.Maximized;                
+                winReport.WindowState = WindowState.Maximized;
                 winReport.ShowDialog();
 
             }
@@ -202,6 +221,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         header.iTotalDiasTrabalhados = banco.iDiasTrabalhados;
                         header.xHorasTrabalhadas = banco.tHorastrabalhadas.ToString();
                         header.xHorasAtrabalhar = banco.tHorasAtrabalhar.ToString();
+                        header.xSaldoMes = (header.xHorasTrabalhadas.ToTimeSpan().Subtract(header.xHorasAtrabalhar.ToTimeSpan())).ToStringHoras();
                         header.xBancoHoras = banco.tBancoHoras.ToString();
                     }
                     header.idEmpresa = CompanyData.idEmpresa;
