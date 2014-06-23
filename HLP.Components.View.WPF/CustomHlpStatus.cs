@@ -161,6 +161,7 @@ namespace HLP.Components.View.WPF
                             if ((count + 1) == (d as StackPanel).Children.Count)
                             {
                                 cb.Style = resource["CheckBoxStatusSimples"] as Style;
+                                cb.Content = (d as CustomHlpStatus).lStatus.LastOrDefault();
                             }
                             else if (count == iSelectedStatus)
                             {
@@ -181,6 +182,7 @@ namespace HLP.Components.View.WPF
                                 CheckBox cb = (d as CustomHlpStatus).Children[index: ((d as CustomHlpStatus).Children.Count - 1)] as CheckBox;
 
                                 cb.Style = resource["CheckBox_CANCELADO"] as Style;
+                                cb.Content = "Perdido";
                             }
                         }
                     }

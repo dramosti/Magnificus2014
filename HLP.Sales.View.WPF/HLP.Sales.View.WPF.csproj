@@ -76,6 +76,7 @@
     <Compile Include="Converters\CanUserAddOrcamentoItemConverter.cs" />
     <Compile Include="Converters\IdMotivoVisibilityConverter.cs" />
     <Compile Include="Converters\StatusOrcamentoConverter.cs" />
+    <Compile Include="Converters\SumPorcItemsConverter.cs" />
     <Compile Include="Util\BindingProxy.cs" />
   </ItemGroup>
   <ItemGroup>

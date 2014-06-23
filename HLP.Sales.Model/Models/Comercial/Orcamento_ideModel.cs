@@ -245,7 +245,7 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _bTodos = this._bCriado = this._bEnviado = this._bConfirmado = this._bPerdido = this._bCancelado = value;
                 this.FiltrarItems();
-                
+
                 this.NotifyPropertyChanged(propertyName: "bCriado");
                 this.NotifyPropertyChanged(propertyName: "bEnviado");
                 this.NotifyPropertyChanged(propertyName: "bConfirmado");
@@ -285,7 +285,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 {
                     this._bTodosTotais = false;
                     base.NotifyPropertyChanged(propertyName: "bTodosTotais");
-                }                
+                }
                 this.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "bEnviadoTotais");
             }
@@ -303,7 +303,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 {
                     this._bTodosTotais = false;
                     base.NotifyPropertyChanged(propertyName: "bTodosTotais");
-                }                
+                }
                 this.orcamento_Total_Impostos.CalcularTotais();
                 base.NotifyPropertyChanged(propertyName: "bConfirmadoTotais");
             }
@@ -1278,20 +1278,11 @@ namespace HLP.Sales.Model.Models.Comercial
             : base(xTabela: "Orcamento_Item")
         {
 
+            this.bPermitePorcentagem = true;
+
             this.objImposto = new Orcamento_Item_ImpostosModel();
             objFamiliaProduto = new Familia_produtoModel();
             objProduto = new ProdutoModel();
-
-
-            if (Orcamento_ideModel.currentModel.GetOperationModel() == OperationModel.updating)
-            {
-                ObservableCollectionBaseCadastros<Orcamento_Item_RepresentantesModel> lRepresentantes = new ObservableCollectionBaseCadastros<Orcamento_Item_RepresentantesModel>()
-                {
-                    new Orcamento_Item_RepresentantesModel
-                    {  idRepresentante = Orcamento_ideModel.currentModel.idFuncionarioRepresentante }
-                };
-                this.lOrcamentoItemsRepresentantes = lRepresentantes;
-            }
 
             object objDataContext = null;
 
@@ -1332,6 +1323,7 @@ namespace HLP.Sales.Model.Models.Comercial
                         if ((currentModel as Orcamento_ideModel).objDesconto != null)
                             this.pDesconto = (currentModel as Orcamento_ideModel).objDesconto.pDesconto ?? 0;
 
+                        this.lOrcamentoItemsRepresentantes = new ObservableCollectionBaseCadastros<Orcamento_Item_RepresentantesModel>();
                         this.idFuncionarioRepresentante = (currentModel as Orcamento_ideModel).idFuncionarioRepresentante;
                     }
 
@@ -2226,7 +2218,27 @@ namespace HLP.Sales.Model.Models.Comercial
             get { return _idFuncionarioRepresentante; }
             set
             {
+                if (this.lOrcamentoItemsRepresentantes != null)
+                {
+                    Orcamento_Item_RepresentantesModel repToDelete = this.lOrcamentoItemsRepresentantes.
+                        FirstOrDefault(i => i.idRepresentante == _idFuncionarioRepresentante);
+
+                    if (repToDelete != null)
+                        this.lOrcamentoItemsRepresentantes.RemoveAt(index: this.lOrcamentoItemsRepresentantes.IndexOf(
+                            item: repToDelete));
+                }
+
                 _idFuncionarioRepresentante = value;
+
+                Orcamento_Item_RepresentantesModel objRep = new Orcamento_Item_RepresentantesModel
+                    {
+                        idRepresentante = value ?? 0,
+                        pComissao = this.pComissao
+                    };
+
+                if (this.lOrcamentoItemsRepresentantes != null)
+                    this.lOrcamentoItemsRepresentantes.Insert(index: 0, item: objRep);
+
                 base.NotifyPropertyChanged(propertyName: "idFuncionarioRepresentante");
 
             }
@@ -2239,6 +2251,14 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _pComissao = value;
+
+                if (this.lOrcamentoItemsRepresentantes != null)
+                {
+                    Orcamento_Item_RepresentantesModel objRep = this.lOrcamentoItemsRepresentantes.FirstOrDefault(i => i.idRepresentante == this.idFuncionarioRepresentante);
+
+                    if (objRep != null)
+                        objRep.pComissao = value;
+                }
                 base.NotifyPropertyChanged(propertyName: "pComissao");
             }
         }
@@ -4207,9 +4227,9 @@ namespace HLP.Sales.Model.Models.Comercial
                 }
 
                 this._vDescontoTotal = dTotalVlrDescontos;
-                decimal valorTotal = (this._vProdutoTotal + (this._vServicoTotal ?? 0));
+                decimal valorTotal = (Orcamento_ideModel.currentModel.lOrcamento_Itens.Select(i => (i.qProduto * i.vVenda)).Sum());
                 if (valorTotal != 0)
-                    this._pDescontoTotal = this._vDescontoTotal / valorTotal;
+                    this._pDescontoTotal = (this._vDescontoTotal / valorTotal) * 100;
                 else
                     this._pDescontoTotal = decimal.Zero;
                 base.NotifyPropertyChanged(propertyName: "vDescontoTotal");
@@ -5136,7 +5156,8 @@ namespace HLP.Sales.Model.Models.Comercial
                         if (objOrcamento_ide.GetOperationModel() == OperationModel.updating)
                         {
                             decimal vBruto = objOrcamento_ide.lOrcamento_Itens.Select(i => (i.qProduto * i.vVenda)).Sum();
-                            this._pDescontoTotal = value / vBruto;
+                            this._pDescontoTotal = (value / vBruto) * 100;
+                            base.NotifyPropertyChanged(propertyName: "pDescontoTotal");
                             FieldInfo fivDesconto;
                             decimal _vDescontoItem = decimal.Zero;
                             FieldInfo fipDesconto;
@@ -5157,12 +5178,14 @@ namespace HLP.Sales.Model.Models.Comercial
                                 if (fivDesconto != null)
                                 {
                                     fivDesconto.SetValue(obj: item, value: _vDescontoItem);
+                                    item.status = statusModel.alterado;
                                     base.NotifyPropertyChanged(propertyName: "vDesconto");
                                 }
 
                                 if (fipDesconto != null)
                                 {
                                     fipDesconto.SetValue(obj: item, value: _pDescontoItem);
+                                    item.status = statusModel.alterado;
                                     base.NotifyPropertyChanged(propertyName: "pDesconto");
                                 }
 
@@ -5188,7 +5211,6 @@ namespace HLP.Sales.Model.Models.Comercial
                 }
                 _vDescontoTotal = value;
                 base.NotifyPropertyChanged(propertyName: "vDescontoTotal");
-                base.NotifyPropertyChanged(propertyName: "pDescontoTotal");
             }
         }
         private decimal _vIITotal;
@@ -5282,7 +5304,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _pDescontoTotal = value;
-                this.vDescontoTotal = (value / 100) * (this._vProdutoTotal + (this._vServicoTotal ?? 0));
+                this.vDescontoTotal = (value / 100) * (Orcamento_ideModel.currentModel.lOrcamento_Itens.Select(i => (i.qProduto * i.vVenda)).Sum());
                 base.NotifyPropertyChanged(propertyName: "pDescontoTotal");
             }
         }

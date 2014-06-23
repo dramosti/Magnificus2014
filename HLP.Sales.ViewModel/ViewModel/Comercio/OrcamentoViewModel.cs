@@ -212,21 +212,35 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
                 this.currentModel.orcamento_Total_Impostos.CalcularTotais();
         }
 
+        private int? _idFuncionarioRepresentante;
+        public int? idFuncionarioRepresentante
+        {
+            get { return _idFuncionarioRepresentante; }
+            set
+            {
+                _idFuncionarioRepresentante = value;
+
+                base.NotifyPropertyChanged(propertyName: "idFuncionarioRepresentante");
+
+            }
+        }
+
         private ItensComissoes _itensComissoes;
 
         public ItensComissoes itensComissoes
         {
             get { return _itensComissoes; }
-            set { _itensComissoes = value; }
+            set
+            {
+                _itensComissoes = value;
+                base.NotifyPropertyChanged(propertyName: "itensComissoes");
+            }
         }
-
 
         public void GenerateItensComissoes()
         {
             CollectionViewSource cvs = HLP.Base.Static.Sistema.GetOpenWindow(xName: "WinOrcamento")
                 .FindResource(resourceKey: "cvsComissoes") as CollectionViewSource;
-
-
 
             if (cvs != null)
             {
@@ -248,6 +262,11 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
                     }
                 }
             }
+        }
+
+        public decimal GetPorcItems(object lItensGroup)
+        {
+            return (lItensGroup as ObservableCollection<ItensComissoes>).Sum(i => i.vComissao);
         }
 
         #endregion

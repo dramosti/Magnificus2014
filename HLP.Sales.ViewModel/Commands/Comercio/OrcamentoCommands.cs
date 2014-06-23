@@ -211,7 +211,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         });
                 }
 
-                this.objViewModel.currentModel.bTodos = true;
+                this.objViewModel.currentModel.bTodos = this.objViewModel.currentModel.bTodosTotais = true;
                 objViewModel.SetFocusFirstTab(_panel as Panel);
                 bWorkerAcoes = new BackgroundWorker();
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
@@ -333,6 +333,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             this.objViewModel.currentModel = new Orcamento_ideModel();
             this.objViewModel.currentModel.dDataHora = DateTime.Now;
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
+            this.objViewModel.currentModel.bTodos = this.objViewModel.currentModel.bTodosTotais = true;
 
         }
         private bool NovoCanExecute()
@@ -342,7 +343,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         private void Alterar(object _panel)
         {
-            this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);            
+            this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
+            this.objViewModel.currentModel.bTodosTotais = true;
         }
         private bool AlterarCanExecute()
         {
@@ -469,7 +471,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 if (objViewModel.currentModel != null)
                 {
                     this.objViewModel.currentModel.LoadListTipoDocumento();
-                    this.objViewModel.currentModel.bTodos = true;
+                    this.objViewModel.currentModel.bTodos = this.objViewModel.currentModel.bTodosTotais = true;
 
                     if (this.objViewModel.currentModel.lOrcamento_Itens != null)
                         this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault();

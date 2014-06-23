@@ -815,16 +815,32 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn x:Name="clRepresentante" Header="Representante" Width="125" >
+                                <DataGridTemplateColumn x:Name="clRepresentante" Header="Representante" Width="200" >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding xRepresentanteItem, Mode=OneWay}"
+                                            <TextBlock Text="{Binding Path=idFuncionarioRepresentante, Converter={StaticResource cbxDisplayConv}, 
+                                                        ConverterParameter={StaticResource lResultRepresentantes}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                                    />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
-                                            <Button Content="Representantes (F5)" Command="{Binding Data.itensRepresentantesCommands, Mode=OneWay, Source={StaticResource proxy}}"></Button>
+                                            <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <ComboBox x:Name="elem" Grid.Column="0"
+                ItemsSource="{Binding Source={StaticResource lResultRepresentantes}}" 
+                                                      SelectedValuePath="id"
+                                            DisplayMemberPath="display"                                
+            SelectedValue="{Binding idFuncionarioRepresentante,
+                                UpdateSourceTrigger=LostFocus}"
+                                                                  IsEnabled="{Binding bIsEnabled}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                                <Button Grid.Column="1" Content="Representantes (F5)" 
+                                                        Command="{Binding Data.itensRepresentantesCommands, Mode=OneWay, Source={StaticResource proxy}}"></Button>
+                                            </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                 </DataGridTemplateColumn>
@@ -2026,12 +2042,18 @@
                                     </Grid.RowDefinitions>
                                     <StackPanel
                             Orientation="Horizontal">
-                                        <CheckBox Content="Criado" IsChecked="{Binding currentModel.bCriadoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
-                                        <CheckBox Content="Enviado" IsChecked="{Binding currentModel.bEnviadoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
-                                        <CheckBox Content="Confirmado" IsChecked="{Binding currentModel.bConfirmadoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
-                                        <CheckBox Content="Perdido" IsChecked="{Binding currentModel.bPerdidoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
-                                        <CheckBox Content="Cancelado" IsChecked="{Binding currentModel.bCanceladoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
-                                        <CheckBox Content="Todos" IsChecked="{Binding currentModel.bTodosTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
+                                        <CheckBox Content="Criado" IsChecked="{Binding currentModel.bCriadoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                  IsEnabled="{Binding bIsEnabled, Converter={StaticResource notConverter}}"></CheckBox>
+                                        <CheckBox Content="Enviado" IsChecked="{Binding currentModel.bEnviadoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                  IsEnabled="{Binding bIsEnabled, Converter={StaticResource notConverter}}"></CheckBox>
+                                        <CheckBox Content="Confirmado" IsChecked="{Binding currentModel.bConfirmadoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                  IsEnabled="{Binding bIsEnabled, Converter={StaticResource notConverter}}"></CheckBox>
+                                        <CheckBox Content="Perdido" IsChecked="{Binding currentModel.bPerdidoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                  IsEnabled="{Binding bIsEnabled, Converter={StaticResource notConverter}}"></CheckBox>
+                                        <CheckBox Content="Cancelado" IsChecked="{Binding currentModel.bCanceladoTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                  IsEnabled="{Binding bIsEnabled, Converter={StaticResource notConverter}}"></CheckBox>
+                                        <CheckBox Content="Todos" IsChecked="{Binding currentModel.bTodosTotais, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                  IsEnabled="{Binding bIsEnabled, Converter={StaticResource notConverter}}"></CheckBox>
                                     </StackPanel>
 
                                     <Grid Grid.Row="1">
@@ -2510,9 +2532,9 @@
                 <ListView ItemsSource="{Binding Source={StaticResource cvsComissoes}}" x:Name="vwComissoes">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Produto" DisplayMemberBinding="{Binding xProduto}"></GridViewColumn>
-                            <GridViewColumn Header="% Comissão" DisplayMemberBinding="{Binding pComissao, Converter={StaticResource porcentagemConverter}}"></GridViewColumn>
-                            <GridViewColumn Header="R$ Comissão" DisplayMemberBinding="{Binding vComissao, Converter={StaticResource moedaConverter}}"></GridViewColumn>
+                            <GridViewColumn Header="Produto" DisplayMemberBinding="{Binding xProduto}" Width="300"></GridViewColumn>
+                            <GridViewColumn Header="% Comissão" DisplayMemberBinding="{Binding pComissao, Converter={StaticResource porcentagemConverter}}" Width="100"></GridViewColumn>
+                            <GridViewColumn Header="R$ Comissão" DisplayMemberBinding="{Binding vComissao, Converter={StaticResource moedaConverter}}" Width="100"></GridViewColumn>
                         </GridView>
                     </ListView.View>
 
@@ -2527,10 +2549,21 @@
                                                 <Expander IsExpanded="True" BorderBrush="#FFA4B97F" 
                                             BorderThickness="0,0,0,1">
                                                     <Expander.Header>
-                                                        <DockPanel>
-                                                            <TextBlock FontWeight="Bold"
-                                 Text="{Binding Path=Name}"/>
-                                                        </DockPanel>
+                                                        <Grid>
+                                                            <Grid.Resources>
+                                                                <convertLocal:SumPorcItemsConverter x:Key="sumPorcItemsConverter"></convertLocal:SumPorcItemsConverter>
+                                                            </Grid.Resources>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="300"></ColumnDefinition>
+                                                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock FontWeight="Bold" Text="{Binding Path=Name}" Grid.Column="0"/>
+                                                            <TextBlock FontWeight="Bold" Text="{Binding Path=Items, 
+                                                                Converter={StaticResource sumPorcItemsConverter}, ConverterParameter=porc}" Grid.Column="1"></TextBlock>
+                                                            <TextBlock FontWeight="Bold" Text="{Binding Path=Items, 
+                                                                Converter={StaticResource sumPorcItemsConverter}, ConverterParameter=vlr}" Grid.Column="2"></TextBlock>
+                                                        </Grid>
                                                     </Expander.Header>
                                                     <Expander.Content>
                                                         <ItemsPresenter />
