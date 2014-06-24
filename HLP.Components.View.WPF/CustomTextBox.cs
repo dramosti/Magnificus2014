@@ -88,16 +88,13 @@ namespace HLP.Components.View.WPF
 
         void CustomTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox txt = this.Template.FindName(name: "txt", templatedParent: this) as TextBox;
-            txt.SelectAll();
-
-            //this.ApplyTemplate();
-            //if (!(System.Windows.Forms.Control.ModifierKeys == System.Windows.Forms.Keys.Shift &&
-            //    Keyboard.IsKeyDown(Key.Tab)))
-            //{
-            //    TextBox txt = this.Template.FindName(name: "txt", templatedParent: this) as TextBox;
-            //    txt.Focus();
-            //}
+            this.ApplyTemplate();
+            if (!(System.Windows.Forms.Control.ModifierKeys == System.Windows.Forms.Keys.Shift &&
+                Keyboard.IsKeyDown(Key.Tab)))
+            {
+                TextBox txt = this.Template.FindName(name: "txt", templatedParent: this) as TextBox;
+                txt.Focus();
+            }
         }
 
         public void SetEventFocusToTxtId(RoutedEventHandler _event)

@@ -189,6 +189,7 @@ namespace HLP.Components.View.WPF
         public void SetEventsTabControl(TabControl tabControl)
         {
             tabControl.KeyDown += TabControl_KeyDownGeneric;
+            tabControl.KeyUp += this.Window_KeyUp;
             foreach (TabItem item in tabControl.Items)
             {
                 object o = item.Content;
@@ -302,6 +303,23 @@ namespace HLP.Components.View.WPF
         {
             get { return (string)GetValue(NameViewProperty); }
             set { SetValue(NameViewProperty, value); }
+        }
+
+        public void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            if ((System.Windows.Forms.Control.ModifierKeys == System.Windows.Forms.Keys.Shift &&
+                Keyboard.IsKeyUp(key: Key.Tab)))
+            {
+                TraversalRequest tRequest = new TraversalRequest(FocusNavigationDirection.Previous);
+                UIElement keyboardFocus = Keyboard.FocusedElement as UIElement;
+
+                if (keyboardFocus != null)
+                {
+                    keyboardFocus.MoveFocus(tRequest);
+                }
+
+                e.Handled = true;
+            }
         }
 
         // Using a DependencyProperty as the backing store for NameView.  This enables animation, styling, binding, etc...
