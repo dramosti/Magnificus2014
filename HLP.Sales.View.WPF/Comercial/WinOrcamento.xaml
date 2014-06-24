@@ -769,35 +769,35 @@
                                 <DataGridTextColumn 
                                             x:Name="clDesconto"
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=pDesconto, Converter={StaticResource porcentagemConverter},
+										Binding="{Binding Path=pDesconto, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% Desc" Width="100"/>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vDesconto, Converter={StaticResource moedaConverter},
+										Binding="{Binding Path=vDesconto, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vl. Desconto" Width="100"/>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
                                         IsReadOnly="True"
-										Binding="{Binding Path=vVendaSemDesconto, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisItem,
+										Binding="{Binding Path=vVendaSemDesconto, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisItem,
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vl. Item Origem" Width="150"/>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vVenda, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisItem,
+										Binding="{Binding Path=vVenda, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisItem,
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vl.Item" Width="100"/>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
                                         IsReadOnly="True"
-										Binding="{Binding Path=vTotalSemDescontoItem, Converter={StaticResource moedaConverter},ConverterParameter=nCasasDecimaisTotalItem,
+										Binding="{Binding Path=vTotalSemDescontoItem, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},ConverterParameter=nCasasDecimaisTotalItem,
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Total Item Origem" Width="125"/>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
                                         IsReadOnly="True"
-										Binding="{Binding Path=vTotalItem, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisTotalItem,
+										Binding="{Binding Path=vTotalItem, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisTotalItem,
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Total Item" Width="100"/>
                                 <DataGridTemplateColumn x:Name="clDtHrInicialRevisao" Header="Previsão de Entrega" Width="150">
@@ -891,8 +891,8 @@
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=pComissao, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										ElementStyle="{StaticResource CellErrorStyle}"                                        
+										Binding="{Binding Path=pComissao, UpdateSourceTrigger=LostFocus, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% Comissão" Width="125"/>
                                 <DataGridTemplateColumn x:Name="clCfop" Header="Cfop" Width="125" >
                                     <DataGridTemplateColumn.CellTemplate>
@@ -968,12 +968,12 @@
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=objImposto.IPI_pIPI, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, 
-                                        ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+                                        ValidatesOnDataErrors=True, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}}"
 										Header="% IPI" Width="100"/>
-                                <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                                <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, FallbackValue=0, TargetNullValue=0, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=objImposto.IPI_vIPI, UpdateSourceTrigger=LostFocus,
-                                        NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
+                                        NotifyOnValidationError=True, ValidatesOnDataErrors=True, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}}"
 										Header="Vl IPI" Width="100"/>
                                 <DataGridTemplateColumn x:Name="clCstIcms" Header="CST ICMS" Width="150" >
                                     <DataGridTemplateColumn.CellTemplate>
@@ -999,25 +999,25 @@
                                 </DataGridTemplateColumn>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.ICMS_pICMS, Converter={StaticResource porcentagemConverter}, Mode=TwoWay,
+										Binding="{Binding Path=objImposto.ICMS_pICMS, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, Mode=TwoWay,
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% ICMS" Width="100"/>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.ICMS_vICMS, Converter={StaticResource moedaConverter},
+										Binding="{Binding Path=objImposto.ICMS_vICMS, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vl do ICMS" Width="100"/>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.ICMS_pReduzBaseSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=objImposto.ICMS_pReduzBaseSubstituicaoTributaria, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% Red. Base Cálculo ST" Width="150"/>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.ICMS_pSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=objImposto.ICMS_pSubstituicaoTributaria, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% do ICMS ST" Width="125"/>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.vIcmsSubstituicaoTributaria, Converter={StaticResource moedaConverter},
+										Binding="{Binding Path=objImposto.vIcmsSubstituicaoTributaria, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vl ICMS ST" Width="125"/>
                                 <DataGridTemplateColumn x:Name="clCstPis" Header="CST PIS" Width="100" >
@@ -1044,12 +1044,12 @@
                                 </DataGridTemplateColumn>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.PIS_pPIS, Converter={StaticResource porcentagemConverter},
+										Binding="{Binding Path=objImposto.PIS_pPIS, TargetNullValue=0, FallbackValue=0, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% PIS" Width="125"/>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.PIS_vPIS, Converter={StaticResource moedaConverter},
+										Binding="{Binding Path=objImposto.PIS_vPIS, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},
                                             UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vl PIS" Width="125"/>
                                 <DataGridTemplateColumn x:Name="clCstCofins" Header="CST COFINS" Width="125" >
@@ -1076,22 +1076,22 @@
                                 </DataGridTemplateColumn>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.COFINS_pCOFINS, Converter={StaticResource porcentagemConverter},
+										Binding="{Binding Path=objImposto.COFINS_pCOFINS, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% COFINS" Width="125"/>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.COFINS_vCOFINS, Converter={StaticResource moedaConverter},
+										Binding="{Binding Path=objImposto.COFINS_vCOFINS, TargetNullValue=0, FallbackValue=0, Converter={StaticResource moedaConverter},
                                             UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vl COFINS" Width="125"/>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.ISS_pIss, Mode=TwoWay, Converter={StaticResource porcentagemConverter},
+										Binding="{Binding Path=objImposto.ISS_pIss, Mode=TwoWay, TargetNullValue=0, FallbackValue=0, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% ISS" Width="125"/>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=objImposto.ISS_vIss, Converter={StaticResource moedaConverter},
+										Binding="{Binding Path=objImposto.ISS_vIss, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vl ISS" Width="125"/>
                                 <DataGridTextColumn 
@@ -1123,7 +1123,7 @@
 										Header="Cód.Prod Cliente" Width="125"/>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vFreteItem, Converter={StaticResource moedaConverter},
+										Binding="{Binding Path=vFreteItem,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vl. Frete" Width="100"/>
                                 <DataGridTemplateColumn Header="Status Item" Width="150">
