@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Entries.Model.Models.Financeiro
 {
-    public partial class Dia_pagamentoModel : modelBase
+    public partial class Dia_pagamentoModel : modelComum
     {
         public Dia_pagamentoModel()
             : base("Dia_pagamento")
@@ -63,7 +64,7 @@ namespace HLP.Entries.Model.Models.Financeiro
 
     }
 
-    public partial class Dia_pagamento_linhasModel : modelBase
+    public partial class Dia_pagamento_linhasModel : modelComum
     {
         public Dia_pagamento_linhasModel() : base("Dia_pagamento_linhas") { }
 

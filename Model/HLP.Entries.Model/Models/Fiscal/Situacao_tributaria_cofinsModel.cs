@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Fiscal
 {
-    public partial class Situacao_tributaria_cofinsModel : modelBase
+    public partial class Situacao_tributaria_cofinsModel : modelComum
     {
         public Situacao_tributaria_cofinsModel()
             : base(xTabela: "Situacao_tributaria_cofins")

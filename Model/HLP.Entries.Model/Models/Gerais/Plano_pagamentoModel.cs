@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public partial class Plano_pagamentoModel : modelBase
+    public partial class Plano_pagamentoModel : modelComum
     {
         public Plano_pagamentoModel()
             : base("Plano_pagamento")
@@ -149,7 +150,7 @@ namespace HLP.Entries.Model.Models.Gerais
     }
 
 
-    public partial class Plano_pagamento_linhasModel : modelBase
+    public partial class Plano_pagamento_linhasModel : modelComum
     {
         private int? _idLinhasPagamento;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]

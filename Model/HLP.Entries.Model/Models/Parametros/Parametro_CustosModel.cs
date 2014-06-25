@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Parametros
 {
-    public partial class Parametro_CustosModel : modelBase
+    public partial class Parametro_CustosModel : modelComum
     {
         public Parametro_CustosModel()
             : base(xTabela: "Parametro_Custos")

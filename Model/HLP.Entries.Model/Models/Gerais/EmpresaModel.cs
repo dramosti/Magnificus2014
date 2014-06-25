@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
+using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Models.Parametros;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public partial class EmpresaModel : modelBase
+    public partial class EmpresaModel : modelComum
     {
         public EmpresaModel()
             : base(xTabela: "Empresa")
@@ -85,7 +86,7 @@ namespace HLP.Entries.Model.Models.Gerais
         }
     }
        
-    public partial class EmpresaParametrosModel : modelBase
+    public partial class EmpresaParametrosModel : modelComum
     {
         public EmpresaParametrosModel()
         {

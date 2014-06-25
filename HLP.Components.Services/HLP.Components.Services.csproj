@@ -85,6 +85,10 @@
       <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
       <Name>HLP.Components.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Wcf.Entries\HLP.Wcf.Entries.csproj">
       <Project>{9c776abf-bcda-4a4e-b14e-cf35510c5ca2}</Project>
       <Name>HLP.Wcf.Entries</Name>

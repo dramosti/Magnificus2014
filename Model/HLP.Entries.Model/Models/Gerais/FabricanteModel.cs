@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public partial class FabricanteModel : modelBase
+    public partial class FabricanteModel : modelComum
     {
         public FabricanteModel()
             : base(xTabela: "Fabricante")

@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.RecursosHumanos
 {
-    public partial class CargoModel : modelBase
+    public partial class CargoModel : modelComum
     {
         public CargoModel()
             : base("Cargo")

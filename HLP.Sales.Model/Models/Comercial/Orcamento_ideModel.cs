@@ -23,10 +23,11 @@ using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.Model.Models.Transportes;
 using System.Threading;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
-    public partial class Orcamento_ideModel : modelBase
+    public partial class Orcamento_ideModel : modelComum
     {
         private static Window winOrcamento = null;
 
@@ -1247,7 +1248,7 @@ namespace HLP.Sales.Model.Models.Comercial
         }
     }
 
-    public partial class Orcamento_ItemModel : modelBase, ICloneable
+    public partial class Orcamento_ItemModel : modelComum, ICloneable
     {
         Familia_produtoModel objFamiliaProduto;
         public ProdutoModel objProduto;
@@ -2309,7 +2310,7 @@ namespace HLP.Sales.Model.Models.Comercial
         }
     }
 
-    public partial class Orcamento_Item_ImpostosModel : modelBase, ICloneable
+    public partial class Orcamento_Item_ImpostosModel : modelComum, ICloneable
     {
         private object _objDataContext;
 
@@ -3829,7 +3830,7 @@ namespace HLP.Sales.Model.Models.Comercial
         }
     }
 
-    public partial class Orcamento_Item_RepresentantesModel : modelBase, ICloneable
+    public partial class Orcamento_Item_RepresentantesModel : modelComum, ICloneable
     {
         private object GetDataContextWindow()
         {
@@ -4031,7 +4032,7 @@ namespace HLP.Sales.Model.Models.Comercial
         }
     }
 
-    public partial class Orcamento_Total_ImpostosModel : modelBase
+    public partial class Orcamento_Total_ImpostosModel : modelComum
     {
         private object _objDataContext;
 
@@ -5443,7 +5444,7 @@ namespace HLP.Sales.Model.Models.Comercial
         }
     }
 
-    public partial class Orcamento_retTranspModel : modelBase
+    public partial class Orcamento_retTranspModel : modelComum
     {
         private object _objDataContext;
 

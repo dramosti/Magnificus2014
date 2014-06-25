@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Fiscal
 {
-    public partial class Tipo_documentoModel : modelBase
+    public partial class Tipo_documentoModel : modelComum
     {
         public Tipo_documentoModel()
             : base("Tipo_documento")
@@ -92,7 +93,7 @@ namespace HLP.Entries.Model.Fiscal
         
     }
 
-    public partial class Tipo_documento_oper_validaModel : modelBase
+    public partial class Tipo_documento_oper_validaModel : modelComum
     {
         public Tipo_documento_oper_validaModel() : base("Tipo_documento_oper_valida") { }
 

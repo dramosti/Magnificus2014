@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public partial class CalendarioModel : modelBase
+    public partial class CalendarioModel : modelComum
     {
         public CalendarioModel()
             : base("Calendario")
@@ -243,7 +244,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
 
     }
-    public partial class Calendario_DetalheModel : modelBase
+    public partial class Calendario_DetalheModel : modelComum
     {
         private int? _idCalendarioDetalhe;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -302,7 +303,7 @@ namespace HLP.Entries.Model.Models.Gerais
         }
     }
 
-    public partial class Calendario_IntervalosModel : modelBase
+    public partial class Calendario_IntervalosModel : modelComum
     {
         public Calendario_IntervalosModel()
             : base("Calendario_Intervalos")

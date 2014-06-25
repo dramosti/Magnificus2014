@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Comercial
 {
-    public partial class Tipo_produtoModel : modelBase
+    public partial class Tipo_produtoModel : modelComum
     {
         public Tipo_produtoModel()
             : base(xTabela: "Tipo_produto") { }

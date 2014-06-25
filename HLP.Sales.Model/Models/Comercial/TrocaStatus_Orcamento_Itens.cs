@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
-    public partial class TrocaStatus_Orcamento_Itens : modelBase
+    public partial class TrocaStatus_Orcamento_Itens : modelComum
     {
         private int _codItem;
 

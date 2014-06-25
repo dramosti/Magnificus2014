@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Transportes
 {
-    public partial class Modos_entregaModel : modelBase
+    public partial class Modos_entregaModel : modelComum
     {
         public Modos_entregaModel()
             : base("Modos_entrega")

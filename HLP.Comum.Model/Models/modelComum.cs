@@ -13,6 +13,25 @@ namespace HLP.Comum.Model.Models
         {
         }
 
+        
+        private ObservableCollectionBaseCadastros<DocumentosModel> _lDocumentos;
+
+        public ObservableCollectionBaseCadastros<DocumentosModel> lDocumentos
+        {
+            get { return _lDocumentos; }
+            set
+            {
+                _lDocumentos = value;
+                base.NotifyPropertyChanged(propertyName: "lDocumentos");
+            }
+        }
+        
+
+        public modelComum(string xTabela)
+            : base(xTabela: xTabela)
+        {
+        }
+
         protected override void NotifyPropertyChanged(string propertyName)
         {
             base.NotifyPropertyChanged(propertyName);

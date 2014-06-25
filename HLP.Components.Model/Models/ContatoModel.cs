@@ -7,10 +7,11 @@ using HLP.Base.ClassesBases;
 using System.Reflection;
 using HLP.Base.Static;
 using System.Windows;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Components.Model.Models
 {
-    public partial class ContatoModel : modelBase
+    public partial class ContatoModel : modelComum
     {
         public ContatoModel()
             : base("Contato")
@@ -632,7 +633,7 @@ namespace HLP.Components.Model.Models
             set { _lContato_EnderecoModel = value; base.NotifyPropertyChanged("lContato_EnderecoModel"); }
         }
     }
-    public partial class Contato_EnderecoModel : modelBase
+    public partial class Contato_EnderecoModel : modelComum
     {
         public Contato_EnderecoModel()
             : base("Contato_Endereco")

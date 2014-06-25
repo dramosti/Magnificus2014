@@ -10,10 +10,11 @@ using System.Reflection;
 using System.Windows.Threading;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Components.Model.Models;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Entries.Model.Models.Comercial
 {
-    public partial class Cliente_fornecedorModel : modelBase
+    public partial class Cliente_fornecedorModel : modelComum
     {
         public Cliente_fornecedorModel()
             : base(xTabela: "Cliente_fornecedor")
@@ -1226,7 +1227,7 @@ namespace HLP.Entries.Model.Models.Comercial
 
     }
 
-    public partial class Cliente_fornecedor_representanteModel : modelBase
+    public partial class Cliente_fornecedor_representanteModel : modelComum
     {
         public Cliente_fornecedor_representanteModel()
             : base(xTabela: "Cliente_fornecedor_representante")
@@ -1289,7 +1290,7 @@ namespace HLP.Entries.Model.Models.Comercial
         }
     }
 
-    public partial class Cliente_fornecedor_produtoModel : modelBase
+    public partial class Cliente_fornecedor_produtoModel : modelComum
     {
         public Cliente_fornecedor_produtoModel()
             : base(xTabela: "Cliente_fornecedor_produto")
@@ -1352,7 +1353,7 @@ namespace HLP.Entries.Model.Models.Comercial
         }
     }
 
-    public partial class Cliente_Fornecedor_ObservacaoModel : modelBase
+    public partial class Cliente_Fornecedor_ObservacaoModel : modelComum
     {
         public Cliente_Fornecedor_ObservacaoModel()
             : base(xTabela: "Cliente_Fornecedor_Observacao")
@@ -1394,7 +1395,7 @@ namespace HLP.Entries.Model.Models.Comercial
         }
     }
 
-    public partial class Cliente_fornecedor_fiscalModel : modelBase
+    public partial class Cliente_fornecedor_fiscalModel : modelComum
     {
         public Cliente_fornecedor_fiscalModel()
             : base(xTabela: "Cliente_fornecedor_fiscal")
@@ -1699,7 +1700,7 @@ namespace HLP.Entries.Model.Models.Comercial
         }
     }
 
-    public partial class Cliente_fornecedor_contatoModel : modelBase
+    public partial class Cliente_fornecedor_contatoModel : modelComum
     {
         public Cliente_fornecedor_contatoModel()
             : base(xTabela: "Cliente_fornecedor_contato")
@@ -1741,7 +1742,7 @@ namespace HLP.Entries.Model.Models.Comercial
 
     }
 
-    public partial class Cliente_fornecedor_arquivoModel : modelBase
+    public partial class Cliente_fornecedor_arquivoModel : modelComum
     {
         public Cliente_fornecedor_arquivoModel()
             : base(xTabela: "Cliente_Fornecedor_Arquivo")

@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.RecursosHumanos
 {
-    public partial class SetorModel : modelBase
+    public partial class SetorModel : modelComum
     {
         public SetorModel()
             : base(xTabela: "Setor")

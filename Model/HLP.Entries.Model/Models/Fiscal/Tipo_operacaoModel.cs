@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Fiscal
 {
-    public partial class Tipo_operacaoModel : modelBase
+    public partial class Tipo_operacaoModel : modelComum
     {
         public Tipo_operacaoModel()
             : base(xTabela: "Tipo_Operacao")
@@ -180,7 +181,7 @@ namespace HLP.Entries.Model.Models.Fiscal
 
     }
 
-    public partial class Operacao_reducao_baseModel : modelBase
+    public partial class Operacao_reducao_baseModel : modelComum
     {
         public Operacao_reducao_baseModel()
             : base(xTabela: "Operacao_reducao_base")

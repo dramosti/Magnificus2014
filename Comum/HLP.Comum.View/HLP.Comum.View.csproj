@@ -297,6 +297,10 @@
       <Project>{937c9439-cc70-40d2-96f5-d9ad99c51181}</Project>
       <Name>HLP.Components.ViewModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\HLP.ComumView.ViewModel\HLP.ComumView.ViewModel.csproj">
       <Project>{ccfc8e30-5a35-4451-bbc5-6fac96016bf6}</Project>
       <Name>HLP.ComumView.ViewModel</Name>

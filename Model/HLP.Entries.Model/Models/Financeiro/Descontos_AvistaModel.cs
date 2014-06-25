@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Financeiro
 {
-    public partial class Descontos_AvistaModel : modelBase
+    public partial class Descontos_AvistaModel : modelComum
     {
         public Descontos_AvistaModel() : base("Descontos_Avista") { }
 

@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Entries.Model.Models.Transportes
 {
-    public partial class TransportadorModel : modelBase
+    public partial class TransportadorModel : modelComum
     {
         public TransportadorModel()
             : base(xTabela: "Transportador")
@@ -247,7 +248,7 @@ namespace HLP.Entries.Model.Models.Transportes
         }
     }
 
-    public partial class Transportador_VeiculosModel : modelBase
+    public partial class Transportador_VeiculosModel : modelComum
     {
         public Transportador_VeiculosModel()
             : base(xTabela: "Transportador_Veiculos")

@@ -239,6 +239,10 @@
       <Project>{937c9439-cc70-40d2-96f5-d9ad99c51181}</Project>
       <Name>HLP.Components.ViewModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Resources.View.WPF\HLP.Resources.View.WPF.csproj">
       <Project>{8d4b32be-e2bc-42ab-8715-a6b73f2956e6}</Project>
       <Name>HLP.Resources.View.WPF</Name>

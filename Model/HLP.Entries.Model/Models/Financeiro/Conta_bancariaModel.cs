@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Financeiro
 {
-    public partial class Conta_bancariaModel : modelBase
+    public partial class Conta_bancariaModel : modelComum
     {
         public Conta_bancariaModel()
             : base(xTabela: "Conta_bancaria")

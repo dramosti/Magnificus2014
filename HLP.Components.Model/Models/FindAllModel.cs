@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace HLP.Components.Model.Models
 {
-    public class FindAllModel : modelBase
+    public class FindAllModel : modelComum
     {
         private string _xNome;
         public string xNome

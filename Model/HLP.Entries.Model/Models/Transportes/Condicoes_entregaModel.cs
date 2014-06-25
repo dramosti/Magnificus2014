@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Transportes
 {
-    public partial class Condicoes_entregaModel : modelBase
+    public partial class Condicoes_entregaModel : modelComum
     {
         public Condicoes_entregaModel()
             : base(xTabela: "Condicoes_entrega")

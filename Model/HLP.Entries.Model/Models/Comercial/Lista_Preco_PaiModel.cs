@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Windows.Controls;
 
 namespace HLP.Entries.Model.Models.Comercial
 {
-    public partial class Lista_Preco_PaiModel : modelBase
+    public partial class Lista_Preco_PaiModel : modelComum
     {
         public Lista_Preco_PaiModel()
             : base(xTabela: "Lista_Preco_Pai")
@@ -246,7 +247,7 @@ namespace HLP.Entries.Model.Models.Comercial
         }
     }
 
-    public partial class Lista_precoModel : modelBase
+    public partial class Lista_precoModel : modelComum
     {
         public Lista_precoModel()
             : base(xTabela: "Lista_preco")

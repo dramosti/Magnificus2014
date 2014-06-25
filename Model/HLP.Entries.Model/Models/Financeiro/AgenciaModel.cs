@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Entries.Model.Models.Financeiro
 {
-    public partial class AgenciaModel : modelBase
+    public partial class AgenciaModel : modelComum
     {
         public AgenciaModel()
             : base(xTabela: "Agencia")
@@ -70,7 +71,7 @@ namespace HLP.Entries.Model.Models.Financeiro
 
     }
 
-    public partial class Agencia_ContatoModel : modelBase
+    public partial class Agencia_ContatoModel : modelComum
     {
         public Agencia_ContatoModel()
             : base(xTabela: "Agencia_Contato")
@@ -111,7 +112,7 @@ namespace HLP.Entries.Model.Models.Financeiro
         }
     }
 
-    public partial class Agencia_EnderecoModel : modelBase
+    public partial class Agencia_EnderecoModel : modelComum
     {
         public Agencia_EnderecoModel()
             : base(xTabela: "Agencia_Endereco")

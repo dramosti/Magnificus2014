@@ -513,7 +513,9 @@ namespace HLP.Base.ClassesBases
             bwFocus.DoWork += bwFocus_DoWork;
             bwFocus.RunWorkerCompleted += bwFocus_RunWorkerCompleted;
 
+
         }
+                
 
         List<UIElement> lControls = null;
 

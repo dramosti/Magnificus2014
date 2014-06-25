@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Fiscal
 {
-    public partial class Carga_trib_media_st_icmsModel : modelBase
+    public partial class Carga_trib_media_st_icmsModel : modelComum
     {
         public Carga_trib_media_st_icmsModel() : base("Carga_trib_media_st_icms") { }
         private int? _idCargaTribMediaStIcms;

@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Fiscal
 {
-    public partial class Codigo_Icms_paiModel : modelBase
+    public partial class Codigo_Icms_paiModel : modelComum
     {
-        public Codigo_Icms_paiModel() : base("Codigo_Icms_pai")         
+        public Codigo_Icms_paiModel()
+            : base("Codigo_Icms_pai")
         {
             this.lCodigo_IcmsModel = new ObservableCollectionBaseCadastros<Codigo_IcmsModel>();
         }
@@ -31,7 +33,7 @@ namespace HLP.Entries.Model.Models.Fiscal
         [ParameterOrder(Order = 3)]
         public int cIcms { get; set; }
 
-        
+
         private ObservableCollectionBaseCadastros<Codigo_IcmsModel> _lCodigo_IcmsModel;
 
         public ObservableCollectionBaseCadastros<Codigo_IcmsModel> lCodigo_IcmsModel
@@ -43,10 +45,10 @@ namespace HLP.Entries.Model.Models.Fiscal
                 base.NotifyPropertyChanged(propertyName: "lCodigo_IcmsModel");
             }
         }
-        
+
     }
 
-    public partial class Codigo_IcmsModel : modelBase
+    public partial class Codigo_IcmsModel : modelComum
     {
         public Codigo_IcmsModel() : base("Codigo_Icms") { }
 

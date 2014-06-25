@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Comercial
 {
-    public partial class ProdutoModel : modelBase
+    public partial class ProdutoModel : modelComum
     {
         public ProdutoModel()
             : base(xTabela: "Produto")
@@ -214,7 +215,7 @@ namespace HLP.Entries.Model.Models.Comercial
 
     }
 
-    public partial class Produto_Fornecedor_HomologadoModel : modelBase
+    public partial class Produto_Fornecedor_HomologadoModel : modelComum
     {
         public Produto_Fornecedor_HomologadoModel()
             : base(xTabela: "Produto_Fornecedor_Homologado")
@@ -289,7 +290,7 @@ namespace HLP.Entries.Model.Models.Comercial
         }
     }
 
-    public partial class Produto_RevisaoModel : modelBase
+    public partial class Produto_RevisaoModel : modelComum
     {
         public Produto_RevisaoModel()
             : base(xTabela: "Produto_Revisao")

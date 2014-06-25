@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Comercial
 {
-    public partial class MultasModel : modelBase
+    public partial class MultasModel : modelComum
     {
         public MultasModel()
             : base(xTabela: "Multas")

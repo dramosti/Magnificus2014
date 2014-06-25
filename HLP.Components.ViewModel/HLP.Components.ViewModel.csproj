@@ -85,6 +85,10 @@
       <Project>{07b054e3-2fcc-4927-9e61-993983d02edf}</Project>
       <Name>HLP.Components.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Comum.Services\HLP.Comum.Services.csproj">
       <Project>{eb58bc1d-89d0-4f83-93ed-72500493eff3}</Project>
       <Name>HLP.Comum.Services</Name>

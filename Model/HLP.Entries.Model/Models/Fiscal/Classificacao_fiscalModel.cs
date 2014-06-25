@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Fiscal
 {
-    public partial class Classificacao_fiscalModel : modelBase
+    public partial class Classificacao_fiscalModel : modelComum
     {
         public Classificacao_fiscalModel() : base("Classificacao_fiscal") { }
-        
+
         private int? _idClassificacaoFiscal;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idClassificacaoFiscal
@@ -22,7 +23,7 @@ namespace HLP.Entries.Model.Models.Fiscal
                 base.NotifyPropertyChanged(propertyName: "idClassificacaoFiscal");
             }
         }
-        
+
         [ParameterOrder(Order = 2)]
         public int idEmpresa { get; set; }
         [ParameterOrder(Order = 3)]
@@ -60,7 +61,7 @@ namespace HLP.Entries.Model.Models.Fiscal
 
     }
 
-    public partial class Classificacao_fiscalModel 
+    public partial class Classificacao_fiscalModel
     {
         public override string this[string columnName]
         {

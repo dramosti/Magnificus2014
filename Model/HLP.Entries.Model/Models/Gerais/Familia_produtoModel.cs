@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public partial class Familia_produtoModel : modelBase
+    public partial class Familia_produtoModel : modelComum
     {
         public Familia_produtoModel() : base("Familia_produto") 
         {
@@ -180,7 +181,7 @@ namespace HLP.Entries.Model.Models.Gerais
     }
 
 
-    public partial class Familia_Produto_ClassesModel : modelBase
+    public partial class Familia_Produto_ClassesModel : modelComum
     {
         public Familia_Produto_ClassesModel() : base("Familia_Produto_Classes") { }
 

@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ConnectionConfigModel.cs" />
+    <Compile Include="Models\DocumentosModel.cs" />
     <Compile Include="Models\modelComum.cs" />
     <Compile Include="Models\TabelaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

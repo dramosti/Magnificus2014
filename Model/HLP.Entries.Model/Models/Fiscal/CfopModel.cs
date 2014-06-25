@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Fiscal
 {
-    public partial class CfopModel : modelBase
+    public partial class CfopModel : modelComum
     {
         public CfopModel() : base("Cfop") { }
 
@@ -48,7 +49,7 @@ namespace HLP.Entries.Model.Models.Fiscal
                     {
                         if (cCfop.ToString().Length != 4)
                         {
-                            sValidacao =  "CFOP deve conter 4 digitos";
+                            sValidacao = "CFOP deve conter 4 digitos";
                         }
                     }
                 }

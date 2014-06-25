@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Parametros
 {
-    public partial class Parametro_EstoqueModel : modelBase
+    public partial class Parametro_EstoqueModel : modelComum
     {
         public Parametro_EstoqueModel()
             : base(xTabela: "Parametro_Estoque")

@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Components
 {
-    public partial class PesquisaPadraoModel : modelBase
+    public partial class PesquisaPadraoModel : modelComum
     {
         private string _COLUMN_NAME = string.Empty;
         public string COLUMN_NAME

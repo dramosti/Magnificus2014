@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Components.Model.Models
 {
-    public partial class CustomPesquisaModel : modelBase
+    public partial class CustomPesquisaModel : modelComum
     {        
         private string _xDisplay;
 

@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Components.Model.Models
 {
-    public partial class EnderecoModel : modelBase
+    public partial class EnderecoModel : modelComum
     {
         public EnderecoModel()
             : base(xTabela: "Enderecos")
@@ -229,7 +230,7 @@ namespace HLP.Components.Model.Models
             get { return _bCanFindCep; }
             set { _bCanFindCep = value; }
         }
-        
+
 
 
     }

@@ -1,6 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
 using HLP.Components.Model.Models;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ using System.Windows.Threading;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public partial class FuncionarioModel : modelBase
+    public partial class FuncionarioModel : modelComum
     {
         public FuncionarioModel()
             : base(xTabela: "Funcionario")
@@ -917,7 +918,7 @@ namespace HLP.Entries.Model.Models.Gerais
     }
 
 
-    public partial class Funcionario_ArquivoModel : modelBase
+    public partial class Funcionario_ArquivoModel : modelComum
     {
         public Funcionario_ArquivoModel()
             : base(xTabela: "Funcionario_Arquivo")
@@ -934,7 +935,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public int idFuncionario { get; set; }
     }
 
-    public partial class Funcionario_CertificacaoModel : modelBase
+    public partial class Funcionario_CertificacaoModel : modelComum
     {
         public Funcionario_CertificacaoModel()
             : base("Funcionario_Certificacao")
@@ -967,7 +968,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public int idFuncionario { get; set; }
     }
 
-    public partial class Funcionario_Comissao_ProdutoModel : modelBase
+    public partial class Funcionario_Comissao_ProdutoModel : modelComum
     {
         public Funcionario_Comissao_ProdutoModel()
             : base("Funcionario_Comissao_Produto")
@@ -987,7 +988,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
     }
 
-    public partial class Funcionario_Margem_Lucro_ComissaoModel : modelBase
+    public partial class Funcionario_Margem_Lucro_ComissaoModel : modelComum
     {
         public Funcionario_Margem_Lucro_ComissaoModel()
             : base(xTabela: "Funcionario_Margem_Lucro_Comissao")
@@ -1008,7 +1009,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public int idFuncionario { get; set; }
     }
 
-    public partial class Funcionario_AcessoModel : modelBase
+    public partial class Funcionario_AcessoModel : modelComum
     {
         public Funcionario_AcessoModel()
             : base(xTabela: "Acesso")

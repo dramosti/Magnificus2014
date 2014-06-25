@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Transportes
 {
-    public partial class RotaModel : modelBase
+    public partial class RotaModel : modelComum
     {
         public RotaModel() : base("Rota") 
         {
@@ -59,7 +60,7 @@ namespace HLP.Entries.Model.Models.Transportes
     }
 
 
-    public partial class Rota_pracaModel : modelBase
+    public partial class Rota_pracaModel : modelComum
     {
         public Rota_pracaModel() : base("Rota_praca") { }
 

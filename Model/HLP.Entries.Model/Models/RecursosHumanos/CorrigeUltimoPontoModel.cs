@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Entries.Model.Models.RecursosHumanos
 {
-    public partial class CorrigeUltimoPontoModel : modelBase
+    public partial class CorrigeUltimoPontoModel : modelComum
     {
         public CorrigeUltimoPontoModel() : base("") { }
 

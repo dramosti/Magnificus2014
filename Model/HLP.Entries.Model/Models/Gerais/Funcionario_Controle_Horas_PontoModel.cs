@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public partial class Funcionario_Controle_Horas_PontoModel : modelBase
+    public partial class Funcionario_Controle_Horas_PontoModel : modelComum
     {
 
         public Funcionario_Controle_Horas_PontoModel()

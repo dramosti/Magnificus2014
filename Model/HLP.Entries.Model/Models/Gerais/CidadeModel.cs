@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public partial class CidadeModel : modelBase
+    public partial class CidadeModel : modelComum
     {
         public CidadeModel()
             : base(xTabela: "Cidade")
