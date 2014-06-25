@@ -90,6 +90,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.bPerdidoTotais)
                                 .DoNotMap(i => i.bCanceladoTotais)
                                 .DoNotMap(i => i.bTodosTotais)
+                                .DoNotMap(i => i.idFuncionarioRepresentante)
                                  .Build());
             }
 
@@ -126,6 +127,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.bPerdidoTotais)
                                 .DoNotMap(i => i.bCanceladoTotais)
                                 .DoNotMap(i => i.bTodosTotais)
+                                .DoNotMap(i => i.idFuncionarioRepresentante)
             .Build());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
@@ -160,6 +162,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.bPerdidoTotais)
                                 .DoNotMap(i => i.bCanceladoTotais)
                                 .DoNotMap(i => i.bTodosTotais)
+                                .DoNotMap(i => i.idFuncionarioRepresentante)
             .Build());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
@@ -191,6 +194,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.bPerdidoTotais)
                                 .DoNotMap(i => i.bCanceladoTotais)
                                 .DoNotMap(i => i.bTodosTotais)
+                                .DoNotMap(i => i.idFuncionarioRepresentante)
                                 .Build());
             }
             return regAllOrcamento_ideAccessor.Execute().ToList();

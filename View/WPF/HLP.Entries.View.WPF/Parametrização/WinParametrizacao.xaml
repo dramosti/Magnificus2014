@@ -933,7 +933,7 @@
 								ToolTip="O sistema obrigará o uso da lista de preço definida no cadastro do cliente, não deixando o uso de nenhuma outra lista de preço"/>
                             <Components:CustomComboBox
                                 Grid.Column="2" Grid.Row="8"
-                                SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.tDescontoPor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stDescontoPor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Informar ao sistema em que ele se baseará com default os desconto, sendo para:" Grid.ColumnSpan="2">
                                 <Components:CustomComboBox.Items>
@@ -1080,7 +1080,7 @@
 								ToolTip="Informar ao sistema se ao montar um pedido de vendas e o mesmo estiver em carteira, o sistema irá gerar previsão de recebimento para o financeiro, quando sim serão criados registros de previsões de recebimento, a quantidade de registros dependerá da condição de pagamento, a cada liberação do pedido de vendas o sistema elimina de forma automática as previsões, sendo parcial ou total."/>
                             <Components:CustomComboBox
                                 Grid.Column="5" Grid.Row="1"
-                                SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stRateioFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stPagaComissaoPor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para produtos">
                                 <Components:CustomComboBox.Items>

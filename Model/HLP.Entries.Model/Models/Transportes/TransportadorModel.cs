@@ -21,7 +21,6 @@ namespace HLP.Entries.Model.Models.Transportes
         }
 
         private int? _idTransportador;
-
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idTransportador
         {
@@ -32,40 +31,140 @@ namespace HLP.Entries.Model.Models.Transportes
                 base.NotifyPropertyChanged(propertyName: "idTransportador");
             }
         }
-
+        private string _xCodigoAlternativo;
         [ParameterOrder(Order = 2)]
-        public string xCodigoAlternativo { get; set; }
-        public byte _stPessoa = 0;
+        public string xCodigoAlternativo
+        {
+            get { return _xCodigoAlternativo; }
+            set
+            {
+                _xCodigoAlternativo = value;
+                base.NotifyPropertyChanged(propertyName: "xCodigoAlternativo");
+            }
+        }
+        private byte _stPessoa;
         [ParameterOrder(Order = 3)]
         public byte stPessoa
         {
             get { return _stPessoa; }
-            set { _stPessoa = value; }
+            set
+            {
+                _stPessoa = value;
+                base.NotifyPropertyChanged(propertyName: "stPessoa");
+            }
         }
+        private string _xCpfCnpj;
         [ParameterOrder(Order = 4)]
-        public string xCnpj { get; set; }
+        public string xCpfCnpj
+        {
+            get { return _xCpfCnpj; }
+            set
+            {
+                _xCpfCnpj = value;
+                base.NotifyPropertyChanged(propertyName: "xCpfCnpj");
+            }
+        }
+        private string _xRgIe;
         [ParameterOrder(Order = 5)]
-        public string xIe { get; set; }
+        public string xRgIe
+        {
+            get { return _xRgIe; }
+            set
+            {
+                _xRgIe = value;
+                base.NotifyPropertyChanged(propertyName: "xRgIe");
+            }
+        }
+        private string _xIm;
         [ParameterOrder(Order = 6)]
-        public string xIm { get; set; }
+        public string xIm
+        {
+            get { return _xIm; }
+            set
+            {
+                _xIm = value;
+                base.NotifyPropertyChanged(propertyName: "xIm");
+            }
+        }
+        private string _xNome;
         [ParameterOrder(Order = 7)]
-        public string xRg { get; set; }
+        public string xNome
+        {
+            get { return _xNome; }
+            set
+            {
+                _xNome = value;
+                base.NotifyPropertyChanged(propertyName: "xNome");
+            }
+        }
+        private string _xFantasia;
         [ParameterOrder(Order = 8)]
-        public string xNome { get; set; }
+        public string xFantasia
+        {
+            get { return _xFantasia; }
+            set
+            {
+                _xFantasia = value;
+                base.NotifyPropertyChanged(propertyName: "xFantasia");
+            }
+        }
+        private string _xTelefone1;
         [ParameterOrder(Order = 9)]
-        public string xFantasia { get; set; }
+        public string xTelefone1
+        {
+            get { return _xTelefone1; }
+            set
+            {
+                _xTelefone1 = value;
+                base.NotifyPropertyChanged(propertyName: "xTelefone1");
+            }
+        }
+        private string _xTelefone2;
         [ParameterOrder(Order = 10)]
-        public string xTelefone1 { get; set; }
+        public string xTelefone2
+        {
+            get { return _xTelefone2; }
+            set
+            {
+                _xTelefone2 = value;
+                base.NotifyPropertyChanged(propertyName: "xTelefone2");
+            }
+        }
+        private string _xFax;
         [ParameterOrder(Order = 11)]
-        public string xTelefone2 { get; set; }
+        public string xFax
+        {
+            get { return _xFax; }
+            set
+            {
+                _xFax = value;
+                base.NotifyPropertyChanged(propertyName: "xFax");
+            }
+        }
+        private string _xEmail;
         [ParameterOrder(Order = 12)]
-        public string xFax { get; set; }
+        public string xEmail
+        {
+            get { return _xEmail; }
+            set
+            {
+                _xEmail = value;
+                base.NotifyPropertyChanged(propertyName: "xEmail");
+            }
+        }
+        private string _xHttp;
         [ParameterOrder(Order = 13)]
-        public string xEmail { get; set; }
-        [ParameterOrder(Order = 14)]
-        public string xHttp { get; set; }
+        public string xHttp
+        {
+            get { return _xHttp; }
+            set
+            {
+                _xHttp = value;
+                base.NotifyPropertyChanged(propertyName: "xHttp");
+            }
+        }
         private bool _Ativo;
-        [ParameterOrder(Order = 15)]
+        [ParameterOrder(Order = 14)]
         public bool Ativo
         {
             get { return _Ativo; }
@@ -75,12 +174,29 @@ namespace HLP.Entries.Model.Models.Transportes
                 base.NotifyPropertyChanged(propertyName: "Ativo");
             }
         }
+        private string _xObs;
+        [ParameterOrder(Order = 15)]
+        public string xObs
+        {
+            get { return _xObs; }
+            set
+            {
+                _xObs = value;
+                base.NotifyPropertyChanged(propertyName: "xObs");
+            }
+        }
+        private string _xRntrc;
         [ParameterOrder(Order = 16)]
-        public string xObs { get; set; }
-        [ParameterOrder(Order = 17)]
-        public string xCpf { get; set; }
-        [ParameterOrder(Order = 18)]
-        public string xRntrc { get; set; }
+        public string xRntrc
+        {
+            get { return _xRntrc; }
+            set
+            {
+                _xRntrc = value;
+                base.NotifyPropertyChanged(propertyName: "xRntrc");
+            }
+        }
+
 
         private ObservableCollectionBaseCadastros<ContatoModel> _lTransportador_Contato;
 

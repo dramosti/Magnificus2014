@@ -40,7 +40,7 @@
             <conv:MoedaConverter x:Key="moedaConverter"/>
             <util:BindingProxy x:Key="proxy" Data="{Binding}" />
             <convL:HeaderMarkupConverter x:Key="headerMarkupConverter"/>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <TabControl>
@@ -247,7 +247,8 @@
                                         <ComboBoxItem>Custo do Produto</ComboBoxItem>
                                     </Components:CustomComboBox>
                                     <Components:CustomTextBlock Margin="10,0,10,0" >% de reajuste</Components:CustomTextBlock>
-                                    <Components:CustomTextBox Margin="10,0,10,0" Width="80" Text="{Binding dPorcAumento, Converter={StaticResource PorcentagemConverter}}"></Components:CustomTextBox>
+                                    <Components:CustomTextBox Margin="10,0,10,0" Width="80" IsEnabled="True"
+                                                              Text="{Binding dPorcAumento, Converter={StaticResource PorcentagemConverter}}"></Components:CustomTextBox>
                                     <Button Margin="10,0,10,0" Width="50" Command="{Binding ConfAumVlrVendaCommand}">
                                         <Button.Template>
                                             <ControlTemplate>
@@ -357,7 +358,7 @@
                                     IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}">
                                             <DataGridTextColumn.CellStyle>
                                                 <Style>
-                                                    <Style.Triggers>                                                        
+                                                    <Style.Triggers>
                                                         <DataTrigger Binding="{Binding idProduto, Converter={StaticResource StCustoProdutoConverter}}" Value="False">
                                                             <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
                                                         </DataTrigger>

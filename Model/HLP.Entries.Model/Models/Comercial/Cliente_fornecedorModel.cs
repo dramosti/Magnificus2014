@@ -42,6 +42,20 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
 
+        
+        private int _idSite;
+
+        public int idSite
+        {
+            get { return _idSite; }
+            set
+            {
+                _idSite = value;
+                base.NotifyPropertyChanged(propertyName: "idSite");
+            }
+        }
+        
+
         #endregion
 
         private int? _idClienteFornecedor;
@@ -319,19 +333,8 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "idCanalVenda");
             }
         }
-        private byte _stExigeRelacaoProduto;
-        [ParameterOrder(Order = 26)]
-        public byte stExigeRelacaoProduto
-        {
-            get { return _stExigeRelacaoProduto; }
-            set
-            {
-                _stExigeRelacaoProduto = value;
-                base.NotifyPropertyChanged(propertyName: "stExigeRelacaoProduto");
-            }
-        }
         private int _idListaPrecoPai;
-        [ParameterOrder(Order = 27)]
+        [ParameterOrder(Order = 26)]
         public int idListaPrecoPai
         {
             get { return _idListaPrecoPai; }
@@ -342,7 +345,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int _idContaBancaria;
-        [ParameterOrder(Order = 28)]
+        [ParameterOrder(Order = 27)]
         public int idContaBancaria
         {
             get { return _idContaBancaria; }
@@ -353,7 +356,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int _idMoeda;
-        [ParameterOrder(Order = 29)]
+        [ParameterOrder(Order = 28)]
         public int idMoeda
         {
             get { return _idMoeda; }
@@ -364,7 +367,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int _idCondicaoPagamento;
-        [ParameterOrder(Order = 30)]
+        [ParameterOrder(Order = 29)]
         public int idCondicaoPagamento
         {
             get { return _idCondicaoPagamento; }
@@ -409,7 +412,7 @@ namespace HLP.Entries.Model.Models.Comercial
         }
 
         private int? _idFuncionario;
-        [ParameterOrder(Order = 31)]
+        [ParameterOrder(Order = 30)]
         public int? idFuncionario
         {
             get { return _idFuncionario; }
@@ -420,7 +423,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private byte _stParado;
-        [ParameterOrder(Order = 32)]
+        [ParameterOrder(Order = 31)]
         public byte stParado
         {
             get { return _stParado; }
@@ -431,7 +434,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _nFuncionarios;
-        [ParameterOrder(Order = 33)]
+        [ParameterOrder(Order = 32)]
         public int? nFuncionarios
         {
             get { return _nFuncionarios; }
@@ -442,7 +445,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private byte _stCategoria;
-        [ParameterOrder(Order = 34)]
+        [ParameterOrder(Order = 33)]
         public byte stCategoria
         {
             get { return _stCategoria; }
@@ -453,7 +456,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xSaudacao;
-        [ParameterOrder(Order = 35)]
+        [ParameterOrder(Order = 34)]
         public string xSaudacao
         {
             get { return _xSaudacao; }
@@ -464,7 +467,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xApelido;
-        [ParameterOrder(Order = 36)]
+        [ParameterOrder(Order = 35)]
         public string xApelido
         {
             get { return _xApelido; }
@@ -475,7 +478,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private byte? _stEstadoCivil;
-        [ParameterOrder(Order = 37)]
+        [ParameterOrder(Order = 36)]
         public byte? stEstadoCivil
         {
             get { return _stEstadoCivil; }
@@ -486,7 +489,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private DateTime? _dDataNascimento;
-        [ParameterOrder(Order = 38)]
+        [ParameterOrder(Order = 37)]
         public DateTime? dDataNascimento
         {
             get { return _dDataNascimento; }
@@ -497,7 +500,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xFilhos;
-        [ParameterOrder(Order = 39)]
+        [ParameterOrder(Order = 38)]
         public string xFilhos
         {
             get { return _xFilhos; }
@@ -508,7 +511,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xConjugue;
-        [ParameterOrder(Order = 40)]
+        [ParameterOrder(Order = 39)]
         public string xConjugue
         {
             get { return _xConjugue; }
@@ -519,7 +522,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private DateTime? _dDataAdmissao;
-        [ParameterOrder(Order = 41)]
+        [ParameterOrder(Order = 40)]
         public DateTime? dDataAdmissao
         {
             get { return _dDataAdmissao; }
@@ -530,7 +533,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xEmpresaTrabalha;
-        [ParameterOrder(Order = 42)]
+        [ParameterOrder(Order = 41)]
         public string xEmpresaTrabalha
         {
             get { return _xEmpresaTrabalha; }
@@ -541,7 +544,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xTelefoneEmpresaTrabalha;
-        [ParameterOrder(Order = 43)]
+        [ParameterOrder(Order = 42)]
         public string xTelefoneEmpresaTrabalha
         {
             get { return _xTelefoneEmpresaTrabalha; }
@@ -552,7 +555,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xProfissao;
-        [ParameterOrder(Order = 44)]
+        [ParameterOrder(Order = 43)]
         public string xProfissao
         {
             get { return _xProfissao; }
@@ -563,7 +566,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xNomePai;
-        [ParameterOrder(Order = 45)]
+        [ParameterOrder(Order = 44)]
         public string xNomePai
         {
             get { return _xNomePai; }
@@ -574,7 +577,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xRGPai;
-        [ParameterOrder(Order = 46)]
+        [ParameterOrder(Order = 45)]
         public string xRGPai
         {
             get { return _xRGPai; }
@@ -585,7 +588,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xCPFPai;
-        [ParameterOrder(Order = 47)]
+        [ParameterOrder(Order = 46)]
         public string xCPFPai
         {
             get { return _xCPFPai; }
@@ -596,7 +599,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xNomeMae;
-        [ParameterOrder(Order = 48)]
+        [ParameterOrder(Order = 47)]
         public string xNomeMae
         {
             get { return _xNomeMae; }
@@ -607,7 +610,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xRGMae;
-        [ParameterOrder(Order = 49)]
+        [ParameterOrder(Order = 48)]
         public string xRGMae
         {
             get { return _xRGMae; }
@@ -618,7 +621,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xCPFMae;
-        [ParameterOrder(Order = 50)]
+        [ParameterOrder(Order = 49)]
         public string xCPFMae
         {
             get { return _xCPFMae; }
@@ -629,7 +632,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private byte? _stResidencia;
-        [ParameterOrder(Order = 51)]
+        [ParameterOrder(Order = 50)]
         public byte? stResidencia
         {
             get { return _stResidencia; }
@@ -640,7 +643,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xPontoReferenciaResidencia;
-        [ParameterOrder(Order = 52)]
+        [ParameterOrder(Order = 51)]
         public string xPontoReferenciaResidencia
         {
             get { return _xPontoReferenciaResidencia; }
@@ -651,7 +654,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private decimal? _vSalario;
-        [ParameterOrder(Order = 53)]
+        [ParameterOrder(Order = 52)]
         public decimal? vSalario
         {
             get { return _vSalario; }
@@ -662,7 +665,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xCPFConjugue;
-        [ParameterOrder(Order = 54)]
+        [ParameterOrder(Order = 53)]
         public string xCPFConjugue
         {
             get { return _xCPFConjugue; }
@@ -673,7 +676,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xRGConjugue;
-        [ParameterOrder(Order = 55)]
+        [ParameterOrder(Order = 54)]
         public string xRGConjugue
         {
             get { return _xRGConjugue; }
@@ -684,7 +687,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xProfissaoConjugue;
-        [ParameterOrder(Order = 56)]
+        [ParameterOrder(Order = 55)]
         public string xProfissaoConjugue
         {
             get { return _xProfissaoConjugue; }
@@ -695,7 +698,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xEmpresaConjugue;
-        [ParameterOrder(Order = 57)]
+        [ParameterOrder(Order = 56)]
         public string xEmpresaConjugue
         {
             get { return _xEmpresaConjugue; }
@@ -706,7 +709,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xInformacaoComercialNome1;
-        [ParameterOrder(Order = 58)]
+        [ParameterOrder(Order = 57)]
         public string xInformacaoComercialNome1
         {
             get { return _xInformacaoComercialNome1; }
@@ -717,7 +720,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xInformacaoComercialNome2;
-        [ParameterOrder(Order = 59)]
+        [ParameterOrder(Order = 58)]
         public string xInformacaoComercialNome2
         {
             get { return _xInformacaoComercialNome2; }
@@ -728,7 +731,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xInformacaoComercialNome3;
-        [ParameterOrder(Order = 60)]
+        [ParameterOrder(Order = 59)]
         public string xInformacaoComercialNome3
         {
             get { return _xInformacaoComercialNome3; }
@@ -739,7 +742,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xInformacaoComercialTelefone1;
-        [ParameterOrder(Order = 61)]
+        [ParameterOrder(Order = 60)]
         public string xInformacaoComercialTelefone1
         {
             get { return _xInformacaoComercialTelefone1; }
@@ -750,7 +753,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xInformacaoComercialTelefone2;
-        [ParameterOrder(Order = 62)]
+        [ParameterOrder(Order = 61)]
         public string xInformacaoComercialTelefone2
         {
             get { return _xInformacaoComercialTelefone2; }
@@ -761,7 +764,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xInformacaoComercialTelefone3;
-        [ParameterOrder(Order = 63)]
+        [ParameterOrder(Order = 62)]
         public string xInformacaoComercialTelefone3
         {
             get { return _xInformacaoComercialTelefone3; }
@@ -772,7 +775,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private DateTime? _dInformacaoComercialClienteDesde1;
-        [ParameterOrder(Order = 64)]
+        [ParameterOrder(Order = 63)]
         public DateTime? dInformacaoComercialClienteDesde1
         {
             get { return _dInformacaoComercialClienteDesde1; }
@@ -783,7 +786,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private DateTime? _dInformacaoComercialClienteDesde2;
-        [ParameterOrder(Order = 65)]
+        [ParameterOrder(Order = 64)]
         public DateTime? dInformacaoComercialClienteDesde2
         {
             get { return _dInformacaoComercialClienteDesde2; }
@@ -794,7 +797,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private DateTime? _dInformacaoComercialClienteDesde3;
-        [ParameterOrder(Order = 66)]
+        [ParameterOrder(Order = 65)]
         public DateTime? dInformacaoComercialClienteDesde3
         {
             get { return _dInformacaoComercialClienteDesde3; }
@@ -805,7 +808,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private decimal? _vInformacaoComercialMaiorCompra1;
-        [ParameterOrder(Order = 67)]
+        [ParameterOrder(Order = 66)]
         public decimal? vInformacaoComercialMaiorCompra1
         {
             get { return _vInformacaoComercialMaiorCompra1; }
@@ -816,7 +819,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private decimal? _vInformacaoComercialMaiorCompra2;
-        [ParameterOrder(Order = 68)]
+        [ParameterOrder(Order = 67)]
         public decimal? vInformacaoComercialMaiorCompra2
         {
             get { return _vInformacaoComercialMaiorCompra2; }
@@ -827,7 +830,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private decimal? _vInformacaoComercialMaiorCompra3;
-        [ParameterOrder(Order = 69)]
+        [ParameterOrder(Order = 68)]
         public decimal? vInformacaoComercialMaiorCompra3
         {
             get { return _vInformacaoComercialMaiorCompra3; }
@@ -838,7 +841,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private DateTime? _dInformacaoComercialUltimaCompra1;
-        [ParameterOrder(Order = 70)]
+        [ParameterOrder(Order = 69)]
         public DateTime? dInformacaoComercialUltimaCompra1
         {
             get { return _dInformacaoComercialUltimaCompra1; }
@@ -849,7 +852,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private DateTime? _dInformacaoComercialUltimaCompra2;
-        [ParameterOrder(Order = 71)]
+        [ParameterOrder(Order = 70)]
         public DateTime? dInformacaoComercialUltimaCompra2
         {
             get { return _dInformacaoComercialUltimaCompra2; }
@@ -860,7 +863,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private DateTime? _dInformacaoComercialUltimaCompra3;
-        [ParameterOrder(Order = 72)]
+        [ParameterOrder(Order = 71)]
         public DateTime? dInformacaoComercialUltimaCompra3
         {
             get { return _dInformacaoComercialUltimaCompra3; }
@@ -871,7 +874,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xInformacaoComercialInformante1;
-        [ParameterOrder(Order = 73)]
+        [ParameterOrder(Order = 72)]
         public string xInformacaoComercialInformante1
         {
             get { return _xInformacaoComercialInformante1; }
@@ -882,7 +885,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xInformacaoComercialInformante2;
-        [ParameterOrder(Order = 74)]
+        [ParameterOrder(Order = 73)]
         public string xInformacaoComercialInformante2
         {
             get { return _xInformacaoComercialInformante2; }
@@ -893,7 +896,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private string _xInformacaoComercialInformante3;
-        [ParameterOrder(Order = 75)]
+        [ParameterOrder(Order = 74)]
         public string xInformacaoComercialInformante3
         {
             get { return _xInformacaoComercialInformante3; }
@@ -904,7 +907,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private decimal? _vSalarioConjugue;
-        [ParameterOrder(Order = 76)]
+        [ParameterOrder(Order = 75)]
         public decimal? vSalarioConjugue
         {
             get { return _vSalarioConjugue; }
@@ -915,7 +918,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private byte? _stSexo;
-        [ParameterOrder(Order = 77)]
+        [ParameterOrder(Order = 76)]
         public byte? stSexo
         {
             get { return _stSexo; }
@@ -926,7 +929,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int _idCondicaoEntrega;
-        [ParameterOrder(Order = 78)]
+        [ParameterOrder(Order = 77)]
         public int idCondicaoEntrega
         {
             get { return _idCondicaoEntrega; }
@@ -937,7 +940,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idModosEntrega;
-        [ParameterOrder(Order = 79)]
+        [ParameterOrder(Order = 78)]
         public int? idModosEntrega
         {
             get { return _idModosEntrega; }
@@ -948,7 +951,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idCalendario;
-        [ParameterOrder(Order = 80)]
+        [ParameterOrder(Order = 79)]
         public int? idCalendario
         {
             get { return _idCalendario; }
@@ -959,7 +962,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idTipoDocumento;
-        [ParameterOrder(Order = 81)]
+        [ParameterOrder(Order = 80)]
         public int? idTipoDocumento
         {
             get { return _idTipoDocumento; }
@@ -969,19 +972,8 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "idTipoDocumento");
             }
         }
-        private int? _idSite;
-        [ParameterOrder(Order = 82)]
-        public int? idSite
-        {
-            get { return _idSite; }
-            set
-            {
-                _idSite = value;
-                base.NotifyPropertyChanged(propertyName: "idSite");
-            }
-        }
         private int? _idDeposito;
-        [ParameterOrder(Order = 83)]
+        [ParameterOrder(Order = 81)]
         public int? idDeposito
         {
             get { return _idDeposito; }
@@ -1006,7 +998,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idDescontos;
-        [ParameterOrder(Order = 84)]
+        [ParameterOrder(Order = 82)]
         public int? idDescontos
         {
             get { return _idDescontos; }
@@ -1017,7 +1009,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idPlanoPagamento;
-        [ParameterOrder(Order = 85)]
+        [ParameterOrder(Order = 83)]
         public int? idPlanoPagamento
         {
             get { return _idPlanoPagamento; }
@@ -1028,7 +1020,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idDiaPagamento;
-        [ParameterOrder(Order = 86)]
+        [ParameterOrder(Order = 84)]
         public int? idDiaPagamento
         {
             get { return _idDiaPagamento; }
@@ -1039,7 +1031,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idJuros;
-        [ParameterOrder(Order = 87)]
+        [ParameterOrder(Order = 85)]
         public int? idJuros
         {
             get { return _idJuros; }
@@ -1050,7 +1042,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private byte _stMostraProdutosRelacionado;
-        [ParameterOrder(Order = 88)]
+        [ParameterOrder(Order = 86)]
         public byte stMostraProdutosRelacionado
         {
             get { return _stMostraProdutosRelacionado; }
@@ -1061,7 +1053,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idTransportador;
-        [ParameterOrder(Order = 89)]
+        [ParameterOrder(Order = 87)]
         public int? idTransportador
         {
             get { return _idTransportador; }
@@ -1072,7 +1064,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private byte? _stSpc;
-        [ParameterOrder(Order = 90)]
+        [ParameterOrder(Order = 88)]
         public byte? stSpc
         {
             get { return _stSpc; }
@@ -1083,7 +1075,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private byte? _stSituacaoSci;
-        [ParameterOrder(Order = 91)]
+        [ParameterOrder(Order = 89)]
         public byte? stSituacaoSci
         {
             get { return _stSituacaoSci; }
@@ -1094,7 +1086,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private byte? _stAssociacaoComercial;
-        [ParameterOrder(Order = 92)]
+        [ParameterOrder(Order = 90)]
         public byte? stAssociacaoComercial
         {
             get { return _stAssociacaoComercial; }
@@ -1105,7 +1097,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idMultas;
-        [ParameterOrder(Order = 93)]
+        [ParameterOrder(Order = 91)]
         public int? idMultas
         {
             get { return _idMultas; }
@@ -1116,7 +1108,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private byte? _stObrigaListaPreco;
-        [ParameterOrder(Order = 94)]
+        [ParameterOrder(Order = 92)]
         public byte? stObrigaListaPreco
         {
             get { return _stObrigaListaPreco; }
@@ -1127,7 +1119,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idCidadeNascimento;
-        [ParameterOrder(Order = 95)]
+        [ParameterOrder(Order = 93)]
         public int? idCidadeNascimento
         {
             get { return _idCidadeNascimento; }

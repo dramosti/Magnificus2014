@@ -139,6 +139,12 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 this.objViewModel.currentItem.lOrcamentoItemsRepresentantes = new ObservableCollectionBaseCadastros<Orcamento_Item_RepresentantesModel>(
                     list: (ret as OrcamentoItensRepresentanteViewModel)
                     .orcamentoItensRepresentantes);
+
+                Orcamento_Item_RepresentantesModel mainRepresentante = this.objViewModel.currentItem.lOrcamentoItemsRepresentantes.FirstOrDefault(i =>
+                    i.idRepresentante == this.objViewModel.currentItem.idFuncionarioRepresentante);
+
+                this.objViewModel.currentItem.pComissao = mainRepresentante.pComissao ?? 0;
+
                 this.objViewModel.currentItem.setxRepresentante();
             }
         }
@@ -612,7 +618,11 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         objItem.vOutrasDespesasItem = (objItem.qProduto / qItem) * vOutrasDespesas;
                         objItem.stOrcamentoItem = novoStatus;
                         objItem.idOrcamentoItem = null;
-                        objItem.nItem = this.objViewModel.currentModel.lOrcamento_Itens.Count;
+                        if (this.objViewModel.currentModel.lOrcamento_Itens.Count
+                            > 0)
+                            objItem.nItem = this.objViewModel.currentModel.lOrcamento_Itens.Max(i => i.nItem).Value + 1;
+                        else
+                            objItem.nItem = 1;
                         objItem.objImposto.idOrcamentoTotalizadorImpostos = null;
                         objItem.objImposto.stOrcamentoImpostos = novoStatus;
                         objItem.objImposto.nItem = objItem.nItem;

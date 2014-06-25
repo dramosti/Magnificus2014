@@ -549,26 +549,26 @@ namespace HLP.Components.Model.Models
                 base.NotifyPropertyChanged(propertyName: "idContatoMotorista");
             }
         }
-        private int? _idCliente;
+        private int? _idContatoClienteFornecedor;
         [ParameterOrder(Order = 49)]
-        public int? idCliente
+        public int? idContatoClienteFornecedor
         {
-            get { return _idCliente; }
+            get { return _idContatoClienteFornecedor; }
             set
             {
-                _idCliente = value;
-                base.NotifyPropertyChanged(propertyName: "idCliente");
+                _idContatoClienteFornecedor = value;
+                base.NotifyPropertyChanged(propertyName: "idContatoClienteFornecedor");
             }
         }
-        private int? _idAgencia;
+        private int? _idContatoAgencia;
         [ParameterOrder(Order = 50)]
-        public int? idAgencia
+        public int? idContatoAgencia
         {
-            get { return _idAgencia; }
+            get { return _idContatoAgencia; }
             set
             {
-                _idAgencia = value;
-                base.NotifyPropertyChanged(propertyName: "idAgencia");
+                _idContatoAgencia = value;
+                base.NotifyPropertyChanged(propertyName: "idContatoAgencia");
             }
         }
 

@@ -84,7 +84,7 @@ namespace HLP.Base.ClassesBases
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void NotifyPropertyChanged(string propertyName)
+        protected virtual void NotifyPropertyChanged(string propertyName)
         {
             if (this.PropertyChanged != null)
             {

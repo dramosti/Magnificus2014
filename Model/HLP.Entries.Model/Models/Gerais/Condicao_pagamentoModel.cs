@@ -35,7 +35,7 @@ namespace HLP.Entries.Model.Models.Gerais
         [ParameterOrder(Order = 3)]
         public string xDescricao { get; set; }
         [ParameterOrder(Order = 4)]
-        public byte stMetodo { get; set; }       
+        public byte stMetodo { get; set; }
 
         private int? _nMeses;
         [ParameterOrder(Order = 5)]
@@ -48,7 +48,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "nMeses");
             }
         }
-        
+
         private int? _nSemanas;
         [ParameterOrder(Order = 6)]
         public int? nSemanas
@@ -61,7 +61,7 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
 
-        
+
         private int? _nDias;
         [ParameterOrder(Order = 7)]
         public int? nDias
@@ -73,7 +73,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "nDias");
             }
         }
-                
+
         [ParameterOrder(Order = 8)]
         public int? idPlanoPagamento { get; set; }
         [ParameterOrder(Order = 9)]
@@ -93,9 +93,9 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "stAlocacaoImposto");
             }
         }
-        private byte? _stPrimeiroPagamento;
+        private byte _stPrimeiroPagamento;
         [ParameterOrder(Order = 13)]
-        public byte? stPrimeiroPagamento
+        public byte stPrimeiroPagamento
         {
             get { return _stPrimeiroPagamento; }
             set

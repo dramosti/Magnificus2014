@@ -1059,17 +1059,6 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "idFuncionario");
             }
         }
-        private decimal _vCompraAprovaAuto;
-        [ParameterOrder(Order = 5)]
-        public decimal vCompraAprovaAuto
-        {
-            get { return _vCompraAprovaAuto; }
-            set
-            {
-                _vCompraAprovaAuto = value;
-                base.NotifyPropertyChanged(propertyName: "vCompraAprovaAuto");
-            }
-        }
     }
 
     #region Validação Model
@@ -1080,10 +1069,10 @@ namespace HLP.Entries.Model.Models.Gerais
             get
             {
                 string s = base[columnName];
-                
-                if (s== null)
+
+                if (s == null)
                 {
-                    
+
                 }
 
                 return s;

@@ -55,7 +55,7 @@ namespace HLP.Wcf.Entries
                     objAgencia.lAgencia_ContatoModel =
                         new ObservableCollectionBaseCadastros<ContatoModel>(
                             list: this.agencia_ContatoRepository.GetContato_ByForeignKey(
-                            id: id, xForeignKey: "idAgencia"));
+                            id: id, xForeignKey: "idContatoAgencia"));
 
                     objAgencia.lAgencia_EnderecoModel =
                         new ObservableCollectionBaseCadastros<EnderecoModel>(
@@ -89,7 +89,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
-                                item.idAgencia = (int)obj.idAgencia;
+                                item.idContatoAgencia = (int)obj.idAgencia;
                                 this.agencia_ContatoRepository.Save(objContato: item);
                             }
                             break;
@@ -161,7 +161,7 @@ namespace HLP.Wcf.Entries
                 foreach (ContatoModel item in Objeto.lAgencia_ContatoModel)
                 {
                     item.idContato = null;
-                    item.idAgencia = (int)Objeto.idAgencia;
+                    item.idContatoAgencia = (int)Objeto.idAgencia;
                     this.agencia_ContatoRepository.Copy(obj: item);
                 }
 

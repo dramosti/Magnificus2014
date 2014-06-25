@@ -66,6 +66,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                                          .DoNotMap(c => c.cliente_fornecedor_fiscal)
                                          .DoNotMap(i => i.status)
                                          .DoNotMap(i => i.enabledFieldsCondPagamento)
+                                         .DoNotMap(i => i.idSite)
                                          .Build());
             }
 
@@ -81,7 +82,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
              "where r.idClienteFornecedor = @idClienteFornecedor and c.idEmpresa = @idEmpresa",
             new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idClienteFornecedor").AddParameter<int>("idEmpresa"),
             MapBuilder<Cliente_fornecedor_representanteModel>.MapAllProperties()
-            .DoNotMap(i => i.status).Build());
+            .DoNotMap(i => i.status)
+            .Build());
             return reg.Execute(idCliente_fornecedor, CompanyData.idEmpresa).ToList();
         }
 

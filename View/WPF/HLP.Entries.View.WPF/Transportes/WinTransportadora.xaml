@@ -34,7 +34,7 @@
                     <System:String>vwUFToComboBox</System:String>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <TabControl>
@@ -45,197 +45,125 @@
                             <ColumnDefinition MinWidth="520"></ColumnDefinition>
                             <ColumnDefinition Width="20"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>                        
+                        </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"></RowDefinition>
                                 <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Expander IsExpanded="True" Header="Identificação" Style="{StaticResource ExpanderPadrao}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="10"></ColumnDefinition>
-                                    <ColumnDefinition Width="246*" MaxWidth="130" MinWidth="130"></ColumnDefinition>
-                                    <ColumnDefinition Width="69*" MaxWidth="100" MinWidth="100"></ColumnDefinition>
-                                    <ColumnDefinition Width="168*" MinWidth="100"/>
-                                    <ColumnDefinition Width="10"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="10"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <!--Label-->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                        <ColumnDefinition Width="246*" MaxWidth="130" MinWidth="130"></ColumnDefinition>
+                                        <ColumnDefinition Width="69*" MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                                        <ColumnDefinition Width="168*" MinWidth="100"/>
+                                        <ColumnDefinition Width="10"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <!--Label-->
 
-                                <Components:CustomTextBlock Text="Código" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="1" Margin="0,1,0,2"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Código Alternativo" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="2" Margin="0,2,0,1"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Razão Social" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Nome Fantasia" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Pessoa Jurídica?" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Text="Código" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="1" Margin="0,1,0,2"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Text="Código Alternativo" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="2" Margin="0,2,0,1"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Text="Razão Social" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Text="Nome Fantasia" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Text="Pessoa Jurídica?" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
 
-                                <!--Components-->
+                                    <!--Components-->
 
-                                <Components:CustomTextBox stCompPosicao="fieldId"
+                                    <Components:CustomTextBox stCompPosicao="fieldId"
                                         Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
                                         IsReadOnly="True"
 										Text="{Binding currentModel.idTransportador, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 										ToolTip="É preenchido com um código sequencial que é gerado pelo próprio sistema.">
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox stCompPosicao="first"
+                                    </Components:CustomTextBox>
+                                    <Components:CustomTextBox stCompPosicao="first"
                                         Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
                                         Text="{Binding currentModel.xCodigoAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										ToolTip="O sistema traz o mesmo código de identificação do registro do sistema da transportadora, mas deixa a opção para o usuário mudar.">
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox
+                                    </Components:CustomTextBox>
+                                    <Components:CustomTextBox
                                         Grid.Column="2"  Grid.Row="3" Grid.ColumnSpan="2" Height="20" Margin="0,0,0,3"
                                         Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										ToolTip="É preenchido com a razão social da Transportadora.">
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox
+                                    </Components:CustomTextBox>
+                                    <Components:CustomTextBox
                                         Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
                                         Text="{Binding currentModel.xFantasia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										ToolTip="É preenchido com o nome fantasia da Transportadora.">
-                                </Components:CustomTextBox>
-                                <Components:CustomCheckBox
+                                    </Components:CustomTextBox>
+                                    <Components:CustomCheckBox
                                         Grid.Column="2" Grid.Row="5" HorizontalAlignment="Left" Height="20" Width="40"
                                         x:Name="chkPessoa" 									 
 										IsChecked="{Binding currentModel.stPessoa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										ToolTip="Este campo define se a Transportadora é pessoa jurídica ou física, preenchendo com SIM, o sistema abrirá os campos disponíveis para pessoa jurídica caso contrário os campos disponíveis para pessoa física.">
-                                </Components:CustomCheckBox>
+                                    </Components:CustomCheckBox>
 
 
-                            </Grid>
-                        </Expander>
+                                </Grid>
+                            </Expander>
                             <Expander Margin="0,10,0,0" IsExpanded="True" Header="Documentação" Grid.Row="2" Style="{StaticResource ExpanderPadrao}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="10"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="130" MinWidth="130"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="150" MinWidth="125"></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition Width="10"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="10"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <!--Label-->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                        <ColumnDefinition MaxWidth="130" MinWidth="130"></ColumnDefinition>
+                                        <ColumnDefinition MaxWidth="150" MinWidth="125"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <!--Label-->
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Inscrição Municipal" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="RNTRC" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
 
-                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="CNPJ" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Inscrição Estadual" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Inscrição Municipal" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="CPF" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="RG" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="6" Text="RNTRC" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
-
-                                <!--Components-->
-
-                                <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
-                                    Text="{Binding currentModel.xCnpj, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cnpj}"										
-								    ToolTip="No caso de Pessoa Jurídica, deverá ser preenchido o CNPJ (Cadastro Nacional de Pessoa Jurídica) da Transportadora. Este campo possui validação e consistência, não sendo aceito qualquer número">
-
-                                    <Components:CustomTextBox.Style>
-                                        <Style TargetType="{x:Type Components:CustomTextBox}" BasedOn="{StaticResource TextBoxComponentStyle}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Components:CustomTextBox.Style>
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox
-                                        Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
-                                        Text="{Binding currentModel.xIe, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"										
-										ToolTip="No caso de Pessoa Jurídica deverá ser preenchido com a inscrição estadual da Transportadora. Este campo possui consistência por estado.">
-                                    <Components:CustomTextBox.Style>
-                                        <Style TargetType="{x:Type Components:CustomTextBox}" BasedOn="{StaticResource TextBoxComponentStyle}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Components:CustomTextBox.Style>
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox
+                                    <!--Components-->
+                                    <Components:CustomTextBox
                                         Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
                                          Text="{Binding currentModel.xIm, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										ToolTip="No caso de Pessoa Jurídica deverá ser preenchido com a inscrição municipal da Transportadora.">
-                                    <Components:CustomTextBox.Style>
-                                        <Style TargetType="{x:Type Components:CustomTextBox}" BasedOn="{StaticResource TextBoxComponentStyle}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Components:CustomTextBox.Style>
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox
+                                        <Components:CustomTextBox.Style>
+                                            <Style TargetType="{x:Type Components:CustomTextBox}" BasedOn="{StaticResource TextBoxComponentStyle}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Components:CustomTextBox.Style>
+                                    </Components:CustomTextBox>
+                                    <Components:CustomTextBox 
                                         Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
-                                        Text="{Binding currentModel.xCpf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"										
-										ToolTip="No caso de Pessoa Física, este campo deverá ser preenchido com o CPF (Cadastro de Pessoa Física) da pessoa. Este campo possui validação e consistência, não sendo aceito qualquer número.">
-                                    <Components:CustomTextBox.Style>
-                                        <Style TargetType="{x:Type Components:CustomTextBox}" BasedOn="{StaticResource TextBoxComponentStyle}"> 
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="True">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Components:CustomTextBox.Style>
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox
-                                        Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3"
-                                        Text="{Binding currentModel.xRg, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"									
-										ToolTip="No caso de Pessoa Física, deverá ser preenchido com o RG (Registro Geral) da pessoa.">
-                                    <Components:CustomTextBox.Style>
-                                        <Style TargetType="{x:Type Components:CustomTextBox}" BasedOn="{StaticResource TextBoxComponentStyle}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="True">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Components:CustomTextBox.Style>
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox
-                                        Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3"
                                         Text="{Binding currentModel.xRntrc, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										ToolTip="Informar o Registro Nacional de Transportadores Rodoviários de Carga">
-                                </Components:CustomTextBox>
-                            </Grid>
-                        </Expander>
+                                    </Components:CustomTextBox>
+                                    <Components:HlpPessoaFisicaJuridica IsEnabled="{Binding bIsEnabled}"
+                                        Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2">                                        
+                                    </Components:HlpPessoaFisicaJuridica>
+                                </Grid>
+                            </Expander>
                         </Grid>
                         <Grid Grid.Column="2">
                             <Grid.RowDefinitions>
@@ -244,50 +172,50 @@
                                 <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Expander IsExpanded="True" Header="Telefones" Grid.Column="1" Style="{StaticResource ExpanderPadrao}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="10"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="125" MinWidth="100"></ColumnDefinition>                                    
-                                    <ColumnDefinition Width="10"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="10"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                
-                                <!--Label-->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                        <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                                        <ColumnDefinition MaxWidth="125" MinWidth="100"></ColumnDefinition>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    </Grid.RowDefinitions>
 
-                                <Components:CustomTextBlock Text="1° Telefone" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="2° Telefone" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Fax" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
-                                
-                                <!--Components-->
-                                
-                                <Components:CustomTextBox
+                                    <!--Label-->
+
+                                    <Components:CustomTextBlock Text="1° Telefone" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Text="2° Telefone" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Text="Fax" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Height="20"></Components:CustomTextBlock>
+
+                                    <!--Components-->
+
+                                    <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
                                     Text="{Binding currentModel.xTelefone1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 								    IsEnabled="{Binding bIsEnabled}"
 									ToolTip="É preenchido com o telefone principal da Transportadora.">
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox
+                                    </Components:CustomTextBox>
+                                    <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
                                     Text="{Binding currentModel.xTelefone2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="É preenchido com o segundo telefone da Transportadora, se houver.">
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox
+                                    </Components:CustomTextBox>
+                                    <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
                                     Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="É preenchido com o fax principal da Transportadora">
-                                </Components:CustomTextBox>
-                                
-                                
-                            </Grid>
-                        </Expander>
+                                    </Components:CustomTextBox>
+
+
+                                </Grid>
+                            </Expander>
                             <Expander IsExpanded="True" Margin="0,10,0,0" Header="Identificação Eletrônica" Grid.Row="1" Style="{StaticResource ExpanderPadrao}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -299,15 +227,15 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="10"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                                        
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <!--Label-->
 
                                     <Components:CustomTextBlock VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Text="E-mail" Height="20"></Components:CustomTextBlock>
-                                    <Components:CustomTextBlock VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Text="Endereço da Internet" Height="20"></Components:CustomTextBlock>                                    
-                                    
+                                    <Components:CustomTextBlock VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Text="Endereço da Internet" Height="20"></Components:CustomTextBlock>
+
                                     <!--Components-->
-                                    
+
                                     <Components:CustomTextBox
                                         Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
                                         Text="{Binding currentModel.xEmail, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -319,8 +247,8 @@
                                         Text="{Binding currentModel.xHttp, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										ToolTip="Informar o endereço da Internet da transportadora.">
-                                    </Components:CustomTextBox>                                    
-                                    
+                                    </Components:CustomTextBox>
+
                                 </Grid>
                             </Expander>
                             <Expander IsExpanded="True" Margin="0,10,0,0" Header="Status" Grid.Row="2" Style="{StaticResource ExpanderPadrao}">
@@ -336,14 +264,14 @@
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <!--Label-->
-                                    
-                                    <Components:CustomTextBlock VerticalAlignment="Center" Text="Ativo" Grid.Column="1" Grid.Row="1" Height="20" ></Components:CustomTextBlock>                                    
+
+                                    <Components:CustomTextBlock VerticalAlignment="Center" Text="Ativo" Grid.Column="1" Grid.Row="1" Height="20" ></Components:CustomTextBlock>
                                     <Components:CustomTextBlock VerticalAlignment="Center" Text="Observação" Grid.Column="1" Grid.Row="2" Height="20"></Components:CustomTextBlock>
-                                    
+
                                     <!--Components-->
-                                    
+
                                     <Components:CustomCheckBox
                                         Grid.Column="2" Grid.Row="1" Height="20" Width="40" HorizontalAlignment="Left" Margin="0,0,0,3"
                                         IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -356,7 +284,7 @@
 										IsEnabled="{Binding bIsEnabled}"
 										ToolTip="Informar uma observação referente a transportadora se desejar.">
                                     </Components:CustomTextBox>
-                                    
+
                                 </Grid>
                             </Expander>
                         </Grid>
@@ -371,12 +299,12 @@
                         IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                         />
                 </AdornerDecorator>
-            </TabItem>            
+            </TabItem>
             <TabItem Header="Contatos">
                 <AdornerDecorator>
                     <Components:HlpContato
                         IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
-                        ItemsSourceContatos="{Binding currentModel.lTransportador_Contato}">   
+                        ItemsSourceContatos="{Binding currentModel.lTransportador_Contato}">
                         <Components:HlpContato.lColumns>
                             <System:String>xNome</System:String>
                             <System:String>xEmailComercial</System:String>
@@ -385,9 +313,9 @@
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Frota">
-                <AdornerDecorator>                    
+                <AdornerDecorator>
                     <Grid>
-                        <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}"> 
+                        <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
                             <Grid>
                                 <DataGrid
 								ItemsSource="{Binding currentModel.lTransportador_Veiculos}"    

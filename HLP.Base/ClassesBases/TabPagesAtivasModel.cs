@@ -17,8 +17,7 @@ namespace HLP.Base.ClassesBases
     public class TabPagesAtivasModel : modelBase
     {
         public TabPagesAtivasModel()
-        {
-
+        {            
         }
 
         #region Properties
