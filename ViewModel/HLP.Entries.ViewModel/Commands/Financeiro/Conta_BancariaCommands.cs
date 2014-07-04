@@ -17,11 +17,13 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 {
     public class Conta_BancariaCommands
     {
+        AgenciaService objAgenciaService;
         Conta_BancariaViewModel objViewModel;
         Conta_BancariaService objService;
         public Conta_BancariaCommands(Conta_BancariaViewModel objViewModel)
         {
             objService = new Conta_BancariaService();
+            objAgenciaService = new AgenciaService();
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
@@ -64,12 +66,11 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
 
         #region Implementação Commands
-
-
+        
         public void Save(object _panel)
         {
             try
-            {                
+            {
                 this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)
@@ -88,7 +89,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                     this.objViewModel.currentModel.idContaBancaria =
                     this.objService.SaveObject(obj: this.objViewModel.currentModel);
                     e.Result = e.Argument;
-                }                
+                }
             }
             catch (Exception ex)
             {
@@ -109,6 +110,8 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 {
                     if (objViewModel.message.bSave)
                     {
+                        this.objViewModel.bTreeCarregada = false;
+
                         this.objViewModel.salvarBaseCommand.Execute(parameter: null);
 
                         object w = objViewModel.GetParentWindow(e.Result);
@@ -230,7 +233,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 }
                 else
                 {
-                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+                    this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -298,6 +301,11 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             this.objViewModel.hierarquiaConta = null;
         }
         #endregion
+
+        public AgenciaModel GetAgencia(int idAgencia)
+        {
+            return objAgenciaService.GetObject(id: idAgencia);
+        }
 
         #region Hierarquia
 

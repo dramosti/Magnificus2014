@@ -393,7 +393,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public void ExecutePesquisaCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+            this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
         }
         public void ExecPesquisa()
         {

@@ -17,6 +17,8 @@ using HLP.Comum.ViewModel.ViewModel;
 using HLP.Base.Static;
 using HLP.Comum.View.Components;
 using HLP.Components.Model.Models;
+using HLP.Entries.Services.Transportes;
+using HLP.Entries.Model.Models.Transportes;
 
 namespace HLP.Entries.ViewModel.Commands.Comercial
 {
@@ -25,6 +27,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         ClienteViewModel objViewModel;
         ClienteService objServico;
         Condicao_PagamentoService objCondicao_PagamentoService;
+        RotaService objRotaService;
 
         public ClienteCommands(ClienteViewModel objViewModel)
         {
@@ -56,6 +59,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
             this.objServico = new ClienteService();
+            this.objRotaService = new RotaService();
 
             objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
             objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
@@ -182,7 +186,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 e.Result = e.Argument;
                 this.objViewModel.currentModel = this.objServico.Save(this.objViewModel.currentModel);
                 this.IniciaCollection();
-            }            
+            }
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -250,7 +254,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             (w as Window).DialogResult = true;
                             (w as Window).Close();
                         }
-                    }                    
+                    }
                 }
             }
             catch (Exception ex)
@@ -327,7 +331,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 }
                 else
                 {
-                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+                    this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -428,6 +432,16 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         public int GetIdSiteByDeposito(int idDeposito)
         {
             return objServico.GetIdSiteByDeposito(idDeposito: idDeposito);
+        }
+
+        public int? GetIdListaPrecoPaiRota(int idRota)
+        {
+            RotaModel objRota = objRotaService.GetObjeto(id: idRota);
+
+            if (objRota != null)
+                return objRota.idListaPrecoPai;
+
+            return null;
         }
     }
 }

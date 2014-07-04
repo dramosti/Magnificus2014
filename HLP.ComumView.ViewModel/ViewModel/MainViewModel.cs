@@ -1,6 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Modules;
 using HLP.Base.Static;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.ComumView.Model.Model;
 using HLP.ComumView.ViewModel.Commands;
 using HLP.Entries.Model.Models.Gerais;
@@ -20,7 +21,7 @@ using System.Windows.Media.Imaging;
 
 namespace HLP.ComumView.ViewModel.ViewModel
 {
-    public class MainViewModel : ViewModelBase<WinManModel>
+    public class MainViewModel : viewModelComum<WinManModel>
     {
 
         EmpresaService objService;

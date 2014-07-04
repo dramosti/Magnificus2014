@@ -1,6 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
 using HLP.Components.Model.Models;
+using HLP.Components.Model.Repository.Implementation;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
@@ -22,7 +23,7 @@ namespace HLP.Wcf.Entries
         public ISiteRepository siteRepository { get; set; }
 
         [Inject]
-        public ISite_enderecoRepository site_enderecoRepository { get; set; }
+        public HlpEnderecoRepository site_enderecoRepository { get; set; }
 
         [Inject]
         public IDepositoRepository depositoRepository { get; set; }
@@ -43,8 +44,9 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Gerais.SiteModel objSite = this.siteRepository.GetSite(idSite: id);
                 if (objSite != null)
                 {
-                    objSite.lSite_Endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Site_enderecoModel>
-                    (list: this.site_enderecoRepository.GetAllSite_Endereco(idSite: id));
+                    objSite.lSite_Endereco = new ObservableCollectionBaseCadastros<EnderecoModel>
+                    (list: this.site_enderecoRepository.GetAllObjetos(
+                    idPK: id, sPK: "idSite"));
                 }
                 return objSite;
             }
@@ -63,7 +65,7 @@ namespace HLP.Wcf.Entries
             {
                 this.siteRepository.BeginTransaction();
                 this.siteRepository.Save(objSite: obj);
-                foreach (HLP.Entries.Model.Models.Gerais.Site_enderecoModel item in obj.lSite_Endereco)
+                foreach (EnderecoModel item in obj.lSite_Endereco)
                 {
                     switch (item.status)
                     {
@@ -71,12 +73,12 @@ namespace HLP.Wcf.Entries
                         case statusModel.alterado:
                             {
                                 item.idSite = (int)obj.idSite;
-                                this.site_enderecoRepository.Save(objSite_Endereco: item);
+                                this.site_enderecoRepository.Save(objEnderecoModel: item);
                             }
                             break;
                         case statusModel.excluido:
                             {
-                                this.site_enderecoRepository.Delete((int)item.idEndereco);
+                                this.site_enderecoRepository.Delete(objEnderecoModel: item);
                             }
                             break;
                     }
@@ -98,7 +100,7 @@ namespace HLP.Wcf.Entries
             try
             {
                 this.siteRepository.BeginTransaction();
-                this.site_enderecoRepository.DeletePorSite(idSite: id);
+                this.site_enderecoRepository.Delete(idFK: id, sNameFK: "idSite");
                 this.siteRepository.Delete(idSite: id);
                 this.siteRepository.CommitTransaction();
                 return true;
@@ -118,10 +120,10 @@ namespace HLP.Wcf.Entries
             {
                 this.siteRepository.BeginTransaction();
                 this.siteRepository.Copy(objSite: obj);
-                foreach (HLP.Entries.Model.Models.Gerais.Site_enderecoModel item in obj.lSite_Endereco)
+                foreach (EnderecoModel item in obj.lSite_Endereco)
                 {
                     item.idSite = (int)obj.idSite;
-                    this.site_enderecoRepository.Copy(objSite_Endereco: item);
+                    this.site_enderecoRepository.Copy(objEnderecoModel: item);
                 }
                 this.siteRepository.CommitTransaction();
                 return obj;

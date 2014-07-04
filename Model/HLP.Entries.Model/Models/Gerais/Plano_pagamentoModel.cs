@@ -5,16 +5,40 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Base.ClassesBases;
 using HLP.Comum.Model.Models;
+using System.Collections.ObjectModel;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class Plano_pagamentoModel : modelComum
     {
+        private static Plano_pagamentoModel _currentPlano;
+
+        public static Plano_pagamentoModel currentPlano
+        {
+            get { return _currentPlano; }
+            set { _currentPlano = value; }
+        }
+
+
         public Plano_pagamentoModel()
             : base("Plano_pagamento")
         {
             this.lPlano_pagamento_linhasModel = new ObservableCollectionBaseCadastros<Plano_pagamento_linhasModel>();
+            currentPlano = this;
             this.stAlocacao = 1;
+        }
+
+
+        private bool _bCollTipo;
+
+        public bool bCollTipo
+        {
+            get { return _bCollTipo; }
+            set
+            {
+                _bCollTipo = value;
+                base.NotifyPropertyChanged(propertyName: "bCollTipo");
+            }
         }
 
         private int? _idPlanoPagamento;
@@ -58,6 +82,24 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stAlocacao = value;
+
+                if (value == 3)
+                {
+                    this.bCollTipo = true;
+
+                    if (this.lPlano_pagamento_linhasModel != null)
+                    {
+                        foreach (Plano_pagamento_linhasModel p in this.lPlano_pagamento_linhasModel)
+                        {
+                            p.stValorouPorcentagem = 1;
+                        }
+                    }
+                }
+                else
+                {
+                    this.bCollTipo = false;
+                }
+
                 base.NotifyPropertyChanged(propertyName: "stAlocacao");
             }
         }
@@ -69,6 +111,9 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stFormaPagamento = value;
+
+
+
                 base.NotifyPropertyChanged(propertyName: "stFormaPagamento");
             }
         }
@@ -144,14 +189,66 @@ namespace HLP.Entries.Model.Models.Gerais
         public ObservableCollectionBaseCadastros<Plano_pagamento_linhasModel> lPlano_pagamento_linhasModel
         {
             get { return _lPlano_pagamento_linhasModel; }
-            set { _lPlano_pagamento_linhasModel = value; 
-                base.NotifyPropertyChanged("lPlano_pagamento_linhasModel"); }
+            set
+            {
+                _lPlano_pagamento_linhasModel = value;
+                base.NotifyPropertyChanged("lPlano_pagamento_linhasModel");
+            }
         }
     }
 
 
     public partial class Plano_pagamento_linhasModel : modelComum
     {
+        public Plano_pagamento_linhasModel()
+        {
+
+            if (Plano_pagamentoModel.currentPlano.GetOperationModel()
+                == Base.EnumsBases.OperationModel.updating)
+            {
+                if (Plano_pagamentoModel.currentPlano.lPlano_pagamento_linhasModel.Count ==
+                    0)
+                {
+                    if (Plano_pagamentoModel.currentPlano.stAlocacao
+                    == 3)
+                        this.stValorouPorcentagem = 1;
+                    else
+                        this.stValorouPorcentagem = 0;
+
+                    if (this.stValorouPorcentagem == 0)
+                    {
+                        this.nValorouPorcentagem = 100 / (Plano_pagamentoModel.currentPlano.nNumerosPagamentos == null
+                            || Plano_pagamentoModel.currentPlano.nNumerosPagamentos == 0 ?
+                            1 : Plano_pagamentoModel.currentPlano.nNumerosPagamentos);
+                    }
+                }
+                else
+                {
+                    this.stValorouPorcentagem = Plano_pagamentoModel.currentPlano.lPlano_pagamento_linhasModel.FirstOrDefault()
+                        .stValorouPorcentagem;
+                    Plano_pagamentoModel.currentPlano.bCollTipo = true;
+
+                    if (this.stValorouPorcentagem == 0)
+                    {
+                        if (Plano_pagamentoModel.currentPlano.nNumerosPagamentos ==
+                            Plano_pagamentoModel.currentPlano.lPlano_pagamento_linhasModel.Count + 1)
+                        {
+                            this.nValorouPorcentagem = 100 - Plano_pagamentoModel.currentPlano.
+                                lPlano_pagamento_linhasModel.Sum(i => i.nValorouPorcentagem);
+                        }
+                        else if (Plano_pagamentoModel.currentPlano.nNumerosPagamentos ==
+                            Plano_pagamentoModel.currentPlano.lPlano_pagamento_linhasModel.Count)
+                        {
+                            MessageHlp.Show(stMessage: StMessage.stAlert,
+                                xMessageToUser: "Já foi incluido o número máximo de parcelas definido no campo 'Número de pagamentos'");
+                        }
+                        else
+                            this.nValorouPorcentagem = 100 / Plano_pagamentoModel.currentPlano.nNumerosPagamentos;
+                    }
+                }
+            }
+        }
+
         private int? _idLinhasPagamento;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idLinhasPagamento
@@ -163,9 +260,9 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "idLinhasPagamento");
             }
         }
-        private decimal? _nQuantidade;
+        private int? _nQuantidade;
         [ParameterOrder(Order = 2)]
-        public decimal? nQuantidade
+        public int? nQuantidade
         {
             get { return _nQuantidade; }
             set
@@ -219,7 +316,23 @@ namespace HLP.Entries.Model.Models.Gerais
         {
             get
             {
-                return base[columnName];
+                string xResult = base[columnName];
+
+                if (string.IsNullOrEmpty(value: xResult))
+                {
+                    if (columnName == "vFixoPagamento")
+                    {
+                        if (this.stAlocacao == 3 && (this.vFixoPagamento == null))
+                        {
+                            xResult = "Necessário que campo possua valor";
+                        }
+                    }
+                    else if (columnName == "stAlocacao")
+                    {
+                        base.NotifyPropertyChanged(propertyName: "vFixoPagamento");
+                    }
+                }
+                return xResult;
             }
         }
     }
@@ -230,7 +343,21 @@ namespace HLP.Entries.Model.Models.Gerais
         {
             get
             {
-                return base[columnName];
+                string xResult = base[columnName];
+
+                if (string.IsNullOrEmpty(value: xResult))
+                {
+                    if (columnName == "nValorouPorcentagem")
+                    {
+                        if (this.stValorouPorcentagem == 0 && Plano_pagamentoModel.currentPlano.lPlano_pagamento_linhasModel.Where(
+                            i => i.stValorouPorcentagem == 0).Sum(
+                            i => i.nValorouPorcentagem) > 100)
+                        {
+                            xResult = "Soma dos valores da coluna Porcentagem ultrapassam 100%. Favor Corrigir!";
+                        }
+                    }
+                }
+                return xResult;
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Services.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
@@ -14,7 +15,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class FuncionarioViewModel : ViewModelBase<FuncionarioModel>
+    public class FuncionarioViewModel : viewModelComum<FuncionarioModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }

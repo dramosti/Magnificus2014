@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using System;
@@ -12,7 +13,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class siteViewModel : ViewModelBase<SiteModel>
+    public class siteViewModel : viewModelComum<SiteModel>
     {
 
         #region Icommands

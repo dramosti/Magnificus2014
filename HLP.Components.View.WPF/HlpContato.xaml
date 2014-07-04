@@ -64,6 +64,11 @@
                   IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnlyUserControl}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="True">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRowHeader">
+                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nome" Binding="{Binding xNome,                    
                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"

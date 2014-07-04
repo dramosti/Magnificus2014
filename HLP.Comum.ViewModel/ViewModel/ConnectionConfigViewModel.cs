@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace HLP.Comum.ViewModel.ViewModel
 {
-    public class ConnectionConfigViewModel : ViewModelBase<ConnectionConfigModel>
+    public class ConnectionConfigViewModel : viewModelComum<ConnectionConfigModel>
     {
         ConnectionConfigCommand command;
         public ICommand SalvarCommand { get; set; }

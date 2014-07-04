@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Components.Model.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,9 +35,20 @@ namespace HLP.Components.View.WPF
 
         // Using a DependencyProperty as the backing store for ItemsSourceEnderecos.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemsSourceEnderecosProperty =
-            DependencyProperty.Register("ItemsSourceEnderecos", typeof(IEnumerable), typeof(HlpEndereco), new PropertyMetadata());
+            DependencyProperty.Register("ItemsSourceEnderecos", typeof(IEnumerable), typeof(HlpEndereco),
+            new PropertyMetadata(propertyChangedCallback: new PropertyChangedCallback(ItemsSourceChanged)));
 
-        
+        private static void ItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            //if ((d as HlpEndereco).ItemsSourceEnderecos != null && e.NewValue != null)
+            //{
+            //    if (((d as HlpEndereco).ItemsSourceEnderecos as IEnumerable<EnderecoModel>).Count()
+            //        == 0)
+            //    {                    
+            //    }
+            //}
+        }
+
         public bool IsReadOnlyUserControl
         {
             get { return (bool)GetValue(IsReadOnlyProperty); }
@@ -57,6 +69,6 @@ namespace HLP.Components.View.WPF
 
         // Using a DependencyProperty as the backing store for IsEnabled.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsEnabledUserControlProperty =
-            DependencyProperty.Register("IsEnabledUserControl", typeof(bool), typeof(HlpEndereco), new PropertyMetadata(true));      
+            DependencyProperty.Register("IsEnabledUserControl", typeof(bool), typeof(HlpEndereco), new PropertyMetadata(true));
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using HLP.Components.View.WPF;
+using HLP.Components.View.WPF.Converter;
 
 namespace HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro
 {
@@ -37,6 +38,29 @@ namespace HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro
             {
                 this.DataContext = value;
             }
+        }
+
+        //Private Sub CmbSchedule_SelectionChanged(ByVal sender As Object, ByVal e As SelectionChangedEventArgs)
+        private void CollStTipo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Binding="{Binding Path=nValorouPorcentagem, UpdateSourceTrigger=PropertyChanged}" 
+
+            if ((sender as ComboBox).SelectedIndex < 0)
+            {
+                return;
+            }
+
+            Binding b = new Binding();
+
+            b.Path = new PropertyPath(path: "nValorouPorcentagem", pathParameters: new object[] { });
+            b.UpdateSourceTrigger = UpdateSourceTrigger.LostFocus;
+
+            if ((sender as ComboBox).SelectedIndex == 0)
+                b.Converter = new PorcentagemConverter();
+            else if ((sender as ComboBox).SelectedIndex == 1)
+                b.Converter = new MoedaConverter();
+
+            //txtCollValorPorcentagem.Binding = b;
         }
     }
 }

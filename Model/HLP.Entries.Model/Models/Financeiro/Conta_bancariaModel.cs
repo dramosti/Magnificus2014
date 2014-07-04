@@ -1,15 +1,20 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace HLP.Entries.Model.Models.Financeiro
 {
     public partial class Conta_bancariaModel : modelComum
     {
+
+
         public Conta_bancariaModel()
             : base(xTabela: "Conta_bancaria")
         {
@@ -50,8 +55,35 @@ namespace HLP.Entries.Model.Models.Financeiro
         public string xTitular { get; set; }
         [ParameterOrder(Order = 6)]
         public string xCNPJouCPFTitular { get; set; }
+
+        private int _idAgencia;
         [ParameterOrder(Order = 7)]
-        public int idAgencia { get; set; }
+        public int idAgencia
+        {
+            get { return _idAgencia; }
+            set
+            {
+                _idAgencia = value;
+
+                Window wd = Sistema.GetOpenWindow(xName: "WinContaBancaria");
+
+                if (wd != null)
+                {
+
+                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                        {
+                            MethodInfo miGetAgencia = wd.DataContext.GetType().GetMethod(name: "GetAgencia");
+
+                            if (miGetAgencia != null)
+                                this.idBanco = (miGetAgencia.Invoke(obj: wd.DataContext,
+                                    parameters: new object[] { idAgencia }) as int?) ?? 0;
+                        }));
+                }
+
+                base.NotifyPropertyChanged(propertyName: "idAgencia");
+            }
+        }
+
         [ParameterOrder(Order = 8)]
         public string xNumeroContaHomeBanking { get; set; }
         [ParameterOrder(Order = 9)]
@@ -80,6 +112,20 @@ namespace HLP.Entries.Model.Models.Financeiro
         public int nRemessaHomeBanking { get; set; }
         [ParameterOrder(Order = 21)]
         public string xDescricao { get; set; }
+
+
+        private int _idBanco;
+
+        public int idBanco
+        {
+            get { return _idBanco; }
+            set
+            {
+                _idBanco = value;
+                base.NotifyPropertyChanged(propertyName: "idBanco");
+            }
+        }
+
     }
 
     public partial class Conta_bancariaModel
@@ -88,7 +134,36 @@ namespace HLP.Entries.Model.Models.Financeiro
         {
             get
             {
-                return base[columnName];
+                string xValidacao = base[columnName];
+                bool bValidado = true;
+
+                if (columnName == "xCNPJouCPFTitular")
+                {
+                    if (string.IsNullOrEmpty(value: xValidacao))
+                    {
+                        string xCPFCNPJSemMascara =
+                            this.xCNPJouCPFTitular.Replace(oldValue: ".", newValue: "")
+                            .Replace(oldValue: ",", newValue: "")
+                            .Replace(oldValue: "-", newValue: "")
+                            .Replace(oldValue: "/", newValue: "")
+                            .Replace(oldValue: "\\", newValue: "")
+                            .Replace(oldValue: " ", newValue: "");
+
+                        if(xCPFCNPJSemMascara.Length == 14)
+                        {
+                            bValidado = HLP.Base.Static.Util.ValidaCnpj(strCnpj: xCPFCNPJSemMascara);
+                        }
+                        else
+                        {
+                            bValidado = HLP.Base.Static.Util.ValidaCpf(strCpf: xCPFCNPJSemMascara);
+                        }
+
+                        if (!bValidado)
+                            xValidacao = "CPF/CNPJ inválido";
+                    }
+                }
+
+                return xValidacao;
             }
         }
     }

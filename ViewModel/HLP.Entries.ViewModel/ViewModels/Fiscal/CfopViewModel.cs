@@ -7,10 +7,11 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.ViewModel.Commands.Fiscal;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class CfopViewModel : ViewModelBase<CfopModel>
+    public class CfopViewModel : viewModelComum<CfopModel>
     {
 
         #region Icommands

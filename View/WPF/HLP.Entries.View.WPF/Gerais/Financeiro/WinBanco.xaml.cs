@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using HLP.Entries.ViewModel.ViewModels.Financeiro;
 using HLP.Components.View.WPF;
 
-namespace HLP.Entries.View.WPF.Gerais.Financeiro
+namespace HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro
 {
     /// <summary>
     /// Interaction logic for WinBanco.xaml

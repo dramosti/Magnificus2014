@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class ConversaoViewModel : ViewModelBase<ProdutoModel>
+    public class ConversaoViewModel : viewModelComum<ProdutoModel>
     {
 
         #region Icommands

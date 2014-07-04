@@ -17,7 +17,7 @@
             <conv:DecimalToStringConverter x:Key="decimalToStringConverter"/>
             <conv:ByteToBoolConverter x:Key="convByteToBoolConverter"/>
             <conv:MoedaConverter x:Key="moedaConverter"></conv:MoedaConverter>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
@@ -41,7 +41,7 @@
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <!--Label-->
 
                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código"></Components:CustomTextBlock>
@@ -51,7 +51,7 @@
                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Código Intrastat"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="6" Text="Aplicar Mínimo Grátis"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Valor do Mínimo Grátis"></Components:CustomTextBlock>
-                
+
                 <!--Components-->
 
                 <Components:CustomTextBox stCompPosicao="fieldId"
@@ -116,17 +116,24 @@
                                      Mode="TwoWay"
                                      NotifyOnValidationError="True"
                                      UpdateSourceTrigger="LostFocus"
-                                     ValidatesOnDataErrors="True">                        
+                                     ValidatesOnDataErrors="True">
                         </Binding>
                     </Components:CustomTextBox.Text>
                     <Components:CustomTextBox.Style>
-                        <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxComponentStyle}">
+                        <Style TargetType="{x:Type Components:CustomTextBox}" BasedOn="{StaticResource TextBoxComponentStyle}">
+                            <Setter Property="IsEnabled" Value="True"></Setter>
                             <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding bIsEnabled}" Value="False"></Condition>
+                                        <Condition Binding="{Binding currentModel.stAplicarMinGratis}" Value="False"></Condition>
+                                    </MultiDataTrigger.Conditions>
+                                </MultiDataTrigger>
                                 <DataTrigger Binding="{Binding bIsEnabled}" Value="False">
-                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                    <Setter Property="IsEnabled" Value="False"></Setter>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding ElementName=cbMinimoGratis, Path=IsChecked}" Value="False">
-                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                    <Setter Property="IsEnabled" Value="False"></Setter>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>

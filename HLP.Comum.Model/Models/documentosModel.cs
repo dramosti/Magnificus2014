@@ -1,6 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,13 @@ namespace HLP.Comum.Model.Models
             set
             {
                 _xPath = value;
+
+                if (File.Exists(path: value))
+                {
+                    FileInfo fi = new FileInfo(fileName: value);
+                    this.xExtensao = fi.Extension;
+                }
+
                 base.NotifyPropertyChanged(propertyName: "xPath");
             }
         }

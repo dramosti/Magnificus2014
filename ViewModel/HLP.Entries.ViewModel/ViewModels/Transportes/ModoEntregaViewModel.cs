@@ -7,10 +7,11 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.ViewModel.Commands.Transportes;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Transportes
 {
-    public class ModoEntregaViewModel : ViewModelBase<Modos_entregaModel>
+    public class ModoEntregaViewModel : viewModelComum<Modos_entregaModel>
     {
         
         #region Icommands

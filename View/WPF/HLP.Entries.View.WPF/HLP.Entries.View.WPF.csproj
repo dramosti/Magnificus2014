@@ -180,6 +180,8 @@
     <Compile Include="Gerais\Converters\StCustoProdutoConverter.cs" />
     <Compile Include="Gerais\Converters\StTipoAtualizacaoConverter.cs" />
     <Compile Include="Gerais\Converters\VisibilityColumnsAtribuicaoListaPrecoConverter.cs" />
+    <Compile Include="Gerais\Converters\xDisplayFormaPagamentoConverter.cs" />
+    <Compile Include="Gerais\Converters\xDisplayFormaPagamentoVisiblityConverter.cs" />
     <Compile Include="Gerais\Financeiro\Converter\DiaPagamento_Converter.cs" />
     <Compile Include="Gerais\Financeiro\Converter\qtdDiasMesesEnabledConverter.cs" />
     <Compile Include="Gerais\Financeiro\WinAgencia.xaml.cs">
@@ -634,6 +636,10 @@
     <ProjectReference Include="..\..\..\HLP.Comum.View.WPF\HLP.Comum.View.WPF.csproj">
       <Project>{ea02e402-18cc-40f4-81a2-4007935f4c67}</Project>
       <Name>HLP.Comum.View.WPF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{cf75da11-2886-454a-84f8-9e1e9b4fa072}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\HLP.Resources.View.WPF\HLP.Resources.View.WPF.csproj">
       <Project>{8d4b32be-e2bc-42ab-8715-a6b73f2956e6}</Project>

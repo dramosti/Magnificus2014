@@ -141,6 +141,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\extensionFileConverter.cs" />
+    <Compile Include="Converter\loadingConverter.cs" />
+    <Compile Include="Converter\opacityConverter.cs" />
     <Compile Include="Converter\StConnectionConverter.cs" />
     <Compile Include="Converter\WidthColumnConverter.cs" />
     <Compile Include="Service References\empresaParametrosService\Reference.cs">

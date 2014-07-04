@@ -7,10 +7,16 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.ViewModel.Commands.Transportes;
+using HLP.Comum.ViewModel.ViewModel;
+using System.Collections;
+using System.Windows.Data;
+using System.ComponentModel;
+using System.Windows;
+using System.Threading;
 
 namespace HLP.Entries.ViewModel.ViewModels.Transportes
 {
-    public class RotaViewModel : ViewModelBase<RotaModel>
+    public class RotaViewModel : viewModelComum<RotaModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -30,6 +36,23 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
 
         RotaCommand commands;
 
+        public void Rota_PracaSort()
+        {
+            ListCollectionView lcv = (ListCollectionView)CollectionViewSource.GetDefaultView(source: this.currentModel.lRota_Praca);
 
+            lcv.CustomSort = new Rota_PracaSortByNOrdem();
+        }
+
+
+    }
+
+    public class Rota_PracaSortByNOrdem : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            if ((x as Rota_pracaModel).nOrdem < (y as Rota_pracaModel).nOrdem) return -1;
+            else if ((x as Rota_pracaModel).nOrdem > (y as Rota_pracaModel).nOrdem) return 1;
+            else return 0;
+        }
     }
 }

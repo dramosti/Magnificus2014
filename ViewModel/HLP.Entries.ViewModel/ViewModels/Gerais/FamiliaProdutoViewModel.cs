@@ -7,10 +7,11 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class FamiliaProdutoViewModel : ViewModelBase<Familia_produtoModel>
+    public class FamiliaProdutoViewModel : viewModelComum<Familia_produtoModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }

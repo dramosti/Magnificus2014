@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.Commands.Comercio;
 using System;
@@ -12,7 +13,7 @@ using System.Windows.Input;
 
 namespace HLP.Sales.ViewModel.ViewModel.Comercio
 {
-    public class OrcamentoTrocarStatusViewModel : ViewModelBase<TrocaStatus_Orcamento_Itens>
+    public class OrcamentoTrocarStatusViewModel : viewModelComum<TrocaStatus_Orcamento_Itens>
     {
         public ICommand confirmarCommand { get; set; }
         public ICommand cancelarCommand { get; set; }

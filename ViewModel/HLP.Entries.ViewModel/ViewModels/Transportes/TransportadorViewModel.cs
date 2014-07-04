@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.ViewModel.Commands.Transportes;
 using System;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Transportes
 {
-    public class TransportadorViewModel : ViewModelBase<TransportadorModel>
+    public class TransportadorViewModel : viewModelComum<TransportadorModel>
     {
         TransportadorCommands comm;
 

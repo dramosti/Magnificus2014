@@ -62,7 +62,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regPlano_pagamentoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Plano_pagamento",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idPlanoPagamento"),
-                                         MapBuilder<Plano_pagamentoModel>.MapAllProperties().DoNotMap(c=>c.status).Build());
+                                         MapBuilder<Plano_pagamentoModel>.MapAllProperties()
+                                         .DoNotMap(i => i.bCollTipo)
+                                         .DoNotMap(c=>c.status).Build());
             }
 
             return regPlano_pagamentoAccessor.Execute(idPlanoPagamento).FirstOrDefault();

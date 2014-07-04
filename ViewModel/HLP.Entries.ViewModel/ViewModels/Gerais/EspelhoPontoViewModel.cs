@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using System;
@@ -13,7 +14,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class EspelhoPontoViewModel : ViewModelBase<FuncionarioPonto>
+    public class EspelhoPontoViewModel : viewModelComum<FuncionarioPonto>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }

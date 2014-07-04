@@ -7,6 +7,7 @@
         xmlns:conv="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.GestãoDeLogística.WinRota"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         Title="Rotas" Height="660" Width="1024"
     NameView="vwRota">
     <Window.Resources>
@@ -21,7 +22,7 @@
                     <System:String>vwCidadeToComboBox</System:String>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Window.Resources>
 
     <Grid>
@@ -49,7 +50,6 @@
                 </Grid.RowDefinitions>
 
                 <!--Label-->
-
                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Descrição da Rota" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Lista de Preço" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
@@ -101,9 +101,8 @@
                          CanUserAddRows="True"
                          CanUserDeleteRows="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=nOrdem, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Ordem" Width="100"/>
-                        <DataGridTextColumn Binding="{Binding Path=nDistanciaProximaCidade, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Distancia até a próxima Cidade em KM" Width="250"/>
-                        <DataGridTemplateColumn x:Name="clCidades" Header="Cidades" Width="*" >
+                        <DataGridTextColumn Binding="{Binding Path=nOrdem, UpdateSourceTrigger=LostFocus ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Ordem" Width="100"/>                        
+                        <DataGridTemplateColumn x:Name="clCidades" Header="Cidades" Width="250" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=idCidade, Converter={StaticResource cbxDisplayConv}, ConverterParameter={StaticResource lresult}}"
@@ -124,7 +123,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-
+                        <DataGridTextColumn Binding="{Binding Path=nDistanciaProximaCidade, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Distancia até a próxima Cidade em KM" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

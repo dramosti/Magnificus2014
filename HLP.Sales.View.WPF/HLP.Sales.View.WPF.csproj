@@ -127,6 +127,10 @@
       <Project>{937c9439-cc70-40d2-96f5-d9ad99c51181}</Project>
       <Name>HLP.Components.ViewModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{cf75da11-2886-454a-84f8-9e1e9b4fa072}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Resources.View.WPF\HLP.Resources.View.WPF.csproj">
       <Project>{8d4b32be-e2bc-42ab-8715-a6b73f2956e6}</Project>
       <Name>HLP.Resources.View.WPF</Name>

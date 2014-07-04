@@ -171,6 +171,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         {
             this.objViewModel.currentModel = new RotaModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
+            this.objViewModel.Rota_PracaSort();
         }
 
         private bool NovoCanExecute()
@@ -222,7 +223,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                 }
                 else
                 {
-                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+                    this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -276,6 +277,11 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             try
             {
                 this.Inicia_Collections();
+                if (this.objViewModel.currentModel != null)
+                {
+                    this.objViewModel.Rota_PracaSort();
+                    this.objViewModel.currentModel.lRota_Praca.CollectionChanged += this.objViewModel.currentModel.lRota_Praca_CollectionChanged;
+                }
             }
             catch (Exception ex)
             {
@@ -292,7 +298,9 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         private void Inicia_Collections()
         {
             if (this.objViewModel.currentModel != null)
+            {
                 this.objViewModel.currentModel.lRota_Praca.CollectionCarregada();
+            }
         }
 
         #endregion

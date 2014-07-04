@@ -7,10 +7,11 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.ViewModel.Commands.Financeiro;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Financeiro
 {
-    public class DiaPagamentoViewModel : ViewModelBase<Dia_pagamentoModel>
+    public class DiaPagamentoViewModel : viewModelComum<Dia_pagamentoModel>
     {
 
 

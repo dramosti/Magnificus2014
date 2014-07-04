@@ -4,6 +4,7 @@ using HLP.Entries.Model.Repository.Interfaces.Financeiro;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -37,6 +38,10 @@ namespace HLP.Wcf.Entries
             {
                 bancoRepository.Save(banco: Objeto);
                 return (int)Objeto.idBanco;
+            }
+            catch (SqlException sEx)
+            {
+                throw sEx;
             }
             catch (Exception ex)
             {

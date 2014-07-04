@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
 using System;
@@ -12,7 +13,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class EmpresaViewModel : ViewModelBase<EmpresaModel>
+    public class EmpresaViewModel : viewModelComum<EmpresaModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }

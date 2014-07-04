@@ -16,6 +16,29 @@ namespace HLP.Entries.Model.Models.Comercial
 {
     public partial class Cliente_fornecedorModel : modelComum
     {
+        private static Type tClienteFornecedorViewModel = null;
+
+        public static object ExecuteMethodViewModelByReflection(string xNameMethod, object[] arguments)
+        {
+            Window w = Sistema.GetOpenWindow(xName: "WinCliente");
+
+            if (w != null)
+            {
+                if (tClienteFornecedorViewModel == null)
+                    tClienteFornecedorViewModel = w.DataContext.GetType();
+
+                MethodInfo mi = tClienteFornecedorViewModel.GetMethod(name: xNameMethod);
+
+                if (mi != null)
+                {
+                    return mi.Invoke(obj: w.DataContext, parameters: arguments);
+                }
+            }
+
+            return null;
+        }
+
+
         public Cliente_fornecedorModel()
             : base(xTabela: "Cliente_fornecedor")
         {
@@ -25,12 +48,26 @@ namespace HLP.Entries.Model.Models.Comercial
             this.lCliente_Fornecedor_Observacao = new ObservableCollectionBaseCadastros<Cliente_Fornecedor_ObservacaoModel>();
             this.lCliente_fornecedor_produto = new ObservableCollectionBaseCadastros<Cliente_fornecedor_produtoModel>();
             this.lCliente_fornecedor_representante = new ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel>();
-            this.cliente_fornecedor_fiscal = new Cliente_fornecedor_fiscalModel();            
+            this.cliente_fornecedor_fiscal = new Cliente_fornecedor_fiscalModel();
             this.dCadastro = DateTime.Today;
-            this.enabledFieldsCondPagamento = true;
+            this.enabledFieldsCondPagamento = this.bEnabledListaPreco = true;
         }
 
         #region Propriedades não mapeadas
+
+
+        private bool _bEnabledListaPreco;
+
+        public bool bEnabledListaPreco
+        {
+            get { return _bEnabledListaPreco; }
+            set
+            {
+                _bEnabledListaPreco = value;
+                base.NotifyPropertyChanged(propertyName: "bEnabledListaPreco");
+            }
+        }
+
 
         private bool _enabledFieldsCondPagamento;
         public bool enabledFieldsCondPagamento
@@ -43,7 +80,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
 
-        
+
         private int _idSite;
 
         public int idSite
@@ -55,7 +92,7 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "idSite");
             }
         }
-        
+
 
         #endregion
 
@@ -187,7 +224,28 @@ namespace HLP.Entries.Model.Models.Comercial
             get { return _idRota; }
             set
             {
+                this.bEnabledListaPreco = true;
+                if (this.GetOperationModel() == Base.EnumsBases.OperationModel.updating)
+                {
+                    int? idListaPrecoRota = ExecuteMethodViewModelByReflection(xNameMethod: "GetIdListaPrecoPaiRota",
+                        arguments: new object[] { value }) as int?;
+
+                    if (idListaPrecoRota != null)
+                    {
+                        if (MessageHlp.Show(stMessage: StMessage.stYesNo, xMessageToUser: "Esta Rota já possui uma lista de preço definida, a referencia da lista de preço " +
+                            "do cliente será perdida. Deseja continuar?") == MessageBoxResult.No)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            this.idListaPrecoPai = idListaPrecoRota ?? 0;
+                            this.bEnabledListaPreco = false;
+                        }
+                    }
+                }
                 _idRota = value;
+
                 base.NotifyPropertyChanged(propertyName: "idRota");
             }
         }
@@ -1904,7 +1962,7 @@ namespace HLP.Entries.Model.Models.Comercial
                 return base[columnName];
             }
         }
-   }
+    }
 
     public partial class Cliente_fornecedor_contatoModel
     {

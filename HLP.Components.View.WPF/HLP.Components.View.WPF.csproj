@@ -63,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseControl.cs" />
+    <Compile Include="Block.xaml.cs">
+      <DependentUpon>Block.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converter\boolMultiConverter.cs" />
     <Compile Include="Converter\ByteToBoolConverter.cs" />
     <Compile Include="Converter\ByteToIntConverter.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="Converter\IntStringConverter.cs" />
     <Compile Include="Converter\MaskConverter.cs" />
     <Compile Include="Converter\MoedaConverter.cs" />
+    <Compile Include="Converter\MoedaPorcentagemSelectorConverter.cs" />
     <Compile Include="Converter\NotConverter.cs" />
     <Compile Include="Converter\OperacoesAritmetConverter.cs" />
     <Compile Include="Converter\PorcentagemConverter.cs" />
@@ -133,6 +137,9 @@
     <Compile Include="HlpUserControlBtnImage.xaml.cs">
       <DependentUpon>HlpUserControlBtnImage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoadingAnimation.xaml.cs">
+      <DependentUpon>LoadingAnimation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -165,6 +172,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Block.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HlpButtonHierarquia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -213,6 +224,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="LoadingAnimation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -242,6 +257,10 @@
     <ProjectReference Include="..\HLP.Comum.Model\HLP.Comum.Model.csproj">
       <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
       <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{cf75da11-2886-454a-84f8-9e1e9b4fa072}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Resources.View.WPF\HLP.Resources.View.WPF.csproj">
       <Project>{8d4b32be-e2bc-42ab-8715-a6b73f2956e6}</Project>

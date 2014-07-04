@@ -94,15 +94,15 @@
                     Text="{Binding currentModel.nMeses, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				    ToolTip="Digite o número de meses em que o desconto à vista será aplicável. ">
                     <Components:CustomTextBox.Style>
-                        <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="TextBox">
-                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                        <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="{x:Type Components:CustomTextBox}">
+                            <Setter Property="IsEnabled" Value="False"></Setter>
                             <Style.Triggers>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding ElementName=cbxStLiquidoAtual, Path=SelectedIndex}" Value="1"></Condition>
+                                        <Condition Binding="{Binding currentModel.stLiquidoAtual}" Value="1"></Condition>
                                         <Condition Binding="{Binding bIsEnabled}" Value="True"></Condition>
                                     </MultiDataTrigger.Conditions>
-                                    <Setter Property="FrameworkElement.IsEnabled" Value="True"></Setter>
+                                    <Setter Property="IsEnabled" Value="True"></Setter>
                                 </MultiDataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -113,15 +113,15 @@
                     Text="{Binding currentModel.nDias, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					ToolTip="Digite o número de dias em que o desconto à vista será aplicável. ">
                     <Components:CustomTextBox.Style>
-                        <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="TextBox">
-                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                        <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="{x:Type Components:CustomTextBox}">
+                            <Setter Property="IsEnabled" Value="False"></Setter>
                             <Style.Triggers>
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding ElementName=cbxStLiquidoAtual, Path=SelectedIndex}" Value="0"></Condition>
+                                        <Condition Binding="{Binding currentModel.stLiquidoAtual}" Value="0"></Condition>
                                         <Condition Binding="{Binding bIsEnabled}" Value="True"></Condition>
                                     </MultiDataTrigger.Conditions>
-                                    <Setter Property="FrameworkElement.IsEnabled" Value="True"></Setter>
+                                    <Setter Property="IsEnabled" Value="True"></Setter>
                                 </MultiDataTrigger>
                             </Style.Triggers>
                         </Style>

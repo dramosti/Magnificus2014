@@ -15,9 +15,9 @@
         mc:Ignorable="d" Closed="Window_Closed" Icon="Principal.ico" StateChanged="manWin_StateChanged" SizeChanged="manWin_SizeChanged" >
     <Window.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>                
+            <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>            
+            </ResourceDictionary.MergedDictionaries>
             <conv:NotConverter x:Key="notConv"></conv:NotConverter>
             <convLocal:StConnectionConverter x:Key="stConnectionConv"/>
             <util:BindingProxy x:Key="proxy" Data="{Binding}" />
@@ -126,14 +126,14 @@
                                         <Border Background="White" Grid.ColumnSpan="10" Grid.RowSpan="10"/>
                                         <TextBlock FontFamily="Segoe Ui Light" Grid.Row="1" Grid.ColumnSpan="2" Foreground="#FF545454" Text="{Binding currentEmpresa.xNome, Converter={StaticResource TextFormatConv}, ConverterParameter=Upper}" HorizontalAlignment="Center"></TextBlock>
                                         <Grid Grid.Column="1" Grid.Row="2">
-                                            <Grid.RowDefinitions>                                                
+                                            <Grid.RowDefinitions>
                                                 <RowDefinition></RowDefinition>
-                                            </Grid.RowDefinitions>                                            
+                                            </Grid.RowDefinitions>
                                             <Border Grid.Row="2" Background="#FF8C8C8C"></Border>
                                             <Path x:Name="Path" Stretch="Fill" Grid.Row="2" Height="100" Width="50" VerticalAlignment="Bottom" StrokeLineJoin="Round" Stroke="#FFFFFFFF" Fill="White" Data="F1 M 15.0625,0.5C 20.6314,0.5 25.1875,3.99362 25.1875,9.5625C 25.1875,13.7444 23.2976,20.2496 19.6042,23.1875C 26.3465,26.8794 28.8333,38.8024 28.8333,47.5C 28.8333,57.9014 25.4375,56.8958 14.3542,56.8958C 3.77083,56.8958 0.5,58.4014 0.5,48C 0.5,39.1193 3.59406,26.4522 10.4792,22.9375C 7.02175,19.9166 5.33333,14.0143 5.33333,9.9375C 5.33333,4.36862 9.49362,0.5 15.0625,0.5 Z " Margin="15,0,15,-3.33"/>
                                         </Grid>
                                         <Grid Grid.Column="2" Grid.Row="2">
-                                            <Grid.RowDefinitions>                                                
+                                            <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" MaxHeight="33"></RowDefinition>
                                                 <RowDefinition Height="Auto" MaxHeight="33"></RowDefinition>
                                                 <RowDefinition Height="Auto" MaxHeight="33"></RowDefinition>
@@ -199,7 +199,7 @@
                                               Width="65" Height="26"></CheckBox>
                                 </ControlTemplate>
                             </StatusBarItem.Template>
-                        </StatusBarItem>                       
+                        </StatusBarItem>
                         <StatusBarItem Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,30,0">
                             <StatusBarItem.Template>
                                 <ControlTemplate>
@@ -207,6 +207,8 @@
                                 </ControlTemplate>
                             </StatusBarItem.Template>
                         </StatusBarItem>
+                        <!--<StatusBarItem Content="Carregando..." Grid.Column="6"
+                                       ></StatusBarItem>-->
                         <StatusBarItem Grid.Column="7" x:Name="statusBarItemAtalhos"
                                        ContextMenuService.Placement="Top"
                                Content="Clique" Foreground="{StaticResource WhiteStandard}" >
@@ -223,17 +225,24 @@
                                         </MenuItem.Template>
                                     </MenuItem>
                                 </ContextMenu>
-                            </StatusBarItem.ContextMenu>                           
+                            </StatusBarItem.ContextMenu>
                         </StatusBarItem>
                     </StatusBar>
 
                     <Grid Focusable="False" Background="White">
+                        <Grid.Resources>
+                            <convLocal:loadingConverter x:Key="loadConverter"></convLocal:loadingConverter>
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="1"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="{Binding ElementName=toolbarPrincipal, Path=Height}"/>
                             <RowDefinition Height="2"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <DockPanel LastChildFill="True" Background="White">                            
+                        <DockPanel LastChildFill="True" Background="White">
                             <ToolBar x:Name="toolbarPrincipal" Visibility="{Binding winMan.vToolBar}" Height="45" Focusable="False"   Style="{StaticResource toolBarCadastro}">
                                 <Button
 								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
@@ -242,49 +251,49 @@
                                 </Button>
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}"
 								Style="{DynamicResource Button_EDIT}" ToolTipService.ShowOnDisabled="True" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Alterar ( Alt + A )" Focusable="False">
-                                    
+
                                 </Button>
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" 
                                     Style="{DynamicResource Button_DELETE}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Excluir ( Alt + E )" Focusable="False">
-                                    
+
                                 </Button>
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandSalvar}" 
                                         CommandParameter="{Binding winMan._currentTab._content}"
 								Style="{DynamicResource Button_SAVE}" Margin="3,0,0,0" Width="34" Height="34" ToolTip="Salvar ( Alt + S )" Focusable="False">
-                                    
+
                                 </Button>
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource Button_CANCEL}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Cancelar ( Alt + C )" Focusable="False">
-                                    
+
                                 </Button>
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandCopiar}" Margin="3,0,0,0" Style="{DynamicResource Button_COPY}" Width="34" Height="34" ToolTip="Duplicar ( Alt + V )" Focusable="False">
-                                    
+
                                 </Button>
-                                <Button Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" Margin="3,0,0,0" Style="{DynamicResource Button_PESQUISAR}" Width="34" Height="34" ToolTip="Pesquisar ( Alt + P )" Focusable="False">                                    
+                                <Button Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" Margin="3,0,0,0" Style="{DynamicResource Button_PESQUISAR}" Width="34" Height="34" ToolTip="Pesquisar ( Alt + P )" Focusable="False">
                                 </Button>
                                 <DockPanel LastChildFill="True" Width="190" Margin="30,0,0,0">
                                     <Button       
                                         Focusable="False"
 									x:Name="btnPrimeiro"                                     
 									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnPrimeiro}" Style="{StaticResource Button_ANTERIOR_DUPLO}" DockPanel.Dock="Left" Height="34"  Width="34" Margin="0,0,2,0">
-                                        
+
                                     </Button>
                                     <Button    
                                         Focusable="False"
 									x:Name="btnAnterior"                                    
 									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnAnterior}"
-									Style="{StaticResource Button_ANTERIOR_SIMPLES}" DockPanel.Dock="Left" Height="34"  Width="34" Margin="0">                                        
+									Style="{StaticResource Button_ANTERIOR_SIMPLES}" DockPanel.Dock="Left" Height="34"  Width="34" Margin="0">
                                     </Button>
                                     <Button   
                                         Focusable="False"
 									x:Name="btnUltimo"                                    
 									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnUltimo}"
-									Style="{StaticResource Button_PROXIMO_DUPLO}" DockPanel.Dock="Right" Height="34"  Width="34" Margin="2,0,-15,0" Foreground="#FFECE5E5">                                        
+									Style="{StaticResource Button_PROXIMO_DUPLO}" DockPanel.Dock="Right" Height="34"  Width="34" Margin="2,0,-15,0" Foreground="#FFECE5E5">
                                     </Button>
                                     <Button x:Name="btnProximo"
                                             Focusable="False"
 									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnProximo}"
 									Style="{StaticResource Button_PROXIMO_SIMPLES}" DockPanel.Dock="Right" Height="34"  Width="34" Margin="0,5,0,1">
-                                        
+
                                     </Button>
                                     <Label Content="{Binding winMan._currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>
                                 </DockPanel>
@@ -300,7 +309,10 @@
                                     Focusable="False"
 							IsSynchronizedWithCurrentItem="True"
 							SelectedItem="{Binding winMan._currentTab, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-							x:Name="tabControlItens" ItemsSource="{Binding winMan._lTabPagesAtivas}" Background="#FFEEEEF2">                            
+							x:Name="tabControlItens" ItemsSource="{Binding winMan._lTabPagesAtivas}" Background="#FFEEEEF2">
+                            <TabControl.Resources>
+                                <convLocal:opacityConverter x:Key="opacityConverter"></convLocal:opacityConverter>
+                            </TabControl.Resources>
                             <TabControl.ItemTemplate>
                                 <DataTemplate>
                                     <DockPanel Focusable="False" Height="24" LastChildFill="True">
@@ -322,13 +334,63 @@
                             </TabControl.ItemTemplate>
                             <TabControl.ContentTemplate>
                                 <DataTemplate>
-                                    <DockPanel Focusable="False" LastChildFill="True" x:Name="dkContent">                                        
+                                    <DockPanel Focusable="False" LastChildFill="True" x:Name="dkContent">
                                         <ContentControl 
+                                            IsEnabled="{Binding Data.winMan._currentTab._currentDataContext.loading, 
+                                            Source={StaticResource proxy},
+                                            Converter={StaticResource notConv}}"
+                                            Opacity="{Binding Data.winMan._currentTab._currentDataContext.loading, 
+                                            Source={StaticResource proxy},
+                                            Converter={StaticResource opacityConverter}}"
                                                         Focusable="False" Content="{Binding _content}"/>
                                     </DockPanel>
                                 </DataTemplate>
                             </TabControl.ContentTemplate>
                         </TabControl>
+                        <Components:LoadingAnimation
+                            Grid.Row="2" 
+                               Width="200"
+                               Height="200"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                            xLabel="{Binding winMan._currentTab._currentDataContext.xDescLoading}"
+                               Visibility="{Binding winMan._currentTab._currentDataContext.loading, Converter={StaticResource loadConverter},
+                            TargetNullValue=Collapsed, FallbackValue=Collapsed}"
+                            ></Components:LoadingAnimation>
+                        <DataGrid Grid.Column="1"  Grid.RowSpan="3"                                  
+                                  ItemsSource="{Binding 
+                            winMan._currentTab._currentDataContext.currentModel.lDocumentos, Mode=TwoWay}"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="True" CanUserDeleteRows="True" 
+                                  IsReadOnly="{Binding winMan._currentTab._currentDataContext.bIsEnabled, Converter={StaticResource notConv}}">
+                            <DataGrid.Resources>
+                                <convLocal:extensionFileConverter x:Key="extFileConverter"/>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Nome Documento" Width="150"
+                                                Binding="{Binding Path=xDocumento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
+                                <DataGridTemplateColumn Header="Caminho Documento" Width="150">
+                                    <DataGridTemplateColumn.CellTemplate
+                                    >
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=xPath, Mode=OneWay}" MouseDown="TextBlock_MouseDown"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <Components:CustomTextBoxFindFiles
+                                            Text="{Binding Path=xPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></Components:CustomTextBoxFindFiles>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Tipo de documento">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding xExtensao, Converter={StaticResource extFileConverter}, Mode=OneWay}"></Image>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Grid>
                 </DockPanel>
             </Border>

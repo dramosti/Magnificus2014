@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.Commands.Comercial;
 using System;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Comercial
 {
-    public class JurosViewModel : ViewModelBase<JurosModel>
+    public class JurosViewModel : viewModelComum<JurosModel>
     {
 
         #region Icommands

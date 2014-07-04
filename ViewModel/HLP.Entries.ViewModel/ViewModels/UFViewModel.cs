@@ -10,10 +10,11 @@ using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
 using HLP.Base.ClassesBases;
 using System.Windows.Input;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class UFViewModel : ViewModelBase<UFModel>
+    public class UFViewModel : viewModelComum<UFModel>
     {
 
         #region Icommands
@@ -36,6 +37,7 @@ namespace HLP.Entries.ViewModel.ViewModels
             : base()
         {            
             objUFCommands = new UFCommands(objViewModel: this);          
+            
         }     
 
     }

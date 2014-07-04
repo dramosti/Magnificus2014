@@ -5,6 +5,7 @@ using HLP.Base.Static;
 using HLP.Components.Model.Models;
 using HLP.Components.Services;
 using HLP.Comum.View.Formularios;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Financeiro;
@@ -37,7 +38,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
     public class OrcamentoCommands
     {
         OrcamentoViewModel objViewModel;
-        BackgroundWorker bWorkerAcoes;
         OrcamentoService objServico;
         ClienteService objClienteService;
         FuncionarioService objFuncionarioService;
@@ -122,9 +122,14 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             this.objViewModel.itensRepresentantesCommands = new RelayCommand(execute: ex => this.ItensRepresentantesExecute());
 
-            this.objViewModel.bWorkerPesquisa = new BackgroundWorker();
             this.objViewModel.bWorkerPesquisa.DoWork += this.getOrcamento;
             this.objViewModel.bWorkerPesquisa.RunWorkerCompleted += this.bw_RunWorkerCompleted;
+
+            this.objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
+            this.objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+
+            this.objViewModel.bWorkerCopy.DoWork += this.bwCopy_DoWork;
+            this.objViewModel.bWorkerCopy.RunWorkerCompleted += this.bwCopy_RunWorkerCompleted;
         }
 
         #region Implementação Commands
@@ -219,10 +224,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
                 this.objViewModel.currentModel.bTodos = this.objViewModel.currentModel.bTodosTotais = true;
                 objViewModel.SetFocusFirstTab(_panel as Panel);
-                bWorkerAcoes = new BackgroundWorker();
-                bWorkerAcoes.DoWork += bwSalvar_DoWork;
-                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-                bWorkerAcoes.RunWorkerAsync(_panel);
+
+                this.objViewModel.bWorkerSave.RunWorkerAsync(_panel);
             }
             catch (Exception ex)
             {
@@ -234,10 +237,13 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             try
             {
-                e.Result = e.Argument;
-                this.objViewModel.currentModel = this.objServico.
-                    Save(objModel: this.objViewModel.currentModel);
-                this.IniciaCollection();
+                if (objViewModel.message.Save())
+                {
+                    e.Result = e.Argument;
+                    this.objViewModel.currentModel = this.objServico.
+                        Save(objModel: this.objViewModel.currentModel);
+                    this.IniciaCollection();
+                }
             }
             catch (Exception ex)
             {
@@ -256,9 +262,12 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                    this.IniciaCollection();
-                    this.objViewModel.currentModel.bTodos = true;
+                    if (objViewModel.message.bSave)
+                    {
+                        this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                        this.IniciaCollection();
+                        this.objViewModel.currentModel.bTodos = true;
+                    }
                 }
             }
             catch (Exception ex)
@@ -291,9 +300,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             int iExcluir = (int)0;
             try
             {
-                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
+                if (objViewModel.message.Excluir())
                 {
                     if (this.objServico.Delete(objModel: this.objViewModel.currentModel))
                     {
@@ -311,7 +318,13 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
+                    vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
+                }
+                else
+                    throw ex;
             }
             finally
             {
@@ -360,9 +373,11 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.PesquisarRegistro(this.objViewModel.currentID);
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            if (objViewModel.message.Cancelar())
+            {
+                this.PesquisarRegistro(this.objViewModel.currentID);
+                this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            }
         }
         private bool CancelarCanExecute()
         {
@@ -373,10 +388,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             try
             {
-                BackgroundWorker bwCopy = new BackgroundWorker();
-                bwCopy.DoWork += bwCopy_DoWork;
-                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
-                bwCopy.RunWorkerAsync();
+                this.objViewModel.bWorkerCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -473,7 +485,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             else
             {
                 this.IniciaCollection();
-                this.objViewModel.currentModel = e.Result as Orcamento_ideModel;
                 if (objViewModel.currentModel != null)
                 {
                     this.objViewModel.currentModel.LoadListTipoDocumento();
@@ -493,7 +504,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             try
             {
-                e.Result = this.objServico.GetObjeto(id: this.objViewModel.currentID);
+                this.objViewModel.currentModel = this.objServico.GetObjeto(id: this.objViewModel.currentID);
                 //bool bCarregado = false;
 
                 //Application.Current.Dispatcher.BeginInvoke((Action)(() =>

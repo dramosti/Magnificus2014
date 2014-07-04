@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.RecursosHumanos;
 using HLP.Entries.ViewModel.Commands;
 using System;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class DepartamentoViewModel : ViewModelBase<DepartamentoModel>
+    public class DepartamentoViewModel : viewModelComum<DepartamentoModel>
     {
 
         #region Icommands

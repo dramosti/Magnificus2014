@@ -1,6 +1,8 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Financeiro;
+using HLP.Entries.Services.Financeiro;
 using HLP.Entries.ViewModel.Commands.Financeiro;
 using System;
 using System.Collections.Generic;
@@ -12,7 +14,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Financeiro
 {
-    public class Conta_BancariaViewModel : ViewModelBase<Conta_bancariaModel>
+    public class Conta_BancariaViewModel : viewModelComum<Conta_bancariaModel>
     {
 
         #region Icommands
@@ -58,6 +60,11 @@ namespace HLP.Entries.ViewModel.ViewModels.Financeiro
             {
                 this.comm.MontraTreeView();
             }
+        }
+
+        public int GetAgencia(int idAgencia)
+        {
+            return comm.GetAgencia(idAgencia: idAgencia).idBanco;
         }
     }
 }

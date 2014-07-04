@@ -76,7 +76,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 foreach (int item in this.objViewModel.currentModel.lSite_Endereco.idExcluidos)
                 {
                     this.objViewModel.currentModel.lSite_Endereco.Add(item:
-                        new Site_enderecoModel
+                        new EnderecoModel
                         {
                             idEndereco = item,
                             status = statusModel.excluido
@@ -102,7 +102,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     objModel: this.objViewModel.currentModel);
                     e.Result = e.Argument;
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -235,7 +235,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
                 else
                 {
-                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+                    this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -293,12 +293,21 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.objViewModel.bTreeCarregada = false;
+            this.Inicia_Collections();
         }
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel = this.objService.GetObjeto(id:
                     this.objViewModel.currentID);
+        }
+
+        private void Inicia_Collections()
+        {
+            if (this.objViewModel.currentModel != null)
+            {
+                this.objViewModel.currentModel.lSite_Endereco.CollectionCarregada(stCollection: StCollection.enderecos);
+            }
         }
 
         public void MontraTreeView()

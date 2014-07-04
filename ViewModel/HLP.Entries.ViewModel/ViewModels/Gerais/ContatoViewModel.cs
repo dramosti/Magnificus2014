@@ -9,10 +9,11 @@ using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using HLP.Components.Model.Models;
 using System.Collections.ObjectModel;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class ContatoViewModel : ViewModelBase<ContatoModel>
+    public class ContatoViewModel : viewModelComum<ContatoModel>
     {
 
         #region Icommands

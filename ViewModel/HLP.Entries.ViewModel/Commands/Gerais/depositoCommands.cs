@@ -224,7 +224,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
                 else
                 {
-                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+                    this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)

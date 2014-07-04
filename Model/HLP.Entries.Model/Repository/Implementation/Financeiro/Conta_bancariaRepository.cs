@@ -29,6 +29,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Financeiro
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idAgencia"),
                                   MapBuilder<Conta_bancariaModel>.MapAllProperties()
+                                  .DoNotMap(i => i.idBanco)
                                   .DoNotMap(i => i.status).Build());
             }
 
@@ -44,6 +45,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Financeiro
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idContaBancaria"),
                                   MapBuilder<Conta_bancariaModel>.MapAllProperties()
+                                  .DoNotMap(i => i.idBanco)
                                   .DoNotMap(i => i.status).Build());
             }
             return regContaAccessor.Execute(idContaBancaria).FirstOrDefault();

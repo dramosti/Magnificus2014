@@ -308,7 +308,7 @@ namespace HLP.Components.View.WPF
         public void Window_KeyUp(object sender, KeyEventArgs e)
         {
             if ((System.Windows.Forms.Control.ModifierKeys == System.Windows.Forms.Keys.Shift &&
-                Keyboard.IsKeyUp(key: Key.Tab)))
+                e.Key == Key.Tab))
             {
                 TraversalRequest tRequest = new TraversalRequest(FocusNavigationDirection.Previous);
                 UIElement keyboardFocus = Keyboard.FocusedElement as UIElement;

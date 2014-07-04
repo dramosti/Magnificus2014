@@ -54,6 +54,12 @@ namespace HLP.Components.ViewModel.Commands
                 if (currentModelProperty != null)
                     currentModelProperty.SetValue(obj: _dataContext, value: null);
 
+                PropertyInfo navigatePesquisa =
+                    _dataContext.GetType().GetProperty(name: "navigatePesquisa");
+
+                if (navigatePesquisa != null)
+                    navigatePesquisa.SetValue(obj: _dataContext, value: null);
+
                 //MethodInfo miSetOp = _dataContext.GetType().GetMethod(
                 //    name: "SetValorCurrentOp");
 

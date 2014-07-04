@@ -1,6 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
 using HLP.Components.ViewModel.Commands;
+using HLP.Comum.ViewModel.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 
 namespace HLP.Components.ViewModel.ViewModels
 {
-    public class HlpPesquisaFiltradaViewModel : ViewModelBase<PesquisaPadraoModel>
+    public class HlpPesquisaFiltradaViewModel : viewModelComum<PesquisaPadraoModel>
     {
         public ICommand filtrarCommand { get; set; }
 

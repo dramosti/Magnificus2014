@@ -93,6 +93,10 @@
       <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
       <Name>HLP.Comum.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{cf75da11-2886-454a-84f8-9e1e9b4fa072}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.ComumView.Model\HLP.ComumView.Model.csproj">
       <Project>{2f94adac-04c1-45ff-a598-8f253ce14c5f}</Project>
       <Name>HLP.ComumView.Model</Name>

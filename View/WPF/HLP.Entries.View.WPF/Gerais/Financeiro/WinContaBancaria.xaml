@@ -14,7 +14,7 @@
             </ResourceDictionary.MergedDictionaries>
             <convert:MaskConverter x:Key="maskConverter"/>
         </ResourceDictionary>
-        
+
     </Window.Resources>
     <Grid>
         <TabControl>
@@ -56,9 +56,9 @@
                                 <Components:CustomTextBlock Text="Banco" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Titular" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="CNPJ ou CPF Titular" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
-                                
+
                                 <Components:CustomTextBox stCompPosicao="fieldId"
                                     Grid.Column="2" Grid.Row="1"
                                     Text="{Binding currentModel.idContaBancaria, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
@@ -101,12 +101,12 @@
                                 <Components:CustomPesquisa NameWindowCadastro="WinBanco"
                                     Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
 						            xIdPesquisa="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						            IsEnabled="{Binding bIsEnabled}"
+						            IsEnabled="False"
 						            ToolTip="Informa o código da Banco. O banco e a Agencia deverá estar cadastro na Tela de Bancos e Agência." FieldPesquisa="ID" TableView="vwBanco">
-                                <Components:CustomPesquisa.Items>
-                                    <System:String>cBanco</System:String>
-                                    <System:String>xBanco</System:String>
-                                </Components:CustomPesquisa.Items>
+                                    <Components:CustomPesquisa.Items>
+                                        <System:String>cBanco</System:String>
+                                        <System:String>xBanco</System:String>
+                                    </Components:CustomPesquisa.Items>
                                 </Components:CustomPesquisa>
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2"                                  
@@ -116,8 +116,9 @@
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2"                                  
-                                    Text="{Binding currentModel.xCNPJouCPFTitular, Mode=TwoWay,
-                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                    Text="{Binding currentModel.xCNPJouCPFTitular, Mode=TwoWay, Converter={StaticResource maskConverter}, ConverterParameter=cpfcnpj,
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, 
+                                    ValidatesOnDataErrors=True}"
 						            IsEnabled="{Binding bIsEnabled}"
 						            ToolTip="É preenchido com o CNPJ ou CPF do Titular da Conta Bancária.">
                                 </Components:CustomTextBox>
@@ -163,9 +164,9 @@
                                 <Components:CustomTextBlock Text="Aceite" Grid.Column="1" Grid.Row="11"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Espécie" Grid.Column="1" Grid.Row="12"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Numero da Remessa" Grid.Column="1" Grid.Row="13"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
-                                
+
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="1"
                                     Text="{Binding currentModel.xNumeroContaHomeBanking, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"

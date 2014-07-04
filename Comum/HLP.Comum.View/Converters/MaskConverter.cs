@@ -14,7 +14,13 @@ namespace HLP.Comum.View.Converters
             if (value == null)
                 return null;
 
-
+            if (parameter.ToString() == "cpfcnpj")
+            {
+                if (value.ToString().Length < 14)
+                    parameter = "cpf";
+                else
+                    parameter = "cnpj";
+            }
 
             switch (parameter.ToString())
             {

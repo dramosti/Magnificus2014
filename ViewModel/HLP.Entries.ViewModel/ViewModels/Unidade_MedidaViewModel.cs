@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
 using System;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class Unidade_MedidaViewModel : ViewModelBase<Unidade_medidaModel>
+    public class Unidade_MedidaViewModel : viewModelComum<Unidade_medidaModel>
     {
 
         #region Icommands

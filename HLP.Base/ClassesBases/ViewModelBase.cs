@@ -26,8 +26,8 @@ namespace HLP.Base.ClassesBases
         {
             this.bIsEnabled = false;
             message = new MessageHlp();
-            viewModelBaseCommands = new ViewModelBaseCommands<T>(this);
-            this.Botoes = new StackPanel();
+            viewModelComumCommands = new ViewModelBaseCommands<T>(this);
+            this.Botoes = new StackPanel();            
         }
 
         private T _currentModel;
@@ -75,12 +75,12 @@ namespace HLP.Base.ClassesBases
             set { _botoes = value; }
         }
 
-        private ViewModelBaseCommands<T> _viewModelBaseCommands;
+        private ViewModelBaseCommands<T> _viewModelComumCommands;
 
-        public ViewModelBaseCommands<T> viewModelBaseCommands
+        public ViewModelBaseCommands<T> viewModelComumCommands
         {
-            get { return _viewModelBaseCommands; }
-            set { _viewModelBaseCommands = value; }
+            get { return _viewModelComumCommands; }
+            set { _viewModelComumCommands = value; }
         }
 
         private BackgroundWorker bwFocus = new BackgroundWorker();

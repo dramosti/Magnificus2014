@@ -1,4 +1,5 @@
 ﻿using HLP.Base.EnumsBases;
+using HLP.Base.Static;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -67,6 +68,13 @@ namespace HLP.Components.View.WPF
 
             Button btn = this.Template.FindName(name: "btnCC", templatedParent: this) as Button;
             btn.Click += btn_Click;
+
+            this.MouseDoubleClick += CustomTextBoxFindFiles_MouseDoubleClick;
+        }
+
+        void CustomTextBoxFindFiles_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            FileStatic.ExecuteFile(xPath: this.Text);
         }
 
         void btn_Click(object sender, RoutedEventArgs e)

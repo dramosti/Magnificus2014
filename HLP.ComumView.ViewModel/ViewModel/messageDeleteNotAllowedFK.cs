@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Comum.Model.Models;
+using HLP.Comum.ViewModel.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HLP.ComumView.ViewModel.ViewModel
 {
-    public class messageDeleteNotAllowedFK : ViewModelBase<RecordsSqlModel>
+    public class messageDeleteNotAllowedFK : viewModelComum<RecordsSqlModel>
     {        
         private string _xTabela;
 

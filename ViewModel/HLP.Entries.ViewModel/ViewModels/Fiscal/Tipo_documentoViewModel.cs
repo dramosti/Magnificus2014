@@ -7,10 +7,11 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.ViewModel.Commands.Fiscal;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class Tipo_documentoViewModel : ViewModelBase<Tipo_documentoModel>
+    public class Tipo_documentoViewModel : viewModelComum<Tipo_documentoModel>
     {
 
         #region Icommands

@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.ViewModel.Commands.Financeiro;
 using System;
@@ -13,7 +14,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Financeiro
 {
-    public class BancoViewModel: ViewModelBase<BancoModel>
+    public class BancoViewModel: viewModelComum<BancoModel>
     {
 
         #region Icommands

@@ -7,10 +7,11 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.ViewModel.Commands.Financeiro;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Financeiro
 {
-    public class DescontosAvistaViewModel : ViewModelBase<Descontos_AvistaModel>
+    public class DescontosAvistaViewModel : viewModelComum<Descontos_AvistaModel>
     {
 
 

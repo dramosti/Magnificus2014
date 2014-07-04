@@ -7,10 +7,11 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.ViewModel.Commands.Fiscal;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class CodigoIcmsViewModel : ViewModelBase<Codigo_Icms_paiModel>
+    public class CodigoIcmsViewModel : viewModelComum<Codigo_Icms_paiModel>
     {
 
         #region Icommands

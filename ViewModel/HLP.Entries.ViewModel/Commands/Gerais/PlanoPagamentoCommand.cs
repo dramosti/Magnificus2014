@@ -183,6 +183,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             this.objViewModel.currentModel = new Plano_pagamentoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
+            this.objViewModel.PlanoSort();
         }
         private bool NovoCanExecute()
         {
@@ -235,7 +236,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
                 else
                 {
-                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+                    this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -289,7 +290,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.Inicia_Collections();
+                if (this.objViewModel.currentModel != null)
+                {
+                    this.Inicia_Collections();
+                    this.objViewModel.PlanoSort();
+                }
             }
             catch (Exception ex)
             {
@@ -305,8 +310,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Inicia_Collections()
         {
-            if (this.objViewModel.currentModel != null)
-                this.objViewModel.currentModel.lPlano_pagamento_linhasModel.CollectionCarregada();
+            this.objViewModel.currentModel.lPlano_pagamento_linhasModel.CollectionCarregada();
         }
 
         #endregion

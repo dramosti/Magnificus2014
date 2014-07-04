@@ -487,7 +487,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
             else
             {
-                this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+                this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
             }
         }
 
@@ -535,10 +535,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     this.bOpCancelada = true;
                 }
             this.objViewModel.hierarquiaListaPreco = null;
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.getListaPreco);
-            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-            bw.RunWorkerAsync();
+            this.objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.getListaPreco);
+            this.objViewModel.bWorkerPesquisa.RunWorkerCompleted += bw_RunWorkerCompleted;
+            this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

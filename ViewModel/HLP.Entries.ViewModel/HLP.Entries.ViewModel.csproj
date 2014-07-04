@@ -219,6 +219,10 @@
       <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>
       <Name>HLP.Entries.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Resources.View.WPF\HLP.Resources.View.WPF.csproj">
+      <Project>{8d4b32be-e2bc-42ab-8715-a6b73f2956e6}</Project>
+      <Name>HLP.Resources.View.WPF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\HLP.Wcf.Entries\HLP.Wcf.Entries.csproj">
       <Project>{9c776abf-bcda-4a4e-b14e-cf35510c5ca2}</Project>
       <Name>HLP.Wcf.Entries</Name>

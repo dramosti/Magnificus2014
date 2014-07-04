@@ -13,7 +13,7 @@ namespace HLP.Entries.Services.GestaoMateriais
 {
     public class SiteService
     {
-        const string xTabela = "Site;Site_Endereco";
+        const string xTabela = "Site;Enderecos";
         HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
         wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
 

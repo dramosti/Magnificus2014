@@ -59,6 +59,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
 
             objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+            objViewModel.bWorkerPesquisa.RunWorkerCompleted += bw_RunWorkerCompleted;
         }
 
 
@@ -298,7 +299,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                 }
                 else
                 {
-                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+                    this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -354,6 +355,31 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             this.objViewModel.currentModel = this.objService.GetObject(id:
                     this.objViewModel.currentID);
         }
+
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                this.Inicia_Collections();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        private void Inicia_Collections()
+        {
+            if (this.objViewModel.currentModel != null)
+            {
+                this.objViewModel.currentModel.lTransportador_Contato.CollectionCarregada();
+                this.objViewModel.currentModel.lTransportador_Endereco.CollectionCarregada(stCollection: StCollection.enderecos);
+                this.objViewModel.currentModel.lTransportador_Motorista.CollectionCarregada();
+                this.objViewModel.currentModel.lTransportador_Veiculos.CollectionCarregada();
+            }
+        }
+
         #endregion
 
 

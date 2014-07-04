@@ -44,8 +44,18 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
         
+        private string _xSimbolo;
+
         [ParameterOrder(Order = 4)]
-        public string xSimbolo { get; set; }
+        public string xSimbolo
+        {
+            get { return _xSimbolo; }
+            set
+            {
+                _xSimbolo = value;
+                base.NotifyPropertyChanged(propertyName: "xSimbolo");
+            }
+        }
     }
 
     public partial class MoedaModel

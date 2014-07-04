@@ -9,10 +9,11 @@ using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class CalendarioViewModel : ViewModelBase<CalendarioModel>
+    public class CalendarioViewModel : viewModelComum<CalendarioModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }

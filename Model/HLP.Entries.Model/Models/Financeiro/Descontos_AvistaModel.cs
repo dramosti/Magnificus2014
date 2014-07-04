@@ -25,8 +25,19 @@ namespace HLP.Entries.Model.Models.Financeiro
         public string xDescricao { get; set; }
         [ParameterOrder(Order = 4)]
         public int? idProximoDesconto { get; set; }
+        
+        private byte _stLiquidoAtual;
         [ParameterOrder(Order = 5)]
-        public byte stLiquidoAtual { get; set; }
+        public byte stLiquidoAtual
+        {
+            get { return _stLiquidoAtual; }
+            set
+            {
+                _stLiquidoAtual = value;
+                base.NotifyPropertyChanged(propertyName: "stLiquidoAtual");
+            }
+        }
+
         [ParameterOrder(Order = 6)]
         public int? nMeses { get; set; }
         [ParameterOrder(Order = 7)]

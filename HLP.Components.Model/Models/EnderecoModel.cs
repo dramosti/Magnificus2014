@@ -1,10 +1,12 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace HLP.Components.Model.Models
 {
@@ -13,6 +15,7 @@ namespace HLP.Components.Model.Models
         public EnderecoModel()
             : base(xTabela: "Enderecos")
         {
+            //Window currentWindow = Sistema.GetOpenWindow();
         }
         private int? _idEndereco;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]

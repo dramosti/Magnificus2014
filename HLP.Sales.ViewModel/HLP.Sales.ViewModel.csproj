@@ -61,6 +61,7 @@
     <Compile Include="ViewModel\Comercio\OrcamentoItensRepresentanteViewModel.cs" />
     <Compile Include="ViewModel\Comercio\OrcamentoTrocarStatusViewModel.cs" />
     <Compile Include="ViewModel\Comercio\OrcamentoViewModel.cs" />
+    <Compile Include="ViewModel\Comercio\viewModelComum.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
@@ -82,6 +83,10 @@
     <ProjectReference Include="..\HLP.Comum.Model\HLP.Comum.Model.csproj">
       <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
       <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{cf75da11-2886-454a-84f8-9e1e9b4fa072}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Entries.Services\HLP.Entries.Services.csproj">
       <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>

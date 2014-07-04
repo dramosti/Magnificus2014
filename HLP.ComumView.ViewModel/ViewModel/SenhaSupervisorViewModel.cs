@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.ComumView.Model.Model;
 using HLP.ComumView.ViewModel.Commands;
 using System;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 
 namespace HLP.ComumView.ViewModel.ViewModel
 {
-    public class SenhaSupervisorViewModel : ViewModelBase<loginModel>
+    public class SenhaSupervisorViewModel : viewModelComum<loginModel>
     {
         public ICommand autorizarCommand { get; set; }
         public ICommand closeCommand { get; set; }

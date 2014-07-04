@@ -15,6 +15,7 @@ using System.Windows.Controls;
 using HLP.Base.ClassesBases;
 using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Services.Gerais;
+using System.Threading;
 
 namespace HLP.Entries.ViewModel.Commands
 {
@@ -86,7 +87,7 @@ namespace HLP.Entries.ViewModel.Commands
                 {
                     this.objViewModel.currentModel.idUF = this.objService.SaveObject(obj: this.objViewModel.currentModel);
                     e.Result = e.Argument;
-                }                
+                }
             }
             catch (Exception ex)
             {
@@ -228,7 +229,7 @@ namespace HLP.Entries.ViewModel.Commands
                 }
                 else
                 {
-                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+                    this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -274,6 +275,7 @@ namespace HLP.Entries.ViewModel.Commands
             {
                 this.objViewModel.pesquisarBaseCommand.Execute(null);
                 this.PesquisarRegistro();
+                this.objViewModel.loading = true;
             }
             catch (Exception ex)
             {

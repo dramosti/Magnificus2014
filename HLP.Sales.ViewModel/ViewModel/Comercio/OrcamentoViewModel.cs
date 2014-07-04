@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Financeiro;
@@ -22,7 +23,7 @@ using System.Windows.Input;
 
 namespace HLP.Sales.ViewModel.ViewModel.Comercio
 {
-    public class OrcamentoViewModel : ViewModelBase<Orcamento_ideModel>
+    public class OrcamentoViewModel : viewModelComum<Orcamento_ideModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -239,26 +240,29 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
 
         public void GenerateItensComissoes()
         {
-            CollectionViewSource cvs = HLP.Base.Static.Sistema.GetOpenWindow(xName: "WinOrcamento")
-                .FindResource(resourceKey: "cvsComissoes") as CollectionViewSource;
-
-            if (cvs != null)
+            if (this.currentModel != null)
             {
-                (cvs.Source as ObservableCollection<ItensComissoes>).Clear();
+                CollectionViewSource cvs = HLP.Base.Static.Sistema.GetOpenWindow(xName: "WinOrcamento")
+                    .FindResource(resourceKey: "cvsComissoes") as CollectionViewSource;
 
-                foreach (Orcamento_ItemModel orcamentoItem in this.currentModel.lOrcamento_Itens)
+                if (cvs != null)
                 {
-                    foreach (Orcamento_Item_RepresentantesModel orcamentoItemRepresentante in orcamentoItem.lOrcamentoItemsRepresentantes)
+                    (cvs.Source as ObservableCollection<ItensComissoes>).Clear();
+
+                    foreach (Orcamento_ItemModel orcamentoItem in this.currentModel.lOrcamento_Itens)
                     {
-                        (cvs.Source as ObservableCollection<ItensComissoes>).Add(item: new ItensComissoes
-                            {
-                                xProduto = orcamentoItem.nItem + " - " + (orcamentoItem.objProduto != null ?
-                                orcamentoItem.objProduto.xComercial : ""),
-                                xRepresentante = orcamentoItemRepresentante.idRepresentante.ToString() + " - " + comm.GetFuncionario(idFuncionario:
-                                orcamentoItemRepresentante.idRepresentante).xNome,
-                                pComissao = orcamentoItemRepresentante.pComissao ?? 0,
-                                vComissao = orcamentoItem.vTotalItem * (orcamentoItemRepresentante.pComissao ?? 0) / 100
-                            });
+                        foreach (Orcamento_Item_RepresentantesModel orcamentoItemRepresentante in orcamentoItem.lOrcamentoItemsRepresentantes)
+                        {
+                            (cvs.Source as ObservableCollection<ItensComissoes>).Add(item: new ItensComissoes
+                                {
+                                    xProduto = orcamentoItem.nItem + " - " + (orcamentoItem.objProduto != null ?
+                                    orcamentoItem.objProduto.xComercial : ""),
+                                    xRepresentante = orcamentoItemRepresentante.idRepresentante.ToString() + " - " + comm.GetFuncionario(idFuncionario:
+                                    orcamentoItemRepresentante.idRepresentante).xNome,
+                                    pComissao = orcamentoItemRepresentante.pComissao ?? 0,
+                                    vComissao = orcamentoItem.vTotalItem * (orcamentoItemRepresentante.pComissao ?? 0) / 100
+                                });
+                        }
                     }
                 }
             }

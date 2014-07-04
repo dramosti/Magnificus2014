@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.ViewModel.Commands.Fiscal;
 using System;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class Tipo_OperacaoViewModel: ViewModelBase<Tipo_operacaoModel>
+    public class Tipo_OperacaoViewModel: viewModelComum<Tipo_operacaoModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }

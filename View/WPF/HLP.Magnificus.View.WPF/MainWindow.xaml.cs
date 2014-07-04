@@ -18,6 +18,7 @@ using HLP.Base.Static;
 using HLP.ComumView.ViewModel.ViewModel;
 using System.Configuration;
 using System.ServiceModel.Configuration;
+using System.IO;
 
 namespace HLP.Magnificus.View.WPF
 {
@@ -92,7 +93,15 @@ namespace HLP.Magnificus.View.WPF
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {            
+        {
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                FileStatic.ExecuteFile(xPath: (sender as TextBlock).Text);
+            }
         }
     }
 }

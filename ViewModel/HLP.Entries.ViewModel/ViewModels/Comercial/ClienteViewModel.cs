@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Comercial;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Comercial
 {
-    public class ClienteViewModel : ViewModelBase<Cliente_fornecedorModel>
+    public class ClienteViewModel : viewModelComum<Cliente_fornecedorModel>
     {
 
         #region Icommands
@@ -34,7 +35,14 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
 
         public bool RotaPossuiListaPrecoPai(int idRota)
         {
-            return this.comm.RotaPossuiListaPrecoPai(idRota: idRota);
+            bool bResult = this.comm.RotaPossuiListaPrecoPai(idRota: idRota);
+
+            if (bResult)
+            {
+                MessageHlp.Show(stMessage: StMessage.stAlert, xMessageToUser: "Rota possui uma lista de preço já informada. Cadastro do cliente perderá a referência a lista informada!");
+            }
+
+            return bResult;
         }
 
         public int GetIdSiteByDeposito(int idDeposito)
@@ -45,6 +53,11 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         public Condicao_pagamentoModel getCondicaoPagamentoByCliente(int idCondicaoPagamento)
         {
             return comm.getCondicaoPagamentoByCliente(idCondicaoPagamento: idCondicaoPagamento);
+        }
+
+        public int? GetIdListaPrecoPaiRota(int idRota)
+        {
+            return comm.GetIdListaPrecoPaiRota(idRota: idRota);
         }
     }
 }

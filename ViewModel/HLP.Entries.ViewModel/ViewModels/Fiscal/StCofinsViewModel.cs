@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.ViewModel.Commands.Fiscal;
 using System;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class StCofinsViewModel : ViewModelBase<Situacao_tributaria_cofinsModel>
+    public class StCofinsViewModel : viewModelComum<Situacao_tributaria_cofinsModel>
     {
 
         #region Icommands

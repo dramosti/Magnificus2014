@@ -74,7 +74,6 @@
                                     <Components:CustomTextBlock Text="Código Alternativo" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="2" Margin="0,2,0,1"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Text="Razão Social" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Text="Nome Fantasia" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                                    <Components:CustomTextBlock Text="Pessoa Jurídica?" VerticalAlignment="Center" Height="20" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
 
                                     <!--Components-->
 
@@ -102,13 +101,6 @@
 										IsEnabled="{Binding bIsEnabled}"
 										ToolTip="É preenchido com o nome fantasia da Transportadora.">
                                     </Components:CustomTextBox>
-                                    <Components:CustomCheckBox
-                                        Grid.Column="2" Grid.Row="5" HorizontalAlignment="Left" Height="20" Width="40"
-                                        x:Name="chkPessoa" 									 
-										IsChecked="{Binding currentModel.stPessoa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										ToolTip="Este campo define se a Transportadora é pessoa jurídica ou física, preenchendo com SIM, o sistema abrirá os campos disponíveis para pessoa jurídica caso contrário os campos disponíveis para pessoa física.">
-                                    </Components:CustomCheckBox>
 
 
                                 </Grid>

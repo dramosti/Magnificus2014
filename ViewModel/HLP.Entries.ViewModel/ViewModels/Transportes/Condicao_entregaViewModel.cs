@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.ViewModel.Commands.Transportes;
 using System;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Transportes
 {
-    public class Condicao_entregaViewModel : ViewModelBase<Condicoes_entregaModel>
+    public class Condicao_entregaViewModel : viewModelComum<Condicoes_entregaModel>
     {
 
         #region Icommands

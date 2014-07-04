@@ -7,10 +7,11 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Crm;
 using HLP.Entries.ViewModel.Commands.Crm;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Crm
 {
-    public class FidelidadeViewModel : ViewModelBase<FidelidadeModel>
+    public class FidelidadeViewModel : viewModelComum<FidelidadeModel>
     {
 
         #region Icommands

@@ -14,7 +14,7 @@ namespace HLP.Entries.Model.Models.Transportes
         public TransportadorModel()
             : base(xTabela: "Transportador")
         {
-            this.lTransportador_Endereco = new ObservableCollectionBaseCadastros<EnderecoModel>();
+            this.lTransportador_Endereco = new ObservableCollectionBaseCadastros<EnderecoModel>(stCollection: StCollection.enderecos);
             this.lTransportador_Motorista = new ObservableCollectionBaseCadastros<ContatoModel>();
             this.lTransportador_Veiculos = new ObservableCollectionBaseCadastros<Transportador_VeiculosModel>();
             this.lTransportador_Contato = new ObservableCollectionBaseCadastros<ContatoModel>();
@@ -351,4 +351,4 @@ namespace HLP.Entries.Model.Models.Transportes
     #endregion
 
 }
-    
+

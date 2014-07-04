@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Parametros;
 using System;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Parametros
 {
-    public class Empresa_ParametrosViewModel : ViewModelBase<EmpresaModel>
+    public class Empresa_ParametrosViewModel : viewModelComum<EmpresaModel>
     {
         
 

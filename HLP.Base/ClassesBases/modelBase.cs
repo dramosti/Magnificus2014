@@ -113,10 +113,19 @@ namespace HLP.Base.ClassesBases
 
                 if (sMessage == null)
                     if (columnName.ToUpper().Contains("XEMAIL"))
+                    {
                         if (valor != null)
                             if (valor.ToString() != "")
                                 if (!(valor.ToString()).IsValidEmailAddress())
                                     sMessage = "Email inválido.";
+                    }
+                    else if (columnName.ToUpper().Contains("HTTP"))
+                    {
+                        if (valor != null)
+                            if (valor.ToString().Count(i => i == '.') < 1)
+                                sMessage = "Site inválido";
+                    }
+
 
                 return sMessage;
             }

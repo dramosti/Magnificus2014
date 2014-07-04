@@ -1,18 +1,45 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace HLP.Entries.Model.Models.Transportes
 {
     public partial class RotaModel : modelComum
     {
-        public RotaModel() : base("Rota") 
+        private static RotaModel _currentModel;
+
+        public static RotaModel currentModel
         {
+            get { return _currentModel; }
+            set { _currentModel = value; }
+        }
+
+
+        public RotaModel()
+            : base("Rota")
+        {
+            currentModel = this;
+
             this.lRota_Praca = new ObservableCollectionBaseCadastros<Rota_pracaModel>();
+            this.lRota_Praca.CollectionChanged += lRota_Praca_CollectionChanged;
+
+
+        }
+
+        public void lRota_Praca_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+                foreach (Rota_pracaModel r in e.NewItems)
+                {
+                    r.nOrdem = this.lRota_Praca.Max(i => i.nOrdem) + 1;
+                }
         }
 
         private int? _idRota;
@@ -21,7 +48,7 @@ namespace HLP.Entries.Model.Models.Transportes
         {
             get { return _idRota; }
             set { _idRota = value; base.NotifyPropertyChanged("idRota"); }
-        } 
+        }
 
         [ParameterOrder(Order = 2)]
         public string xRota { get; set; }
@@ -55,14 +82,21 @@ namespace HLP.Entries.Model.Models.Transportes
         public ObservableCollectionBaseCadastros<Rota_pracaModel> lRota_Praca
         {
             get { return _lRota_Praca; }
-            set { _lRota_Praca = value; base.NotifyPropertyChanged("lRota_Praca"); }
+            set
+            {
+                _lRota_Praca = value;
+                base.NotifyPropertyChanged("lRota_Praca");
+            }
         }
     }
 
 
     public partial class Rota_pracaModel : modelComum
     {
-        public Rota_pracaModel() : base("Rota_praca") { }
+        public Rota_pracaModel()
+            : base("Rota_praca")
+        {
+        }
 
         private int? _idRotaPraca;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -86,6 +120,7 @@ namespace HLP.Entries.Model.Models.Transportes
                 base.NotifyPropertyChanged(propertyName: "nOrdem");
             }
         }
+
         private int? _nDistanciaProximaCidade;
         [ParameterOrder(Order = 3)]
         public int? nDistanciaProximaCidade
@@ -123,18 +158,38 @@ namespace HLP.Entries.Model.Models.Transportes
     }
 
     #region validação
-    public partial class Rota_pracaModel 
+    public partial class Rota_pracaModel
     {
         public override string this[string columnName]
         {
             get
             {
-                return base[columnName];
+                string xErro = base[columnName];
+
+                if (string.IsNullOrEmpty(value: xErro))
+                {
+                    if (columnName == "nOrdem")
+                    {
+                        RotaModel rotaModel = RotaModel.currentModel;
+
+                        if (rotaModel != null)
+                            if (rotaModel.GetOperationModel() == Base.EnumsBases.OperationModel.updating)
+                            {
+                                if (rotaModel != null)
+                                    if (rotaModel.lRota_Praca.Count(i => i.nOrdem == this.nOrdem) > 1)
+                                    {
+                                        xErro = "Número de ordem da rota já foi informada.";
+                                    }
+                            }
+                    }
+                }
+
+                return xErro;
             }
         }
     }
 
-    public partial class RotaModel 
+    public partial class RotaModel
     {
         public override string this[string columnName]
         {

@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Components.Model.Models;
 using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public SiteModel()
             : base(xTabela: "Site")
         {
-            this.lSite_Endereco = new ObservableCollectionBaseCadastros<Site_enderecoModel>();
+            this.lSite_Endereco = new ObservableCollectionBaseCadastros<EnderecoModel>(stCollection: StCollection.enderecos);
         }
 
         private int? _idSite;
@@ -52,9 +53,9 @@ namespace HLP.Entries.Model.Models.Gerais
         }
 
 
-        private ObservableCollectionBaseCadastros<Site_enderecoModel> _lSite_Endereco;
+        private ObservableCollectionBaseCadastros<EnderecoModel> _lSite_Endereco;
 
-        public ObservableCollectionBaseCadastros<Site_enderecoModel> lSite_Endereco
+        public ObservableCollectionBaseCadastros<EnderecoModel> lSite_Endereco
         {
             get { return _lSite_Endereco; }
             set
@@ -70,7 +71,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
         public Site_enderecoModel()
             : base(xTabela: "Site_Endereco")
-        {            
+        {
         }
 
         private int? _idEndereco;
@@ -84,7 +85,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "idEndereco");
             }
         }
-        
+
         private byte _stTipoEndereco;
         [ParameterOrder(Order = 2)]
         public byte stTipoEndereco
@@ -107,7 +108,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "xCEP");
             }
         }
-        
+
         private byte _stLogradouro;
         [ParameterOrder(Order = 4)]
         public byte stLogradouro

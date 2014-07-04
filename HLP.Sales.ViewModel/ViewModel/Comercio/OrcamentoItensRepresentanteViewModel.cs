@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.Commands.Comercio;
 using System;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 
 namespace HLP.Sales.ViewModel.ViewModel.Comercio
 {
-    public class OrcamentoItensRepresentanteViewModel : ViewModelBase<Orcamento_Item_RepresentantesModel>
+    public class OrcamentoItensRepresentanteViewModel : viewModelComum<Orcamento_Item_RepresentantesModel>
     {
         public ICommand applyCommand { get; set; }
 

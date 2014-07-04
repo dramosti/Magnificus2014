@@ -8,10 +8,11 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Comercial;
 using HLP.Entries.ViewModel.Commands.Comercial;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Comercial
 {
-    public class Tipo_ProdutoViewModel : ViewModelBase<Tipo_produtoModel>
+    public class Tipo_ProdutoViewModel : viewModelComum<Tipo_produtoModel>
     {
 
         #region Icommands

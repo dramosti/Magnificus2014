@@ -11,10 +11,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using HLP.Components.Model.Models;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Comercial
 {
-    public class Lista_PrecoViewModel : ViewModelBase<Lista_Preco_PaiModel>
+    public class Lista_PrecoViewModel : viewModelComum<Lista_Preco_PaiModel>
     {
 
         #region Icommands

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Comum.ViewModel.ViewModel
 {
-    public class OperacoesDataBaseViewModel : ViewModelBase<RecordsSqlModel>
+    public class OperacoesDataBaseViewModel : viewModelComum<RecordsSqlModel>
     {
         OperacoesDataBaseCommands comm;
         public OperacoesDataBaseViewModel()

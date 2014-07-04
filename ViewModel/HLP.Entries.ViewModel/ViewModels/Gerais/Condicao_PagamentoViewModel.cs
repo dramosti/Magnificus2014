@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using System;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class Condicao_PagamentoViewModel : ViewModelBase<Condicao_pagamentoModel>
+    public class Condicao_PagamentoViewModel : viewModelComum<Condicao_pagamentoModel>
     {
 
         #region Icommands

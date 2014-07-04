@@ -131,6 +131,9 @@
     <Resource Include="Icons\Button\Pesquisa_MouseOVer.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\loadingMain.png" />
+    <Resource Include="Images\iconWord.png" />
+    <Resource Include="Images\iconAnyFile.png" />
     <Resource Include="Icons\Login\Usuario.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

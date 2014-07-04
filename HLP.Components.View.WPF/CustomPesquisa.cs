@@ -58,14 +58,29 @@ namespace HLP.Components.View.WPF
                 Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
             };
             this.Style = resource["TextBox_PESQUISA"] as Style;
+            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
+    new DependencyObject());
+
+            if (!designTime)
+            {
+                this.ViewModel = new CustomPesquisaViewModel();
+                this.Loaded += CustomPesquisa_Loaded;
+            }
+        }
+
+        void CustomPesquisa_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.SetCommands();
+        }
+
+        public void SetCommands()
+        {
 
             bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
     new DependencyObject());
 
             if (!designTime)
             {
-
-                this.ViewModel = new CustomPesquisaViewModel();
                 this.GotFocus += CustomPesquisa_GotFocus;
 
                 this.ApplyTemplate();
@@ -97,7 +112,6 @@ namespace HLP.Components.View.WPF
                     }
                 }
             }
-
         }
 
         void CustomPesquisa_GotFocus(object sender, RoutedEventArgs e)
@@ -204,7 +218,7 @@ namespace HLP.Components.View.WPF
         {
             if (d != null && e.NewValue != null)
             {
-                int valorPesquisa = 0;                
+                int valorPesquisa = 0;
                 int.TryParse(s: e.NewValue.ToString(), result: out valorPesquisa);
 
                 (d as CustomPesquisa).ViewModel.GetValorDisplay(

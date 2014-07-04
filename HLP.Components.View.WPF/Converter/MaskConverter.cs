@@ -17,6 +17,21 @@ namespace HLP.Components.View.WPF.Converter
             if (parameter == null)
                 return null;
 
+            value = value.ToString().Replace(oldValue: ".", newValue: "")
+                            .Replace(oldValue: ",", newValue: "")
+                            .Replace(oldValue: "-", newValue: "")
+                            .Replace(oldValue: "/", newValue: "")
+                            .Replace(oldValue: "\\", newValue: "")
+                            .Replace(oldValue: " ", newValue: "");
+
+            if (parameter.ToString() == "cpfcnpj")
+            {
+                if (value.ToString().Length < 14)
+                    parameter = "cpf";
+                else
+                    parameter = "cnpj";
+            }
+
             switch (parameter.ToString())
             {
                 case "cnpj":

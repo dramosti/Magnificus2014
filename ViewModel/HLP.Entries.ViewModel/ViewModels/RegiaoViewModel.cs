@@ -11,10 +11,11 @@ using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
 using HLP.Base.ClassesBases;
 using HLP.Entries.ViewModel.Commands.Gerais;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class RegiaoViewModel : ViewModelBase<RegiaoModel>
+    public class RegiaoViewModel : viewModelComum<RegiaoModel>
     {       
 
         public ICommand commandTeste { get; set; }

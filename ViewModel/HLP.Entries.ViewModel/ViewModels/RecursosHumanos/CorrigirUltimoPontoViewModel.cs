@@ -8,10 +8,11 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.RecursosHumanos;
 using HLP.Entries.ViewModel.Commands.RecursosHumanos;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.RecursosHumanos
 {
-    public class CorrigirUltimoPontoViewModel : ViewModelBase<CorrigeUltimoPontoModel>
+    public class CorrigirUltimoPontoViewModel : viewModelComum<CorrigeUltimoPontoModel>
     {
         public CorrigirUltimoPontoCommand command;
 

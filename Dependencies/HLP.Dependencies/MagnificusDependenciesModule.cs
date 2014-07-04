@@ -44,6 +44,7 @@ namespace HLP.Dependencies
 
         protected void ResolveRepositories()
         {
+            Bind<IDocumentosRepository>().To<DocumentosRepository>();
             Bind<IConnectionConfigRepository>().To<ConnectionConfigRepository>();
             Bind<IOperacoesDataBaseRepository>().To<OperacoesDataBaseRepository>();
             Bind<IHlpEnderecoRepository>().To<HlpEnderecoRepository>();

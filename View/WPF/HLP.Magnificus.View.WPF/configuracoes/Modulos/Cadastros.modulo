@@ -81,7 +81,7 @@
     type="HLP.Entries.View.WPF.Gerais.WinFamiliaProduto, HLP.Entries.View.WPF">
   </object>
   <object id="WinMoeda" name="Moedas" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.WinMoeda, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinMoeda, HLP.Entries.View.WPF">
   </object>
   <object id="WinPlanoPagamento" name="Plano_de_Pagamento" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinPlanoPagamento, HLP.Entries.View.WPF">
@@ -126,7 +126,7 @@
     type="HLP.Entries.View.WPF.Crm.WinPersonalidade, HLP.Entries.View.WPF">
   </object>
   <object id="WinBanco" name="Bancos" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinBanco, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinBanco, HLP.Entries.View.WPF">
   </object>
   <object id="WinAgencia" name="Agências" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Gerais.Financeiro.WinAgencia, HLP.Entries.View.WPF">

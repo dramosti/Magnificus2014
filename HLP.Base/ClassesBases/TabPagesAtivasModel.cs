@@ -231,6 +231,8 @@ namespace HLP.Base.ClassesBases
                 return this.Windows.DataContext;
             }
         }
+
+        
         #endregion
 
         #region Events

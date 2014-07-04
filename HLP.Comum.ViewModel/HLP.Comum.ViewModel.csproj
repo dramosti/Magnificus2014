@@ -55,10 +55,12 @@
     <Compile Include="Commands\ConnectionConfigCommand.cs" />
     <Compile Include="Commands\OperacoesDataBaseCommands.cs" />
     <Compile Include="Commands\SelectConnectionCommand.cs" />
+    <Compile Include="Commands\viewModelComumCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\ConnectionConfigViewModel.cs" />
     <Compile Include="ViewModel\OperacoesDataBaseViewModel.cs" />
     <Compile Include="ViewModel\SelectConnectionViewModel.cs" />
+    <Compile Include="ViewModel\viewModelComum.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">

@@ -216,7 +216,7 @@ namespace HLP.Entries.ViewModel.Commands.RecursosHumanos
                 }
                 else
                 {
-                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+                    this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)

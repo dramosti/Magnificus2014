@@ -13,17 +13,23 @@ namespace HLP.Base.ClassesBases
         public List<int> idExcluidos;
         public string xCampoId;
 
-        public ObservableCollectionBaseCadastros()
+        public ObservableCollectionBaseCadastros(StCollection stCollection = StCollection._default)
         {
             this.idExcluidos = new List<int>();
             this.CollectionChanged += ObservableCollectionBaseCadastros_CollectionChanged;
+
+            if (stCollection == StCollection.enderecos)
+                this.CollectionChanged += ObservableCollection_CollectionChangedEnderecos;
         }
 
-        public ObservableCollectionBaseCadastros(IList<T> list)
+        public ObservableCollectionBaseCadastros(IList<T> list, StCollection stCollection = StCollection._default)
             : base(list)
         {
             this.idExcluidos = new List<int>();
             this.CollectionChanged += ObservableCollectionBaseCadastros_CollectionChanged;
+
+            if (stCollection == StCollection.enderecos)
+                this.CollectionChanged += ObservableCollection_CollectionChangedEnderecos;
         }
 
         public void ObservableCollectionBaseCadastros_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -66,8 +72,23 @@ namespace HLP.Base.ClassesBases
             }
         }
 
-        public void CollectionCarregada()
+        public void ObservableCollection_CollectionChangedEnderecos(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
+            if (this.Count == 1)
+            {
+                if (e.NewItems != null)
+                    foreach (var item in e.NewItems)
+                    {
+                        item.GetType().GetProperty(name: "stPrincipal").SetValue(obj: item, value: (byte)1);
+                    }
+            }
+        }
+
+        public void CollectionCarregada(StCollection stCollection = StCollection._default)
+        {
+            if (stCollection == StCollection.enderecos)
+                this.CollectionChanged += ObservableCollection_CollectionChangedEnderecos;
+
             this.RemoveItensExcluidos();
             foreach (var item in this.Items)
             {
@@ -114,6 +135,12 @@ namespace HLP.Base.ClassesBases
             }
             base.ClearItems();
         }
-                 
+
+    }
+
+    public enum StCollection
+    {
+        _default,
+        enderecos
     }
 }

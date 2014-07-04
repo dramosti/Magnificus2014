@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Components.ViewModel.Commands;
+using HLP.Comum.ViewModel.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 
 namespace HLP.Components.ViewModel.ViewModels
 {
-    public class CustomTextBoxViewModel : ViewModelBase<object>,  INotifyPropertyChanged
+    public class CustomTextBoxViewModel : viewModelComum<object>,  INotifyPropertyChanged
     {
         public ICommand searchCommand { get; set; }
 

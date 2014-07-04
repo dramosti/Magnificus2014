@@ -220,7 +220,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+                this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
             }
             catch (Exception)
             {

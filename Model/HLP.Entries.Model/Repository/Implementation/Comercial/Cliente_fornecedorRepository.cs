@@ -67,6 +67,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                                          .DoNotMap(i => i.status)
                                          .DoNotMap(i => i.enabledFieldsCondPagamento)
                                          .DoNotMap(i => i.idSite)
+                                         .DoNotMap(i => i.bEnabledListaPreco)
                                          .Build());
             }
 

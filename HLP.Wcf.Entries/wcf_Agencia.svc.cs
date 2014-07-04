@@ -194,7 +194,7 @@ namespace HLP.Wcf.Entries
                 objHierAg.xDisplay = ag.cAgencia + " - " + ag.xAgencia;
                 objHierAg.xNameImage = "Agencia";
 
-                HLP.Entries.Model.Models.Financeiro.BancoModel objBanco = bancoRepository.GetBanco(ag.idAgencia ?? 0);
+                HLP.Entries.Model.Models.Financeiro.BancoModel objBanco = bancoRepository.GetBanco(ag.idBanco);
 
                 if (objBanco != null)
                 {

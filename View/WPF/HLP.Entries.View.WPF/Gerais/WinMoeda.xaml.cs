@@ -17,7 +17,7 @@ using HLP.Resources.View.WPF.Classes;
 using System.ComponentModel;
 using HLP.Components.View.WPF;
 
-namespace HLP.Entries.View.WPF.Gerais
+namespace HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro
 {
     /// <summary>
     /// Interaction logic for WinMoeda.xaml
@@ -27,12 +27,13 @@ namespace HLP.Entries.View.WPF.Gerais
         public WinMoeda()
         {
             InitializeComponent();
+            this.gridPropriedades.KeyUp += base.Window_KeyUp;
             this.ViewModel = new MoedaViewModel();
 
             lMoedaPadrao = new ObservableCollection<padraoMoeda>
             {
 #region inclusão de itens
-                new padraoMoeda{xCodigo="	CODIGO	", nNumero=	000	,dCasasDecimais=	2	,xMoeda="	NOME DA MOEDA", xPais="	 NOME DO PAÍS	"},
+                new padraoMoeda{xCodigo="	COD. ISO", nNumero=	000	,dCasasDecimais=	2	,xMoeda="	NOME DA MOEDA", xPais="	 NOME DO PAÍS	"},
                 new padraoMoeda{xCodigo="	AED	", nNumero=	784	,dCasasDecimais=	2	,xMoeda="	Dirham dos Emirados	", xPais="	 Emirados Árabes Unidos	"},
                 new padraoMoeda{xCodigo="	AFN	", nNumero=	971	,dCasasDecimais=	2	,xMoeda="	Afegane	", xPais="	 Afeganistão	"},
                 new padraoMoeda{xCodigo="	ALL	", nNumero=	8	,dCasasDecimais=	2	,xMoeda="	Lek	", xPais="	 Albânia	"},
@@ -280,6 +281,7 @@ namespace HLP.Entries.View.WPF.Gerais
 #endregion
             };
         }
+               
 
         private ObservableCollection<padraoMoeda> _lMoedaPadrao;
 

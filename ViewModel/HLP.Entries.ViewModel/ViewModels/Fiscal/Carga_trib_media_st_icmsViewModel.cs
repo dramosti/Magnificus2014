@@ -7,10 +7,11 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.ViewModel.Commands.Fiscal;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class Carga_trib_media_st_icmsViewModel : ViewModelBase<Carga_trib_media_st_icmsModel>
+    public class Carga_trib_media_st_icmsViewModel : viewModelComum<Carga_trib_media_st_icmsModel>
     {
 
         #region Icommands

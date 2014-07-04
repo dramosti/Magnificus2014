@@ -30,20 +30,45 @@ namespace HLP.Base.Static
 
         public static StConnection bOnline { get; set; }
 
-        public static Window GetOpenWindow(string xName)
+        public static Window GetOpenWindow(string xName = "")
         {
-
             Window wd = null;
-            if (Application.Current != null)
+            if (xName == "")
             {
-                Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+                if (Application.Current != null)
                 {
-                    foreach (Window item in Application.Current.Windows)
+                    Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
                     {
-                        if (item.Name == xName)
-                            wd = item;
-                    }
-                }));
+                        object mainDataContext = Application.Current.MainWindow.DataContext;
+
+                        if (mainDataContext != null)
+                        {
+                            object manModel = mainDataContext.GetType().GetProperty(name: "winMan").GetValue(obj: mainDataContext);
+                            if (manModel != null)
+                            {
+                                object objCurrentTab = manModel.GetType().GetProperty(name: "_currentTab").GetValue(obj: manModel);
+                                if (objCurrentTab != null)
+                                {
+                                    wd = objCurrentTab.GetType().GetProperty(name: "_windows").GetValue(obj: objCurrentTab) as Window;
+                                }
+                            }
+                        }
+                    }));
+                }
+            }
+            else
+            {
+                if (Application.Current != null)
+                {
+                    Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+                    {
+                        foreach (Window item in Application.Current.Windows)
+                        {
+                            if (item.Name == xName)
+                                wd = item;
+                        }
+                    }));
+                }
             }
             return wd;
         }

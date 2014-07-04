@@ -84,7 +84,7 @@ namespace HLP.Magnificus.View.WPF
             string xInner = "";
             e.Handled = true;
 
-            if (xMessage.Contains("Violation of UNIQUE KEY constraint"))
+            if (xMessage.Contains("Violação da restrição UNIQUE KEY"))
             {
                 xMessage = "Não é possível inserir o valor '" + xMessage.Split('(')[1].Split(')')[0]
                     + "' porque ele já existe na base de dados.";

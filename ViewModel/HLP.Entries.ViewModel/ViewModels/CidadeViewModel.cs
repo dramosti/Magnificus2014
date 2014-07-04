@@ -9,10 +9,11 @@ using HLP.Entries.ViewModel.Commands;
 using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class CidadeViewModel : ViewModelBase<CidadeModel>
+    public class CidadeViewModel : viewModelComum<CidadeModel>
     {
 
         #region Icommands

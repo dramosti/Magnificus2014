@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace HLP.Comum.ViewModel.ViewModel
 {
-    public class SelectConnectionViewModel : ViewModelBase<ConnectionConfigModel>
+    public class SelectConnectionViewModel : viewModelComum<ConnectionConfigModel>
     {
         public ICommand ConcluirCommand { get; set; }
         public ICommand FecharCommand { get; set; }

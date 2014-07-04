@@ -1,9 +1,12 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace HLP.Comum.Model.Models
 {
@@ -11,9 +14,10 @@ namespace HLP.Comum.Model.Models
     {
         public modelComum()
         {
+            this.lDocumentos = new ObservableCollectionBaseCadastros<DocumentosModel>();
         }
 
-        
+
         private ObservableCollectionBaseCadastros<DocumentosModel> _lDocumentos;
 
         public ObservableCollectionBaseCadastros<DocumentosModel> lDocumentos
@@ -26,10 +30,10 @@ namespace HLP.Comum.Model.Models
             }
         }
         
-
         public modelComum(string xTabela)
             : base(xTabela: xTabela)
         {
+            this.lDocumentos = new ObservableCollectionBaseCadastros<DocumentosModel>();
         }
 
         protected override void NotifyPropertyChanged(string propertyName)
