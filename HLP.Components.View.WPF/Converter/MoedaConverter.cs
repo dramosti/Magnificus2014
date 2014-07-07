@@ -13,6 +13,13 @@ namespace HLP.Components.View.WPF.Converter
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             decimal d;
+
+            string nCasasDecimais = "";
+
+            if (parameter != null)
+                if (parameter != "")
+                    nCasasDecimais = parameter.ToString();
+
             if (value == null)
             {
                 d = decimal.Zero;
@@ -22,7 +29,7 @@ namespace HLP.Components.View.WPF.Converter
                 d = decimal.Zero;
             }
 
-            string sFormat = "{0:C2}";
+            string sFormat = "{0:C" + nCasasDecimais + "}";
 
             if (parameter != null)
             {

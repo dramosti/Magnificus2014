@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,25 @@ namespace HLP.Entries.Model.Models.Comercial
 {
     public partial class Lista_Preco_PaiModel : modelComum
     {
+        public static MethodInfo miGetProduto;
+        Window w;
+
         public Lista_Preco_PaiModel()
             : base(xTabela: "Lista_Preco_Pai")
         {
             this.lLista_preco = new ObservableCollectionBaseCadastros<Lista_precoModel>();
-            this.lLista_preco.CollectionChanged += lLista_preco_CollectionChanged;
+            this.lLista_preco.CollectionChanged += this.lLista_preco_CollectionChanged;
+
+            w = Sistema.GetOpenWindow(xName: "WinListaPreco");
+
+            Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+            {
+                if (w != null)
+                {
+                    miGetProduto = w.DataContext.GetType().GetMethod(name: "GetProduto");
+                }
+            }
+                ));
         }
 
         public void lLista_preco_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -224,13 +239,13 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _stMarkup = value;
 
+                base.NotifyPropertyChanged(propertyName: "stMarkup");
+
                 if (this.lLista_preco != null)
                     foreach (Lista_precoModel it in this.lLista_preco)
                     {
                         it.stMarkupLista = value;
                     }
-
-                base.NotifyPropertyChanged(propertyName: "stMarkup");
             }
         }
 
@@ -249,16 +264,22 @@ namespace HLP.Entries.Model.Models.Comercial
 
     public partial class Lista_precoModel : modelComum
     {
+        ProdutoModel objProduto;
+        Window w;
+
         public Lista_precoModel()
             : base(xTabela: "Lista_preco")
         {
+            w = Sistema.GetOpenWindow(xName: "WinListaPreco");
+
+
         }
 
         public void CalculaMarkup(Lista_precoModel objItemLista)
         {
-            decimal vCustoTotal = objItemLista._vCustoProduto + (objItemLista._vVenda * (objItemLista._pComissao ?? 0))
-                    + (objItemLista._vVenda * (objItemLista._pOutros ?? 0));
-            switch (objItemLista._stMarkupLista)
+            decimal vCustoTotal = objItemLista._vCustoProduto + (objItemLista._vVenda * ((objItemLista._pComissao / 100) ?? 0))
+                    + (objItemLista._vVenda * ((objItemLista._pOutros / 100) ?? 0));
+            switch (this.stMarkupLista)
             {
                 case 0://Margem Bruta
                     {
@@ -273,6 +294,35 @@ namespace HLP.Entries.Model.Models.Comercial
             }
             base.NotifyPropertyChanged(propertyName: "pMarkup");
         }
+
+        #region Propriedades não mapeadas na DataGrid
+
+
+        private int? _selectedIdUnidadeVenda;
+
+        public int? selectedIdUnidadeVenda
+        {
+            get { return _selectedIdUnidadeVenda; }
+            set
+            {
+                _selectedIdUnidadeVenda = value;
+                base.NotifyPropertyChanged(propertyName: "selectedIdUnidadeVenda");
+            }
+        }
+
+        private int? _selectedIdFamiliaProduto;
+
+        public int? selectedIdFamiliaProduto
+        {
+            get { return _selectedIdFamiliaProduto; }
+            set
+            {
+                _selectedIdFamiliaProduto = value;
+                base.NotifyPropertyChanged(propertyName: "selectedIdFamiliaProduto");
+            }
+        }
+
+        #endregion
 
         private int? _idListaPreco;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -293,6 +343,19 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _idProduto = value;
+
+                if (Lista_Preco_PaiModel.miGetProduto != null)
+                {
+                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                        {
+                            objProduto = Lista_Preco_PaiModel.miGetProduto.Invoke(
+                        obj: w.DataContext, parameters: new object[] { value }) as ProdutoModel;
+
+                            this.selectedIdUnidadeVenda = objProduto.idUnidadeMedidaVendas;
+                            this.selectedIdFamiliaProduto = objProduto.idFamiliaProduto;
+                        }));
+                }
+
                 base.NotifyPropertyChanged(propertyName: "idProduto");
             }
         }
@@ -473,6 +536,12 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "pMarkup");
             }
         }
+
+        #region Propriedades não mapeadas de Produtos
+
+
+
+        #endregion
 
         #region Propriedades não mapeadas
 

@@ -75,6 +75,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                    .DoNotMap(i => i.bChecked)
                    .DoNotMap(i => i.vlrEsperado)
                    .DoNotMap(i => i.stMarkupLista)
+                   .DoNotMap(i => i.selectedIdFamiliaProduto)
+                   .DoNotMap(i => i.selectedIdUnidadeVenda)
                    .Build());
             }
             return regAcessor.Execute(idListaPreco).FirstOrDefault();
@@ -90,6 +92,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
             .DoNotMap(i => i.bChecked)
             .DoNotMap(i => i.vlrEsperado)
             .DoNotMap(i => i.stMarkupLista)
+            .DoNotMap(i => i.selectedIdFamiliaProduto)
+                   .DoNotMap(i => i.selectedIdUnidadeVenda)
             .Build());
 
             try

@@ -7,7 +7,7 @@
 		xmlns:System="clr-namespace:System;assembly=mscorlib"  
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        x:Class="HLP.Entries.View.WPF.Crm.WinContato"
+        x:Class="HLP.Entries.View.WPF.GestãoComercial.Crm.WinContato"
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         Title="Contatos" Height="660" Width="1024"
         NameView="vwContato">

@@ -35,8 +35,34 @@ namespace HLP.Entries.Model.Models.Gerais
         public string xCondicaoPagamento { get; set; }
         [ParameterOrder(Order = 3)]
         public string xDescricao { get; set; }
+
+        private byte _stMetodo;
         [ParameterOrder(Order = 4)]
-        public byte stMetodo { get; set; }
+        public byte stMetodo
+        {
+            get { return _stMetodo; }
+            set
+            {
+                _stMetodo = value;
+
+                switch (value)
+                {
+                    case 1:
+                    case 3:
+                        {
+                            this.stCondicao = 0;
+                        } break;
+                    case 4:
+                    case 5:
+                    case 6:
+                        {
+                            this.stCondicao = 1;
+                        } break;
+                }
+
+                base.NotifyPropertyChanged(propertyName: "stMetodo");
+            }
+        }
 
         private int? _nMeses;
         [ParameterOrder(Order = 5)]
@@ -75,14 +101,43 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
 
+
+        private int? _idPlanoPagamento;
         [ParameterOrder(Order = 8)]
-        public int? idPlanoPagamento { get; set; }
+        public int? idPlanoPagamento
+        {
+            get { return _idPlanoPagamento; }
+            set
+            {
+                _idPlanoPagamento = value;
+
+                if (value != null &&
+                    value != 0)
+                {
+                    this.nDias = this.nMeses = this.nSemanas = null;
+                }
+
+                base.NotifyPropertyChanged(propertyName: "idPlanoPagamento");
+            }
+        }
+
         [ParameterOrder(Order = 9)]
         public int? idDiaPagamento { get; set; }
         [ParameterOrder(Order = 10)]
         public byte? stDataVencimento { get; set; }
+
+        private byte _stCondicao;
         [ParameterOrder(Order = 11)]
-        public byte stCondicao { get; set; }
+        public byte stCondicao
+        {
+            get { return _stCondicao; }
+            set
+            {
+                _stCondicao = value;
+                base.NotifyPropertyChanged(propertyName: "stCondicao");
+            }
+        }
+
         private byte? _stAlocacaoImposto;
         [ParameterOrder(Order = 12)]
         public byte? stAlocacaoImposto

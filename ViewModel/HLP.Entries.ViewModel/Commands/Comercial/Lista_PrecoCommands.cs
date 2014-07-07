@@ -106,7 +106,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
                 //this.objViewModel.currentID = this.objViewModel.navigatePesquisa.FirstOrDefault();
             }
-            this.PesquisarRegistro();            
+            this.PesquisarRegistro();
         }
 
         private void IniciaCollection()
@@ -551,8 +551,21 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 else
                 {
                     this.IniciaCollection();
-                    if (this.objViewModel.currentID > 0)
-                        this.objViewModel.lIdsHierarquia = this.objService.getHierarquiaLista(idListaPreco: this.objViewModel.currentID);
+                    if (this.objViewModel.currentModel != null)
+                    {
+                        this.objViewModel.currentModel.lLista_preco.CollectionChanged +=
+                            this.objViewModel.currentModel.lLista_preco_CollectionChanged;
+
+                        foreach (Lista_precoModel it in this.objViewModel.currentModel.lLista_preco)
+                        {
+                            it.stMarkupLista = this.objViewModel.currentModel.stMarkup;
+                        }
+
+                        if (this.objViewModel.currentID > 0)
+                        {
+                            this.objViewModel.lIdsHierarquia = this.objService.getHierarquiaLista(idListaPreco: this.objViewModel.currentID);
+                        }
+                    }
 
                     this.objViewModel.bTreeCarregada = false;
                 }
@@ -568,19 +581,16 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             this.objViewModel.currentModel = this.objService.GetObjeto(id: this.objViewModel.selectedId);
 
-            if (this.objViewModel.currentModel != null)
-                if (this.objViewModel.currentModel.lLista_preco != null)
-                    this.objViewModel.currentModel.lLista_preco.CollectionChanged += this.objViewModel.currentModel.lLista_preco_CollectionChanged;
+            //if (this.objViewModel.currentModel != null)
+            //    if (this.objViewModel.currentModel.lLista_preco != null)
+            //        this.objViewModel.currentModel.lLista_preco.CollectionChanged += this.objViewModel.currentModel.lLista_preco_CollectionChanged;
         }
 
         private void getListaPreco(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel = this.objService.GetObjeto(id: this.objViewModel.currentID);
-            this.objViewModel.selectedId = this.objViewModel.currentID;
 
-            if (this.objViewModel.currentModel != null)
-                if (this.objViewModel.currentModel.lLista_preco != null)
-                    this.objViewModel.currentModel.lLista_preco.CollectionChanged += this.objViewModel.currentModel.lLista_preco_CollectionChanged;
+            this.objViewModel.selectedId = this.objViewModel.currentID;
         }
         #endregion
 
@@ -672,6 +682,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         public decimal GetPrecoCustoProduto(int idProduto)
         {
             return this.objServicoProduto.GetPrecoCustoProduto(idProduto: idProduto);
+        }
+
+        public ProdutoModel GetProduto(int idProduto)
+        {
+            return objServicoProduto.GetObjeto(id: idProduto);
         }
     }
 }

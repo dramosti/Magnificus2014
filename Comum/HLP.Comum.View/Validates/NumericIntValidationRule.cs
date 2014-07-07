@@ -13,6 +13,9 @@ namespace HLP.Comum.View.Validates
         {
             int result;
 
+            if (value == null || value == "")
+                return ValidationResult.ValidResult;
+
             if (int.TryParse(s: value.ToString(), result: out result))
             {
                 return ValidationResult.ValidResult;
@@ -22,6 +25,6 @@ namespace HLP.Comum.View.Validates
                 errorContent: "Valor deve ser um número inteiro válido");
         }
 
-        
+
     }
 }

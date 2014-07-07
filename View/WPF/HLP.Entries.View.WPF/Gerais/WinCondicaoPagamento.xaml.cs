@@ -25,6 +25,7 @@ namespace HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro
         {
             InitializeComponent();
             this.ViewModel = new Condicao_PagamentoViewModel();
+            this.gridPrincipal.KeyUp += base.Window_KeyUp;
         }
 
         public Condicao_PagamentoViewModel ViewModel

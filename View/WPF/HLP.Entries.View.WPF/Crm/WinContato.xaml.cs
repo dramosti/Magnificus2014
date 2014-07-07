@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using HLP.Components.View.WPF;
 
-namespace HLP.Entries.View.WPF.Crm
+namespace HLP.Entries.View.WPF.GestãoComercial.Crm
 {
     /// <summary>
     /// Interaction logic for WinContato.xaml

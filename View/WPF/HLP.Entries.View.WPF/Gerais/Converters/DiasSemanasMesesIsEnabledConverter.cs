@@ -25,8 +25,13 @@ namespace HLP.Entries.View.WPF.Gerais.Converters
 
             if (values[1] == DependencyProperty.UnsetValue
                 || values[2] == DependencyProperty.UnsetValue
-                || values[3] == DependencyProperty.UnsetValue)
-                return true;            
+                || values[3] == DependencyProperty.UnsetValue
+                || values[4] == DependencyProperty.UnsetValue)
+                return true;
+
+            if (values[4] != null)
+                if (!(string.IsNullOrEmpty(value: values[4].ToString())))
+                    return false;
 
             decimal m = 0;
             decimal s = 0;

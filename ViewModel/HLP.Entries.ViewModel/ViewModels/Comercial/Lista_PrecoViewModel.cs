@@ -71,6 +71,12 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             return comm.GetPrecoCustoProduto(idProduto: idProduto);
         }
 
+        public ProdutoModel GetProduto(int idProduto)
+        {
+            return comm.GetProduto(idProduto: idProduto);
+        }
+
+
         #region Propriedades utilizadas na View
 
         private bool _bCompGeral;

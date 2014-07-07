@@ -11,6 +11,12 @@ namespace HLP.Components.View.WPF.Converter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+            string nCasasDecimais = "2";
+
+            if (parameter != null)
+                if (parameter.ToString() != "")
+                    nCasasDecimais = parameter.ToString();
+
             decimal d;
             if (value == null)
             {
@@ -21,7 +27,7 @@ namespace HLP.Components.View.WPF.Converter
                 d = decimal.Zero;
             }
 
-            return String.Format("{0:P2}", d / 100);
+            return String.Format("{0:P" + nCasasDecimais + "}", d / 100);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

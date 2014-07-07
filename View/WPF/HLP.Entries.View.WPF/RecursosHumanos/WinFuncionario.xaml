@@ -45,7 +45,7 @@
                     <System:String>vwCidadeToComboBox</System:String>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </runtime:WindowsBase.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -147,7 +147,8 @@
 								            NameWindowCadastro="WinDepartamento"
 								            xIdPesquisa="{Binding currentModel.idDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								            IsEnabled="{Binding bIsEnabled}"
-								            ToolTip="Informar o Departamento do funcionário" TableView="vwDepartamento">
+								            ToolTip="Informar o Departamento do funcionário" TableView="vwDepartamento"
+                                        FieldPesquisa="ID">
                                         <Components:CustomPesquisa.Items>
                                             <System:String>xDepartamento</System:String>
                                             <System:String>xDescricao</System:String>
@@ -431,7 +432,7 @@
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                                        
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <!--Label Components-->
 
@@ -439,7 +440,7 @@
                                     <Components:CustomTextBlock Text="Data Final" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Text="Visto de Trabalho" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Text="Data Final" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                                    
+
                                     <!--Components-->
 
                                     <Components:CustomTextBox Grid.Column="2" Grid.Row="1"
@@ -483,7 +484,7 @@
                                         <RowDefinition Height="Auto" MaxHeight="23"/>
                                         <RowDefinition Height="Auto" MaxHeight="23"/>
                                         <RowDefinition Height="Auto" MaxHeight="23"/>
-                                        <RowDefinition Height="Auto" MaxHeight="23"/>                                        
+                                        <RowDefinition Height="Auto" MaxHeight="23"/>
                                     </Grid.RowDefinitions>
                                     <!--Label Components-->
 
@@ -574,8 +575,8 @@
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                                        
-                                        
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+
                                     </Grid.RowDefinitions>
 
                                     <!--LabelComponents-->
@@ -934,7 +935,7 @@
                                     <RowDefinition Height="10"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                                    
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
 
                                 </Grid.RowDefinitions>
                                 <!--Label Components-->
@@ -1024,7 +1025,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Expander Header="Produtos Representante" IsExpanded="True" >  
+                            <Expander Header="Produtos Representante" IsExpanded="True" >
                                 <Expander.Style>
                                     <Style TargetType="{x:Type Expander}" BasedOn="{StaticResource ExpanderPadrao}">
                                         <Style.Triggers>
@@ -1044,7 +1045,7 @@
                                     </Style>
                                 </Expander.Style>
                                 <Grid>
-                                <DataGrid
+                                    <DataGrid
                                     Name="gridRepresentantes"
                                     ItemsSource="{Binding currentModel.lFuncionario_Comissao_Produto}"                          
                                     IsEnabled="{Binding bIsEnabled}"
@@ -1053,45 +1054,45 @@
                                     CanUserDeleteRows="True"
                                     CanUserAddRows="True"
                                     >
-                                    <DataGrid.Columns>
-                                        <DataGridTemplateColumn x:Name="clProdutos" Header="Produtos" Width="*" >
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding Path=idProduto, Converter={StaticResource cbxDisplayConv}, 
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn x:Name="clProdutos" Header="Produtos" Width="*" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Path=idProduto, Converter={StaticResource cbxDisplayConv}, 
                                                     ConverterParameter={StaticResource lresultProdutos}}"
                                                    />
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                            <DataGridTemplateColumn.CellEditingTemplate>
-                                                <DataTemplate>
-                                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEdit}" >
-                                                        <ComboBox x:Name="cbxEdit"
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                                <DataGridTemplateColumn.CellEditingTemplate>
+                                                    <DataTemplate>
+                                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEdit}" >
+                                                            <ComboBox x:Name="cbxEdit"
                 ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
                                             SelectedValuePath="id"
                                             DisplayMemberPath="display"                      
             SelectedValue="{Binding idProduto,
                                 UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                                                       IsSynchronizedWithCurrentItem="False"/>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellEditingTemplate>
-                                        </DataGridTemplateColumn>
-                                        <DataGridTextColumn                                
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellEditingTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTextColumn                                
                                         Header="% Comissão a Vista" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAvista, UpdateSourceTrigger=LostFocus,
                                             Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                                        <DataGridTextColumn                                
+                                            <DataGridTextColumn                                
                                         Header="% Comissão a Prazo" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAprazo, UpdateSourceTrigger=LostFocus,
                                             Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                                    </DataGrid.Columns>
-                                </DataGrid>                                
+                                        </DataGrid.Columns>
+                                    </DataGrid>
                                 </Grid>
                             </Expander>
                             <Expander Grid.Column="0" Header="Família de Produto" IsExpanded="True" >
@@ -1261,7 +1262,7 @@
                 <AdornerDecorator>
                     <ContentControl Content="{ Binding Path=hierarquiaFunc, Mode=OneWay}"></ContentControl>
                 </AdornerDecorator>
-            </TabItem>            
+            </TabItem>
         </TabControl>
     </Grid>
 </runtime:WindowsBase>

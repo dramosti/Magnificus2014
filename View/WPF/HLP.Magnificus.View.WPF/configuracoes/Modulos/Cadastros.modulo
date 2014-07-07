@@ -96,7 +96,7 @@
     type="HLP.Entries.View.WPF.Parametrização.WinParametrizacao, HLP.Entries.View.WPF">
   </object>
   <object id="WinContato" name="Contatos" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Crm.WinContato, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoComercial.Crm.WinContato, HLP.Entries.View.WPF">
   </object>
   <object id="WinModoEntrega" name="Modos_de_Entrega" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.GestãoDeLogística.WinModoEntrega, HLP.Entries.View.WPF">
