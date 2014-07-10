@@ -58,6 +58,7 @@
     <Compile Include="Commands\LoginCommands.cs" />
     <Compile Include="Commands\MainCommands.cs" />
     <Compile Include="Commands\SenhaSupervisorCommands.cs" />
+    <Compile Include="Commands\wdMainCommands.cs" />
     <Compile Include="Messages\Commands\HlpMessageAlertCommands.cs" />
     <Compile Include="Messages\Commands\HlpMessageErrorCommands.cs" />
     <Compile Include="Messages\Commands\HlpMessageYesNoCommands.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\messageDeleteNotAllowedFK.cs" />
     <Compile Include="ViewModel\SenhaSupervisorViewModel.cs" />
+    <Compile Include="ViewModel\wdMainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">

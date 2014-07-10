@@ -25,6 +25,8 @@ namespace HLP.Components.View.WPF
         public HlpDatePicker()
         {
             InitializeComponent();
+
+            this.btnCalendar.Content = DateTime.Now.Day;
         }
 
         public StFormatoDatePicker stFormatoDtPicker

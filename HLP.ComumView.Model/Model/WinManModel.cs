@@ -13,7 +13,11 @@ namespace HLP.ComumView.Model.Model
 {
     public class WinManModel : modelBase
     {
-       
+        public WinManModel()
+        {
+            this.lTabPagesAtivas = new ObservableCollection<TabPagesAtivasModel>();
+        }
+
         private string _sToolTipConexao;
         public string sToolTipConexao
         {

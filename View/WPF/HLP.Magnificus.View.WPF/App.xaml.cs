@@ -199,14 +199,14 @@ namespace HLP.Magnificus.View.WPF
                             Application.Current.Shutdown();
                         }
 
-                        HLP.Magnificus.View.WPF.MainWindow wd = new MainWindow();
+                        wdMain wd = new wdMain();
                         this.MainWindow = wd;
 
                         WinLogin wdLogin = new WinLogin(stModoInicial: ComumView.ViewModel.ViewModel.ModoInicial.padrao);
                         wdLogin.ShowDialog();
                         if (wdLogin.ViewModel.bLogado)
                         {
-                            wd._viewModel.CarregaDadosLogin();
+                            wd.ViewModel.CarregaDadosLogin();
                             FrameworkElement.LanguageProperty.OverrideMetadata(
                             typeof(FrameworkElement),
                             new FrameworkPropertyMetadata(

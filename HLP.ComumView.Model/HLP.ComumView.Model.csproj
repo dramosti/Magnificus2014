@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\loginModel.cs" />
+    <Compile Include="Model\mainMenuModel.cs" />
     <Compile Include="Model\MenuItemModel.cs" />
     <Compile Include="Model\windowsModel.cs" />
     <Compile Include="Model\WinManModel.cs" />
@@ -74,6 +75,10 @@
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
+      <Name>HLP.Comum.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
