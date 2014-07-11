@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace HLP.Components.Model.Models
 {
     public partial class CustomPesquisaModel : modelComum
-    {        
+    {
         private string _xDisplay;
 
         public string xDisplay
@@ -21,6 +21,11 @@ namespace HLP.Components.Model.Models
                 _xDisplay = value;
                 base.NotifyPropertyChanged(propertyName: "xDisplay");
             }
+        }
+
+        public override string ToString()
+        {
+            return this.xDisplay;
         }
     }
 
@@ -37,7 +42,7 @@ namespace HLP.Components.Model.Models
         {
             get
             {
-                if(columnName == "xDisplay")
+                if (columnName == "xDisplay")
                 {
                     if (this.xDisplay == "")
                         return "Não foi encontrado registro na base de dados com o código informado.";

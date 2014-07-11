@@ -101,6 +101,7 @@
     <Compile Include="CustomTextBlock.cs" />
     <Compile Include="CustomTextBox.cs" />
     <Compile Include="CustomTextBoxFindFiles.cs" />
+    <Compile Include="CustomTextintellisense.cs" />
     <Compile Include="HlpButtonHierarquia.xaml.cs">
       <DependentUpon>HlpButtonHierarquia.xaml</DependentUpon>
     </Compile>

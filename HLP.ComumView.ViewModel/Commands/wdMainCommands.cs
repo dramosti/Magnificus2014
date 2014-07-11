@@ -195,6 +195,10 @@ namespace HLP.ComumView.ViewModel.Commands
         {
             try
             {
+                TabControl tc = Application.Current.MainWindow.FindName(name: "mainTabControl") as TabControl;
+
+                tc.SelectedIndex = 1;
+
                 Window form = GerenciadorModulo.Instancia.CarregaForm(nome: xForm != null ? xForm.ToString() :
                     this.vm.selectedSubMenu.nameWindow, exibeForm: Base.InterfacesBases.TipoExibeForm.Modal);
                 if ((xForm != null ? xForm.ToString() :

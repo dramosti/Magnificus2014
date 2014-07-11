@@ -1,6 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Modules;
 using HLP.Base.Static;
+using HLP.Components.Model.Models;
 using HLP.Comum.ViewModel.ViewModel;
 using HLP.ComumView.Model.Model;
 using HLP.ComumView.ViewModel.Commands;
@@ -16,6 +17,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -241,12 +243,66 @@ namespace HLP.ComumView.ViewModel.ViewModel
                 }
             }
 
+
+
+            List<CustomPesquisaModel> _lItems = new List<CustomPesquisaModel>();
+
+            this.PercorreItensMenu(l: _lItems, lMenu: this.lMenu.ToList(), xPath: string.Empty);
+
+            this.lAllItemsMenu = _lItems;
             #endregion
 
 
             winMan = new WinManModel();
             this.tabWindows = new TabControl();
         }
+
+        private void PercorreItensMenu(List<CustomPesquisaModel> l, List<mainMenuModel> lMenu, string xPath)
+        {
+            foreach (mainMenuModel i in lMenu)
+            {
+                if (i.lSubItens.Count > 0)
+                    this.PercorreItensMenu(l: l, lMenu: i.lSubItens.ToList(), xPath: string.Format(
+                        format: @"{0}\{1}", arg0: xPath, arg1: i.xCaption));
+                else
+                    l.Add(item: new CustomPesquisaModel
+                        {
+                            xDisplay = string.Format(format: @"{0}\{1}", arg0: xPath, arg1: i.xCaption)
+                        });
+            }
+        }
+
+        public void FilterItensMenu(object sender, FilterEventArgs e)
+        {
+            if (this.xTextCbx == null)
+                return;
+
+            if ((e.Item as CustomPesquisaModel).xDisplay.ToUpper().Contains(
+                value: this.xTextCbx.ToUpper()))
+                e.Accepted = true;
+            else
+                e.Accepted = false;
+        }
+
+        private string _xTextCbx;
+
+        public string xTextCbx
+        {
+            get { return _xTextCbx; }
+            set
+            {
+                _xTextCbx = value;
+                base.NotifyPropertyChanged(propertyName: "xTextCbx");
+
+                CollectionViewSource cvs = Application.Current.MainWindow.FindResource(resourceKey: "cvsItensMenu")
+                    as CollectionViewSource;
+
+                cvs.Filter += this.FilterItensMenu;
+
+                (Application.Current.MainWindow.FindName(name: "cbxItemsMenu") as ComboBox).IsDropDownOpen = true;
+            }
+        }
+
 
         private ObservableCollection<mainMenuModel> _lMenu;
 
@@ -259,6 +315,54 @@ namespace HLP.ComumView.ViewModel.ViewModel
                 base.NotifyPropertyChanged(propertyName: "lMenu");
             }
         }
+
+
+        private List<CustomPesquisaModel> _lAllItemsMenu;
+
+        public List<CustomPesquisaModel> lAllItemsMenu
+        {
+            get { return _lAllItemsMenu; }
+            set
+            {
+                _lAllItemsMenu = value;
+                base.NotifyPropertyChanged(propertyName: "lAllItemsMenu");
+            }
+        }
+
+
+        private CustomPesquisaModel _selectedFilteredItem;
+
+        public CustomPesquisaModel selectedFilteredItem
+        {
+            get { return _selectedFilteredItem; }
+            set
+            {
+                _selectedFilteredItem = value;
+                base.NotifyPropertyChanged(propertyName: "selectedFilteredItem");
+
+                if (value != null)
+                {
+                    int count = 0;
+                    foreach (string x in value.xDisplay.Split(separator: '\\'))
+                    {
+                        if (x != "")
+                        {
+                            count++;
+
+                            if (count == 1)
+                            {
+                                this.commOpenSubMenu.Execute(parameter: x);
+                            }
+                            else
+                            {
+                                this.commOpenItem.Execute(parameter: x);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
         private mainMenuModel _selectedMenu;
 

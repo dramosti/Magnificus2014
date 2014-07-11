@@ -89,5 +89,10 @@ namespace HLP.Magnificus.View.WPF
                 FileStatic.ExecuteFile(xPath: (sender as TextBlock).Text);
             }
         }
+
+        private void ComboBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (sender as ComboBox).IsDropDownOpen = true;
+        }
     }
 }
