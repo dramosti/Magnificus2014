@@ -5,17 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ConvertLocal="clr-namespace:HLP.Components.View.WPF.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="20" x:Name="ucDtPicker">
+             d:DesignHeight="20" Height="20" x:Name="ucDtPicker">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>           
+            </ResourceDictionary.MergedDictionaries>
             <ConvertLocal:VisibilityDatePickerConverter x:Key="visDtPickerConverter"></ConvertLocal:VisibilityDatePickerConverter>
             <ConvertLocal:DateShortConverter x:Key="dtShortConverter"></ConvertLocal:DateShortConverter>
             <ConvertLocal:TimeSpanToString x:Key="tmShortConverter"></ConvertLocal:TimeSpanToString>
-            
-        </ResourceDictionary>       
+
+        </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel Orientation="Horizontal">
         <Border>
@@ -33,8 +33,8 @@
         </Border>
         <Button x:Name="btnCalendar" DockPanel.Dock="Right" Width="20" Style="{StaticResource Button_HLP_DATE_PICKER}" ContextMenuService.Placement="Right" Click="btnCalendar_Click"
                 Visibility="{Binding ElementName=ucDtPicker, Path=stFormatoDtPicker,
-                Converter={StaticResource visDtPickerConverter}, ConverterParameter=btnCalendar}" Content="29" Background="{x:Null}" BorderBrush="{x:Null}"> 
-           
+                Converter={StaticResource visDtPickerConverter}, ConverterParameter=btnCalendar}" Content="29" Background="{x:Null}" BorderBrush="{x:Null}">
+
             <Button.ContextMenu>
                 <ContextMenu>
                     <MenuItem Height="150">

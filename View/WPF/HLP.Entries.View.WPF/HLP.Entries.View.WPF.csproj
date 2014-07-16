@@ -252,6 +252,7 @@
     </Compile>
     <Compile Include="Gerais\WinUF.xaml.cs">
       <DependentUpon>WinUF.xaml</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Gerais\WinUnidadeMedida.xaml.cs">
       <DependentUpon>WinUnidadeMedida.xaml</DependentUpon>
@@ -493,6 +494,7 @@
     <Page Include="Gerais\WinUF.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Include="Parametrização\WinParametrizacao.xaml">
       <SubType>Designer</SubType>

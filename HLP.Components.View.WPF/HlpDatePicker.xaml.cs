@@ -22,11 +22,41 @@ namespace HLP.Components.View.WPF
     /// </summary>
     public partial class HlpDatePicker : UserControl
     {
+        private bool focused = false;
+
         public HlpDatePicker()
         {
             InitializeComponent();
 
             this.btnCalendar.Content = DateTime.Now.Day;
+
+            this.GotFocus += HlpDatePicker_GotFocus;
+
+        }
+
+        void HlpDatePicker_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (this.focused == false)
+            {
+                switch (this.stFormatoDtPicker)
+                {
+                    case StFormatoDatePicker.time:
+                        {
+                            this.txtHora.Focus();
+                            this.focused = true;
+                        }
+                        break;
+                    case StFormatoDatePicker.date:
+                    case StFormatoDatePicker.datetime:
+                        {
+                            this.txtData.Focus();
+                            this.focused = true;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         public StFormatoDatePicker stFormatoDtPicker
@@ -41,8 +71,6 @@ namespace HLP.Components.View.WPF
         // Using a DependencyProperty as the backing store for stFormatoDtPicker.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty stFormatoDtPickerProperty =
             DependencyProperty.Register("stFormatoDtPicker", typeof(StFormatoDatePicker), typeof(HlpDatePicker), new PropertyMetadata(StFormatoDatePicker.date));
-
-
 
         public string xTextDate
         {

@@ -66,6 +66,14 @@ namespace HLP.Components.View.WPF
                 this.ViewModel = new CustomPesquisaViewModel();
                 this.Loaded += CustomPesquisa_Loaded;
             }
+
+            this.KeyUp += CustomPesquisa_KeyUp;
+        }
+
+        void CustomPesquisa_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F5)
+                this.ViewModel.searchCommand.Execute(parameter: this);
         }
 
         void CustomPesquisa_Loaded(object sender, RoutedEventArgs e)

@@ -84,6 +84,17 @@ namespace HLP.Entries.Model.Models.Parametros
                 base.NotifyPropertyChanged(propertyName: "nCasasDecimaisTotalNota");
             }
         }
+        private int? _idTipoDocumentoDefaultOrcamento;
+        [ParameterOrder(Order = 22)]
+        public int? idTipoDocumentoDefaultOrcamento
+        {
+            get { return _idTipoDocumentoDefaultOrcamento; }
+            set
+            {
+                _idTipoDocumentoDefaultOrcamento = value;
+                base.NotifyPropertyChanged(propertyName: "idTipoDocumentoDefaultOrcamento");
+            }
+        }
     }
 
     public partial class Parametro_ComercialModel

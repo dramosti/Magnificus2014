@@ -6,6 +6,7 @@
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
 		xmlns:System="clr-namespace:System;assembly=mscorlib" 
         x:Class="HLP.Entries.View.WPF.Parametrização.WinParametrizacao"
+        xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         Title="Parâmetros" Height="650" Width="1200">
     <runtime:WindowsBase.Resources>
         <ResourceDictionary>
@@ -14,7 +15,13 @@
             </ResourceDictionary.MergedDictionaries>
             <conv:PorcentagemConverter x:Key="porcentagemConverter"/>
             <conv:MoedaConverter x:Key="MoedaConverter"/>
-        </ResourceDictionary>        
+            <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
+            <ObjectDataProvider x:Key="lResultTipoDocumentos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+                <ObjectDataProvider.MethodParameters>
+                    <System:String>vwTipoDocumentoToComboBoxOrcamento</System:String>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+        </ResourceDictionary>
     </runtime:WindowsBase.Resources>
     <DockPanel LastChildFill="True" >
         <TabControl  VerticalAlignment="Stretch" Margin="0,10,0,0" x:Name="tabPrincipal">
@@ -40,7 +47,7 @@
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                
+
                                 <!--Label-->
 
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Tipo do estoque mínimo" Height="20" Margin="0,0,0,3"/>
@@ -50,7 +57,7 @@
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Utiliza grade nos produtos?" VerticalAlignment="Center"/>
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="6" Text="Utiliza rastreabilidade dos materiais?" VerticalAlignment="Center"/>
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Utiliza rastreabilidade dos produtos acabados?" VerticalAlignment="Center"/>
-                                
+
                                 <!--Components-->
 
                                 <Components:CustomComboBox stCompPosicao="first"
@@ -74,7 +81,7 @@
                                         <System:String>0-Automático</System:String>
                                         <System:String>1-Manual</System:String>
                                     </Components:CustomComboBox.Items>
-                                </Components:CustomComboBox>                                
+                                </Components:CustomComboBox>
                                 <Components:CustomComboBox
                                     Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
                                     SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stMediaConsumo, 
@@ -85,7 +92,7 @@
                                         <System:String>0-Semanal</System:String>
                                         <System:String>1-Mensal</System:String>
                                     </Components:CustomComboBox.Items>
-                                </Components:CustomComboBox>                                
+                                </Components:CustomComboBox>
                                 <Components:CustomComboBox
                                     Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
                                     SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stVendasGera, 
@@ -98,7 +105,7 @@
                                         <System:String>2-Cotação</System:String>
                                         <System:String>3-Pedido</System:String>
                                     </Components:CustomComboBox.Items>
-                                </Components:CustomComboBox>                                
+                                </Components:CustomComboBox>
                                 <Components:CustomCheckBox
                                     Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Width="40" HorizontalAlignment="Left"
                                     IsChecked="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stGradeEstoque
@@ -107,7 +114,7 @@
 								    IsEnabled="{Binding bIsEnabled}"
                                     VerticalAlignment="Center"
 								    ToolTip="Informar se o Magnificus irá trabalhar com grades, além dessa informação para que veja as opções das grades nas movimentações de vendas, compras ou movimentação, no cadastro do produto deve estar definido em qual grade ele pertence.">
-                                </Components:CustomCheckBox>                                
+                                </Components:CustomCheckBox>
                                 <Components:CustomCheckBox
                                     Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" Width="40" HorizontalAlignment="Left"
                                     IsChecked="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stRastreabilidadeMaterial, 
@@ -115,7 +122,7 @@
 								    IsEnabled="{Binding bIsEnabled}"
                                     VerticalAlignment="Center"
 								    ToolTip="Informar se o Magníficus irá fazer a rastreabilidade de todos os materias de consumo, compras, aquisição, etc. Menos os produtos acabados.">
-                                </Components:CustomCheckBox>                                
+                                </Components:CustomCheckBox>
                                 <Components:CustomCheckBox 
                                     Grid.Column="2" Grid.Row="7" Height="20" Margin="0,0,0,3" HorizontalAlignment="Left" Width="40"
                                     IsChecked="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stRastreabilidadeProdutoAcabado, 
@@ -158,7 +165,7 @@
                                     <RowDefinition Height="Auto" MaxHeight="23"/>
                                     <RowDefinition Height="Auto" MaxHeight="23"/>
                                 </Grid.RowDefinitions>
-                                
+
                                 <!--Label-->
 
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Horas trabalhadas dia" />
@@ -172,7 +179,7 @@
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="9" Text="Custo Médio Default"/>
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="10" Text="Base de calculo para o custo operacional"/>
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="11" Text="Tipo de operação padrão para calculo de custo do produto/material"/>
-                                
+
                                 <!--Components-->
 
                                 <Components:HlpDatePicker
@@ -182,14 +189,14 @@
                                     stFormatoDtPicker="time"
 								    IsEnabled="{Binding bIsEnabled}"
 							        ToolTip="de custo hora homem. ">
-                                </Components:HlpDatePicker>                               
+                                </Components:HlpDatePicker>
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="2"
                                     Text="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.xDiasTrabalhadasSemana, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								    IsEnabled="{Binding bIsEnabled}"
 								    ToolTip="Informar a quantidade de dias trabalhada na semana para calculo de custo.">
-                                </Components:CustomTextBox>                               
+                                </Components:CustomTextBox>
                                 <Components:CustomComboBox 
                                     Grid.Column="2" Grid.Row="3"
                                     SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCustoComposicao, 
@@ -200,7 +207,7 @@
                                         <System:String>0-Compra</System:String>
                                         <System:String>1-Venda</System:String>
                                     </Components:CustomComboBox.Items>
-                                </Components:CustomComboBox>                                
+                                </Components:CustomComboBox>
                                 <Components:CustomComboBox 
                                     Grid.Column="2" Grid.Row="4"
                                     SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.st_Markup, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
@@ -210,7 +217,7 @@
                                         <System:String>0-Preço de Compra</System:String>
                                         <System:String>1- Preço de Venda</System:String>
                                     </Components:CustomComboBox.Items>
-                                </Components:CustomComboBox>                                
+                                </Components:CustomComboBox>
                                 <Components:CustomComboBox
                                     Grid.Column="2"  Grid.Row="5"
                                     SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stValorVenda, 
@@ -222,20 +229,20 @@
                                         <System:String>1-SUGERIDO(o calculado pelo sistema)</System:String>
                                         <System:String>2-MERCADO(é o valor de mercado informado na composição de preços)</System:String>
                                     </Components:CustomComboBox.Items>
-                                </Components:CustomComboBox>                                
+                                </Components:CustomComboBox>
                                 <Components:CustomCheckBox 
                                     Grid.Column="2" Grid.Row="6"
                                     IsChecked="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stAtualizaValorCusto, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								    IsEnabled="{Binding bIsEnabled}">                                    
-                                </Components:CustomCheckBox>                                
+								    IsEnabled="{Binding bIsEnabled}">
+                                </Components:CustomCheckBox>
                                 <Components:CustomCheckBox
                                     Grid.Column="2" Grid.Row="7"
                                     IsChecked="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stAtualizaValorVenda, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								    IsEnabled="{Binding bIsEnabled}"                                    
 								    ToolTip="Informar se o valor de venda será atualizado automaticamente pelo sistema após o recebimento, seja produto acabado ou material de venda">
-                                </Components:CustomCheckBox>                                
+                                </Components:CustomCheckBox>
                                 <Components:CustomComboBox
                                     Grid.Column="2" Grid.Row="8"
                                     SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCustoDefault, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
@@ -246,7 +253,7 @@
                                         <System:String>1-Custo Manual</System:String>
                                         <System:String>2-Custo Automático</System:String>
                                     </Components:CustomComboBox.Items>
-                                </Components:CustomComboBox>                                
+                                </Components:CustomComboBox>
                                 <Components:CustomComboBox
                                     Grid.Column="2" Grid.Row="9"
                                     SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCustoMedio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
@@ -256,7 +263,7 @@
                                         <System:String>0-Custo Médio(Ponderado)</System:String>
                                         <System:String>1-Custo Atual</System:String>
                                     </Components:CustomComboBox.Items>
-                                </Components:CustomComboBox>                                
+                                </Components:CustomComboBox>
                                 <Components:CustomComboBox
                                     Grid.Column="2" Grid.Row="10"
                                     SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCompoeBaseCalculoCustoOperacional, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
@@ -267,7 +274,7 @@
                                         <System:String>1-VALOR DE CUSTO DO MATERIAL(DEFAULT)</System:String>
                                         <System:String>2-VALOR DE CUSTO DO MATERIAL + TEMPO APLICADO + VALOR DO RATEIO DO CUSTO FIXO + VALOR DO CUSTO DE DEPRECIAÇÃO + VALOR DO CUSTO FIXO SOBRE O PRODUTO + TOTAL DO CUSTO FIXO SOBRE O PRODUTO + CUSTO VARIÁVEL</System:String>
                                     </Components:CustomComboBox.Items>
-                                </Components:CustomComboBox>                                
+                                </Components:CustomComboBox>
                                 <Components:HlpPesquisa 
 								Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="11" Height="20" Margin="0,0,0,3"
 								Text="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.idTipoOperacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -306,16 +313,16 @@
                                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                             </Grid.RowDefinitions>
-                            
+
                             <!--Label-->
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Total máximo para liberação automática do pedido" />
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Requer aprovação da requisição?"/>
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Requer aprovação de cotação de compras?"/>
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Requer aprovação de pedido de compras?"/>
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Ignora saldo do estoque na requisição?"/>
-                            
+
                             <!--Components-->
-                            
+
                             <Components:CustomTextBox
                                 Grid.Column="2" Grid.Row="1"
                                 Text="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.vAprovacaoAutomaticaPedidoCompras, 
@@ -323,21 +330,21 @@
                                 UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat={}{0:C}}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Informar o total máximo para aquele determinado pedido de compras para ser liberado automaticamente pelo sistema, sem aprovação de um supervisor.">
-                            </Components:CustomTextBox>                            
+                            </Components:CustomTextBox>
                             <Components:CustomCheckBox 
                                 Grid.Column="2" Grid.Row="2"
                                 IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.stAprovacaoRequisicao, Mode=TwoWay, 
                                 NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"                                
 								ToolTip="Informar se será obrigatória a aprovação da Requisição seja ela de consumo ou de compras. Quando 'SIM' o sistema só irá liberar a Requisição para cotação de compras quando aprovado por algum supervisor.">
-                            </Components:CustomCheckBox>                            
+                            </Components:CustomCheckBox>
                             <Components:CustomCheckBox
                                 Grid.Column="2" Grid.Row="3"
                                 IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.stAprovacaoCotacaoCompras, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"                                
 								ToolTip="Informar se será obrigatória a aprovação da cotação de compras. Quando 'SIM' o sistema só irá liberar a cotação para montagem do pedido quando aprovado por algum supervisor">
-                            </Components:CustomCheckBox>                            
+                            </Components:CustomCheckBox>
                             <Components:CustomComboBox 
                                 Grid.Column="2" Grid.Row="4"
                                 SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.stAprovacaoPedidoCompras, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
@@ -349,7 +356,7 @@
                                     <System:String>2-PARCIAL</System:String>
                                     <System:String>3-USUARIO</System:String>
                                 </Components:CustomComboBox.Items>
-                            </Components:CustomComboBox>                            
+                            </Components:CustomComboBox>
                             <Components:CustomCheckBox 
                                 Grid.Column="2" Grid.Row="5"
                                 IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.stIgnoraSaldoRequisicao, 
@@ -380,9 +387,9 @@
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                                    
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                
+
                                 <!--Label-->
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Produção gera?"/>
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Gera ordem de produção filhas?"/>
@@ -390,9 +397,9 @@
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Operação padrão para ordem de produção para produtos"/>
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Operação padrão para ordem de produção para serviços"/>
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="6" Text="Operação padrão para ordem de produção para beneficiamento"/>
-                                
-                                <!--Components-->                                
-                                
+
+                                <!--Components-->
+
                                 <Components:CustomComboBox
                                     Grid.Column="2" Grid.Row="1"
                                     SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stProducaoGera, 
@@ -405,21 +412,21 @@
                                         <System:String>2-COTAÇÃO</System:String>
                                         <System:String>3-PEDIDO</System:String>
                                     </Components:CustomComboBox.Items>
-                                </Components:CustomComboBox>                                
+                                </Components:CustomComboBox>
                                 <Components:CustomCheckBox
                                     Grid.Column="2" Grid.Row="2"
                                     IsChecked="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stGeraOPFilhas, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								    IsEnabled="{Binding bIsEnabled}"
 								    ToolTip="Informar ao sistema que ao gerar uma ordem de produção e a mesma conter em sua engenharia subprodutos (produtos com estruturas própria) e o mesmo não ter em estoque será gerado uma outra ordem de produção referente aos subprodutos">
-                                </Components:CustomCheckBox>                                
+                                </Components:CustomCheckBox>
                                 <Components:CustomCheckBox
                                     Grid.Column="2" Grid.Row="3"
                                     IsChecked="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stFechaOPSaldoAproduzir, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								    IsEnabled="{Binding bIsEnabled}"
 								    ToolTip="Informar ao sistema se poderá fechar ou finalizar a ordem de produção mesmo com saldo aberto a produzir.">
-                                </Components:CustomCheckBox>                                
+                                </Components:CustomCheckBox>
                                 <Components:HlpPesquisa
                                     Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
                                     Text="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.idTipoOperacaoparaOPProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -429,7 +436,7 @@
                                         <System:String>xOperacao</System:String>
                                         <System:String>xClassificacaoFiscal</System:String>
                                     </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>                                
+                                </Components:HlpPesquisa>
                                 <Components:HlpPesquisa
                                     Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="5" Height="20" Margin="0,0,0,3"
 								    Text="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.idTipoOperacaoparaOPServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -440,7 +447,7 @@
                                         <System:String>xOperacao</System:String>
                                         <System:String>xClassificacaoFiscal</System:String>
                                     </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>                                
+                                </Components:HlpPesquisa>
                                 <Components:HlpPesquisa
                                     Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="6" Height="20" Margin="0,0,0,3"
 								    Text="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.idTipoOperacaoparaOPBenificiamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -485,7 +492,7 @@
                                             <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                             <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                             <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                                                                                      
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         </Grid.RowDefinitions>
 
                                         <!--Label dos Componentes-->
@@ -694,7 +701,7 @@
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                        
+
                                     </Grid.RowDefinitions>
 
                                     <!--Label dos Componentes-->
@@ -862,7 +869,7 @@
                                 <RowDefinition Height="Auto" MaxHeight="23"/>
                                 <RowDefinition Height="Auto" MaxHeight="23"/>
                                 <RowDefinition Height="Auto" MaxHeight="23"/>
-                                
+
                             </Grid.RowDefinitions>
 
                             <!--Label Componentes-->
@@ -886,6 +893,7 @@
                             <Components:CustomTextBlock Grid.Column="5" Grid.Row="7" Text="Número de casas decimais unitário do item"/>
                             <Components:CustomTextBlock Grid.Column="5" Grid.Row="8" Text="Número de casas decimais total do item"/>
                             <Components:CustomTextBlock Grid.Column="5" Grid.Row="9" Text="Número de casas decimais total da nota"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="10" Text="Tipo de documento Default para orçamento"/>
 
                             <!--Fim Label-->
 
@@ -1021,6 +1029,13 @@
                                 Text="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.nCasasDecimaisTotalNota}"
 							    IsEnabled="{Binding bIsEnabled}"
 						    	ToolTip="Informe o número de casas decimais para o valor total do item"/>
+                            <Components:CustomComboBox Grid.Column="6" Grid.Row="10"
+                                                       IsEnabled="{Binding bIsEnabled}"
+                                                       DisplayMemberPath="display"
+                                                       SelectedValuePath="id"
+                                                       SelectedValue="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.idTipoDocumentoDefaultOrcamento,
+                                                        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                       ItemsSource="{Binding Source={StaticResource lResultTipoDocumentos}}"></Components:CustomComboBox>
                             <!--Fim Componentes-->
                         </Grid>
                     </Expander>
@@ -1046,7 +1061,7 @@
                                 <RowDefinition Height="Auto" MaxHeight="23"/>
                                 <RowDefinition Height="Auto" MaxHeight="23"/>
                                 <RowDefinition Height="Auto" MaxHeight="23"/>
-                                <RowDefinition Height="Auto" MaxHeight="23"/>                                                                                              
+                                <RowDefinition Height="Auto" MaxHeight="23"/>
                             </Grid.RowDefinitions>
                             <!--Label Componentes-->
 
@@ -1125,11 +1140,11 @@
                                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                                                               
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                             </Grid.RowDefinitions>
-                            
+
                             <!--Label-->
-                            
+
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Utilizar Função de Cartão Ponto?"/>
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Visibility="Collapsed" Text="Tolerância antes da entrada"/>
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Visibility="Collapsed" Text="Tolerância depois da Entrada"/>
@@ -1137,37 +1152,37 @@
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Visibility="Collapsed" Text="Tolerância depois da Saida"/>
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="6" Text="Tolerância para contagem de Hora Extra"/>
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Liberação das Horas Extras"/>
-                            
+
                             <!--Components-->
 
                             <Components:CustomCheckBox Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" 
                                                        IsChecked="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.stCartaoPonto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				                                       IsEnabled="{Binding bIsEnabled}"/>				                
+				                                       IsEnabled="{Binding bIsEnabled}"/>
                             <Components:HlpDatePicker 
                                 IsEnabled="{Binding bIsEnabled}" Visibility="Collapsed"
                                 Height="20" Margin="0,0,0,3"
                                 Grid.Column="2" Grid.Row="2" ToolTip="Informar a tolerância máxima permitida antes da Entrada do funcionário." stFormatoDtPicker="time"                                
-                                xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaEntradaAntes, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>                            
+                                xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaEntradaAntes, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
                             <Components:HlpDatePicker 
                                 IsEnabled="{Binding bIsEnabled}" Visibility="Collapsed"
                                 Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" ToolTip="Informar a tolerância máxima permitida depois da Entrada do funcionário." 
-                                stFormatoDtPicker="time"    xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaEntradaDepois, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
+                                stFormatoDtPicker="time"    xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaEntradaDepois, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             <Components:HlpDatePicker 
                                 IsEnabled="{Binding bIsEnabled}" Visibility="Collapsed"
                                 Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" ToolTip="Informar a tolerância máxima permitida antes da Saída do funcionário." 
-                                stFormatoDtPicker="time" xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaSaidaAntes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
+                                stFormatoDtPicker="time" xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaSaidaAntes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             <Components:HlpDatePicker 
                                 IsEnabled="{Binding bIsEnabled}" Visibility="Collapsed"
                                 Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" ToolTip="Informar a tolerância máxima permitida depois da Saída do funcionário." 
-                                stFormatoDtPicker="time" xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaSaidaDepois, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
+                                stFormatoDtPicker="time" xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaSaidaDepois, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             <Components:HlpDatePicker 
                                 IsEnabled="{Binding bIsEnabled}"
                                 Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" ToolTip="Informar a tolerância máxima permitida para início das horas extras, caso seja de 5 minutos o sistema começara a contar somente como hora extra quando o funcionário passar o cartão 5 depois da sua saída ou contar como hora extra o tempo total passado antes de sua entrada." 
-                                stFormatoDtPicker="time" xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaHoraExtra, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
+                                stFormatoDtPicker="time" xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaHoraExtra, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             <Components:CustomCheckBox stCompPosicao="last"
                                 Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" IsChecked="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.stLiberacaoHoraExtra, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				                IsEnabled="{Binding bIsEnabled}"/>				                                        
+				                IsEnabled="{Binding bIsEnabled}"/>
                         </Grid>
                     </Expander>
                 </AdornerDecorator>

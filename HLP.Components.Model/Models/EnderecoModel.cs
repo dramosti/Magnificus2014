@@ -2,8 +2,10 @@
 using HLP.Base.Static;
 using HLP.Comum.Model.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,7 +17,35 @@ namespace HLP.Components.Model.Models
         public EnderecoModel()
             : base(xTabela: "Enderecos")
         {
-            //Window currentWindow = Sistema.GetOpenWindow();
+            Window currentWindow = Sistema.GetOpenWindow();
+
+            if (currentWindow != null)
+            {
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                    {
+                        object currentModel = currentWindow.DataContext.GetType().GetProperty(name: "currentModel")
+                    .GetValue(obj: currentWindow.DataContext);
+
+                        if (currentModel != null)
+                        {
+                            if ((currentModel as modelComum).GetOperationModel() ==
+                                 Base.EnumsBases.OperationModel.updating)
+                            {
+                                PropertyInfo pilEnderecos = currentModel.GetType().GetProperties().ToList().FirstOrDefault(
+                                    i => i.ToString().ToUpper().Contains(value: "ENDERECO"));
+
+                                if (pilEnderecos != null)
+                                {
+                                    ObservableCollectionBaseCadastros<EnderecoModel> list = pilEnderecos.GetValue(obj: currentModel) as ObservableCollectionBaseCadastros<EnderecoModel>;
+
+                                    if (list != null)
+                                        if (list.Count < 1)
+                                            this.stPrincipal = (byte)1;
+                                }
+                            }
+                        }
+                    }));
+            }
         }
         private int? _idEndereco;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -234,7 +264,23 @@ namespace HLP.Components.Model.Models
             set { _bCanFindCep = value; }
         }
 
+        #region Propriedades não mapeadas
 
+
+        private string _xCidade;
+
+        public string xCidade
+        {
+            get { return _xCidade; }
+            set
+            {
+                _xCidade = value;
+                base.NotifyPropertyChanged(propertyName: "xCidade");
+            }
+        }
+
+
+        #endregion
 
     }
 
@@ -258,11 +304,17 @@ namespace HLP.Components.Model.Models
                             {
                                 xEndereco = end.Logradouro;
                                 xBairro = end.Bairro;
-                                //int? icidade = cidadeService.GetCidadeByName(end.Cidade);
-                                //if (icidade != null)
-                                //{
-                                //    idCidade = (int)icidade;
-                                //}
+
+                                if (Sistema.lCidades != null)
+                                {
+                                    var res = Sistema.lCidades.FirstOrDefault(
+                                        i => i.xDisplay == end.Cidade);
+
+                                    if (res != null)
+                                    {
+                                        idCidade = res.id;
+                                    }
+                                }
                             }
                         }
                     }

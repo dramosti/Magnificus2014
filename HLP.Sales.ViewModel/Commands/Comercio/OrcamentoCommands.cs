@@ -16,6 +16,7 @@ using HLP.Entries.Services.Comercial;
 using HLP.Entries.Services.Financeiro;
 using HLP.Entries.Services.Fiscal;
 using HLP.Entries.Services.Gerais;
+using HLP.Entries.Services.GestaoMateriais;
 using HLP.Entries.Services.Transportes;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.Services.Comercial;
@@ -58,6 +59,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         Unidade_MedidaService objUnidadeMedidaService;
         TransportadoraService objTransportadoraService;
         Tipo_DocumentoService objTipoDocumentoService;
+        DepositoService objDepositoService;
 
         public OrcamentoCommands(OrcamentoViewModel objViewModel)
         {
@@ -67,6 +69,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             objTipoDocumentoOperacaoValidaService = new Tipo_Documento_Operacao_ValidaService();
             objEmpresaService = new EmpresaService();
             objCidadeService = new CidadeService();
+            this.objDepositoService = new DepositoService();
             this.objFillComboBoxService = new FillComboBoxService();
             this.objFamiliaProdutoService = new FamiliaProdutoService();
             this.objProdutoService = new ProdutoService();
@@ -134,8 +137,26 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         #region Implementação Commands
 
+        public int GetIdSiteByDeposito(int idDeposito)
+        {
+            DepositoModel objDeposito = this.objDepositoService.GetObject(id: idDeposito);
+
+            if (objDeposito != null)
+                return objDeposito.idSite;
+
+            return 0;
+        }
+
         public void ItensRepresentantesExecute()
         {
+            Orcamento_Item_RepresentantesModel objRepresentante = this.objViewModel.currentItem.lOrcamentoItemsRepresentantes.
+                FirstOrDefault(i => i.idRepresentante == (this.objViewModel.currentItem.idFuncionarioRepresentante ?? 0));
+
+            if (objRepresentante != null)
+            {
+                objRepresentante.pComissao = this.objViewModel.currentItem.pComissao;
+            }
+
             object ret = Sistema.ExecuteMethodByReflection(xNamespace: "HLP.Sales.View.WPF", xType: "WinItensRepresentantes", xMethod: "WindowShowDialog",
                 parameters: new object[] { this.objViewModel.currentItem.lOrcamentoItemsRepresentantes });
 

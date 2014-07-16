@@ -3,6 +3,8 @@ using HLP.Base.Modules;
 using HLP.Base.Static;
 using HLP.ComumView.Model.Model;
 using HLP.ComumView.ViewModel.ViewModel;
+using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Services.Gerais;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,16 +13,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace HLP.ComumView.ViewModel.Commands
 {
     public class wdMainCommands
     {
         wdMainViewModel vm;
+        CidadeService objCidadeService;
 
         public wdMainCommands(wdMainViewModel objVm)
         {
             this.vm = objVm;
+            objCidadeService = new CidadeService();
+
             vm.commOpenSubMenu = new RelayCommand(execute: e => this.OpenMenuExec(xNamespace: e));
             vm.commOpenItem = new RelayCommand(execute: e => this.OpenItemExec(xNamespace: e));
             vm.commOpenItemNavegacao = new RelayCommand(execute: e => this.OpenItemNavegacao(obj: e),
@@ -221,11 +227,6 @@ namespace HLP.ComumView.ViewModel.Commands
                     this.vm.winMan._currentTab = objTabPageAtivasModel;
                     this.vm.winMan.vToolBar = Visibility.Visible;
                     this.vm.winMan.iHeightToolBar = 30;
-
-                    this.vm.tabWindows.SelectedItem =
-                        this.vm.winMan._lTabPagesAtivas.FirstOrDefault(
-                         i => i._windows.Name == (xForm != null ? xForm.ToString() :
-                    this.vm.selectedSubMenu.nameWindow));
                 }
             }
             catch (Exception ex)
@@ -298,6 +299,21 @@ namespace HLP.ComumView.ViewModel.Commands
             return true;
         }
 
+        public void PopulateStaticCidades()
+        {
+            if (Sistema.lCidades == null)
+                Sistema.lCidades = new List<BasicModel>();
+
+            foreach (CidadeModel objCidade in this.objCidadeService.GetAllCidades())
+            {
+                Sistema.lCidades.Add(item:
+                    new BasicModel
+                    {
+                        id = objCidade.idCidade ?? 0,
+                        xDisplay = objCidade.xCidade
+                    });
+            }
+        }
 
         #endregion
 

@@ -65,7 +65,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
             if (objViewModel.message.Save())
-            {
+            {                
                 servico.SaveObject(this.objViewModel.currentModel.empresaParametros);
                 e.Result = e.Argument;
             }

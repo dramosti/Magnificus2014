@@ -639,7 +639,7 @@
     <None Include="Service References\wcf_Cidade\wcf_Cidade3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cidade\wcf_Cidade4.xsd">
+    <None Include="Service References\wcf_Cidade\wcf_Cidade31.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal.wsdl" />
@@ -1609,21 +1609,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Moeda\wcf_Moeda.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Moeda\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Moeda\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Moeda\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Deposito\wcf_Deposito.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -1784,21 +1769,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Contato\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cidade\wcf_Cidade.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cidade\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cidade\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cidade\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -2309,6 +2279,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Calendario\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cidade\wcf_Cidade.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cidade\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cidade\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cidade\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Moeda\wcf_Moeda.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Moeda\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Moeda\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Moeda\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

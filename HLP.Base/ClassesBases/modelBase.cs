@@ -6,11 +6,13 @@ using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HLP.Base.ClassesBases
 {
+    [DataContract]
     public class modelBase : INotifyPropertyChanged, IDataErrorInfo
     {
         public List<PesquisaPadraoModelContract> lcamposSqlNotNull;
@@ -125,6 +127,63 @@ namespace HLP.Base.ClassesBases
                             if (valor.ToString().Count(i => i == '.') < 1)
                                 sMessage = "Site inválido";
                     }
+                    else if (columnName.ToUpper().Contains("STPESSOA"))
+                    {
+                        this.NotifyPropertyChanged(propertyName: "xCpfCnpj");
+                        this.NotifyPropertyChanged(propertyName: "xRgIe");
+                    }
+                    else if (columnName.ToUpper().Contains(value: "XRGIE"))
+                    {
+                        PropertyInfo piStPessoa = this.GetType().GetProperty(name: "stPessoa");
+
+                        if (piStPessoa != null)
+                        {
+                            PropertyInfo piRgIe = this.GetType().GetProperty(name: "xRgIe");
+                            object xRgIe = null;
+
+                            if (piRgIe != null)
+                            {
+                                xRgIe = piRgIe.GetValue(obj: this);
+                            }
+
+
+                            if (xRgIe != null)
+                                if ((byte?)piStPessoa.GetValue(obj: this) == (byte)1)
+                                {
+                                    if (!Util.ValidaRg(xRg: xRgIe.ToString()))
+                                        sMessage = "RG inválido";
+                                }
+                        }
+                    }
+                    else if (columnName.ToUpper().Contains("XCPFCNPJ"))
+                    {
+                        PropertyInfo piStPessoa = this.GetType().GetProperty(name: "stPessoa");
+
+                        if (piStPessoa != null)
+                        {
+                            PropertyInfo piCpfCnpj = this.GetType().GetProperty(name: "xCpfCnpj");
+                            object xCpfCnpj = null;
+
+                            if (piCpfCnpj != null)
+                            {
+                                xCpfCnpj = piCpfCnpj.GetValue(obj: this);
+                            }
+
+
+                            if (xCpfCnpj != null)
+                                if ((byte?)piStPessoa.GetValue(obj: this) == (byte)1)
+                                {
+                                    if (!Util.ValidaCpf(strCpf: xCpfCnpj.ToString()))
+                                        sMessage = "Cpf inválido";
+                                }
+                                else
+                                {
+                                    if (!Util.ValidaCnpj(strCnpj: xCpfCnpj.ToString()))
+                                        sMessage = "Cnpj inválido";
+                                }
+                        }
+                    }
+
 
 
                 return sMessage;

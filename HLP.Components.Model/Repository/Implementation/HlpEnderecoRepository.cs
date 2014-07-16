@@ -76,6 +76,7 @@ namespace HLP.Components.Model.Repository.Implementation
                    MapBuilder<EnderecoModel>.MapAllProperties()
                    .DoNotMap(i => i.status)
                    .DoNotMap(i => i.bCanFindCep)
+                   .DoNotMap(i => i.xCidade)
                    .Build());
             }
             return regAcessor.Execute(idEndereco).FirstOrDefault();
@@ -88,6 +89,7 @@ namespace HLP.Components.Model.Repository.Implementation
             MapBuilder<EnderecoModel>.MapAllProperties()
             .DoNotMap(i => i.status)
             .DoNotMap(i => i.bCanFindCep)
+            .DoNotMap(i => i.xCidade)
             .Build());
 
             return reg.Execute(idPK).ToList();

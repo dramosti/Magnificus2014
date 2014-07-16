@@ -56,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\LoginCommands.cs" />
-    <Compile Include="Commands\MainCommands.cs" />
     <Compile Include="Commands\SenhaSupervisorCommands.cs" />
     <Compile Include="Commands\wdMainCommands.cs" />
     <Compile Include="Messages\Commands\HlpMessageAlertCommands.cs" />
@@ -77,7 +76,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\LoginViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\messageDeleteNotAllowedFK.cs" />
     <Compile Include="ViewModel\SenhaSupervisorViewModel.cs" />
     <Compile Include="ViewModel\wdMainViewModel.cs" />
@@ -90,6 +88,10 @@
     <ProjectReference Include="..\HLP.Components.Model\HLP.Components.Model.csproj">
       <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
       <Name>HLP.Components.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Components.Services\HLP.Components.Services.csproj">
+      <Project>{07b054e3-2fcc-4927-9e61-993983d02edf}</Project>
+      <Name>HLP.Components.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Comum.Facade\HLP.Comum.Facade.csproj">
       <Project>{3e7af44f-8443-4ddf-a196-f6ee90883898}</Project>

@@ -28,10 +28,16 @@ namespace HLP.Entries.ViewModel.ViewModels
 
         public EmpresaViewModel()
         {
-            EmpresaCommands com = new EmpresaCommands(objViewModel: this);            
+            EmpresaCommands com = new EmpresaCommands(objViewModel: this);
         }
 
-       
+        public string GetEmpresaFantasia(int idEmpresa)
+        {
+            if (idEmpresa == ((HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel).idEmpresa ?? 0))
+                return (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel).xFantasia;
+
+            return string.Empty;
+        }
 
     }
 }

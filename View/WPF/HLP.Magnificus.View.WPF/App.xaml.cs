@@ -38,11 +38,15 @@ namespace HLP.Magnificus.View.WPF
 
         empresaParametrosService.IserviceEmpresaParametrosClient empresaServico =
             new empresaParametrosService.IserviceEmpresaParametrosClient();
+        BackgroundWorker bwInitialize;
+
 
         public App()
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             Util.CarregaSettingsAppConfig();
+            this.bwInitialize = new BackgroundWorker();
+            this.bwInitialize.DoWork += bwInitialize_DoWork;
         }
 
         void bwParametrosEmpresa_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -203,6 +207,9 @@ namespace HLP.Magnificus.View.WPF
                         this.MainWindow = wd;
 
                         WinLogin wdLogin = new WinLogin(stModoInicial: ComumView.ViewModel.ViewModel.ModoInicial.padrao);
+
+                        this.bwInitialize.RunWorkerAsync();
+
                         wdLogin.ShowDialog();
                         if (wdLogin.ViewModel.bLogado)
                         {
@@ -229,5 +236,12 @@ namespace HLP.Magnificus.View.WPF
             }
         }
 
+        void bwInitialize_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    (this.MainWindow as wdMain).ViewModel.PopulateStaticCidades();
+                }));
+        }
     }
 }

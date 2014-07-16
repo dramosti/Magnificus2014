@@ -28,6 +28,11 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
+        public List<CidadeModel> GetAllCidades()
+        {
+            return this.cidadeRepository.GetAllCidade();
+        }
+
         public CidadeModel GetObject(int id)
         {
             try

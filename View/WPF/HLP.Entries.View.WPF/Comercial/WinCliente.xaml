@@ -484,7 +484,7 @@
                                         <Components:CustomPesquisa
                                             xIdPesquisa="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2"
-											IsEnabled="{Binding bIsEnabled}"
+											IsEnabled="False"
 											FieldPesquisa="ID" TableView="vwSite" NameWindowCadastro="WinSite">
                                             <Components:CustomPesquisa.Items>
                                                 <System:String>xSite</System:String>

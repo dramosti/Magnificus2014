@@ -21,7 +21,19 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public UnitOfWorkBase UndTrabalho { get; set; }
         private DataAccessor<CidadeModel> regCidadeByUfAccessor;
         private DataAccessor<CidadeModel> regCidadeAccessor;
+        private DataAccessor<CidadeModel> regAllCidadeAccessor;
 
+        public List<CidadeModel> GetAllCidade()
+        {
+            if (regAllCidadeAccessor == null)
+            {
+                regAllCidadeAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Cidade",
+                                MapBuilder<CidadeModel>.MapAllProperties()
+                                .DoNotMap(i => i.status)
+                                .Build());
+            }
+            return regAllCidadeAccessor.Execute().ToList();
+        }
 
         public ObservableCollection<CidadeModel> GetCidadeByUf(int idUf)
         {
@@ -36,7 +48,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             return new ObservableCollection<CidadeModel>(regCidadeByUfAccessor.Execute(idUf).ToList());
         }
 
-        public int? GetCidadeByName(string xName) 
+        public int? GetCidadeByName(string xName)
         {
             try
             {
@@ -48,7 +60,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 while (reader.Read())
                     lReturn.Add((int)reader.GetValue(0));
 
-                if (lReturn.Count > 0 )
+                if (lReturn.Count > 0)
                 {
                     return lReturn.FirstOrDefault();
                 }
@@ -58,7 +70,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 }
             }
             catch (Exception ex)
-            {                
+            {
                 throw ex;
             }
         }
@@ -104,12 +116,13 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regCidadeAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_cidade",
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idCidade"),
-                                  MapBuilder<CidadeModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                                  MapBuilder<CidadeModel>.MapAllProperties().DoNotMap(i => i.status)
+                                  .Build());
             }
 
 
             return regCidadeAccessor.Execute(idCidade).FirstOrDefault();
         }
-                    
+
     }
 }

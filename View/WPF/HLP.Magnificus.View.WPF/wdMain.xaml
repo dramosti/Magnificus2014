@@ -2266,6 +2266,9 @@
                                 <ComboBox x:Name="cbxItemsMenu" Grid.Column="1" Grid.Row="2" StaysOpenOnEdit="True" IsEditable="True" 
                                           ItemsSource="{Binding Source={StaticResource cvsItensMenu}}"
                                           Text="{Binding xTextCbx}" SelectedItem="{Binding selectedFilteredItem}">
+                                    <ComboBox.Style>
+                                        <Style></Style>
+                                    </ComboBox.Style>
                                 </ComboBox>
                                 <TextBlock Grid.Column="1" Grid.Row="1" Text="Menu" FontFamily="Segoe Ui Light" Foreground="#FF626262" FontSize="36"/>
                                 <ContentControl Content="{Binding navegacao}" Grid.Column="2" Grid.Row="1"></ContentControl>
@@ -2420,8 +2423,8 @@
                             <RowDefinition Height="0"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Border Grid.Row="1" Margin="0,0,0,0" BorderThickness="1" BorderBrush="{x:Null}">
-                            <DockPanel LastChildFill="True">
+                        <Border Grid.Row="1" Margin="0,0,0,0" BorderThickness="1" BorderBrush="{x:Null}" x:Name="borderForms">
+                            <DockPanel LastChildFill="True" x:Name="dkForms">
                                 <StatusBar x:Name="statusBarPrinc" Grid.Row="2" Style="{DynamicResource StatusBarStyle1}" DockPanel.Dock="Bottom">
                                     <StatusBar.ItemsPanel>
                                         <ItemsPanelTemplate>
@@ -2484,7 +2487,7 @@
                                     </StatusBarItem>
                                 </StatusBar>
 
-                                <Grid Focusable="False" Background="White">
+                                <Grid Focusable="False" Background="White" x:Name="gdContent">
                                     <Grid.Resources>
                                         <convLocal:loadingConverter x:Key="loadConverter"></convLocal:loadingConverter>
                                     </Grid.Resources>

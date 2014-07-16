@@ -17,99 +17,101 @@
         </ResourceDictionary>
     </runtime:WindowsBase.Resources>
     <Grid>
-        <Expander Header="Geral" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
-            <Grid x:Name="gridPropriedades">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="300" MinWidth="300"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="10"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="27"></RowDefinition>
-                </Grid.RowDefinitions>
-                <!--Label-->
+        <AdornerDecorator>
+            <Expander Header="Geral" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+                <Grid x:Name="gridPropriedades">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                        <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                        <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                        <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
+                        <ColumnDefinition MaxWidth="300" MinWidth="300"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="27"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <!--Label-->
 
-                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Moeda " Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Nome" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Símbolo" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Código ISO 4217" Grid.Column="1" Grid.Row="5"/>
-                <!--Components-->
+                    <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Moeda " Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Nome" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Símbolo" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Código ISO 4217" Grid.Column="1" Grid.Row="5"/>
+                    <!--Components-->
 
-                <Components:CustomTextBox stCompPosicao="fieldId"
+                    <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idMoeda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					IsReadOnly="True"
 					ToolTip="Chave principal do registro da Moeda, campo autoincremental">
-                </Components:CustomTextBox>
-                <Components:CustomTextBox stCompPosicao="first"
+                    </Components:CustomTextBox>
+                    <Components:CustomTextBox stCompPosicao="first"
                     Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xSiglaMoeda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="O identificador exclusivo de um código de até três caracteres. ">
-                </Components:CustomTextBox>
-                <Components:CustomTextBox
+                    </Components:CustomTextBox>
+                    <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xMoeda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Um nome para a moeda selecionada,  juntamente com o código da moeda, é impressa em cheques e outros documentos.">
-                </Components:CustomTextBox>
-                <Components:CustomTextBox
+                    </Components:CustomTextBox>
+                    <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="4"
                     Text="{Binding currentModel.xSimbolo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Símbolo da moeda selecionada são usados frequentemente nos relatórios.">
-                </Components:CustomTextBox>
-                <Components:CustomComboBox 
+                    </Components:CustomTextBox>
+                    <Components:CustomComboBox 
                     SelectedItem="{Binding Path=selectedMoeda, UpdateSourceTrigger=PropertyChanged}"
                     IsEnabled="{Binding bIsEnabled}"
                     x:Name="cbxMoedaPadrao" Height="24" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3"
                     ItemsSource="{Binding ElementName=wdMoeda, Path=lMoedaPadrao}" >
-                    <Components:CustomComboBox.SelectedIndex>
-                        <MultiBinding Converter="{StaticResource moedaPadraoConverter}">
-                            <MultiBinding.Bindings>
-                                <Binding Path="currentModel.xMoeda" Mode="OneWay"/>
-                                <Binding ElementName="wdMoeda" Path="lMoedaPadrao"/>
-                            </MultiBinding.Bindings>
-                        </MultiBinding>
-                    </Components:CustomComboBox.SelectedIndex>
-                    <Components:CustomComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Height="20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto" MaxWidth="160"></ColumnDefinition>
-                                    <ColumnDefinition Width="5"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto" MaxWidth="240"></ColumnDefinition>
-                                    <ColumnDefinition Width="5"></ColumnDefinition>
-                                    <ColumnDefinition Width="20"></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding xCodigo}" FontFamily="Calibri" HorizontalAlignment="Left"/>
-                                <TextBlock Grid.Column="1" FontFamily="Calibri" Text="{Binding xMoeda}" TextWrapping="Wrap"></TextBlock>
-                                <TextBlock Grid.Column="3" FontFamily="Calibri" TextWrapping="Wrap"   VerticalAlignment="Top" Text="{Binding xPais}"></TextBlock>
-                                <Image Source="{Binding xPathImagem, Converter={StaticResource imgConverter}}" 
+                        <Components:CustomComboBox.SelectedIndex>
+                            <MultiBinding Converter="{StaticResource moedaPadraoConverter}">
+                                <MultiBinding.Bindings>
+                                    <Binding Path="currentModel.xMoeda" Mode="OneWay"/>
+                                    <Binding ElementName="wdMoeda" Path="lMoedaPadrao"/>
+                                </MultiBinding.Bindings>
+                            </MultiBinding>
+                        </Components:CustomComboBox.SelectedIndex>
+                        <Components:CustomComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Height="20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto" MaxWidth="160"></ColumnDefinition>
+                                        <ColumnDefinition Width="5"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto" MaxWidth="240"></ColumnDefinition>
+                                        <ColumnDefinition Width="5"></ColumnDefinition>
+                                        <ColumnDefinition Width="20"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding xCodigo}" FontFamily="Calibri" HorizontalAlignment="Left"/>
+                                    <TextBlock Grid.Column="1" FontFamily="Calibri" Text="{Binding xMoeda}" TextWrapping="Wrap"></TextBlock>
+                                    <TextBlock Grid.Column="3" FontFamily="Calibri" TextWrapping="Wrap"   VerticalAlignment="Top" Text="{Binding xPais}"></TextBlock>
+                                    <Image Source="{Binding xPathImagem, Converter={StaticResource imgConverter}}" 
                                        Height="15" Grid.Column="5"
                                        VerticalAlignment="Top"
                                        Stretch="Fill"
                                        DockPanel.Dock="Left"/>
-                                <Label/>
-                            </Grid>
-                        </DataTemplate>
-                    </Components:CustomComboBox.ItemTemplate>
-                </Components:CustomComboBox>
+                                    <Label/>
+                                </Grid>
+                            </DataTemplate>
+                        </Components:CustomComboBox.ItemTemplate>
+                    </Components:CustomComboBox>
 
-            </Grid>
-        </Expander>
+                </Grid>
+            </Expander>
+        </AdornerDecorator>
     </Grid>
 </runtime:WindowsBase>
