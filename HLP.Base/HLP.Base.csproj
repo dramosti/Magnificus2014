@@ -93,6 +93,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
@@ -106,6 +107,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassesBases\BasicModel.cs" />
     <Compile Include="ClassesBases\BindingProxy.cs" />
     <Compile Include="ClassesBases\DateTimeEnumerator.cs" />
     <Compile Include="ClassesBases\InternetCS.cs" />

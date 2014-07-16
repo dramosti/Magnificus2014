@@ -27,6 +27,7 @@ namespace HLP.Magnificus.View.WPF
             InitializeComponent();
             GerenciadorModulo.Instancia.InicializaSistema();
             this.ViewModel = new wdMainViewModel();
+
         }
 
         public wdMainViewModel ViewModel

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="981b7abd-9219-4c09-bd46-361e7f18977d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="038a20b6-db65-470c-a584-9a9800e77a60" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -23,16 +23,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Cidade.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Cidade.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Cidade.xsd" MetadataType="Schema" ID="cfd45faa-57f3-4970-9a5f-300fb617bc08" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Cidade.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_Cidade.wsdl" MetadataType="Wsdl" ID="29e75dea-870f-41f9-9c20-0e7b05cf67c3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Cidade.svc?wsdl" />
-    <MetadataFile FileName="wcf_Cidade.disco" MetadataType="Disco" ID="c67eb276-bad2-42cf-8092-c6335bbf6a31" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Cidade.svc?disco" />
-    <MetadataFile FileName="wcf_Cidade1.xsd" MetadataType="Schema" ID="9981125a-87bf-48dd-98a2-fc24f9144cde" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Cidade.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Cidade2.xsd" MetadataType="Schema" ID="8c48d012-0b78-4a46-b0e6-54081724a02a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Cidade.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Cidade3.xsd" MetadataType="Schema" ID="ef1c10d5-e6d3-4373-8afc-c280cb3426e8" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Cidade.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_Cidade4.xsd" MetadataType="Schema" ID="70bf657b-3b67-40d3-ae4c-4945681112ce" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Cidade.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Cidade2.xsd" MetadataType="Schema" ID="e7d7aca7-5c5c-4b05-abce-06fe3a75ba21" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Cidade.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Cidade.wsdl" MetadataType="Wsdl" ID="6e3c11eb-2ada-420f-bf98-0fdcc82a012b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Cidade.svc?wsdl" />
+    <MetadataFile FileName="wcf_Cidade.disco" MetadataType="Disco" ID="fc96ebff-cb11-4450-adf7-8516badf0064" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Cidade.svc?disco" />
+    <MetadataFile FileName="wcf_Cidade3.xsd" MetadataType="Schema" ID="7b72c926-f338-49f3-a430-4a9b3251d4ba" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Cidade.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Cidade31.xsd" MetadataType="Schema" ID="1f67feb7-c16c-4470-8a30-031b33fb9d3f" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Cidade.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Cidade.xsd" MetadataType="Schema" ID="9433f3d8-d499-4cb2-8799-803cd3f5fb73" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Cidade.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Cidade1.xsd" MetadataType="Schema" ID="42c72a27-65c4-4cad-b412-796ec6c16ac3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Cidade.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using HLP.Base.ClassesBases;
 using HLP.Comum.Model.Models;
+using System.Runtime.Serialization;
 
 namespace HLP.Entries.Model.Models.Gerais
 {

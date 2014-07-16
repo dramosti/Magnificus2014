@@ -78,7 +78,7 @@
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Código EAN do produto">
                                 </Components:CustomTextBox>
-                                
+
                             </Grid>
                         </Expander>
                         <Expander Header="Item" Grid.Row="1" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
@@ -753,7 +753,7 @@
                             <Components:CustomTextBox
                                 Grid.Column="2" Grid.Row="1"
                                 Text="{Binding currentModel.vVenda, Mode=TwoWay, Converter={StaticResource moedaConverter},
-                                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Preço final de venda do produto, quando preenchido o sistema joga o valor na lista de preço padrão, LISTA 000000001.">
                             </Components:CustomTextBox>
@@ -830,7 +830,7 @@
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="1"
                                     Text="{Binding currentModel.vCompra, Mode=TwoWay, Converter={StaticResource moedaConverter},
-                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="O Magníficus informará automaticamente o valor de aquisição do produto, baseado sempre no valor de custo do produto.">
                                 </Components:CustomTextBox>
@@ -953,7 +953,7 @@
                             <Components:CustomTextBox
                                 Grid.Column="2" Grid.Row="1"
                                 Text="{Binding currentModel.vProducao, Mode=TwoWay, Converter={StaticResource moedaConverter},
-                                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 							    IsEnabled="{Binding bIsEnabled}"
 							    ToolTip="O Magníficus informará automaticamente o valor de aquisição do produto, baseado sempre no valor de custo do produto, quando o produto é por composição o Magníficus irá calcular o custo em cima de todos os materiais e processos relacionado a esse produto.">
                             </Components:CustomTextBox>

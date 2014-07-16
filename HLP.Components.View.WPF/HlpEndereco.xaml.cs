@@ -1,4 +1,5 @@
 ﻿using HLP.Components.Model.Models;
+using HLP.Components.ViewModel.ViewModels;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,8 +25,18 @@ namespace HLP.Components.View.WPF
     {
         public HlpEndereco()
         {
-            InitializeComponent();            
+            InitializeComponent();       
         }
+
+        private HlpEnderecoViewModel _ViewModel;
+
+        public HlpEnderecoViewModel ViewModel
+        {
+            get { return _ViewModel; }
+            set { _ViewModel = value; }
+        }
+        
+        
 
         public IEnumerable ItemsSourceEnderecos
         {

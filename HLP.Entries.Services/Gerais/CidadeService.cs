@@ -16,6 +16,7 @@ namespace HLP.Entries.Services.Gerais
         HLP.Wcf.Entries.wcf_Cidade serviceNetwork;
         wcf_Cidade.Iwcf_CidadeClient serviceWeb;
 
+
         HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
         wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
 
@@ -150,6 +151,26 @@ namespace HLP.Entries.Services.Gerais
                 default:
                     {
                         return 0;
+                    }
+            }
+        }
+
+        public List<CidadeModel> GetAllCidades()
+        {
+            switch (Sistema.bOnline)
+            {
+                case StConnection.OnlineNetwork:
+                    {
+                        return this.serviceNetwork.GetAllCidades();
+                    }
+                case StConnection.OnlineWeb:
+                    {
+                        return this.serviceWeb.GetAllCidades();
+                    }
+                case StConnection.Offline:
+                default:
+                    {
+                        return null;
                     }
             }
         }

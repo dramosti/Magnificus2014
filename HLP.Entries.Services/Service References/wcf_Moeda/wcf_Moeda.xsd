@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
-  <xs:complexType name="MoedaModel">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Moeda.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+  <xs:complexType name="modelComum">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="idMoeda" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="xMoeda" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xSiglaMoeda" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xSimbolo" nillable="true" type="xs:string" />
-        </xs:sequence>
+        <xs:sequence />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="MoedaModel" nillable="true" type="tns:MoedaModel" />
+  <xs:element name="modelComum" nillable="true" type="tns:modelComum" />
 </xs:schema>

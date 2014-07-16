@@ -91,6 +91,7 @@
     <Compile Include="Converter\TimeSpanToString.cs" />
     <Compile Include="Converter\VisibilityDatePickerConverter.cs" />
     <Compile Include="Converter\VisibilityVisibleToCollapsedNot.cs" />
+    <Compile Include="Converter\xCidadeToIdCidadeConverter.cs" />
     <Compile Include="CustomCheckBox.cs" />
     <Compile Include="CustomComboBox.cs" />
     <Compile Include="CustomDataGrid.cs" />

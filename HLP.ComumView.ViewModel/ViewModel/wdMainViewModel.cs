@@ -72,6 +72,11 @@ namespace HLP.ComumView.ViewModel.ViewModel
 
         #region Methods
 
+        public void PopulateStaticCidades()
+        {
+            comm.PopulateStaticCidades();
+        }
+
         public void FindAll()
         {
             Window win = GerenciadorModulo.Instancia.CarregaForm("WinFindAll", Base.InterfacesBases.TipoExibeForm.Modal);

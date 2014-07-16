@@ -204,6 +204,11 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             return comm.GetTipoDocumento(idTipoDocumento: idTipoDocumento);
         }
 
+        public int GetIdSiteByDeposito(int idDeposito)
+        {
+            return comm.GetIdSiteByDeposito(idDeposito: idDeposito);
+        }
+
         #endregion
 
         #region Métodos Públicos

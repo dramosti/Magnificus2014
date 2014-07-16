@@ -16,5 +16,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
         void Save(CidadeModel cidade);
         void Delete(int idCidade);
         CidadeModel GetCidade(int idCidade);
+        List<CidadeModel> GetAllCidade();
     }
 }

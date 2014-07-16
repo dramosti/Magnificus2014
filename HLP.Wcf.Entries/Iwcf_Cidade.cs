@@ -26,5 +26,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         int? GetCidadeByName(string xName);
+
+        [OperationContract]
+        List<CidadeModel> GetAllCidades();
     }
 }

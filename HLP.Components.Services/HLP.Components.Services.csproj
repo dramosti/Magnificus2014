@@ -54,9 +54,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FillComboBoxService.cs" />
+    <Compile Include="HlpEnderecoService.cs" />
     <Compile Include="HlpPesqPadraoService.cs" />
     <Compile Include="Pesquisa_RapidaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\wcf_Cidade\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_FillComboBox\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -98,6 +104,25 @@
     <None Include="app.config" />
     <None Include="Properties\DataSources\HLP.Components.Model.Models.modelToComboBox.datasource" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Service References\wcf_Cidade\HLP.Components.Services.wcf_Cidade.CidadeModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wcf_Cidade\wcf_Cidade.wsdl" />
+    <None Include="Service References\wcf_Cidade\wcf_Cidade.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cidade\wcf_Cidade1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cidade\wcf_Cidade2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cidade\wcf_Cidade3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cidade\wcf_Cidade4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_FillComboBox\wcf_FillComboBox.wsdl" />
     <None Include="Service References\wcf_FillComboBox\wcf_FillComboBox.xsd">
       <SubType>Designer</SubType>
@@ -142,6 +167,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\wcf_Cidade\" />
     <WCFMetadataStorage Include="Service References\wcf_FillComboBox\" />
     <WCFMetadataStorage Include="Service References\wcf_HlpPesqPadrao\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
@@ -187,6 +213,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_HlpPesqPadrao\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cidade\wcf_Cidade.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cidade\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cidade\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cidade\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

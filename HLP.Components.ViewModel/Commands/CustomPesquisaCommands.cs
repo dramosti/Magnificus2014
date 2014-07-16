@@ -1,6 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
 using HLP.Base.Modules;
+using HLP.Base.Static;
 using HLP.Components.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -59,32 +60,35 @@ namespace HLP.Components.ViewModel.Commands
 
         private void InsertExecute(object o)
         {
-            if (o != null)
+            object nameWindow = o.GetType().GetProperty(name: "NameWindowCadastro").GetValue(obj: o);
+
+            if (nameWindow != null)
             {
-                object form = GerenciadorModulo.Instancia.CarregaForm(
-                    nome: o.GetType().GetProperty(name: "NameWindowCadastro").GetValue(obj: o).ToString(),
-                    exibeForm: Base.InterfacesBases.TipoExibeForm.Normal);
-
-                Type t = form.GetType();
-                ConstructorInfo constr = t.GetConstructor(Type.EmptyTypes);
-                object inst = constr.Invoke(new object[] { });
+                ICommand AddCommand = Application.Current.MainWindow.DataContext.GetType()
+                    .GetProperty(name: "AddWindowCommand").GetValue(obj: Application.Current.MainWindow.DataContext) as ICommand;
 
 
-                Window w = GerenciadorModulo.Instancia.CarregaForm(nome: "HlpPesquisaInsert",
-                exibeForm: Base.InterfacesBases.TipoExibeForm.Normal);
-
-                (w.FindName(name: "ctrContent") as ContentControl).DataContext = (inst as Window).DataContext;
-                (w.FindName(name: "ctrContent") as ContentControl).Content = (inst as Window).Content;
-
-                Type tVm = (w.FindName(name: "ctrContent") as ContentControl).DataContext.GetType();
-                object instVm = (w.FindName(name: "ctrContent") as ContentControl).DataContext;
-                MethodInfo met = tVm.GetMethod(name: "get_commandNovo");
-                ICommand comm = met.Invoke(instVm, new object[] { }) as ICommand;
-                comm.Execute(parameter: (w.FindName(name: "ctrContent") as ContentControl).Content);
-                if (w.ShowDialog() == true)
+                if (AddCommand != null)
                 {
-                    o.GetType().GetProperty(name: "xIdPesquisa").SetValue(
-                            obj: o, value: w.GetType().GetProperty(name: "idSalvo").GetValue(obj: w).ToString());
+
+
+                    AddCommand.Execute(parameter: nameWindow);
+
+                    object winManPropertyValue = Application.Current.MainWindow.DataContext.GetType()
+                                    .GetProperty(name: "winMan").GetValue(obj: Application.Current.MainWindow.DataContext);
+
+                    object _currentTab = winManPropertyValue.GetType().GetProperty(name: "_currentTab")
+                        .GetValue(obj: winManPropertyValue);
+
+                    object _DataContext = _currentTab.GetType().GetProperty(name: "_currentDataContext")
+                        .GetValue(obj: _currentTab);
+
+                    ICommand comm = _DataContext.GetType().GetProperty(name: "commandNovo").GetValue(obj: _DataContext) as ICommand;
+
+                    if (comm != null)
+                        comm.Execute(parameter: null);
+                    else
+                        throw new Exception(message: "Command Novo não configurado para a tela corrente");
                 }
             }
         }
@@ -109,7 +113,6 @@ namespace HLP.Components.ViewModel.Commands
                 {
                     ICommand AddCommand = Application.Current.MainWindow.DataContext.GetType()
                         .GetProperty(name: "AddWindowCommand").GetValue(obj: Application.Current.MainWindow.DataContext) as ICommand;
-
 
                     if (AddCommand != null)
                     {
@@ -138,7 +141,7 @@ namespace HLP.Components.ViewModel.Commands
                                     _DataContext.GetType().GetProperty(name: "currentModel").GetValue(obj: _DataContext);
 
                                 if (currentModel != null)
-                                {                                   
+                                {
 
                                     if (MessageHlp.Show(stMessage: StMessage.stYesNo,
                                         xMessageToUser: "Window está sendo utilizada no momento, deseja cancelar a operação corrente " +

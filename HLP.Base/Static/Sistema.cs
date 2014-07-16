@@ -12,11 +12,21 @@ using System.Windows;
 using System.Windows.Threading;
 using HLP.Report.View.WPF.DataSet;
 using System.Xml;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Base.Static
 {
     public class Sistema
     {
+        private static List<BasicModel> _lCidades;
+
+        public static List<BasicModel> lCidades
+        {
+            get { return _lCidades; }
+            set { _lCidades = value; }
+        }
+
+
         public static ContatoStatic contatoStatico = new ContatoStatic();
         public static TipoSender stSender = TipoSender.Sistema;
         public struct ContatoStatic

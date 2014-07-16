@@ -136,7 +136,7 @@ namespace HLP.Base.Static
 
             string Resultado = "";
             string sCar = "";
-                        
+
             for (int i = 0; i <= (strString.Length - 1); i++)
             {
                 sCar = strString[i].ToString();
@@ -222,6 +222,32 @@ namespace HLP.Base.Static
 
             digito = digito + resto.ToString();
             return strCpf.EndsWith(digito);
+        }
+
+        public static bool ValidaRg(string xRg)
+        {
+            string vRg = xRg.ToString().Replace(oldValue: ".", newValue: "")
+                .Replace(oldValue: ",", newValue: "")
+                .Replace(oldValue: "-", newValue: "")
+                .Replace(oldValue: "/", newValue: "")
+                .Replace(oldValue: @"\", newValue: "");
+
+            int vTotal = 0;
+            int count = 2;
+            int vInt = 0;
+            int subTotal = 0;
+
+            foreach (char item in vRg.ToString())
+            {
+                int.TryParse(s: item.ToString(), result: out vInt);
+                subTotal = vInt * (count > 9 ? 100 : count);
+                vTotal += vInt * (count > 9 ? 100 : count);
+
+                count++;
+            }
+
+            return (vTotal % 11) == 0 ? true : false;
+
         }
 
         public static Byte[] ImagemParaByte(string strFileName)
@@ -2238,7 +2264,7 @@ namespace HLP.Base.Static
             }));
         }
 
-        
+
     }
 
 }

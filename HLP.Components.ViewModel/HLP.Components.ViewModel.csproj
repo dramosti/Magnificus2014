@@ -59,6 +59,7 @@
     <Compile Include="Commands\CustomTextBoxCommands.cs" />
     <Compile Include="Commands\CustomTextIntellisenseCommands.cs" />
     <Compile Include="Commands\FindAllCommand.cs" />
+    <Compile Include="Commands\HlpEnderecoCommands.cs" />
     <Compile Include="Commands\HlpPesquisaCommands.cs" />
     <Compile Include="Commands\HlpPesquisaFiltradaCommands.cs" />
     <Compile Include="Commands\HlpPesquisaPadraoCommands.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="ViewModels\CustomTextBoxViewModel.cs" />
     <Compile Include="ViewModels\CustomTextIntellisenseViewModel.cs" />
     <Compile Include="ViewModels\FindAllViewModel.cs" />
+    <Compile Include="ViewModels\HlpEnderecoViewModel.cs" />
     <Compile Include="ViewModels\HlpPesquisaFiltradaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FillComboBoxViewModel.cs" />

@@ -17,7 +17,7 @@ using System.Windows.Threading;
 namespace HLP.Comum.ViewModel.ViewModel
 {
     public class viewModelComum<T> : INotifyPropertyChanged where T : class
-    {        
+    {
 
         private bool _loading;
 
@@ -31,7 +31,7 @@ namespace HLP.Comum.ViewModel.ViewModel
             }
         }
 
-        
+
         private string _xDescLoading;
 
         public string xDescLoading
@@ -43,7 +43,7 @@ namespace HLP.Comum.ViewModel.ViewModel
                 this.NotifyPropertyChanged(propertyName: "xDescLoading");
             }
         }
-        
+
 
         public MessageHlp message { get; set; }
         public viewModelComum()
@@ -276,8 +276,11 @@ namespace HLP.Comum.ViewModel.ViewModel
 
 
                 if (navigatePesquisa.Count > 0)
-                    if (this.navigatePesquisa[this.iPositionCollection] != _currentID)
-                        _currentID = this.navigatePesquisa[this.iPositionCollection];
+                {
+                    if (this.iPositionCollection < this.navigatePesquisa.Count)
+                        if (this.navigatePesquisa[this.iPositionCollection] != _currentID)
+                            _currentID = this.navigatePesquisa[this.iPositionCollection];
+                }
 
                 return _currentID;
             }

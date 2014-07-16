@@ -4,12 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace HLP.Comum.Model.Models
 {
+    [DataContract(IsReference = false)]
     public class modelComum : modelBase
     {
         public modelComum()
@@ -29,11 +31,16 @@ namespace HLP.Comum.Model.Models
                 base.NotifyPropertyChanged(propertyName: "lDocumentos");
             }
         }
-        
+
         public modelComum(string xTabela)
             : base(xTabela: xTabela)
         {
             this.lDocumentos = new ObservableCollectionBaseCadastros<DocumentosModel>();
+
+            PropertyInfo pi = this.GetType().GetProperty(name: "Ativo");
+
+            if (pi != null)
+                pi.SetValue(obj: this, value: true);
         }
 
         protected override void NotifyPropertyChanged(string propertyName)

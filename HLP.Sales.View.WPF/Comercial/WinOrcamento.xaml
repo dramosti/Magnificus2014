@@ -177,7 +177,7 @@
                 </Grid.RowDefinitions>
 
                 <!--Label-->
-                <Components:CustomHlpStatus Grid.Column="9" Grid.ColumnSpan="3" Grid.RowSpan="3" 
+                <Components:CustomHlpStatus Grid.Column="9" Grid.ColumnSpan="3" Grid.RowSpan="3" HorizontalAlignment="Right"
                                             Height="50" VerticalAlignment="Center" selectedStatus="{Binding currentModel.stOrcamento}"
                                             >
                     <Components:CustomHlpStatus.lStatusInterrompidos>
@@ -234,7 +234,7 @@
                 <Components:CustomTextBox
                     Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"
                     IsEnabled="False"
-					Text="{Binding currentModel.idEmpresa, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					Text="{Binding currentModel.xEmpresa, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 					ToolTip="Código da Empresa em que o sistema esta lançando o orçamento">
                 </Components:CustomTextBox>
                 <Components:CustomPesquisa
@@ -548,7 +548,7 @@
                                     <Components:CustomCheckBox
                                             Grid.Column="2" Grid.Row="7"
                                             IsChecked="{Binding currentModel.stWeb, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										    IsEnabled="{Binding bIsEnabled}">
+										    IsEnabled="False">
                                     </Components:CustomCheckBox>
 
                                 </Grid>
@@ -767,6 +767,17 @@
 										Binding="{Binding Path=qProduto, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Quantidade" Width="125"/>
                                 <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=vVenda, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisItem,
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="Vl.Item" Width="100"/>
+                                <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+                                        IsReadOnly="True"
+										Binding="{Binding Path=vVendaSemDesconto, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisItem,
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="Vl. Item Origem" Width="150"/>
+                                <DataGridTextColumn 
                                             x:Name="clDesconto"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=pDesconto, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},
@@ -780,26 +791,15 @@
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
                                         IsReadOnly="True"
-										Binding="{Binding Path=vVendaSemDesconto, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisItem,
+										Binding="{Binding Path=vTotalItem, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisTotalItem,
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Vl. Item Origem" Width="150"/>
-                                <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vVenda, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisItem,
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Vl.Item" Width="100"/>
+										Header="Total Item" Width="100"/>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
                                         IsReadOnly="True"
 										Binding="{Binding Path=vTotalSemDescontoItem, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},ConverterParameter=nCasasDecimaisTotalItem,
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Total Item Origem" Width="125"/>
-                                <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-                                        IsReadOnly="True"
-										Binding="{Binding Path=vTotalItem, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisTotalItem,
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Total Item" Width="100"/>
                                 <DataGridTemplateColumn x:Name="clDtHrInicialRevisao" Header="Previsão de Entrega" Width="150">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -809,8 +809,9 @@
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
                                             <Grid FocusManager.FocusedElement="{Binding ElementName= dateScheduledPicker}" >
-                                                <DatePicker x:Name="dateScheduledPicker" SelectedDate="{Binding Path=dPrevisaoEntrega, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                                                ValidatesOnExceptions=true, NotifyOnValidationError=true}" IsEnabled="{Binding bIsEnabled}" />
+                                                <Components:HlpDatePicker x:Name="dateScheduledPicker" xTextDate="{Binding Path=dPrevisaoEntrega, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                ValidatesOnExceptions=true, NotifyOnValidationError=true}" IsEnabled="{Binding bIsEnabled}" stFormatoDtPicker="date">
+                                                </Components:HlpDatePicker>
                                             </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
@@ -844,6 +845,10 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                 </DataGridTemplateColumn>
+                                <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"                                        
+										Binding="{Binding Path=pComissao, UpdateSourceTrigger=LostFocus, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="% Comissão" Width="125"/>
                                 <DataGridTemplateColumn x:Name="clDeposito" Header="Depósito" Width="125" >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -854,7 +859,7 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
-                                            <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
+                                            <Grid FocusManager.FocusedElement="{Binding ElementName=elem}" >
                                                 <ComboBox x:Name="elem"
                 ItemsSource="{Binding Source={StaticResource lResultDeposito}}" 
                                                       SelectedValuePath="id"
@@ -890,10 +895,6 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"                                        
-										Binding="{Binding Path=pComissao, UpdateSourceTrigger=LostFocus, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="% Comissão" Width="125"/>
                                 <DataGridTemplateColumn x:Name="clCfop" Header="Cfop" Width="125" >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>

@@ -51,10 +51,10 @@ namespace HLP.Entries.Model.Models.Comercial
             this.cliente_fornecedor_fiscal = new Cliente_fornecedor_fiscalModel();
             this.dCadastro = DateTime.Today;
             this.enabledFieldsCondPagamento = this.bEnabledListaPreco = true;
+
         }
 
         #region Propriedades não mapeadas
-
 
         private bool _bEnabledListaPreco;
 
@@ -1458,7 +1458,9 @@ namespace HLP.Entries.Model.Models.Comercial
         public Cliente_fornecedor_fiscalModel()
             : base(xTabela: "Cliente_fornecedor_fiscal")
         {
+            this.stCalculaIcms = this.stCalculaIpi = (byte)1;
         }
+
         private int? _idClienteFornecedorFiscal;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idClienteFornecedorFiscal
