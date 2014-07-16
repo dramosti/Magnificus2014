@@ -477,29 +477,63 @@
                         <ControlTemplate TargetType="{x:Type TabItem}">
                             <Grid x:Name="templateRoot" SnapsToDevicePixels="true" Height="40">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="140"/>
                                     <ColumnDefinition Width="15"/>
                                 </Grid.ColumnDefinitions>
                                 <Border x:Name="mainBorder" Grid.ColumnSpan="2" BorderBrush="Transparent" Background="Transparent" Margin="0">
                                     <Border x:Name="innerBorder" BorderBrush="{StaticResource TabItem.Selected.Border}" Background="{StaticResource TabItem.Selected.Background}" Margin="-1" Opacity="0"/>
                                 </Border>
-                                <ContentPresenter x:Name="contentPresenter" Grid.ColumnSpan="1" ContentSource="Header" TextElement.FontFamily="Segoe UI" TextElement.FontSize="14" Focusable="False" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Margin="34.716,11.77,0.091,9.27" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Width="100.193" Height="18.96"/>
-                                <ed:RegularPolygon x:Name="regularPolygon" Grid.Column="1" VerticalAlignment="Center" Fill="Transparent" Height="10" InnerRadius="1" PointCount="3" Stretch="Fill" Stroke="Transparent" Width="17" RenderTransformOrigin="0.5,0.5" Margin="2.49,16.5,-4.491,13.5">
-                                    <ed:RegularPolygon.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform/>
-                                            <SkewTransform/>
-                                            <RotateTransform Angle="-90"/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </ed:RegularPolygon.RenderTransform>
-                                </ed:RegularPolygon>
+                                <Button Grid.ColumnSpan="2" Content="{Binding xCaption}"  Background="Transparent" BorderBrush="Transparent" Command="{Binding Path=Data.commOpenSubMenu, Source={StaticResource proxy}}"
+                                                    CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Style="{DynamicResource Button_TABITEM}"></Button>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Fill" TargetName="regularPolygon" Value="White"/>
-                                    <Setter Property="Stroke" TargetName="regularPolygon" Value="White"/>
-                                    <Setter Property="TextElement.Foreground" Value="White" TargetName="contentPresenter"/>
+                                    <Setter Property="Background" TargetName="innerBorder" Value="{x:Null}"/>
+                                    <Setter Property="Background" TargetName="mainBorder" Value="#FF0072C6"/>
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsSelected" Value="True"/>
+                                        <Condition Property="IsMouseOver" Value="True"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Cursor" Value="Hand" TargetName="templateRoot"/>
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsSelected" Value="False"/>
+                                        <Condition Property="IsMouseOver" Value="True"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background" TargetName="mainBorder" Value="#66028EF5"/>
+                                    <Setter Property="Cursor" Value="Hand" TargetName="templateRoot"/>
+                                </MultiTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="TabItem_SUBMENU" TargetType="{x:Type TabItem}">
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Foreground" Value="#FF626262"/>
+                <Setter Property="Padding" Value="6,2,6,2"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid x:Name="templateRoot" SnapsToDevicePixels="true" Height="40">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="170"/>
+                                    <ColumnDefinition Width="15"/>
+                                </Grid.ColumnDefinitions>
+                                <Border x:Name="mainBorder" Grid.ColumnSpan="2" BorderBrush="Transparent" Background="Transparent" Margin="0">
+                                    <Border x:Name="innerBorder" BorderBrush="{StaticResource TabItem.Selected.Border}" Background="{StaticResource TabItem.Selected.Background}" Margin="-1" Opacity="0"/>
+                                </Border>
+                                <Button Content="{Binding xCaption}" Background="Transparent" BorderBrush="Transparent" Command="{Binding Path=Data.commOpenItem, Source={StaticResource proxy}}"
+                                                                CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Style="{DynamicResource Button_TABITEM}"></Button>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
                                     <Setter Property="Background" TargetName="innerBorder" Value="{x:Null}"/>
                                     <Setter Property="Background" TargetName="mainBorder" Value="#FF0072C6"/>
                                 </Trigger>
@@ -1868,78 +1902,8 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Border x:Name="templateRoot" SnapsToDevicePixels="true" Background="White" BorderThickness="0.7" BorderBrush="#FFB9B9B9" CornerRadius="4">
-                                <Border x:Name="splitBorder" BorderBrush="Transparent" Background="Transparent" CornerRadius="0,3,3,0"  Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" SnapsToDevicePixels="true" Margin="0" HorizontalAlignment="Right" BorderThickness="0.7">
-                                    <Path x:Name="arrow" VerticalAlignment="Center" Margin="4.833,6.912,4.834,8.21" HorizontalAlignment="Center" Fill="{StaticResource ComboBox.Static.Glyph}" Data="F1 M0,0.77126333 L2.667,3.4379133 5.3334,0.77126333 5.3334,0.041666668 2.6667,0.010005029 0,6.2088171E-10 0,0.77126333 z" Height="3.438" Width="5.333"/>
-                                </Border>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter Property="Fill" TargetName="arrow" Value="#FF0072C6"/>
-                                </Trigger>
-                                <Trigger Property="IsFocused" Value="True">
-                                    <Setter Property="Fill" TargetName="arrow" Value="#FF0072C6"/>
-                                </Trigger>
-                                <MultiDataTrigger>
-                                    <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                        <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="false"/>
-                                    </MultiDataTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ComboBox.MouseOver.Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{StaticResource ComboBox.MouseOver.Border}"/>
-                                </MultiDataTrigger>
-                                <MultiDataTrigger>
-                                    <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                        <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true"/>
-                                    </MultiDataTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ComboBox.MouseOver.Editable.Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{StaticResource ComboBox.MouseOver.Editable.Border}"/>
-                                    <Setter Property="Background" TargetName="splitBorder" Value="{StaticResource ComboBox.MouseOver.Editable.Button.Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="splitBorder" Value="{StaticResource ComboBox.MouseOver.Editable.Button.Border}"/>
-                                </MultiDataTrigger>
-                                <Trigger Property="IsPressed" Value="true">
-                                    <Setter Property="Fill" TargetName="arrow" Value="{StaticResource ComboBox.Pressed.Glyph}"/>
-                                </Trigger>
-                                <MultiDataTrigger>
-                                    <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                        <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="false"/>
-                                    </MultiDataTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ComboBox.Pressed.Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{StaticResource ComboBox.Pressed.Border}"/>
-                                </MultiDataTrigger>
-                                <MultiDataTrigger>
-                                    <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                        <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true"/>
-                                    </MultiDataTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ComboBox.Pressed.Editable.Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{StaticResource ComboBox.Pressed.Editable.Border}"/>
-                                    <Setter Property="Background" TargetName="splitBorder" Value="{StaticResource ComboBox.Pressed.Editable.Button.Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="splitBorder" Value="{StaticResource ComboBox.Pressed.Editable.Button.Border}"/>
-                                </MultiDataTrigger>
-                                <Trigger Property="IsEnabled" Value="false">
-                                    <Setter Property="Fill" TargetName="arrow" Value="{StaticResource ComboBox.Disabled.Glyph}"/>
-                                </Trigger>
-                                <MultiDataTrigger>
-                                    <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                        <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="false"/>
-                                    </MultiDataTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ComboBox.Disabled.Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{StaticResource ComboBox.Disabled.Border}"/>
-                                </MultiDataTrigger>
-                                <MultiDataTrigger>
-                                    <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                        <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true"/>
-                                    </MultiDataTrigger.Conditions>
-                                    <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ComboBox.Disabled.Editable.Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{StaticResource ComboBox.Disabled.Editable.Border}"/>
-                                    <Setter Property="Background" TargetName="splitBorder" Value="{StaticResource ComboBox.Disabled.Editable.Button.Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="splitBorder" Value="{StaticResource ComboBox.Disabled.Editable.Button.Border}"/>
-                                </MultiDataTrigger>
-                            </ControlTemplate.Triggers>
+                                
+                            </Border>                            
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -2021,7 +1985,7 @@
                         </Border>
                     </Popup>
                     <ToggleButton x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
-                    <Border x:Name="border" Background="{StaticResource TextBox.Static.Background}" Margin="{TemplateBinding BorderThickness}">
+                    <Border x:Name="border" CornerRadius="5" Background="{StaticResource TextBox.Static.Background}" Margin="{TemplateBinding BorderThickness}">
                         <TextBox x:Name="PART_EditableTextBox" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                 </Grid>
@@ -2204,6 +2168,48 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="Button_TABITEM" TargetType="{x:Type Button}">
+                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="15"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <ContentPresenter Margin="20,0,0,0" x:Name="contentPresenter" TextElement.FontFamily="Sego ui Symbol" TextElement.Foreground="#FF626262" Focusable="False" HorizontalAlignment="Left" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    <ed:RegularPolygon x:Name="regularPolygon" Grid.Column="1" VerticalAlignment="Center" Fill="Transparent" Height="9" InnerRadius="1" PointCount="3" Stretch="Fill" Stroke="Transparent" Width="17" RenderTransformOrigin="0.5,0.5" Margin="2,17,-4,14">
+                                        <ed:RegularPolygon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform Angle="-90"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </ed:RegularPolygon.RenderTransform>
+                                    </ed:RegularPolygon>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TabItem}, Path=IsSelected}" Value="True">
+                                    <Setter Property="TextElement.Foreground" Value="White" TargetName="contentPresenter"/>
+                                    <Setter Property="Fill" TargetName="regularPolygon" Value="White"/>
+                                    <Setter Property="Stroke" TargetName="regularPolygon" Value="White"/>
+                                </DataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
     <Window.InputBindings>
@@ -2263,35 +2269,29 @@
                                     <RowDefinition Height="20"/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <ComboBox x:Name="cbxItemsMenu" Grid.Column="1" Grid.Row="2" StaysOpenOnEdit="True" IsEditable="True" 
+                                <ComboBox x:Name="cbxItemsMenu" Grid.Column="1" Grid.Row="2" StaysOpenOnEdit="True" IsEditable="True"  Style="{StaticResource ComboBox_NOVO}" ItemContainerStyle="{StaticResource ComboBoxITEM_NOVO}"
                                           ItemsSource="{Binding Source={StaticResource cvsItensMenu}}"
                                           Text="{Binding xTextCbx}" SelectedItem="{Binding selectedFilteredItem}">
                                 </ComboBox>
                                 <TextBlock Grid.Column="1" Grid.Row="1" Text="Menu" FontFamily="Segoe Ui Light" Foreground="#FF626262" FontSize="36"/>
                                 <ContentControl Content="{Binding navegacao}" Grid.Column="2" Grid.Row="1"></ContentControl>
-                                <TabControl Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" TabStripPlacement="Left" BorderBrush="Transparent" BorderThickness="0"
+                                <TabControl Style="{StaticResource TabControl_ARQUIVO}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" ItemContainerStyle="{StaticResource TabItem_MENU}" TabStripPlacement="Left" BorderBrush="Transparent" BorderThickness="0"
                                             ItemsSource="{Binding lMenu}" SelectedItem="{Binding Path=selectedMenu, Mode=TwoWay}" IsSynchronizedWithCurrentItem="True"
                                             >
-                                    <TabControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Button Content="{Binding xCaption}" Command="{Binding Path=Data.commOpenSubMenu, Source={StaticResource proxy}}"
-                                                    CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"></Button>
-                                        </DataTemplate>
-                                    </TabControl.ItemTemplate>
                                     <TabControl.ContentTemplate>
                                         <DataTemplate>
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="200"></ColumnDefinition>
+                                                    <ColumnDefinition Width="1"></ColumnDefinition>
+                                                    <ColumnDefinition Width="171"></ColumnDefinition>
                                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                                 </Grid.ColumnDefinitions>
-                                                <TabControl Grid.Column="0" ItemsSource="{Binding Data.lSubMenu, Source={StaticResource proxy}}"
+                                                <Border Width="0.8" HorizontalAlignment="Left" Background="#FFCCCCCC" VerticalAlignment="Top" Height="500" Margin="-3,0,0,0"/>
+                                                <TabControl Grid.Column="1" ItemsSource="{Binding Data.lSubMenu, Source={StaticResource proxy}}"
                                                         SelectedItem="{Binding Data.selectedSubMenu, Source={StaticResource proxy}}"
-                                                        TabStripPlacement="Left" BorderBrush="Transparent" BorderThickness="0">
+                                                        TabStripPlacement="Left" Style="{StaticResource TabControl_ARQUIVO}" ItemContainerStyle="{StaticResource TabItem_SUBMENU}" BorderBrush="Transparent" BorderThickness="0">
                                                     <TabControl.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <Button Content="{Binding xCaption}" Command="{Binding Path=Data.commOpenItem, Source={StaticResource proxy}}"
-                                                                CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"></Button>
+                                                        <DataTemplate>                                                            
                                                         </DataTemplate>
                                                     </TabControl.ItemTemplate>
                                                     <TabControl.ContentTemplate>
@@ -2299,7 +2299,7 @@
                                                         </DataTemplate>
                                                     </TabControl.ContentTemplate>
                                                 </TabControl>
-                                                <Grid Grid.Column="1">
+                                                <Grid Grid.Column="2">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="50"/>
                                                         <ColumnDefinition/>
@@ -2612,8 +2612,8 @@
                             TargetNullValue=Collapsed, FallbackValue=Collapsed}"
                             ></Components:LoadingAnimation>
                                     <DataGrid Grid.Column="1"  Grid.RowSpan="3"                                  
-                                  ItemsSource="{Binding 
-                            winMan._currentTab._currentDataContext.currentModel.lDocumentos, Mode=TwoWay}"
+                                    ItemsSource="{Binding 
+                                    winMan._currentTab._currentDataContext.currentModel.lDocumentos, Mode=TwoWay}"
                                   AutoGenerateColumns="False"
                                   CanUserAddRows="True" CanUserDeleteRows="True" 
                                   IsReadOnly="{Binding winMan._currentTab._currentDataContext.bIsEnabled, Converter={StaticResource notConv}}">

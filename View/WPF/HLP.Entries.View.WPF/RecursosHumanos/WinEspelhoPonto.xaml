@@ -201,7 +201,10 @@
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Fill" TargetName="path" Value="#FF4774B5"/>
+                                    <Setter Property="Background" TargetName="border" Value="#FF4774B5"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="#FF4774B5"/>
+                                    <Setter Property="Fill" TargetName="path" Value="White"/>
+                                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -229,7 +232,10 @@
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Fill" TargetName="path2" Value="#FF4774B5"/>
+                                    <Setter Property="Background" TargetName="border" Value="#FF4774B5"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="#FF4774B5"/>
+                                    <Setter Property="Fill" TargetName="path2" Value="White"/>
+                                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
