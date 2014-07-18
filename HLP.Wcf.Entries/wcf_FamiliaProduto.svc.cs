@@ -143,24 +143,7 @@ namespace HLP.Wcf.Entries
 
             List<string> lxGroups = new List<string>();
 
-            int count = 0;
 
-            foreach (var item in xMask.Split(separator: '.'))
-            {
-                count++;
-
-                if (count < xMask.Split(separator: '.').Count())
-                    lxGroups.Add(item: item);
-            }
-
-
-            int actualLength = 0;
-            foreach (string g in lxGroups)
-            {
-                actualLength += g.Length;
-                
-
-            }
 
             return lHieraquia;
         }
