@@ -1,22 +1,31 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace HLP.Entries.Model.Models.Comercial
 {
     public partial class ProdutoModel : modelComum
     {
+        Type produtoViewModel = null;
+        List<MethodInfo> lMethods;
+
         public ProdutoModel()
             : base(xTabela: "Produto")
         {
             this.lProdutos_Conversao = new ObservableCollectionBaseCadastros<ConversaoModel>();
             this.lProduto_Fornecedor_Homologado = new ObservableCollectionBaseCadastros<Produto_Fornecedor_HomologadoModel>();
             this.lProduto_Revisao = new ObservableCollectionBaseCadastros<Produto_RevisaoModel>();
+            this.lMethods = new List<MethodInfo>();
+            this.dCadastro = DateTime.Now;
+            this.idFuncionario = UserData.idUser;
         }
 
         private int? _idProduto;
@@ -44,10 +53,51 @@ namespace HLP.Entries.Model.Models.Comercial
         public string xFiscal { get; set; }
         [ParameterOrder(Order = 7)]
         public string xIngles { get; set; }
+
+        private int? _idUnidadeMedidaEstoque;
         [ParameterOrder(Order = 8)]
-        public int idUnidadeMedidaEstoque { get; set; }
+        public int? idUnidadeMedidaEstoque
+        {
+            get { return _idUnidadeMedidaEstoque; }
+            set
+            {
+                _idUnidadeMedidaEstoque = value;
+                base.NotifyPropertyChanged(propertyName: "idUnidadeMedidaEstoque");
+            }
+        }
+
+        private int _idTipoProduto;
         [ParameterOrder(Order = 9)]
-        public int idTipoProduto { get; set; }
+        public int idTipoProduto
+        {
+            get { return _idTipoProduto; }
+            set
+            {
+                _idTipoProduto = value;
+
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                    {
+                        Window wdProduto = Sistema.GetOpenWindow(xName: "WinProduto");
+
+                        if (wdProduto != null)
+                        {
+                            this.produtoViewModel = wdProduto.DataContext.GetType();
+
+                            if (this.lMethods.Count(i => i.Name == "IsService") < 1)
+                            {
+                                MethodInfo mi = this.produtoViewModel.GetMethod(name: "IsService");
+                                this.lMethods.Add(item: mi);
+                            }
+
+                            this.IsService = (bool)lMethods.FirstOrDefault(i => i.Name == "IsService").Invoke(obj: wdProduto.DataContext,
+                                parameters: new object[] { value });
+                        }
+                    }));
+                base.NotifyPropertyChanged(propertyName: "idTipoProduto");
+
+            }
+        }
+
         [ParameterOrder(Order = 10)]
         public int idFamiliaProduto { get; set; }
         [ParameterOrder(Order = 11)]
@@ -60,10 +110,43 @@ namespace HLP.Entries.Model.Models.Comercial
         public int Cod_centro_custo { get; set; }
         [ParameterOrder(Order = 15)]
         public int? idProdutoLocalizacao { get; set; }
+
+
+        private bool? _Ativo;
         [ParameterOrder(Order = 16)]
-        public bool Ativo { get; set; }
+        public bool? Ativo
+        {
+            get { return _Ativo; }
+            set
+            {
+                _Ativo = value;
+
+                if (this.GetOperationModel() == Base.EnumsBases.OperationModel.updating
+                    )
+                {
+                    if (value == false)
+                        this.dBloqueio = DateTime.Now;
+                    else
+                        this.dBloqueio = null;
+                }
+
+
+                base.NotifyPropertyChanged(propertyName: "Ativo");
+            }
+        }
+
+        private DateTime? _dBloqueio;
         [ParameterOrder(Order = 17)]
-        public DateTime? dBloqueio { get; set; }
+        public DateTime? dBloqueio
+        {
+            get { return _dBloqueio; }
+            set
+            {
+                _dBloqueio = value;
+                base.NotifyPropertyChanged(propertyName: "dBloqueio");
+            }
+        }
+
         [ParameterOrder(Order = 18)]
         public decimal nEstoqueMinimo { get; set; }
         [ParameterOrder(Order = 19)]
@@ -98,12 +181,66 @@ namespace HLP.Entries.Model.Models.Comercial
         public int? idTipoServico { get; set; }
         [ParameterOrder(Order = 34)]
         public int? idEmpresa { get; set; }
+
+        private int _idDeposito;
         [ParameterOrder(Order = 35)]
-        public int idDeposito { get; set; }
+        public int idDeposito
+        {
+            get { return _idDeposito; }
+            set
+            {
+                _idDeposito = value;
+
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    Window wdProduto = Sistema.GetOpenWindow(xName: "WinProduto");
+
+                    if (wdProduto != null)
+                    {
+                        this.produtoViewModel = wdProduto.DataContext.GetType();
+
+                        if (this.lMethods.Count(i => i.Name == "GetIdSiteByDeposito") < 1)
+                        {
+                            MethodInfo mi = this.produtoViewModel.GetMethod(name: "GetIdSiteByDeposito");
+                            this.lMethods.Add(item: mi);
+                        }
+
+                        this.idSite = (int)lMethods.FirstOrDefault(i => i.Name == "GetIdSiteByDeposito").Invoke(obj: wdProduto.DataContext,
+                            parameters: new object[] { value });
+                    }
+
+                }));
+
+                base.NotifyPropertyChanged(propertyName: "idDeposito");
+            }
+        }
+
+
+
+        private DateTime _dCadastro;
         [ParameterOrder(Order = 36)]
-        public DateTime dCadastro { get; set; }
+        public DateTime dCadastro
+        {
+            get { return _dCadastro; }
+            set
+            {
+                _dCadastro = value;
+                base.NotifyPropertyChanged(propertyName: "dCadastro");
+            }
+        }
+
+        private int _idFuncionario;
         [ParameterOrder(Order = 37)]
-        public int idFuncionario { get; set; }
+        public int idFuncionario
+        {
+            get { return _idFuncionario; }
+            set
+            {
+                _idFuncionario = value;
+                base.NotifyPropertyChanged(propertyName: "idFuncionario");
+            }
+        }
+
         [ParameterOrder(Order = 38)]
         public byte stOrigemMercadoria { get; set; }
         [ParameterOrder(Order = 39)]
@@ -134,16 +271,49 @@ namespace HLP.Entries.Model.Models.Comercial
         public int? idClassificacaoFiscalCompra { get; set; }
         [ParameterOrder(Order = 52)]
         public decimal vVenda { get; set; }
+
+        private int? _idUnidadeMedidaVendas;
         [ParameterOrder(Order = 53)]
-        public int idUnidadeMedidaVendas { get; set; }
+        public int? idUnidadeMedidaVendas
+        {
+            get { return _idUnidadeMedidaVendas; }
+            set
+            {
+                _idUnidadeMedidaVendas = value;
+                base.NotifyPropertyChanged(propertyName: "idUnidadeMedidaVendas");
+            }
+        }
+
         [ParameterOrder(Order = 54)]
         public decimal vAquisicao { get; set; }
+
+        private int? _idUnidadeMedidaCompras;
         [ParameterOrder(Order = 55)]
-        public int idUnidadeMedidaCompras { get; set; }
+        public int? idUnidadeMedidaCompras
+        {
+            get { return _idUnidadeMedidaCompras; }
+            set
+            {
+                _idUnidadeMedidaCompras = value;
+                base.NotifyPropertyChanged(propertyName: "idUnidadeMedidaCompras");
+            }
+        }
+
         [ParameterOrder(Order = 56)]
         public decimal vProducao { get; set; }
+
+        private int? _idUnidadeMedidaProducao;
         [ParameterOrder(Order = 57)]
-        public int idUnidadeMedidaProducao { get; set; }
+        public int? idUnidadeMedidaProducao
+        {
+            get { return _idUnidadeMedidaProducao; }
+            set
+            {
+                _idUnidadeMedidaProducao = value;
+                base.NotifyPropertyChanged(propertyName: "idUnidadeMedidaProducao");
+            }
+        }
+
         [ParameterOrder(Order = 58)]
         public byte stFornecedorHomologadoProduto { get; set; }
         [ParameterOrder(Order = 59)]
@@ -211,7 +381,35 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
 
+        #region Propriedades não mapeada
 
+
+        private bool _IsService;
+
+        public bool IsService
+        {
+            get { return _IsService; }
+            set
+            {
+                _IsService = value;
+                base.NotifyPropertyChanged(propertyName: "IsService");
+            }
+        }
+
+
+        private int _idSite;
+
+        public int idSite
+        {
+            get { return _idSite; }
+            set
+            {
+                _idSite = value;
+                base.NotifyPropertyChanged(propertyName: "idSite");
+            }
+        }
+
+        #endregion
 
     }
 

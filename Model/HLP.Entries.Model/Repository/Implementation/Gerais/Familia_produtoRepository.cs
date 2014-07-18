@@ -92,6 +92,19 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                  idFamiliaProduto);
         }
 
+        public List<Familia_produtoModel> GetFamiliaProdutoSinteticos(string xValue, string xLength)
+        {
+            DataAccessor<Familia_produtoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
+                (string.Format(format: "select xFamiliaProduto from Familia_produto " +
+                "where xFamiliaProduto like '{0}%' " +
+                "and len(xFamiliaProduto) = {1}", arg0: xValue, arg1: xLength),
+            MapBuilder<Familia_produtoModel>.MapAllProperties()
+            .DoNotMap(c => c.status)
+            .Build());
+
+            return reg.Execute().ToList();
+        }
+
         public void BeginTransaction()
         {
             UndTrabalho.BeginTransaction();

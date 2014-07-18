@@ -32,7 +32,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                                      new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idProduto"),
                                     MapBuilder<ProdutoModel>.MapAllProperties()
-                                    .DoNotMap(i => i.status)                                    
+                                    .DoNotMap(i => i.status)    
+                                    .DoNotMap(i => i.IsService)
+                                    .DoNotMap(i => i.idSite)
                                     .Build());
             }
 
@@ -82,6 +84,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                                     .AddParameter<int>("idTipoProduto"),
                                   MapBuilder<ProdutoModel>.MapAllProperties()
                                   .DoNotMap(i => i.status)
+                                  .DoNotMap(i => i.IsService)
+                                  .DoNotMap(i => i.idSite)
                                   .Build());
             }
 
@@ -97,6 +101,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                                   new Parameters(UndTrabalho.dbPrincipal),
                                   MapBuilder<ProdutoModel>.MapAllProperties()
                                   .DoNotMap(i => i.status)
+                                  .DoNotMap(i => i.IsService)
+                                  .DoNotMap(i => i.idSite)
                                   .Build());
             }
             return regProdutoByTypeAccessor.Execute().ToList();

@@ -709,8 +709,11 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             if (this.objViewModel.bIsEnabled)
             {
-                if (this.objViewModel.currentModel.lOrcamento_Itens.Count(i => !i.bPermitePorcentagem) > 0)
-                    return true;
+                if (this.objViewModel.currentModel != null)
+                {
+                    if (this.objViewModel.currentModel.lOrcamento_Itens.Count(i => !i.bPermitePorcentagem) > 0)
+                        return true;
+                }
             }
             return false;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Components.Model.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -25,5 +26,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         List<HLP.Entries.Model.Models.Gerais.Familia_produtoModel> GetAll();
+
+        [OperationContract]
+        List<modelToTreeView> GetHierarquia(string xMask, string xCodAlt);
     }
 }

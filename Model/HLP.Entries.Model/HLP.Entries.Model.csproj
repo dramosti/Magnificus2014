@@ -124,6 +124,7 @@
     <Compile Include="Models\Gerais\Plano_pagamentoModel.cs" />
     <Compile Include="Models\Gerais\Ramo_atividadeModel.cs" />
     <Compile Include="Models\Gerais\SiteModel.cs" />
+    <Compile Include="Models\GestaoDeMateriais\LocalizacaoModel.cs" />
     <Compile Include="Models\Parametros\Parametro_Cartao_PontoModel.cs" />
     <Compile Include="Models\Parametros\Parametro_ComercialModel.cs" />
     <Compile Include="Models\Parametros\Parametro_ComprasModel.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="Repository\Implementation\Gerais\Ramo_atividadeRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\SiteRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Site_enderecoRepository.cs" />
+    <Compile Include="Repository\Implementation\GestaoDeMateriais\LocalizacaoRepository.cs" />
     <Compile Include="Repository\Implementation\Parametros\Parametro_Cartao_PontoRepository.cs" />
     <Compile Include="Repository\Implementation\Parametros\Parametro_ComercialRepository.cs" />
     <Compile Include="Repository\Implementation\Parametros\Parametro_ComprasRepository.cs" />
@@ -295,6 +297,7 @@
     <Compile Include="Repository\Interfaces\Gerais\IRamo_atividadeRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ISiteRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ISite_enderecoRepository.cs" />
+    <Compile Include="Repository\Interfaces\GestaoDeMateriais\ILocalizacaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Parametros\IParametro_Cartao_PontoRepository.cs" />
     <Compile Include="Repository\Interfaces\Parametros\IParametro_ComercialRepository.cs" />
     <Compile Include="Repository\Interfaces\Parametros\IParametro_ComprasRepository.cs" />

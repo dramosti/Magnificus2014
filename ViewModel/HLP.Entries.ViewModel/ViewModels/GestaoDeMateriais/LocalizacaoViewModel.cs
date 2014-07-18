@@ -1,8 +1,6 @@
-﻿using HLP.Base.ClassesBases;
-using HLP.Base.EnumsBases;
-using HLP.Comum.ViewModel.ViewModel;
-using HLP.Entries.Model.Models.Gerais;
-using HLP.Entries.ViewModel.Commands.Parametros;
+﻿using HLP.Comum.ViewModel.ViewModel;
+using HLP.Entries.Model.Models.GestaoDeMateriais;
+using HLP.Entries.ViewModel.Commands.GestaoDeMateriais;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace HLP.Entries.ViewModel.ViewModels.Parametros
+namespace HLP.Entries.ViewModel.ViewModels.GestaoDeMateriais
 {
-    public class Empresa_ParametrosViewModel : viewModelComum<EmpresaModel>
+    public class LocalizacaoViewModel : viewModelComum<LocalizacaoModel>
     {
-
-
         #region Icommands
         public ICommand commandSalvar { get; set; }
         public ICommand commandDeletar { get; set; }
@@ -27,11 +23,10 @@ namespace HLP.Entries.ViewModel.ViewModels.Parametros
         public ICommand navegarCommand { get; set; }
         #endregion
 
-        public Empresa_ParametrosViewModel()
+        LocalizacaoCommands comm;
+        public LocalizacaoViewModel()
         {
-            Empresa_ParametrosCommands comm = new Empresa_ParametrosCommands(objViewModel: this);
-            comm.ExecPesquisa();
-            this.currentModel.SetOperationModel(_value: OperationModel.searching);
+            this.comm = new LocalizacaoCommands(objViewModel: this);
         }
     }
 }

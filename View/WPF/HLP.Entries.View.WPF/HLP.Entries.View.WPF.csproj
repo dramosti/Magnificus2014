@@ -257,6 +257,7 @@
     <Compile Include="Gerais\WinUnidadeMedida.xaml.cs">
       <DependentUpon>WinUnidadeMedida.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gerais\Converters\cAlternativoMaskConverter.cs" />
     <Compile Include="Parametrização\WinParametrizacao.xaml.cs">
       <DependentUpon>WinParametrizacao.xaml</DependentUpon>
     </Compile>
@@ -660,7 +661,9 @@
       <Name>HLP.Entries.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Parametrização\Converters\" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>

@@ -112,6 +112,7 @@
     <Content Include="wcf_Deposito.svc" />
     <Content Include="wcf_Documentos.svc" />
     <Content Include="wcf_EmpresaParametros.svc" />
+    <Content Include="wcf_Localizacao.svc" />
     <Content Include="wcf_Login.svc" />
     <Content Include="servicePesquisaPadrao.svc" />
     <Content Include="serviceRegiao.svc" />
@@ -167,6 +168,7 @@
     <Compile Include="Iwcf_Banco.cs" />
     <Compile Include="Iwcf_Calendario.cs" />
     <Compile Include="Iwcf_Documentos.cs" />
+    <Compile Include="Iwcf_Localizacao.cs" />
     <Compile Include="Iwcf_Login.cs" />
     <Compile Include="IserviceOrcamento.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
@@ -294,6 +296,9 @@
     </Compile>
     <Compile Include="wcf_EmpresaParametros.svc.cs">
       <DependentUpon>wcf_EmpresaParametros.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Localizacao.svc.cs">
+      <DependentUpon>wcf_Localizacao.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Login.svc.cs">
       <DependentUpon>wcf_Login.svc</DependentUpon>

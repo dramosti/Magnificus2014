@@ -7,6 +7,7 @@
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
+        xmlns:converterLocal="clr-namespace:HLP.Entries.View.WPF.Gerais.Converters"
         Title="Família de Produtos" Height="660" Width="1200" NameView="vwFamiliaProduto">
 
     <Window.Resources>
@@ -16,6 +17,7 @@
             </ResourceDictionary.MergedDictionaries>
             <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
             <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+            <converterLocal:cAlternativoMaskConverter x:Key="codAlternativoMaskConverter"/>
             <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
             <ObjectDataProvider x:Key="lTpOper" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
                 <ObjectDataProvider.MethodParameters>
@@ -78,7 +80,8 @@
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="2" stCompPosicao="first"
-                                    Text="{Binding currentModel.xFamiliaProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                    Text="{Binding currentModel.xFamiliaProduto, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
+                                    ValidatesOnDataErrors=True, NotifyOnValidationError=True, Converter={StaticResource codAlternativoMaskConverter}}"
 								    IsEnabled="{Binding bIsEnabled}"
 								    ToolTip="Digite um código para a recém-criada família de produto, além disso você poderá classificar as famílias de produtos de forma que o campo possa ser um parâmetro para pesquisas ou filtros de relatórios.">
                                 </Components:CustomTextBox>
@@ -96,8 +99,8 @@
                                 </Components:CustomTextBox>
                                 <Components:CustomComboBox
                                     Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
-                                    SelectedIndex="{Binding currentModel.stGrau, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								    IsEnabled="{Binding bIsEnabled}"
+                                    SelectedIndex="{Binding currentModel.stGrau, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								    IsEnabled="False"
 								    ToolTip="Informar se a Linha de produto é Sintético ou Analitica, no caso de Sintético a linha se tornará um Pai do grupo e não poderá ser feito nenhum tipo de lançamento nele, só para afins de totalizador de relatórios">
                                     <Components:CustomComboBox.Items>
                                         <System:String>0-Analítico</System:String>

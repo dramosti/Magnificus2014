@@ -46,6 +46,8 @@
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 </Grid.RowDefinitions>
 
                                 <!--Label-->
@@ -57,6 +59,7 @@
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Utiliza grade nos produtos?" VerticalAlignment="Center"/>
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="6" Text="Utiliza rastreabilidade dos materiais?" VerticalAlignment="Center"/>
                                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Utiliza rastreabilidade dos produtos acabados?" VerticalAlignment="Center"/>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="8" Text="Mascara das Familias de Produto" VerticalAlignment="Center"/>
 
                                 <!--Components-->
 
@@ -131,13 +134,20 @@
                                     VerticalAlignment="Center"
 								    ToolTip="Informar se o Magníficus irá fazer a rastreabilidade de todos os produtos acabados inclusive a rastreabilidade dos materiais.">
                                 </Components:CustomCheckBox>
-
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="8" IsEnabled="{Binding bIsEnabled}"
+                                    ToolTip="Informar a formatação ideal para a sua empresa dentro da família dos produtos. Geralmente é utilizado o conceito contabil ou de centro de custo, como por exemplo.
+                                    XX.XXX.XXX.XXXX ou Y.YY.YY ou Z.ZZZ.ZZZZ Obs. Utilizar sempre a condição com a Letra X e ponto para separação dos grupos e subgrupos."
+                                    Text="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.xMascaraFamiliaProduto,
+                                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                    ValidatesOnDataErrors=True, NotifyOnValidationError=True}">                                    
+                                </Components:CustomTextBox>
                             </Grid>
                         </Expander>
                     </DockPanel>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Custos">
+            <TabItem Header="Custos" Margin="-3,0,3,0">
                 <AdornerDecorator>
                     <DockPanel LastChildFill="True">
                         <Expander Header="Parâmetros Custo" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">

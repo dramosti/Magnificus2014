@@ -28,6 +28,8 @@ using HLP.ComumView.Model.Repository.Interface;
 using HLP.Comum.Model;
 using HLP.Comum.Model.Repository.Interfaces;
 using HLP.Comum.Model.Repository.Implementation;
+using HLP.Entries.Model.Repository.Interfaces.GestaoDeMateriais;
+using HLP.Entries.Model.Repository.Implementation.GestaoDeMateriais;
 
 namespace HLP.Dependencies
 {
@@ -44,6 +46,13 @@ namespace HLP.Dependencies
 
         protected void ResolveRepositories()
         {
+
+            #region GestaoDeMateriais
+
+            Bind<ILocalizacaoRepository>().To<LocalizacaoRepository>();
+
+            #endregion
+
             Bind<IDocumentosRepository>().To<DocumentosRepository>();
             Bind<IConnectionConfigRepository>().To<ConnectionConfigRepository>();
             Bind<IOperacoesDataBaseRepository>().To<OperacoesDataBaseRepository>();

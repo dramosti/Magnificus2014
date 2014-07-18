@@ -1274,6 +1274,14 @@ namespace HLP.Sales.Model.Models.Comercial
         Familia_produtoModel objFamiliaProduto;
         public ProdutoModel objProduto;
 
+        private Lista_Preco_PaiModel _objListaPreco;
+
+        public Lista_Preco_PaiModel objListaPreco
+        {
+            get { return _objListaPreco; }
+            set { _objListaPreco = value; }
+        }
+
         private object _objDataContext;
 
         private object GetDataContextWindow()
@@ -1405,21 +1413,21 @@ namespace HLP.Sales.Model.Models.Comercial
                     {
                         this.bPermitePorcentagem = false;
                         Lista_precoModel objItemListaPreco = null;
-                        if ((currentModel as Orcamento_ideModel).objListaPreco != null)
+                        if (this.objListaPreco != null)
                         {
                             if (p < 0) //Desconto
                             {
                                 decimal pDescontoMaximo = 100;
 
-                                if ((currentModel as Orcamento_ideModel).objListaPreco.pDescontoMaximo != null)
+                                if (this.objListaPreco.pDescontoMaximo != null)
                                 {
-                                    pDescontoMaximo = (decimal)(currentModel as Orcamento_ideModel).objListaPreco.pDescontoMaximo;
+                                    pDescontoMaximo = (decimal)this.objListaPreco.pDescontoMaximo;
                                 }
                                 else
                                 {
-                                    if ((currentModel as Orcamento_ideModel).objListaPreco.lLista_preco != null)
+                                    if (this.objListaPreco.lLista_preco != null)
                                     {
-                                        objItemListaPreco = ((currentModel as Orcamento_ideModel).objListaPreco as Lista_Preco_PaiModel).lLista_preco.FirstOrDefault(
+                                        objItemListaPreco = (this.objListaPreco as Lista_Preco_PaiModel).lLista_preco.FirstOrDefault(
                                             i => i.idProduto == this.idProduto);
 
                                         pDescontoMaximo = objItemListaPreco.pDescontoMaximo ?? 0;
@@ -1443,15 +1451,15 @@ namespace HLP.Sales.Model.Models.Comercial
                             {
                                 decimal pAcrescimoMaximo = 100;
 
-                                if ((currentModel as Orcamento_ideModel).objListaPreco.pAcressimoMaximo != null)
+                                if (this.objListaPreco.pAcressimoMaximo != null)
                                 {
-                                    pAcrescimoMaximo = (decimal)(currentModel as Orcamento_ideModel).objListaPreco.pAcressimoMaximo;
+                                    pAcrescimoMaximo = (decimal)this.objListaPreco.pAcressimoMaximo;
                                 }
                                 else
                                 {
-                                    if ((currentModel as Orcamento_ideModel).objListaPreco.lLista_preco != null)
+                                    if (this.objListaPreco.lLista_preco != null)
                                     {
-                                        objItemListaPreco = (currentModel as Orcamento_ideModel).objListaPreco.lLista_preco.FirstOrDefault(
+                                        objItemListaPreco = this.objListaPreco.lLista_preco.FirstOrDefault(
                                             i => i.idProduto == this.idProduto);
 
                                         if (objItemListaPreco != null)
@@ -1721,16 +1729,16 @@ namespace HLP.Sales.Model.Models.Comercial
                         if ((currentModel as modelBase).GetOperationModel() == OperationModel.updating)
                         {
                             if (this.lUnMedida != null)
-                                this.idUnidadeMedida = objProduto.idUnidadeMedidaVendas;
+                                this.idUnidadeMedida = objProduto.idUnidadeMedidaVendas ?? 0;
 
                             this.xComercial = this.objProduto.xComercial;
                             this.objImposto.ICMS_stOrigemMercadoria = objProduto.stOrigemMercadoria;
                             this.nPesoBruto = objProduto.nPesoBruto;
                             this.nPesoLiquido = objProduto.nPesoLiquido;
 
-                            if ((currentModel as Orcamento_ideModel).objListaPreco != null)
+                            if (this.objListaPreco != null)
                             {
-                                Lista_precoModel objListaItem = (currentModel as Orcamento_ideModel).objListaPreco.lLista_preco
+                                Lista_precoModel objListaItem = this.objListaPreco.lLista_preco
                                     .FirstOrDefault(i => i.idProduto == value);
 
                                 if (objListaItem != null)
@@ -1934,6 +1942,28 @@ namespace HLP.Sales.Model.Models.Comercial
             get { return _idListaPrecoPai; }
             set
             {
+                object currentModel = this.GetOrcamentoIde();
+
+                if (currentModel != null)
+                {
+                    if ((currentModel as modelBase).GetOperationModel() == OperationModel.updating)
+                    {
+                        this.objListaPreco = GetMethodDataContextWindowValue(xname: "GetListaPreco",
+                        _parameters: new object[] { value }) as Lista_Preco_PaiModel;
+
+                        if (this.objListaPreco != null)
+                        {
+                            Lista_precoModel objListaItem = this.objListaPreco.lLista_preco
+                                .FirstOrDefault(i => i.idProduto == this.idProduto);
+
+                            if (objListaItem != null)
+                            {
+                                this.vVenda = this.vVendaSemDesconto = objListaItem.vVenda;
+                            }
+                        }
+                    }
+                }
+
                 _idListaPrecoPai = value;
                 base.NotifyPropertyChanged(propertyName: "idListaPrecoPai");
             }
@@ -3946,7 +3976,7 @@ namespace HLP.Sales.Model.Models.Comercial
                                     } break;
                                 case 1:
                                     {
-                                        Lista_precoModel objListaItem = objOrcamento_ide.objListaPreco.lLista_preco.
+                                        Lista_precoModel objListaItem = currentItem.objListaPreco.lLista_preco.
                                             FirstOrDefault(i => i.idProduto == currentItem.idProduto);
 
                                         if (objListaItem != null)

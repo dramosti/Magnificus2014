@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
+using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Parametros;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
             if (objViewModel.message.Save())
-            {                
+            {
                 servico.SaveObject(this.objViewModel.currentModel.empresaParametros);
                 e.Result = e.Argument;
             }
@@ -82,6 +83,9 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
                 {
                     if (objViewModel.message.bSave)
                     {
+                        (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
+                            .empresaParametros = this.objViewModel.currentModel.empresaParametros;
+
                         this.objViewModel.salvarBaseCommand.Execute(parameter: null);
 
                         object w = objViewModel.GetParentWindow(e.Result);
