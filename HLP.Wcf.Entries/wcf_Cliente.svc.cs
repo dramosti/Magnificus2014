@@ -132,7 +132,6 @@ namespace HLP.Wcf.Entries
                     }
                 }
 
-
                 foreach (ContatoModel item in obj.lCliente_fornecedor_contato)
                 {
                     switch (item.status)
@@ -140,6 +139,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+
                                 item.idContatoClienteFornecedor = (int)obj.idClienteFornecedor;
                                 this.cliente_fornecedor_contatoRepository.Save(
                                     objContato: item);

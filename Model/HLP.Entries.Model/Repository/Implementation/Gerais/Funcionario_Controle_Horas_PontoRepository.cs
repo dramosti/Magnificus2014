@@ -27,6 +27,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Save(Funcionario_Controle_Horas_PontoModel objFuncionario_Controle_Horas_Ponto)
         {
+            Log.AddLog(xLog: "Base: " + UndTrabalho.dbPrincipal.ConnectionString);
             if (objFuncionario_Controle_Horas_Ponto.idFuncionarioControleHorasPonto == null)
             {
                 objFuncionario_Controle_Horas_Ponto.idFuncionarioControleHorasPonto = (int)UndTrabalho.dbPrincipal.ExecuteScalar("dbo.Proc_save_Funcionario_Controle_Horas_Ponto",

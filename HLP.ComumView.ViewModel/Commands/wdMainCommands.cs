@@ -39,7 +39,7 @@ namespace HLP.ComumView.ViewModel.Commands
                     canExecute: ex => DelWindowCanExecute());
             this.vm.OpenCtxCommand = new RelayCommand(execute: i => this.OpenCtx(ctx: i));
             this.vm.fecharCommand = new RelayCommand(execute: i => this.Sair());
-            this.vm.ConnectionConfigCommand = new RelayCommand(execute: i => this.ShowConfigConnection(win: i));
+            this.vm.ConnectionConfigCommand = new RelayCommand(execute: i => this.ShowConfigConnection(win: i));            
             this.vm.SobreCommand = new RelayCommand(execute: i => this.Sobre());
             this.vm.FindAllCommand = new RelayCommand
                 (

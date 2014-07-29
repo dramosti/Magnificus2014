@@ -12,6 +12,7 @@ using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
 using HLP.Entries.Services.Gerais;
 using HLP.Comum.ViewModel.ViewModel;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -125,6 +126,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     }
 
                     this.Inicia_Collections();
+
+                    this.objViewModel.loadTreeView = stAcoesHierarquia.clear;
+                    this.objViewModel.loadTreeView = stAcoesHierarquia.load;
                 }
             }
             catch (Exception ex)
@@ -175,6 +179,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
                     this.PesquisarRegistro();
                 }
+
+                this.objViewModel.loadTreeView = stAcoesHierarquia.clear;
+                this.objViewModel.loadTreeView = stAcoesHierarquia.load;
             }
         }
 
@@ -183,6 +190,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             this.objViewModel.currentModel = new Familia_produtoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
+            this.objViewModel.loadTreeView = stAcoesHierarquia.clear;
         }
         private bool NovoCanExecute()
         {
@@ -289,6 +297,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.Inicia_Collections();
+            this.objViewModel.loadTreeView = stAcoesHierarquia.clear;
+            this.objViewModel.loadTreeView = stAcoesHierarquia.load;
         }
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
@@ -303,6 +313,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 this.objViewModel.currentModel.lFamilia_Produto_ClassesModel.CollectionCarregada();
         }
 
+        public List<modelToTreeView> GetHierarquia(string xMask, string xCodAlt)
+        {
+            return this.objService.GetHierarquia(xMask: xMask, xCodAlt: xCodAlt);
+        }
 
         #endregion
 

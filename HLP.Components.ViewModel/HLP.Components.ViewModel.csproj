@@ -57,14 +57,17 @@
   <ItemGroup>
     <Compile Include="Commands\CustomPesquisaCommands.cs" />
     <Compile Include="Commands\CustomTextBoxCommands.cs" />
+    <Compile Include="Commands\CustomTextBoxIntellisenseCommands.cs" />
     <Compile Include="Commands\CustomTextIntellisenseCommands.cs" />
     <Compile Include="Commands\FindAllCommand.cs" />
     <Compile Include="Commands\HlpEnderecoCommands.cs" />
     <Compile Include="Commands\HlpPesquisaCommands.cs" />
     <Compile Include="Commands\HlpPesquisaFiltradaCommands.cs" />
     <Compile Include="Commands\HlpPesquisaPadraoCommands.cs" />
+    <Compile Include="Commands\HlpTreeviewCommands.cs" />
     <Compile Include="Commands\WindowComponents\QuickSearchCommands.cs" />
     <Compile Include="ViewModels\CustomPesquisaViewModel.cs" />
+    <Compile Include="ViewModels\CustomTextBoxIntellisenseViewModel.cs" />
     <Compile Include="ViewModels\CustomTextBoxViewModel.cs" />
     <Compile Include="ViewModels\CustomTextIntellisenseViewModel.cs" />
     <Compile Include="ViewModels\FindAllViewModel.cs" />
@@ -74,6 +77,7 @@
     <Compile Include="ViewModels\FillComboBoxViewModel.cs" />
     <Compile Include="ViewModels\HlpPesquisaPadraoViewModel.cs" />
     <Compile Include="ViewModels\HlpPesquisaViewModel.cs" />
+    <Compile Include="ViewModels\HlpTreeviewViewModel.cs" />
     <Compile Include="ViewModels\WindowComponents\QuickSearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

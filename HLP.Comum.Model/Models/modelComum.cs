@@ -11,7 +11,6 @@ using System.Windows;
 
 namespace HLP.Comum.Model.Models
 {
-    [DataContract(IsReference = false)]
     public class modelComum : modelBase
     {
         public modelComum()

@@ -923,6 +923,9 @@
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade.wsdl" />
     <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade.xsd">
       <SubType>Designer</SubType>
@@ -975,6 +978,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Juros\wcf_Juros.wsdl" />
@@ -1768,36 +1774,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Contato\wcf_Contato.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Contato\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Contato\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Contato\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Juros\wcf_Juros.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2083,21 +2059,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_FamiliaProduto\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_FamiliaProduto\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_FamiliaProduto\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Acesso\wcf_Acesso.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2348,6 +2309,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Localizacao\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FamiliaProduto\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FamiliaProduto\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FamiliaProduto\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Contato\wcf_Contato.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Contato\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Contato\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Contato\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

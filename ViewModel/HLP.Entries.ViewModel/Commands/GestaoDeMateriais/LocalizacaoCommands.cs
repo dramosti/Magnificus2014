@@ -67,7 +67,6 @@ namespace HLP.Entries.ViewModel.Commands.GestaoDeMateriais
         {
             try
             {
-                //TODO: método de serviço para salvar
                 this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)

@@ -173,6 +173,7 @@
     <Compile Include="Fiscal\WinTipoOperacao.xaml.cs">
       <DependentUpon>WinTipoOperacao.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gerais\Converters\cAlternativoMaskToTreeViewConverter.cs" />
     <Compile Include="Gerais\Converters\DiasSemanasMesesIsEnabledConverter.cs" />
     <Compile Include="Gerais\Converters\EnabledValorPorcentagemMultiConverter.cs" />
     <Compile Include="Gerais\Converters\MoedaPadraoConverter.cs" />
@@ -309,6 +310,9 @@
       <DependentUpon>WinTransportadora.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validates\ValidaUsuarioValidationRule.cs" />
+    <Compile Include="wdTeste.xaml.cs">
+      <DependentUpon>wdTeste.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -557,6 +561,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="wdTeste.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -628,6 +636,10 @@
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.Components.Model\HLP.Components.Model.csproj">
+      <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
+      <Name>HLP.Components.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\HLP.Components.View.WPF\HLP.Components.View.WPF.csproj">
       <Project>{048f4c37-ad90-403f-a9a1-64d0789983c5}</Project>
       <Name>HLP.Components.View.WPF</Name>
@@ -635,6 +647,10 @@
     <ProjectReference Include="..\..\..\HLP.Components.ViewModel\HLP.Components.ViewModel.csproj">
       <Project>{937c9439-cc70-40d2-96f5-d9ad99c51181}</Project>
       <Name>HLP.Components.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
+      <Name>HLP.Comum.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\HLP.Comum.View.WPF\HLP.Comum.View.WPF.csproj">
       <Project>{ea02e402-18cc-40f4-81a2-4007935f4c67}</Project>

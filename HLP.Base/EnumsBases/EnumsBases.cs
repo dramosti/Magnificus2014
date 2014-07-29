@@ -41,4 +41,11 @@ namespace HLP.Base.EnumsBases
         _default,
         notVisible
     }
+
+    public enum stAcoesHierarquia
+    {
+        load,
+        clear,
+        nothing,
+    }
 }

@@ -8,6 +8,8 @@ using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using HLP.Comum.ViewModel.ViewModel;
+using HLP.Base.Static;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
@@ -33,37 +35,12 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         public string ReturnMaskcAlternativo(string value)
         {
-            string _value = value.Replace(oldValue: ".", newValue: "");
-
-            string xMask = string.Empty;
-            int count = 0;
-            List<object> lObjects = new List<object>();
-
-            foreach (char car in (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
-                .empresaParametros.ObjParametro_EstoqueModel.xMascaraFamiliaProduto)
-            {
-                if (car == '.')
-                {
-                    xMask += '.';
-                }
-                else
-                {
-                    xMask += "{" + count.ToString() + "}";
-                    count++;
-                }
-            }
-
-            for (int i = 0; i < count; i++)
-            {
-                if (i < _value.Length)
-                    lObjects.Add(item: _value[index: i]);
-                else
-                    lObjects.Add(item: " ");
-            }
-
-            string xValueMasked = string.Format(format: xMask, args: lObjects.ToArray());
+            string xValueMasked = Util.ReturnValueMasked(xMask: (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
+                .empresaParametros.ObjParametro_EstoqueModel.xMascaraFamiliaProduto,
+                _value: value);
 
             int countSeparators = xValueMasked.Split(separator: '.').Count();
+
             if (countSeparators > 0)
             {
                 string lastGroup = xValueMasked.Split(separator: '.')[countSeparators - 1];
@@ -86,6 +63,16 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             return (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
                 .empresaParametros.ObjParametro_EstoqueModel.xMascaraFamiliaProduto.Replace(
                 oldValue: ".", newValue: "").Length;
+        }
+
+        public List<modelToTreeView> GetHierarquia()
+        {
+            if (this.currentModel != null)
+                return this.commands.GetHierarquia(xCodAlt: this.currentModel.xFamiliaProduto,
+                    xMask: (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
+                    .empresaParametros.ObjParametro_EstoqueModel.xMascaraFamiliaProduto);
+            else
+                return null;
         }
 
     }

@@ -67,7 +67,10 @@ namespace HLP.Components.View.WPF
         public statusComponentePosicao stCompPosicao
         {
             get { return _stCompPosicao; }
-            set { _stCompPosicao = value; }
+            set
+            {
+                _stCompPosicao = value;
+            }
         }
 
         private StVisibilityButtonQuickSearch _stVisibilityBtnQuickSearch;

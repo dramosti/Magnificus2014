@@ -581,7 +581,7 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 CollectionViewSource cvs = w.FindResource(resourceKey: "cvsItens") as CollectionViewSource;
                 Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
-                {
+                {                    
                     cvs.Filter += new FilterEventHandler(this.ItensOrcamentoFilter);
                 }));
 

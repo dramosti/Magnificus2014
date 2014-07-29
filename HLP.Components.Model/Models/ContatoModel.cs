@@ -16,7 +16,7 @@ namespace HLP.Components.Model.Models
         public ContatoModel()
             : base("Contato")
         {
-            this.lContato_EnderecoModel = new ObservableCollectionBaseCadastros<Contato_EnderecoModel>();
+            this.lContato_EnderecoModel = new ObservableCollectionBaseCadastros<EnderecoModel>();
             this.Ativo = true;
         }
 
@@ -625,9 +625,9 @@ namespace HLP.Components.Model.Models
 
         #endregion
 
-        private ObservableCollectionBaseCadastros<Contato_EnderecoModel> _lContato_EnderecoModel;
+        private ObservableCollectionBaseCadastros<EnderecoModel> _lContato_EnderecoModel;
 
-        public ObservableCollectionBaseCadastros<Contato_EnderecoModel> lContato_EnderecoModel
+        public ObservableCollectionBaseCadastros<EnderecoModel> lContato_EnderecoModel
         {
             get { return _lContato_EnderecoModel; }
             set { _lContato_EnderecoModel = value; base.NotifyPropertyChanged("lContato_EnderecoModel"); }

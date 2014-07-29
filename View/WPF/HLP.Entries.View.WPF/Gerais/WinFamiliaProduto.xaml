@@ -30,6 +30,7 @@
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
             <convert:NotConverter x:Key="notConverter"/>
+            <converterLocal:cAlternativoMaskToTreeViewConverter x:Key="cAlternativoMaskToTvConv"/>
         </ResourceDictionary>
     </Window.Resources>
     <DockPanel LastChildFill="True">
@@ -278,6 +279,12 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </AdornerDecorator>
+            </TabItem>
+            <TabItem Header="Hierarquia">
+                <Components:HlpTreeView x:Name="tvi"                                        
+                                        loadTreeView="{Binding loadTreeView}"
+                                        selectedValue="{Binding currentModel.xFamiliaProduto, 
+                    Converter={StaticResource cAlternativoMaskToTvConv}, Mode=OneWay}"></Components:HlpTreeView>
             </TabItem>
         </TabControl>
     </DockPanel>

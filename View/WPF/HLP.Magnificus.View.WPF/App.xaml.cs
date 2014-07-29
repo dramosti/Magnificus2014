@@ -175,7 +175,7 @@ namespace HLP.Magnificus.View.WPF
                 // Validar se ja existe uma conexão
                 if (this.ValidaConnection())
                 {
-
+                    
                     bool bModificado = false;
                     bModificado = Sistema.SalvaTamanhoMensagensWcf();
                     if (Sistema.bOnline != StConnection.OnlineNetwork)

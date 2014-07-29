@@ -14,7 +14,8 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
         void Delete(int idFamiliaProduto);
         int Copy(Familia_produtoModel familia_produto);
         List<Familia_produtoModel> GetAll();
-
+        List<Familia_produtoModel> GetFamiliaProdutoSinteticos(string xValue, string xLength);
+        Familia_produtoModel GetFamiliaProdutoByxFamilia(string xValue);
         void BeginTransaction();
         void CommitTransaction();
         void RollackTransaction();

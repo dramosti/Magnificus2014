@@ -29,10 +29,18 @@ namespace HLP.Entries.View.WPF.Gerais.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+            List<char> specialChars = new List<char>
+            {
+                '.', ',', '(', ')', '-', '_', '{', '}', '[', ']', '\\', '/'
+            };
+
             if (value == null)
                 return string.Empty;
 
-            string _value = value.ToString().Replace(oldValue: ".", newValue: "");
+            foreach (char c in specialChars)
+            {
+                value = value.ToString().Replace(oldValue: c.ToString(), newValue: "");
+            }
 
             WinFamiliaProduto wFamiliaProduto = Sistema.GetOpenWindow(xName: "WinFamiliaProduto") as WinFamiliaProduto;
 
@@ -41,8 +49,8 @@ namespace HLP.Entries.View.WPF.Gerais.Converters
 
             int maskLength = wFamiliaProduto.ViewModel.GetLengthMaskcAlternativo();
 
-            return maskLength > 0 ? (_value.ToString().Length > maskLength ? _value.ToString().Substring(startIndex: 0, length: maskLength)
-                : _value.ToString()) : value.ToString();
+            return maskLength > 0 ? (value.ToString().Length > maskLength ? value.ToString().Substring(startIndex: 0, length: maskLength)
+                : value.ToString()) : value.ToString();
         }
     }
 }

@@ -17,6 +17,9 @@ using HLP.Entries.Services.Transportes;
 using HLP.Entries.Services.Gerais;
 using System.Collections.ObjectModel;
 using HLP.Comum.ViewModel.ViewModel;
+using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Services.Financeiro;
+using HLP.Entries.Model.Models.Financeiro;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -75,7 +78,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 foreach (int id in this.objViewModel.currentModel.lContato_EnderecoModel.idExcluidos)
                 {
                     this.objViewModel.currentModel.lContato_EnderecoModel.Add(
-                        new Contato_EnderecoModel
+                        new EnderecoModel
                         {
                             idEndereco = id,
                             status = statusModel.excluido
@@ -98,7 +101,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     this.objViewModel.currentModel = objService.SaveObject(obj: this.objViewModel.currentModel);
                     e.Result = e.Argument;
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -301,6 +304,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 {
                     if (this.objViewModel.currentModel != null)
                     {
+                        EnderecoModel endereco = null;
+                        CidadeService objCidadeService = new CidadeService();
+
                         if ((this.objViewModel.currentModel.idContatoMotorista != null
                             && this.objViewModel.currentModel.idContatoMotorista != 0) ||
                             (this.objViewModel.currentModel.idContatoTransportador != null
@@ -328,9 +334,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
                                 if (t.lTransportador_Endereco != null)
                                 {
-                                    EnderecoModel endereco = null;
-                                    CidadeService objCidadeService = new CidadeService();
-
                                     if (this.objViewModel.currentModel.idContatoMotorista != null
                             && this.objViewModel.currentModel.idContatoMotorista != 0)
                                     {
@@ -362,17 +365,67 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                                     {
                                         endereco = t.lTransportador_Endereco.FirstOrDefault();
                                     }
-                                    if (endereco != null)
-                                    {
-                                        CidadeModel cid = objCidadeService.GetObject(
-                                            id: endereco.idCidade);
+                                }
+                            }
+                        }
+                        else if (
+                            this.objViewModel.currentModel.idContatoClienteFornecedor != null &&
+                            this.objViewModel.currentModel.idContatoClienteFornecedor != 0)
+                        {
+                            ClienteService objClienteService = new ClienteService();
+                            Cliente_fornecedorModel objClienteModel = objClienteService.GetObjeto(
+                                id: this.objViewModel.currentModel.idContatoClienteFornecedor ?? 0);
 
-                                        this.objViewModel.currentModel.xEnderecoEmpresa = string.Format(format: "{0}, {1}, {2}",
-                                            arg0: endereco.xEndereco, arg1: endereco.xBairro, arg2: cid != null ?
-                                            cid.xCidade : "");
+                            if (objClienteModel != null)
+                            {
+                                this.objViewModel.currentModel.idEmpresaContato = objClienteModel.idEmpresa;
+                                this.objViewModel.currentModel.xEmpresa = objClienteModel.xNome;
+                                this.objViewModel.currentModel.xTelefoneEmpresa = objClienteModel.xTelefone1;
+
+                                if (objClienteModel.lCliente_fornecedor_Endereco != null)
+                                {
+                                    endereco = objClienteModel.lCliente_fornecedor_Endereco.FirstOrDefault(i => i.stPrincipal == (byte)1);
+
+                                    if (endereco == null)
+                                    {
+                                        endereco = objClienteModel.lCliente_fornecedor_Endereco.FirstOrDefault();
                                     }
                                 }
                             }
+                        }
+                        else if (
+                            this.objViewModel.currentModel.idContatoAgencia != null
+                            && this.objViewModel.currentModel.idContatoAgencia != 0)
+                        {
+                            AgenciaService objAgenciaService = new AgenciaService();
+                            AgenciaModel objAgenciaModel = objAgenciaService.GetObject(id: this.objViewModel.currentModel.idContatoAgencia ?? 0);
+
+                            if (objAgenciaModel != null)
+                            {
+                                this.objViewModel.currentModel.idEmpresaContato = objAgenciaModel.idAgencia ?? 0;
+                                this.objViewModel.currentModel.xEmpresa = objAgenciaModel.xAgencia;
+                                this.objViewModel.currentModel.xTelefoneEmpresa = objAgenciaModel.xTelefone;
+
+                                if (objAgenciaModel.lAgencia_EnderecoModel != null)
+                                {
+                                    endereco = objAgenciaModel.lAgencia_EnderecoModel.FirstOrDefault(i => i.stPrincipal == (byte)1);
+
+                                    if (endereco == null)
+                                    {
+                                        endereco = objAgenciaModel.lAgencia_EnderecoModel.FirstOrDefault();
+                                    }
+                                }
+                            }
+                        }
+
+                        if (endereco != null)
+                        {
+                            CidadeModel cid = objCidadeService.GetObject(
+                                id: endereco.idCidade);
+
+                            this.objViewModel.currentModel.xEnderecoEmpresa = string.Format(format: "{0}, {1}, {2}",
+                                arg0: endereco.xEndereco, arg1: endereco.xBairro, arg2: cid != null ?
+                                cid.xCidade : "");
                         }
                     }
                 }

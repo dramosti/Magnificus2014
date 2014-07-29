@@ -7571,4 +7571,11 @@
         </Setter>
     </Style>
 
+    <Style TargetType="Popup" x:Key="popupIntellisense">
+        <Setter Property="Child">
+            <Setter.Value>
+                <DataGrid ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TextBox}, Path=customViewModel.vResult}"></DataGrid>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

@@ -4,7 +4,7 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"         
         xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" x:Class="HLP.Entries.View.WPF.Gerais.WinUF"
-        Title="Uf" Height="300" Width="500" NameView="vwUF">
+        Title="Uf - Unidade da Federação" Height="300" Width="500" NameView="vwUF">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

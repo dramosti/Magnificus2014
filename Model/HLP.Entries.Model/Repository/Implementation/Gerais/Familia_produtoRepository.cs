@@ -95,7 +95,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public List<Familia_produtoModel> GetFamiliaProdutoSinteticos(string xValue, string xLength)
         {
             DataAccessor<Familia_produtoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
-                (string.Format(format: "select xFamiliaProduto from Familia_produto " +
+                (string.Format(format: "select * from Familia_produto " +
                 "where xFamiliaProduto like '{0}%' " +
                 "and len(xFamiliaProduto) = {1}", arg0: xValue, arg1: xLength),
             MapBuilder<Familia_produtoModel>.MapAllProperties()
@@ -103,6 +103,18 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             .Build());
 
             return reg.Execute().ToList();
+        }
+
+        public Familia_produtoModel GetFamiliaProdutoByxFamilia(string xValue)
+        {
+            DataAccessor<Familia_produtoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
+                (string.Format(format: "select * from Familia_produto " +
+                "where xFamiliaProduto = '{0}' ", arg0: xValue),
+            MapBuilder<Familia_produtoModel>.MapAllProperties()
+            .DoNotMap(c => c.status)
+            .Build());
+
+            return reg.Execute().FirstOrDefault();
         }
 
         public void BeginTransaction()

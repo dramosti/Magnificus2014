@@ -38,7 +38,7 @@ namespace HLP.Entries.Model.Models.Transportes
         public byte stEnderecoImpostoSobreVendas { get; set; }
         [ParameterOrder(Order = 5)]
         public string nIntrastat { get; set; }
-                
+
         private byte _stAplicarMinGratis;
         [ParameterOrder(Order = 6)]
         public byte stAplicarMinGratis
@@ -47,11 +47,27 @@ namespace HLP.Entries.Model.Models.Transportes
             set
             {
                 _stAplicarMinGratis = value;
+
+                if (this.GetOperationModel() == Base.EnumsBases.OperationModel.updating &&
+                    value == (byte)0)
+                    this.vMinimoGratis = decimal.Zero;
+
                 base.NotifyPropertyChanged(propertyName: "stAplicarMinGratis");
             }
         }
+        
+        private decimal _vMinimoGratis;
         [ParameterOrder(Order = 7)]
-        public decimal vMinimoGratis { get; set; }
+        public decimal vMinimoGratis
+        {
+            get { return _vMinimoGratis; }
+            set
+            {
+                _vMinimoGratis = value;
+                base.NotifyPropertyChanged(propertyName: "vMinimoGratis");
+            }
+        }
+        
     }
 
     public partial class Condicoes_entregaModel

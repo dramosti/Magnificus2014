@@ -7,7 +7,7 @@
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
-        x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinAgencia"
+        x:Class="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinAgencia"
         Title="Agência" Height="660" Width="1024" NameView="vwAgencia">
     <Window.Resources>
         <ResourceDictionary>
@@ -66,8 +66,8 @@
                                 <!--Label-->
 
                                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Código da Agencia" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Nome" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Código da Agência" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Nome da Agência" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Banco" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Telefone" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Fax" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
@@ -88,7 +88,7 @@
 									ToolTip="Digite um código da Agencia bancária.">
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+                                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"
                                     Text="{Binding currentModel.xAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informa o nome por completo da Agência Bancária">
@@ -118,12 +118,16 @@
                                 <Components:HlpContato
                                     IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     ItemsSourceContatos="{Binding currentModel.lAgencia_ContatoModel}"
-                                    Grid.Column="7" Grid.Row="1" Grid.RowSpan="6"
+                                    Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="6"
                                          x:Name="dgvContato"
                                     >
                                     <Components:HlpContato.lColumns>
                                         <System:String>xNome</System:String>
                                         <System:String>xCargo</System:String>
+                                        <System:String>xEmailComercial</System:String>
+                                        <System:String>xTelefoneComercial</System:String>
+                                        <System:String>xRamalComercial</System:String>
+                                        <System:String>xCelularComercial</System:String>
                                     </Components:HlpContato.lColumns>
                                 </Components:HlpContato>
                             </Grid>

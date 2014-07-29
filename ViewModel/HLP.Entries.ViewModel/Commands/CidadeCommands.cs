@@ -114,7 +114,7 @@ namespace HLP.Entries.ViewModel.Commands
                         this.objViewModel.salvarBaseCommand.Execute(parameter: null);
 
                         object w = objViewModel.GetParentWindow(e.Result);
-
+                        
                         if (w != null)
                         {
                             w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
@@ -126,7 +126,6 @@ namespace HLP.Entries.ViewModel.Commands
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

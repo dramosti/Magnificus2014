@@ -213,17 +213,12 @@
 					IsEnabled="False"
 					ToolTip="O Sistema preenche automaticamente com a data e hora (dd/mm/aaaa - hh:mm) em que foi criado o orçamento.">
                 </Components:HlpDatePicker>
-                <Components:CustomPesquisa 
+                <Components:ucTextBoxIntellisense
                     x:Name="pesquisaCliente" Height="20" Margin="0,0,0,3" Grid.Column="5" Grid.Row="2"                   
-                    NameWindowCadastro="WinCliente"
-					xIdPesquisa="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					selectedId="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="Informar ao orçamento de vendas o cliente." TableView="vwCliente" FieldPesquisa="ID">
-                    <Components:CustomPesquisa.Items>
-                        <System:String>xNome</System:String>
-                        <System:String>xFantasia</System:String>
-                    </Components:CustomPesquisa.Items>
-                </Components:CustomPesquisa>
+					ToolTip="Informar ao orçamento de vendas o cliente." xNameView="vwClienteqs"
+                    ></Components:ucTextBoxIntellisense>
                 <Components:CustomComboBox Grid.Column="7" Grid.Row="2" IsEnabled="{Binding bIsEnabled}"
                                            ItemsSource="{Binding Source={StaticResource lResultTipoDocumento}}"
                                            SelectedValue="{Binding currentModel.idTipoDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"

@@ -33,9 +33,12 @@ namespace HLP.Wcf.Entries
         {
             try
             {
+                Log.AddLog(xLog: "Inicio método de salvamento.");
+                Log.AddLog(xLog: "Registros: " + lobjFuncionario_Controle_Horas_Ponto.Count);
                 this.funcionario_Controle_Horas_PontoRepository.BeginTransaction();
                 foreach (HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel item in lobjFuncionario_Controle_Horas_Ponto)
                 {
+                    Log.AddLog(xLog: "Item Status: " + item.status.ToString());
                     switch (item.status)
                     {
                         case statusModel.criado:
@@ -43,6 +46,7 @@ namespace HLP.Wcf.Entries
                             {
                                 item.idFuncionario = idFuncionario;
                                 this.funcionario_Controle_Horas_PontoRepository.Save(item);
+                                Log.AddLog(xLog: "Salvo com o Id " + item.idFuncionarioControleHorasPonto);
                             }
                             break;
                         case statusModel.excluido:
@@ -52,16 +56,15 @@ namespace HLP.Wcf.Entries
                             break;
                     }
                 }
+
+                this.funcionario_Controle_Horas_PontoRepository.CommitTransaction();
+                Log.AddLog(xLog: "Salvo!");
             }
             catch (Exception ex)
             {
                 this.funcionario_Controle_Horas_PontoRepository.RollbackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
-            }
-            finally
-            {
-                this.funcionario_Controle_Horas_PontoRepository.CommitTransaction();                
             }
             return lobjFuncionario_Controle_Horas_Ponto;
         }
@@ -85,7 +88,7 @@ namespace HLP.Wcf.Entries
         {
             return this.funcionario_Controle_Horas_PontoRepository.GetHorasTrabalhadasDia(idFuncionario, dtDia);
         }
-      
+
 
         public List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia)
         {
@@ -109,7 +112,7 @@ namespace HLP.Wcf.Entries
 
         public TimeSpan GetTotalBancoHoras(int idFuncionario, DateTime dtMes)
         {
-          return  funcionario_BancoHorasRepository.GetTotalBancoHoras(idFuncionario, dtMes);
+            return funcionario_BancoHorasRepository.GetTotalBancoHoras(idFuncionario, dtMes);
         }
 
         public void SaveBancoHoras(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel objFuncionario_BancoHoras)
@@ -126,12 +129,12 @@ namespace HLP.Wcf.Entries
         {
             return funcionario_BancoHorasRepository.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
         }
-        
+
         public void DeleteBancoHorasMes(int idFuncionario, DateTime dtMes)
         {
             funcionario_BancoHorasRepository.DeleteBancoHorasMes(idFuncionario, dtMes);
         }
-        
+
         public bool ExisteCalendarioDia(int idFuncionario, DateTime dtDia)
         {
             return funcionario_Controle_Horas_PontoRepository.ExisteCalendarioDia(idFuncionario, dtDia);

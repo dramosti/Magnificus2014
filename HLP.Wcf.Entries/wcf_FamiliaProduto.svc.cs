@@ -3,6 +3,7 @@ using HLP.Base.EnumsBases;
 using HLP.Components.Model.Models;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
+using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
 using System;
@@ -141,11 +142,119 @@ namespace HLP.Wcf.Entries
         {
             List<modelToTreeView> lHieraquia = new List<modelToTreeView>();
 
-            List<string> lxGroups = new List<string>();
+            List<char> specialChars = new List<char>
+            {
+                '.', ',', '(', ')', '-', '_', '{', '}', '[', ']', '\\', '/'
+            };
 
+            int lengthMask = xMask.Count(i => !specialChars.Contains(item: i));
 
+            string xMaskedValue = HLP.Base.Static.Util.ReturnValueMasked(xMask: xMask, _value: xCodAlt);
 
+            List<Familia_produtoModel> lFamiliaProduto = this.iFamilia_ProdutoRepository.GetFamiliaProdutoSinteticos(
+                        xValue: xMaskedValue.Split(separator: specialChars.ToArray())[0], xLength: lengthMask.ToString());
+
+            Familia_produtoModel curFamiliaProduto;
+
+            modelToTreeView baseNode = null;
+            modelToTreeView parentNode = new modelToTreeView();
+
+            while (true)
+            {
+                if (lFamiliaProduto.Count == 0)
+                    break;
+                else
+                {
+                    curFamiliaProduto = lFamiliaProduto.FirstOrDefault();
+
+                    xMaskedValue = HLP.Base.Static.Util.ReturnValueMasked(xMask: xMask, _value: curFamiliaProduto.xFamiliaProduto);
+                    string currentSubGroupCurFamiliaProduto = string.Empty;
+                    string previewedValue = string.Empty;
+                    Familia_produtoModel f = null;
+
+                    foreach (string subGroupCurFamiliaProduto in xMaskedValue.Split(separator: specialChars.ToArray()))
+                    {
+                        previewedValue = (currentSubGroupCurFamiliaProduto + subGroupCurFamiliaProduto).PadRight(totalWidth: lengthMask
+                                    , paddingChar: '0');
+
+                        this.GetNode(nd: baseNode,
+                            xValue: HLP.Base.Static.Util.ReturnValueMasked(
+                                    xMask: xMask, _value: currentSubGroupCurFamiliaProduto.PadRight(totalWidth: lengthMask
+                                    , paddingChar: '0')),
+                            ndReturned: out parentNode);
+
+                        if (parentNode != null)
+                        {
+                            if (parentNode.xIdAlternativo !=
+                                HLP.Base.Static.Util.ReturnValueMasked(
+                                    xMask: xMask, _value: previewedValue))
+                                if (parentNode.lFilhos.Count(i => i.xIdAlternativo == HLP.Base.Static.Util.ReturnValueMasked(
+                                    xMask: xMask, _value: previewedValue)) == 0)
+                                {
+                                    f = this.iFamilia_ProdutoRepository.GetFamiliaProdutoByxFamilia(xValue:
+                                        previewedValue);
+
+                                    parentNode.lFilhos.Add(item:
+                                        new modelToTreeView
+                                        {
+                                            xIdAlternativo = HLP.Base.Static.Util.ReturnValueMasked(
+                                            xMask: xMask, _value: previewedValue),
+                                            xDisplay = f.xDescricao
+                                        });
+                                }
+                        }
+                        else
+                        {
+                            f = this.iFamilia_ProdutoRepository.GetFamiliaProdutoByxFamilia(xValue:
+                                        previewedValue);
+
+                            if (baseNode == null)
+                                baseNode = new modelToTreeView
+                                {
+                                    xIdAlternativo = HLP.Base.Static.Util.ReturnValueMasked(
+                                            xMask: xMask, _value: previewedValue),
+                                    xDisplay = f.xDescricao
+                                };
+                        }
+
+                        currentSubGroupCurFamiliaProduto += subGroupCurFamiliaProduto;
+                    }
+                    lFamiliaProduto.Remove(item: curFamiliaProduto);
+                }
+            }
+
+            lHieraquia.Add(item: baseNode);
             return lHieraquia;
+        }
+
+        private void GetNode(modelToTreeView nd, string xValue, out modelToTreeView ndReturned)
+        {
+            ndReturned = null;
+            if (nd == null)
+            {
+                return;
+            }
+
+            if (nd.xIdAlternativo == xValue)
+            {
+                ndReturned = nd;
+                return;
+            }
+
+            modelToTreeView ndAux = nd.lFilhos.FirstOrDefault(i => i.xIdAlternativo == xValue);
+
+            if (ndAux != null)
+            {
+                ndReturned = ndAux;
+                return;
+            }
+            else
+            {
+                foreach (modelToTreeView n in nd.lFilhos)
+                {
+                    this.GetNode(nd: n, xValue: xValue, ndReturned: out ndReturned);
+                }
+            }
         }
     }
 }
