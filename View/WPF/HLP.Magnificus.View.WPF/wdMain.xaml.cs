@@ -95,5 +95,15 @@ namespace HLP.Magnificus.View.WPF
         {
             (sender as ComboBox).IsDropDownOpen = true;
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = System.Windows.WindowState.Minimized;
+        }
     }
 }

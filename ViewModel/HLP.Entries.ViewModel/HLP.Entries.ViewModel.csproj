@@ -87,6 +87,7 @@
     <Compile Include="Commands\Gerais\Funcionario_Controle_Horas_PontoCommand.cs" />
     <Compile Include="Commands\Gerais\HlpCalendarioPontoCommand.cs" />
     <Compile Include="Commands\Gerais\RegiaoCommands.cs" />
+    <Compile Include="Commands\GestaoDeMateriais\LocalizacaoCommands.cs" />
     <Compile Include="Commands\RecursosHumanos\CorrigirUltimoPontoCommand.cs" />
     <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="ViewModels\Gerais\Ramo_atividadeViewModel.cs" />
     <Compile Include="ViewModels\Gerais\siteViewModel.cs" />
     <Compile Include="ViewModels\Gerais\TipoServicoViewModel.cs" />
+    <Compile Include="ViewModels\GestaoDeMateriais\LocalizacaoViewModel.cs" />
     <Compile Include="ViewModels\Parametros\Empresa_ParametrosViewModel.cs" />
     <Compile Include="ViewModels\RecursosHumanos\CorrigirUltimoPontoViewModel.cs" />
     <Compile Include="ViewModels\RecursosHumanos\SetorViewModel.cs" />

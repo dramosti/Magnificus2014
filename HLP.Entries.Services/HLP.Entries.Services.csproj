@@ -97,6 +97,7 @@
     <Compile Include="Gerais\Tipo_ServicoService.cs" />
     <Compile Include="Gerais\UfService.cs" />
     <Compile Include="Gerais\Unidade_MedidaService.cs" />
+    <Compile Include="GestaoMateriais\LocalizacaoService.cs" />
     <Compile Include="GestaoMateriais\SiteService.cs" />
     <Compile Include="Parametros\EmpresaParametrosService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -254,6 +255,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\wcf_Lista_Preco\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_Localizacao\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -469,6 +475,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Tipo_servicoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.UFModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.GestaoDeMateriais.LocalizacaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.CargoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.DepartamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.SetorModel.datasource" />
@@ -916,6 +923,9 @@
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade.wsdl" />
     <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade.xsd">
       <SubType>Designer</SubType>
@@ -970,6 +980,9 @@
     <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Juros\wcf_Juros.wsdl" />
     <None Include="Service References\wcf_Juros\wcf_Juros.xsd">
       <SubType>Designer</SubType>
@@ -1006,6 +1019,22 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Localizacao\wcf_Localizacao.wsdl" />
+    <None Include="Service References\wcf_Localizacao\wcf_Localizacao.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Localizacao\wcf_Localizacao1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Localizacao\wcf_Localizacao2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Localizacao\wcf_Localizacao3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Localizacao\wcf_Localizacao4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Login\wcf_Login.wsdl" />
@@ -1447,6 +1476,7 @@
     <WCFMetadataStorage Include="Service References\wcf_Funcionario_ControlePonto\" />
     <WCFMetadataStorage Include="Service References\wcf_Juros\" />
     <WCFMetadataStorage Include="Service References\wcf_Lista_Preco\" />
+    <WCFMetadataStorage Include="Service References\wcf_Localizacao\" />
     <WCFMetadataStorage Include="Service References\wcf_Login\" />
     <WCFMetadataStorage Include="Service References\wcf_ModoEntrega\" />
     <WCFMetadataStorage Include="Service References\wcf_Moeda\" />
@@ -1744,36 +1774,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Contato\wcf_Contato.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Contato\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Contato\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Contato\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Juros\wcf_Juros.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2059,21 +2059,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_FamiliaProduto\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_FamiliaProduto\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_FamiliaProduto\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Acesso\wcf_Acesso.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2309,6 +2294,66 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Moeda\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Localizacao\wcf_Localizacao.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Localizacao\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Localizacao\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Localizacao\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FamiliaProduto\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FamiliaProduto\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FamiliaProduto\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Contato\wcf_Contato.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Contato\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Contato\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Contato\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

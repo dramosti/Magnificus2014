@@ -69,7 +69,7 @@
     type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinCondicaoPagamento, HLP.Entries.View.WPF">
   </object>
   <object id="WinConversao" name="Conversões" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.GestãoAdministrativa.WinConversao, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoDeMateriais.WinConversao, HLP.Entries.View.WPF">
   </object>
   <object id="WinDeposito" name="Depósito" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.GestãoDeMateriais.WinDeposito, HLP.Entries.View.WPF">
@@ -129,7 +129,7 @@
     type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinBanco, HLP.Entries.View.WPF">
   </object>
   <object id="WinAgencia" name="Agências" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinAgencia, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinAgencia, HLP.Entries.View.WPF">
   </object>
   <object id="WinContaBancaria" name="Contas_Bancárias" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinContaBancaria, HLP.Entries.View.WPF">

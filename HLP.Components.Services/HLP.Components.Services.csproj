@@ -53,6 +53,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomTextBoxIntellisenseViewModelService.cs" />
     <Compile Include="FillComboBoxService.cs" />
     <Compile Include="HlpEnderecoService.cs" />
     <Compile Include="HlpPesqPadraoService.cs" />

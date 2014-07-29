@@ -64,8 +64,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                                          .AddParameter<int>("idPlanoPagamento"),
                                          MapBuilder<Plano_pagamentoModel>.MapAllProperties()
                                          .DoNotMap(i => i.bCollTipo)
-                                         .DoNotMap(c=>c.status).Build());
-            }
+                                         .DoNotMap(i => i.vFixoPagamentoEnabled)
+                                         .DoNotMap(c=>c.status).Build());                
+            }                      
 
             return regPlano_pagamentoAccessor.Execute(idPlanoPagamento).FirstOrDefault();
         }

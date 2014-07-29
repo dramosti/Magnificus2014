@@ -25,10 +25,24 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         public ICommand navegarCommand { get; set; }
         #endregion
 
+        ProdutoCommands comm = null;
         public ProdutoViewModel()
         {
-            ProdutoCommands comm = new ProdutoCommands(objViewModel: this);
+            comm = new ProdutoCommands(objViewModel: this);
         }
-                
+
+        #region Métodos utilizados na model via Reflection
+
+        public bool IsService(int idTipoProduto)
+        {
+            return comm.IsService(idTipoProduto: idTipoProduto);
+        }
+
+        public int GetIdSiteByDeposito(int idDeposito)
+        {
+            return comm.GetIdSiteByDeposito(idDeposito: idDeposito);
+        }
+
+        #endregion
     }
 }

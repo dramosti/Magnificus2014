@@ -92,10 +92,25 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                if (objViewModel.message.Save())
+
+                if (this.objViewModel.currentModel.lPlano_pagamento_linhasModel.Count(i => i.stValorouPorcentagem == (byte)0) > 0
+                    && this.objViewModel.currentModel.lPlano_pagamento_linhasModel.Sum(
+                        i => i.nValorouPorcentagem) < 100)
                 {
-                    this.objViewModel.currentModel = objService.SaveObject(obj: this.objViewModel.currentModel);
-                    e.Result = e.Argument;
+                    Application.Current.Dispatcher.BeginInvoke((Action)(()
+                =>
+                    {
+                        MessageHlp.Show(stMessage: StMessage.stAlert,
+                            xMessageToUser: "Não é possível salvar registro, pois soma das porcentagens do plano de pagamento são inferiores a 100%");
+                    }));
+                }
+                else
+                {
+                    if (objViewModel.message.Save())
+                    {
+                        this.objViewModel.currentModel = objService.SaveObject(obj: this.objViewModel.currentModel);
+                        e.Result = e.Argument;
+                    }
                 }
             }
             catch (Exception ex)

@@ -1,206 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
-  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:element name="Save">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="lobjFuncionario_Controle_Horas_Ponto" nillable="true" type="q1:ArrayOfFuncionario_Controle_Horas_PontoModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SaveResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="SaveResult" nillable="true" type="q2:ArrayOfFuncionario_Controle_Horas_PontoModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Delete">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionarioControleHorasPonto" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetFuncionario_Controle_Horas_Ponto">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionarioControleHorasPonto" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetFuncionario_Controle_Horas_PontoResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="GetFuncionario_Controle_Horas_PontoResult" nillable="true" type="q3:Funcionario_Controle_Horas_PontoModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllFuncionario_Controle_Horas_Ponto">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-        <xs:element minOccurs="0" name="data" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllFuncionario_Controle_Horas_PontoResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="GetAllFuncionario_Controle_Horas_PontoResult" nillable="true" type="q4:ArrayOfFuncionario_Controle_Horas_PontoModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetHorasTrabalhadasDia">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-        <xs:element minOccurs="0" name="dtDia" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetHorasTrabalhadasDiaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="GetHorasTrabalhadasDiaResult" nillable="true" type="q5:ArrayOfEspelhoPontoModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllFuncionario_Controle_Horas_PontoDia">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-        <xs:element minOccurs="0" name="dtDia" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllFuncionario_Controle_Horas_PontoDiaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="GetAllFuncionario_Controle_Horas_PontoDiaResult" nillable="true" type="q6:ArrayOfFuncionario_Controle_Horas_PontoModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTotalDiasTrabalhadosMes">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-        <xs:element minOccurs="0" name="dtMes" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTotalDiasTrabalhadosMesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetTotalDiasTrabalhadosMesResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetHorasATrabalharMes">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-        <xs:element minOccurs="0" name="dtMes" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetHorasATrabalharMesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetHorasATrabalharMesResult" type="q7:duration" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTotalBancoHoras">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-        <xs:element minOccurs="0" name="dtMes" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTotalBancoHorasResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetTotalBancoHorasResult" type="q8:duration" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SaveBancoHoras">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="objFuncionario_BancoHoras" nillable="true" type="q9:Funcionario_BancoHorasModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SaveBancoHorasResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetHorasAtrabalharDia">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-        <xs:element minOccurs="0" name="dtDia" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetHorasAtrabalharDiaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="GetHorasAtrabalharDiaResult" nillable="true" type="q10:ArrayOfCalendario_DetalheModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTotalBancoHorasMesAtual">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-        <xs:element minOccurs="0" name="dtMes" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTotalBancoHorasMesAtualResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="GetTotalBancoHorasMesAtualResult" nillable="true" type="q11:Funcionario_BancoHorasModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteBancoHorasMes">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-        <xs:element minOccurs="0" name="dtMes" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DeleteBancoHorasMesResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ExisteCalendarioDia">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-        <xs:element minOccurs="0" name="dtDia" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ExisteCalendarioDiaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ExisteCalendarioDiaResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:complexType name="ArrayOfFuncionario_Controle_Horas_PontoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Funcionario_Controle_Horas_PontoModel" nillable="true" type="tns:Funcionario_Controle_Horas_PontoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFuncionario_Controle_Horas_PontoModel" nillable="true" type="tns:ArrayOfFuncionario_Controle_Horas_PontoModel" />
+  <xs:complexType name="Funcionario_Controle_Horas_PontoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dAlteradaUsuario" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dRelogioPonto" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="hAlteradaUsuario" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="hRelogioPonto" type="ser:duration" />
+      <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
+      <xs:element minOccurs="0" name="idFuncionarioControleHorasPonto" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="idSequenciaInterna" type="xs:int" />
+      <xs:element minOccurs="0" name="stFalta" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="stFeriasAbono" type="xs:unsignedByte" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases" minOccurs="0" name="status" type="q1:statusModel" />
+      <xs:element minOccurs="0" name="xJustificativa" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Funcionario_Controle_Horas_PontoModel" nillable="true" type="tns:Funcionario_Controle_Horas_PontoModel" />
+  <xs:complexType name="ArrayOfEspelhoPontoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EspelhoPontoModel" nillable="true" type="tns:EspelhoPontoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEspelhoPontoModel" nillable="true" type="tns:ArrayOfEspelhoPontoModel" />
+  <xs:complexType name="EspelhoPontoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelComum">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="tEntrada" type="ser:duration" />
+          <xs:element minOccurs="0" name="tSaida" type="ser:duration" />
+          <xs:element minOccurs="0" name="tTotal" type="ser:duration" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EspelhoPontoModel" nillable="true" type="tns:EspelhoPontoModel" />
+  <xs:complexType name="Funcionario_BancoHorasModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelComum">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="iDiasTrabalhados" type="xs:int" />
+          <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
+          <xs:element minOccurs="0" name="idFuncionarioBancoHoras" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="tBancoHoras" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tHorasAtrabalhar" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tHorastrabalhadas" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tSaldoTotalAnterior" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tsSaldoAteMomento" type="ser:duration" />
+          <xs:element minOccurs="0" name="xMesAno" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Funcionario_BancoHorasModel" nillable="true" type="tns:Funcionario_BancoHorasModel" />
+  <xs:complexType name="ArrayOfCalendario_DetalheModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Calendario_DetalheModel" nillable="true" type="tns:Calendario_DetalheModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCalendario_DetalheModel" nillable="true" type="tns:ArrayOfCalendario_DetalheModel" />
+  <xs:complexType name="Calendario_DetalheModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q4:modelComum">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dCalendario" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="idCalendario" type="xs:int" />
+          <xs:element minOccurs="0" name="idCalendarioDetalhe" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="tHoraInicio" type="ser:duration" />
+          <xs:element minOccurs="0" name="tHoraTermino" type="ser:duration" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Calendario_DetalheModel" nillable="true" type="tns:Calendario_DetalheModel" />
 </xs:schema>

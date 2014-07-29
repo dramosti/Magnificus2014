@@ -64,7 +64,8 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.stServico)
                                  .DoNotMap(i => i.bPermitePorcentagem)
                                  .DoNotMap(i => i.bPedidoClienteEnabled)
-                                 .DoNotMap(i => i.xRepresentanteItem)                                 
+                                 .DoNotMap(i => i.xRepresentanteItem)   
+                                 .DoNotMap(i => i.objListaPreco)
                                  .Build());
             }
 
@@ -89,6 +90,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.bPedidoClienteEnabled)
                                  .DoNotMap(i => i.xUnidadeMedida)
                                  .DoNotMap(i => i.xRepresentanteItem)
+                                 .DoNotMap(i => i.objListaPreco)
                                  .Build());
             }
             return regOrcamento_ItemAccessor.Execute(idOrcamento).ToList();
@@ -108,6 +110,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.bPermitePorcentagem)
                                 .DoNotMap(i => i.xUnidadeMedida)
                                 .DoNotMap(i => i.xRepresentanteItem)
+                                .DoNotMap(i => i.objListaPreco)
                                 .Build());
             }
             return regAllOrcamento_ItemAccessor.Execute().ToList();

@@ -14,6 +14,7 @@ namespace HLP.Components.Model.Models
     public class modelToTreeView
     {
         public int id { get; set; }
+        public string xIdAlternativo { get; set; }
         public string xDisplay { get; set; }
         public List<modelToTreeView> lFilhos = new List<modelToTreeView>();
         public string xNameImage { get; set; }

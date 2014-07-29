@@ -10,7 +10,8 @@ namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class Familia_produtoModel : modelComum
     {
-        public Familia_produtoModel() : base("Familia_produto") 
+        public Familia_produtoModel()
+            : base("Familia_produto")
         {
             lFamilia_Produto_ClassesModel = new ObservableCollectionBaseCadastros<Familia_Produto_ClassesModel>();
         }
@@ -241,7 +242,23 @@ namespace HLP.Entries.Model.Models.Gerais
         {
             get
             {
-                return base[columnName];
+                string _xError = base[columnName];
+
+                if (string.IsNullOrEmpty(value: _xError))
+                {
+                    if (columnName == "xFamiliaProduto")
+                    {
+                        if (this.xFamiliaProduto.Replace(oldValue: " ", newValue: "").Length <
+                            (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
+                .empresaParametros.ObjParametro_EstoqueModel.xMascaraFamiliaProduto.Replace(
+                oldValue: ".", newValue: "").Length)
+                        {
+                            _xError = "Código informado está fora de padrão da máscara de Código alternativo de produto definido em Parâmetros/Estoque/Mascara das Familias de Produto";
+                        }
+                    }
+                }
+
+                return _xError;
             }
         }
     }

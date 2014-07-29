@@ -19,6 +19,23 @@ namespace HLP.Entries.Model.Models.Gerais
             set { _currentPlano = value; }
         }
 
+        #region Propriedades apenas para Visualização na Tela
+
+
+        private bool _vFixoPagamentoEnabled;
+
+        public bool vFixoPagamentoEnabled
+        {
+            get { return _vFixoPagamentoEnabled; }
+            set
+            {
+                _vFixoPagamentoEnabled = value;
+                base.NotifyPropertyChanged(propertyName: "vFixoPagamentoEnabled");
+            }
+        }
+
+
+        #endregion
 
         public Plano_pagamentoModel()
             : base("Plano_pagamento")
@@ -83,6 +100,27 @@ namespace HLP.Entries.Model.Models.Gerais
             {
                 _stAlocacao = value;
 
+                if (this.GetOperationModel() == Base.EnumsBases.OperationModel.updating)
+                {
+                    switch (value)
+                    {
+                        case 0:
+                            {
+                                this.vFixoPagamento = this.vPagamentoMinimo = this.nNumerosPagamentos = this.nAlterarFormaPagamento = null;
+                            } break;
+                        case 1:
+                            {
+                                this.vFixoPagamento = null;
+                            } break;
+                        case 3:
+                            {
+                                this.vPagamentoMinimo = this.nAlterarFormaPagamento = null;
+                            } break;
+                        default:
+                            break;
+                    }
+                }
+
                 if (value == 3)
                 {
                     this.bCollTipo = true;
@@ -135,6 +173,24 @@ namespace HLP.Entries.Model.Models.Gerais
             get { return _nNumerosPagamentos; }
             set
             {
+
+                if (value != null && value > 0)
+                {
+                    if (MessageHlp.Show(stMessage: StMessage.stYesNo, xMessageToUser: "Aplicando essa alteração todas as linhas do plano de pagamento serão perdidas."
+                        + Environment.NewLine + "Deseja continuar?") == System.Windows.MessageBoxResult.Yes)
+                    {
+                        this.vFixoPagamentoEnabled = true;
+                        this.lPlano_pagamento_linhasModel = new ObservableCollectionBaseCadastros<Plano_pagamento_linhasModel>();
+                    }
+                    else
+                        return;
+                }
+                else
+                {
+                    this.vFixoPagamentoEnabled = false;
+                    this.vFixoPagamento = null;
+                }
+
                 _nNumerosPagamentos = value;
                 base.NotifyPropertyChanged(propertyName: "nNumerosPagamentos");
             }
@@ -231,19 +287,14 @@ namespace HLP.Entries.Model.Models.Gerais
                     if (this.stValorouPorcentagem == 0)
                     {
                         if (Plano_pagamentoModel.currentPlano.nNumerosPagamentos ==
-                            Plano_pagamentoModel.currentPlano.lPlano_pagamento_linhasModel.Count + 1)
-                        {
-                            this.nValorouPorcentagem = 100 - Plano_pagamentoModel.currentPlano.
-                                lPlano_pagamento_linhasModel.Sum(i => i.nValorouPorcentagem);
-                        }
-                        else if (Plano_pagamentoModel.currentPlano.nNumerosPagamentos ==
                             Plano_pagamentoModel.currentPlano.lPlano_pagamento_linhasModel.Count)
                         {
                             MessageHlp.Show(stMessage: StMessage.stAlert,
                                 xMessageToUser: "Já foi incluido o número máximo de parcelas definido no campo 'Número de pagamentos'");
                         }
                         else
-                            this.nValorouPorcentagem = 100 / Plano_pagamentoModel.currentPlano.nNumerosPagamentos;
+                            this.nValorouPorcentagem = 100 - Plano_pagamentoModel.currentPlano.
+                                lPlano_pagamento_linhasModel.Sum(i => i.nValorouPorcentagem);
                     }
                 }
             }

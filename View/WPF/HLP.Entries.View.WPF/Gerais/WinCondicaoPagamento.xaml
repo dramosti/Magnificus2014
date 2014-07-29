@@ -133,7 +133,7 @@
                     </Components:CustomComboBox.Items>
                     <Components:CustomComboBox.Style>
                         <Style BasedOn="{StaticResource ComboBoxStyle}" TargetType="{x:Type Components:CustomComboBox}">
-                            <Style.Triggers>                                
+                            <Style.Triggers>
                                 <DataTrigger Binding="{Binding bIsEnabled}" Value="True">
                                     <Setter Property="IsEnabled" Value="True"></Setter>
                                 </DataTrigger>
@@ -183,7 +183,7 @@
                         </MultiBinding>
                     </Components:CustomTextBox.IsEnabled>
                     <Components:CustomTextBox.Text>
-                        <Binding Path="currentModel.nMeses" FallbackValue="0" TargetNullValue="0"
+                        <Binding Path="currentModel.nMeses" TargetNullValue=''
                                  Mode="TwoWay"
                                  NotifyOnValidationError="True"
                                  UpdateSourceTrigger="PropertyChanged"
@@ -210,7 +210,7 @@
                     </Components:CustomTextBox.IsEnabled>
 
                     <Components:CustomTextBox.Text>
-                        <Binding Path="currentModel.nSemanas" FallbackValue="0" TargetNullValue="0"
+                        <Binding Path="currentModel.nSemanas" TargetNullValue=''
                                  Mode="TwoWay"
                                  NotifyOnValidationError="True"
                                  UpdateSourceTrigger="PropertyChanged"
@@ -237,7 +237,7 @@
                     </Components:CustomTextBox.IsEnabled>
 
                     <Components:CustomTextBox.Text>
-                        <Binding Path="currentModel.nDias" FallbackValue="0" TargetNullValue="0"
+                        <Binding Path="currentModel.nDias" TargetNullValue=''
                                  Mode="TwoWay"
                                  NotifyOnValidationError="True"
                                  UpdateSourceTrigger="PropertyChanged"

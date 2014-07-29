@@ -108,6 +108,7 @@ namespace HLP.Comum.ViewModel.Commands
                 DocumentosModel>(list: this.objDocumentosService.GetObject(xNameTabela: this.objviewModel.currentModel.GetType().Name
                     .ToUpper().Replace(oldValue: "MODEL", newValue: ""), idPk: this.objviewModel.currentID));
 
+
             this.objviewModel.loading = false;
         }
 
@@ -477,10 +478,11 @@ namespace HLP.Comum.ViewModel.Commands
                 }
             }
             if ((this.objviewModel.currentModel as modelComum).lDocumentos != null)
-                this.objDocumentosService.SaveObject(obj:
-                    (this.objviewModel.currentModel as modelComum).lDocumentos.ToList(),
-                    xNameTabela: this.objviewModel.currentModel.GetType().Name.ToUpper().Replace(oldValue: "MODEL", newValue: ""),
-                    idPk: this.objviewModel.currentID);
+                if ((this.objviewModel.currentModel as modelComum).lDocumentos.Count > 0)
+                    this.objDocumentosService.SaveObject(obj:
+                        (this.objviewModel.currentModel as modelComum).lDocumentos.ToList(),
+                        xNameTabela: this.objviewModel.currentModel.GetType().Name.ToUpper().Replace(oldValue: "MODEL", newValue: ""),
+                        idPk: this.objviewModel.currentID);
 
         }
         private bool salvarBaseCanExecute()

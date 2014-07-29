@@ -71,9 +71,9 @@ namespace HLP.Components.View.WPF
 
                 this.ApplyTemplate();
 
-                Button btn = this.Template.FindName(name: "btn", templatedParent: this) as Button;
+                //Button btn = this.Template.FindName(name: "btn", templatedParent: this) as Button;
 
-                this.GotFocus += CustomTextBox_GotFocus;
+                //this.GotFocus += CustomTextBox_GotFocus;
             }
         }
 

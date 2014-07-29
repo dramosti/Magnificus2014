@@ -21,7 +21,7 @@ namespace HLP.Wcf.Entries
         [Inject]
         public IContatoRepository iContatoRepository { get; set; }
         [Inject]
-        public IContato_EnderecoRepository iContato_EnderecoRepository { get; set; }
+        public IHlpEnderecoRepository iContato_EnderecoRepository { get; set; }
 
         public wcf_Contato()
         {
@@ -50,7 +50,7 @@ namespace HLP.Wcf.Entries
                             break;
                         case statusModel.excluido:
                             {
-                                iContato_EnderecoRepository.Delete((int)item.idEndereco);
+                                iContato_EnderecoRepository.Delete(objEnderecoModel: item);
                             }
                             break;
                     }
@@ -72,7 +72,7 @@ namespace HLP.Wcf.Entries
             try
             {
                 iContatoRepository.BeginTransaction();
-                iContato_EnderecoRepository.DeleteEnderecosByContato(idContato);
+                iContato_EnderecoRepository.Delete(idFK: idContato, sNameFK: "idContato");
                 iContatoRepository.Delete(idContato);
                 iContatoRepository.CommitTransaction();
                 return true;
@@ -119,7 +119,8 @@ namespace HLP.Wcf.Entries
                 ContatoModel objReturn = iContatoRepository.GetContato(idContato);
                 if (objReturn != null)
                 {
-                    objReturn.lContato_EnderecoModel = new ObservableCollectionBaseCadastros<Contato_EnderecoModel>(iContato_EnderecoRepository.GetAllContato_Endereco(idContato));
+                    objReturn.lContato_EnderecoModel = new ObservableCollectionBaseCadastros<EnderecoModel>(iContato_EnderecoRepository.GetAllObjetos(idPK: idContato,
+                        sPK: "idContato"));
                 }
                 return objReturn;
 

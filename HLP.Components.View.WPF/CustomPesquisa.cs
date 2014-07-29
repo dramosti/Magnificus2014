@@ -64,7 +64,7 @@ namespace HLP.Components.View.WPF
             if (!designTime)
             {
                 this.ViewModel = new CustomPesquisaViewModel();
-                this.Loaded += CustomPesquisa_Loaded;
+                this.Loaded += CustomPesquisa_Loaded;                
             }
 
             this.KeyUp += CustomPesquisa_KeyUp;

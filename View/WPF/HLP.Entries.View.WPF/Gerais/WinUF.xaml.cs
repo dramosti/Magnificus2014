@@ -32,7 +32,7 @@ namespace HLP.Entries.View.WPF.Gerais
         public WinUF()
         {
             InitializeComponent();
-            this.gridPropriedades.KeyUp += base.Window_KeyUp;
+            //this.gridPropriedades.KeyUp += base.Window_KeyUp;
             try
             {
                 this.ViewModel = new UFViewModel();

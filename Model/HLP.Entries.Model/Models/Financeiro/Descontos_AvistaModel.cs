@@ -25,7 +25,7 @@ namespace HLP.Entries.Model.Models.Financeiro
         public string xDescricao { get; set; }
         [ParameterOrder(Order = 4)]
         public int? idProximoDesconto { get; set; }
-        
+
         private byte _stLiquidoAtual;
         [ParameterOrder(Order = 5)]
         public byte stLiquidoAtual
@@ -34,20 +34,56 @@ namespace HLP.Entries.Model.Models.Financeiro
             set
             {
                 _stLiquidoAtual = value;
+
+                if (this.GetOperationModel() == Base.EnumsBases.OperationModel.updating)
+                {
+                    switch (value)
+                    {
+                        case 0:
+                            {
+                                this.nMeses = null;
+                            } break;
+                        case 1:
+                            {
+                                this.nDias = null;
+                            } break;
+                        default:
+                            break;
+                    }
+                }
+
                 base.NotifyPropertyChanged(propertyName: "stLiquidoAtual");
             }
         }
 
+        private int? _nMeses;
         [ParameterOrder(Order = 6)]
-        public int? nMeses { get; set; }
+        public int? nMeses
+        {
+            get { return _nMeses; }
+            set
+            {
+                _nMeses = value;
+                base.NotifyPropertyChanged(propertyName: "nMeses");
+            }
+        }
+        private int? _nDias;
         [ParameterOrder(Order = 7)]
-        public int? nDias { get; set; }
+        public int? nDias
+        {
+            get { return _nDias; }
+            set
+            {
+                _nDias = value;
+                base.NotifyPropertyChanged(propertyName: "nDias");
+            }
+        }
         [ParameterOrder(Order = 8)]
         public decimal? pDesconto { get; set; }
 
     }
 
-    public partial class Descontos_AvistaModel 
+    public partial class Descontos_AvistaModel
     {
         public override string this[string columnName]
         {
@@ -55,6 +91,6 @@ namespace HLP.Entries.Model.Models.Financeiro
             {
                 return base[columnName];
             }
-        }    
+        }
     }
 }

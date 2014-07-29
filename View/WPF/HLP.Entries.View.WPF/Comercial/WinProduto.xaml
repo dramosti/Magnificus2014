@@ -114,7 +114,7 @@
                                 <Components:CustomTextBlock Text="Memorando" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Tipo de Serviço" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Data do Cadastro" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Usuário" Grid.Column="1" Grid.Row="10"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Usuário de Inclusão" Grid.Column="1" Grid.Row="10"></Components:CustomTextBlock>
 
                                 <!--Components-->
 
@@ -152,12 +152,12 @@
                                         <System:String>xDescricao</System:String>
                                     </Components:CustomPesquisa.Items>
                                 </Components:CustomPesquisa>
-                                <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="6"                                    									
-									Text="{Binding currentModel.xFoto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="Informe o caminho da foto do produto">
-                                </Components:CustomTextBox>
+                                <Components:HlpUserControlBtnImage  Grid.Column="2" Grid.Row="6"
+                                        IsEnabled="{Binding bIsEnabled}" 
+                                        xPathCaminho="{Binding currentModel.xFoto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                                    ToolTip="Informe o caminho da foto do produto"
+>
+                                </Components:HlpUserControlBtnImage>
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="7"
                                     Text="{Binding currentModel.xObs, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -168,24 +168,37 @@
 									Grid.Column="2" Grid.Row="8"
 									xIdPesquisa="{Binding currentModel.idTipoServico, Mode=TwoWay, NotifyOnValidationError=True, 
                                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"									
                                     FieldPesquisa="ID" TableView="vwTipoServico" NameWindowCadastro="WinTipoServico">
                                     <Components:CustomPesquisa.Items>
                                         <System:String>cTipoServico</System:String>
                                         <System:String>xTipoServico</System:String>
                                     </Components:CustomPesquisa.Items>
+                                    <Components:CustomPesquisa.Style>
+                                        <Style BasedOn="{StaticResource TextBox_PESQUISA}" TargetType="{x:Type Components:CustomPesquisa}">
+                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                            <Style.Triggers>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding bIsEnabled}" Value="True"></Condition>
+                                                        <Condition Binding="{Binding currentModel.IsService}" Value="True"></Condition>
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="True"></Setter>
+                                                </MultiDataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Components:CustomPesquisa.Style>
                                 </Components:CustomPesquisa>
                                 <Components:HlpDatePicker
                                     Grid.Column="2" Grid.Row="9" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
                                     xTextDate="{Binding currentModel.dCadastro, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									IsEnabled="False"
 									ToolTip="Sistema informará automaticamente quando cadastrado o item, campo desbloqueado para o usuário.">
                                 </Components:HlpDatePicker>
                                 <Components:CustomPesquisa 
 									Grid.Column="2" Grid.Row="10" NameWindowCadastro="WinFuncionario"
 									xIdPesquisa="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, 
                                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"									 
+									IsEnabled="False"									 
                                     ToolTip="Informa o usuário que cadastrou o item." FieldPesquisa="ID" TableView="vwFuncionario">
                                     <Components:CustomPesquisa.Items>
                                         <System:String>xNome</System:String>
@@ -291,7 +304,7 @@
                                 <Components:HlpDatePicker
                                     Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date" Grid.ColumnSpan="2"
                                     xTextDate="{Binding currentModel.dBloqueio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									IsEnabled="False"
 									ToolTip="Informa automaticamente a data de quando o produto foi desativado.">
                                 </Components:HlpDatePicker>
                                 <Components:CustomTextBox
@@ -340,12 +353,14 @@
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <!--Label-->
 
                                 <Components:CustomTextBlock Text="Localização" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Depósito" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Fabricante" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Site" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Fabricante" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
 
                                 <!--Components-->
 
@@ -372,6 +387,17 @@
                                 </Components:CustomPesquisa>
                                 <Components:CustomPesquisa 
 									Grid.Column="2" Grid.Row="3"
+									xIdPesquisa="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
+									ToolTip="Informar o depósito em que o produto está localizado. Caso utilize a opção de localização o campo depósito é preenchido automaticamente." 
+                                    TableView="vwSite" FieldPesquisa="ID" NameWindowCadastro="WinDeposito">
+                                    <Components:CustomPesquisa.Items>
+                                        <System:String>xSite</System:String>
+                                        <System:String>xDescricao</System:String>
+                                    </Components:CustomPesquisa.Items>
+                                </Components:CustomPesquisa>
+                                <Components:CustomPesquisa 
+									Grid.Column="2" Grid.Row="4"
 									xIdPesquisa="{Binding currentModel.idFabricante, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informe o fabricante do produto." TableView="vwFabricante" FieldPesquisa="ID" NameWindowCadastro="WinFabricante">
@@ -854,7 +880,7 @@
                                 </Components:CustomTextBox>
                                 <Components:CustomPesquisa     
 									Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
-									Text="{Binding currentModel.idUnidadeMedidaCompras, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									xIdPesquisa="{Binding currentModel.idUnidadeMedidaCompras, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Deve ser informado a unidade de medida para as, requisições, cotações de compras, Ordens de Compra. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para Ordem de compras dentro da unidades que estejam com as devidas conversões corretas para esse produto."
                                     FieldPesquisa="ID" TableView="vwUnidadeMedida" NameWindowCadastro="WinUnidadeMedida">
@@ -897,21 +923,21 @@
                                 <!--Components-->
 
                                 <Components:HlpDatePicker
-                                    Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
+                                    Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3" stFormatoDtPicker="time"
                                     xTextDate="{Binding currentModel.dleadTimeCotacao, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informar em horas o lead time para cotação de compra, essa condição vai servir junto com o lead time de pedido e recebimento saber o quanto de tempo que leva para se comprar um produto e o mesmo chegar na empresa com isso é possível saber o estoque mínimo ou critico.">
                                 </Components:HlpDatePicker>
                                 <Components:HlpDatePicker
-                                    Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
+                                    Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" stFormatoDtPicker="time"
                                     xTextDate="{Binding currentModel.dleadTimePedido, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informar em horas o lead time para o pedido de compra, essa condição vai servir junto com o lead time de cotação e recebimento saber o quanto de tempo que leva para se comprar um produto e o mesmo chegar na empresa com isso é possível saber o estoque mínimo ou critico.">
                                 </Components:HlpDatePicker>
                                 <Components:HlpDatePicker
-                                    Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
+                                    Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" stFormatoDtPicker="time"
                                     xTextDate="{Binding currentModel.dleadTimeRecebimento, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
@@ -971,7 +997,7 @@
                             </Components:CustomTextBox>
                             <Components:CustomPesquisa 
 							Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-							Text="{Binding currentModel.idUnidadeMedidaProducao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+							xIdPesquisa="{Binding currentModel.idUnidadeMedidaProducao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 							IsEnabled="{Binding bIsEnabled}"
 							ToolTip="Deve ser informado a unidade de medida para as, requisições, cotações de compras, Ordens de Compra. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para Ordem de compras dentro da unidades que estejam com as devidas conversões corretas para esse produto."
                                 FieldPesquisa="ID" TableView="vwUnidadeMedida" NameWindowCadastro="WinUnidadeMedida">

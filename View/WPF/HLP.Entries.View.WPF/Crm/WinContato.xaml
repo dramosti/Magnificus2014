@@ -133,7 +133,7 @@
                                     </Components:CustomTextBox>
                                     <Components:CustomCheckBox
                                         Grid.Column="2" Grid.Row="9"
-                                        IsChecked="{Binding currentModel.stAtivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                        IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									    IsEnabled="{Binding bIsEnabled}"
 									    ToolTip="Informar se o Contato é ativo na organização.">
                                     </Components:CustomCheckBox>
@@ -189,7 +189,7 @@
                                     <Components:CustomTextBox Text="{Binding currentModel.xEmpresa}" IsEnabled="False"
                                         Grid.Column="2" Grid.Row="2">
                                     </Components:CustomTextBox>
-                                    <Components:CustomTextBox IsEnabled="False"
+                                    <Components:CustomTextBox IsEnabled="False" Text="{Binding currentModel.xEnderecoEmpresa}"
                                         Grid.Column="2" Grid.Row="3">
                                     </Components:CustomTextBox>
                                     <Components:CustomTextBox Text="{Binding currentModel.xTelefoneEmpresa}" IsEnabled="False"
@@ -483,7 +483,7 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Expander Header="Comercial" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
+                        <Expander Header="Residencial" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10"></ColumnDefinition>

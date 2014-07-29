@@ -31,7 +31,18 @@ namespace HLP.Entries.Model.Models.Parametros
         [ParameterOrder(Order = 8)]
         public byte stRastreabilidadeMaterial { get; set; }
         [ParameterOrder(Order = 9)]
-        public byte stRastreabilidadeProdutoAcabado { get; set; }        
+        public byte stRastreabilidadeProdutoAcabado { get; set; }
+        private string _xMascaraFamiliaProduto;
+        [ParameterOrder(Order = 10)]
+        public string xMascaraFamiliaProduto
+        {
+            get { return _xMascaraFamiliaProduto; }
+            set
+            {
+                _xMascaraFamiliaProduto = value;
+                base.NotifyPropertyChanged(propertyName: "xMascaraFamiliaProduto");
+            }
+        }
     }
 
     public partial class Parametro_EstoqueModel

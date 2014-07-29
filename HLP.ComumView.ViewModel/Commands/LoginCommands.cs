@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using HLP.ComumView.Services;
 using HLP.Entries.Services.Parametros;
+using HLP.Entries.Model.Models.Gerais;
 
 namespace HLP.ComumView.ViewModel.Commands
 {
@@ -56,6 +57,7 @@ namespace HLP.ComumView.ViewModel.Commands
                         UserData.idUser = objService.GetIdFuncionarioByXid(xId: this.objViewModel.currentModel.xId);
                         CompanyData.idEmpresa = this.objViewModel.currentModel.idEmpresa;
                         CompanyData.objEmpresaModel = objServiceEmpresa.GetObject(this.objViewModel.currentModel.idEmpresa);
+
                         this.objViewModel.bLogado = true;
                         SearchWindow(objeto: objDependency);
                     }

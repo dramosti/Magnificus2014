@@ -1,18 +1,35 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public partial class Funcionario_Controle_Horas_PontoModel : modelComum
+    public partial class Funcionario_Controle_Horas_PontoModel : INotifyPropertyChanged
     {
+        #region NotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void NotifyPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
+
+        public statusModel status { get; set; }
 
         public Funcionario_Controle_Horas_PontoModel()
-            : base("Funcionario_Controle_Horas_PontoModel") { }
+        { }
 
         private int? _idFuncionarioControleHorasPonto;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -22,7 +39,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _idFuncionarioControleHorasPonto = value;
-                base.NotifyPropertyChanged(propertyName: "idFuncionarioControleHorasPonto");
+                this.NotifyPropertyChanged(propertyName: "idFuncionarioControleHorasPonto");
             }
         }
         private int _idFuncionario;
@@ -33,7 +50,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _idFuncionario = value;
-                base.NotifyPropertyChanged(propertyName: "idFuncionario");
+                this.NotifyPropertyChanged(propertyName: "idFuncionario");
             }
         }
         private TimeSpan _hRelogioPonto;
@@ -44,7 +61,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _hRelogioPonto = value;
-                base.NotifyPropertyChanged(propertyName: "hRelogioPonto");
+                this.NotifyPropertyChanged(propertyName: "hRelogioPonto");
             }
         }
         private DateTime _dRelogioPonto;
@@ -55,7 +72,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _dRelogioPonto = value;
-                base.NotifyPropertyChanged(propertyName: "dRelogioPonto");
+                this.NotifyPropertyChanged(propertyName: "dRelogioPonto");
             }
         }
         private TimeSpan? _hAlteradaUsuario = new TimeSpan();
@@ -66,7 +83,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _hAlteradaUsuario = value;
-                base.NotifyPropertyChanged(propertyName: "hAlteradaUsuario");
+                this.NotifyPropertyChanged(propertyName: "hAlteradaUsuario");
             }
         }
         private DateTime? _dAlteradaUsuario;
@@ -77,7 +94,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _dAlteradaUsuario = value;
-                base.NotifyPropertyChanged(propertyName: "dAlteradaUsuario");
+                this.NotifyPropertyChanged(propertyName: "dAlteradaUsuario");
             }
         }
         private string _xJustificativa;
@@ -88,7 +105,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _xJustificativa = value;
-                base.NotifyPropertyChanged(propertyName: "xJustificativa");
+                this.NotifyPropertyChanged(propertyName: "xJustificativa");
             }
         }
         private int _idSequenciaInterna;
@@ -99,7 +116,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _idSequenciaInterna = value;
-                base.NotifyPropertyChanged(propertyName: "idSequenciaInterna");
+                this.NotifyPropertyChanged(propertyName: "idSequenciaInterna");
             }
         }
         private byte _stFeriasAbono;
@@ -110,7 +127,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stFeriasAbono = value;
-                base.NotifyPropertyChanged(propertyName: "stFeriasAbono");
+                this.NotifyPropertyChanged(propertyName: "stFeriasAbono");
             }
         }
         private byte _stFalta;
@@ -121,21 +138,21 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stFalta = value;
-                base.NotifyPropertyChanged(propertyName: "stFalta");
+                this.NotifyPropertyChanged(propertyName: "stFalta");
             }
         }
 
     }
 
 
-    public partial class Funcionario_Controle_Horas_PontoModel
-    {
-        public override string this[string columnName]
-        {
-            get
-            {
-                return base[columnName];
-            }
-        }
-    }
+    //public partial class Funcionario_Controle_Horas_PontoModel
+    //{
+    //    public override string this[string columnName]
+    //    {
+    //        get
+    //        {
+    //            return string.Empty;
+    //        }
+    //    }
+    //}
 }

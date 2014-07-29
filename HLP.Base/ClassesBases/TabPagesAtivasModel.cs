@@ -78,7 +78,7 @@ namespace HLP.Base.ClassesBases
 
                                     mi.Invoke(obj: item, parameters: args);
                                 }
-                                else
+                                else if(item.GetType().Name != "CustomComboBox")
                                 {
                                     item.LostFocus += item_LostFocus; break;
                                 }

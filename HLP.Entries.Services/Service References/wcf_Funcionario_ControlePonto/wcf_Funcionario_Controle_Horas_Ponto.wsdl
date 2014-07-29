@@ -2,11 +2,12 @@
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="wcf_Funcionario_Controle_Horas_Ponto" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
-      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
-      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_Save_InputMessage">
@@ -44,6 +45,12 @@
   </wsdl:message>
   <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_PontoDia_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllFuncionario_Controle_Horas_PontoDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetLastFuncionario_Controle_Horas_PontoDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastFuncionario_Controle_Horas_PontoDia" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetLastFuncionario_Controle_Horas_PontoDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastFuncionario_Controle_Horas_PontoDiaResponse" />
   </wsdl:message>
   <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetTotalDiasTrabalhadosMes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTotalDiasTrabalhadosMes" />
@@ -93,6 +100,12 @@
   <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_ExisteCalendarioDia_OutputMessage">
     <wsdl:part name="parameters" element="tns:ExisteCalendarioDiaResponse" />
   </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetJustificativaPontoDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJustificativaPontoDia" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetJustificativaPontoDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJustificativaPontoDiaResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iwcf_Funcionario_Controle_Horas_Ponto">
     <wsdl:operation name="Save">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/Save" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_Save_InputMessage" />
@@ -117,6 +130,10 @@
     <wsdl:operation name="GetAllFuncionario_Controle_Horas_PontoDia">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_PontoDia" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_PontoDia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_PontoDiaResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_PontoDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastFuncionario_Controle_Horas_PontoDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetLastFuncionario_Controle_Horas_PontoDia" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetLastFuncionario_Controle_Horas_PontoDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetLastFuncionario_Controle_Horas_PontoDiaResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetLastFuncionario_Controle_Horas_PontoDia_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetTotalDiasTrabalhadosMes">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalDiasTrabalhadosMes" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetTotalDiasTrabalhadosMes_InputMessage" />
@@ -149,6 +166,10 @@
     <wsdl:operation name="ExisteCalendarioDia">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/ExisteCalendarioDia" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_ExisteCalendarioDia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/ExisteCalendarioDiaResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_ExisteCalendarioDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJustificativaPontoDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetJustificativaPontoDia" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetJustificativaPontoDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetJustificativaPontoDiaResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetJustificativaPontoDia_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_Funcionario_Controle_Horas_Ponto" type="tns:Iwcf_Funcionario_Controle_Horas_Ponto">
@@ -200,6 +221,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllFuncionario_Controle_Horas_PontoDia">
       <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_PontoDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastFuncionario_Controle_Horas_PontoDia">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetLastFuncionario_Controle_Horas_PontoDia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -279,10 +309,19 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetJustificativaPontoDia">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetJustificativaPontoDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="wcf_Funcionario_Controle_Horas_Ponto">
     <wsdl:port name="BasicHttpBinding_Iwcf_Funcionario_Controle_Horas_Ponto" binding="tns:BasicHttpBinding_Iwcf_Funcionario_Controle_Horas_Ponto">
-      <soap:address location="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc" />
+      <soap:address location="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

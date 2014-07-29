@@ -8,6 +8,8 @@ using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using HLP.Comum.ViewModel.ViewModel;
+using HLP.Base.Static;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
@@ -26,10 +28,52 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         FamiliaProdutoCommand commands;
 
-        public FamiliaProdutoViewModel() 
+        public FamiliaProdutoViewModel()
         {
             commands = new FamiliaProdutoCommand(objViewModel: this);
         }
-                        
+
+        public string ReturnMaskcAlternativo(string value)
+        {
+            string xValueMasked = Util.ReturnValueMasked(xMask: (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
+                .empresaParametros.ObjParametro_EstoqueModel.xMascaraFamiliaProduto,
+                _value: value);
+
+            int countSeparators = xValueMasked.Split(separator: '.').Count();
+
+            if (countSeparators > 0)
+            {
+                string lastGroup = xValueMasked.Split(separator: '.')[countSeparators - 1];
+
+                int vValido = 0;
+                if (int.TryParse(s: lastGroup, result: out vValido))
+                {
+                    if (vValido == 0)
+                        this.currentModel.stGrau = 1;
+                    else
+                        this.currentModel.stGrau = 0;
+                }
+            }
+
+            return xValueMasked;
+        }
+
+        public int GetLengthMaskcAlternativo()
+        {
+            return (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
+                .empresaParametros.ObjParametro_EstoqueModel.xMascaraFamiliaProduto.Replace(
+                oldValue: ".", newValue: "").Length;
+        }
+
+        public List<modelToTreeView> GetHierarquia()
+        {
+            if (this.currentModel != null)
+                return this.commands.GetHierarquia(xCodAlt: this.currentModel.xFamiliaProduto,
+                    xMask: (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
+                    .empresaParametros.ObjParametro_EstoqueModel.xMascaraFamiliaProduto);
+            else
+                return null;
+        }
+
     }
 }

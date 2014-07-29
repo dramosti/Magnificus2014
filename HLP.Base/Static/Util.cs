@@ -2264,6 +2264,48 @@ namespace HLP.Base.Static
             }));
         }
 
+        public static string ReturnValueMasked(string xMask, string _value)
+        {
+            List<char> specialChars = new List<char>
+            {
+                '.', ',', '(', ')', '-', '_', '{', '}', '[', ']', '\\', '/'
+            };
+
+            foreach (char c in specialChars)
+            {
+                _value = _value.Replace(oldValue: c.ToString(), newValue: "");
+            }
+
+            string returnMask = string.Empty;
+
+            int count = 0;
+
+            foreach (char car in xMask)
+            {
+                if (specialChars.Contains(item: car))
+                {
+                    returnMask += car;
+                }
+                else
+                {
+                    returnMask += "{" + count.ToString() + "}";
+                    count++;
+                }
+            }
+
+            List<object> lObjects = new List<object>();
+
+            for (int i = 0; i < count; i++)
+            {
+                if (i < _value.Length)
+                    lObjects.Add(item: _value[index: i]);
+                else
+                    lObjects.Add(item: " ");
+            }
+
+            return string.Format(format: returnMask, args: lObjects.ToArray());
+        }
+
 
     }
 

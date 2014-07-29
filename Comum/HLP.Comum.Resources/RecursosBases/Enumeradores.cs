@@ -21,7 +21,7 @@ namespace HLP.Comum.Resources.RecursosBases
         criado,
         alterado,
         excluido
-    }
+    }    
 
     #region Enum to DataGrid
 

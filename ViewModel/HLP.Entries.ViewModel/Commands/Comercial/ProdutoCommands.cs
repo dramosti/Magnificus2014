@@ -12,6 +12,10 @@ using System.Windows.Controls;
 using HLP.Base.EnumsBases;
 using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Services.Comercial;
+using HLP.Entries.Model.Comercial;
+using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Services.GestaoMateriais;
+using HLP.Entries.Services.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Comercial
 {
@@ -19,11 +23,15 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         ProdutoViewModel objViewModel;
         ProdutoService objService;
+        Tipo_ProdutoService objTipoProdutoService;
+        DepositoService objSiteService;
 
         public ProdutoCommands(ProdutoViewModel objViewModel)
         {
 
             this.objViewModel = objViewModel;
+            this.objTipoProdutoService = new Tipo_ProdutoService();
+            this.objSiteService = new DepositoService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
@@ -113,7 +121,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 {
                     this.objViewModel.currentModel = this.objService.Save(objModel: this.objViewModel.currentModel);
                     e.Result = e.Argument;
-                }                  
+                }
             }
             catch (Exception ex)
             {
@@ -144,7 +152,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             (w as Window).DialogResult = true;
                             (w as Window).Close();
                         }
-                    }                    
+                    }
                 }
             }
             catch (Exception ex)
@@ -331,6 +339,29 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
         #endregion
 
+        #region Métodos utilizados na model via Reflection
+
+        public bool IsService(int idTipoProduto)
+        {
+            Tipo_produtoModel objTipoProduto = objTipoProdutoService.GetObject(id: idTipoProduto);
+
+            if (objTipoProduto != null)
+                return objTipoProduto.stServicos == (byte)1 ? true : false;
+
+            return false;
+        }
+
+        public int GetIdSiteByDeposito(int idDeposito)
+        {
+            DepositoModel objDeposito = this.objSiteService.GetObject(id: idDeposito);
+
+            if (objDeposito != null)
+                return objDeposito.idSite;
+
+            return 0;
+        }
+
+        #endregion
 
     }
 }

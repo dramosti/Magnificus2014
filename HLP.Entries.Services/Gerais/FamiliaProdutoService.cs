@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
+using HLP.Components.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using System;
 using System.Collections.Generic;
@@ -147,6 +148,25 @@ namespace HLP.Entries.Services.Gerais
                     }
             }
             return null;
+        }
+
+        public List<modelToTreeView> GetHierarquia(string xMask, string xCodAlt)
+        {
+            switch (Sistema.bOnline)
+            {
+                case StConnection.OnlineNetwork:
+                    {
+                        return this.servicoRede.GetHierarquia(xMask: xMask, xCodAlt: xCodAlt);
+                    }
+                case StConnection.OnlineWeb:
+                    {
+                        return this.servicoInternet.GetHierarquia(xMask: xMask, xCodAlt: xCodAlt);
+                    }
+                default:
+                    {
+                        return null;
+                    }
+            }
         }
     }
 }

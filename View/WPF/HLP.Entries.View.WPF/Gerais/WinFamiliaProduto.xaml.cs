@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using HLP.Components.View.WPF;
+using HLP.Entries.Model.Models.Gerais;
 
 namespace HLP.Entries.View.WPF.Gerais
 {
@@ -25,6 +26,9 @@ namespace HLP.Entries.View.WPF.Gerais
         {
             InitializeComponent();
             this.ViewModel = new FamiliaProdutoViewModel();
+
+            this.tvi.customDataContext.fGetHierarquia =
+                this.ViewModel.GetHierarquia;
         }
 
         public FamiliaProdutoViewModel ViewModel

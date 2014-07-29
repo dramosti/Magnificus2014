@@ -95,7 +95,8 @@
                             <Components:CustomComboBox
                                 Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" stCompPosicao="last"
                                 SelectedIndex="{Binding currentModel.stGrupoIdentificacao, Mode=TwoWay, 
-                                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"
+                                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, 
+                                Converter={StaticResource byteToIntConverter}}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Selecione o Grupo de Identificação do depósito. Existem três tipos de depósitos:">
                                 <Components:CustomComboBox.Items>

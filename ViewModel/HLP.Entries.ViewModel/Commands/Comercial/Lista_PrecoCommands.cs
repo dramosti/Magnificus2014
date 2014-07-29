@@ -232,7 +232,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                         this.objViewModel.currentModel.lLista_preco.Add(item: new Lista_precoModel
                         {
                             idProduto = (int)p.idProduto,
-                            idUnidadeMedida = p.idUnidadeMedidaVendas,
+                            idUnidadeMedida = p.idUnidadeMedidaVendas ?? 0,
                             vCustoProduto = p.vCompra
                         });
                     }

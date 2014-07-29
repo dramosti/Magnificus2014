@@ -1,86 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
-  <xs:complexType name="ArrayOfFuncionario_Controle_Horas_PontoModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Funcionario_Controle_Horas_PontoModel" nillable="true" type="tns:Funcionario_Controle_Horas_PontoModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfFuncionario_Controle_Horas_PontoModel" nillable="true" type="tns:ArrayOfFuncionario_Controle_Horas_PontoModel" />
-  <xs:complexType name="Funcionario_Controle_Horas_PontoModel">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="dAlteradaUsuario" nillable="true" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="dRelogioPonto" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="hAlteradaUsuario" nillable="true" type="ser:duration" />
-          <xs:element minOccurs="0" name="hRelogioPonto" type="ser:duration" />
-          <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-          <xs:element minOccurs="0" name="idFuncionarioControleHorasPonto" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="idSequenciaInterna" type="xs:int" />
-          <xs:element minOccurs="0" name="stFalta" type="xs:unsignedByte" />
-          <xs:element minOccurs="0" name="stFeriasAbono" type="xs:unsignedByte" />
-          <xs:element minOccurs="0" name="xJustificativa" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Funcionario_Controle_Horas_PontoModel" nillable="true" type="tns:Funcionario_Controle_Horas_PontoModel" />
-  <xs:complexType name="ArrayOfEspelhoPontoModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="EspelhoPontoModel" nillable="true" type="tns:EspelhoPontoModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfEspelhoPontoModel" nillable="true" type="tns:ArrayOfEspelhoPontoModel" />
-  <xs:complexType name="EspelhoPontoModel">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q2:modelBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="tEntrada" type="ser:duration" />
-          <xs:element minOccurs="0" name="tSaida" type="ser:duration" />
-          <xs:element minOccurs="0" name="tTotal" type="ser:duration" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="EspelhoPontoModel" nillable="true" type="tns:EspelhoPontoModel" />
-  <xs:complexType name="Funcionario_BancoHorasModel">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q3:modelBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="iDiasTrabalhados" type="xs:int" />
-          <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-          <xs:element minOccurs="0" name="idFuncionarioBancoHoras" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="tBancoHoras" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="tHorasAtrabalhar" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="tHorastrabalhadas" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="tSaldoTotalAnterior" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="tsSaldoAteMomento" type="ser:duration" />
-          <xs:element minOccurs="0" name="xMesAno" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Funcionario_BancoHorasModel" nillable="true" type="tns:Funcionario_BancoHorasModel" />
-  <xs:complexType name="ArrayOfCalendario_DetalheModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Calendario_DetalheModel" nillable="true" type="tns:Calendario_DetalheModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfCalendario_DetalheModel" nillable="true" type="tns:ArrayOfCalendario_DetalheModel" />
-  <xs:complexType name="Calendario_DetalheModel">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q4:modelBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="dCalendario" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="idCalendario" type="xs:int" />
-          <xs:element minOccurs="0" name="idCalendarioDetalhe" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="tHoraInicio" type="ser:duration" />
-          <xs:element minOccurs="0" name="tHoraTermino" type="ser:duration" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Calendario_DetalheModel" nillable="true" type="tns:Calendario_DetalheModel" />
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="anyType" nillable="true" type="xs:anyType" />
+  <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+  <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+  <xs:element name="boolean" nillable="true" type="xs:boolean" />
+  <xs:element name="byte" nillable="true" type="xs:byte" />
+  <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+  <xs:element name="decimal" nillable="true" type="xs:decimal" />
+  <xs:element name="double" nillable="true" type="xs:double" />
+  <xs:element name="float" nillable="true" type="xs:float" />
+  <xs:element name="int" nillable="true" type="xs:int" />
+  <xs:element name="long" nillable="true" type="xs:long" />
+  <xs:element name="QName" nillable="true" type="xs:QName" />
+  <xs:element name="short" nillable="true" type="xs:short" />
+  <xs:element name="string" nillable="true" type="xs:string" />
+  <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+  <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+  <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+  <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+  <xs:element name="char" nillable="true" type="tns:char" />
+  <xs:simpleType name="char">
+    <xs:restriction base="xs:int" />
+  </xs:simpleType>
+  <xs:element name="duration" nillable="true" type="tns:duration" />
+  <xs:simpleType name="duration">
+    <xs:restriction base="xs:duration">
+      <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+      <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+      <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="guid" nillable="true" type="tns:guid" />
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="FactoryType" type="xs:QName" />
+  <xs:attribute name="Id" type="xs:ID" />
+  <xs:attribute name="Ref" type="xs:IDREF" />
 </xs:schema>

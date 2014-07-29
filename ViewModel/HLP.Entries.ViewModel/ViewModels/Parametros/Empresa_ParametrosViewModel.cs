@@ -14,7 +14,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Parametros
 {
     public class Empresa_ParametrosViewModel : viewModelComum<EmpresaModel>
     {
-        
+
 
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -33,6 +33,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Parametros
             comm.ExecPesquisa();
             this.currentModel.SetOperationModel(_value: OperationModel.searching);
         }
-
     }
 }

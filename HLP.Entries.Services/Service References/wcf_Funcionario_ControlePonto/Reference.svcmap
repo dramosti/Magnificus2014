@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="56e99e14-aea4-4ce2-ab92-a689276e59e1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9d94a81a-2fc6-4f19-a74e-839d13ec9658" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -23,16 +23,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto.xsd" MetadataType="Schema" ID="e4aa6cfa-8ab7-43fb-9382-11205037ab85" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto1.xsd" MetadataType="Schema" ID="d19b14c2-91b9-4cc6-9d90-7c574a4de406" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto.disco" MetadataType="Disco" ID="0f517f3e-96b6-4105-a947-5b5501b3f2f3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?disco" />
-    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto2.xsd" MetadataType="Schema" ID="80cf7485-29dc-429a-937f-3c070bdb62e7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto.wsdl" MetadataType="Wsdl" ID="19c60bdd-38b5-40da-bf5a-9e520161145e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?wsdl" />
-    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto3.xsd" MetadataType="Schema" ID="52f388b2-98fa-4e50-ab86-1eaca4b2a3a9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto4.xsd" MetadataType="Schema" ID="29a75b66-e77c-45c5-884a-448e34a097e3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto.disco" MetadataType="Disco" ID="30ea66b9-3f59-44cc-ae44-c24b571651b5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?disco" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto.xsd" MetadataType="Schema" ID="507e8ec5-3621-4bcf-a65f-6cb1f22bd5de" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto1.xsd" MetadataType="Schema" ID="aa1f11de-c043-42c0-b870-d78a811f2e8c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto2.xsd" MetadataType="Schema" ID="0b841d8c-1298-49aa-94f3-78797360dd53" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto3.xsd" MetadataType="Schema" ID="1b63ba18-c87d-4ab6-873e-e188dbd238c4" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto.wsdl" MetadataType="Wsdl" ID="d8ebc432-e5b2-4c62-b17d-4cb200754778" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?wsdl" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto4.xsd" MetadataType="Schema" ID="9c6521e2-26c4-408c-964f-53e85351f7e7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto5.xsd" MetadataType="Schema" ID="a4b33627-4f27-48d0-b26f-85a297bd9bf6" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd5" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

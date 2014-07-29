@@ -494,5 +494,19 @@ namespace HLP.Comum.ViewModel.ViewModel
 
             return o;
         }
+
+
+        private stAcoesHierarquia _loadTreeView;
+
+        public stAcoesHierarquia loadTreeView
+        {
+            get { return _loadTreeView; }
+            set
+            {
+                _loadTreeView = value;
+                this.NotifyPropertyChanged(propertyName: "loadTreeView");
+            }
+        }
+
     }
 }

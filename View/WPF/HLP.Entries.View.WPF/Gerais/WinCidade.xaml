@@ -54,18 +54,11 @@
                     Grid.Column="2"  Grid.Row="3"
                     Text="{Binding currentModel.cIbge, Mode=TwoWay, NotifyOnValidationError=True, Converter={StaticResource intStringConverter} , UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     IsEnabled="{Binding bIsEnabled}"/>
-                <Components:CustomPesquisa stCompPosicao="last"              
-                    xIdPesquisa="{Binding currentModel.idUF, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                    NotifyOnValidationError=True}"
-                    Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-                    TableView="vwUF" FieldPesquisa="ID" NameWindowCadastro="WinUF"
-                                 IsEnabled="{Binding bIsEnabled}"
-                    >
-                    <Components:CustomPesquisa.Items>
-                        <System:String>xSiglaUf</System:String>
-                        <System:String>xUf</System:String>
-                    </Components:CustomPesquisa.Items>
-                </Components:CustomPesquisa>
+                <Components:ucTextBoxIntellisense ucEnabled="{Binding bIsEnabled}"
+                    Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
+                    selectedId="{Binding currentModel.idUF, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                    NotifyOnValidationError=True}"  xNameView="vwUfqs" NameWindowCadastro="WinUF" TableView="vwUf"
+                    ></Components:ucTextBoxIntellisense>
             </Grid>
         </Expander>
     </Grid>
