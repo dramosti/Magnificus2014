@@ -18,6 +18,7 @@
                                                           ></CollectionViewSource>
             <conv:NotConverter x:Key="notConv"></conv:NotConverter>
             <convLocal:StConnectionConverter x:Key="stConnectionConv"/>
+            <convLocal:loadingConverter x:Key="loadConverter"></convLocal:loadingConverter>
             <util:BindingProxy x:Key="proxy" Data="{Binding}" />
             <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
             <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
@@ -616,6 +617,35 @@
                 </Setter>
             </Style>
 
+            <Style x:Key="Button_IMPRIMIR" TargetType="{x:Type Button}">
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="25"/>
+                                </Grid.RowDefinitions>
+                                <Border x:Name="border" Grid.RowSpan="2" Background="Transparent" Margin="0,-0.667,0,0.667"/>
+                                <Path x:Name="path" Stretch="Fill" Height="17.889" VerticalAlignment="Bottom" Width="Auto" Grid.Row="0" Fill="#FF626262" Data="F1 M25,39 L28,39 28,52 35,52 35,59 48,59 48,39 51,39 51,62 33,62 25,54 25,39 z M46,55 L38,55 38,52 46,52 46,55 z M46,49 L30,49 30,46 46,46 46,49 z M46,43 L30,43 30,40 46,40 46,43 z" Margin="17.159,0"/>
+                                <Path x:Name="path2" Stretch="Fill" Height="26.444" Width="35" VerticalAlignment="Bottom" Grid.Row="0" Fill="#FF789DC3" Data="F1 M25,27 L25,17 51,17 51,27 47,27 47,21 29,21 29,27 25,27 z M16,28 L60,28 60,51 52,51 52,46 55,46 55,33 21,33 21,46 24,46 24,51 16,51 16,28 z" Margin="10,0,10,8.25"/>
+                                <ContentPresenter Grid.Row="1" TextElement.FontFamily="Segoe UI Light" TextElement.FontSize="14" TextElement.Foreground="#FF626262" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" TargetName="border" Value="#FFCDE6F7"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
             <Style x:Key="Button_ADD_new" TargetType="{x:Type Button}">
                 <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -1902,8 +1932,8 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Border x:Name="templateRoot" SnapsToDevicePixels="true" Background="White" BorderThickness="0.7" BorderBrush="#FFB9B9B9" CornerRadius="4">
-                                
-                            </Border>                            
+
+                            </Border>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -2272,9 +2302,6 @@
                                 <ComboBox x:Name="cbxItemsMenu" Grid.Column="1" Grid.Row="2" StaysOpenOnEdit="True" IsEditable="True"  Style="{StaticResource ComboBox_NOVO}" ItemContainerStyle="{StaticResource ComboBoxITEM_NOVO}"
                                           ItemsSource="{Binding Source={StaticResource cvsItensMenu}}"
                                           Text="{Binding xTextCbx}" SelectedItem="{Binding selectedFilteredItem}">
-                                    <ComboBox.Style>
-                                        <Style></Style>
-                                    </ComboBox.Style>
                                 </ComboBox>
                                 <TextBlock Grid.Column="1" Grid.Row="1" Text="Menu" FontFamily="Segoe Ui Light" Foreground="#FF626262" FontSize="36"/>
                                 <ContentControl Content="{Binding navegacao}" Grid.Column="2" Grid.Row="1"></ContentControl>
@@ -2294,7 +2321,7 @@
                                                         SelectedItem="{Binding Data.selectedSubMenu, Source={StaticResource proxy}}"
                                                         TabStripPlacement="Left" Style="{StaticResource TabControl_ARQUIVO}" ItemContainerStyle="{StaticResource TabItem_SUBMENU}" BorderBrush="Transparent" BorderThickness="0">
                                                     <TabControl.ItemTemplate>
-                                                        <DataTemplate>                                                            
+                                                        <DataTemplate>
                                                         </DataTemplate>
                                                     </TabControl.ItemTemplate>
                                                     <TabControl.ContentTemplate>
@@ -2345,255 +2372,115 @@
 
             </TabItem>
             <TabItem x:Name="tiWindow" Header="Ações" Style="{DynamicResource TabItem_GERAL}" Margin="-1,0.462,0,-0.462">
-                <DockPanel LastChildFill="True" x:Name="dockPrinc">
-                    <DockPanel
-			Background="{StaticResource colorBackExpander}"                            
-			DockPanel.Dock="Top" LastChildFill="True">
-                        <Expander 
-                Focusable="False"
-				Background="Transparent"
-				Foreground="White"
-				Width="150"
-				x:Name="exLogin"
-                FlowDirection="RightToLeft"
-				ContextMenuService.Placement="Bottom"
-				IsExpanded="False"
-				Header="{Binding currentFuncionario.xID}"
-				DockPanel.Dock="Right" 
-                Style="{StaticResource ExpanderStyle1}"
-				Expanded="exLogin_Expanded">
-                            <Expander.ContextMenu>
-                                <ContextMenu  x:Name="ctxLogin" Focusable="False" BorderBrush="{StaticResource BlueStandard}" BorderThickness="2" Background="{StaticResource BlueStandard}">
-                                    <MenuItem
-                            Focusable="False" Width="230" Height="150" BorderThickness="0">
-                                        <MenuItem.Template>
-                                            <ControlTemplate>
-                                                <Grid Width="230" Height="150">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="5"></ColumnDefinition>
-                                                        <ColumnDefinition></ColumnDefinition>
-                                                        <ColumnDefinition></ColumnDefinition>
-                                                        <ColumnDefinition Width="5"></ColumnDefinition>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="5"></RowDefinition>
-                                                        <RowDefinition Height="20"></RowDefinition>
-                                                        <RowDefinition></RowDefinition>
-                                                        <RowDefinition Height="5"></RowDefinition>
-                                                    </Grid.RowDefinitions>
-                                                    <Border Background="White" Grid.ColumnSpan="10" Grid.RowSpan="10"/>
-                                                    <TextBlock FontFamily="Segoe Ui Light" Grid.Row="1" Grid.ColumnSpan="2" Foreground="#FF545454" Text="{Binding currentEmpresa.xNome, Converter={StaticResource TextFormatConv}, ConverterParameter=Upper}" HorizontalAlignment="Center"></TextBlock>
-                                                    <Grid Grid.Column="1" Grid.Row="2">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition></RowDefinition>
-                                                        </Grid.RowDefinitions>
-                                                        <Border Grid.Row="2" Background="#FF8C8C8C"></Border>
-                                                        <Path x:Name="Path" Stretch="Fill" Grid.Row="2" Height="100" Width="50" VerticalAlignment="Bottom" StrokeLineJoin="Round" Stroke="#FFFFFFFF" Fill="White" Data="F1 M 15.0625,0.5C 20.6314,0.5 25.1875,3.99362 25.1875,9.5625C 25.1875,13.7444 23.2976,20.2496 19.6042,23.1875C 26.3465,26.8794 28.8333,38.8024 28.8333,47.5C 28.8333,57.9014 25.4375,56.8958 14.3542,56.8958C 3.77083,56.8958 0.5,58.4014 0.5,48C 0.5,39.1193 3.59406,26.4522 10.4792,22.9375C 7.02175,19.9166 5.33333,14.0143 5.33333,9.9375C 5.33333,4.36862 9.49362,0.5 15.0625,0.5 Z " Margin="15,0,15,-3.33"/>
-                                                    </Grid>
-                                                    <Grid Grid.Column="2" Grid.Row="2">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="Auto" MaxHeight="33"></RowDefinition>
-                                                            <RowDefinition Height="Auto" MaxHeight="33"></RowDefinition>
-                                                            <RowDefinition Height="Auto" MaxHeight="33"></RowDefinition>
-                                                            <RowDefinition></RowDefinition>
-                                                        </Grid.RowDefinitions>
-                                                        <Button Grid.Row="0" Height="30" Margin="0,0,0,3" Style="{StaticResource Button_CONTEXTMENU}" Click="trocarUsuario_Click" x:Name="trocarUsuario" Content="Trocar Usuário"/>
-                                                        <Button Grid.Row="1" Height="30" Margin="0,0,0,3" Style="{StaticResource Button_CONTEXTMENU}" Click="trocarEmpresa_Click" x:Name="trocarEmpresa" Content="Trocar Empresa"/>
-                                                        <Button Grid.Row="2" Height="30" Margin="0,0,0,3" Style="{StaticResource Button_CONTEXTMENU}" Content="Sair" Command="{Binding fecharCommand}"/>
-                                                    </Grid>
-                                                </Grid>
-                                            </ControlTemplate>
-                                        </MenuItem.Template>
-                                    </MenuItem>
-                                </ContextMenu>
-
-                            </Expander.ContextMenu>
-                        </Expander>
-                        <Menu x:Name="menuPrincipal" DockPanel.Dock="Top" Focusable="False">
-                            <MenuItem Header="Help" Style="{StaticResource MenuItemPrincipal}">
-                                <MenuItem Header="Sobre Magnificus" Command="{Binding SobreCommand}" />
-                            </MenuItem>
-                            <MenuItem Header="Atalhos" Focusable="False" Style="{StaticResource MenuItemPrincipal}">
-                                <MenuItem Header="Localizar Ctrl+L" Command="{Binding FindAllCommand}" />
-                            </MenuItem>
-                        </Menu>
-                    </DockPanel>
-                    <Grid Focusable="False" x:Name="grdForms" Style="{StaticResource GridStyle}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Border Grid.Row="1" Margin="0,0,0,0" BorderThickness="1" BorderBrush="{x:Null}" x:Name="borderForms">
-                            <DockPanel LastChildFill="True" x:Name="dkForms">
-                                <StatusBar x:Name="statusBarPrinc" Grid.Row="2" Style="{DynamicResource StatusBarStyle1}" DockPanel.Dock="Bottom">
-                                    <StatusBar.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
-                                                    <ColumnDefinition MaxWidth="80" MinWidth="80"></ColumnDefinition>
-                                                    <ColumnDefinition MaxWidth="50" MinWidth="50"></ColumnDefinition>
-                                                    <ColumnDefinition></ColumnDefinition>
-                                                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                            </Grid>
-                                        </ItemsPanelTemplate>
-                                    </StatusBar.ItemsPanel>
-                                    <StatusBarItem Grid.Column="0">
-                                        <StatusBarItem.Template>
-                                            <ControlTemplate>
-                                                <Label Content="Localizar ( Ctrl+L )" Foreground="White"/>
-                                            </ControlTemplate>
-                                        </StatusBarItem.Template>
-                                    </StatusBarItem>
-                                    <StatusBarItem Grid.Column="1" HorizontalAlignment="Left">
-                                        <StatusBarItem.Template>
-                                            <ControlTemplate>
-                                                <CheckBox 
-                                        Focusable="False"
-                                        Command="{Binding changeStConnection}" 
-                                        IsChecked="{Binding stConnection, Converter={StaticResource stConnectionConv}, UpdateSourceTrigger=Explicit}"
-                                        Style="{StaticResource CheckBoxRedeOnline}"
-                                              Width="65" Height="26"></CheckBox>
-                                            </ControlTemplate>
-                                        </StatusBarItem.Template>
-                                    </StatusBarItem>
-                                    <StatusBarItem Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,30,0">
-                                        <StatusBarItem.Template>
-                                            <ControlTemplate>
-                                                <Button Width="18" Height="20" Focusable="False" ToolTip="Selecionar Conexão" Content=" " Style="{StaticResource Button_CONEXAO}" Command="{Binding ConnectionConfigCommand}" CommandParameter="{Binding ElementName=manWin}"/>
-                                            </ControlTemplate>
-                                        </StatusBarItem.Template>
-                                    </StatusBarItem>
-                                    <!--<StatusBarItem Content="Carregando..." Grid.Column="6"
-                                       ></StatusBarItem>-->
-                                    <StatusBarItem Grid.Column="7" x:Name="statusBarItemAtalhos"
-                                       ContextMenuService.Placement="Top"
-                               Content="Clique" Foreground="{StaticResource WhiteStandard}" >
-                                        <StatusBarItem.ContextMenu>
-                                            <ContextMenu Style="{StaticResource ContextMenu}">
-                                                <MenuItem                                                            
-                                                            Width="120"            
-                                                            Height="{Binding Data.heightWindow,
-                        Source={StaticResource proxy}}">
-                                                    <MenuItem.Template>
-                                                        <ControlTemplate>
-                                                            <ContentControl Content="{Binding winMan._currentTab.Botoes}"></ContentControl>
-                                                        </ControlTemplate>
-                                                    </MenuItem.Template>
-                                                </MenuItem>
-                                            </ContextMenu>
-                                        </StatusBarItem.ContextMenu>
-                                    </StatusBarItem>
-                                </StatusBar>
-
-                                <Grid Focusable="False" Background="White" x:Name="gdContent">
-                                    <Grid.Resources>
-                                        <convLocal:loadingConverter x:Key="loadConverter"></convLocal:loadingConverter>
-                                    </Grid.Resources>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="1"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="{Binding ElementName=toolbarPrincipal, Path=Height}"/>
-                                        <RowDefinition Height="2"/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-                                    <DockPanel LastChildFill="True" Background="White">
-                                        <ToolBar x:Name="toolbarPrincipal" Visibility="{Binding winMan.vToolBar}" Height="45" Focusable="False"   Style="{StaticResource toolBarCadastro}">
-                                            <Button
-								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
-								Cursor="Hand"
-								Style="{StaticResource Button_ADD}" Height="34" Width="34" Margin="3,0,0,0" ToolTip="Novo ( Alt + N )">
-                                            </Button>
-                                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}"
-								Style="{StaticResource Button_EDIT}" ToolTipService.ShowOnDisabled="True" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Alterar ( Alt + A )" Focusable="False">
-
-                                            </Button>
-                                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" 
-                                    Style="{DynamicResource Button_DELETE}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Excluir ( Alt + E )" Focusable="False">
-
-                                            </Button>
-                                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandSalvar}" 
-                                        CommandParameter="{Binding winMan._currentTab._content}"
-								Style="{DynamicResource Button_SAVE}" Margin="3,0,0,0" Width="34" Height="34" ToolTip="Salvar ( Alt + S )" Focusable="False">
-
-                                            </Button>
-                                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource Button_CANCEL}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Cancelar ( Alt + C )" Focusable="False">
-
-                                            </Button>
-                                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandCopiar}" Margin="3,0,0,0" Style="{DynamicResource Button_COPY}" Width="34" Height="34" ToolTip="Duplicar ( Alt + V )" Focusable="False">
-
-                                            </Button>
-                                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" Margin="3,0,0,0" Style="{DynamicResource Button_PESQUISAR}" Width="34" Height="34" ToolTip="Pesquisar ( Alt + P )" Focusable="False">
-                                            </Button>
-                                            <DockPanel LastChildFill="True" Width="190" Margin="30,0,0,0">
-                                                <Button       
-                                        Focusable="False"
-									x:Name="btnPrimeiro"                                     
-									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnPrimeiro}" Style="{StaticResource Button_ANTERIOR_DUPLO}" DockPanel.Dock="Left" Height="34"  Width="34" Margin="0,0,2,0">
-
-                                                </Button>
-                                                <Button    
-                                        Focusable="False"
-									x:Name="btnAnterior"                                    
-									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnAnterior}"
-									Style="{StaticResource Button_ANTERIOR_SIMPLES}" DockPanel.Dock="Left" Height="34"  Width="34" Margin="0">
-                                                </Button>
-                                                <Button   
-                                        Focusable="False"
-									x:Name="btnUltimo"                                    
-									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnUltimo}"
-									Style="{StaticResource Button_PROXIMO_DUPLO}" DockPanel.Dock="Right" Height="34"  Width="34" Margin="2,0,-15,0" Foreground="#FFECE5E5">
-                                                </Button>
-                                                <Button x:Name="btnProximo"
-                                            Focusable="False"
-									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnProximo}"
-									Style="{StaticResource Button_PROXIMO_SIMPLES}" DockPanel.Dock="Right" Height="34"  Width="34" Margin="0,5,0,1">
-
-                                                </Button>
-                                                <Label Content="{Binding winMan._currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>
-                                            </DockPanel>
-                                            <Button Style="{DynamicResource Button_PRINTER}" Width="34" VerticalAlignment="Center" Height="34" Margin="25,0,0,0" ToolTip="Imprimir" Focusable="False" 
-                                    Command="{Binding winMan._currentTab._currentDataContext.commandImprimir}"/>
-                                            <Button Style="{DynamicResource Button_CONFIG}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Configurações" Focusable="False"
-                                        />
-
-                                        </ToolBar>
-                                    </DockPanel>
-                                    <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                                    <TabControl Grid.Row="2"
-                                    Focusable="False"
-							IsSynchronizedWithCurrentItem="True"
-							SelectedItem="{Binding winMan._currentTab, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-							x:Name="tabControlItens" ItemsSource="{Binding winMan._lTabPagesAtivas}" Background="#FFEEEEF2">
-                                        <TabControl.Resources>
-                                            <convLocal:opacityConverter x:Key="opacityConverter"></convLocal:opacityConverter>
-                                        </TabControl.Resources>
-                                        <TabControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <DockPanel Focusable="False" Height="24" LastChildFill="True">
-                                                    <Button DockPanel.Dock="Right"
-                                                Focusable="False"
-											Width="17"
-											Height="17"
-											Style="{DynamicResource BtnFechar}"
+                <Grid  Focusable="False" x:Name="dockPrinc">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="5"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Grid.ColumnSpan="3"  BorderThickness="0,0.5" BorderBrush="#FFB9B9B9" Margin="0,-2.029,0,2.029"/>
+                    <Grid Grid.Column="1" Focusable="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Focusable="False">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="1" Grid.ColumnSpan="7" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Edição" FontFamily="Segoe Ui Light" Foreground="#FF7E7C7C" FontSize="14"></TextBlock>
+                            <Button Grid.Column="0" Style="{DynamicResource Button_ADD_new}" Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" ToolTip="Novo ( Alt + N )" Content="Novo" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0" Focusable="False"/>
+                            <Button Grid.Column="1" Style="{DynamicResource Button_EDIT_new}" Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}" ToolTip="Alterar ( Alt + A )" Focusable="False" ToolTipService.ShowOnDisabled="True" Content="Editar" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
+                            <Button Grid.Column="2" Style="{DynamicResource Button_DELETE_new}" Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" ToolTip="Excluir ( Alt + E )" Focusable="False" Content="Deletar" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
+                            <Button Grid.Column="3" Style="{DynamicResource Button_SALVAR}" Command="{Binding winMan._currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding winMan._currentTab._content}" ToolTip="Salvar ( Alt + S )" Focusable="False" Content="Salvar" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0" />
+                            <Button Grid.Column="4" Style="{DynamicResource Button_CANCELAR}" Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" ToolTip="Cancelar ( Alt + C )" Focusable="False" Content="Cancelar" Margin="5,0,0,0" Height="70" VerticalAlignment="Bottom"/>
+                            <Button Grid.Column="5" Style="{DynamicResource Button_COPIAR}" Command="{Binding winMan._currentTab._currentDataContext.commandCopiar}" ToolTip="Duplicar ( Alt + V )" Focusable="False" Content="Copiar" Margin="5,0,0,0" Height="70" VerticalAlignment="Bottom"/>
+                            <Button Grid.Column="6" Style="{DynamicResource Button_PESQUISAR_new}" Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" ToolTip="Pesquisar ( Alt + P )" Focusable="False" Content="Pesquisar" Margin="5,0,0,0" Height="70" VerticalAlignment="Bottom"/>
+                        </Grid>
+                        <Grid Grid.Column="1" Focusable="False">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="20"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Border Height="80" Grid.RowSpan="2" Width="0.6" HorizontalAlignment="Center" Background="#FFCCCCCC"></Border>
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Navegação" FontFamily="Segoe Ui Light" Foreground="#FF7E7C7C" FontSize="14" Margin="88,78,88,2" Grid.RowSpan="2"/>
+                            <Label FontFamily="Segoe Ui" Foreground="#FF626262" HorizontalAlignment="Center" Content="{Binding winMan._currentTab._currentDataContext.sText}" Grid.Column="1" Margin="58,54,58,0"/>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Style="{DynamicResource Button_PRIMEIRO}" x:Name="btnPrimeiro" Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" Focusable="False" CommandParameter="{Binding ElementName=btnPrimeiro}" Content="Primeiro" Height="60" VerticalAlignment="Top" Margin="5,0,0,0"/>
+                                <Button Grid.Column="1" Style="{DynamicResource Button_ANTERIOR}" x:Name="btnAnterior" Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" Focusable="False" CommandParameter="{Binding ElementName=btnAnterior}" Content="Anterior" Height="60" VerticalAlignment="Top" Margin="5,0,0,0"/>
+                                <Button Grid.Column="2" Style="{DynamicResource Button_PROXIMO}" Content="Próximo" x:Name="btnProximo" Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" Focusable="False" CommandParameter="{Binding ElementName=btnProximo}" Height="60" VerticalAlignment="Top" Margin="5,0,0,0"/>
+                                <Button Grid.Column="3" Style="{DynamicResource Button_ULTIMO}" x:Name="btnUltimo" Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" Focusable="False" CommandParameter="{Binding ElementName=btnUltimo}" Content="Ultimo" Height="60" VerticalAlignment="Top" Margin="5,0,0,0"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <Border Height="80" Grid.RowSpan="2" Width="0.6" HorizontalAlignment="Center" Background="#FFCCCCCC"></Border>
+                            <Button Grid.Column="1" Style="{DynamicResource Button_IMPRIMIR}" Command="{Binding winMan._currentTab._currentDataContext.commandImprimir}" Content="Imprimir" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0" Focusable="False"/>
+                            <Button Grid.Column="2" Style="{DynamicResource Button_CONFIGURE}" Focusable="False" ToolTipService.ShowOnDisabled="True" Content="Configuração" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="7" VerticalAlignment="Center" HorizontalAlignment="Center" Text="???????" FontFamily="Segoe Ui Light" Foreground="#FF7E7C7C" FontSize="14"></TextBlock>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1" Focusable="False">
+                        <TabControl Grid.Row="2" Focusable="False" IsSynchronizedWithCurrentItem="True" Background="White" BorderBrush="Transparent"
+                                    SelectedItem="{Binding winMan._currentTab, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+							        x:Name="tabControlItens" ItemsSource="{Binding winMan._lTabPagesAtivas}" ItemContainerStyle="{StaticResource TabItem_GERAL}">
+                            <TabControl.Resources>
+                                <convLocal:opacityConverter x:Key="opacityConverter"></convLocal:opacityConverter>
+                            </TabControl.Resources>
+                            <TabControl.ItemTemplate>
+                                <DataTemplate>
+                                    <DockPanel Focusable="False" Height="24" LastChildFill="True">
+                                        <Button DockPanel.Dock="Right" Focusable="False" Width="17"	Height="17"	Style="{DynamicResource BtnFechar}"
 											Command="{Binding DataContext.DelWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type TabControl}, Mode=FindAncestor}}"
-											CommandParameter="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" FontSize="13.333" FontFamily="OCR A Extended">
-                                                        <ContentPresenter Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.833" Width="8.5"/>
-                                                    </Button>
-                                                    <Button DockPanel.Dock="Right" Width="17" Focusable="False" Height="17" Style="{DynamicResource BtnFechar}" FontFamily="OCR A Extended" FontSize="14.667">
-                                                        <ContentPresenter Content="-"/>
-                                                    </Button>
-                                                    <TextBlock Focusable="False" Grid.Column="0" Text="{Binding _header}" DockPanel.Dock="Left"/>
-                                                </DockPanel>
-                                            </DataTemplate>
-                                        </TabControl.ItemTemplate>
-                                        <TabControl.ContentTemplate>
-                                            <DataTemplate>
-                                                <DockPanel Focusable="False" LastChildFill="True" x:Name="dkContent">
-                                                    <ContentControl 
+											CommandParameter="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" FontSize="13.333" FontFamily="Segoe Ui">
+                                            <ContentPresenter Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.833" Width="8.5"/>
+                                        </Button>
+                                        <TextBlock Focusable="False" Grid.Column="0" Text="{Binding _header}" DockPanel.Dock="Left"/>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </TabControl.ItemTemplate>
+                            <TabControl.ContentTemplate>
+                                <DataTemplate>
+                                    <DockPanel Focusable="False" LastChildFill="True" x:Name="dkContent">
+                                        <Border BorderThickness="0.5" BorderBrush="#FFB9B9B9" Margin="-0.8,-3,0,0">
+                                            <ContentControl 
                                             IsEnabled="{Binding Data.winMan._currentTab._currentDataContext.loading, 
                                             Source={StaticResource proxy},
                                             Converter={StaticResource notConv}}"
@@ -2601,102 +2488,67 @@
                                             Source={StaticResource proxy},
                                             Converter={StaticResource opacityConverter}}"
                                                         Focusable="False" Content="{Binding _content}"/>
-                                                </DockPanel>
-                                            </DataTemplate>
-                                        </TabControl.ContentTemplate>
-                                    </TabControl>
-                                    <Components:LoadingAnimation
+                                        </Border>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </TabControl.ContentTemplate>
+                        </TabControl>
+                        <Components:LoadingAnimation
                             Grid.Row="2" 
                                Width="200"
                                Height="200"
                                HorizontalAlignment="Center" VerticalAlignment="Center"
-                            xLabel="{Binding winMan._currentTab._currentDataContext.xDescLoading}"
+                               xLabel="{Binding winMan._currentTab._currentDataContext.xDescLoading}"
                                Visibility="{Binding winMan._currentTab._currentDataContext.loading, Converter={StaticResource loadConverter},
-                            TargetNullValue=Collapsed, FallbackValue=Collapsed}"
+                               TargetNullValue=Collapsed, FallbackValue=Collapsed}"
                             ></Components:LoadingAnimation>
-                                    <DataGrid Grid.Column="1"  Grid.RowSpan="3"                                  
-                                    ItemsSource="{Binding 
-                                    winMan._currentTab._currentDataContext.currentModel.lDocumentos, Mode=TwoWay}"
-                                  AutoGenerateColumns="False"
-                                  CanUserAddRows="True" CanUserDeleteRows="True" 
-                                  IsReadOnly="{Binding winMan._currentTab._currentDataContext.bIsEnabled, Converter={StaticResource notConv}}">
-                                        <DataGrid.Resources>
-                                            <convLocal:extensionFileConverter x:Key="extFileConverter"/>
-                                        </DataGrid.Resources>
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Nome Documento" Width="150"
-                                                Binding="{Binding Path=xDocumento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
-                                            <DataGridTemplateColumn Header="Caminho Documento" Width="150">
-                                                <DataGridTemplateColumn.CellTemplate
-                                    >
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding Path=xPath, Mode=OneWay}" MouseDown="TextBlock_MouseDown"></TextBlock>
-                                                    </DataTemplate>
-                                                </DataGridTemplateColumn.CellTemplate>
-                                                <DataGridTemplateColumn.CellEditingTemplate>
-                                                    <DataTemplate>
-                                                        <Components:CustomTextBoxFindFiles
-                                            Text="{Binding Path=xPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></Components:CustomTextBoxFindFiles>
-                                                    </DataTemplate>
-                                                </DataGridTemplateColumn.CellEditingTemplate>
-                                            </DataGridTemplateColumn>
-                                            <DataGridTemplateColumn Header="Tipo de documento">
-                                                <DataGridTemplateColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <Image Source="{Binding xExtensao, Converter={StaticResource extFileConverter}, Mode=OneWay}"></Image>
-                                                    </DataTemplate>
-                                                </DataGridTemplateColumn.CellTemplate>
-                                            </DataGridTemplateColumn>
-                                        </DataGrid.Columns>
-                                    </DataGrid>
-                                </Grid>
-                            </DockPanel>
-                        </Border>
                     </Grid>
-                </DockPanel>
+                </Grid>
             </TabItem>
             <TabItem Header="Dashboard" Style="{DynamicResource TabItem_GERAL}">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border BorderThickness="0,0.5" BorderBrush="#FFB9B9B9" Margin="0,-2.029,0,2.029"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="0,0.5" BorderBrush="#FFB9B9B9" Margin="0,-2.029,0,2.029"/>
                         <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
                             <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition Height="20"/>
-                                </Grid.RowDefinitions>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="60"/>
-                                        <ColumnDefinition Width="78"/>
-                                        <ColumnDefinition Width="60"/>
-                                        <ColumnDefinition Width="60"/>
-                                        <ColumnDefinition Width="60"/>
-                                        <ColumnDefinition Width="60"/>
-                                        <ColumnDefinition Width="60"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Button Grid.Column="0" Style="{DynamicResource Button_GRAFICO}" Content="Gráfico" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
-                                    <Button Grid.Column="1" Style="{DynamicResource Button_DASHBOARD}" Content="Dashboards" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
-                                </Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="78"/>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="60"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Style="{DynamicResource Button_GRAFICO}" Content="Gráfico" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
+                                <Button Grid.Column="1" Style="{DynamicResource Button_DASHBOARD}" Content="Dashboards" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Relatórios" Style="{DynamicResource TabItem_GERAL}"/>
+            <TabItem Header="Relatórios" Style="{DynamicResource TabItem_GERAL}">
+
+            </TabItem>
+            <TabItem Header="Hierarquia" Style="{DynamicResource TabItem_GERAL}">
+
+            </TabItem>
         </TabControl>
         <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Background="White">
             <Grid.ColumnDefinitions>

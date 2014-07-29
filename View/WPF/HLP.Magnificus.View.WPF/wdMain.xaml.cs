@@ -47,13 +47,13 @@ namespace HLP.Magnificus.View.WPF
             Environment.Exit(0);
         }
 
-        private void exLogin_Expanded(object sender, RoutedEventArgs e)
-        {
-            ctxLogin.PlacementTarget = exLogin;
-            ctxLogin.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
-            ctxLogin.IsOpen = true;
-            exLogin.IsExpanded = false;
-        }
+        //private void exLogin_Expanded(object sender, RoutedEventArgs e)
+        //{
+        //    ctxLogin.PlacementTarget = exLogin;
+        //    ctxLogin.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+        //    ctxLogin.IsOpen = true;
+        //    exLogin.IsExpanded = false;
+        //}
 
         private void trocarUsuario_Click(object sender, RoutedEventArgs e)
         {
@@ -74,10 +74,10 @@ namespace HLP.Magnificus.View.WPF
 
         }
 
-        private void manWin_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            this.ViewModel.heightWindow = this.dockPrinc.ActualHeight - this.statusBarPrinc.ActualHeight;
-        }
+        //private void manWin_SizeChanged(object sender, SizeChangedEventArgs e)
+        //{
+        //    this.ViewModel.heightWindow = this.dockPrinc.ActualHeight - this.statusBarPrinc.ActualHeight;
+        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
