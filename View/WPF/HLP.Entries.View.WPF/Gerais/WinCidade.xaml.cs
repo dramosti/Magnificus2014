@@ -26,7 +26,7 @@ namespace HLP.Entries.View.WPF.Gerais
         public WinCidade()
         {
             InitializeComponent();
-            this.ViewModel = new CidadeViewModel();            
+//            this.ViewModel = new CidadeViewModel();            
         }
 
         public CidadeViewModel ViewModel
@@ -39,11 +39,6 @@ namespace HLP.Entries.View.WPF.Gerais
             {
                 this.DataContext = value;
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //int v = this.teste.Valor;
         }
 
     }

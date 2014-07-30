@@ -115,6 +115,8 @@ namespace HLP.ComumView.ViewModel.ViewModel
         public ICommand commOpenSubMenu { get; set; }
         public ICommand commOpenItem { get; set; }
         public ICommand commOpenItemNavegacao { get; set; }
+        public ICommand commCloseWindow { get; set; }
+        public ICommand commMinimizeWindow { get; set; }
 
         wdMainCommands comm;
 
@@ -256,7 +258,6 @@ namespace HLP.ComumView.ViewModel.ViewModel
 
             this.lAllItemsMenu = _lItems;
             #endregion
-
 
             winMan = new WinManModel();
             this.tabWindows = new TabControl();

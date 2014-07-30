@@ -28,6 +28,7 @@ namespace HLP.Components.View.WPF
             bwSetFocusFirstCtrl = new BackgroundWorker();
             bwSetFocusFirstCtrl.DoWork += bwSetFocusFirstCtrl_DoWork;
             bwSetFocusFirstCtrl.RunWorkerCompleted += bwSetFocusFirstCtrl_RunWorkerCompleted;
+
         }
 
         public void TabControl_KeyUp(object sender, KeyEventArgs e)

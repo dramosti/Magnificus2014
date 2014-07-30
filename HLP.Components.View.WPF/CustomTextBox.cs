@@ -1,4 +1,5 @@
 ﻿using HLP.Base.EnumsBases;
+using HLP.Components.View.WPF.Converter;
 using HLP.Components.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -48,32 +49,32 @@ namespace HLP.Components.View.WPF
     /// </summary>
     public class CustomTextBox : TextBox
     {
-        static CustomTextBox()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomTextBox), new FrameworkPropertyMetadata(typeof(CustomTextBox)));
-        }
-
         public CustomTextBox()
         {
-            ResourceDictionary resource = new ResourceDictionary
-            {
-                Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
-            };
-
-            this.Style = resource["TextBoxComponentStyle"] as Style;
-
             bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
     new DependencyObject());
 
             if (!designTime)
             {
+                Binding b = new Binding();
+
+                RelativeSource r = new RelativeSource();
+                r.Mode = RelativeSourceMode.Self;
+
+                PropertyPath p = new PropertyPath(path: "IsReadOnly", pathParameters: new object[] { });
+
+                b.Path = p;
+                b.RelativeSource = r;
+
+                TextboxStyleSelectorConverter txtConverter = new TextboxStyleSelectorConverter();
+                b.Converter = txtConverter;
+
+                BindingOperations.SetBinding(target: this,
+                    dp: TextBox.StyleProperty, binding: b);
+
                 this.CustomViewModel = new CustomTextBoxViewModel();
 
                 this.ApplyTemplate();
-
-                //Button btn = this.Template.FindName(name: "btn", templatedParent: this) as Button;
-
-                //this.GotFocus += CustomTextBox_GotFocus;
             }
         }
 
@@ -83,18 +84,6 @@ namespace HLP.Components.View.WPF
         {
             get { return _CustomViewModel; }
             set { _CustomViewModel = value; }
-        }
-
-
-        void CustomTextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            this.ApplyTemplate();
-            if (!(System.Windows.Forms.Control.ModifierKeys == System.Windows.Forms.Keys.Shift &&
-                Keyboard.IsKeyDown(Key.Tab)))
-            {
-                TextBox txt = this.Template.FindName(name: "txt", templatedParent: this) as TextBox;
-                txt.Focus();
-            }
         }
 
         public void SetEventFocusToTxtId(RoutedEventHandler _event)
@@ -124,17 +113,5 @@ namespace HLP.Components.View.WPF
             get { return _stVisibilityBtnQuickSearch; }
             set { _stVisibilityBtnQuickSearch = value; }
         }
-
-
-        new public bool IsEnabled
-        {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for IsEnabled.  This enables animation, styling, binding, etc...
-        new public static readonly DependencyProperty IsEnabledProperty =
-            DependencyProperty.Register("IsEnabled", typeof(bool), typeof(CustomTextBox),
-            new PropertyMetadata(defaultValue: false));
     }
 }

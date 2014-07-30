@@ -10,6 +10,7 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models;
 using HLP.Comum.ViewModel.ViewModel;
+using System.Windows;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
@@ -38,13 +39,19 @@ namespace HLP.Entries.ViewModel.ViewModels
                 base.NotifyPropertyChanged("lCidade");
             }
         }
-                
+
         public CidadeCommands objCidadeCommands;
 
         public CidadeViewModel()
             : base()
         {
-            objCidadeCommands = new CidadeCommands(objViewModel: this);
+            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
+    new DependencyObject());
+
+            if (!designTime)
+            {
+                objCidadeCommands = new CidadeCommands(objViewModel: this);
+            }
         }
 
         public void GetCidadeByUf(int idUF)

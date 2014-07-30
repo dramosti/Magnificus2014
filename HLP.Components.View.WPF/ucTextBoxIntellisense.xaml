@@ -22,6 +22,19 @@
             ,Path=customViewModel.xTextSearch, Mode=TwoWay
             , UpdateSourceTrigger=PropertyChanged}"
                  >
+            <TextBox.Style>
+                <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="whiteSmoke" Color="#F5F5F5">                            
+                        </SolidColorBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="IsReadOnly" Value="True">
+                            <Setter Property="Background" Value="{StaticResource whiteSmoke}"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
             <TextBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Inserir novo item" x:Name="insertItem" 

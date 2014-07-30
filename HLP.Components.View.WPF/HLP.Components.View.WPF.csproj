@@ -88,6 +88,7 @@
     <Compile Include="Converter\PorcentagemConverter.cs" />
     <Compile Include="Converter\RadioButtonCheckedButtonQuickSearchConverter.cs" />
     <Compile Include="Converter\SelectedItemToTextConverter.cs" />
+    <Compile Include="Converter\TextboxStyleSelectorConverter.cs" />
     <Compile Include="Converter\TimeSpanToString.cs" />
     <Compile Include="Converter\VisibilityDatePickerConverter.cs" />
     <Compile Include="Converter\VisibilityVisibleToCollapsedNot.cs" />

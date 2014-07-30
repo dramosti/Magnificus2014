@@ -60,7 +60,47 @@ namespace HLP.Components.View.WPF
             };
 
             this.Style = resource["TextBlocktyleComponents"] as Style;
+
+            this.MouseLeftButtonDown += CustomTextBlock_MouseLeftButtonDown;
         }
+
+        void CustomTextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (this.labelFor != null)
+            {
+                if (this.labelFor.GetType() == typeof(ucTextBoxIntellisense))
+                {
+                    (this.labelFor as ucTextBoxIntellisense).txt.Focus();
+                }
+                if (this.labelFor.GetType() == typeof(CustomTextBox))
+                {
+                    if ((this.labelFor as CustomTextBox).IsReadOnly == true)
+                    {
+                        TextBox txt = (this.labelFor as CustomTextBox).Template.FindName(name: "txt", 
+                            templatedParent: (this.labelFor as CustomTextBox)) as TextBox;
+
+                        if (txt != null)
+                            txt.Focus();
+                    }
+                    else
+                        this.labelFor.Focus();
+                }
+                else
+                    this.labelFor.Focus();
+            }
+        }
+
+
+
+        public UIElement labelFor
+        {
+            get { return (UIElement)GetValue(labelForProperty); }
+            set { SetValue(labelForProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for labelFor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty labelForProperty =
+            DependencyProperty.Register("labelFor", typeof(UIElement), typeof(CustomTextBlock), new PropertyMetadata(null));
 
         private StVisibilityButtonQuickSearch _stVisibilityBtnQuickSearch;
 

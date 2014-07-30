@@ -21,9 +21,14 @@ namespace HLP.ComumView.ViewModel.Commands
     {
         wdMainViewModel vm;
         CidadeService objCidadeService;
+        ResourceDictionary resource;
 
         public wdMainCommands(wdMainViewModel objVm)
         {
+            resource = new ResourceDictionary
+            {
+                Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
+            };
             this.vm = objVm;
             objCidadeService = new CidadeService();
 
@@ -39,7 +44,8 @@ namespace HLP.ComumView.ViewModel.Commands
                     canExecute: ex => DelWindowCanExecute());
             this.vm.OpenCtxCommand = new RelayCommand(execute: i => this.OpenCtx(ctx: i));
             this.vm.fecharCommand = new RelayCommand(execute: i => this.Sair());
-            this.vm.ConnectionConfigCommand = new RelayCommand(execute: i => this.ShowConfigConnection(win: i));            
+            this.vm.commMinimizeWindow = new RelayCommand(execute: i => this.MinimizeExecute());
+            this.vm.ConnectionConfigCommand = new RelayCommand(execute: i => this.ShowConfigConnection(win: i));
             this.vm.SobreCommand = new RelayCommand(execute: i => this.Sobre());
             this.vm.FindAllCommand = new RelayCommand
                 (
@@ -48,6 +54,7 @@ namespace HLP.ComumView.ViewModel.Commands
                 );
             this.vm.changeStConnection = new RelayCommand(
                 execute: i => this.ChangeStConnectionExec());
+            this.vm.commCloseWindow = new RelayCommand(execute: i => this.Sair(), canExecute: i => this.SairCanExecute());
         }
 
         private void OpenItemNavegacao(object obj)
@@ -90,9 +97,11 @@ namespace HLP.ComumView.ViewModel.Commands
             btn.Tag = vm.selectedMenu;
             btn.Command = this.vm.commOpenItemNavegacao;
             btn.CommandParameter = btn;
+            btn.Style = resource[key: "Button_NAVEGACAO_MENU"] as Style;
+
+
             this.vm.navegacao.Children.Add(element: btn);
         }
-
         private void OpenItemExec(object xNamespace)
         {
             mainMenuModel m = null;
@@ -118,6 +127,7 @@ namespace HLP.ComumView.ViewModel.Commands
                     btn.Tag = m;
                     btn.Command = this.vm.commOpenItemNavegacao;
                     btn.CommandParameter = btn;
+                    btn.Style = resource[key: "Button_NAVEGACAO_MENU"] as Style;
                     vm.navegacao.Children.Add(element: btn);
                     vm.lSubMenu = m.lSubItens;
                 }
@@ -145,7 +155,6 @@ namespace HLP.ComumView.ViewModel.Commands
                 this.vm.stConnection = this.vm.stConnection;
             }
         }
-
         private void ShowConfigConnection(object win)
         {
             try
@@ -170,8 +179,6 @@ namespace HLP.ComumView.ViewModel.Commands
                 throw ex;
             }
         }
-
-
         private void Sobre()
         {
             Window win = GerenciadorModulo.Instancia.CarregaForm("WinSobre", Base.InterfacesBases.TipoExibeForm.Modal);
@@ -183,19 +190,15 @@ namespace HLP.ComumView.ViewModel.Commands
         {
             return true;
         }
-
-
         private void OpenCtx(object ctx)
         {
             if (ctx != null)
                 (ctx as ContextMenu).IsOpen = true;
         }
-
         private bool OpenCtxCanExecute()
         {
             return true;
         }
-
 
         private void AddWindow(object xForm)
         {
@@ -207,26 +210,30 @@ namespace HLP.ComumView.ViewModel.Commands
 
                 Window form = GerenciadorModulo.Instancia.CarregaForm(nome: xForm != null ? xForm.ToString() :
                     this.vm.selectedSubMenu.nameWindow, exibeForm: Base.InterfacesBases.TipoExibeForm.Modal);
-                if ((xForm != null ? xForm.ToString() :
-                    this.vm.selectedSubMenu.nameWindow).Equals("WinConnectionConfig"))
-                {
-                    form.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                    form.ShowDialog();
-                }
-                else
-                {
-                    TabPagesAtivasModel objTabPageAtivasModel = new TabPagesAtivasModel();
-                    objTabPageAtivasModel._windows = form;
 
-                    if (this.vm.winMan._lTabPagesAtivas.Count(
-                        i => i._windows.Name == form.Name) == 0)
+                if (form != null)
+                {
+                    if ((xForm != null ? xForm.ToString() :
+                        this.vm.selectedSubMenu.nameWindow).Equals("WinConnectionConfig"))
                     {
-                        this.vm.winMan._lTabPagesAtivas.Add(item: objTabPageAtivasModel);
+                        form.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                        form.ShowDialog();
                     }
+                    else
+                    {
+                        TabPagesAtivasModel objTabPageAtivasModel = new TabPagesAtivasModel();
+                        objTabPageAtivasModel._windows = form;
 
-                    this.vm.winMan._currentTab = objTabPageAtivasModel;
-                    this.vm.winMan.vToolBar = Visibility.Visible;
-                    this.vm.winMan.iHeightToolBar = 30;
+                        if (this.vm.winMan._lTabPagesAtivas.Count(
+                            i => i._windows.Name == form.Name) == 0)
+                        {
+                            this.vm.winMan._lTabPagesAtivas.Add(item: objTabPageAtivasModel);
+                        }
+
+                        this.vm.winMan._currentTab = objTabPageAtivasModel;
+                        this.vm.winMan.vToolBar = Visibility.Visible;
+                        this.vm.winMan.iHeightToolBar = 30;
+                    }
                 }
             }
             catch (Exception ex)
@@ -288,13 +295,26 @@ namespace HLP.ComumView.ViewModel.Commands
             return true;
         }
 
-
         private void Sair()
         {
-            Application.Current.Shutdown();
+            if (MessageHlp.Show(stMessage: StMessage.stYesNo, xMessageToUser: "Deseja encerrar a aplicação?")
+                == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
         }
 
         private bool SairCanExecute()
+        {
+            return true;
+        }
+
+        private void MinimizeExecute()
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
+
+        private bool MinimizeCanExecute()
         {
             return true;
         }
