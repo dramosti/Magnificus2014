@@ -16,10 +16,10 @@ namespace HLP.Comum.Services.wcf_CamposBaseDados {
     public interface Iwcf_CamposBaseDados {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_CamposBaseDados/getCamposNotNull", ReplyAction="http://tempuri.org/Iwcf_CamposBaseDados/getCamposNotNullResponse")]
-        HLP.Base.ClassesBases.PesquisaPadraoModelContract[] getCamposNotNull(string xTabela);
+        System.Collections.Generic.List<HLP.Base.ClassesBases.PesquisaPadraoModelContract> getCamposNotNull(string xTabela);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_CamposBaseDados/getCamposNotNull", ReplyAction="http://tempuri.org/Iwcf_CamposBaseDados/getCamposNotNullResponse")]
-        System.Threading.Tasks.Task<HLP.Base.ClassesBases.PesquisaPadraoModelContract[]> getCamposNotNullAsync(string xTabela);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Base.ClassesBases.PesquisaPadraoModelContract>> getCamposNotNullAsync(string xTabela);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,11 +49,11 @@ namespace HLP.Comum.Services.wcf_CamposBaseDados {
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Base.ClassesBases.PesquisaPadraoModelContract[] getCamposNotNull(string xTabela) {
+        public System.Collections.Generic.List<HLP.Base.ClassesBases.PesquisaPadraoModelContract> getCamposNotNull(string xTabela) {
             return base.Channel.getCamposNotNull(xTabela);
         }
         
-        public System.Threading.Tasks.Task<HLP.Base.ClassesBases.PesquisaPadraoModelContract[]> getCamposNotNullAsync(string xTabela) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Base.ClassesBases.PesquisaPadraoModelContract>> getCamposNotNullAsync(string xTabela) {
             return base.Channel.getCamposNotNullAsync(xTabela);
         }
     }

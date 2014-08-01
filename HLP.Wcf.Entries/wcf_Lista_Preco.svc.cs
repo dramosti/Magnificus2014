@@ -154,9 +154,12 @@ namespace HLP.Wcf.Entries
                     return null;
                 }
 
-                objListaPreco.lLista_preco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Lista_precoModel>
-                    (list: this.lista_PrecoRepository.GetAllLista_preco(
-                        idListaPrecoPai: idListaPrecoPai));
+                var lListaPrecoItens = this.lista_PrecoRepository.GetAllLista_preco(
+                        idListaPrecoPai: idListaPrecoPai);
+
+                if (lListaPrecoItens != null)
+                    objListaPreco.lLista_preco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Lista_precoModel>
+                        (list: lListaPrecoItens);
                 return objListaPreco;
             }
             catch (Exception ex)

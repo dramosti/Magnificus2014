@@ -7,6 +7,7 @@ using HLP.ComumView.ViewModel.ViewModel;
 using HLP.ComumView.ViewModel.Messages.ViewModels;
 using System.Windows;
 using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 
 namespace HLP.ComumView.ViewModel.Messages.Commands
 {
@@ -23,9 +24,21 @@ namespace HLP.ComumView.ViewModel.Messages.Commands
 
         private void CopyExecute()
         {
-            Clipboard.SetText(text: this.objViewModel.xErrorMessageToUser +
+            try
+            {
+                Clipboard.SetText(text: this.objViewModel.xErrorMessageToUser +
                 Environment.NewLine + Environment.NewLine +
                 this.objViewModel.xErrorMessageFramework);
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                Log.xPath = @"c:\logMagnificus\";
+                Log.AddLog(xLog: this.objViewModel.xErrorMessageFramework);
+            }
+
         }
 
         private void OkExecute(object o)

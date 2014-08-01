@@ -164,6 +164,27 @@ namespace HLP.Base.Static
                 throw ex;
             }
         }
+
+        public static string GetConnectionStrings(string xKey)
+        {
+            try
+            {
+                Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                if (c.ConnectionStrings.ConnectionStrings[name: xKey] != null)
+                {
+                    return c.ConnectionStrings.ConnectionStrings[name: xKey].ConnectionString;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static string GetAppSettings(string xKey)
         {
             try
@@ -293,33 +314,34 @@ namespace HLP.Base.Static
 
         public static bool SalvaEndPoint(string xUri)
         {
-            Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            ServiceModelSectionGroup serviceModeGroup = ServiceModelSectionGroup.GetSectionGroup(c);
-            string xNomeServico;
-            Uri _uri;
-            bool bModificado = false;
-
-            foreach (ChannelEndpointElement item in serviceModeGroup.Client.Endpoints)
-            {
-                xNomeServico = item.Address.ToString().Split('/').ToList().Last();
-                _uri = new Uri(xUri + xNomeServico);
-                if (_uri != item.Address)
-                {
-                    bModificado = true;
-                    item.Address = _uri;
-                }
-            }
             try
             {
+                Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                ServiceModelSectionGroup serviceModeGroup = ServiceModelSectionGroup.GetSectionGroup(c);
+                string xNomeServico;
+                Uri _uri;
+
+                bool bModificado = false;
+
+                foreach (ChannelEndpointElement item in serviceModeGroup.Client.Endpoints)
+                {
+                    xNomeServico = item.Address.ToString().Split('/').ToList().Last();
+                    _uri = new Uri(xUri + xNomeServico);
+                    if (_uri != item.Address)
+                    {
+                        bModificado = true;
+                        item.Address = _uri;
+                    }
+                }
+
                 if (bModificado)
                     c.Save();
 
                 return bModificado;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
 
@@ -398,6 +420,7 @@ namespace HLP.Base.Static
             }
             catch (Exception)
             {
+                Sistema.bOnline = StConnection.Offline;
                 return StConnection.Offline;
             }
         }

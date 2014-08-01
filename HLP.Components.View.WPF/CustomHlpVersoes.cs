@@ -109,12 +109,18 @@ namespace HLP.Components.View.WPF
         {
             if (e.NewValue != null)
             {
+                ResourceDictionary resource = new ResourceDictionary
+                {
+                    Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
+                };
                 (d as StackPanel).Children.Clear();
                 Button btn;
                 foreach (var id in e.NewValue as IEnumerable)
                 {
                     btn = new Button();
                     btn.Content = id;
+                    btn.Style = resource[key: "GlassButton"] as Style;
+                    btn.Height = btn.Width = 50;
                     btn.Click += new RoutedEventHandler((d as CustomHlpVersoes).btnClick);
                     (d as StackPanel).Children.Add(element: btn);
                 }

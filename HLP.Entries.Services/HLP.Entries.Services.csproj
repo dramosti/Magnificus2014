@@ -646,7 +646,7 @@
     <None Include="Service References\wcf_Cidade\wcf_Cidade3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cidade\wcf_Cidade31.xsd">
+    <None Include="Service References\wcf_Cidade\wcf_Cidade4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal.wsdl" />
@@ -1789,21 +1789,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Lista_Preco\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Lista_Preco\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Lista_Preco\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Multa\wcf_Multa.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2134,21 +2119,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Produto\wcf_Produto.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Produto\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Produto\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Produto\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2269,21 +2239,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Cidade\wcf_Cidade.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cidade\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cidade\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cidade\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Moeda\wcf_Moeda.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2354,6 +2309,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Funcionario_ControlePonto\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cidade\wcf_Cidade.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cidade\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cidade\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cidade\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Lista_Preco\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Lista_Preco\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Lista_Preco\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Produto\wcf_Produto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Produto\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Produto\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Produto\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

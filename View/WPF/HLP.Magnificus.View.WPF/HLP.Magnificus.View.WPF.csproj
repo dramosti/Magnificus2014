@@ -149,14 +149,21 @@
     <Compile Include="Converter\loadingConverter.cs" />
     <Compile Include="Converter\opacityConverter.cs" />
     <Compile Include="Converter\StConnectionConverter.cs" />
+    <Compile Include="Converter\visibilityCtrlsWdMain.cs" />
     <Compile Include="Converter\WidthColumnConverter.cs" />
     <Compile Include="Service References\empresaParametrosService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="wdConfig.xaml.cs">
+      <DependentUpon>wdConfig.xaml</DependentUpon>
+    </Compile>
     <Compile Include="wdMain.xaml.cs">
       <DependentUpon>wdMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="wdSplash.xaml.cs">
+      <DependentUpon>wdSplash.xaml</DependentUpon>
     </Compile>
     <Compile Include="WinConnectionConfig.xaml.cs">
       <DependentUpon>WinConnectionConfig.xaml</DependentUpon>
@@ -227,7 +234,15 @@
       <SubType>Designer</SubType>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
+    <Page Include="wdConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="wdMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="wdSplash.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

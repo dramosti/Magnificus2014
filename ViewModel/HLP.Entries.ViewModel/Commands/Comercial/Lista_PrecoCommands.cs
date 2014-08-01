@@ -279,11 +279,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             if (objViewModel.message.Save())
             {
-                Application.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
-                {
-                    objViewModel.currentModel = this.objService.Save(objModel: this.objViewModel.currentModel);
-                });
-
+                objViewModel.currentModel = this.objService.Save(objModel: this.objViewModel.currentModel);
                 e.Result = e.Argument;
             }
         }

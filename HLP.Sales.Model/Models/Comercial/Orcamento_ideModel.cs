@@ -39,11 +39,13 @@ namespace HLP.Sales.Model.Models.Comercial
                 winOrcamento = Sistema.GetOpenWindow(xName: "WinOrcamento");
 
             if (_objDataContext == null)
-                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                {
-                    _objDataContext = winOrcamento.DataContext;
-                })).Wait(timeout: new TimeSpan(hours: 0, minutes: 0, seconds: 5));
-
+            {
+                if (Application.Current != null && winOrcamento != null)
+                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                    {
+                        _objDataContext = winOrcamento.DataContext;
+                    })).Wait(timeout: new TimeSpan(hours: 0, minutes: 0, seconds: 5));
+            }
             return _objDataContext;
         }
 
@@ -53,6 +55,9 @@ namespace HLP.Sales.Model.Models.Comercial
         {
             MethodInfo mi = null;
             object o = GetDataContextWindow().Result;
+
+            if (o == null)
+                return null;
 
             mi = lMethods.FirstOrDefault(i =>
                 i.Name == xname);
@@ -113,10 +118,13 @@ namespace HLP.Sales.Model.Models.Comercial
                 EnderecoModel objEnderecoEmpresa = null;
                 this.objEmpresa = GetMethodDataContextWindowValue(xname: "GetEmpresa", _parameters: new object[] { CompanyData.idEmpresa }) as EmpresaModel;
 
-                objEnderecoEmpresa = this.objEmpresa.lEmpresa_endereco.FirstOrDefault(i => i.stPrincipal == ((byte)1));
+                if (objEmpresa != null)
+                {
+                    objEnderecoEmpresa = this.objEmpresa.lEmpresa_endereco.FirstOrDefault(i => i.stPrincipal == ((byte)1));
 
-                if (objEnderecoEmpresa == null)
-                    objEnderecoEmpresa = this.objEmpresa.lEmpresa_endereco.FirstOrDefault();
+                    if (objEnderecoEmpresa == null)
+                        objEnderecoEmpresa = this.objEmpresa.lEmpresa_endereco.FirstOrDefault();
+                }
 
                 CidadeModel objCidade = null;
 
@@ -130,16 +138,19 @@ namespace HLP.Sales.Model.Models.Comercial
                         idUfEnderecoEmpresa = objCidade.idUF;
                 }
 
-                this.idTipoDocumento = (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
-                    .empresaParametros.ObjParametro_ComercialModel.idTipoDocumentoDefaultOrcamento ?? 0;
+                if (objEmpresa != null)
+                {
+                    this.idTipoDocumento = (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
+                        .empresaParametros.ObjParametro_ComercialModel.idTipoDocumentoDefaultOrcamento ?? 0;
 
-                this.idMoeda = (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
-                        .empresaParametros.ObjParametro_ComercialModel.idMoeda;
+                    this.idMoeda = (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
+                            .empresaParametros.ObjParametro_ComercialModel.idMoeda;
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
 
@@ -572,22 +583,25 @@ namespace HLP.Sales.Model.Models.Comercial
             Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
             if (w != null)
             {
-                DataGrid dg = w.FindName(name: "dgItens") as DataGrid;
-
-                if (dg != null)
-                {
-                    dg.CommitEdit(editingUnit: DataGridEditingUnit.Row, exitEditingMode: true);
-                }
-
-                CollectionViewSource cvs = w.FindResource(resourceKey: "cvsItens") as CollectionViewSource;
                 Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
-                {                    
+                {
+                    DataGrid dg = w.FindName(name: "dgItens") as DataGrid;
+
+                    if (dg != null)
+                    {
+                        dg.CommitEdit(editingUnit: DataGridEditingUnit.Row, exitEditingMode: true);
+                    }
+                }));
+
+                Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+                {
+                    CollectionViewSource cvs = w.FindResource(resourceKey: "cvsItens") as CollectionViewSource;
                     cvs.Filter += new FilterEventHandler(this.ItensOrcamentoFilter);
                 }));
 
-                CollectionViewSource cvsImpostos = w.FindResource(resourceKey: "cvsImpostos") as CollectionViewSource;
                 Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
                 {
+                    CollectionViewSource cvsImpostos = w.FindResource(resourceKey: "cvsImpostos") as CollectionViewSource;
                     cvsImpostos.Filter += new FilterEventHandler(this.ItensOrcamentoFilter);
                 }));
             }
@@ -1114,8 +1128,9 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _idEmpresa = value;
 
-                this.xEmpresa = string.Format(format: "{0} - {1}", arg0: value,
-                    arg1: (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel).xFantasia);
+                if (HLP.Base.Static.CompanyData.objEmpresaModel != null)
+                    this.xEmpresa = string.Format(format: "{0} - {1}", arg0: value,
+                        arg1: (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel).xFantasia);
                 base.NotifyPropertyChanged(propertyName: "idEmpresa");
             }
         }
@@ -1391,11 +1406,18 @@ namespace HLP.Sales.Model.Models.Comercial
             }
             else
             {
-                FuncionarioModel f = (this.GetMethodDataContextWindowValue(
-                            xname: "GetFuncionario", _parameters: new object[] { 
+                if (this.lOrcamentoItemsRepresentantes != null)
+                {
+                    if (this.lOrcamentoItemsRepresentantes.Count > 0)
+                    {
+                        FuncionarioModel f = (this.GetMethodDataContextWindowValue(
+                                    xname: "GetFuncionario", _parameters: new object[] { 
                                 this.lOrcamentoItemsRepresentantes.FirstOrDefault().idRepresentante }) as FuncionarioModel);
 
-                this.xRepresentanteItem = f.idFuncionario.ToString() + " - " + f.xNome;
+                        if (f != null)
+                            this.xRepresentanteItem = f.idFuncionario.ToString() + " - " + f.xNome;
+                    }
+                }
             }
         }
 
@@ -1685,8 +1707,11 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _idDeposito = value;
 
-                this.idSite = (int)this.GetMethodDataContextWindowValue(
+                object o = this.GetMethodDataContextWindowValue(
                             xname: "GetIdSiteByDeposito", _parameters: new object[] { value });
+
+                if (o != null)
+                    this.idSite = (int)o;
 
                 base.NotifyPropertyChanged(propertyName: "idDeposito");
             }
@@ -1781,7 +1806,8 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 if (currentModel != null)
                 {
-                    if ((currentModel as modelBase).GetOperationModel() == OperationModel.updating)
+                    if ((currentModel as modelBase).GetOperationModel() == OperationModel.updating
+                        && this.objImposto.objTipoOperacao != null)
                     {
                         //Dúvida: Este Campo, idCfop, poderá ser modificado?
                         this.idCfop = currentModel.idUfEnderecoCliente == currentModel.idUfEnderecoEmpresa ? this.objImposto.objTipoOperacao.cCfopNaUf : this.objImposto.objTipoOperacao.cCfopOutraUf;
@@ -3606,7 +3632,8 @@ namespace HLP.Sales.Model.Models.Comercial
                     _parameters: new object[] { value })
                     as Classificacao_fiscalModel;
 
-                this.xNcm = objClassificacaoFiscal.cNCM;
+                if (objClassificacaoFiscal != null)
+                    this.xNcm = objClassificacaoFiscal.cNCM;
 
                 base.NotifyPropertyChanged(propertyName: "idClassificacaoFiscal");
             }
@@ -4002,17 +4029,18 @@ namespace HLP.Sales.Model.Models.Comercial
                                         objFamiliaProduto = this.GetMethodDataContextWindowValue(
                                                 xname: "GetFamiliaProduto", _parameters: new object[] { currentItem.objProduto.idFamiliaProduto }) as Familia_produtoModel;
 
-                                        switch (stVistaPrazo)
-                                        {
-                                            case 0:
-                                                {
-                                                    this.pComissao = objFamiliaProduto.pComissaoAvista;
-                                                } break;
-                                            case 1:
-                                                {
-                                                    this.pComissao = objFamiliaProduto.pComissaoAprazo;
-                                                } break;
-                                        }
+                                        if (objFamiliaProduto != null)
+                                            switch (stVistaPrazo)
+                                            {
+                                                case 0:
+                                                    {
+                                                        this.pComissao = objFamiliaProduto.pComissaoAvista;
+                                                    } break;
+                                                case 1:
+                                                    {
+                                                        this.pComissao = objFamiliaProduto.pComissaoAprazo;
+                                                    } break;
+                                            }
                                     } break;
                                 case 3:
                                     {

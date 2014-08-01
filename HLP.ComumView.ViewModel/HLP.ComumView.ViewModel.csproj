@@ -42,6 +42,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -57,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Commands\LoginCommands.cs" />
     <Compile Include="Commands\SenhaSupervisorCommands.cs" />
+    <Compile Include="Commands\wdConfigCommands.cs" />
     <Compile Include="Commands\wdMainCommands.cs" />
     <Compile Include="Messages\Commands\HlpMessageAlertCommands.cs" />
     <Compile Include="Messages\Commands\HlpMessageErrorCommands.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\messageDeleteNotAllowedFK.cs" />
     <Compile Include="ViewModel\SenhaSupervisorViewModel.cs" />
+    <Compile Include="ViewModel\wdConfigViewModel.cs" />
     <Compile Include="ViewModel\wdMainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

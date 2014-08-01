@@ -75,24 +75,25 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _idTipoProduto = value;
 
-                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                    {
-                        Window wdProduto = Sistema.GetOpenWindow(xName: "WinProduto");
-
-                        if (wdProduto != null)
+                if (Application.Current != null)
+                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                         {
-                            this.produtoViewModel = wdProduto.DataContext.GetType();
+                            Window wdProduto = Sistema.GetOpenWindow(xName: "WinProduto");
 
-                            if (this.lMethods.Count(i => i.Name == "IsService") < 1)
+                            if (wdProduto != null)
                             {
-                                MethodInfo mi = this.produtoViewModel.GetMethod(name: "IsService");
-                                this.lMethods.Add(item: mi);
-                            }
+                                this.produtoViewModel = wdProduto.DataContext.GetType();
 
-                            this.IsService = (bool)lMethods.FirstOrDefault(i => i.Name == "IsService").Invoke(obj: wdProduto.DataContext,
-                                parameters: new object[] { value });
-                        }
-                    }));
+                                if (this.lMethods.Count(i => i.Name == "IsService") < 1)
+                                {
+                                    MethodInfo mi = this.produtoViewModel.GetMethod(name: "IsService");
+                                    this.lMethods.Add(item: mi);
+                                }
+
+                                this.IsService = (bool)lMethods.FirstOrDefault(i => i.Name == "IsService").Invoke(obj: wdProduto.DataContext,
+                                    parameters: new object[] { value });
+                            }
+                        }));
                 base.NotifyPropertyChanged(propertyName: "idTipoProduto");
 
             }
@@ -191,25 +192,26 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _idDeposito = value;
 
-                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                {
-                    Window wdProduto = Sistema.GetOpenWindow(xName: "WinProduto");
-
-                    if (wdProduto != null)
+                if (Application.Current != null)
+                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                     {
-                        this.produtoViewModel = wdProduto.DataContext.GetType();
+                        Window wdProduto = Sistema.GetOpenWindow(xName: "WinProduto");
 
-                        if (this.lMethods.Count(i => i.Name == "GetIdSiteByDeposito") < 1)
+                        if (wdProduto != null)
                         {
-                            MethodInfo mi = this.produtoViewModel.GetMethod(name: "GetIdSiteByDeposito");
-                            this.lMethods.Add(item: mi);
+                            this.produtoViewModel = wdProduto.DataContext.GetType();
+
+                            if (this.lMethods.Count(i => i.Name == "GetIdSiteByDeposito") < 1)
+                            {
+                                MethodInfo mi = this.produtoViewModel.GetMethod(name: "GetIdSiteByDeposito");
+                                this.lMethods.Add(item: mi);
+                            }
+
+                            this.idSite = (int)lMethods.FirstOrDefault(i => i.Name == "GetIdSiteByDeposito").Invoke(obj: wdProduto.DataContext,
+                                parameters: new object[] { value });
                         }
 
-                        this.idSite = (int)lMethods.FirstOrDefault(i => i.Name == "GetIdSiteByDeposito").Invoke(obj: wdProduto.DataContext,
-                            parameters: new object[] { value });
-                    }
-
-                }));
+                    }));
 
                 base.NotifyPropertyChanged(propertyName: "idDeposito");
             }

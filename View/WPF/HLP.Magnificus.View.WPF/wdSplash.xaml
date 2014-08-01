@@ -1,0 +1,32 @@
+﻿<Window x:Class="HLP.Magnificus.View.WPF.wdSplash"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="wdSplash" Height="300" Width="500" WindowStyle="None" x:Name="_wdSplash" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+    </Window.Resources>
+    <Grid Background="#1E90FF">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Image Stretch="Fill" Width="50" Height="50" Source="D:\GitHub\HLP\Magnificus2014\HLP.Resources.View.WPF\Icons\Login\Logo.png"/>
+            <TextBlock Grid.Column="1" Text="Magnificus ES" FontFamily="Segoe UI Light" VerticalAlignment="Center" FontSize="32" HorizontalAlignment="Left" Foreground="#DCDCDC" />            
+        </Grid>
+        <TextBlock x:Name="txt" Grid.Column="1" Grid.Row="4" Text="{Binding ElementName=_wdSplash, Path=xSplash}" Grid.ColumnSpan="2" Foreground="#DCDCDC"></TextBlock>
+    </Grid>
+</Window>

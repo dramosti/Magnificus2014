@@ -11,7 +11,8 @@ namespace HLP.Comum.Model.Models
 {
     [DataContract]
     public partial class DocumentosModel : modelBase
-    {
+    {        
+
         public DocumentosModel()
             : base(xTabela: "Documentos")
         {

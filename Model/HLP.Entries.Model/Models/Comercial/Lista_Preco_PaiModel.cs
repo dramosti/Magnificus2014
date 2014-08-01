@@ -25,14 +25,15 @@ namespace HLP.Entries.Model.Models.Comercial
 
             w = Sistema.GetOpenWindow(xName: "WinListaPreco");
 
-            Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-            {
-                if (w != null)
+            if (Application.Current != null)
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                 {
-                    miGetProduto = w.DataContext.GetType().GetMethod(name: "GetProduto");
+                    if (w != null)
+                    {
+                        miGetProduto = w.DataContext.GetType().GetMethod(name: "GetProduto");
+                    }
                 }
-            }
-                ));
+                    ));
         }
 
         public void lLista_preco_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -346,14 +347,15 @@ namespace HLP.Entries.Model.Models.Comercial
 
                 if (Lista_Preco_PaiModel.miGetProduto != null)
                 {
-                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                        {
-                            objProduto = Lista_Preco_PaiModel.miGetProduto.Invoke(
-                        obj: w.DataContext, parameters: new object[] { value }) as ProdutoModel;
+                    if (Application.Current != null)
+                        Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                            {
+                                objProduto = Lista_Preco_PaiModel.miGetProduto.Invoke(
+                            obj: w.DataContext, parameters: new object[] { value }) as ProdutoModel;
 
-                            this.selectedIdUnidadeVenda = objProduto.idUnidadeMedidaVendas;
-                            this.selectedIdFamiliaProduto = objProduto.idFamiliaProduto;
-                        }));
+                                this.selectedIdUnidadeVenda = objProduto.idUnidadeMedidaVendas;
+                                this.selectedIdFamiliaProduto = objProduto.idFamiliaProduto;
+                            }));
                 }
 
                 base.NotifyPropertyChanged(propertyName: "idProduto");

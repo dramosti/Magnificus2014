@@ -136,103 +136,26 @@ namespace HLP.Magnificus.View.WPF
         /// <summary>
         /// Valida se existe conexão
         /// </summary>
-        /// <returns></returns>
-        private bool ValidaConnection()
-        {
-            Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            if (c.ConnectionStrings.ConnectionStrings.Count <= 1)
-            {
-                WinSelectConnection winBases = new WinSelectConnection();
-                winBases.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                winBases.ShowDialog();
-
-                if (winBases.ViewModel.bProssegue != null)
-                {
-                    if (winBases.ViewModel.bProssegue == true)
-                    {
-                        System.Windows.Forms.Application.Restart();
-                        return false;
-                    }
-                    else
-                    {
-                        // só para não iniciar o sistema
-                        return false;
-                    }
-                }
-
-            }
-            return true;
-        }
+        /// <returns></returns>       
 
         protected override void OnStartup(StartupEventArgs e)
         {
             try
             {
-                // Verificar se a maquina esta na Rede...
-                Sistema.EmRedeLocal();
-                // Adicionar todos os configs ao app.config principal ...
-                Sistema.SetAllConfigService();
-                // Validar se ja existe uma conexão
-                if (this.ValidaConnection())
+                wdSplash _wdSplash = new wdSplash();
+
+                if (_wdSplash.ShowDialog() == true)
                 {
-                    
-                    bool bModificado = false;
-                    bModificado = Sistema.SalvaTamanhoMensagensWcf();
-                    if (Sistema.bOnline != StConnection.OnlineNetwork)
-                    {
-                        InternetCS internetUtil = new InternetCS();
-
-                        if (internetUtil.Conexao())
-                        {
-                            Sistema.bOnline = StConnection.OnlineWeb;
-                            bModificado = Sistema.SalvaEndPoint(xUri: Sistema.GetAppSettings("urlWebService"));
-                        }
-                        else
-                        {
-                            Sistema.bOnline = StConnection.Offline;
-                            MessageBox.Show(messageBoxText: "Não foi possível iniciar sistema, sem conexão de rede e internet.");
-                            Application.Current.Shutdown();
-                        }
-                    }
-                    if (Sistema.bOnline != StConnection.Offline)
-                    {
-
-                        if (bModificado)
-                        {
-                            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                            Application.Current.Shutdown();
-                        }
-
-                        wdMain wd = new wdMain();
-                        this.MainWindow = wd;
-
-                        WinLogin wdLogin = new WinLogin(stModoInicial: ComumView.ViewModel.ViewModel.ModoInicial.padrao);
-
-                        this.bwInitialize.RunWorkerAsync();
-
-                        wdLogin.ShowDialog();
-                        if (wdLogin.ViewModel.bLogado)
-                        {
-                            wd.ViewModel.CarregaDadosLogin();
-                            FrameworkElement.LanguageProperty.OverrideMetadata(
-                            typeof(FrameworkElement),
-                            new FrameworkPropertyMetadata(
-                                XmlLanguage.GetLanguage(
-                                CultureInfo.CurrentCulture.IetfLanguageTag)));
-                            base.OnStartup(e);
-                            wd.WindowState = WindowState.Maximized;
-                            wd.Show();
-                        }
-                        else
-                        {
-                            Application.Current.Shutdown();
-                        }
-                    }
+                    this.bwInitialize.RunWorkerAsync();
+                    base.OnStartup(e);
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageHlp.Show(stMessage: StMessage.stError, xMessageToUser: "Não foi possível iniciar o sistema."
+                    , xMessageFramework: ex.Message + Environment.NewLine +
+                    ex.StackTrace + Environment.NewLine +
+                    ex.InnerException != null ? ex.InnerException.ToString() : string.Empty);
             }
         }
 

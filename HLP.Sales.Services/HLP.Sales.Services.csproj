@@ -102,6 +102,18 @@
     <None Include="Service References\wcf_Orcamento\wcf_Orcamento1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento13.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Orcamento\wcf_Orcamento2.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -117,25 +129,19 @@
     <None Include="Service References\wcf_Orcamento\wcf_Orcamento6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento9.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
     <WCFMetadataStorage Include="Service References\wcf_Orcamento\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Orcamento\wcf_Orcamento.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Orcamento\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Orcamento\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Orcamento\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados.disco" />
@@ -148,6 +154,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_CamposBaseDados\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Orcamento\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Orcamento\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Orcamento\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

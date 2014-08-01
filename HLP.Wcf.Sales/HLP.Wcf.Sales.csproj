@@ -87,6 +87,7 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\wcf_oficial.pubxml" />
     <None Include="Properties\PublishProfiles\wcf_programacao.pubxml" />
+    <None Include="Properties\PublishProfiles\wcf_Testes.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

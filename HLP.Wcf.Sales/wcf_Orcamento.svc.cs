@@ -130,8 +130,8 @@ namespace HLP.Wcf.Sales
             catch (Exception ex)
             {
                 this.orcamento_ideRepository.RollackTransaction();
-                Log.AddLog(xLog: ex.Message);
-                throw new FaultException(reason: ex.Message);
+                Log.AddLog(xLog: ex.Message + ex.StackTrace);
+                throw new FaultException(reason: ex.Message + ex.StackTrace);
             }
 
         }

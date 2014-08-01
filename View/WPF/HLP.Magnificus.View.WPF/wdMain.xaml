@@ -2330,35 +2330,37 @@
                                                     </TabControl.ContentTemplate>
                                                 </TabControl>
                                                 <Grid Grid.Column="2">
+                                                    <Grid.Resources>
+                                                        <convLocal:visibilityCtrlsWdMain x:Key="vsCtrlsWdMainConverter"></convLocal:visibilityCtrlsWdMain>
+                                                    </Grid.Resources>
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="50"/>
-                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition Width="100"/>
+                                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                                        <ColumnDefinition Width="80"></ColumnDefinition>
+                                                        <ColumnDefinition Width="90"></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
                                                     </Grid.ColumnDefinitions>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="10"/>
                                                         <RowDefinition Height="100"/>
-                                                        <RowDefinition Height="20"/>
                                                         <RowDefinition Height="30"/>
-                                                        <RowDefinition Height="20"/>
-                                                        <RowDefinition Height="70"/>
+                                                        <RowDefinition Height="90"/>
                                                         <RowDefinition/>
+                                                        <RowDefinition/>
+                                                        <RowDefinition Height="10"/>
                                                     </Grid.RowDefinitions>
                                                     <Image 
                                                         Grid.Column="1" Grid.Row="1" Width="50" Height="45" HorizontalAlignment="Left"
                                                         Source="{Binding Data.selectedSubMenu.icon, Source={StaticResource proxy}}"/>
-                                                    <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Data.selectedSubMenu.xCaption, Source={StaticResource proxy}}" FontSize="20" Foreground="#FF7E7C7C" FontFamily="Segoe Ui Light"/>
-                                                    <Button Grid.Column="1" Grid.Row="4" Content="Abrir Tela" Command="{Binding Data.AddWindowCommand, Source={StaticResource proxy}}"></Button>
-                                                    <Grid Grid.Row="5" Grid.Column="1">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="70"/>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition/>
-                                                            <RowDefinition/>
-                                                        </Grid.RowDefinitions>
-                                                        <Button Grid.RowSpan="2" Style="{DynamicResource Button_HELP}" Content="Saiba Mais"/>
-                                                    </Grid>
+                                                    <TextBlock x:Name="txtTela" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="2"  HorizontalAlignment="Left"
+                                                               Text="{Binding Data.selectedSubMenu.xCaption, Source={StaticResource proxy}}" FontSize="20" Foreground="#FF7E7C7C" FontFamily="Segoe Ui Light"/>
+                                                    <Button Grid.Column="1" Grid.ColumnSpan="2" Width="80" Height="30" Grid.Row="3" 
+                                                            Style="{StaticResource RoundedButton}" Content="Abrir Tela" 
+                                                            Visibility="{Binding ElementName=txtTela, Path=Text, Converter={StaticResource vsCtrlsWdMainConverter}}"
+                                                            Command="{Binding Data.AddWindowCommand, Source={StaticResource proxy}}"></Button>
+                                                    <Button Grid.Column="5" Grid.Row="1" HorizontalAlignment="Right" Style="{DynamicResource Button_HELP}" Content="Saiba Mais"
+                                                            Visibility="Hidden"/>
                                                 </Grid>
                                             </Grid>
                                         </DataTemplate>
@@ -2374,7 +2376,7 @@
             <TabItem x:Name="tiWindow" Header="Ações" Style="{DynamicResource TabItem_GERAL}" Margin="-1,0.462,0,-0.462">
                 <Grid  Focusable="False" x:Name="dockPrinc">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition Height="5"></RowDefinition>
                     </Grid.RowDefinitions>
@@ -2384,78 +2386,69 @@
                         <ColumnDefinition Width="5"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0" Grid.ColumnSpan="3"  BorderThickness="0,0.5" BorderBrush="#FFB9B9B9" Margin="0,-2.029,0,2.029"/>
-                    <Grid Grid.Column="1" Focusable="False">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid Focusable="False">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition Height="20"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="60"></ColumnDefinition>
-                                <ColumnDefinition Width="60"></ColumnDefinition>
-                                <ColumnDefinition Width="60"></ColumnDefinition>
-                                <ColumnDefinition Width="60"></ColumnDefinition>
-                                <ColumnDefinition Width="60"></ColumnDefinition>
-                                <ColumnDefinition Width="60"></ColumnDefinition>
-                                <ColumnDefinition Width="60"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Row="1" Grid.ColumnSpan="7" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Edição" FontFamily="Segoe Ui Light" Foreground="#FF7E7C7C" FontSize="14"></TextBlock>
-                            <Button Grid.Column="0" Style="{DynamicResource Button_ADD_new}" Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" ToolTip="Novo ( Alt + N )" Content="Novo" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0" Focusable="False"/>
-                            <Button Grid.Column="1" Style="{DynamicResource Button_EDIT_new}" Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}" ToolTip="Alterar ( Alt + A )" Focusable="False" ToolTipService.ShowOnDisabled="True" Content="Editar" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
-                            <Button Grid.Column="2" Style="{DynamicResource Button_DELETE_new}" Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" ToolTip="Excluir ( Alt + E )" Focusable="False" Content="Deletar" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
-                            <Button Grid.Column="3" Style="{DynamicResource Button_SALVAR}" Command="{Binding winMan._currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding winMan._currentTab._content}" ToolTip="Salvar ( Alt + S )" Focusable="False" Content="Salvar" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0" />
-                            <Button Grid.Column="4" Style="{DynamicResource Button_CANCELAR}" Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" ToolTip="Cancelar ( Alt + C )" Focusable="False" Content="Cancelar" Margin="5,0,0,0" Height="70" VerticalAlignment="Bottom"/>
-                            <Button Grid.Column="5" Style="{DynamicResource Button_COPIAR}" Command="{Binding winMan._currentTab._currentDataContext.commandCopiar}" ToolTip="Duplicar ( Alt + V )" Focusable="False" Content="Copiar" Margin="5,0,0,0" Height="70" VerticalAlignment="Bottom"/>
-                            <Button Grid.Column="6" Style="{DynamicResource Button_PESQUISAR_new}" Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" ToolTip="Pesquisar ( Alt + P )" Focusable="False" Content="Pesquisar" Margin="5,0,0,0" Height="70" VerticalAlignment="Bottom"/>
-                        </Grid>
-                        <Grid Grid.Column="1" Focusable="False">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition Height="20"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Border Height="80" Grid.RowSpan="2" Width="0.6" HorizontalAlignment="Center" Background="#FFCCCCCC"></Border>
-                            <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Navegação" FontFamily="Segoe Ui Light" Foreground="#FF7E7C7C" FontSize="14" Margin="88,78,88,2" Grid.RowSpan="2"/>
-                            <Label FontFamily="Segoe Ui" Foreground="#FF626262" HorizontalAlignment="Center" Content="{Binding winMan._currentTab._currentDataContext.sText}" Grid.Column="1" Margin="58,54,58,0"/>
-                            <Grid Grid.Column="1">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0" Style="{DynamicResource Button_PRIMEIRO}" x:Name="btnPrimeiro" Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" Focusable="False" CommandParameter="{Binding ElementName=btnPrimeiro}" Content="Primeiro" Height="60" VerticalAlignment="Top" Margin="5,0,0,0"/>
-                                <Button Grid.Column="1" Style="{DynamicResource Button_ANTERIOR}" x:Name="btnAnterior" Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" Focusable="False" CommandParameter="{Binding ElementName=btnAnterior}" Content="Anterior" Height="60" VerticalAlignment="Top" Margin="5,0,0,0"/>
-                                <Button Grid.Column="2" Style="{DynamicResource Button_PROXIMO}" Content="Próximo" x:Name="btnProximo" Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" Focusable="False" CommandParameter="{Binding ElementName=btnProximo}" Height="60" VerticalAlignment="Top" Margin="5,0,0,0"/>
-                                <Button Grid.Column="3" Style="{DynamicResource Button_ULTIMO}" x:Name="btnUltimo" Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" Focusable="False" CommandParameter="{Binding ElementName=btnUltimo}" Content="Ultimo" Height="60" VerticalAlignment="Top" Margin="5,0,0,0"/>
-                            </Grid>
-                        </Grid>
-                        <Grid Grid.Column="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"></ColumnDefinition>
-                                <ColumnDefinition Width="60"></ColumnDefinition>
-                                <ColumnDefinition Width="60"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition Height="20"/>
-                            </Grid.RowDefinitions>
-                            <Border Height="80" Grid.RowSpan="2" Width="0.6" HorizontalAlignment="Center" Background="#FFCCCCCC"></Border>
-                            <Button Grid.Column="1" Style="{DynamicResource Button_IMPRIMIR}" Command="{Binding winMan._currentTab._currentDataContext.commandImprimir}" Content="Imprimir" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0" Focusable="False"/>
-                            <Button Grid.Column="2" Style="{DynamicResource Button_CONFIGURE}" Focusable="False" ToolTipService.ShowOnDisabled="True" Content="Configuração" Height="70" VerticalAlignment="Bottom" Margin="5,0,0,0"/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="7" VerticalAlignment="Center" HorizontalAlignment="Center" Text="???????" FontFamily="Segoe Ui Light" Foreground="#FF7E7C7C" FontSize="14"></TextBlock>
-                        </Grid>
+                    <!--TODO: Recolocar os botões do novo design neste ponto; Retornar heigth para 100-->
+                    <Grid Grid.Column="1">
+                        <ToolBar
+                            x:Name="toolbarPrincipal" Visibility="{Binding winMan.vToolBar}" Height="45" Focusable="False"   Style="{StaticResource toolBarCadastro}">
+                            <Button
+								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
+								Cursor="Hand"
+								Style="{DynamicResource Button_ADD}" Height="34" Width="34" Margin="3,0,0,0" ToolTip="Novo ( Alt + N )">
+                            </Button>
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}"
+								Style="{DynamicResource Button_EDIT}" ToolTipService.ShowOnDisabled="True" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Alterar ( Alt + A )" Focusable="False">
+
+                            </Button>
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" 
+                                    Style="{DynamicResource Button_DELETE}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Excluir ( Alt + E )" Focusable="False">
+
+                            </Button>
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandSalvar}" 
+                                        CommandParameter="{Binding winMan._currentTab._content}"
+								Style="{DynamicResource Button_SAVE}" Margin="3,0,0,0" Width="34" Height="34" ToolTip="Salvar ( Alt + S )" Focusable="False">
+
+                            </Button>
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource Button_CANCEL}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Cancelar ( Alt + C )" Focusable="False">
+
+                            </Button>
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandCopiar}" Margin="3,0,0,0" Style="{DynamicResource Button_COPY}" Width="34" Height="34" ToolTip="Duplicar ( Alt + V )" Focusable="False">
+
+                            </Button>
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" Margin="3,0,0,0" Style="{DynamicResource Button_PESQUISAR}" Width="34" Height="34" ToolTip="Pesquisar ( Alt + P )" Focusable="False">
+                            </Button>
+                            <DockPanel LastChildFill="True" Width="190" Margin="30,0,0,0">
+                                <Button       
+                                        Focusable="False"
+									x:Name="btnPrimeiro"                                     
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnPrimeiro}" Style="{StaticResource Button_ANTERIOR_DUPLO}" DockPanel.Dock="Left" Height="34"  Width="34" Margin="0,0,2,0">
+
+                                </Button>
+                                <Button    
+                                        Focusable="False"
+									x:Name="btnAnterior"                                    
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnAnterior}"
+									Style="{StaticResource Button_ANTERIOR_SIMPLES}" DockPanel.Dock="Left" Height="34"  Width="34" Margin="0">
+                                </Button>
+                                <Button   
+                                        Focusable="False"
+									x:Name="btnUltimo"                                    
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnUltimo}"
+									Style="{StaticResource Button_PROXIMO_DUPLO}" DockPanel.Dock="Right" Height="34"  Width="34" Margin="2,0,-15,0" Foreground="#FFECE5E5">
+                                </Button>
+                                <Button x:Name="btnProximo"
+                                            Focusable="False"
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnProximo}"
+									Style="{StaticResource Button_PROXIMO_SIMPLES}" DockPanel.Dock="Right" Height="34"  Width="34" Margin="0,5,0,1">
+
+                                </Button>
+                                <Label Content="{Binding winMan._currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>
+                            </DockPanel>
+                            <Button Style="{DynamicResource Button_PRINTER}" Width="34" VerticalAlignment="Center" Height="34" Margin="25,0,0,0" ToolTip="Imprimir" Focusable="False" 
+                                    Command="{Binding winMan._currentTab._currentDataContext.commandImprimir}"/>
+                            <Button Style="{DynamicResource Button_CONFIG}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Configurações" Focusable="False"
+                                        />
+
+                        </ToolBar>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="1" Focusable="False">
                         <TabControl Grid.Row="2" Focusable="False" IsSynchronizedWithCurrentItem="True" Background="White" BorderBrush="Transparent"
@@ -2544,9 +2537,6 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Relatórios" Style="{DynamicResource TabItem_GERAL}">
-
-            </TabItem>
-            <TabItem Header="Hierarquia" Style="{DynamicResource TabItem_GERAL}">
 
             </TabItem>
         </TabControl>

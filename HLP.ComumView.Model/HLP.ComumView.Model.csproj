@@ -62,6 +62,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\configuracaoModel.cs" />
     <Compile Include="Model\loginModel.cs" />
     <Compile Include="Model\mainMenuModel.cs" />
     <Compile Include="Model\MenuItemModel.cs" />

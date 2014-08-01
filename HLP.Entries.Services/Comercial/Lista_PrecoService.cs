@@ -130,7 +130,8 @@ namespace HLP.Entries.Services.Comercial
                     }
                 case StConnection.OnlineWeb:
                     {
-                        return this.servicoInternet.getLista_Preco(idListaPrecoPai: id);
+                        var ret = this.servicoInternet.getLista_Preco(idListaPrecoPai: id);
+                        return ret;
                     }
             }
             return null;

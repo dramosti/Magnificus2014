@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="650731ac-b33d-40c8-af35-00c3e2367bf1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4f051d93-1a83-4b62-b2f1-d7ed4dfe7276" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -23,18 +23,25 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Orcamento.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Orcamento.wsdl" MetadataType="Wsdl" ID="184b8308-2a7f-4984-91ce-ea3a2bbf03ac" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Orcamento.svc?wsdl" />
-    <MetadataFile FileName="wcf_Orcamento.xsd" MetadataType="Schema" ID="d30c3e60-a754-4700-aed5-cdde6c53e0c4" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Orcamento.svc?xsd=xsd6" />
-    <MetadataFile FileName="wcf_Orcamento1.xsd" MetadataType="Schema" ID="9cb4cbd3-330d-4378-ba37-04b5a0b6f064" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Orcamento.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_Orcamento.disco" MetadataType="Disco" ID="4d02e98c-f1a8-4fff-8546-057eb5efbeb0" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Orcamento.svc?disco" />
-    <MetadataFile FileName="wcf_Orcamento2.xsd" MetadataType="Schema" ID="6e4ff866-1554-465c-b4c6-732738765ee8" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Orcamento.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Orcamento3.xsd" MetadataType="Schema" ID="0fcd4070-5d8e-45cf-90c9-87ac745313fd" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Orcamento.svc?xsd=xsd5" />
-    <MetadataFile FileName="wcf_Orcamento4.xsd" MetadataType="Schema" ID="ff9a4b6e-8716-449b-8a09-08391a1139d6" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Orcamento.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Orcamento5.xsd" MetadataType="Schema" ID="0a0d4c0c-5a42-4ff2-9860-fafb1a88cba5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Orcamento.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_Orcamento6.xsd" MetadataType="Schema" ID="80ee9bfc-b5bd-4919-86a8-708d117662db" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Orcamento.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Orcamento.wsdl" MetadataType="Wsdl" ID="edd24ba5-64b6-4e58-a447-dd954b491c80" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?wsdl" />
+    <MetadataFile FileName="wcf_Orcamento.xsd" MetadataType="Schema" ID="6bc8f55a-631e-4334-b489-6725631260cf" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd8" />
+    <MetadataFile FileName="wcf_Orcamento1.xsd" MetadataType="Schema" ID="dcc9aa68-2d85-4be4-aa55-f51a61e2b4f4" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Orcamento2.xsd" MetadataType="Schema" ID="3df65679-375a-4af0-9722-2e33cfea85bf" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd6" />
+    <MetadataFile FileName="wcf_Orcamento3.xsd" MetadataType="Schema" ID="bc342049-62e7-49eb-a477-2048fc80cb11" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Orcamento.disco" MetadataType="Disco" ID="3f97fdfd-a223-4767-bd66-de9a158c7cab" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?disco" />
+    <MetadataFile FileName="wcf_Orcamento4.xsd" MetadataType="Schema" ID="3e4a4f99-b09a-4104-882d-d51f9da0f057" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd10" />
+    <MetadataFile FileName="wcf_Orcamento5.xsd" MetadataType="Schema" ID="b91c7470-a3d7-4e1d-a576-3b2ca7493988" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd9" />
+    <MetadataFile FileName="wcf_Orcamento6.xsd" MetadataType="Schema" ID="c8b866eb-3bb1-4b28-b6a4-a6ae279478af" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd11" />
+    <MetadataFile FileName="wcf_Orcamento7.xsd" MetadataType="Schema" ID="d0fd477a-5be0-4fe4-8b1f-103ee4467e0c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd12" />
+    <MetadataFile FileName="wcf_Orcamento8.xsd" MetadataType="Schema" ID="d499ab05-f0d6-4732-ba7d-41cf0dc458ec" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd13" />
+    <MetadataFile FileName="wcf_Orcamento9.xsd" MetadataType="Schema" ID="3473e8be-f01a-4df0-a50f-7346267a264d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_Orcamento10.xsd" MetadataType="Schema" ID="22f04688-c8cf-41c0-914c-5f8c630e47f7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd7" />
+    <MetadataFile FileName="wcf_Orcamento11.xsd" MetadataType="Schema" ID="4e79c4d5-818c-46b1-bab5-b85141251785" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Orcamento12.xsd" MetadataType="Schema" ID="0b8959b1-e14a-4c35-9ed2-8a7e5f531e35" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Orcamento13.xsd" MetadataType="Schema" ID="d0714826-ec2d-491d-aef8-263b652b5cd9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Orcamento.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

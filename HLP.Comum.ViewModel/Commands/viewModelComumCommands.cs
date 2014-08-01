@@ -78,7 +78,8 @@ namespace HLP.Comum.ViewModel.Commands
 
             this.objviewModel.bWorkerCopy.RunWorkerCompleted += bWorkerCopy_RunWorkerCompleted;
 
-            this.objDocumentosService = new DocumentosService();
+            if (Application.Current.MainWindow.Name != "_wdSplash")
+                this.objDocumentosService = new DocumentosService();
         }
 
         void bWorkerSave_DoWork(object sender, DoWorkEventArgs e)

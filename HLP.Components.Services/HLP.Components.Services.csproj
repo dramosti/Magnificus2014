@@ -189,21 +189,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_FillComboBox\wcf_FillComboBox.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_FillComboBox\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_FillComboBox\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_FillComboBox\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_HlpPesqPadrao\wcf_HlpPesqPadrao.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +214,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Cidade\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FillComboBox\wcf_FillComboBox.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FillComboBox\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FillComboBox\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FillComboBox\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

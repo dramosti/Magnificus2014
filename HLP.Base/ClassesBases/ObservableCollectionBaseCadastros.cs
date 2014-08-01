@@ -13,6 +13,12 @@ namespace HLP.Base.ClassesBases
         public List<int> idExcluidos;
         public string xCampoId;
 
+        public ObservableCollectionBaseCadastros()
+        {
+            this.idExcluidos = new List<int>();
+            this.CollectionChanged += ObservableCollectionBaseCadastros_CollectionChanged;
+        }
+
         public ObservableCollectionBaseCadastros(StCollection stCollection = StCollection._default)
         {
             this.idExcluidos = new List<int>();
