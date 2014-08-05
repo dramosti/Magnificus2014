@@ -28,6 +28,7 @@ namespace HLP.Magnificus.View.WPF
             InitializeComponent();
             GerenciadorModulo.Instancia.InicializaSistema();
             this.ViewModel = new wdMainViewModel();
+            this.ViewModel.popUpSearchField = this.popUpSearchField;
         }
 
         public wdMainViewModel ViewModel
@@ -44,6 +45,8 @@ namespace HLP.Magnificus.View.WPF
 
         private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            this.mainTabControl.SelectedItem = this.tiWindow;
+
             if ((sender as ListBox).SelectedIndex > 0)
                 this.ViewModel.FocusOnComponent(comp: ((sender as ListBox).SelectedItem as DetailsErrorModel).comp);
         }

@@ -10,6 +10,7 @@ using HLP.Entries.Services.Gerais;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -26,6 +28,13 @@ namespace HLP.ComumView.ViewModel.ViewModel
 {
     public class wdMainViewModel : viewModelComum<mainMenuModel>
     {
+        private Popup _popUpSearchField;
+
+        public Popup popUpSearchField
+        {
+            get { return _popUpSearchField; }
+            set { _popUpSearchField = value; }
+        }
 
         #region Assinatura de comandos
         public ICommand AddWindowCommand { get; set; }
@@ -219,6 +228,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
         public ICommand commOpenItemNavegacao { get; set; }
         public ICommand commCloseWindow { get; set; }
         public ICommand commMinimizeWindow { get; set; }
+        public ICommand commOpenPopUpSearchField { get; set; }
 
         wdMainCommands comm;
 
@@ -363,6 +373,10 @@ namespace HLP.ComumView.ViewModel.ViewModel
 
             winMan = new WinManModel();
             this.tabWindows = new TabControl();
+
+            this.bwFocus = new BackgroundWorker();
+            this.bwFocus.DoWork += bwFocus_DoWork;
+            this.bwFocus.RunWorkerCompleted += bwFocus_RunWorkerCompleted;
         }
 
         private void PercorreItensMenu(List<CustomPesquisaModel> l, List<mainMenuModel> lMenu, string xPath)
@@ -518,9 +532,69 @@ namespace HLP.ComumView.ViewModel.ViewModel
             }
         }
 
+        Stack<FrameworkElement> lTabControls;
+        BackgroundWorker bwFocus;
+
+        void bwFocus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null)
+                (e.Result as FrameworkElement).Focus();
+        }
+
+        void bwFocus_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.GetAllParentsComp(comp: e.Argument as FrameworkElement);
+
+            FrameworkElement f = null;
+
+            while (lTabControls.Count > 0)
+            {
+                f = lTabControls.Pop();
+
+                if (f.GetType() == typeof(TabControl))
+                {
+                    FrameworkElement fTabItem = null;
+                    FrameworkElement fAux = null;
+
+                    while (fTabItem == null && this.lTabControls.Count > 0)
+                    {
+                        fAux = lTabControls.Pop();
+                        if (fAux.GetType() == typeof(TabItem))
+                            fTabItem = fAux;
+                    }
+
+                    if (fTabItem != null)
+                    {
+                        Application.Current.Dispatcher.BeginInvoke((Action)(()
+                            =>
+                        {
+                            (f as TabControl).SelectedItem = fTabItem;
+                        }));
+                        Thread.Sleep(millisecondsTimeout: 500);
+                    }
+                }
+            }
+
+            e.Result = e.Argument;
+        }
+
         public void FocusOnComponent(FrameworkElement comp)
         {
+            lTabControls = new Stack<FrameworkElement>();
+            this.bwFocus.RunWorkerAsync(argument: comp);
+        }
 
+        private void GetAllParentsComp(FrameworkElement comp)
+        {
+            if (comp.Parent == null)
+                return;
+            else
+            {
+                if (comp.Parent.GetType() == typeof(TabControl) || comp.Parent.GetType() == typeof(TabItem))
+                    this.lTabControls.Push(item: comp.Parent as FrameworkElement);
+
+                this.GetAllParentsComp(comp: comp.Parent as FrameworkElement);
+            }
         }
     }
 }

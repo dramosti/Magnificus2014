@@ -57,6 +57,8 @@ namespace HLP.ComumView.ViewModel.Commands
             this.vm.changeStConnection = new RelayCommand(
                 execute: i => this.ChangeStConnectionExec());
             this.vm.commCloseWindow = new RelayCommand(execute: i => this.Sair(), canExecute: i => this.SairCanExecute());
+
+            this.vm.commOpenPopUpSearchField = new RelayCommand(execute: ex => this.OpenPopUpSearchField());
         }
 
         private void OpenItemNavegacao(object obj)
@@ -414,5 +416,11 @@ namespace HLP.ComumView.ViewModel.Commands
 
         #endregion
 
+        private void OpenPopUpSearchField()
+        {
+            if (this.vm != null)
+                if (this.vm.popUpSearchField != null)
+                    this.vm.popUpSearchField.IsOpen = true;
+        }
     }
 }
