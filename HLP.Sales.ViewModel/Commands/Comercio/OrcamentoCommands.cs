@@ -244,7 +244,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 }
 
                 this.objViewModel.currentModel.bTodos = this.objViewModel.currentModel.bTodosTotais = true;
-                objViewModel.SetFocusFirstTab(_panel as Panel);
 
                 this.objViewModel.bWorkerSave.RunWorkerAsync(_panel);
             }

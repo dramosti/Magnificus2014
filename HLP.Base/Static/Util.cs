@@ -2179,6 +2179,19 @@ namespace HLP.Base.Static
             return child;
         }
 
+        public static DataGridRow GetRow(DataGrid grid, int index)
+        {
+            DataGridRow row = (DataGridRow)grid.ItemContainerGenerator.ContainerFromIndex(index);
+            if (row == null)
+            {
+                // May be virtualized, bring into view and try again.
+                grid.UpdateLayout();
+                grid.ScrollIntoView(grid.Items[index]);
+                row = (DataGridRow)grid.ItemContainerGenerator.ContainerFromIndex(index);
+            }
+            return row;
+        }
+
         public static System.Windows.Controls.DataGridCell GetCell(this System.Windows.Controls.DataGrid grid, DataGridRow row, int column)
         {
             if (row != null)
@@ -2306,7 +2319,30 @@ namespace HLP.Base.Static
             return string.Format(format: returnMask, args: lObjects.ToArray());
         }
 
+        public static FrameworkElement GetParent(FrameworkElement comp, Type t)
+        {
+            FrameworkElement f = null;
 
+            SearchParent(comp: comp, t: t, compResult: out f);
+
+            return f;
+        }
+
+        private static void SearchParent(FrameworkElement comp, Type t, out FrameworkElement compResult)
+        {
+            if (comp.Parent == null)
+            {
+                compResult = null;
+                return;
+            }
+            else if (comp.Parent.GetType() == t)
+            {
+                compResult = comp.Parent as FrameworkElement;
+                return;
+            }
+            else
+                SearchParent(comp: comp.Parent as FrameworkElement, t: t, compResult: out compResult);
+        }
     }
 
 }

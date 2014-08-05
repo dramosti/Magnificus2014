@@ -41,15 +41,18 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto =
                     this.produtoRepository.GetProduto(idProduto: idProduto);
 
-                objProduto.lProduto_Fornecedor_Homologado =
-                    new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Produto_Fornecedor_HomologadoModel>(
-                        list: this.produto_Fornecedor_HomologadoRepository.GetAllProdForncHom(
-                        idProduto: idProduto));
+                if (objProduto != null)
+                {
+                    objProduto.lProduto_Fornecedor_Homologado =
+                        new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Produto_Fornecedor_HomologadoModel>(
+                            list: this.produto_Fornecedor_HomologadoRepository.GetAllProdForncHom(
+                            idProduto: idProduto));
 
-                objProduto.lProduto_Revisao =
-                    new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Produto_RevisaoModel>(
-                        list: this.produto_RevisaoRepository.GetAllProdutoRevisao(
-                        idProduto: idProduto));
+                    objProduto.lProduto_Revisao =
+                        new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Produto_RevisaoModel>(
+                            list: this.produto_RevisaoRepository.GetAllProdutoRevisao(
+                            idProduto: idProduto));
+                }
 
                 return objProduto;
 

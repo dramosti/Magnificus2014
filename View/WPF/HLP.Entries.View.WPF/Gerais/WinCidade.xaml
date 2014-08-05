@@ -20,8 +20,8 @@
     <Components:WindowsBase.DataContext>
         <ViewModels:CidadeViewModel/>
     </Components:WindowsBase.DataContext>
-    <Grid>
-        <Expander Header="Cidades" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+    <Expander Header="Cidades" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+        <AdornerDecorator>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"/>
@@ -65,6 +65,6 @@
 					selectedId="{Binding currentModel.idUF, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  xNameView="vwUfqs" NameWindowCadastro="WinUF" TableView="vwUf"
                     />
             </Grid>
-        </Expander>
-    </Grid>
+        </AdornerDecorator>
+    </Expander>
 </Components:WindowsBase>

@@ -1,4 +1,5 @@
-﻿using HLP.Base.Modules;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Modules;
 using HLP.Base.Static;
 using HLP.ComumView.ViewModel.ViewModel;
 using System;
@@ -27,7 +28,6 @@ namespace HLP.Magnificus.View.WPF
             InitializeComponent();
             GerenciadorModulo.Instancia.InicializaSistema();
             this.ViewModel = new wdMainViewModel();
-
         }
 
         public wdMainViewModel ViewModel
@@ -40,6 +40,12 @@ namespace HLP.Magnificus.View.WPF
             {
                 this.DataContext = value;
             }
+        }
+
+        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if ((sender as ListBox).SelectedIndex > 0)
+                this.ViewModel.FocusOnComponent(comp: ((sender as ListBox).SelectedItem as DetailsErrorModel).comp);
         }
     }
 }

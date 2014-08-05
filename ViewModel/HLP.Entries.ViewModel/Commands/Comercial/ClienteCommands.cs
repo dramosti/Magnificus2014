@@ -19,6 +19,7 @@ using HLP.Comum.View.Components;
 using HLP.Components.Model.Models;
 using HLP.Entries.Services.Transportes;
 using HLP.Entries.Model.Models.Transportes;
+using HLP.ComumView.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.Commands.Comercial
 {

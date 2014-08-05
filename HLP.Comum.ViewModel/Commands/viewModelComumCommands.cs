@@ -25,7 +25,7 @@ namespace HLP.Comum.ViewModel.Commands
         BackgroundWorker bwFocus;
         public viewModelComum<T> objviewModel;
         DocumentosService objDocumentosService;
-
+        MethodInfo mi = null;
         #region NotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -80,6 +80,10 @@ namespace HLP.Comum.ViewModel.Commands
 
             if (Application.Current.MainWindow.Name != "_wdSplash")
                 this.objDocumentosService = new DocumentosService();
+
+            if (Application.Current.MainWindow.DataContext != null)
+                mi = Application.Current.MainWindow.DataContext.GetType()
+                    .GetMethod(name: "VerifyErrorsWindow");
         }
 
         void bWorkerSave_DoWork(object sender, DoWorkEventArgs e)
@@ -488,11 +492,15 @@ namespace HLP.Comum.ViewModel.Commands
         }
         private bool salvarBaseCanExecute()
         {
-            if (this.GetOperationModel() ==
-                 OperationModel.updating)
-                return true;
-            else
+            if (this.GetOperationModel() != OperationModel.updating)
                 return false;
+
+            if (mi != null)
+            {
+                return (bool)mi.Invoke(obj: Application.Current.MainWindow.DataContext, parameters: new object[] { });
+            }
+
+            return false;
         }
         private void cancelarBase()
         {

@@ -401,45 +401,6 @@ namespace HLP.Base.ClassesBases
             }));
         }
 
-        void SetFocus(Panel content, Control ctrFocus)
-        {
-            List<Control> lDestalhesControle = TabPagesAtivasModel.GetLogicalChildCollection<Control>(ctrFocus);
-            content.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
-            System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-
-            // caso retorne nesse componente ctrValidacao é pq esta em looping e deve sair do while.
-            System.Windows.Controls.Control ctrValidacao = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-            while (!lDestalhesControle.Contains((System.Windows.Controls.Control)Keyboard.FocusedElement))
-            {
-                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-                ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-                if (ctr == ctrValidacao)
-                    break;
-            }
-        }
-
-        public void SetFocusFirstTab(System.Windows.Controls.Panel _panel)
-        {
-            System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-            if (ctr != null)
-                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-
-            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
-            {
-                if (SecondControl == null || FirstControl == null)
-                    FindFirstAndSecondComponente(_panel);
-
-                if (Util.GetLogicalChildCollection<TabControl>(_panel).ToList().Count() > 0)
-                {
-                    TabItem tb;
-                    TabPagesAtivasModel.GetTabItemByControl((FirstControl as FrameworkElement), out tb);
-                    if (tb != null)
-                        (tb.Parent as TabControl).SelectedItem = tb;
-                }
-            }));
-        }
-
-
         public object GetParentWindow(object comp)
         {
             object o = null;

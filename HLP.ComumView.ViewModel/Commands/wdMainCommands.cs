@@ -1,6 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Modules;
 using HLP.Base.Static;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.ComumView.Model.Model;
 using HLP.ComumView.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Gerais;
@@ -13,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace HLP.ComumView.ViewModel.Commands
@@ -222,7 +224,30 @@ namespace HLP.ComumView.ViewModel.Commands
                     else
                     {
                         TabPagesAtivasModel objTabPageAtivasModel = new TabPagesAtivasModel();
+
                         objTabPageAtivasModel._windows = form;
+
+
+                        this.GetComponents(comp: form.Content as FrameworkElement, lComps: objTabPageAtivasModel.lComponents);
+
+                        foreach (FrameworkElement txt in objTabPageAtivasModel.lComponents
+                        .Where(i => i.GetType() == typeof(TextBlock)
+                        || i.GetType().BaseType == typeof(TextBlock)).ToList())
+                        {
+                            objTabPageAtivasModel.lTextBlock.Add(item: txt as TextBlock);
+                        }
+
+                        objTabPageAtivasModel.lComponents.RemoveAll(i => i.GetType().BaseType == typeof(TextBlock)
+                            || i.GetType().BaseType == typeof(TextBlock));
+
+                        foreach (DataGrid dg in objTabPageAtivasModel.lComponents.Where(i => i.GetType() == typeof(DataGrid)
+                            || i.GetType().BaseType == typeof(DataGrid)))
+                        {
+                            objTabPageAtivasModel.lDataGrids.Add(item: dg);
+                        }
+
+                        objTabPageAtivasModel.lComponents.RemoveAll(i => i.GetType() == typeof(DataGrid)
+                            || i.GetType().BaseType == typeof(DataGrid));
 
                         if (this.vm.winMan._lTabPagesAtivas.Count(
                             i => i._windows.Name == form.Name) == 0)
@@ -241,6 +266,58 @@ namespace HLP.ComumView.ViewModel.Commands
                 throw ex;
             }
         }
+
+        void GetComponents(FrameworkElement comp, List<FrameworkElement> lComps)
+        {
+            Type tCompChield = null;
+            Type tComp = comp.GetType();
+
+            if (tComp.BaseType == typeof(Panel))
+            {
+                foreach (FrameworkElement compChield in (comp as Panel).Children)
+                {
+                    tCompChield = compChield.GetType();
+                    if (tCompChield.BaseType != typeof(Panel)
+                        && tCompChield != typeof(Expander)
+                        && tCompChield != typeof(TabControl)
+                        && tCompChield != typeof(Border))
+                    {
+                        lComps.Add(item: compChield);
+                    }
+
+                    this.GetComponents(comp: compChield, lComps: lComps);
+                }
+            }
+            else if (tComp == typeof(Expander))
+            {
+                this.GetComponents(comp: (comp as Expander).Content as FrameworkElement, lComps: lComps);
+            }
+            else if (tComp == typeof(TabControl))
+            {
+                foreach (FrameworkElement compChield in (comp as TabControl).Items)
+                {
+                    this.GetComponents(comp: compChield, lComps: lComps);
+                }
+            }
+            else if (tComp == typeof(TabItem))
+            {
+                this.GetComponents(comp: (comp as TabItem).Content as FrameworkElement, lComps: lComps);
+            }
+            else if (tComp == typeof(AdornerDecorator))
+            {
+                this.GetComponents(comp: (comp as AdornerDecorator).Child as FrameworkElement,
+                    lComps: lComps);
+            }
+            else if (tComp == typeof(ScrollViewer))
+            {
+                this.GetComponents(comp: (comp as ScrollViewer).Content as FrameworkElement, lComps: lComps);
+            }
+            else if (tComp.BaseType == typeof(UserControl))
+            {
+                this.GetComponents(comp: (comp as UserControl).Content as FrameworkElement, lComps: lComps);
+            }
+        }
+
         private bool AddWindowCanExecute(object xForm)
         {
             if (this.vm.selectedSubMenu == null && xForm == null)

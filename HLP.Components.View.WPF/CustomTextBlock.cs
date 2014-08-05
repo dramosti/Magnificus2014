@@ -47,11 +47,6 @@ namespace HLP.Components.View.WPF
     /// </summary>
     public class CustomTextBlock : TextBlock
     {
-        static CustomTextBlock()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomTextBlock), new FrameworkPropertyMetadata(typeof(CustomTextBlock)));
-        }
-
         public CustomTextBlock()
         {
             ResourceDictionary resource = new ResourceDictionary

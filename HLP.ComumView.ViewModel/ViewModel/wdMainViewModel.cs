@@ -19,6 +19,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace HLP.ComumView.ViewModel.ViewModel
@@ -41,7 +42,6 @@ namespace HLP.ComumView.ViewModel.ViewModel
         #endregion
 
         #region Informações Usuário e Empresa
-
 
         private EmpresaModel _currentEmpresa;
 
@@ -71,6 +71,108 @@ namespace HLP.ComumView.ViewModel.ViewModel
         #endregion
 
         #region Methods
+
+        public bool VerifyErrorsWindow()
+        {
+            int errorsCount = this.winMan._currentTab.lComponents.Count(
+                i => Validation.GetHasError(element: i));
+
+            if (errorsCount > 0
+                && errorsCount != this.winMan._currentTab.currentErrorsCount)
+            {
+                List<FrameworkElement> lCompErrors = new List<FrameworkElement>();
+
+                foreach (FrameworkElement comp in this.winMan._currentTab.lComponents.Where(
+                    i => Validation.GetHasError(element: i)))
+                {
+                    lCompErrors.Add(item: comp);
+                }
+
+                this.winMan._currentTab.lComponentsWithError =
+                    new ObservableCollection<FrameworkElement>(collection: lCompErrors);
+            }
+            else if (errorsCount == 0)
+            {
+                this.winMan._currentTab.lComponentsWithError = new ObservableCollection<FrameworkElement>();
+                this.winMan._currentTab.currentErrorsCount = 0;
+            }
+
+            if (this.winMan._currentTab.lDataGrids.Count > 0)
+            {
+                List<DetailsErrorModel> lErrorsDataGrid = new List<DetailsErrorModel>();
+                foreach (DataGrid dgv in this.winMan._currentTab.lDataGrids)
+                {
+                    if (dgv.Items.Count > 0)
+                    {
+                        DataGridRow r;
+                        DataGridCell _cell;
+                        for (int i = 0; i < dgv.Items.Count; i++)
+                        {
+                            r = Util.GetRow(grid: dgv, index: i);
+                            if (r != null)
+                            {
+                                for (int c = 0; c < dgv.Columns.Count; c++)
+                                {
+                                    _cell = Util.GetCell(grid: dgv, row: r, column: c);
+                                    if (_cell != null)
+                                    {
+                                        if (_cell.Column.GetType() == typeof(DataGridTemplateColumn))
+                                        {
+                                            FrameworkElement comp = null;
+
+                                            for (int cont = 0; cont < VisualTreeHelper.GetChildrenCount(reference: (_cell.Content as ContentPresenter)); cont++)
+                                            {
+                                                comp = VisualTreeHelper.GetChild(_cell.Content as ContentPresenter, cont) as FrameworkElement;
+                                            }
+
+                                            if (comp != null)
+                                                if (Validation.GetHasError(element:
+                                                    comp))
+                                                {
+                                                    FrameworkElement f = Util.GetParent(comp: dgv, t: typeof(Expander));
+                                                    ValidationError e = Validation.GetErrors(element: comp).FirstOrDefault();
+
+                                                    lErrorsDataGrid.Add(item: new DetailsErrorModel
+                                                    {
+                                                        isDataGridError = true,
+                                                        xLabelComp = string.Format(format: "Grid: {0}, Linha: {1}, Coluna: {2}",
+                                                        arg0: f != null ? (f as Expander).Header : string.Empty, arg1: r.GetIndex() + 1, arg2: _cell.Column.Header),
+                                                        xError = e != null ? e.ErrorContent.ToString() : "Erro desconhecido"
+                                                    });
+                                                    errorsCount++;
+                                                }
+                                        }
+                                        else
+                                            if (Validation.GetHasError(element: _cell.Content as FrameworkElement))
+                                            {
+                                                FrameworkElement f = Util.GetParent(comp: dgv, t: typeof(Expander));
+                                                ValidationError e = Validation.GetErrors(element: _cell.Content as FrameworkElement).FirstOrDefault();
+
+                                                lErrorsDataGrid.Add(item: new DetailsErrorModel
+                                                {
+                                                    isDataGridError = true,
+                                                    xLabelComp = string.Format(format: "Grid: {0}, Linha: {1}, Coluna: {2}",
+                                                    arg0: f != null ? (f as Expander).Header : string.Empty, arg1: r.GetIndex(), arg2: _cell.Column.Header),
+                                                    xError = e != null ? e.ErrorContent.ToString() : "Erro desconhecido"
+                                                });
+                                                errorsCount++;
+                                            }
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                this.winMan._currentTab.lDataGridErrors = new ObservableCollection<DetailsErrorModel>(
+                    collection: lErrorsDataGrid);
+            }
+
+            this.winMan._currentTab.currentErrorsCount = errorsCount;
+
+            return errorsCount == 0 ? true : false;
+        }
 
         public void PopulateStaticCidades()
         {
@@ -309,7 +411,6 @@ namespace HLP.ComumView.ViewModel.ViewModel
             }
         }
 
-
         private ObservableCollection<mainMenuModel> _lMenu;
 
         public ObservableCollection<mainMenuModel> lMenu
@@ -321,7 +422,6 @@ namespace HLP.ComumView.ViewModel.ViewModel
                 base.NotifyPropertyChanged(propertyName: "lMenu");
             }
         }
-
 
         private List<CustomPesquisaModel> _lAllItemsMenu;
 
@@ -416,6 +516,11 @@ namespace HLP.ComumView.ViewModel.ViewModel
                 _navegacao = value;
                 base.NotifyPropertyChanged(propertyName: "navegacao");
             }
+        }
+
+        public void FocusOnComponent(FrameworkElement comp)
+        {
+
         }
     }
 }

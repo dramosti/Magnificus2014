@@ -353,8 +353,11 @@ namespace HLP.Entries.Model.Models.Comercial
                                 objProduto = Lista_Preco_PaiModel.miGetProduto.Invoke(
                             obj: w.DataContext, parameters: new object[] { value }) as ProdutoModel;
 
-                                this.selectedIdUnidadeVenda = objProduto.idUnidadeMedidaVendas;
-                                this.selectedIdFamiliaProduto = objProduto.idFamiliaProduto;
+                                if (objProduto != null)
+                                {
+                                    this.selectedIdUnidadeVenda = objProduto.idUnidadeMedidaVendas;
+                                    this.selectedIdFamiliaProduto = objProduto.idFamiliaProduto;
+                                }
                             }));
                 }
 

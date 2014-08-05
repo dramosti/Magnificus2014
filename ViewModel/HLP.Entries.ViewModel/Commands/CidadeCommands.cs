@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Services.Gerais;
 using HLP.Comum.ViewModel.ViewModel;
+using HLP.ComumView.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.Commands
 {
@@ -114,7 +115,7 @@ namespace HLP.Entries.ViewModel.Commands
                         this.objViewModel.salvarBaseCommand.Execute(parameter: null);
 
                         object w = objViewModel.GetParentWindow(e.Result);
-                        
+
                         if (w != null)
                         {
                             w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
@@ -131,6 +132,7 @@ namespace HLP.Entries.ViewModel.Commands
         }
         private bool SaveCanExecute(object objDependency)
         {
+
             if (objViewModel.currentModel == null || objDependency == null)
                 return false;
 

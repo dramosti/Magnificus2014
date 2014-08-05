@@ -339,7 +339,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding Path=idProduto, Converter={StaticResource cbxDisplayConv}, 
-                                            ConverterParameter={StaticResource lresultProdutos}}"/>
+                                            ConverterParameter={StaticResource lresultProdutos}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                             <DataGridTemplateColumn.CellEditingTemplate>

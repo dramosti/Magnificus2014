@@ -324,19 +324,26 @@ namespace HLP.Comum.ViewModel.ViewModel
         #region Validação
         public bool IsValid(DependencyObject obj)
         {
+            return true;
+            //ATENÇÃO **
+            //Para não ser necessário repassar todas as telas retirando essa validação, deixei retornando sempre true,
+            //porém, como pode ver este método não está fazendo nada, apenas retornando true,
+            //já que a validação já está sendo feita na viewmodelcomum
+
+
             // The dependency object is valid if it has no errors, 
             //and all of its children (that are dependency objects) are error-free.
-            if (obj == null)
-                return true;
-            bool resultado = ((!Validation.GetHasError(obj)
-                ) &&
-                LogicalTreeHelper.GetChildren(obj)
-                .OfType<DependencyObject>()
-                .All(child => IsValid(child)));
-            return resultado &&
-                obj.GetType() == typeof(System.Windows.Controls.DataGrid) ?
-                !this.GridObjectsIsValid(obj: obj as System.Windows.Controls.DataGrid)
-                : resultado;
+            //if (obj == null)
+            //    return true;
+            //bool resultado = ((!Validation.GetHasError(obj)
+            //    ) &&
+            //    LogicalTreeHelper.GetChildren(obj)
+            //    .OfType<DependencyObject>()
+            //    .All(child => IsValid(child)));
+            //return resultado &&
+            //    obj.GetType() == typeof(System.Windows.Controls.DataGrid) ?
+            //    !this.GridObjectsIsValid(obj: obj as System.Windows.Controls.DataGrid)
+            //    : resultado;
         }
 
 
@@ -432,45 +439,6 @@ namespace HLP.Comum.ViewModel.ViewModel
                 }
             }));
         }
-
-        void SetFocus(Panel content, Control ctrFocus)
-        {
-            List<Control> lDestalhesControle = TabPagesAtivasModel.GetLogicalChildCollection<Control>(ctrFocus);
-            content.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
-            System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-
-            // caso retorne nesse componente ctrValidacao é pq esta em looping e deve sair do while.
-            System.Windows.Controls.Control ctrValidacao = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-            while (!lDestalhesControle.Contains((System.Windows.Controls.Control)Keyboard.FocusedElement))
-            {
-                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-                ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-                if (ctr == ctrValidacao)
-                    break;
-            }
-        }
-
-        public void SetFocusFirstTab(System.Windows.Controls.Panel _panel)
-        {
-            System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-            if (ctr != null)
-                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-
-            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
-            {
-                if (SecondControl == null || FirstControl == null)
-                    FindFirstAndSecondComponente(_panel);
-
-                if (Util.GetLogicalChildCollection<TabControl>(_panel).ToList().Count() > 0)
-                {
-                    TabItem tb;
-                    TabPagesAtivasModel.GetTabItemByControl((FirstControl as FrameworkElement), out tb);
-                    if (tb != null)
-                        (tb.Parent as TabControl).SelectedItem = tb;
-                }
-            }));
-        }
-
 
         public object GetParentWindow(object comp)
         {
