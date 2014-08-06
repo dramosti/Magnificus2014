@@ -16,6 +16,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace HLP.ComumView.ViewModel.Commands
 {
@@ -59,6 +60,10 @@ namespace HLP.ComumView.ViewModel.Commands
             this.vm.commCloseWindow = new RelayCommand(execute: i => this.Sair(), canExecute: i => this.SairCanExecute());
 
             this.vm.commOpenPopUpSearchField = new RelayCommand(execute: ex => this.OpenPopUpSearchField());
+
+            this.vm.commCloseAllPopUps = new RelayCommand(execute: ex => this.CloseAllPopUpsExecute());
+
+            this.vm.commSearchComp = new RelayCommand(execute: ex => this.SearchCompExecute(), canExecute: canExec => this.SearchCompCanExecute());
         }
 
         private void OpenItemNavegacao(object obj)
@@ -419,8 +424,72 @@ namespace HLP.ComumView.ViewModel.Commands
         private void OpenPopUpSearchField()
         {
             if (this.vm != null)
-                if (this.vm.popUpSearchField != null)
+                if (this.vm.popUpSearchField != null && this.vm.winMan._currentTab != null)
+                {
                     this.vm.popUpSearchField.IsOpen = true;
+
+                    TextBox txt = this.vm.popUpSearchField.FindName(name: "txt") as TextBox;
+
+                    if (txt != null)
+                        txt.Focus();
+                }
+        }
+
+        private void CloseAllPopUpsExecute()
+        {
+            if (this.vm != null)
+                if (this.vm.popUpSearchField != null)
+                    this.vm.popUpSearchField.IsOpen = false;
+        }
+
+        private List<FrameworkElement> lTextBlockSearched;
+        private TextBlock focusedTextBlock;
+        int currentIndexLTextBlockSearched;
+
+        private void SearchCompExecute()
+        {
+            if (this.vm.winMan != null)
+                if (this.vm.winMan._currentTab != null)
+                    if (this.vm.winMan._currentTab.lTextBlock != null)
+                    {
+                        if (focusedTextBlock != null)
+                            focusedTextBlock.Background = System.Windows.Media.Brushes.Transparent;
+
+                        if (this.vm.bXSearchLabelsChanged)
+                        {
+                            this.lTextBlockSearched = this.vm.winMan._currentTab.lTextBlock.Where(
+                                i => (i as TextBlock)
+                                .Text.ToUpper().Contains(value: this.vm.xSearchLabels.ToUpper())).ToList();
+                            this.currentIndexLTextBlockSearched = -1;
+                        }
+                        this.vm.bXSearchLabelsChanged = false;
+
+                        if (lTextBlockSearched != null)
+                        {
+                            if ((this.currentIndexLTextBlockSearched + 1) == this.lTextBlockSearched.Count)
+                                this.currentIndexLTextBlockSearched = 0;
+
+                            focusedTextBlock = this.lTextBlockSearched[index: this.currentIndexLTextBlockSearched + 1] as TextBlock;
+
+                            if (focusedTextBlock != null)
+                            {
+                                var bc = new BrushConverter();
+                                focusedTextBlock.Background = (System.Windows.Media.Brush)bc.ConvertFrom(value: "#4876FF");
+
+                                this.vm.FocusOnComponent(comp: focusedTextBlock);
+                            }
+                            this.currentIndexLTextBlockSearched += 1;
+                        }
+                    }
+        }
+
+        private bool SearchCompCanExecute()
+        {
+            if (this.vm.bwFocus != null)
+            {
+                return !this.vm.bwFocus.IsBusy;
+            }
+            return false;
         }
     }
 }

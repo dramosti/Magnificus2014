@@ -229,6 +229,8 @@ namespace HLP.ComumView.ViewModel.ViewModel
         public ICommand commCloseWindow { get; set; }
         public ICommand commMinimizeWindow { get; set; }
         public ICommand commOpenPopUpSearchField { get; set; }
+        public ICommand commCloseAllPopUps { get; set; }
+        public ICommand commSearchComp { get; set; }
 
         wdMainCommands comm;
 
@@ -310,6 +312,21 @@ namespace HLP.ComumView.ViewModel.ViewModel
             this.currentEmpresa = this.objService.GetObject(id: CompanyData.idEmpresa);
         }
 
+        public bool bXSearchLabelsChanged { get; set; }
+
+        private string _xSearchLabels;
+
+        public string xSearchLabels
+        {
+            get { return _xSearchLabels; }
+            set
+            {
+                _xSearchLabels = value;
+                this.bXSearchLabelsChanged = true;
+            }
+        }
+
+
         public wdMainViewModel()
         {
             this.lMenu = new ObservableCollection<mainMenuModel>();
@@ -375,6 +392,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
             this.tabWindows = new TabControl();
 
             this.bwFocus = new BackgroundWorker();
+            this.bwFocus.WorkerSupportsCancellation = true;
             this.bwFocus.DoWork += bwFocus_DoWork;
             this.bwFocus.RunWorkerCompleted += bwFocus_RunWorkerCompleted;
         }
@@ -532,17 +550,21 @@ namespace HLP.ComumView.ViewModel.ViewModel
             }
         }
 
+        #region Set Focus
+
         Stack<FrameworkElement> lTabControls;
-        BackgroundWorker bwFocus;
+        public BackgroundWorker bwFocus { get; set; }
 
         void bwFocus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Result != null)
                 (e.Result as FrameworkElement).Focus();
+
         }
 
         void bwFocus_DoWork(object sender, DoWorkEventArgs e)
         {
+
             this.GetAllParentsComp(comp: e.Argument as FrameworkElement);
 
             FrameworkElement f = null;
@@ -581,6 +603,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
         public void FocusOnComponent(FrameworkElement comp)
         {
             lTabControls = new Stack<FrameworkElement>();
+
             this.bwFocus.RunWorkerAsync(argument: comp);
         }
 
@@ -596,5 +619,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
                 this.GetAllParentsComp(comp: comp.Parent as FrameworkElement);
             }
         }
+
+        #endregion
     }
 }
