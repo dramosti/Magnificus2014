@@ -48,8 +48,41 @@ namespace HLP.Entries.Model.Models.Parametros
                 base.NotifyPropertyChanged(propertyName: "tToleranciaEntradaAntes");
             }
         }
-        private byte? _stLiberacaoHoraExtra;
+        private TimeSpan? _tToleranciaEntradaDepois;
         [ParameterOrder(Order = 4)]
+        public TimeSpan? tToleranciaEntradaDepois
+        {
+            get { return _tToleranciaEntradaDepois; }
+            set
+            {
+                _tToleranciaEntradaDepois = value;
+                base.NotifyPropertyChanged(propertyName: "tToleranciaEntradaDepois");
+            }
+        }
+        private TimeSpan? _tToleranciaSaidaAntes;
+        [ParameterOrder(Order = 5)]
+        public TimeSpan? tToleranciaSaidaAntes
+        {
+            get { return _tToleranciaSaidaAntes; }
+            set
+            {
+                _tToleranciaSaidaAntes = value;
+                base.NotifyPropertyChanged(propertyName: "tToleranciaSaidaAntes");
+            }
+        }
+        private TimeSpan? _tToleranciaSaidaDepois;
+        [ParameterOrder(Order = 6)]
+        public TimeSpan? tToleranciaSaidaDepois
+        {
+            get { return _tToleranciaSaidaDepois; }
+            set
+            {
+                _tToleranciaSaidaDepois = value;
+                base.NotifyPropertyChanged(propertyName: "tToleranciaSaidaDepois");
+            }
+        }
+        private byte? _stLiberacaoHoraExtra;
+        [ParameterOrder(Order = 7)]
         public byte? stLiberacaoHoraExtra
         {
             get { return _stLiberacaoHoraExtra; }
@@ -59,8 +92,19 @@ namespace HLP.Entries.Model.Models.Parametros
                 base.NotifyPropertyChanged(propertyName: "stLiberacaoHoraExtra");
             }
         }
+        private TimeSpan? _tToleranciaHoraExtra;
+        [ParameterOrder(Order = 8)]
+        public TimeSpan? tToleranciaHoraExtra
+        {
+            get { return _tToleranciaHoraExtra; }
+            set
+            {
+                _tToleranciaHoraExtra = value;
+                base.NotifyPropertyChanged(propertyName: "tToleranciaHoraExtra");
+            }
+        }
         private int _idEmpresa;
-        [ParameterOrder(Order = 5)]
+        [ParameterOrder(Order = 9)]
         public int idEmpresa
         {
             get { return _idEmpresa; }

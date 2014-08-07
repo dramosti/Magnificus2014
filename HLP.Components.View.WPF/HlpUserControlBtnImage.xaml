@@ -40,11 +40,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Button Style="{StaticResource ButtonComponentImageStyle}" 
                 Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}"
-                Click="Button_Click_1" Margin="-4,0,4,0"></Button>       
+                Click="Button_Click_1" Margin="-4,0,4,0" Height="20"></Button>       
     </Grid>
 
 </UserControl>
