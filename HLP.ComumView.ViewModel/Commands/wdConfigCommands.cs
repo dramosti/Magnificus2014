@@ -25,17 +25,35 @@ namespace HLP.ComumView.ViewModel.Commands
 
         private void okExecute(object objDependency)
         {
+            if (Application.Current.MainWindow != null)
+            {
+                if (Application.Current.MainWindow.Name != "_wdSplash")
+                {
+                    if (MessageHlp.Show(stMessage: StMessage.stYesNo,
+                        xMessageToUser: "Sistema será reinicado e alterações não salvas serão perdidas, deseja continuar?") != MessageBoxResult.Yes)
+                    {
+                        return;
+                    }
+                }
+            }
+
             Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
             if (string.IsNullOrEmpty(value: Sistema.GetConnectionStrings(xKey: "dbPrincipal")))
                 c.ConnectionStrings.ConnectionStrings.
                     Add(settings: new ConnectionStringSettings(name: "dbPrincipal", connectionString: this.objViewModel.currentModel.xBaseDados));
+            else
+                c.ConnectionStrings.ConnectionStrings["dbPrincipal"].ConnectionString
+                    = this.objViewModel.currentModel.xBaseDados;
 
             if (string.IsNullOrEmpty(value: Sistema.GetAppSettings(xKey: "urlWebService")))
                 c.AppSettings.Settings.Add(key: "urlWebService", value: this.objViewModel.currentModel.xUriWcf);
+            else
+                c.AppSettings.Settings["urlWebService"].Value = this.objViewModel.currentModel.xUriWcf;
 
             c.Save();
 
+            ((objDependency as Grid).Parent as Window).DialogResult = true;
             ((objDependency as Grid).Parent as Window).Close();
         }
 

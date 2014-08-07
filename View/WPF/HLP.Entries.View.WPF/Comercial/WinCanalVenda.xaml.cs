@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using HLP.Components.View.WPF;
 
-namespace HLP.Entries.View.WPF.Comercial
+namespace HLP.Entries.View.WPF.GestãoAdministrativa.Comercial
 {
     /// <summary>
     /// Interaction logic for WinCanalVenda.xaml

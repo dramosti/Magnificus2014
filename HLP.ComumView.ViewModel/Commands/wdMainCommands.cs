@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -64,6 +65,20 @@ namespace HLP.ComumView.ViewModel.Commands
             this.vm.commCloseAllPopUps = new RelayCommand(execute: ex => this.CloseAllPopUpsExecute());
 
             this.vm.commSearchComp = new RelayCommand(execute: ex => this.SearchCompExecute(), canExecute: canExec => this.SearchCompCanExecute());
+
+            this.vm.commOpenConfig = new RelayCommand(execute: ex => this.OpenConfig());
+        }
+
+        private void OpenConfig()
+        {
+            Window form = GerenciadorModulo.Instancia.CarregaForm(nome: "wdConfig", exibeForm: Base.InterfacesBases.TipoExibeForm.Modal);
+
+            if (form != null)
+                if (form.ShowDialog() == true)
+                {
+                    System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                    Application.Current.Shutdown();
+                }
         }
 
         private void OpenItemNavegacao(object obj)
@@ -234,7 +249,6 @@ namespace HLP.ComumView.ViewModel.Commands
 
                         objTabPageAtivasModel._windows = form;
 
-
                         this.GetComponents(comp: form.Content as FrameworkElement, lComps: objTabPageAtivasModel.lComponents);
 
                         foreach (FrameworkElement txt in objTabPageAtivasModel.lComponents
@@ -246,6 +260,106 @@ namespace HLP.ComumView.ViewModel.Commands
 
                         objTabPageAtivasModel.lComponents.RemoveAll(i => i.GetType().BaseType == typeof(TextBlock)
                             || i.GetType().BaseType == typeof(TextBlock));
+
+                        FrameworkElement compPriorComp = null;
+                        TabItem tiPriorComp = null;
+                        TabItem tiCurrentComp = null;
+                        PropertyInfo piIsReadOnly = null;
+
+                        foreach (FrameworkElement comp in objTabPageAtivasModel.lComponents)
+                        {
+                            tiCurrentComp = Util.GetParent(comp: comp, t: typeof(TabItem)) as TabItem;
+
+                            if (tiCurrentComp != tiPriorComp && compPriorComp != null)
+                            {
+                                PropertyInfo pi = compPriorComp.GetType().GetProperty(name: "actionOnLostFocus");
+
+                                if (pi != null)
+                                {
+                                    Action<object> actionFocusNextTabComp = this.vm.FocusOnComponent;
+
+                                    try
+                                    {
+                                        pi.SetValue(obj: compPriorComp, value: actionFocusNextTabComp);
+
+                                        piIsReadOnly = comp.GetType().GetProperty(name: "IsReadOnly");
+
+                                        if (piIsReadOnly != null)
+                                            if ((bool)piIsReadOnly.GetValue(obj: comp) == false)
+                                            {
+                                                tiPriorComp = tiCurrentComp;
+
+                                                PropertyInfo piParameterAction = compPriorComp.GetType().GetProperty(name: "actionParameter");
+
+                                                if (piParameterAction != null)
+                                                {
+                                                    piParameterAction.SetValue(obj: compPriorComp, value: comp);
+                                                }
+                                            }
+                                    }
+                                    catch (Exception ex)
+                                    {
+
+                                        throw ex;
+                                    }
+                                }
+                            }
+
+                            compPriorComp = comp;
+                        }
+
+                        FrameworkElement fe = objTabPageAtivasModel.lComponents
+                            .Where(i => i.GetType().Name == "CustomTextBox"
+                            || i.GetType().Name == "CustomCheckBox"
+                            || i.GetType().Name == "CustomComboBox"
+                            || i.GetType().Name == "ucTextBoxIntellisense"
+                            || i.GetType() == typeof(DataGrid)
+                            || i.GetType().BaseType == typeof(DataGrid)).LastOrDefault();
+
+                        if (fe != null)
+                        {
+                            PropertyInfo pi = fe.GetType().GetProperty(name: "actionOnLostFocus");
+
+                            if (pi != null)
+                            {
+                                PropertyInfo piComm = objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "commandSalvar");
+
+                                if (piComm != null)
+                                {
+                                    ICommand comm = piComm.GetValue(objTabPageAtivasModel._currentDataContext)
+                                        as ICommand;
+
+                                    if (comm != null)
+                                    {
+                                        pi.SetValue(obj: fe,
+                                            value: comm);
+                                    }
+                                }
+                            }
+                        }
+
+                        Action<object> actionFocusFirstComponent = this.vm.FocusOnComponent;
+
+                        objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "focusFirstComponent")
+                            .SetValue(obj: objTabPageAtivasModel._currentDataContext,
+                            value: actionFocusFirstComponent);
+
+                        piIsReadOnly = null;
+
+                        foreach (FrameworkElement item in objTabPageAtivasModel.lComponents)
+                        {
+                            piIsReadOnly = item.GetType().GetProperty(name: "IsReadOnly");
+
+                            if (piIsReadOnly != null)
+                                if ((bool)piIsReadOnly.GetValue(obj: item) == false)
+                                {
+                                    objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "firstControl")
+                            .SetValue(obj: objTabPageAtivasModel._currentDataContext,
+                            value: item);
+                                    break;
+                                }
+
+                        }
 
                         foreach (DataGrid dg in objTabPageAtivasModel.lComponents.Where(i => i.GetType() == typeof(DataGrid)
                             || i.GetType().BaseType == typeof(DataGrid)))
@@ -287,7 +401,10 @@ namespace HLP.ComumView.ViewModel.Commands
                     if (tCompChield.BaseType != typeof(Panel)
                         && tCompChield != typeof(Expander)
                         && tCompChield != typeof(TabControl)
-                        && tCompChield != typeof(Border))
+                        && tCompChield != typeof(Border)
+                        && tCompChield != typeof(ScrollViewer)
+                        && tCompChield.BaseType != typeof(UserControl)
+                        && tCompChield != typeof(GridSplitter))
                     {
                         lComps.Add(item: compChield);
                     }
@@ -319,9 +436,15 @@ namespace HLP.ComumView.ViewModel.Commands
             {
                 this.GetComponents(comp: (comp as ScrollViewer).Content as FrameworkElement, lComps: lComps);
             }
-            else if (tComp.BaseType == typeof(UserControl))
+            //else if ()
+            //{
+            //    //this.GetComponents(comp: (comp as UserControl).Content as FrameworkElement, lComps: lComps);
+            //    lComps.Add(item: comp);
+            //}
+            else if (tComp.BaseType == typeof(DataGrid)
+                || tComp == typeof(DataGrid) || tComp.BaseType == typeof(UserControl))
             {
-                this.GetComponents(comp: (comp as UserControl).Content as FrameworkElement, lComps: lComps);
+                lComps.Add(item: comp);
             }
         }
 

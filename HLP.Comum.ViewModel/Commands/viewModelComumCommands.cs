@@ -278,7 +278,6 @@ namespace HLP.Comum.ViewModel.Commands
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
             objviewModel.currentID = 0;
             objviewModel.lItensHierarquia = new List<int>();
-            this.SetFocusFirstControl();
 
             (this.objviewModel.currentModel as modelComum).SetOperationModel(_value: OperationModel.updating);
 
@@ -288,6 +287,10 @@ namespace HLP.Comum.ViewModel.Commands
                 pi.SetValue(obj: this.objviewModel.currentModel, value: true);
 
             this.objviewModel.loading = false;
+
+            if (this.objviewModel.focusFirstComponent != null &&
+                this.objviewModel.firstControl != null)
+                this.objviewModel.focusFirstComponent.Invoke(obj: this.objviewModel.firstControl);
         }
 
         public void SetFocusFirstControl()
@@ -448,6 +451,7 @@ namespace HLP.Comum.ViewModel.Commands
 
             this.objviewModel.loading = false;
         }
+
         private void salvarBase()
         {
             (this.objviewModel.currentModel as modelComum).SetOperationModel(_value: OperationModel.searching);

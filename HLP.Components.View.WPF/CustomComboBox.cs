@@ -1,4 +1,5 @@
-﻿using HLP.Base.EnumsBases;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +61,30 @@ namespace HLP.Components.View.WPF
             };
 
             this.Style = resource["ComboBoxStyle"] as Style;
+
+            this.LostFocus += CustomComboBox_LostFocus;
+        }
+
+        void CustomComboBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (this.actionOnLostFocus != null)
+            {
+                Type t = this.actionOnLostFocus.GetType();
+
+                if (t == typeof(RelayCommand))
+                {
+                    if (((RelayCommand)this.actionOnLostFocus).CanExecute(parameter: null))
+                        ((RelayCommand)this.actionOnLostFocus).Execute(parameter: null);
+                }
+                else if (t == typeof(Action<object>))
+                {
+                    ((Action<object>)this.actionOnLostFocus).Invoke(obj: this.actionParameter);
+                }
+                else
+                {
+                    ((Action)this.actionOnLostFocus).Invoke();
+                }
+            }
         }
 
         private statusComponentePosicao _stCompPosicao;
@@ -79,6 +104,22 @@ namespace HLP.Components.View.WPF
         {
             get { return _stVisibilityBtnQuickSearch; }
             set { _stVisibilityBtnQuickSearch = value; }
+        }
+
+        private object _actionOnLostFocus;
+
+        public object actionOnLostFocus
+        {
+            get { return _actionOnLostFocus; }
+            set { _actionOnLostFocus = value; }
+        }
+
+        private object _actionParameter;
+
+        public object actionParameter
+        {
+            get { return _actionParameter; }
+            set { _actionParameter = value; }
         }
     }
 }

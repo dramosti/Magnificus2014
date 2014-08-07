@@ -28,6 +28,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
 {
     public class wdMainViewModel : viewModelComum<mainMenuModel>
     {
+
         private Popup _popUpSearchField;
 
         public Popup popUpSearchField
@@ -231,6 +232,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
         public ICommand commOpenPopUpSearchField { get; set; }
         public ICommand commCloseAllPopUps { get; set; }
         public ICommand commSearchComp { get; set; }
+        public ICommand commOpenConfig { get; set; }
 
         wdMainCommands comm;
 
@@ -365,8 +367,11 @@ namespace HLP.ComumView.ViewModel.ViewModel
                             newMenu = new mainMenuModel
                             {
                                 nameWindow = subs,
-                                xCaption = cont == xNamespace.Split(separator: '.').Count() ? win.xName.Replace('_', ' ')
-                                : subs
+                                xCaption = cont == xNamespace.Split(separator: '.').Count() ?
+                                string.Concat(win.xName.Replace('_', ' ').Select(c => char.IsUpper(c) ? " " + c.ToString() : c.ToString()))
+                                        .TrimStart()
+                                : string.Concat(subs.Select(c => char.IsUpper(c) ? " " + c.ToString() : c.ToString()))
+                                        .TrimStart()                                 
                             };
 
                             currentMenu.Add(item: newMenu);
@@ -564,8 +569,8 @@ namespace HLP.ComumView.ViewModel.ViewModel
 
         void bwFocus_DoWork(object sender, DoWorkEventArgs e)
         {
-
-            this.GetAllParentsComp(comp: e.Argument as FrameworkElement);
+            if (e.Argument != null)
+                this.GetAllParentsComp(comp: e.Argument as FrameworkElement);
 
             FrameworkElement f = null;
 
@@ -600,7 +605,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
             e.Result = e.Argument;
         }
 
-        public void FocusOnComponent(FrameworkElement comp)
+        public void FocusOnComponent(object comp)
         {
             lTabControls = new Stack<FrameworkElement>();
 
@@ -613,8 +618,8 @@ namespace HLP.ComumView.ViewModel.ViewModel
                 return;
             else
             {
-                if (comp.Parent.GetType() == typeof(TabControl) || comp.Parent.GetType() == typeof(TabItem))
-                    this.lTabControls.Push(item: comp.Parent as FrameworkElement);
+                if (comp.GetType() == typeof(TabControl) || comp.GetType() == typeof(TabItem))
+                    this.lTabControls.Push(item: comp as FrameworkElement);
 
                 this.GetAllParentsComp(comp: comp.Parent as FrameworkElement);
             }

@@ -18,6 +18,22 @@ namespace HLP.Comum.ViewModel.ViewModel
 {
     public class viewModelComum<T> : INotifyPropertyChanged where T : class
     {
+        private Action<object> _focusFirstComponent;
+
+        public Action<object> focusFirstComponent
+        {
+            get { return _focusFirstComponent; }
+            set { _focusFirstComponent = value; }
+        }
+
+        private FrameworkElement _firstControl;
+
+        public FrameworkElement firstControl
+        {
+            get { return _firstControl; }
+            set { _firstControl = value; }
+        }
+        
 
         private bool _loading;
 

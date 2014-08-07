@@ -114,13 +114,16 @@ namespace HLP.Entries.ViewModel.Commands
                     {
                         this.objViewModel.salvarBaseCommand.Execute(parameter: null);
 
-                        object w = objViewModel.GetParentWindow(e.Result);
-
-                        if (w != null)
+                        if (e.Result.GetType().BaseType == typeof(FrameworkElement))
                         {
-                            w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
-                            (w as Window).DialogResult = true;
-                            (w as Window).Close();
+                            object w = objViewModel.GetParentWindow(e.Result);
+
+                            if (w != null)
+                            {
+                                w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
+                                (w as Window).DialogResult = true;
+                                (w as Window).Close();
+                            }
                         }
                     }
                 }

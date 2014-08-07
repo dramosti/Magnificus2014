@@ -2308,6 +2308,7 @@
         <KeyBinding Key="L" Modifiers="Control" Command="{Binding FindAllCommand}"/>
         <KeyBinding Key="F" Modifiers="Control" Command="{Binding commOpenPopUpSearchField}"/>
         <KeyBinding Key="Escape" Command="{Binding commCloseAllPopUps}"/>
+        <KeyBinding Key="F4" Command="{Binding commOpenConfig}"/>
     </Window.InputBindings>
 
     <Grid>

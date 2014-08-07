@@ -73,7 +73,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 canExecute: paramCan => this.CanCarregaFormulario());
 
             this.objViewModel.commandImprimir = new RelayCommand(execute: paramExec => this.PreviewReport(),
-               canExecute: paramCan => this.CanCarregaFormulario());
+               canExecute: paramCan => this.PreviewReportCanExec());
 
             this.objViewModel.CorrigirSaidaCommand = new RelayCommand(execute: paramExec => this.CorrigirSaida(),
               canExecute: paramCan => this.CanCarregaFormulario());
@@ -282,6 +282,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         }
 
+        public bool PreviewReportCanExec()
+        {
+            return this.CanCarregaFormulario() && !this.objViewModel.bWorkerPrint.IsBusy;
+        }
 
         public void PreviewReport()
         {

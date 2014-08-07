@@ -1,4 +1,5 @@
-﻿using HLP.Base.EnumsBases;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,6 +61,46 @@ namespace HLP.Components.View.WPF
                 Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
             };
             this.Style = resource["CheckBoxStyle"] as Style;
+
+            this.LostFocus += CustomCheckBox_LostFocus;
+        }
+
+        void CustomCheckBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (this.actionOnLostFocus != null)
+            {
+                Type t = this.actionOnLostFocus.GetType();
+
+                if (t == typeof(RelayCommand))
+                {
+                    if (((RelayCommand)this.actionOnLostFocus).CanExecute(parameter: null))
+                        ((RelayCommand)this.actionOnLostFocus).Execute(parameter: null);
+                }
+                else if (t == typeof(Action<object>))
+                {
+                    ((Action<object>)this.actionOnLostFocus).Invoke(obj: this.actionParameter);
+                }
+                else
+                {
+                    ((Action)this.actionOnLostFocus).Invoke();
+                }
+            }
+        }
+
+        private object _actionParameter;
+
+        public object actionParameter
+        {
+            get { return _actionParameter; }
+            set { _actionParameter = value; }
+        }
+
+        private object _actionOnLostFocus;
+
+        public object actionOnLostFocus
+        {
+            get { return _actionOnLostFocus; }
+            set { _actionOnLostFocus = value; }
         }
 
         private statusComponentePosicao _stCompPosicao;

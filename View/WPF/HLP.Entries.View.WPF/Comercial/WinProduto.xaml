@@ -6,7 +6,7 @@
         xmlns:conv="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
-        x:Class="HLP.Entries.View.WPF.Comercial.WinProduto"
+        x:Class="HLP.Entries.View.WPF.Gerais.WinProduto"
         Title="WinProduto" Height="660" Width="1024" NameView="vwProduto">
     <runtime:WindowsBase.Resources>
         <ResourceDictionary>
