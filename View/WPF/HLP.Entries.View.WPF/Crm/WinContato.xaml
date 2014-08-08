@@ -483,7 +483,7 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Expander Header="Residencial" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
+                        <Expander Header="Comercial" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10"></ColumnDefinition>
@@ -584,7 +584,7 @@
                                 
                             </Grid>
                         </Expander>
-                        <Expander Header="Comercial" IsExpanded="True"  Grid.Row="1" Style="{StaticResource ExpanderPadrao}" Focusable="False">
+                        <Expander Header="Residencial" IsExpanded="True"  Grid.Row="1" Style="{StaticResource ExpanderPadrao}" Focusable="False">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10"></ColumnDefinition>

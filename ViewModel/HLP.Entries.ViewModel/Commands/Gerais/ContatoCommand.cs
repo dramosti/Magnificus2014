@@ -332,31 +332,31 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                                 this.objViewModel.currentModel.xEmpresa = t.xNome;
                                 this.objViewModel.currentModel.xTelefoneEmpresa = t.xTelefone1;
 
+                                if (this.objViewModel.currentModel.idContatoMotorista != null
+                            && this.objViewModel.currentModel.idContatoMotorista != 0)
+                                {
+                                    if (t.lTransportador_Motorista != null)
+                                    {
+                                        this.objViewModel.lContatos = new ObservableCollection<ContatoModel>
+                                        (list: t.lTransportador_Motorista.ToList());
+                                    }
+                                }
+                                else
+                                {
+                                    if (t.lTransportador_Contato != null)
+                                    {
+                                        this.objViewModel.lContatos = new ObservableCollection<ContatoModel>
+                                        (list: t.lTransportador_Contato.ToList());
+                                    }
+                                }
+
+                                if (this.objViewModel.lContatos != null)
+                                    this.objViewModel.lContatos.RemoveAt(
+                                            index: this.objViewModel.lContatos.IndexOf(item: this.objViewModel.lContatos.FirstOrDefault(
+                                            i => i.idContato == this.objViewModel.currentModel.idContato)));
+
                                 if (t.lTransportador_Endereco != null)
                                 {
-                                    if (this.objViewModel.currentModel.idContatoMotorista != null
-                            && this.objViewModel.currentModel.idContatoMotorista != 0)
-                                    {
-                                        if (t.lTransportador_Motorista != null)
-                                        {
-                                            this.objViewModel.lContatos = new ObservableCollection<ContatoModel>
-                                            (list: t.lTransportador_Motorista.ToList());
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (t.lTransportador_Contato != null)
-                                        {
-                                            this.objViewModel.lContatos = new ObservableCollection<ContatoModel>
-                                            (list: t.lTransportador_Contato.ToList());
-                                        }
-                                    }
-
-                                    if (this.objViewModel.lContatos != null)
-                                        this.objViewModel.lContatos.RemoveAt(
-                                                index: this.objViewModel.lContatos.IndexOf(item: this.objViewModel.lContatos.FirstOrDefault(
-                                                i => i.idContato == this.objViewModel.currentModel.idContato)));
-
                                     if (t.lTransportador_Endereco.Count(i => i.stPrincipal == 1) > 0)
                                     {
                                         endereco = t.lTransportador_Endereco.FirstOrDefault(i => i.stPrincipal == 1);
@@ -382,6 +382,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                                 this.objViewModel.currentModel.xEmpresa = objClienteModel.xNome;
                                 this.objViewModel.currentModel.xTelefoneEmpresa = objClienteModel.xTelefone1;
 
+                                if (objClienteModel.lCliente_fornecedor_contato != null)
+                                    this.objViewModel.lContatos = new ObservableCollection<ContatoModel>
+                                    (list: objClienteModel.lCliente_fornecedor_contato.ToList());
+
                                 if (objClienteModel.lCliente_fornecedor_Endereco != null)
                                 {
                                     endereco = objClienteModel.lCliente_fornecedor_Endereco.FirstOrDefault(i => i.stPrincipal == (byte)1);
@@ -406,6 +410,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                                 this.objViewModel.currentModel.xEmpresa = objAgenciaModel.xAgencia;
                                 this.objViewModel.currentModel.xTelefoneEmpresa = objAgenciaModel.xTelefone;
 
+                                if (objAgenciaModel.lAgencia_ContatoModel != null)
+                                    this.objViewModel.lContatos = new ObservableCollection<ContatoModel>
+                                    (list: objAgenciaModel.lAgencia_ContatoModel.ToList());
+
                                 if (objAgenciaModel.lAgencia_EnderecoModel != null)
                                 {
                                     endereco = objAgenciaModel.lAgencia_EnderecoModel.FirstOrDefault(i => i.stPrincipal == (byte)1);
@@ -429,6 +437,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         }
                     }
                 }
+
+                if (this.objViewModel.lContatos == null)
+                    this.objViewModel.lContatos = new ObservableCollection<ContatoModel>();
 
                 this.Inicia_Collections();
             }
