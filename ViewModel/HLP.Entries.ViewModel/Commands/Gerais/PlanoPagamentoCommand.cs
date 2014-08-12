@@ -68,6 +68,23 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
+                if (this.objViewModel.currentModel.stAlocacao == (byte)0)
+                {
+                    if (this.objViewModel.currentModel.lPlano_pagamento_linhasModel.Count == 0)
+                    {
+                        MessageHlp.Show(stMessage: StMessage.stError, xMessageToUser: "Plano de pagamento é do tipo de alocação Especificado, é necessário no mínimo definir uma linha do plano de pagamento!");
+                        return;
+                    }
+                    else if (this.objViewModel.currentModel.lPlano_pagamento_linhasModel.FirstOrDefault()
+                        .stValorouPorcentagem == (byte)0)
+                        if (this.objViewModel.currentModel.lPlano_pagamento_linhasModel.Sum(i => i.nValorouPorcentagem)
+                            != 100)
+                        {
+                            MessageHlp.Show(stMessage: StMessage.stError,
+                                xMessageToUser: "Soma de porcentagem deve ser igual a 100%");
+                            return;
+                        }
+                }
                 foreach (int id in this.objViewModel.currentModel.lPlano_pagamento_linhasModel.idExcluidos)
                 {
 
@@ -305,10 +322,17 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                if (this.objViewModel.currentModel != null)
+                if (e.Error != null)
                 {
-                    this.Inicia_Collections();
-                    this.objViewModel.PlanoSort();
+                    throw e.Error;
+                }
+                else
+                {
+                    if (this.objViewModel.currentModel != null)
+                    {
+                        this.Inicia_Collections();
+                        this.objViewModel.PlanoSort();
+                    }
                 }
             }
             catch (Exception ex)

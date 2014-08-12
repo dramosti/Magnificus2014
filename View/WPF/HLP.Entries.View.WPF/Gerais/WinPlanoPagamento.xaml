@@ -119,7 +119,8 @@
                 <Components:CustomComboBox
                     Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" 
                     x:Name="cbxAlocacao"			                    
-					SelectedIndex="{Binding currentModel.stAlocacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					SelectedIndex="{Binding currentModel.stAlocacao, Mode=TwoWay, NotifyOnValidationError=True, 
+                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="0-Especificado – um valor específico é devido em cada uma das datas de pagamento especificadas. Defina as linhas e os valores do plano de pagamento na guia Linhas de pagamento.Quando utilizar o status Especificado:os campos . Alterar, Numero de Pagamentos, Valor Moeda, Valor Minimo são desativados.1-Quantidade fixa (VALOR DEFAULT) – pagamento do valor total é dividido em uma quantidade fixa de prestações. Quando utilizar o status Quantidade Fixa: o campo Valor Moeda e a Guia das linhas é  desativado.2-Total – valor total pendente quando a Nota fiscal está vencida. Quando utilizar o status Total:os campos Numero de Pagamentos e Alocação de Impostos são desativados.3-Valor fixo – um valor específico e fixo é devido por cada prestação nas datas de pagamento calculadas. Quando utilizar o status Valor Fixo: os campos Forma de Pagamento, Alterar, Numero de Pagamentos,">
                     <Components:CustomComboBox.Items>
@@ -130,24 +131,10 @@
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
                 <Components:CustomComboBox x:Name="cbxStFormaPagamento"
-                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
+                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"                                           
                     SelectedIndex="{Binding currentModel.stFormaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-					ToolTip="Selecione o intervalo de datas em dias, meses ou anos a ser usado no cálculo da data de vencimento de cada prestação.">
-                    <Components:CustomComboBox.Style>
-                        <Style BasedOn="{StaticResource ComboBoxStyle}" TargetType="ComboBox">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="True">
-                                    <Setter Property="IsEnabled" Value="True"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="3">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Components:CustomComboBox.Style>
+					ToolTip="Selecione o intervalo de datas em dias, meses ou anos a ser usado no cálculo da data de vencimento de cada prestação."
+                    IsEnabled="{Binding bIsEnabled}">                    
                     <Components:CustomComboBox.Items>
                         <System:String>0-Anos</System:String>
                         <System:String>1-Dias</System:String>
@@ -160,17 +147,12 @@
                     ToolTip="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. " Grid.ColumnSpan="2">
                     <Components:CustomTextBox.Style>
                         <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="{x:Type Components:CustomTextBox}">
+                            <Setter Property="IsEnabled" Value="True"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
                                     <Setter Property="IsEnabled" Value="False"/>
                                 </DataTrigger>
-                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="True">
-                                    <Setter Property="IsEnabled" Value="True"/>
-                                </DataTrigger>
                                 <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="0">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="3">
                                     <Setter Property="IsEnabled" Value="False"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -207,22 +189,15 @@
 					ToolTip="Se você selecionou a opção Valor fixo no campo Alocação , especifique o valor da moeda de cada prestação.">
                     <Components:CustomTextBox.Style>
                         <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="{x:Type Components:CustomTextBox}">
+                            <Setter Property="IsEnabled" Value="False"></Setter>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="True">
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=bIsEnabled}" Value="True"/>
+                                        <Condition Binding="{Binding Path=currentModel.stAlocacao}" Value="3"/>
+                                    </MultiDataTrigger.Conditions>
                                     <Setter Property="IsEnabled" Value="True"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="0">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="1">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Path=currentModel.vFixoPagamentoEnabled}" Value="True">
-                                    <Setter Property="IsEnabled" Value="True"/>
-                                </DataTrigger>
+                                </MultiDataTrigger>
                             </Style.Triggers>
                         </Style>
                     </Components:CustomTextBox.Style>
@@ -252,7 +227,7 @@
                     </Components:CustomTextBox.Style>
                 </Components:CustomTextBox>
                 <Components:CustomComboBox
-                    Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2"
+                    Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2" IsEnabled="{Binding bIsEnabled}"
                     SelectedIndex="{Binding currentModel.stAlocacaoImpostos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					ToolTip="Selecione um método de distribuição do valor do imposto sobre vendas para prestações do plano de pagamento. 0-Primeira prestação - o valor total do imposto sobre vendas está incluído na primeira prestação. 1-Proporcionalmente - o valor do imposto sobre vendas é distribuído por igual, com o mesmo valor de imposto em cada prestação. 2-Última prestação - o valor total do imposto sobre vendas está incluído na última prestação. ">
                     <Components:CustomComboBox.Items>
@@ -260,21 +235,6 @@
                         <System:String>1-Proporcionalmente</System:String>
                         <System:String>2-Última prestação</System:String>
                     </Components:CustomComboBox.Items>
-                    <Components:CustomComboBox.Style>
-                        <Style BasedOn="{StaticResource ComboBoxStyle}" TargetType="{x:Type Components:CustomComboBox}">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="True">
-                                    <Setter Property="IsEnabled" Value="True"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="2">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Components:CustomComboBox.Style>
                 </Components:CustomComboBox>
             </Grid>
         </Expander>
@@ -308,6 +268,7 @@
         </Expander>
         <Expander Header="Plano de Pagamento" Grid.Row="3" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
             <DataGrid 
+                        x:Name="dgvPlanoPagamento"
                         ItemsSource="{Binding currentModel.lPlano_pagamento_linhasModel}"
                         AutoGenerateColumns="False" 
 						SelectionUnit="CellOrRowHeader"
@@ -326,8 +287,7 @@
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding Path=bIsEnabled}" Value="True"/>
-                                    <Condition Binding="{Binding Path=currentModel.stAlocacaoImpostos}" Value="0"/>
-                                    <Condition Binding="{Binding Path=currentModel.vFixoPagamentoEnabled}" Value="False"/>
+                                    <Condition Binding="{Binding Path=currentModel.stAlocacao}" Value="0"/>
                                 </MultiDataTrigger.Conditions>
                                 <Setter Property="IsReadOnly" Value="False"/>
                             </MultiDataTrigger>
@@ -337,11 +297,10 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Binding="{Binding Path=nQuantidade, UpdateSourceTrigger=LostFocus}" ClipboardContentBinding="{x:Null}" Header="Parcelas" Width="150"/>
-                    <DataGridComboBoxColumn
+                    <DataGridComboBoxColumn IsReadOnly="{Binding Data.currentModel.bColumnStValorPorcentagem, Source={StaticResource proxy}}"
                         Width="120" Header="Tipo" ItemsSource="{StaticResource collectionTipo}"
-                        IsReadOnly="{Binding Data.currentModel.bCollTipo, Source={StaticResource proxy}}"
-                                        SelectedItemBinding="{Binding stValorouPorcentagem, Converter={StaticResource selectedItemToTextConverter},
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
+                        SelectedItemBinding="{Binding stValorouPorcentagem, Converter={StaticResource selectedItemToTextConverter},
+                        Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
                     , ConverterParameter={StaticResource collectionTipo}}" Visibility="Visible">
                     </DataGridComboBoxColumn>
                     <DataGridTemplateColumn Header="Valor ou Porcentagem" Width="*">
