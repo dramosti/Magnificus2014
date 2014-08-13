@@ -22,10 +22,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         ConversaoViewModel objViewModel;
         ConversaoService objService;
+        Unidade_MedidaService objUnidade_MedidaService;
+
+        List<Unidade_medidaModel> lUnidadesMedida;
 
         public ConversaoCommands(ConversaoViewModel objViewModel)
         {
             objService = new ConversaoService();
+            this.objUnidade_MedidaService = new Unidade_MedidaService();
+            this.lUnidadesMedida = new List<Unidade_medidaModel>();
 
             this.objViewModel = objViewModel;
 
@@ -94,7 +99,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     new ObservableCollectionBaseCadastros<ConversaoModel>(objService.SaveList(obj: this.objViewModel.currentModel));
                     e.Result = e.Argument;
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -286,12 +291,27 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.IniciaCollection();
+            if (this.objViewModel.currentModel != null)
+            {
+                this.IniciaCollection();
+            }
+
+
         }
 
         private void IniciaCollection()
         {
             this.objViewModel.currentModel.lProdutos_Conversao.CollectionCarregada();
+            this.objViewModel.currentModel.lProdutos_Conversao.CollectionChanged += this.lProdutos_Conversao_CollectionChanged;            
+        }
+
+        void lProdutos_Conversao_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+                foreach (ConversaoModel item in e.NewItems)
+                {
+                    item.idDeUnidadeMedida = this.objViewModel.currentModel.idUnidadeMedidaEstoque ?? 0;
+                }
         }
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
@@ -299,6 +319,41 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.currentModel
                 = this.objService.GetObject(id: this.objViewModel.currentID);
         }
+
+        public void BuildConversaoDetail()
+        {
+            if (this.lUnidadesMedida.Count(i => i.idUnidadeMedida == this.objViewModel.currentConversao.idParaUnidadeMedida)
+                 == 0)
+            {
+                Unidade_medidaModel um = this.objUnidade_MedidaService.GetObject(id: this.objViewModel.currentConversao.idParaUnidadeMedida);
+
+                if (um != null)
+                    this.lUnidadesMedida.Add(item: um);
+            }
+
+            if(this.lUnidadesMedida.Count(i => i.idUnidadeMedida == this.objViewModel.currentConversao.idDeUnidadeMedida)
+                == 0)
+            {
+                Unidade_medidaModel um = this.objUnidade_MedidaService.GetObject(id: this.objViewModel.currentConversao.idDeUnidadeMedida);
+
+                if (um != null)
+                    this.lUnidadesMedida.Add(item: um);
+            }
+
+            Unidade_medidaModel umOrigem = this.lUnidadesMedida.FirstOrDefault(i => i.idUnidadeMedida == this.objViewModel.currentConversao.idDeUnidadeMedida);
+
+            Unidade_medidaModel umPara = this.lUnidadesMedida.FirstOrDefault(i => i.idUnidadeMedida == this.objViewModel.currentConversao.idParaUnidadeMedida);
+
+            this.objViewModel.conversaoDetail = string.Format(format: "Um(a) {1} de {0} é equivalente à {2} {3}s de {0}",
+                args: new object[] { 
+                    this.objViewModel.currentModel.xComercial,
+                    umPara != null ? umPara.xUnidadeMedida : string.Empty,
+                    string.Format(format: "{0:G29}", 
+                    arg0: (this.objViewModel.currentConversao.nFator + (this.objViewModel.currentConversao.nQuantidadeAdicional ?? 0))),
+                    umOrigem != null ? umOrigem.xUnidadeMedida : string.Empty
+                });
+        }
+
         #endregion
 
 

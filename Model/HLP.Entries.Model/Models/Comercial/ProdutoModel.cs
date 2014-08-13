@@ -26,6 +26,7 @@ namespace HLP.Entries.Model.Models.Comercial
             this.lMethods = new List<MethodInfo>();
             this.dCadastro = DateTime.Now;
             this.idFuncionario = UserData.idUser;
+
         }
 
         private int? _idProduto;

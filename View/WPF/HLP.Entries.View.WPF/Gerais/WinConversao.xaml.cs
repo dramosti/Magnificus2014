@@ -52,5 +52,10 @@ namespace HLP.Entries.View.WPF.GestãoDeMateriais
         {
             this.gridConversao.BindingGroup.UpdateSources();
         }
+
+        private void gridConversao_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
