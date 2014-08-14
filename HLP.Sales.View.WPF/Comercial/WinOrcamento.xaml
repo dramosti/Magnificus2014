@@ -1,4 +1,4 @@
-﻿<runtime:WindowsBase x:Class="HLP.Sales.View.WPF.Comercial.WinOrcamento"
+﻿<runtime:WindowsBase x:Class="HLP.Sales.View.WPF.GestãoAdministrativa.Comercial.WinOrcamento"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

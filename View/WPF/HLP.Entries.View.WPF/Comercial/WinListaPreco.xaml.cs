@@ -16,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace HLP.Entries.View.WPF.Comercial
+namespace HLP.Entries.View.WPF.GestãoAdministrativa.Comercial
 {
     /// <summary>
     /// Interaction logic for WinListaPreco.xaml

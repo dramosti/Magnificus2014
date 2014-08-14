@@ -7,7 +7,7 @@
         xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" 
     xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Entries.View.WPF.GestãoDeMateriais.WinConversao"
-        Title="Conversão" Height="660" Width="1024" NameView="vwProduto">
+        Title="Conversão" Height="660" Width="1024" NameView="vwProduto" x:Name="wdConversao">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -32,6 +32,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
         <Expander Header="Parametro" Style="{StaticResource ExpanderPadrao}" Focusable="False" IsExpanded="True">
             <Grid>
@@ -68,12 +69,13 @@
             <Grid>
                 <DataGrid
                     Name="gridConversao"
-						  ItemsSource="{Binding currentModel.lProdutos_Conversao}"                          
+						  ItemsSource="{Binding currentModel.lProdutos_Conversao}" SelectedItem="{Binding Path=currentConversao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
                           CanUserDeleteRows="True"
-                          CanUserAddRows="True" CellEditEnding="gridConversao_CellEditEnding"
+                          CanUserAddRows="True" 
+                          CellEditEnding="gridConversao_CellEditEnding"                            
                     >
                     <DataGrid.BindingGroup>
                         <BindingGroup                             
@@ -86,7 +88,7 @@
                         </BindingGroup>
                     </DataGrid.BindingGroup>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn x:Name="clDeUnidade" Header="Conversão De" Width="150" >
+                        <DataGridTemplateColumn x:Name="clDeUnidade" Header="Da Unidade" Width="150" IsReadOnly="True">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=idDeUnidadeMedida, Converter={StaticResource cbxDisplayConv}, ConverterParameter={StaticResource lResultConversao}}"
@@ -107,7 +109,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn x:Name="clParaUnidade" Header="Conversão Para" Width="150" >
+                        <DataGridTemplateColumn x:Name="clParaUnidade" Header="Para Unidade" Width="150" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=idParaUnidadeMedida, Converter={StaticResource cbxDisplayConv}, 
@@ -151,5 +153,6 @@
                 </DataGrid>
             </Grid>
         </Expander>
+        <TextBlock Grid.Row="2" Text="{Binding conversaoDetail}"></TextBlock>
     </Grid>
 </runtime:WindowsBase>

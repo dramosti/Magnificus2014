@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace HLP.Sales.View.WPF.Comercial
+namespace HLP.Sales.View.WPF.GestãoAdministrativa.Comercial
 {
     /// <summary>
     /// Interaction logic for WinOrcamento.xaml

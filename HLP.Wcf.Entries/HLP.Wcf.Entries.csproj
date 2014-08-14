@@ -441,6 +441,7 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\wcf_oficial.pubxml" />
     <None Include="Properties\PublishProfiles\wcf_programacao.pubxml" />
+    <None Include="Properties\PublishProfiles\wcf_publicacaoTeste.pubxml" />
     <None Include="Properties\PublishProfiles\wcf_testes.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

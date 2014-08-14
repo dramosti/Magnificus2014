@@ -26,10 +26,38 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand navegarCommand { get; set; }
         #endregion
 
+        ConversaoCommands comm;
         public ConversaoViewModel()
         {
-            ConversaoCommands comm = new ConversaoCommands(objViewModel: this);
+            comm = new ConversaoCommands(objViewModel: this);
         }
+
+        private ConversaoModel _currentConversao;
+
+        public ConversaoModel currentConversao
+        {
+            get { return _currentConversao; }
+            set
+            {
+                _currentConversao = value;
+
+                if (value != null)
+                    this.comm.BuildConversaoDetail();
+            }
+        }
+
+        private string _conversaoDetail;
+
+        public string conversaoDetail
+        {
+            get { return _conversaoDetail; }
+            set
+            {
+                _conversaoDetail = value;
+                base.NotifyPropertyChanged(propertyName: "conversaoDetail");
+            }
+        }
+
         int _idProdutoSelecionado;
         public int idProdutoSelecionado
         {

@@ -48,6 +48,7 @@ namespace HLP.Entries.Model.Models.Parametros
                 base.NotifyPropertyChanged(propertyName: "tToleranciaEntradaAntes");
             }
         }
+
         private byte? _stLiberacaoHoraExtra;
         [ParameterOrder(Order = 4)]
         public byte? stLiberacaoHoraExtra
@@ -70,7 +71,6 @@ namespace HLP.Entries.Model.Models.Parametros
                 base.NotifyPropertyChanged(propertyName: "idEmpresa");
             }
         }
-        
 
     }
 

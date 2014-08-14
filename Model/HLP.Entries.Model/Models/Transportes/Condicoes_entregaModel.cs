@@ -51,8 +51,9 @@ namespace HLP.Entries.Model.Models.Transportes
                 if (this.GetOperationModel() == Base.EnumsBases.OperationModel.updating &&
                     value == (byte)0)
                     this.vMinimoGratis = decimal.Zero;
-
+                                
                 base.NotifyPropertyChanged(propertyName: "stAplicarMinGratis");
+                base.NotifyPropertyChanged(propertyName: "vMinimoGratis");
             }
         }
         
@@ -76,7 +77,19 @@ namespace HLP.Entries.Model.Models.Transportes
         {
             get
             {
-                return base[columnName];
+                string xError = base[columnName];
+                
+                if (string.IsNullOrEmpty(value: xError))
+                    if (columnName == "vMinimoGratis")
+                    {
+                        if(this.stAplicarMinGratis == (byte)1 && 
+                            this.vMinimoGratis <= 0)
+                        {
+                            xError = "Valor de mínimo grátis deve ser maior que 0";
+                        }
+                    }
+
+                return xError;
             }
         }
     }

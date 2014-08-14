@@ -1,4 +1,5 @@
-﻿using HLP.Base.EnumsBases;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 using HLP.Components.View.WPF.Converter;
 using HLP.Components.ViewModel.ViewModels;
 using System;
@@ -75,6 +76,30 @@ namespace HLP.Components.View.WPF
                 this.CustomViewModel = new CustomTextBoxViewModel();
 
                 this.ApplyTemplate();
+
+                this.LostFocus += CustomTextBox_LostFocus;
+            }
+        }
+
+        void CustomTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (this.actionOnLostFocus != null)
+            {
+                Type t = this.actionOnLostFocus.GetType();
+
+                if (t == typeof(RelayCommand))
+                {
+                    if (((RelayCommand)this.actionOnLostFocus).CanExecute(parameter: null))
+                        ((RelayCommand)this.actionOnLostFocus).Execute(parameter: null);
+                }
+                else if (t == typeof(Action<object>))
+                {
+                    ((Action<object>)this.actionOnLostFocus).Invoke(obj: this.actionParameter);
+                }
+                else
+                {
+                    ((Action)this.actionOnLostFocus).Invoke();
+                }
             }
         }
 
@@ -86,17 +111,22 @@ namespace HLP.Components.View.WPF
             set { _CustomViewModel = value; }
         }
 
-        public void SetEventFocusToTxtId(RoutedEventHandler _event)
+        private object _actionOnLostFocus;
+
+        public object actionOnLostFocus
         {
-            this.ApplyTemplate();
-
-            object txt = this.Template.FindName(name: "txt", templatedParent: this);
-
-            if (txt != null)
-            {
-                (txt as TextBox).LostFocus += _event;
-            }
+            get { return _actionOnLostFocus; }
+            set { _actionOnLostFocus = value; }
         }
+
+        private object _actionParameter;
+
+        public object actionParameter
+        {
+            get { return _actionParameter; }
+            set { _actionParameter = value; }
+        }
+
 
         private statusComponentePosicao _stCompPosicao;
 

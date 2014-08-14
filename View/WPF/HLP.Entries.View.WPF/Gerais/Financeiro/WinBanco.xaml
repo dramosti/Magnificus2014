@@ -26,7 +26,7 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10"></ColumnDefinition>
-                                <ColumnDefinition MaxWidth="125" MinWidth="125"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="175" MinWidth="175"></ColumnDefinition>
                                 <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                                 <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
@@ -46,9 +46,9 @@
 
                             <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                             <Components:CustomTextBlock Text="Código do Banco " Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Nome" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Nome Resumido" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Logotipo" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Nome do Banco" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Nome Resumido do Banco" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Logotipo do Banco" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
                             <Components:CustomTextBlock Text="D+" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
                             <Components:CustomTextBlock Text="D-" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
                             

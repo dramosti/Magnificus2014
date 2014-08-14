@@ -131,8 +131,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             }
             catch (FaultException fEx)
             {
-                if (fEx.Code.Name == "sql221")
-                    throw new Exception(message: fEx.Message);
+                throw new Exception(message: fEx.Message);
             }
             catch (Exception)
             {

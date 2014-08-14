@@ -6,7 +6,7 @@
         xmlns:conv="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
-        x:Class="HLP.Entries.View.WPF.Comercial.WinProduto"
+        x:Class="HLP.Entries.View.WPF.Gerais.WinProduto"
         Title="WinProduto" Height="660" Width="1024" NameView="vwProduto">
     <runtime:WindowsBase.Resources>
         <ResourceDictionary>
@@ -275,11 +275,11 @@
                                 <Components:CustomTextBlock Text="Peso Bruto" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Peso Líquido" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Prazo de Validade" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Data de Bloqueio" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Estoque Mínimo" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Estoque Máximo" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Unidade de Medida" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Ativo" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Data de Bloqueio" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Estoque Mínimo" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Estoque Máximo" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Unidade de Medida" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Ativo" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
 
                                 <!--Components-->
 
@@ -302,25 +302,25 @@
 									ToolTip="Informar o prazo de validade do produto em dias.">
                                 </Components:CustomTextBox>
                                 <Components:HlpDatePicker
-                                    Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date" Grid.ColumnSpan="2"
+                                    Grid.Column="2" Grid.Row="8" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date" Grid.ColumnSpan="2"
                                     xTextDate="{Binding currentModel.dBloqueio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="False"
 									ToolTip="Informa automaticamente a data de quando o produto foi desativado.">
                                 </Components:HlpDatePicker>
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="5"
+                                    Grid.Column="2" Grid.Row="4"
                                     Text="{Binding currentModel.nEstoqueMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informar a quantidade mínima que deve permanecer em estoque, para que o sistema faça um controle de estoque crítico através de um relatório padrão.">
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="6"
+                                    Grid.Column="2" Grid.Row="5"
                                     Text="{Binding currentModel.nEstoqueMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informar a quantidade máxima que deve permanecer em estoque, para que o sistema faça um controle de estoque máximo na hora de cotações e compras.">
                                 </Components:CustomTextBox>
                                 <Components:CustomPesquisa 
-									Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3"
+									Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="3"
 									xIdPesquisa="{Binding currentModel.idUnidadeMedidaEstoque, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informe a unidade de medida padrão de estoque, essa unidade será a padrão para todos os tipos de conversões a serem feitas."
@@ -331,7 +331,7 @@
                                     </Components:CustomPesquisa.Items>
                                 </Components:CustomPesquisa>
                                 <Components:CustomCheckBox
-                                    Grid.Column="2" Grid.Row="8"
+                                    Grid.Column="2" Grid.Row="7"
                                     IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Desmarque a opção se o produto não estiver ativo, desmarcando o produto não será mais mostrado em nenhuma tela seja ela de recebimento, estoque, produção ou vendas.">

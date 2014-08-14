@@ -168,7 +168,9 @@ namespace HLP.Entries.Model.Models.Gerais
         {
             get
             {
-                return base[columnName];
+                string xError = base[columnName];
+
+                return xError;
             }
         }
     }

@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net" default-lazy-init="true">
 
+  <object id="wdConfig" name="Configurações" singleton="false" scope="request"
+  type="HLP.Magnificus.View.WPF.wdConfig, MagnificusES">
+  </object>  
+
   <object id="WinSelectConnection" name="WinSelectConnection" singleton="false" scope="request"
   type="HLP.Magnificus.View.WPF.WinSelectConnection, MagnificusES">
   </object>
@@ -108,13 +112,13 @@
     type="HLP.Entries.View.WPF.GestãoDeMateriais.WinSite, HLP.Entries.View.WPF">
   </object>
   <object id="WinCanalVenda" name="Canal_de_Venda" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Comercial.WinCanalVenda, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Comercial.WinCanalVenda, HLP.Entries.View.WPF">
   </object>
   <object id="WinJuros" name="Juros" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinJuros, HLP.Entries.View.WPF">
   </object>
   <object id="WinListaPreco" name="Lista_de_Preço" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Comercial.WinListaPreco, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Comercial.WinListaPreco, HLP.Entries.View.WPF">
   </object>
   <object id="WinMulta" name="Multas" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinMulta, HLP.Entries.View.WPF">
@@ -183,13 +187,13 @@
     type="HLP.Entries.View.WPF.Gerais.WinAtribuicaoColetivaListaPreco, HLP.Entries.View.WPF">
   </object>
   <object id="WinProduto" name="Produtos" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Comercial.WinProduto, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.Gerais.WinProduto, HLP.Entries.View.WPF">
   </object>
   <object id="WinOrcamento" name="Orçamento" singleton="false" scope="request"
-    type="HLP.Sales.View.WPF.Comercial.WinOrcamento, HLP.Sales.View.WPF">
+    type="HLP.Sales.View.WPF.GestãoAdministrativa.Comercial.WinOrcamento, HLP.Sales.View.WPF">
   </object>
   <object id="WinTipoProduto" name="Tipo_de_Produto" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Comercial.WinTipoProduto, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.Gerais.WinTipoProduto, HLP.Entries.View.WPF">
   </object>
   <object id="StatusItensOrcamento" name="Status_Itens_Orçamento" singleton="false" scope="request"
       type="HLP.Sales.View.WPF.Comercial.StatusItensOrcamento, HLP.Sales.View.WPF">

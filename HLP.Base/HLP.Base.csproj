@@ -159,6 +159,7 @@
     <Content Include="Dlls\Spring\Spring.Core.dll" />
     <Content Include="Dlls\Sql\Microsoft.SqlServer.ConnectionInfo.dll" />
     <Content Include="Dlls\Sql\Microsoft.SqlServer.Management.Sdk.Sfc.dll" />
+    <Content Include="Dlls\Sql\Microsoft.SqlServer.Smo.dll" />
     <Content Include="Dlls\Sql\Microsoft.SqlServer.SmoExtended.dll" />
     <Content Include="Dlls\WebServices\HLP.WebServices.dll" />
   </ItemGroup>
@@ -168,6 +169,7 @@
       <Name>HLP.Report.View.WPF</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -59,9 +59,11 @@ namespace HLP.Magnificus.View.WPF
                 {
                     wdConfig configuracao = new wdConfig();
                     configuracao.ShowDialog();
+
                     System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                 }
-                Application.Current.Shutdown();
+                
+                Application.Current.Shutdown();                
             }
 
             this.bwSplash.RunWorkerAsync();
@@ -164,6 +166,7 @@ namespace HLP.Magnificus.View.WPF
                     {
                         this.txt.Text = "Configurando serviços...";
                     }));
+
                     Thread.Sleep(millisecondsTimeout: timeToWait);
                     bModificado = Sistema.SalvaTamanhoMensagensWcf();
 

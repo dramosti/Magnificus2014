@@ -208,7 +208,7 @@ namespace HLP.Wcf.Entries
                             f = this.iFamilia_ProdutoRepository.GetFamiliaProdutoByxFamilia(xValue:
                                         previewedValue);
 
-                            if (baseNode == null)
+                            if (baseNode == null && f != null)
                                 baseNode = new modelToTreeView
                                 {
                                     xIdAlternativo = HLP.Base.Static.Util.ReturnValueMasked(
