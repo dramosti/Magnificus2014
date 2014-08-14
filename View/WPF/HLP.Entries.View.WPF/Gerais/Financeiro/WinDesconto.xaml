@@ -4,6 +4,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinDesconto"
         Title="Descontos" Height="660" Width="1024"
@@ -14,9 +15,10 @@
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+            <c:NotConverter x:Key="notConverter"/>
         </ResourceDictionary>        
     </Window.Resources>
-    <Grid>
+    <AdornerDecorator>
         <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -40,45 +42,40 @@
                 </Grid.RowDefinitions>
                 <!--Label-->
 
-                <Components:CustomTextBlock Text="Código do Desconto" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Código Alternativo" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Descrição " Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Próximo Código de Desconto" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Liquido/Atual" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Meses" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Dias" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Percentual de Desconto" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1" labelFor="{Binding ElementName=txtCodigo}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código Alternativo" Grid.Column="1" Grid.Row="2" labelFor="{Binding ElementName=txtAlternativo}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Descrição " Grid.Column="1" Grid.Row="3" labelFor="{Binding ElementName=txtDescricao}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Próximo Código de Desconto" Grid.Column="1" Grid.Row="4" labelFor="{Binding ElementName=txtProximoCodigo}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Liquido/Atual" Grid.Column="1" Grid.Row="5" labelFor="{Binding ElementName=cbxStLiquidoAtual}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Meses" Grid.Column="1" Grid.Row="6" labelFor="{Binding ElementName=txtMeses}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Dias" Grid.Column="1" Grid.Row="7" labelFor="{Binding ElementName=txtDias}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Percentual de Desconto" Grid.Column="1" Grid.Row="8" labelFor="{Binding ElementName=txtPercentualDesconto}"></Components:CustomTextBlock>
                 
                 <!--Components-->
                 
-                <Components:CustomTextBox stCompPosicao="fieldId"
+                <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtCodigo"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idDescontosAvista, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     IsReadOnly="True"
 					ToolTip="Chave principal do registro do Desconto, campo autoincremental.">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox stCompPosicao="first"
+                <Components:CustomTextBox stCompPosicao="first" x:Name="txtAlternativo"
                     Grid.Column="2" Grid.Row="2"
                     Text="{Binding currentModel.xDescontos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding BIsEnabled , Converter={StaticResource notConverter}}"
 				    ToolTip="Digite o código alfanumérico para o desconto. Por exemplo, 10D2% para indicar que o cliente recebe um desconto de 2 por cento se o pagamento for feito 10 dias antes da data de vencimento. ">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtDescricao"
                     Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Digite uma breve descrição do desconto à vista, por exemplo, 10 dias antecipado 2 % de Desconto para o código de desconto 10D2%.">
-                </Components:CustomTextBox>
-                <Components:CustomPesquisa 
+                </Components:CustomTextBox>                
+                <Components:ucTextBoxIntellisense x:Name="txtProximoCodigo"
+					ucEnabled="{Binding bIsEnabled}"
 					Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3"
-					xIdPesquisa="{Binding currentModel.idProximoDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					FieldPesquisa="ID" TableView="vwDescontosAvista" NameWindowCadastro="WinDesconto">
-                    <Components:CustomPesquisa.Items>
-                        <System:String>xDescontos</System:String>
-                        <System:String>xDescricao</System:String>
-                    </Components:CustomPesquisa.Items>
-                </Components:CustomPesquisa>
+					selectedId="{Binding currentModel.idProximoDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  xNameView="vwDescontosAvistaqs" NameWindowCadastro="WinDesconto" TableView="vwDescontosAvista"
+                    />
                 <Components:CustomComboBox
                     Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" x:Name="cbxStLiquidoAtual"
                     SelectedIndex="{Binding currentModel.stLiquidoAtual, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -90,7 +87,7 @@
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>                
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="6"
+                    Grid.Column="2" Grid.Row="6" x:Name="txtMeses"
                     Text="{Binding currentModel.nMeses, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				    ToolTip="Digite o número de meses em que o desconto à vista será aplicável. ">
                     <Components:CustomTextBox.Style>
@@ -109,7 +106,7 @@
                     </Components:CustomTextBox.Style>
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="7"
+                    Grid.Column="2" Grid.Row="7" x:Name="txtDias"
                     Text="{Binding currentModel.nDias, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					ToolTip="Digite o número de dias em que o desconto à vista será aplicável. ">
                     <Components:CustomTextBox.Style>
@@ -129,7 +126,7 @@
 
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="8" stCompPosicao="last"
+                    Grid.Column="2" Grid.Row="8" stCompPosicao="last" x:Name="txtPercentualDesconto"
                     Text="{Binding currentModel.pDesconto, Mode=TwoWay, 
                     NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 					IsEnabled="{Binding bIsEnabled}"
@@ -137,5 +134,5 @@
                 </Components:CustomTextBox>
             </Grid>
         </Expander>
-    </Grid>
+    </AdornerDecorator>
 </runtime:WindowsBase>

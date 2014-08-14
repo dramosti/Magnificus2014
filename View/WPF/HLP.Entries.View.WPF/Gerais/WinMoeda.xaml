@@ -3,7 +3,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" 
-        xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
+        xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"        
         xmlns:convertLocal="clr-namespace:HLP.Entries.View.WPF.Gerais.Converters"
         x:Class="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinMoeda" x:Name="wdMoeda"
         Title="Moedas" Height="660" Width="1024" NameView="vwMoeda">
@@ -14,9 +14,9 @@
             </ResourceDictionary.MergedDictionaries>
             <convert:ImageToaByteConverter x:Key="imgConverter"></convert:ImageToaByteConverter>
             <convertLocal:MoedaPadraoConverter x:Key="moedaPadraoConverter"></convertLocal:MoedaPadraoConverter>
+            <convert:NotConverter x:Key="notConverter"/>
         </ResourceDictionary>
-    </runtime:WindowsBase.Resources>
-    <Grid>
+    </runtime:WindowsBase.Resources>    
         <AdornerDecorator>
             <Expander Header="Geral" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
                 <Grid x:Name="gridPropriedades">
@@ -35,45 +35,47 @@
                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                         <RowDefinition Height="Auto" MaxHeight="27"></RowDefinition>
                     </Grid.RowDefinitions>
+                    
                     <!--Label-->
 
-                    <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Text="Moeda " Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Text="Nome" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Text="Símbolo" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Text="Código ISO 4217" Grid.Column="1" Grid.Row="5"/>
+                    <Components:CustomTextBlock Text="Código" labelFor="{Binding ElementName=txtId}" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Moeda " labelFor="{Binding ElementName=txtMoeda}" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Nome" labelFor="{Binding ElementName=txtNome}" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Símbolo" labelFor="{Binding ElementName=txtSimbolo}" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Código ISO 4217" labelFor="{Binding ElementName=cbxMoedaPadrao}" Grid.Column="1" Grid.Row="5"/>
+                    
                     <!--Components-->
 
-                    <Components:CustomTextBox stCompPosicao="fieldId"
+                    <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtId"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idMoeda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					IsReadOnly="True"
 					ToolTip="Chave principal do registro da Moeda, campo autoincremental">
                     </Components:CustomTextBox>
-                    <Components:CustomTextBox stCompPosicao="first"
+                    <Components:CustomTextBox stCompPosicao="first" x:Name="txtMoeda"
                     Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xSiglaMoeda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 					ToolTip="O identificador exclusivo de um código de até três caracteres. ">
                     </Components:CustomTextBox>
-                    <Components:CustomTextBox
+                    <Components:CustomTextBox x:Name="txtNome"
                     Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xMoeda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 					ToolTip="Um nome para a moeda selecionada,  juntamente com o código da moeda, é impressa em cheques e outros documentos.">
                     </Components:CustomTextBox>
-                    <Components:CustomTextBox
+                    <Components:CustomTextBox x:Name="txtSimbolo"
                     Grid.Column="2" Grid.Row="4"
                     Text="{Binding currentModel.xSimbolo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 					ToolTip="Símbolo da moeda selecionada são usados frequentemente nos relatórios.">
                     </Components:CustomTextBox>
-                    <Components:CustomComboBox 
+                    <Components:CustomComboBox
                     SelectedItem="{Binding Path=selectedMoeda, UpdateSourceTrigger=PropertyChanged}"
-                    IsEnabled="{Binding bIsEnabled}"
+                    IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                     x:Name="cbxMoedaPadrao" Height="24" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3"
                     ItemsSource="{Binding ElementName=wdMoeda, Path=lMoedaPadrao}" >
                         <Components:CustomComboBox.SelectedIndex>
@@ -112,6 +114,5 @@
 
                 </Grid>
             </Expander>
-        </AdornerDecorator>
-    </Grid>
+        </AdornerDecorator>    
 </runtime:WindowsBase>

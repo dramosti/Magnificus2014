@@ -16,14 +16,16 @@
             </ResourceDictionary.MergedDictionaries>
             <conv:ByteToIntConverter x:Key="byteToIntConverter"/>
             <convLocal:DiasSemanasMesesIsEnabledConverter x:Key="dsmIsEnabledConverter"/>
+            <conv:NotConverter x:Key="notConverter"/>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid x:Name="gridPrincipal">
-        <Grid.RowDefinitions>
+    <AdornerDecorator>
+        <Grid x:Name="gridPrincipal">
+            <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Expander Header="Identificação" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+            <Expander Header="Identificação" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
@@ -40,34 +42,34 @@
                 </Grid.RowDefinitions>
                 <!--Label-->
 
-                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Código da Condição" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1" labelFor="{Binding ElementName=txtId}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código da Condição" Grid.Column="1" Grid.Row="2" labelFor="{Binding ElementName=txtIdCondicao}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3" labelFor="{Binding ElementName=txtDescricao}"></Components:CustomTextBlock>
 
                 <!--Components-->
 
-                <Components:CustomTextBox stCompPosicao="fieldId"
+                <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtId"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idCondicaoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsReadOnly="True"
 					ToolTip="Chave principal do registro da Condição de Pagamento, auto incremental.">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox stCompPosicao="first"
+                <Components:CustomTextBox stCompPosicao="first" x:Name="txtIdCondicao"
                     Grid.Column="2" Grid.Row="2"
                     Text="{Binding currentModel.xCondicaoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 					ToolTip="Insira um código ou um nome abreviado para as condições de pagamento.">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" x:Name="txtDescricao"
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 					ToolTip="Insira um nome descritivo para os termos de pagamento.">
                 </Components:CustomTextBox>
 
             </Grid>
         </Expander>
-        <Expander Header="Configuração" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="1" Focusable="False">
+            <Expander Header="Configuração" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="1" Focusable="False">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
@@ -92,16 +94,16 @@
                 </Grid.RowDefinitions>
                 <!--Label-->
 
-                <Components:CustomTextBlock Text="Método de Pagamento" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Condição" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Meses" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Semanas" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Dias" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Plano de Pagamento" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Dia de Pagamento" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Data de Vencimento" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Alocação de imposto sobre vendas" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Primeiro Pagamento é a Vista?" Grid.Column="1" Grid.Row="10" Margin="0,0,0,3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Método de Pagamento" labelFor="{Binding ElementName=cbxMetodo}" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Condição" Grid.Column="1" labelFor="{Binding ElementName=cbxCondicao}" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Meses" Grid.Column="1" labelFor="{Binding ElementName=txtMeses}" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Semanas" Grid.Column="1" labelFor="{Binding ElementName=txtSemanas}" Grid.Row="4"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Dias" Grid.Column="1" labelFor="{Binding ElementName=txtDias}" Grid.Row="5"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Plano de Pagamento" labelFor="{Binding ElementName=txtPlanoPagamento}" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Dia de Pagamento" labelFor="{Binding ElementName=txtDiaPagamento}" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Data de Vencimento" labelFor="{Binding ElementName=cbxDataVencimento}" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Alocação de imposto sobre vendas" labelFor="{Binding ElementName=cbxAlocacaoImpostos}" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Primeiro Pagamento é a Vista?" labelFor="{Binding ElementName=stPrimeiroPagamento}" Grid.Column="1" Grid.Row="10" Margin="0,0,0,3"></Components:CustomTextBlock>
 
                 <!--Components-->
 
@@ -109,7 +111,7 @@
                     Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"
                     SelectedIndex="{Binding currentModel.stMetodo, Mode=TwoWay, NotifyOnValidationError=True, 
                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"					
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 					ToolTip="Selecione o método a ser usado para calcular a data de vencimento. A caixa de listagem exibe todos os métodos disponíveis.">
                     <Components:CustomComboBox.Items>
                         <System:String>0-Cartão Crédito</System:String>
@@ -122,8 +124,9 @@
                         <System:String>7-Moeda Eletrônica</System:String>
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
-                <Components:CustomComboBox
+                <Components:CustomComboBox x:Name="cbxCondicao"
                     Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
+                    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
                     SelectedIndex="{Binding currentModel.stCondicao, Mode=TwoWay, NotifyOnValidationError=True,
                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"					
                     ToolTip="Informar qual é o tipo da condição sendo elas Avista ou Aprazo">
@@ -168,8 +171,9 @@
                         </Style>
                     </Components:CustomComboBox.Style>
                 </Components:CustomComboBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtMeses"
                     Grid.Column="2" Grid.Row="3"
+                    IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 					ToolTip="Insira o número de meses a ser adicionado ao método de pagamento para calcular a data de vencimento.">
                     <Components:CustomTextBox.IsEnabled>
                         <MultiBinding Converter="{StaticResource dsmIsEnabledConverter}" ConverterParameter="m">
@@ -194,8 +198,9 @@
                         </Binding>
                     </Components:CustomTextBox.Text>
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="4"                    	
+                <Components:CustomTextBox x:Name="txtSemanas"
+                    Grid.Column="2" Grid.Row="4"       
+                    
                     ToolTip="Insira o número de semanas a ser adicionado ao método de pagamento para calcular a data de vencimento.">
                     <Components:CustomTextBox.IsEnabled>
                         <MultiBinding Converter="{StaticResource dsmIsEnabledConverter}" ConverterParameter="s">
@@ -221,7 +226,7 @@
                         </Binding>
                     </Components:CustomTextBox.Text>
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtDias"
                     Grid.Column="2" Grid.Row="5"                    				 
                     ToolTip="Insira o número de dias a ser adicionado ao método de pagamento para calcular a data de vencimento.">
                     <Components:CustomTextBox.IsEnabled>
@@ -247,30 +252,19 @@
                             </Binding.ValidationRules>
                         </Binding>
                     </Components:CustomTextBox.Text>
-                </Components:CustomTextBox>
-                <Components:HlpPesquisa 
-					Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-					Text="{Binding currentModel.idPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="Vincule condições de pagamento a um plano de pagamento que define como um valor faturado " Table="Condicao_pagamento" 
-                    FieldPesquisa="ID" TableView="vwPlanoPagamento" WidthLabel="0" nameWindow="WinPlanoPagamento">
-                    <Components:HlpPesquisa.Items>
-                        <System:String>xPlanoPagamento</System:String>
-                        <System:String>xDescricao</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
-                <Components:HlpPesquisa 
-					Grid.Column="2" Grid.Row="7" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-					Text="{Binding currentModel.idDiaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					Field="idDiaPagamento" ToolTip="Selecione um dia de pagamento a ser usado para calcular a data de vencimento. A data de vencimento é sempre arredondada para a data mais próxima especificada. O dia de pagamento pode ser especificado: " 
-                    Table="Condicao_pagamento" FieldPesquisa="ID" TableView="vwDiaPagamento" WidthLabel="0" nameWindow="WinDiaPagamento">
-                    <Components:HlpPesquisa.Items>
-                        <System:String>xDiaPagamento</System:String>
-                        <System:String>xDescricao</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
-                <Components:CustomComboBox
+                </Components:CustomTextBox>                
+                <Components:ucTextBoxIntellisense x:Name="txtPlanoPagamento"
+					ucEnabled="{Binding bIsEnabled}"
+					Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2"
+					selectedId="{Binding currentModel.idPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  xNameView="vwPlanoPagamentoqs" NameWindowCadastro="WinPlanoPagamento" TableView="vwPlanoPagamento"
+                    />
+                <Components:ucTextBoxIntellisense x:Name="txtDiaPagamento"
+					ucEnabled="{Binding bIsEnabled}"
+					Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2"
+					selectedId="{Binding currentModel.idDiaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    xNameView="vwDiaPagamentoqs" NameWindowCadastro="WinDiaPagamento" TableView="vwDiaPagamento"
+                    />                      
+                <Components:CustomComboBox x:Name="cbxDataVencimento"
                     Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2"
                     SelectedIndex="{Binding currentModel.stDataVencimento, Mode=TwoWay, 
                     NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"
@@ -282,7 +276,7 @@
                         <System:String>2-Próximo dia útil</System:String>
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
-                <Components:CustomComboBox
+                <Components:CustomComboBox x:Name="cbxAlocacaoImpostos"
                     Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="2"
                     SelectedIndex="{Binding currentModel.stAlocacaoImposto, Mode=TwoWay, 
                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"
@@ -294,7 +288,7 @@
                         <System:String>2-Última prestação</System:String>
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
-                <Components:CustomCheckBox
+                <Components:CustomCheckBox x:Name="stPrimeiroPagamento"
                     Grid.Column="2" Grid.Row="10" stCompPosicao="last"                  									 
 				    IsChecked="{Binding currentModel.stPrimeiroPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
@@ -303,5 +297,6 @@
 
             </Grid>
         </Expander>
-    </Grid>
+        </Grid>
+    </AdornerDecorator>
 </runtime:WindowsBase>
