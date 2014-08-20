@@ -153,7 +153,10 @@ namespace HLP.Components.View.WPF
         public int selectedId
         {
             get { return (int)GetValue(selectedIdProperty); }
-            set { SetValue(selectedIdProperty, value); }
+            set
+            {
+                SetValue(selectedIdProperty, value);
+            }
         }
 
         // Using a DependencyProperty as the backing store for selectedId.  This enables animation, styling, binding, etc...
@@ -163,32 +166,58 @@ namespace HLP.Components.View.WPF
 
         public static void SelectedIdChanged(DependencyObject d, DependencyPropertyChangedEventArgs args)
         {
-            if (d != null)
+            if (d != null && args.NewValue != null)
             {
+                if ((d as ucTextBoxIntellisense).refMethod != null)
+                    (d as ucTextBoxIntellisense).model = (d as ucTextBoxIntellisense).refMethod.Invoke(arg: (int)args.NewValue);
+
                 (d as ucTextBoxIntellisense).txt.Text = String.Empty;
 
-                ((d as ucTextBoxIntellisense).customViewModel.cvs as BindingListCollectionView)
-                    .CustomFilter = String.Format(format: "Id = {0}", arg0: args.NewValue);
-
-                (d as ucTextBoxIntellisense).customViewModel.cvs.MoveCurrentToFirst();
-
-                if ((d as ucTextBoxIntellisense).customViewModel.cvs.CurrentItem != null)
+                if (((d as ucTextBoxIntellisense).customViewModel.cvs != null))
                 {
-                    string xText = String.Empty;
+                    ((d as ucTextBoxIntellisense).customViewModel.cvs as BindingListCollectionView)
+                        .CustomFilter = String.Format(format: "Id = {0}", arg0: args.NewValue);
 
-                    foreach (object item in ((d as ucTextBoxIntellisense).customViewModel.cvs.CurrentItem as DataRowView).Row.ItemArray)
+                    (d as ucTextBoxIntellisense).customViewModel.cvs.MoveCurrentToFirst();
+
+                    if ((d as ucTextBoxIntellisense).customViewModel.cvs.CurrentItem != null)
                     {
-                        if (item != null)
-                            xText += xText == "" ?
-                                item.ToString() : " - " + item.ToString();
-                    }
+                        string xText = String.Empty;
 
-                    (d as ucTextBoxIntellisense).txt.Text = xText;
+                        foreach (object item in ((d as ucTextBoxIntellisense).customViewModel.cvs.CurrentItem as DataRowView).Row.ItemArray)
+                        {
+                            if (item != null)
+                                xText += xText == "" ?
+                                    item.ToString() : " - " + item.ToString();
+                        }
+
+                        (d as ucTextBoxIntellisense).txt.Text = xText;
+                    }
                 }
             }
         }
 
+        public object model
+        {
+            get { return (object)GetValue(modelProperty); }
+            set { SetValue(modelProperty, value); }
+        }
 
+        public Func<int, object> refMethod
+        {
+            get { return (Func<int, object>)GetValue(refMethodProperty); }
+            set { SetValue(refMethodProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for refMethod.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty refMethodProperty =
+            DependencyProperty.Register("refMethod", typeof(Func<int, object>), typeof(ucTextBoxIntellisense), new PropertyMetadata(null));
+
+
+
+        // Using a DependencyProperty as the backing store for model.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty modelProperty =
+            DependencyProperty.Register("model", typeof(object), typeof(ucTextBoxIntellisense), new PropertyMetadata(null));
 
         public bool ucEnabled
         {
@@ -199,8 +228,6 @@ namespace HLP.Components.View.WPF
         // Using a DependencyProperty as the backing store for ucEnabled.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ucEnabledProperty =
             DependencyProperty.Register("ucEnabled", typeof(bool), typeof(ucTextBoxIntellisense), new PropertyMetadata(true));
-
-
 
         #endregion
 

@@ -391,7 +391,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void Novo(object _panel)
         {
             idOld = this.objViewModel.currentModel.idListaPrecoPai ?? 0;
-            this.objViewModel.currentModel = new Lista_Preco_PaiModel();
+            this.objViewModel.currentModel = new Lista_Preco_PaiModel();            
             this.objViewModel.lIdsHierarquia = new List<Components.Model.Models.HlpButtonHierarquiaStruct>();
             this.objViewModel.currentModel.nDiasSemAtualicao = 0;
             this.objViewModel.currentModel.dListaPreco = DateTime.Now;
@@ -530,9 +530,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 {
                     this.bOpCancelada = true;
                 }
-            this.objViewModel.hierarquiaListaPreco = null;
-            this.objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.getListaPreco);
-            this.objViewModel.bWorkerPesquisa.RunWorkerCompleted += bw_RunWorkerCompleted;
+            this.objViewModel.hierarquiaListaPreco = null;            
             this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
 

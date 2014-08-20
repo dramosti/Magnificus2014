@@ -36,6 +36,24 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         public ICommand CancAumVlrVendaCommand { get; set; }
         #endregion
 
+        #region function
+
+
+        private Func<int, object> _getProduto;
+
+        public Func<int, object> getProduto
+        {
+            get { return _getProduto; }
+            set
+            {
+                _getProduto = value;
+                base.NotifyPropertyChanged(propertyName: "getProduto");
+            }
+        }
+
+
+        #endregion
+
         public BackgroundWorker bwHierarquia;
         public bool bTreeCarregada = true;
         Lista_PrecoCommands comm;
@@ -59,6 +77,8 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             this.Botoes.Children.Add(element: btnAumVlr);
 
             this.bCompGeral = this.bCompListaAut = this.bCompListaManual = false;
+
+            this.getProduto = this.comm.GetProduto;
         }
 
         public bool PrecoCustoManual(int idProduto)
@@ -69,11 +89,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         public decimal GetPrecoCustoProduto(int idProduto)
         {
             return comm.GetPrecoCustoProduto(idProduto: idProduto);
-        }
-
-        public ProdutoModel GetProduto(int idProduto)
-        {
-            return comm.GetProduto(idProduto: idProduto);
         }
 
 

@@ -26,11 +26,6 @@
                     <System:String>vwUnidadeMedidaToComboBox</System:String>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-            <ObjectDataProvider x:Key="lresultProdutos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
-                <ObjectDataProvider.MethodParameters>
-                    <System:String>vwProdutoToComboBox</System:String>
-                </ObjectDataProvider.MethodParameters>
-            </ObjectDataProvider>
             <ObjectDataProvider x:Key="lresultFamiliaProduto" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
                 <ObjectDataProvider.MethodParameters>
                     <System:String>vwFamiliaProdutoToComboBox</System:String>
@@ -53,7 +48,7 @@
                 <AdornerDecorator>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="263*"></RowDefinition>
+                            <RowDefinition Height="325*"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="360*"></RowDefinition>
                         </Grid.RowDefinitions>
@@ -239,7 +234,7 @@
                                     <Button Grid.Column="10" Grid.Row="5"
                                         IsEnabled="{Binding bCompListaManual}"
                                         Command="{Binding gerarListaCommand}"
-                                        Content="Gerar Lista"/>
+                                        Content="Gerar Lista"/>                                    
                                 </Grid>
                             </Expander>
                         </DockPanel>
@@ -300,7 +295,8 @@
                                     IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     AutoGenerateColumns="False" 
                                     SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
-                                    CellEditEnding="gridItens_CellEditEnding">
+                                    CellEditEnding="gridItens_CellEditEnding"
+                                    >
                                     <DataGrid.Resources>
                                         <conv:decimalValueConverter x:Key="decimalValueConv"></conv:decimalValueConverter>
                                     </DataGrid.Resources>
@@ -338,23 +334,15 @@
                                         <DataGridTemplateColumn x:Name="clProdutos" Header="Produtos" Width="150">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding Path=idProduto, Converter={StaticResource cbxDisplayConv}, 
-                                            ConverterParameter={StaticResource lresultProdutos}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                                    <Components:ucTextBoxIntellisense
+                                                            selectedId="{Binding Path=idProduto, Mode=TwoWay, 
+                                                            UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, NotifyOnValidationError=True}"
+                                                            model="{Binding Path=objProduto, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                            refMethod="{Binding Path=Data.getProduto, Source={StaticResource proxy}}"
+                                                            xNameView="vwProdutoqs" NameWindowCadastro="WinProduto" TableView="vwProduto">
+                                                    </Components:ucTextBoxIntellisense>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
-                                            <DataGridTemplateColumn.CellEditingTemplate>
-                                                <DataTemplate>
-                                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStUsuario}" >
-                                                        <ComboBox x:Name="cbxStUsuario"
-                ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
-                                            SelectedValuePath="id"
-                                            DisplayMemberPath="display"                      
-            SelectedValue="{Binding idProduto,
-                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellEditingTemplate>
                                         </DataGridTemplateColumn>
                                         <DataGridComboBoxColumn IsReadOnly="True" Header="Unidade de Medida" ItemsSource="{Binding Source={StaticResource lResultConversao}}"
                                                                 DisplayMemberPath="display"
@@ -376,7 +364,7 @@
                                             <DataGridTextColumn.CellStyle>
                                                 <Style>
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding idProduto, Converter={StaticResource StCustoProdutoConverter}}" Value="False">
+                                                        <DataTrigger Binding="{Binding objProduto, Converter={StaticResource StCustoProdutoConverter}}" Value="False">
                                                             <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -558,5 +546,4 @@
             </TabItem>
         </TabControl>
     </DockPanel>
-
 </runtime:WindowsBase>

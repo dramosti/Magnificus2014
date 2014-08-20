@@ -17,8 +17,7 @@ namespace HLP.Comum.Model.Models
         {
             this.lDocumentos = new ObservableCollectionBaseCadastros<DocumentosModel>();
         }
-
-
+        
         private ObservableCollectionBaseCadastros<DocumentosModel> _lDocumentos;
 
         public ObservableCollectionBaseCadastros<DocumentosModel> lDocumentos

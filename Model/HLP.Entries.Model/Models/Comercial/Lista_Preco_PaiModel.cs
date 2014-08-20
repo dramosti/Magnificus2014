@@ -14,8 +14,6 @@ namespace HLP.Entries.Model.Models.Comercial
 {
     public partial class Lista_Preco_PaiModel : modelComum
     {
-        public static MethodInfo miGetProduto;
-        Window w;
 
         public Lista_Preco_PaiModel()
             : base(xTabela: "Lista_Preco_Pai")
@@ -23,17 +21,6 @@ namespace HLP.Entries.Model.Models.Comercial
             this.lLista_preco = new ObservableCollectionBaseCadastros<Lista_precoModel>();
             this.lLista_preco.CollectionChanged += this.lLista_preco_CollectionChanged;
 
-            w = Sistema.GetOpenWindow(xName: "WinListaPreco");
-
-            if (Application.Current != null)
-                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                {
-                    if (w != null)
-                    {
-                        miGetProduto = w.DataContext.GetType().GetMethod(name: "GetProduto");
-                    }
-                }
-                    ));
         }
 
         public void lLista_preco_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -265,14 +252,27 @@ namespace HLP.Entries.Model.Models.Comercial
 
     public partial class Lista_precoModel : modelComum
     {
-        ProdutoModel objProduto;
-        Window w;
+        private ProdutoModel _objProduto;
+
+        public ProdutoModel objProduto
+        {
+            get { return _objProduto; }
+            set
+            {
+                _objProduto = value;
+
+                if (value != null)
+                {
+                    this.selectedIdUnidadeVenda = value.idUnidadeMedidaVendas;
+                    this.selectedIdFamiliaProduto = value.idFamiliaProduto;
+                }
+            }
+        }
+
 
         public Lista_precoModel()
             : base(xTabela: "Lista_preco")
         {
-            w = Sistema.GetOpenWindow(xName: "WinListaPreco");
-
 
         }
 
@@ -333,7 +333,8 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _idListaPreco = value;
-                base.NotifyPropertyChanged(propertyName: "idListaPreco");
+                base.NotifyPropertyChanged(propertyName: "idListaPreco");               
+
             }
         }
         private int _idProduto;
@@ -344,24 +345,7 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _idProduto = value;
-
-                if (Lista_Preco_PaiModel.miGetProduto != null)
-                {
-                    if (Application.Current != null)
-                        Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                            {
-                                objProduto = Lista_Preco_PaiModel.miGetProduto.Invoke(
-                            obj: w.DataContext, parameters: new object[] { value }) as ProdutoModel;
-
-                                if (objProduto != null)
-                                {
-                                    this.selectedIdUnidadeVenda = objProduto.idUnidadeMedidaVendas;
-                                    this.selectedIdFamiliaProduto = objProduto.idFamiliaProduto;
-                                }
-                            }));
-                }
-
-                base.NotifyPropertyChanged(propertyName: "idProduto");
+                base.NotifyPropertyChanged(propertyName: "idProduto");               
             }
         }
         private decimal _vCustoProduto;

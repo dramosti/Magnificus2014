@@ -726,7 +726,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             return objEmpresaService.GetObject(id: idEmpresa);
         }
 
-        public Cliente_fornecedorModel GetCliente(int idCliente)
+        public object GetCliente(int idCliente)
         {
             return objClienteService.GetObjeto(id: idCliente);
         }

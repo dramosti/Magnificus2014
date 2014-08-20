@@ -371,7 +371,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
                                 string.Concat(win.xName.Replace('_', ' ').Select(c => char.IsUpper(c) ? " " + c.ToString() : c.ToString()))
                                         .TrimStart()
                                 : string.Concat(subs.Select(c => char.IsUpper(c) ? " " + c.ToString() : c.ToString()))
-                                        .TrimStart()                                 
+                                        .TrimStart()
                             };
 
                             currentMenu.Add(item: newMenu);
@@ -609,7 +609,8 @@ namespace HLP.ComumView.ViewModel.ViewModel
         {
             lTabControls = new Stack<FrameworkElement>();
 
-            this.bwFocus.RunWorkerAsync(argument: comp);
+            if (!bwFocus.IsBusy)
+                this.bwFocus.RunWorkerAsync(argument: comp);
         }
 
         private void GetAllParentsComp(FrameworkElement comp)

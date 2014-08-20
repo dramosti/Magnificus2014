@@ -592,6 +592,7 @@ namespace HLP.ComumView.ViewModel.Commands
                             if ((this.currentIndexLTextBlockSearched + 1) == this.lTextBlockSearched.Count)
                                 this.currentIndexLTextBlockSearched = 0;
 
+                            //TODO: CONTINUAR DAQUI
                             focusedTextBlock = this.lTextBlockSearched[index: this.currentIndexLTextBlockSearched + 1] as TextBlock;
 
                             if (focusedTextBlock != null)

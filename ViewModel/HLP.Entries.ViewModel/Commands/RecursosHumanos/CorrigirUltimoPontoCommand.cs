@@ -30,12 +30,27 @@ namespace HLP.Entries.ViewModel.Commands.RecursosHumanos
             servicoFuncionario = new FuncionarioService();
             serviceCalendario = new CalendarioService();
             this.ViewModel.bWorkerPesquisa.DoWork += bWorkerPesquisa_DoWork;
+            this.ViewModel.bWorkerPesquisa.RunWorkerCompleted += bWorkerPesquisa_RunWorkerCompleted;
             this.ViewModel.SelectTodosCommand = new RelayCommand(execute: paramExec => this.SelectTodos(),
               canExecute: paramCan => this.CanAcoes());
 
             this.ViewModel.CorrigirCommand = new RelayCommand(execute: paramExec => this.SalvarAlteracoes(paramExec),
               canExecute: paramCan => this.CanSalvarAlteracoes());
 
+        }
+
+        void bWorkerPesquisa_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                throw e.Error;
+            }
+            else
+            {
+                if (e.Result != null)
+                    this.ViewModel.ldia = new System.Collections.ObjectModel.ObservableCollection<CorrigeUltimoPontoModel>(list:
+                        e.Result as List<CorrigeUltimoPontoModel>);
+            }
         }
 
         void SalvarAlteracoes(object win)
@@ -82,29 +97,24 @@ namespace HLP.Entries.ViewModel.Commands.RecursosHumanos
 
         void bWorkerPesquisa_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            this.CarregaUltimosLancamentos(ViewModel.idFuncionario, ViewModel.dtMes);
-        }
-        private void CarregaUltimosLancamentos(int idFuncionario, DateTime dtDia)
-        {
             try
             {
-                FuncionarioModel objFunc = servicoFuncionario.GetObject(idFuncionario, false);
+                FuncionarioModel objFunc = servicoFuncionario.GetObject(ViewModel.idFuncionario, false);
+                List<CorrigeUltimoPontoModel> lCorrecoes = new List<CorrigeUltimoPontoModel>();
                 if (objFunc.idCalendario != null)
                 {
                     CalendarioModel objCalendarioModel = serviceCalendario.GetObject((int)objFunc.idCalendario, false);
 
-                    int iDaysMonth = System.DateTime.DaysInMonth(dtDia.Year, dtDia.Month);
-                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                {
+                    int iDaysMonth = System.DateTime.DaysInMonth(ViewModel.dtMes.Year, ViewModel.dtMes.Month);
                     this.ViewModel.ldia = new System.Collections.ObjectModel.ObservableCollection<CorrigeUltimoPontoModel>();
                     CorrigeUltimoPontoModel obj;
                     for (int i = 1; i <= iDaysMonth; i++)
                     {
                         obj = new CorrigeUltimoPontoModel();
-                        obj.dia = new DateTime(dtDia.Year, dtDia.Month, i);
+                        obj.dia = new DateTime(ViewModel.dtMes.Year, ViewModel.dtMes.Month, i);
                         if (obj.dia.DayOfWeek != DayOfWeek.Saturday && obj.dia.DayOfWeek != DayOfWeek.Sunday)
                         {
-                            obj.ponto = servicoFuncPonto.GetLastFuncionario_Controle_Horas_PontoDia(idFuncionario, obj.dia);
+                            obj.ponto = servicoFuncPonto.GetLastFuncionario_Controle_Horas_PontoDia(ViewModel.idFuncionario, obj.dia);
 
                             if (obj.dia.DayOfWeek == DayOfWeek.Friday)
                             {
@@ -116,19 +126,22 @@ namespace HLP.Entries.ViewModel.Commands.RecursosHumanos
                             }
                             if (obj.ponto != null)
                             {
-                                if (obj.ponto.hAlteradaUsuario == new TimeSpan())
+
+                                if (obj.ponto.hAlteradaUsuario == new TimeSpan()
+                                    || obj.ponto.hAlteradaUsuario == null)
                                 {
-                                    this.ViewModel.ldia.Add(obj);
+                                    lCorrecoes.Add(item: obj);
                                     if (obj.ponto.hRelogioPonto > obj.horaAlterada)
                                         obj.bSeleciona = true;
+
                                 }
                             }
                         }
                     }
-                }));
                 }
-            }
 
+                e.Result = lCorrecoes;
+            }
             catch (Exception ex)
             {
                 throw ex;

@@ -1,4 +1,5 @@
-﻿using HLP.Entries.ViewModel.ViewModels.Comercial;
+﻿using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.ViewModel.ViewModels.Comercial;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,10 @@ namespace HLP.Entries.View.WPF.Comercial.Converter
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if ((int)value == 0)
+            if (value == null)
                 return false;
 
-            Lista_PrecoViewModel objViewModel = new Lista_PrecoViewModel();
-
-            return objViewModel.PrecoCustoManual(idProduto: (int)value);
+            return (value as ProdutoModel).stCusto == (byte)1;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

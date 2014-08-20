@@ -30,7 +30,6 @@ namespace HLP.Entries.View.WPF.GestãoAdministrativa.Comercial
             try
             {
                 this.ViewModel = new Lista_PrecoViewModel();
-                //object o = navHierarquia.DataContext;
             }
             catch (Exception ex)
             {
