@@ -30,6 +30,7 @@ namespace HLP.Entries.View.WPF.GestãoAdministrativa.Comercial
             try
             {
                 this.ViewModel = new Lista_PrecoViewModel();
+                
             }
             catch (Exception ex)
             {
@@ -37,7 +38,7 @@ namespace HLP.Entries.View.WPF.GestãoAdministrativa.Comercial
                 throw ex;
             }
 
-        }
+        }        
 
         public Lista_PrecoViewModel ViewModel
         {
@@ -60,7 +61,7 @@ namespace HLP.Entries.View.WPF.GestãoAdministrativa.Comercial
         private void gridItens_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             this.gridItens.BindingGroup.UpdateSources();
-
+            
             if (e.Column.Header.ToString() == "Produtos")
             {
                 DataGridCell c = Util.GetCell(grid: (DataGrid)sender, row: e.Row, column: 1);
@@ -109,6 +110,14 @@ namespace HLP.Entries.View.WPF.GestãoAdministrativa.Comercial
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void CustomTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.SystemKey == Key.F10)
+            {
+
+            }
         }
     }
 }

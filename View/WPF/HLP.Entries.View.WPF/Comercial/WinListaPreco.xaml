@@ -117,7 +117,7 @@
                     Text="{Binding currentModel.xCodigoListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bCompGeral}"
 					ToolTip="Digite um código para a recém-criada Lista de preço"/>
-                                    <Components:CustomTextBox                                             
+                                    <Components:CustomTextBox    KeyUp="CustomTextBox_KeyUp"                                         
                     Grid.Column="2" Grid.Row="3"
                     Text="{Binding currentModel.xLista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
@@ -289,30 +289,28 @@
                                         </Button.Template>
                                     </Button>
                                 </StackPanel>
-                                <DataGrid
-						 Name="gridItens"
-                                    ItemsSource="{Binding currentModel.lLista_preco}"                                    
+                                <Components:CustomDataGrid
+                                    EnableColumnVirtualization="True" EnableRowVirtualization="True" Name="gridItens"
+                                    ItemsSource="{Binding currentModel.lLista_preco, IsAsync=True}"                                    
                                     IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
-                                    AutoGenerateColumns="False" 
-                                    SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
-                                    CellEditEnding="gridItens_CellEditEnding"
-                                    >
-                                    <DataGrid.Resources>
+                                    AutoGenerateColumns="False" SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
+                                    lastColumn="{Binding ElementName=clUnidMedida}">
+                                    <Components:CustomDataGrid.Resources>
                                         <conv:decimalValueConverter x:Key="decimalValueConv"></conv:decimalValueConverter>
-                                    </DataGrid.Resources>
-                                    <DataGrid.CanUserDeleteRows>
+                                    </Components:CustomDataGrid.Resources>
+                                    <Components:CustomDataGrid.CanUserDeleteRows>
                                         <MultiBinding Converter="{StaticResource canUserAddListaItensConv}">
                                             <Binding Path="visAumentoVlr"></Binding>
                                             <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"></Binding>
                                         </MultiBinding>
-                                    </DataGrid.CanUserDeleteRows>
-                                    <DataGrid.CanUserAddRows>
+                                    </Components:CustomDataGrid.CanUserDeleteRows>
+                                    <Components:CustomDataGrid.CanUserAddRows>
                                         <MultiBinding Converter="{StaticResource canUserAddListaItensConv}">
                                             <Binding Path="visAumentoVlr"></Binding>
                                             <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"></Binding>
                                         </MultiBinding>
-                                    </DataGrid.CanUserAddRows>
-                                    <DataGrid.BindingGroup>
+                                    </Components:CustomDataGrid.CanUserAddRows>
+                                    <Components:CustomDataGrid.BindingGroup>
                                         <BindingGroup NotifyOnValidationError="True">
                                             <BindingGroup.ValidationRules>
                                                 <v:ListUniqueValuesValidationRule                                
@@ -320,8 +318,8 @@
                                 xCampos="idProduto"></v:ListUniqueValuesValidationRule>
                                             </BindingGroup.ValidationRules>
                                         </BindingGroup>
-                                    </DataGrid.BindingGroup>
-                                    <DataGrid.Columns>
+                                    </Components:CustomDataGrid.BindingGroup>
+                                    <Components:CustomDataGrid.Columns>
                                         <DataGridCheckBoxColumn Binding="{Binding bChecked}"
                                                         Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}}"
                                                         >
@@ -331,19 +329,29 @@
                                                 </DataTemplate>
                                             </DataGridCheckBoxColumn.HeaderTemplate>
                                         </DataGridCheckBoxColumn>
-                                        <DataGridTemplateColumn x:Name="clProdutos" Header="Produtos" Width="150">
+                                        <DataGridTemplateColumn Header="Produtos"
+                                                                >
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Components:ucTextBoxIntellisense
+                                                    <TextBlock
+                                                        Text="{Binding Path=idProduto}"></TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTemplateColumn.CellEditingTemplate>
+                                                <DataTemplate>
+                                                    <Grid FocusManager.FocusedElement="{Binding ElementName=uc}" >
+                                                        <Components:ucTextBoxIntellisense x:Name="uc"
                                                             selectedId="{Binding Path=idProduto, Mode=TwoWay, 
                                                             UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, NotifyOnValidationError=True}"
                                                             model="{Binding Path=objProduto, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                             refMethod="{Binding Path=Data.getProduto, Source={StaticResource proxy}}"
                                                             xNameView="vwProdutoqs" NameWindowCadastro="WinProduto" TableView="vwProduto">
-                                                    </Components:ucTextBoxIntellisense>
+                                                        </Components:ucTextBoxIntellisense>
+                                                    </Grid>
                                                 </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn.CellEditingTemplate>
                                         </DataGridTemplateColumn>
+
                                         <DataGridComboBoxColumn IsReadOnly="True" Header="Unidade de Medida" ItemsSource="{Binding Source={StaticResource lResultConversao}}"
                                                                 DisplayMemberPath="display"
                                                                 SelectedValuePath="id"
@@ -466,14 +474,16 @@
                                             </DataGridTemplateColumn.CellTemplate>
                                             <DataGridTemplateColumn.CellEditingTemplate>
                                                 <DataTemplate>
-                                                    <Grid FocusManager.FocusedElement="{Binding ElementName= dateScheduledPicker}" >
-                                                        <DatePicker x:Name="dateScheduledPicker" SelectedDate="{Binding Path=dAlteracaoCusto
-                                                , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
+                                                    <Grid FocusManager.FocusedElement="{Binding ElementName=dateScheduledPicker}" >
+                                                        <Components:HlpDatePicker x:Name="dateScheduledPicker"
+                                                            xTextDate="{Binding Path=dAlteracaoCusto
+                                                , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}">                                                            
+                                                        </Components:HlpDatePicker>
                                                     </Grid>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellEditingTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn 
+                                        <DataGridTemplateColumn
                                     IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
                                     Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
                                     x:Name="clUnidMedida" Header="Unidade Medida" Width="150" >
@@ -502,10 +512,9 @@
                                                     Header="Vlr. Final" 
                                                     Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}}"
                                                     >
-
                                         </DataGridTextColumn>
-                                    </DataGrid.Columns>
-                                    <DataGrid.RowStyle>
+                                    </Components:CustomDataGrid.Columns>
+                                    <Components:CustomDataGrid.RowStyle>
                                         <Style>
                                             <Style.Triggers>
                                                 <DataTrigger>
@@ -532,8 +541,8 @@
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
-                                    </DataGrid.RowStyle>
-                                </DataGrid>
+                                    </Components:CustomDataGrid.RowStyle>
+                                </Components:CustomDataGrid>                                
                             </DockPanel>
                         </Expander>
                     </Grid>

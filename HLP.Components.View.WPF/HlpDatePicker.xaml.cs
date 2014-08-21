@@ -23,15 +23,11 @@ namespace HLP.Components.View.WPF
     /// </summary>
     public partial class HlpDatePicker : UserControl
     {
-        private bool focused = false;
-
         public HlpDatePicker()
         {
             InitializeComponent();
 
             this.btnCalendar.Content = DateTime.Now.Day;
-
-            this.GotFocus += HlpDatePicker_GotFocus;
 
             this.LostFocus += HlpDatePicker_LostFocus;
         }
@@ -72,31 +68,6 @@ namespace HLP.Components.View.WPF
         {
             get { return _actionParameter; }
             set { _actionParameter = value; }
-        }
-
-        void HlpDatePicker_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (this.focused == false)
-            {
-                switch (this.stFormatoDtPicker)
-                {
-                    case StFormatoDatePicker.time:
-                        {
-                            this.txtHora.Focus();
-                            this.focused = true;
-                        }
-                        break;
-                    case StFormatoDatePicker.date:
-                    case StFormatoDatePicker.datetime:
-                        {
-                            this.txtData.Focus();
-                            this.focused = true;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
         }
 
         public StFormatoDatePicker stFormatoDtPicker

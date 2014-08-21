@@ -1,6 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
-using HLP.Comum.Resources.Util;
+using HLP.Base.Static;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Transportes;
 using Ninject;

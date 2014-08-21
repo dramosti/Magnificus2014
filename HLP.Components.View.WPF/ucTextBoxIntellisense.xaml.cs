@@ -217,7 +217,13 @@ namespace HLP.Components.View.WPF
 
         // Using a DependencyProperty as the backing store for model.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty modelProperty =
-            DependencyProperty.Register("model", typeof(object), typeof(ucTextBoxIntellisense), new PropertyMetadata(null));
+            DependencyProperty.Register("model", typeof(object), typeof(ucTextBoxIntellisense), 
+            new PropertyMetadata(defaultValue: null, propertyChangedCallback: new PropertyChangedCallback(modelChanged)));
+
+        private static void modelChanged(DependencyObject d, DependencyPropertyChangedEventArgs a)
+        {
+
+        }
 
         public bool ucEnabled
         {

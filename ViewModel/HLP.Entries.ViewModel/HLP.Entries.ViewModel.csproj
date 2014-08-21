@@ -185,10 +185,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
-      <Project>{178fdd5c-d3e5-4809-87c6-3a69c0055bc6}</Project>
-      <Name>HLP.Comum.View</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
       <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
       <Name>HLP.Dependencies</Name>

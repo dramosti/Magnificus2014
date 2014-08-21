@@ -1,6 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
-using HLP.Comum.Facade.Magnificus;
 using HLP.ComumView.ViewModel.ViewModel;
 using System;
 using System.Collections.Generic;

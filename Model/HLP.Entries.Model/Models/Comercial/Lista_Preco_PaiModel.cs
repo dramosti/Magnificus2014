@@ -528,8 +528,6 @@ namespace HLP.Entries.Model.Models.Comercial
 
         #region Propriedades não mapeadas de Produtos
 
-
-
         #endregion
 
         #region Propriedades não mapeadas

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-             xmlns:convertComum="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+                xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
              xmlns:conv ="clr-namespace:HLP.Entries.View.WPF.Converters"             
              xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"     
              x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinLancamentoManualPonto" 
@@ -19,8 +19,7 @@
         </CollectionViewSource>
         <conv:VerifyCanChangeHourConverter x:Key="VerifyCanChangeHourConverter"/>
         <conv:ReturnValueSequenciaPontoConverter x:Key="ReturnValueSequenciaPontoConverter"/>
-        
-        <convertComum:TimeSpanToString x:Key="tstoString"/>
+        <convert:TimeSpanToString x:Key="tstoString"/>
         <Style x:Key="ButtonSalvar" TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">

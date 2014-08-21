@@ -7,7 +7,7 @@
     x:Class="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinCondicaoPagamento"
     xmlns:conv="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
     xmlns:convLocal="clr-namespace:HLP.Entries.View.WPF.Gerais.Converters"
-    xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
+    xmlns:v="clr-namespace:HLP.Components.View.WPF.Validates;assembly=HLP.Components.View.WPF"
         Title="Condição de Pagamento" Height="600" Width="1024" NameView="vwCondicaoPagamento">
     <Window.Resources>
         <ResourceDictionary>

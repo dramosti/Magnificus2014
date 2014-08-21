@@ -2,7 +2,7 @@
 using HLP.Base.EnumsBases;
 using HLP.Components.Model.Models;
 using HLP.Components.Model.Repository.Interfaces;
-using HLP.Comum.Resources.Util;
+using HLP.Base.Static;
 using HLP.Dependencies;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.Model.Repository.Interfaces.Transportes;

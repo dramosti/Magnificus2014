@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ConvertLocal="clr-namespace:HLP.Components.View.WPF.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="20" Height="20" x:Name="ucDtPicker">
+             d:DesignHeight="20" Height="20" x:Name="ucDtPicker" FocusManager.FocusedElement="{Binding ElementName=txtData}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

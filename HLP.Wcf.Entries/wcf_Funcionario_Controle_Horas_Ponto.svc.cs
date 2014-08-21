@@ -1,5 +1,5 @@
 ﻿using HLP.Base.EnumsBases;
-using HLP.Comum.Resources.Util;
+using HLP.Base.Static;
 using HLP.Dependencies;
 using Ninject;
 using System;

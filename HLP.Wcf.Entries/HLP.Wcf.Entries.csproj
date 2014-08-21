@@ -455,10 +455,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Comum\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
-      <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
-      <Name>HLP.Comum.Resources</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
       <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
       <Name>HLP.Dependencies</Name>
