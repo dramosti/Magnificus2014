@@ -64,13 +64,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
         ParameterBase<Lista_precoModel>.SetParameterValue(objLista_preco));
         }
 
-        public Lista_precoModel GetLista_preco(int idListaPreco)
+        private IRowMapper<Lista_precoModel> getMap()
         {
-            if (regAcessor == null)
-            {
-                regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Lista_preco]",
-                   new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idListaPreco"),
-                   MapBuilder<Lista_precoModel>.MapAllProperties()
+            return MapBuilder<Lista_precoModel>.MapAllProperties()
                    .DoNotMap(i => i.status)
                    .DoNotMap(i => i.bChecked)
                    .DoNotMap(i => i.vlrEsperado)
@@ -78,7 +74,16 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                    .DoNotMap(i => i.selectedIdFamiliaProduto)
                    .DoNotMap(i => i.selectedIdUnidadeVenda)
                    .DoNotMap(i => i.objProduto)
-                   .Build());
+                   .Build();
+        }
+
+        public Lista_precoModel GetLista_preco(int idListaPreco)
+        {
+            if (regAcessor == null)
+            {
+                regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Lista_preco]",
+                   new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idListaPreco"),
+                   this.getMap());
             }
             return regAcessor.Execute(idListaPreco).FirstOrDefault();
         }
@@ -87,16 +92,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
         {
             DataAccessor<Lista_precoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Lista_preco WHERE idListaPrecoPai = @idListaPrecoPai", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idListaPrecoPai"),
-            MapBuilder<Lista_precoModel>.MapAllProperties()
-            .DoNotMap(i => i.status)
-            .DoNotMap(i => i.status)
-            .DoNotMap(i => i.bChecked)
-            .DoNotMap(i => i.vlrEsperado)
-            .DoNotMap(i => i.stMarkupLista)
-            .DoNotMap(i => i.selectedIdFamiliaProduto)
-                   .DoNotMap(i => i.selectedIdUnidadeVenda)
-                   .DoNotMap(i => i.objProduto)
-            .Build());
+            this.getMap());
 
             try
             {
