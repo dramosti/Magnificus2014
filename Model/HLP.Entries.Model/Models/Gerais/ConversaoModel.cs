@@ -12,7 +12,7 @@ namespace HLP.Entries.Model.Models.Gerais
     {
         public ConversaoModel()
             : base(xTabela: "Conversao")
-        {
+        {            
         }
 
         private int? _idConversao;
@@ -43,6 +43,7 @@ namespace HLP.Entries.Model.Models.Gerais
         private int _idProduto;
 
         [ParameterOrder(Order = 3)]
+        [SkipValidation(skip: true)]
         public int idProduto
         {
             get { return _idProduto; }

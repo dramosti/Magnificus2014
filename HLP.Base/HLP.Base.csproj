@@ -110,6 +110,7 @@
     <Compile Include="ClassesBases\BasicModel.cs" />
     <Compile Include="ClassesBases\BindingProxy.cs" />
     <Compile Include="ClassesBases\DateTimeEnumerator.cs" />
+    <Compile Include="ClassesBases\HlpCustomAttributes.cs" />
     <Compile Include="ClassesBases\InternetCS.cs" />
     <Compile Include="ClassesBases\MessageHlp.cs" />
     <Compile Include="ClassesBases\modelBase.cs" />

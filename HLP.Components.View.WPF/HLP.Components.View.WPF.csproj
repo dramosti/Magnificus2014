@@ -75,6 +75,7 @@
     <Compile Include="Converter\DateTimeToStringLongConverter.cs" />
     <Compile Include="Converter\DecimalToStringConverter.cs" />
     <Compile Include="Converter\decimalValueConverter.cs" />
+    <Compile Include="Converter\focusedElementDateCompConverter.cs" />
     <Compile Include="Converter\HlpNavigationMultiConverter.cs" />
     <Compile Include="Converter\HlpNavigationVisibilityConverter.cs" />
     <Compile Include="Converter\HlpPesquisaConverter.cs" />

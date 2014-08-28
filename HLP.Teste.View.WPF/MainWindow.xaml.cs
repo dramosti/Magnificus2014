@@ -12,10 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using HLP.Entries.Services.Gerais;
-using HLP.Entries.Model.Comercial;
 using HLP.Comum.ViewModel.ViewModel;
-using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Services.Gerais;
+using System.Collections.ObjectModel;
 
 namespace HLP.Teste.View.WPF
 {
@@ -27,29 +27,57 @@ namespace HLP.Teste.View.WPF
         public MainWindow()
         {
             InitializeComponent();
-            this.vm = new MainWindowViewModel();
+            this.viewModel = new MainWindowViewModel();            
         }
 
-
-
-        public MainWindowViewModel vm
+        public MainWindowViewModel viewModel
         {
-            get { return this.DataContext as MainWindowViewModel; }
-            set { this.DataContext = value; }
+            get
+            {
+                return this.DataContext as MainWindowViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
-
     }
 
-    public class MainWindowViewModel : viewModelComum<ProdutoModel>
+    public class MainWindowViewModel : viewModelComum<Unidade_medidaModel>
     {
-        public ConversaoService s { get; set; }
-
-
+        Unidade_MedidaService objService;
         public MainWindowViewModel()
         {
-            s = new ConversaoService();
+            this.lUnidadesMedidas = new ObservableCollection<Unidade_medidaModel>();
+            this.lUnidadesMedidasTk = new ObservableCollection<Unidade_medidaModel>();            
 
-            this.currentModel = s.GetObject(id: 1046);            
+            this.objService = new Unidade_MedidaService();
         }
+
+        private ObservableCollection<Unidade_medidaModel> _lUnidadesMedidas;
+
+        public ObservableCollection<Unidade_medidaModel> lUnidadesMedidas
+        {
+            get { return _lUnidadesMedidas; }
+            set
+            {
+                _lUnidadesMedidas = value;
+                base.NotifyPropertyChanged(propertyName: "lUfs");
+            }
+        }
+
+
+        private ObservableCollection<Unidade_medidaModel> _lUnidadesMedidasTk;
+
+        public ObservableCollection<Unidade_medidaModel> lUnidadesMedidasTk
+        {
+            get { return _lUnidadesMedidasTk; }
+            set
+            {
+                _lUnidadesMedidasTk = value;
+                base.NotifyPropertyChanged(propertyName: "lUnidadesMedidasTk");
+            }
+        }
+
     }
 }

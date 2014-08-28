@@ -5,7 +5,7 @@
         xmlns:v="clr-namespace:HLP.Components.View.WPF.Validates;assembly=HLP.Components.View.WPF"
         xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"        
         xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
-        xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" 
+        xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"         
     xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Entries.View.WPF.GestãoDeMateriais.WinConversao"
         Title="Conversão" Height="660" Width="1024" NameView="vwProduto" x:Name="wdConversao">
     <Window.Resources>
@@ -13,10 +13,20 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type DataGridRow}">
+                <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="true">
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderBrush" Value="Red"/>
+                        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
             <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"></convert:ComboBoxDisplayConverter>
             <convert:NotConverter x:Key="notConverter"/>
             <convert:SelectedItemToTextConverter x:Key="selectedItemToTextConverter"/>
             <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
+            <convert:decimalValueConverter x:Key="decimalConverter"/>
             <ObjectDataProvider x:Key="lResultConversao" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
                 <ObjectDataProvider.MethodParameters>
                     <System:String>vwUnidadeMedidaToComboBox</System:String>
@@ -62,22 +72,21 @@
                     </Components:CustomPesquisa.Items>
                 </Components:CustomPesquisa>
 
+                <Components:CustomTextBox Grid.Column="3" Grid.Row="1"></Components:CustomTextBox>
             </Grid>
         </Expander>
         <Expander
             Header="Grade" Style="{StaticResource ExpanderPadrao}" Focusable="False" IsExpanded="True" Grid.Row="1">
             <Grid>
-                <DataGrid
-                    Name="gridConversao"
-						  ItemsSource="{Binding currentModel.lProdutos_Conversao}" SelectedItem="{Binding Path=currentConversao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <Components:CustomDataGrid
+                                        Name="gridConversao"	  ItemsSource="{Binding currentModel.lProdutos_Conversao}" SelectedItem="{Binding Path=currentConversao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
                           CanUserDeleteRows="True"
-                          CanUserAddRows="True" 
                           CellEditEnding="gridConversao_CellEditEnding"                            
                     >
-                    <DataGrid.BindingGroup>
+                    <Components:CustomDataGrid.BindingGroup>
                         <BindingGroup                             
                             NotifyOnValidationError="True">
                             <BindingGroup.ValidationRules>
@@ -86,8 +95,8 @@
                                 xCampos="idDeUnidadeMedida-idParaUnidadeMedida"></v:ListUniqueValuesValidationRule>
                             </BindingGroup.ValidationRules>
                         </BindingGroup>
-                    </DataGrid.BindingGroup>
-                    <DataGrid.Columns>
+                    </Components:CustomDataGrid.BindingGroup>
+                    <Components:CustomDataGrid.Columns>
                         <DataGridTemplateColumn x:Name="clDeUnidade" Header="Da Unidade" Width="150" IsReadOnly="True">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -98,13 +107,14 @@
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
                                     <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStUsuario}" >
-                                        <ComboBox x:Name="cbxStUsuario"
+                                        <Components:CustomComboBox
+                                            x:Name="cbxStUsuario"
                 ItemsSource="{Binding Source={StaticResource lResultConversao}}"
                                             SelectedValuePath="id"
                                             DisplayMemberPath="display"                      
             SelectedValue="{Binding idDeUnidadeMedida,
-                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
+                                UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                        </Components:CustomComboBox>
                                     </Grid>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
@@ -120,13 +130,14 @@
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
                                     <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStUsuario}" >
-                                        <ComboBox x:Name="cbxStUsuario"
+                                        <Components:CustomComboBox
+                                            x:Name="cbxStUsuario"
                 ItemsSource="{Binding Source={StaticResource lResultConversao}}"
                                             SelectedValuePath="id"
                                             DisplayMemberPath="display"                      
             SelectedValue="{Binding idParaUnidadeMedida,
-                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
+                                UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                        </Components:CustomComboBox>
                                     </Grid>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
@@ -134,23 +145,44 @@
                         <DataGridTextColumn                                
                                         Header="Fator" Width="100"
                                             ElementStyle="{StaticResource CellErrorStyle}"
-                                        Binding="{Binding Path=nFator, UpdateSourceTrigger=LostFocus,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                        ></DataGridTextColumn>
+                                        >
+                            <DataGridTextColumn.Binding>
+                                <Binding Path="nFator" UpdateSourceTrigger="LostFocus" TargetNullValue="0.0" FallbackValue="0.0" 
+                                         ValidatesOnDataErrors="True" ValidatesOnExceptions="True" Converter="{StaticResource decimalConverter}">
+                                    </Binding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
                         <DataGridTextColumn                                
                                         Header="Qtd. Adicional" Width="100"
-                                            ElementStyle="{StaticResource CellErrorStyle}"
-                                        Binding="{Binding Path=nQuantidadeAdicional, UpdateSourceTrigger=LostFocus,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                        ></DataGridTextColumn>
-                        <DataGridComboBoxColumn Header="Arredondamento" ItemsSource="{StaticResource collectionArredondamento}"
-                                        SelectedItemBinding="{Binding stArredondar, Converter={StaticResource selectedItemToTextConverter},
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
-                    , ConverterParameter={StaticResource collectionArredondamento}}" Visibility="Visible"                        
-                                        >
-                        </DataGridComboBoxColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                                            ElementStyle="{StaticResource CellErrorStyle}">
+                            <DataGridTextColumn.Binding>
+                                <Binding Path="nQuantidadeAdicional" UpdateSourceTrigger="LostFocus" TargetNullValue="0.0" FallbackValue="0.0" 
+                                         ValidatesOnDataErrors="True" ValidatesOnExceptions="True"  Converter="{StaticResource decimalConverter}">                                    
+                                </Binding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+                        <DataGridTemplateColumn x:Name="clArredondamento" Header="Arredondamento" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=stArredondar, Converter={StaticResource selectedItemToTextConverter}, ConverterParameter={StaticResource collectionArredondamento}}"
+                                                   />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStUsuario}" >
+                                        <Components:CustomComboBox
+                                            x:Name="cbxStUsuario"
+                ItemsSource="{StaticResource collectionArredondamento}"                                                                
+                                SelectedIndex="{Binding stArredondar,
+                                UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                        </Components:CustomComboBox>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                    </Components:CustomDataGrid.Columns>
+                </Components:CustomDataGrid>
             </Grid>
         </Expander>
         <TextBlock Grid.Row="2" Text="{Binding conversaoDetail}"></TextBlock>

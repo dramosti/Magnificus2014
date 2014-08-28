@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5F7C2A91-3D95-4BBA-A09D-9B707F9B96C7}</ProjectGuid>
+    <ProjectGuid>{BBE0F17A-9C0B-4254-B9CE-DD86FF4C3A83}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HLP.Teste.View.WPF</RootNamespace>
@@ -48,6 +48,18 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit, Version=3.5.31016.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\WPF Toolkit\v3.5.31016.1\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit.Design, Version=3.5.31016.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\WPF Toolkit\v3.5.31016.1\WPFToolkit.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit.VisualStudio.Design, Version=3.5.31016.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\WPF Toolkit\v3.5.31016.1\WPFToolkit.VisualStudio.Design.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -98,6 +110,10 @@
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Components.View.WPF\HLP.Components.View.WPF.csproj">
+      <Project>{048f4c37-ad90-403f-a9a1-64d0789983c5}</Project>
+      <Name>HLP.Components.View.WPF</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Comum.Model\HLP.Comum.Model.csproj">
       <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>

@@ -234,7 +234,7 @@
                                     <Button Grid.Column="10" Grid.Row="5"
                                         IsEnabled="{Binding bCompListaManual}"
                                         Command="{Binding gerarListaCommand}"
-                                        Content="Gerar Lista"/>                                    
+                                        Content="Gerar Lista"/>
                                 </Grid>
                             </Expander>
                         </DockPanel>
@@ -329,12 +329,11 @@
                                                 </DataTemplate>
                                             </DataGridCheckBoxColumn.HeaderTemplate>
                                         </DataGridCheckBoxColumn>
-                                        <DataGridTemplateColumn Header="Produtos"
-                                                                >
+                                        <DataGridTemplateColumn Header="Produtos">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock
-                                                        Text="{Binding Path=idProduto}"></TextBlock>
+                                                        Text="{Binding Path=objProduto.xPesquisa}"></TextBlock>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                             <DataGridTemplateColumn.CellEditingTemplate>
@@ -351,7 +350,6 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellEditingTemplate>
                                         </DataGridTemplateColumn>
-
                                         <DataGridComboBoxColumn IsReadOnly="True" Header="Unidade de Medida" ItemsSource="{Binding Source={StaticResource lResultConversao}}"
                                                                 DisplayMemberPath="display"
                                                                 SelectedValuePath="id"
@@ -369,15 +367,15 @@
                                 Converter={StaticResource moedaConverter},
                                 NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                     IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}">
-                                            <DataGridTextColumn.CellStyle>
-                                                <Style>
+                                            <DataGridTextColumn.EditingElementStyle>
+                                                <Style TargetType="TextBox">
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding objProduto, Converter={StaticResource StCustoProdutoConverter}}" Value="False">
-                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                                            <Setter Property="IsReadOnly" Value="True"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
-                                            </DataGridTextColumn.CellStyle>
+                                            </DataGridTextColumn.EditingElementStyle>
                                         </DataGridTextColumn>
                                         <DataGridTextColumn 
                                     Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
@@ -477,7 +475,7 @@
                                                     <Grid FocusManager.FocusedElement="{Binding ElementName=dateScheduledPicker}" >
                                                         <Components:HlpDatePicker x:Name="dateScheduledPicker"
                                                             xTextDate="{Binding Path=dAlteracaoCusto
-                                                , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}">                                                            
+                                                , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}">
                                                         </Components:HlpDatePicker>
                                                     </Grid>
                                                 </DataTemplate>
@@ -542,7 +540,7 @@
                                             </Style.Triggers>
                                         </Style>
                                     </Components:CustomDataGrid.RowStyle>
-                                </Components:CustomDataGrid>                                
+                                </Components:CustomDataGrid>
                             </DockPanel>
                         </Expander>
                     </Grid>

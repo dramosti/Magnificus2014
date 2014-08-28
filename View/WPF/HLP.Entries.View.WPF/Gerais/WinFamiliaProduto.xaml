@@ -223,15 +223,15 @@
             </TabItem>
             <TabItem Header="Classificação Financeira das Linhas de Produto">
                 <AdornerDecorator>
-                    <DataGrid 
-                    ItemsSource="{Binding currentModel.lFamilia_Produto_ClassesModel}"
+                    <Components:CustomDataGrid
+                        ItemsSource="{Binding currentModel.lFamilia_Produto_ClassesModel}"
                     IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" 
                           CanUserReorderColumns="False"
                           CanUserDeleteRows="True"
-                          CanUserAddRows="True">
-                        <DataGrid.Columns>
+                          >
+                        <Components:CustomDataGrid.Columns>
                             <DataGridTemplateColumn x:Name="clTipoOp" Header="Tipo de Operação" Width="600" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -276,8 +276,8 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                        </Components:CustomDataGrid.Columns>
+                    </Components:CustomDataGrid>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Hierarquia">

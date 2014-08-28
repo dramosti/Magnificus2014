@@ -87,6 +87,18 @@ namespace HLP.Components.View.WPF
             }
         }
 
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            if (e.Key == Key.Left || e.Key == Key.Right)
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                base.OnPreviewKeyDown(e);
+            }
+        }
+
         private statusComponentePosicao _stCompPosicao;
 
         public statusComponentePosicao stCompPosicao

@@ -50,7 +50,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idListaPrecoPai;
-        [ParameterOrder(Order = 2), PrimaryKey(isPrimary = true)]
+        [ParameterOrder(Order = 2), PrimaryKey(isPrimary = true)]        
         public int? idListaPrecoPai
         {
             get { return _idListaPrecoPai; }
@@ -333,7 +333,7 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _idListaPreco = value;
-                base.NotifyPropertyChanged(propertyName: "idListaPreco");               
+                base.NotifyPropertyChanged(propertyName: "idListaPreco");
 
             }
         }
@@ -345,7 +345,7 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _idProduto = value;
-                base.NotifyPropertyChanged(propertyName: "idProduto");               
+                base.NotifyPropertyChanged(propertyName: "idProduto");
             }
         }
         private decimal _vCustoProduto;
@@ -444,7 +444,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idListaPrecoPai;
-        [ParameterOrder(Order = 10)]
+        [ParameterOrder(Order = 10), SkipValidation(skip: true)]
         public int? idListaPrecoPai
         {
             get { return _idListaPrecoPai; }
