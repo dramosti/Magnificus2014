@@ -228,84 +228,88 @@ namespace HLP.Components.View.WPF
             DataGridCell c = Util.GetCell(grid: this, row: r,
                     column: this.Columns.IndexOf(item: this.CurrentColumn));
 
-            if (e.Key == System.Windows.Input.Key.Left ||
-                e.Key == System.Windows.Input.Key.Right ||
-                e.Key == System.Windows.Input.Key.Down ||
-                e.Key == System.Windows.Input.Key.Up)
-            {
-                if (c.IsEditing)
+            if (c != null)
+                if (e.Key == System.Windows.Input.Key.Left ||
+                    e.Key == System.Windows.Input.Key.Right ||
+                    e.Key == System.Windows.Input.Key.Down ||
+                    e.Key == System.Windows.Input.Key.Up)
                 {
-                    int indexColumn = 0;
-                    if (e.Key == System.Windows.Input.Key.Left)
+                    if (c.IsEditing)
                     {
-                        indexColumn = this.Columns.FirstOrDefault(i => i.Visibility == System.Windows.Visibility.Visible)
-                            == this.CurrentColumn ? this.Columns.IndexOf(item: this.CurrentColumn) :
-                            this.Columns.IndexOf(item: this.CurrentColumn) - 1;
-                    }
-                    else if (e.Key == System.Windows.Input.Key.Right)
-                    {
-                        indexColumn = this.CurrentColumn == this.Columns.LastOrDefault(i => i.Visibility == System.Windows.Visibility.Visible)
-                            ? this.Columns.IndexOf(item: this.CurrentColumn) : this.Columns.IndexOf(item: this.CurrentColumn) + 1;
-                    }
-                    else if (e.Key == System.Windows.Input.Key.Down)
-                    {
-                        if (this.IsComboBoxColumn(c: c))
-                            return;
+                        int indexColumn = 0;
+                        if (e.Key == System.Windows.Input.Key.Left)
+                        {
+                            indexColumn = this.Columns.FirstOrDefault(i => i.Visibility == System.Windows.Visibility.Visible)
+                                == this.CurrentColumn ? this.Columns.IndexOf(item: this.CurrentColumn) :
+                                this.Columns.IndexOf(item: this.CurrentColumn) - 1;
+                        }
+                        else if (e.Key == System.Windows.Input.Key.Right)
+                        {
+                            indexColumn = this.CurrentColumn == this.Columns.LastOrDefault(i => i.Visibility == System.Windows.Visibility.Visible)
+                                ? this.Columns.IndexOf(item: this.CurrentColumn) : this.Columns.IndexOf(item: this.CurrentColumn) + 1;
+                        }
+                        else if (e.Key == System.Windows.Input.Key.Down)
+                        {
+                            if (this.IsComboBoxColumn(c: c))
+                                return;
 
-                        int index = this.Items.IndexOf(item: this.CurrentItem);
+                            int index = this.Items.IndexOf(item: this.CurrentItem);
 
-                        r = this.ItemContainerGenerator.ContainerFromIndex(index: index + 1 < this.Items.Count ?
-                            index + 1 : index) as DataGridRow;
-                        indexColumn = this.Columns.IndexOf(item: this.CurrentColumn);
-                    }
-                    else if (e.Key == System.Windows.Input.Key.Up)
-                    {
-                        if (this.IsComboBoxColumn(c: c))
-                            return;
+                            r = this.ItemContainerGenerator.ContainerFromIndex(index: index + 1 < this.Items.Count ?
+                                index + 1 : index) as DataGridRow;
+                            indexColumn = this.Columns.IndexOf(item: this.CurrentColumn);
+                        }
+                        else if (e.Key == System.Windows.Input.Key.Up)
+                        {
+                            if (this.IsComboBoxColumn(c: c))
+                                return;
 
-                        int index = this.Items.IndexOf(item: this.CurrentItem);
+                            int index = this.Items.IndexOf(item: this.CurrentItem);
 
-                        r = this.ItemContainerGenerator.ContainerFromIndex(index: index == 0 ?
-                            0 : index - 1) as DataGridRow;
-                        indexColumn = this.Columns.IndexOf(item: this.CurrentColumn);
-                    }
+                            r = this.ItemContainerGenerator.ContainerFromIndex(index: index == 0 ?
+                                0 : index - 1) as DataGridRow;
+                            indexColumn = this.Columns.IndexOf(item: this.CurrentColumn);
+                        }
 
-                    this.SelectedCells.Clear();
-                    DataGridCell cellToFocus = Util.GetCell(grid: this, row: r,
-                            column: indexColumn);
+                        this.SelectedCells.Clear();
 
-                    cellToFocus.Focus();
-                    this.BeginEdit();
-                }
-                else
-                {
-                    this.BeginEdit();
-                }
-            }
-            else if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                if (this.CurrentColumn == this.Columns.LastOrDefault(i => i.Visibility == System.Windows.Visibility.Visible))
-                {
-                    this.SelectedCells.Clear();
-                    DataGridCell cellToFocus = null;
+                        DataGridCell cellToFocus = Util.GetCell(grid: this, row: r,
+                                column: indexColumn);
 
-                    for (int i = 0; i < this.Columns.Count; i++)
-                    {
-                        cellToFocus = Util.GetCell(grid: this, row: r,
-                            column: i);
                         if (cellToFocus != null)
-                            if (cellToFocus.IsReadOnly == false && cellToFocus.Visibility == System.Windows.Visibility.Visible)
-                                break;
-                    }
+                            cellToFocus.Focus();
 
-                    cellToFocus.Focus();
+                        this.BeginEdit();
+                    }
+                    else
+                    {
+                        this.BeginEdit();
+                    }
+                }
+                else if (e.Key == System.Windows.Input.Key.Enter)
+                {
+                    if (this.CurrentColumn == this.Columns.LastOrDefault(i => i.Visibility == System.Windows.Visibility.Visible))
+                    {
+                        this.SelectedCells.Clear();
+                        DataGridCell cellToFocus = null;
+
+                        for (int i = 0; i < this.Columns.Count; i++)
+                        {
+                            cellToFocus = Util.GetCell(grid: this, row: r,
+                                column: i);
+                            if (cellToFocus != null)
+                                if (cellToFocus.IsReadOnly == false && cellToFocus.Visibility == System.Windows.Visibility.Visible)
+                                    break;
+                        }
+
+                        cellToFocus.Focus();
+                        this.BeginEdit();
+                    }
+                }
+                else if (e.Key == System.Windows.Input.Key.Tab)
+                {
                     this.BeginEdit();
                 }
-            }
-            else if (e.Key == System.Windows.Input.Key.Tab)
-            {
-                this.BeginEdit();
-            }
         }
 
         protected override void OnPreviewLostKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs e)

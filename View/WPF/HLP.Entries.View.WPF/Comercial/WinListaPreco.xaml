@@ -80,7 +80,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="10"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                        <RowDefinition MaxHeight="23"/>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
@@ -294,7 +294,7 @@
                                     ItemsSource="{Binding currentModel.lLista_preco, IsAsync=True}"                                    
                                     IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     AutoGenerateColumns="False" SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
-                                    lastColumn="{Binding ElementName=clUnidMedida}">
+                                    lastColumn="{Binding ElementName=clUnidMedida}">                                    
                                     <Components:CustomDataGrid.Resources>
                                         <conv:decimalValueConverter x:Key="decimalValueConv"></conv:decimalValueConverter>
                                     </Components:CustomDataGrid.Resources>
@@ -319,7 +319,7 @@
                                             </BindingGroup.ValidationRules>
                                         </BindingGroup>
                                     </Components:CustomDataGrid.BindingGroup>
-                                    <Components:CustomDataGrid.Columns>
+                                    <Components:CustomDataGrid.Columns>                                        
                                         <DataGridCheckBoxColumn Binding="{Binding bChecked}"
                                                         Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}}"
                                                         >
@@ -329,27 +329,12 @@
                                                 </DataTemplate>
                                             </DataGridCheckBoxColumn.HeaderTemplate>
                                         </DataGridCheckBoxColumn>
-                                        <DataGridTemplateColumn Header="Produtos">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock
-                                                        Text="{Binding Path=objProduto.xPesquisa}"></TextBlock>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                            <DataGridTemplateColumn.CellEditingTemplate>
-                                                <DataTemplate>
-                                                    <Grid FocusManager.FocusedElement="{Binding ElementName=uc}" >
-                                                        <Components:ucTextBoxIntellisense x:Name="uc"
-                                                            selectedId="{Binding Path=idProduto, Mode=TwoWay, 
-                                                            UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, NotifyOnValidationError=True}"
-                                                            model="{Binding Path=objProduto, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                                            refMethod="{Binding Path=Data.getProduto, Source={StaticResource proxy}}"
-                                                            xNameView="vwProdutoqs" NameWindowCadastro="WinProduto" TableView="vwProduto">
-                                                        </Components:ucTextBoxIntellisense>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellEditingTemplate>
-                                        </DataGridTemplateColumn>
+                                        <Components:CustomDataGridIntellisenseColumn xFieldsToDisplay="idProduto;xPesquisa"                                           
+                                        Header="Produtos" Binding="{Binding Path=idProduto}"
+                                           xNamePropertyModel="objProduto"
+                                            refMethod="{Binding Path=Data.getProduto, Source={StaticResource proxy}}"
+                                            xNameView="vwProdutoqs" NameWindowCadastro="WinProduto" TableView="vwProduto">
+                                        </Components:CustomDataGridIntellisenseColumn>
                                         <DataGridComboBoxColumn IsReadOnly="True" Header="Unidade de Medida" ItemsSource="{Binding Source={StaticResource lResultConversao}}"
                                                                 DisplayMemberPath="display"
                                                                 SelectedValuePath="id"
