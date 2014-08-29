@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -64,18 +65,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
         ParameterBase<Lista_precoModel>.SetParameterValue(objLista_preco));
         }
 
-        private IRowMapper<Lista_precoModel> getMap()
-        {
-            return MapBuilder<Lista_precoModel>.MapAllProperties()
-                   .DoNotMap(i => i.status)
-                   .DoNotMap(i => i.bChecked)
-                   .DoNotMap(i => i.vlrEsperado)
-                   .DoNotMap(i => i.stMarkupLista)
-                   .DoNotMap(i => i.selectedIdFamiliaProduto)
-                   .DoNotMap(i => i.selectedIdUnidadeVenda)
-                   .DoNotMap(i => i.objProduto)
-                   .Build();
-        }
+        
 
         public Lista_precoModel GetLista_preco(int idListaPreco)
         {
@@ -83,7 +73,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
             {
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Lista_preco]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idListaPreco"),
-                   this.getMap());
+                  Util.GetMap<Lista_precoModel>());
             }
             return regAcessor.Execute(idListaPreco).FirstOrDefault();
         }
@@ -92,7 +82,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
         {
             DataAccessor<Lista_precoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Lista_preco WHERE idListaPrecoPai = @idListaPrecoPai", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idListaPrecoPai"),
-            this.getMap());
+            Util.GetMap<Lista_precoModel>());
 
             try
             {
