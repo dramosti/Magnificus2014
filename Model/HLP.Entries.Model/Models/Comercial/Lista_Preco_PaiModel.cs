@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,27 +15,18 @@ namespace HLP.Entries.Model.Models.Comercial
 {
     public partial class Lista_Preco_PaiModel : modelComum
     {
-
         public Lista_Preco_PaiModel()
             : base(xTabela: "Lista_Preco_Pai")
         {
             this.lLista_preco = new ObservableCollectionBaseCadastros<Lista_precoModel>();
-            this.lLista_preco.CollectionChanged += this.lLista_preco_CollectionChanged;
-
+            this.lLista_preco.CollectionChanged += lLista_preco_CollectionChanged;
         }
 
-        public void lLista_preco_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        void lLista_preco_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            switch (e.Action)
+            foreach (Lista_precoModel i in e.NewItems)
             {
-                case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
-                    {
-                        foreach (Lista_precoModel it in e.NewItems)
-                        {
-                            it.stMarkupLista = this.stMarkup;
-                        }
-                    }
-                    break;
+                i.refListaPrecoPai = GCHandle.Alloc(value: this);
             }
         }
 
@@ -50,7 +42,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idListaPrecoPai;
-        [ParameterOrder(Order = 2), PrimaryKey(isPrimary = true)]        
+        [ParameterOrder(Order = 2), PrimaryKey(isPrimary = true)]
         public int? idListaPrecoPai
         {
             get { return _idListaPrecoPai; }
@@ -230,10 +222,11 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "stMarkup");
 
                 if (this.lLista_preco != null)
-                    foreach (Lista_precoModel it in this.lLista_preco)
-                    {
-                        it.stMarkupLista = value;
-                    }
+                    if (this.GetOperationModel() == Base.EnumsBases.OperationModel.updating)
+                        foreach (Lista_precoModel it in this.lLista_preco)
+                        {
+                            it.CalculaMarkup(objItemLista: it);
+                        }
             }
         }
 
@@ -252,6 +245,14 @@ namespace HLP.Entries.Model.Models.Comercial
 
     public partial class Lista_precoModel : modelComum
     {
+        private GCHandle _refListaPrecoPai;
+
+        public GCHandle refListaPrecoPai
+        {
+            get { return _refListaPrecoPai; }
+            set { _refListaPrecoPai = value; }
+        }
+
         private ProdutoModel _objProduto;
 
         public ProdutoModel objProduto
@@ -278,22 +279,29 @@ namespace HLP.Entries.Model.Models.Comercial
 
         public void CalculaMarkup(Lista_precoModel objItemLista)
         {
-            decimal vCustoTotal = objItemLista._vCustoProduto + (objItemLista._vVenda * ((objItemLista._pComissao / 100) ?? 0))
-                    + (objItemLista._vVenda * ((objItemLista._pOutros / 100) ?? 0));
-            switch (this.stMarkupLista)
-            {
-                case 0://Margem Bruta
+            if (this.refListaPrecoPai != null)
+                if ((this.refListaPrecoPai.Target as Lista_Preco_PaiModel).GetOperationModel()
+                    == Base.EnumsBases.OperationModel.updating)
+                {
+
+                    decimal vCustoTotal = objItemLista._vCustoProduto + (objItemLista._vVenda * ((objItemLista._pComissao / 100) ?? 0))
+                            + (objItemLista._vVenda * ((objItemLista._pOutros / 100) ?? 0)) + (objItemLista._vVenda * ((objItemLista._pDesconto / 100) ?? 0));
+
+                    switch ((this.refListaPrecoPai.Target as Lista_Preco_PaiModel).stMarkup)
                     {
-                        if (objItemLista._vVenda > 0)
-                            objItemLista.pMarkup = (objItemLista._vVenda - vCustoTotal) / objItemLista._vVenda;
-                    } break;
-                case 1://Markup
-                    {
-                        if (vCustoTotal > 0)
-                            objItemLista.pMarkup = objItemLista._vVenda / vCustoTotal;
-                    } break;
-            }
-            base.NotifyPropertyChanged(propertyName: "pMarkup");
+                        case 0://Margem Bruta
+                            {
+                                if (objItemLista._vVenda > 0)
+                                    objItemLista.pMarkup = (objItemLista._vVenda - vCustoTotal) / objItemLista._vVenda;
+                            } break;
+                        case 1://Markup
+                            {
+                                if (vCustoTotal > 0)
+                                    objItemLista.pMarkup = objItemLista._vVenda / vCustoTotal;
+                            } break;
+                    }
+                    base.NotifyPropertyChanged(propertyName: "pMarkup");
+                }
         }
 
         #region Propriedades não mapeadas na DataGrid
@@ -357,14 +365,19 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _vCustoProduto = value;
 
-                if (this._vCustoProduto > 0)
-                    this._pLucro = ((this._vVenda - this._vCustoProduto) / this._vCustoProduto) * 100;
-                else if (this._vCustoProduto == 0 && this._vVenda > 0)
-                    this._pLucro = 100;
+                if (this.refListaPrecoPai != null)
+                    if ((this.refListaPrecoPai.Target as Lista_Preco_PaiModel).GetOperationModel()
+                        == Base.EnumsBases.OperationModel.updating)
+                    {
+                        if (this._vCustoProduto > 0)
+                            this._pLucro = ((this._vVenda - this._vCustoProduto) / this._vCustoProduto) * 100;
+                        else if (this._vCustoProduto == 0 && this._vVenda > 0)
+                            this._pLucro = 100;
+                    }
+
                 this.CalculaMarkup(objItemLista: this);
                 base.NotifyPropertyChanged(propertyName: "pLucro");
                 base.NotifyPropertyChanged(propertyName: "vCustoProduto");
-                this.CalculaMarkup(objItemLista: this);
             }
         }
         private decimal _pLucro;
@@ -375,7 +388,11 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _pLucro = value;
-                this._vVenda = (1 + (this._pLucro / 100)) * this._vCustoProduto;
+
+                if (this.refListaPrecoPai != null)
+                    if ((this.refListaPrecoPai.Target as Lista_Preco_PaiModel).GetOperationModel() == Base.EnumsBases.OperationModel.updating)
+                        this._vVenda = (1 + (this._pLucro / 100)) * this._vCustoProduto;
+
                 base.NotifyPropertyChanged(propertyName: "pLucro");
                 base.NotifyPropertyChanged(propertyName: "vVenda");
                 this.CalculaMarkup(objItemLista: this);
@@ -389,14 +406,21 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _vVenda = value;
-                if (this._vCustoProduto > 0)
-                    this._pLucro = ((this._vVenda - this._vCustoProduto) / this._vCustoProduto) * 100;
-                else if (this._vCustoProduto == 0 && this._vVenda > 0)
-                    this._pLucro = 100;
+                base.NotifyPropertyChanged(propertyName: "vVenda");
+
+                if (this.refListaPrecoPai != null)
+                    if ((this.refListaPrecoPai.Target as Lista_Preco_PaiModel).GetOperationModel()
+                        == Base.EnumsBases.OperationModel.updating)
+                    {
+                        if (this._vCustoProduto > 0)
+                            this._pLucro = ((this._vVenda - this._vCustoProduto) / this._vCustoProduto) * 100;
+                        else if (this._vCustoProduto == 0 && this._vVenda > 0)
+                            this._pLucro = 100;
+
+                        base.NotifyPropertyChanged(propertyName: "pLucro");
+                    }
 
                 this.CalculaMarkup(objItemLista: this);
-                base.NotifyPropertyChanged(propertyName: "vVenda");
-                base.NotifyPropertyChanged(propertyName: "pLucro");
             }
         }
         private decimal? _pDescontoMaximo;
@@ -463,6 +487,8 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _pDesconto = value;
                 base.NotifyPropertyChanged(propertyName: "pDesconto");
+
+                this.CalculaMarkup(objItemLista: this);
             }
         }
         private decimal? _pComissao;
@@ -531,18 +557,6 @@ namespace HLP.Entries.Model.Models.Comercial
         #endregion
 
         #region Propriedades não mapeadas
-
-        private byte? _stMarkupLista;
-
-        public byte? stMarkupLista
-        {
-            get { return _stMarkupLista; }
-            set
-            {
-                _stMarkupLista = value;
-                this.CalculaMarkup(objItemLista: this);
-            }
-        }
 
 
         private decimal _vlrEsperado;

@@ -38,7 +38,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
 
         #region function
 
-
         private Func<int, object> _getProduto;
 
         public Func<int, object> getProduto
@@ -51,6 +50,17 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             }
         }
 
+        private Func<int, object> _getUnidadeMedida;
+
+        public Func<int, object> getUnidadeMedida
+        {
+            get { return _getUnidadeMedida; }
+            set
+            {
+                _getUnidadeMedida = value;
+                base.NotifyPropertyChanged(propertyName: "getUnidadeMedida");
+            }
+        }
 
         #endregion
 
@@ -79,6 +89,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             this.bCompGeral = this.bCompListaAut = this.bCompListaManual = false;
 
             this.getProduto = this.comm.GetProduto;
+            this.getUnidadeMedida = this.comm.GetUnidadeMedida;
         }
 
         public bool PrecoCustoManual(int idProduto)
@@ -90,7 +101,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         {
             return comm.GetPrecoCustoProduto(idProduto: idProduto);
         }
-
 
         #region Propriedades utilizadas na View
 

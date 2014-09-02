@@ -65,11 +65,11 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="10"></ColumnDefinition>
                                         <ColumnDefinition MinWidth="275" MaxWidth="275"></ColumnDefinition>
-                                        <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                        <ColumnDefinition MaxWidth="110" MinWidth="110"></ColumnDefinition>
                                         <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
                                         <ColumnDefinition Width="50"></ColumnDefinition>
                                         <ColumnDefinition MaxWidth="175" MinWidth="175"></ColumnDefinition>
-                                        <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                        <ColumnDefinition MaxWidth="110" MinWidth="110"></ColumnDefinition>
                                         <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
                                         <ColumnDefinition Width="50"></ColumnDefinition>
                                         <ColumnDefinition MinWidth="150" MaxWidth="150"></ColumnDefinition>
@@ -123,7 +123,7 @@
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Descrição da Lista de preço"/>
                                     <Components:HlpDatePicker
-                            Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
+                            Grid.Column="2" Grid.Row="4" Height="20"
                             xTextDate="{Binding currentModel.dListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                             IsEnabled="False"
                             stFormatoDtPicker="date"
@@ -161,7 +161,7 @@
                                     </Components:CustomTextBox>
                                     <Components:HlpDatePicker   
                             stFormatoDtPicker="date"
-                            Grid.Column="6" Grid.Row="3" Grid.ColumnSpan="2" Height="20" Margin="0,0,0,3"
+                            Grid.Column="6" Grid.Row="3" Grid.ColumnSpan="1" Height="20"
                             IsEnabled="{Binding bCompListaAut}"
                             xTextDate="{Binding currentModel.dValidadeContrato, 
                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
@@ -294,7 +294,7 @@
                                     ItemsSource="{Binding currentModel.lLista_preco, IsAsync=True}"                                    
                                     IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     AutoGenerateColumns="False" SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
-                                    lastColumn="{Binding ElementName=clUnidMedida}">                                    
+                                    lastColumn="{Binding ElementName=clUnidMedida}">
                                     <Components:CustomDataGrid.Resources>
                                         <conv:decimalValueConverter x:Key="decimalValueConv"></conv:decimalValueConverter>
                                     </Components:CustomDataGrid.Resources>
@@ -319,7 +319,7 @@
                                             </BindingGroup.ValidationRules>
                                         </BindingGroup>
                                     </Components:CustomDataGrid.BindingGroup>
-                                    <Components:CustomDataGrid.Columns>                                        
+                                    <Components:CustomDataGrid.Columns>
                                         <DataGridCheckBoxColumn Binding="{Binding bChecked}"
                                                         Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}}"
                                                         >
@@ -449,7 +449,7 @@
                                         <DataGridTemplateColumn 
                                     IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
                                     Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
-                                    x:Name="dtAlterCusto" Header="Data Alteração Custo" Width="125">
+                                    x:Name="dtAlterCusto" Header="Data Alteração Custo">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding Path=dAlteracaoCusto}" />
@@ -459,38 +459,19 @@
                                                 <DataTemplate>
                                                     <Grid FocusManager.FocusedElement="{Binding ElementName=dateScheduledPicker}" >
                                                         <Components:HlpDatePicker x:Name="dateScheduledPicker"
-                                                            xTextDate="{Binding Path=dAlteracaoCusto
-                                                , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}">
+                                                            xTextDate="{Binding Path=dAlteracaoCusto, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}">
                                                         </Components:HlpDatePicker>
                                                     </Grid>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellEditingTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn
-                                    IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
+                                        <Components:CustomDataGridIntellisenseColumn Binding="{Binding Path=idUnidadeMedida}" xFieldsToDisplay="idUnidadeMedida;xSiglaPadrao;xUnidadeMedida"
+                                            IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
                                     Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
-                                    x:Name="clUnidMedida" Header="Unidade Medida" Width="150" >
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding Path=idUnidadeMedida, Converter={StaticResource cbxDisplayConv}, 
-                                            ConverterParameter={StaticResource lResultConversao}}"
-                                                   />
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                            <DataGridTemplateColumn.CellEditingTemplate>
-                                                <DataTemplate>
-                                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEdit}" >
-                                                        <ComboBox x:Name="cbxEdit"                                                      
-                ItemsSource="{Binding Source={StaticResource lResultConversao}}" 
-                                                      SelectedValuePath="id"
-                                            DisplayMemberPath="display"                                
-            SelectedValue="{Binding idUnidadeMedida,
-                                UpdateSourceTrigger=LostFocus}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellEditingTemplate>
-                                        </DataGridTemplateColumn>
+                                    x:Name="clUnidMedida" Header="Unidade Medida" Width="150" xNameView="vwUnidadeMedidaqs"
+                                            NameWindowCadastro="WinUnidadeMedida" TableView="vwUnidadeMedida" refMethod="{Binding Path=Data.getUnidadeMedida, Source={StaticResource proxy}}"
+                                                                                     >
+                                        </Components:CustomDataGridIntellisenseColumn>
                                         <DataGridTextColumn Binding="{Binding vlrEsperado, Converter={StaticResource moedaConverter}}" 
                                                     Header="Vlr. Final" 
                                                     Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}}"

@@ -77,6 +77,7 @@ namespace HLP.Components.View.WPF
         protected override FrameworkElement GenerateEditingElement(DataGridCell cell, object dataItem)
         {
             ucTextBoxIntellisense txtIntellisense = new ucTextBoxIntellisense();
+            txtIntellisense.parentIsDataGrid = true;
 
             Binding b = new Binding();
             b.Path = (this.Binding as Binding).Path;
@@ -88,7 +89,9 @@ namespace HLP.Components.View.WPF
             bModel.Path = new PropertyPath(path: this.xNamePropertyModel, pathParameters: new object[] { });
             bModel.Mode = BindingMode.TwoWay;
             bModel.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-            txtIntellisense.SetBinding(dp: ucTextBoxIntellisense.modelProperty, binding: bModel);
+
+            if (!string.IsNullOrEmpty(value: bModel.Path.Path))
+                txtIntellisense.SetBinding(dp: ucTextBoxIntellisense.modelProperty, binding: bModel);
 
             txtIntellisense.xNameView = this.xNameView;
             txtIntellisense.NameWindowCadastro = this.NameWindowCadastro;
@@ -116,8 +119,9 @@ namespace HLP.Components.View.WPF
 
                     if (obj != null)
                     {
-                        dataItem.GetType().GetProperty(name: this.xNamePropertyModel).SetValue(obj: dataItem,
-                            value: obj);
+                        if (!string.IsNullOrEmpty(value: this.xNamePropertyModel))
+                            dataItem.GetType().GetProperty(name: this.xNamePropertyModel).SetValue(obj: dataItem,
+                                value: obj);
 
                         PropertyInfo pi = null;
 

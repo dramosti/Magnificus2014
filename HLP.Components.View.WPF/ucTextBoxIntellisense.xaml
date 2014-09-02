@@ -45,7 +45,7 @@
         </TextBox>
         <Popup 
                MaxHeight="200" Name="popUp" Placement="Bottom" PlacementTarget="{Binding ElementName=txt}">
-            <DataGrid Style="{x:Null}" IsReadOnly="True" SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, 
+            <DataGrid Style="{x:Null}" GridLinesVisibility="None" IsReadOnly="True" SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, 
                 Path=customViewModel.selectedItem}"
                 ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, 
                 Path=customViewModel.cvs}"></DataGrid>
