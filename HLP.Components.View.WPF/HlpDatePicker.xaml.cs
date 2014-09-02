@@ -93,8 +93,6 @@ namespace HLP.Components.View.WPF
         public static readonly DependencyProperty xTextDateProperty =
             DependencyProperty.Register("xTextDate", typeof(string), typeof(HlpDatePicker), new PropertyMetadata(String.Empty));
 
-
-
         public string xTextTime
         {
             get { return (string)GetValue(xTextTimeProperty); }
@@ -143,6 +141,30 @@ namespace HLP.Components.View.WPF
             this.btnCalendar.ContextMenu.PlacementTarget = this.btnCalendar;
             this.btnCalendar.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Right;
             this.btnCalendar.ContextMenu.IsOpen = true;
+        }
+
+
+
+        public bool isReadOnlyUserControl
+        {
+            get { return (bool)GetValue(isReadOnlyUserControlProperty); }
+            set { SetValue(isReadOnlyUserControlProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for isReadOnlyUserControl.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty isReadOnlyUserControlProperty =
+            DependencyProperty.Register("isReadOnlyUserControl", typeof(bool), typeof(HlpDatePicker),
+            new PropertyMetadata(defaultValue: false, propertyChangedCallback: new PropertyChangedCallback(readOnlyChanged)));
+
+        public static void readOnlyChanged(DependencyObject d, DependencyPropertyChangedEventArgs args)
+        {
+            if (d != null)
+            {
+                (d as HlpDatePicker).txtData.IsReadOnly = (d as HlpDatePicker).txtHora.IsReadOnly =
+                    ((bool)args.NewValue);
+
+                (d as HlpDatePicker).btnCalendar.Visibility = Visibility.Collapsed;
+            }
         }
     }
 

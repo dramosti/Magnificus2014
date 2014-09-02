@@ -110,13 +110,5 @@ namespace HLP.Entries.View.WPF.GestãoAdministrativa.Comercial
         {
 
         }
-
-        private void CustomTextBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            if(e.SystemKey == Key.F10)
-            {
-
-            }
-        }
     }
 }

@@ -99,11 +99,13 @@
     </ApplicationDefinition>
     <Compile Include="Comercial\Converter\CanUserAddListaItensConverter.cs" />
     <Compile Include="Comercial\Converter\CanUserAddOrcamentoItemConverter.cs" />
+    <Compile Include="Comercial\Converter\contratoReadOnlyMultiValueConverter.cs" />
     <Compile Include="Comercial\Converter\getSiteMultiConverter.cs" />
     <Compile Include="Comercial\Converter\HeaderMarkupConverter.cs" />
     <Compile Include="Comercial\Converter\IdMotivoVisibilityConverter.cs" />
     <Compile Include="Comercial\Converter\IsEnabledCompMultiConverter.cs" />
     <Compile Include="Comercial\Converter\ListaPrecoClienteEnabled.cs" />
+    <Compile Include="Comercial\Converter\pPercentualReadOnlyMultiValueConverter.cs" />
     <Compile Include="Comercial\Converter\ReadOnlyColumnsListaAutomaticaConverter.cs" />
     <Compile Include="Comercial\Converter\RowDateListaPrecoConverter.cs" />
     <Compile Include="Comercial\Converter\StatusOrcamentoConverter.cs" />
