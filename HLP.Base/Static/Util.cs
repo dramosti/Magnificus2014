@@ -2359,6 +2359,22 @@ namespace HLP.Base.Static
             else
                 return FindParent<T>(parentObject);
         }
+
+        /// <summary>
+        /// Mapeamento das propriedade que não contem custom atributes.
+        /// </summary>
+        /// <typeparam name="T">Classe a ser mappeada</typeparam>
+        /// <returns></returns>
+        public static Microsoft.Practices.EnterpriseLibrary.Data.IRowMapper<T> GetMap<T>() where T : class, new()
+        {
+            List<System.Reflection.PropertyInfo> lProperty = typeof(T).GetProperties().Where(c => c.CustomAttributes.Count() == 0).ToList();
+            Microsoft.Practices.EnterpriseLibrary.Data.IMapBuilderContext<T> mapper = Microsoft.Practices.EnterpriseLibrary.Data.MapBuilder<T>.MapAllProperties();
+            foreach (System.Reflection.PropertyInfo p in lProperty)
+            {
+                mapper = mapper.DoNotMap(p);
+            }
+            return mapper.Build();
+        }
     }
 
 }
