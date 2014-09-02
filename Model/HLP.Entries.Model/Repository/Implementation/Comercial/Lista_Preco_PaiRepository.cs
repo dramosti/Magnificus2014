@@ -65,8 +65,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                 regLista_Preco_PaiAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Lista_Preco_Pai",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idListaPrecoPai"),
-                                         MapBuilder<Lista_Preco_PaiModel>.MapAllProperties()
-                                         .DoNotMap(i => i.status).Build());
+                                         Util.GetMap<Lista_Preco_PaiModel>());
             }
 
             return regLista_Preco_PaiAccessor.Execute(idListaPrecoPai).FirstOrDefault();
@@ -77,8 +76,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
             regAllLista_Preco_ByOrigem = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
                 "select * from Lista_Preco_Pai where idListaPrecoOrigem = " + idListaPrecoOrigem.ToString(),
                 new Parameters(UndTrabalho.dbPrincipal),
-                MapBuilder<Lista_Preco_PaiModel>.MapAllProperties()
-                .DoNotMap(i => i.status).Build());
+                Util.GetMap<Lista_Preco_PaiModel>());
 
             return regAllLista_Preco_ByOrigem.Execute().ToList();
         }

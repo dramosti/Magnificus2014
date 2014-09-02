@@ -87,8 +87,6 @@ namespace HLP.Components.View.WPF
 
             Binding bModel = new System.Windows.Data.Binding();
             bModel.Path = new PropertyPath(path: this.xNamePropertyModel, pathParameters: new object[] { });
-            bModel.Mode = BindingMode.TwoWay;
-            bModel.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
 
             if (!string.IsNullOrEmpty(value: bModel.Path.Path))
                 txtIntellisense.SetBinding(dp: ucTextBoxIntellisense.modelProperty, binding: bModel);

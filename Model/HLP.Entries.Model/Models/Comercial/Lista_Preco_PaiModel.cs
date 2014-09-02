@@ -22,12 +22,13 @@ namespace HLP.Entries.Model.Models.Comercial
             this.lLista_preco.CollectionChanged += lLista_preco_CollectionChanged;
         }
 
-        void lLista_preco_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        public void lLista_preco_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            foreach (Lista_precoModel i in e.NewItems)
-            {
-                i.refListaPrecoPai = GCHandle.Alloc(value: this);
-            }
+            if (e.NewItems != null)
+                foreach (Lista_precoModel i in e.NewItems)
+                {
+                    i.refListaPrecoPai = GCHandle.Alloc(value: this);
+                }
         }
 
         private int _idEmpresa;
@@ -266,7 +267,14 @@ namespace HLP.Entries.Model.Models.Comercial
                 {
                     this.selectedIdUnidadeVenda = value.idUnidadeMedidaVendas;
                     this.selectedIdFamiliaProduto = value.idFamiliaProduto;
+                    if (this.refListaPrecoPai.IsAllocated)
+                        if ((this.refListaPrecoPai.Target as Lista_Preco_PaiModel).GetOperationModel()
+                            == Base.EnumsBases.OperationModel.updating)
+                        {
+                            this.vCustoProduto = value.vCompra;                            
+                        }
                 }
+                base.NotifyPropertyChanged(propertyName: "objProduto");
             }
         }
 
@@ -279,7 +287,7 @@ namespace HLP.Entries.Model.Models.Comercial
 
         public void CalculaMarkup(Lista_precoModel objItemLista)
         {
-            if (this.refListaPrecoPai != null)
+            if (this.refListaPrecoPai.IsAllocated)
                 if ((this.refListaPrecoPai.Target as Lista_Preco_PaiModel).GetOperationModel()
                     == Base.EnumsBases.OperationModel.updating)
                 {
@@ -292,7 +300,7 @@ namespace HLP.Entries.Model.Models.Comercial
                         case 0://Margem Bruta
                             {
                                 if (objItemLista._vVenda > 0)
-                                    objItemLista.pMarkup = (objItemLista._vVenda - vCustoTotal) / objItemLista._vVenda;
+                                    objItemLista.pMarkup = ((objItemLista._vVenda - vCustoTotal) / objItemLista._vVenda) * 100;
                             } break;
                         case 1://Markup
                             {
@@ -365,7 +373,7 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _vCustoProduto = value;
 
-                if (this.refListaPrecoPai != null)
+                if (this.refListaPrecoPai.IsAllocated)
                     if ((this.refListaPrecoPai.Target as Lista_Preco_PaiModel).GetOperationModel()
                         == Base.EnumsBases.OperationModel.updating)
                     {
@@ -389,7 +397,7 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _pLucro = value;
 
-                if (this.refListaPrecoPai != null)
+                if (this.refListaPrecoPai.IsAllocated)
                     if ((this.refListaPrecoPai.Target as Lista_Preco_PaiModel).GetOperationModel() == Base.EnumsBases.OperationModel.updating)
                         this._vVenda = (1 + (this._pLucro / 100)) * this._vCustoProduto;
 
@@ -408,7 +416,7 @@ namespace HLP.Entries.Model.Models.Comercial
                 _vVenda = value;
                 base.NotifyPropertyChanged(propertyName: "vVenda");
 
-                if (this.refListaPrecoPai != null)
+                if (this.refListaPrecoPai.IsAllocated)
                     if ((this.refListaPrecoPai.Target as Lista_Preco_PaiModel).GetOperationModel()
                         == Base.EnumsBases.OperationModel.updating)
                     {

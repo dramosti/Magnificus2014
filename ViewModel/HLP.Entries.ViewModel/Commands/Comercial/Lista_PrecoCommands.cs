@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -555,6 +556,14 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                         {
                             this.objViewModel.lIdsHierarquia = this.objService.getHierarquiaLista(idListaPreco: this.objViewModel.currentID);
                         }
+
+                        foreach (Lista_precoModel item in this.objViewModel.currentModel.lLista_preco)
+                        {
+                            item.refListaPrecoPai = GCHandle.Alloc(value: this.objViewModel.currentModel);
+                        }
+
+                        this.objViewModel.currentModel.lLista_preco.CollectionChanged 
+                            += this.objViewModel.currentModel.lLista_preco_CollectionChanged;
                     }
 
                     this.objViewModel.bTreeCarregada = false;

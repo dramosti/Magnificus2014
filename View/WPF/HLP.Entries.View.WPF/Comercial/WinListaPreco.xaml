@@ -355,7 +355,7 @@
                                             <DataGridTextColumn.EditingElementStyle>
                                                 <Style TargetType="TextBox">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding objProduto, Converter={StaticResource StCustoProdutoConverter}}" Value="False">
+                                                        <DataTrigger Binding="{Binding Path=objProduto, Converter={StaticResource StCustoProdutoConverter}}" Value="False">
                                                             <Setter Property="IsReadOnly" Value="True"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
