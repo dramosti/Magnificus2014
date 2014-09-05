@@ -78,7 +78,12 @@ namespace HLP.Base.ClassesBases
                 {
                     (e as Expander).DataContext = this.Windows.DataContext;
                 }
-
+                else if (e.GetType() == typeof(TabControl))
+                {
+                    (e as TabControl).DataContext = this.Windows.DataContext;
+                }
+                else
+                    throw new Exception(message: "Tela não está configurada com os padrões definidos. Contate o Suporte!");
 
                 if (this.Windows.DataContext != null)
                     foreach (PropertyInfo item in this.Windows.DataContext.GetType().GetProperties())
@@ -155,7 +160,7 @@ namespace HLP.Base.ClassesBases
                 base.NotifyPropertyChanged(propertyName: "lDataGridErrors");
             }
         }
-        
+
 
         private int _currentErrorsCount;
 
@@ -179,5 +184,5 @@ namespace HLP.Base.ClassesBases
         public string xError { get; set; }
         public bool isDataGridError { get; set; }
         public FrameworkElement comp { get; set; }
-    }    
+    }
 }

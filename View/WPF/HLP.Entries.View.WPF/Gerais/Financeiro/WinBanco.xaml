@@ -58,19 +58,19 @@
                     <Components:CustomTextBox stCompPosicao="first" x:Name="txtIdBanco"
                                 Grid.Column="2" Grid.Row="2"
                                 Text="{Binding currentModel.cBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
+								IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 								ToolTip="Informar o Código do Banco">
                     </Components:CustomTextBox>
                     <Components:CustomTextBox x:Name="txtNomeBanco"
                                 Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
                                 Text="{Binding currentModel.xBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
+								IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 								ToolTip="Descrição do Nome do Banco Completo.">
                     </Components:CustomTextBox>
                     <Components:CustomTextBox x:Name="txtResumidoBanco"
                                 Grid.Column="2" Grid.Row="4"
                                 Text="{Binding currentModel.xBancoResumido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
+								IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 								ToolTip="Descrição do Nome do Banco Resumido">
                     </Components:CustomTextBox>
                     <Components:HlpUserControlBtnImage  Grid.Column="2" Grid.Row="5" Caption=""
