@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 
 namespace HLP.Components.View.WPF
 {
+
     /// <summary>
     /// Follow steps 1a or 1b and then 2 to use this custom control in a XAML file.
     ///
@@ -46,6 +47,7 @@ namespace HLP.Components.View.WPF
     ///     <MyNamespace:CustomComboBox/>
     ///
     /// </summary>
+    
     public class CustomComboBox : ComboBox
     {
         static CustomComboBox()
@@ -84,6 +86,18 @@ namespace HLP.Components.View.WPF
                 {
                     ((Action)this.actionOnLostFocus).Invoke();
                 }
+            }
+        }
+
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            if (e.Key == Key.Left || e.Key == Key.Right)
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                base.OnPreviewKeyDown(e);
             }
         }
 

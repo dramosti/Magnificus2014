@@ -4,7 +4,6 @@ using HLP.Base.Modules;
 using HLP.Base.Static;
 using HLP.Components.Model.Models;
 using HLP.Components.Services;
-using HLP.Comum.View.Formularios;
 using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Models.Comercial;
@@ -726,7 +725,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             return objEmpresaService.GetObject(id: idEmpresa);
         }
 
-        public Cliente_fornecedorModel GetCliente(int idCliente)
+        public object GetCliente(int idCliente)
         {
             return objClienteService.GetObjeto(id: idCliente);
         }

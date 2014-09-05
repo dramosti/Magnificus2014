@@ -216,8 +216,9 @@
                 <Components:ucTextBoxIntellisense
                     x:Name="pesquisaCliente" Height="20" Margin="0,0,0,3" Grid.Column="5" Grid.Row="2"                   
 					selectedId="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsEnabled="{Binding bIsEnabled}" refMethod="{Binding getCliente}"
 					ToolTip="Informar ao orçamento de vendas o cliente." xNameView="vwClienteqs"
+                    model="{Binding currentModel.objCliente}" Loaded="pesquisaCliente_Loaded"
                     ></Components:ucTextBoxIntellisense>
                 <Components:CustomComboBox Grid.Column="7" Grid.Row="2" IsEnabled="{Binding bIsEnabled}"
                                            ItemsSource="{Binding Source={StaticResource lResultTipoDocumento}}"

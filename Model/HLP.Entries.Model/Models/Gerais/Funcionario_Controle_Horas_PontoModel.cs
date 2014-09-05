@@ -21,6 +21,8 @@ namespace HLP.Entries.Model.Models.Gerais
             if (this.PropertyChanged != null)
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                if (this.status == statusModel.nenhum)
+                    this.status = statusModel.alterado;
             }
         }
 

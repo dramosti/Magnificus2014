@@ -28,10 +28,6 @@ namespace HLP.Entries.View.WPF.GestãoAdministrativa
         {
             InitializeComponent();
             this.ViewModel = new ClienteViewModel();
-
-            base.SetEventsTabControl(tabControl: this.tbPrincipal);
-
-            
         }
 
         public ClienteViewModel ViewModel

@@ -29,7 +29,14 @@ namespace HLP.Components.View.WPF.Converter
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return value;
+            if (value == null)
+                value = decimal.Zero;
+
+            decimal d = decimal.Zero;
+
+            decimal.TryParse(s: value.ToString(), result: out d);
+
+            return d;
         }
     }
 }

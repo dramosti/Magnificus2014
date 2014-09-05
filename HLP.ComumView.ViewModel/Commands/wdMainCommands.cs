@@ -249,126 +249,126 @@ namespace HLP.ComumView.ViewModel.Commands
 
                         objTabPageAtivasModel._windows = form;
 
-                        this.GetComponents(comp: form.Content as FrameworkElement, lComps: objTabPageAtivasModel.lComponents);
+                        //this.GetComponents(comp: form.Content as FrameworkElement, lComps: objTabPageAtivasModel.lComponents);
 
-                        foreach (FrameworkElement txt in objTabPageAtivasModel.lComponents
-                        .Where(i => i.GetType() == typeof(TextBlock)
-                        || i.GetType().BaseType == typeof(TextBlock)).ToList())
-                        {
-                            objTabPageAtivasModel.lTextBlock.Add(item: txt as TextBlock);
-                        }
+                        //foreach (FrameworkElement txt in objTabPageAtivasModel.lComponents
+                        //.Where(i => i.GetType() == typeof(TextBlock)
+                        //|| i.GetType().BaseType == typeof(TextBlock)).ToList())
+                        //{
+                        //    objTabPageAtivasModel.lTextBlock.Add(item: txt as TextBlock);
+                        //}
 
-                        objTabPageAtivasModel.lComponents.RemoveAll(i => i.GetType().BaseType == typeof(TextBlock)
-                            || i.GetType().BaseType == typeof(TextBlock));
+                        //objTabPageAtivasModel.lComponents.RemoveAll(i => i.GetType().BaseType == typeof(TextBlock)
+                        //    || i.GetType().BaseType == typeof(TextBlock));
 
-                        FrameworkElement compPriorComp = null;
-                        TabItem tiPriorComp = null;
-                        TabItem tiCurrentComp = null;
-                        PropertyInfo piIsReadOnly = null;
+                        //FrameworkElement compPriorComp = null;
+                        //TabItem tiPriorComp = null;
+                        //TabItem tiCurrentComp = null;
+                        //PropertyInfo piIsReadOnly = null;
 
-                        foreach (FrameworkElement comp in objTabPageAtivasModel.lComponents)
-                        {
-                            tiCurrentComp = Util.GetParent(comp: comp, t: typeof(TabItem)) as TabItem;
+                        //foreach (FrameworkElement comp in objTabPageAtivasModel.lComponents)
+                        //{
+                        //    tiCurrentComp = Util.GetParent(comp: comp, t: typeof(TabItem)) as TabItem;
 
-                            if (tiCurrentComp != tiPriorComp && compPriorComp != null)
-                            {
-                                PropertyInfo pi = compPriorComp.GetType().GetProperty(name: "actionOnLostFocus");
+                        //    if (tiCurrentComp != tiPriorComp && compPriorComp != null)
+                        //    {
+                        //        PropertyInfo pi = compPriorComp.GetType().GetProperty(name: "actionOnLostFocus");
 
-                                if (pi != null)
-                                {
-                                    Action<object> actionFocusNextTabComp = this.vm.FocusOnComponent;
+                        //        if (pi != null)
+                        //        {
+                        //            Action<object> actionFocusNextTabComp = this.vm.FocusOnComponent;
 
-                                    try
-                                    {
-                                        pi.SetValue(obj: compPriorComp, value: actionFocusNextTabComp);
+                        //            try
+                        //            {
+                        //                pi.SetValue(obj: compPriorComp, value: actionFocusNextTabComp);
 
-                                        piIsReadOnly = comp.GetType().GetProperty(name: "IsReadOnly");
+                        //                piIsReadOnly = comp.GetType().GetProperty(name: "IsReadOnly");
 
-                                        if (piIsReadOnly != null)
-                                            if ((bool)piIsReadOnly.GetValue(obj: comp) == false)
-                                            {
-                                                tiPriorComp = tiCurrentComp;
+                        //                if (piIsReadOnly != null)
+                        //                    if ((bool)piIsReadOnly.GetValue(obj: comp) == false)
+                        //                    {
+                        //                        tiPriorComp = tiCurrentComp;
 
-                                                PropertyInfo piParameterAction = compPriorComp.GetType().GetProperty(name: "actionParameter");
+                        //                        PropertyInfo piParameterAction = compPriorComp.GetType().GetProperty(name: "actionParameter");
 
-                                                if (piParameterAction != null)
-                                                {
-                                                    piParameterAction.SetValue(obj: compPriorComp, value: comp);
-                                                }
-                                            }
-                                    }
-                                    catch (Exception ex)
-                                    {
+                        //                        if (piParameterAction != null)
+                        //                        {
+                        //                            piParameterAction.SetValue(obj: compPriorComp, value: comp);
+                        //                        }
+                        //                    }
+                        //            }
+                        //            catch (Exception ex)
+                        //            {
 
-                                        throw ex;
-                                    }
-                                }
-                            }
+                        //                throw ex;
+                        //            }
+                        //        }
+                        //    }
 
-                            compPriorComp = comp;
-                        }
+                        //    compPriorComp = comp;
+                        //}
 
-                        FrameworkElement fe = objTabPageAtivasModel.lComponents
-                            .Where(i => i.GetType().Name == "CustomTextBox"
-                            || i.GetType().Name == "CustomCheckBox"
-                            || i.GetType().Name == "CustomComboBox"
-                            || i.GetType().Name == "ucTextBoxIntellisense"
-                            || i.GetType() == typeof(DataGrid)
-                            || i.GetType().BaseType == typeof(DataGrid)).LastOrDefault();
+                        //FrameworkElement fe = objTabPageAtivasModel.lComponents
+                        //    .Where(i => i.GetType().Name == "CustomTextBox"
+                        //    || i.GetType().Name == "CustomCheckBox"
+                        //    || i.GetType().Name == "CustomComboBox"
+                        //    || i.GetType().Name == "ucTextBoxIntellisense"
+                        //    || i.GetType() == typeof(DataGrid)
+                        //    || i.GetType().BaseType == typeof(DataGrid)).LastOrDefault();
 
-                        if (fe != null)
-                        {
-                            PropertyInfo pi = fe.GetType().GetProperty(name: "actionOnLostFocus");
+                        //if (fe != null)
+                        //{
+                        //    PropertyInfo pi = fe.GetType().GetProperty(name: "actionOnLostFocus");
 
-                            if (pi != null)
-                            {
-                                PropertyInfo piComm = objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "commandSalvar");
+                        //    if (pi != null)
+                        //    {
+                        //        PropertyInfo piComm = objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "commandSalvar");
 
-                                if (piComm != null)
-                                {
-                                    ICommand comm = piComm.GetValue(objTabPageAtivasModel._currentDataContext)
-                                        as ICommand;
+                        //        if (piComm != null)
+                        //        {
+                        //            ICommand comm = piComm.GetValue(objTabPageAtivasModel._currentDataContext)
+                        //                as ICommand;
 
-                                    if (comm != null)
-                                    {
-                                        pi.SetValue(obj: fe,
-                                            value: comm);
-                                    }
-                                }
-                            }
-                        }
+                        //            if (comm != null)
+                        //            {
+                        //                pi.SetValue(obj: fe,
+                        //                    value: comm);
+                        //            }
+                        //        }
+                        //    }
+                        //}
 
-                        Action<object> actionFocusFirstComponent = this.vm.FocusOnComponent;
+                        //Action<object> actionFocusFirstComponent = this.vm.FocusOnComponent;
 
-                        objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "focusFirstComponent")
-                            .SetValue(obj: objTabPageAtivasModel._currentDataContext,
-                            value: actionFocusFirstComponent);
+                        //objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "focusFirstComponent")
+                        //    .SetValue(obj: objTabPageAtivasModel._currentDataContext,
+                        //    value: actionFocusFirstComponent);
 
-                        piIsReadOnly = null;
+                        //piIsReadOnly = null;
 
-                        foreach (FrameworkElement item in objTabPageAtivasModel.lComponents)
-                        {
-                            piIsReadOnly = item.GetType().GetProperty(name: "IsReadOnly");
+                        //foreach (FrameworkElement item in objTabPageAtivasModel.lComponents)
+                        //{
+                        //    piIsReadOnly = item.GetType().GetProperty(name: "IsReadOnly");
 
-                            if (piIsReadOnly != null)
-                                if ((bool)piIsReadOnly.GetValue(obj: item) == false)
-                                {
-                                    objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "firstControl")
-                            .SetValue(obj: objTabPageAtivasModel._currentDataContext,
-                            value: item);
-                                    break;
-                                }
+                        //    if (piIsReadOnly != null)
+                        //        if ((bool)piIsReadOnly.GetValue(obj: item) == false)
+                        //        {
+                        //            objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "firstControl")
+                        //    .SetValue(obj: objTabPageAtivasModel._currentDataContext,
+                        //    value: item);
+                        //            break;
+                        //        }
 
-                        }
+                        //}
 
-                        foreach (DataGrid dg in objTabPageAtivasModel.lComponents.Where(i => i.GetType() == typeof(DataGrid)
-                            || i.GetType().BaseType == typeof(DataGrid)))
-                        {
-                            objTabPageAtivasModel.lDataGrids.Add(item: dg);
-                        }
+                        //foreach (DataGrid dg in objTabPageAtivasModel.lComponents.Where(i => i.GetType() == typeof(DataGrid)
+                        //    || i.GetType().BaseType == typeof(DataGrid)))
+                        //{
+                        //    objTabPageAtivasModel.lDataGrids.Add(item: dg);
+                        //}
 
-                        objTabPageAtivasModel.lComponents.RemoveAll(i => i.GetType() == typeof(DataGrid)
-                            || i.GetType().BaseType == typeof(DataGrid));
+                        //objTabPageAtivasModel.lComponents.RemoveAll(i => i.GetType() == typeof(DataGrid)
+                        //    || i.GetType().BaseType == typeof(DataGrid));
 
                         if (this.vm.winMan._lTabPagesAtivas.Count(
                             i => i._windows.Name == form.Name) == 0)
@@ -592,6 +592,7 @@ namespace HLP.ComumView.ViewModel.Commands
                             if ((this.currentIndexLTextBlockSearched + 1) == this.lTextBlockSearched.Count)
                                 this.currentIndexLTextBlockSearched = 0;
 
+                            //TODO: CONTINUAR DAQUI
                             focusedTextBlock = this.lTextBlockSearched[index: this.currentIndexLTextBlockSearched + 1] as TextBlock;
 
                             if (focusedTextBlock != null)

@@ -11,11 +11,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            <Style x:Key="styleGrid"></Style>
             <localConverter:NotConverter x:Key="notConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
+    <Grid FocusManager.FocusedElement="{Binding ElementName=txt}">
         <TextBox x:Name="txt" IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}
             ,Path=ucEnabled, Converter={StaticResource notConverter}}"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}
@@ -25,7 +24,7 @@
             <TextBox.Style>
                 <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
                     <Style.Resources>
-                        <SolidColorBrush x:Key="whiteSmoke" Color="#F5F5F5">                            
+                        <SolidColorBrush x:Key="whiteSmoke" Color="#F5F5F5">
                         </SolidColorBrush>
                     </Style.Resources>
                     <Style.Triggers>
@@ -46,7 +45,7 @@
         </TextBox>
         <Popup 
                MaxHeight="200" Name="popUp" Placement="Bottom" PlacementTarget="{Binding ElementName=txt}">
-            <DataGrid Style="{StaticResource styleGrid}" IsReadOnly="True" SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, 
+            <DataGrid Style="{x:Null}" GridLinesVisibility="None" IsReadOnly="True" SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, 
                 Path=customViewModel.selectedItem}"
                 ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, 
                 Path=customViewModel.cvs}"></DataGrid>

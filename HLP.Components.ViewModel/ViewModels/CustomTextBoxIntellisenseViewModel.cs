@@ -73,91 +73,75 @@ namespace HLP.Components.ViewModel.ViewModels
                 _xTextSearch = value;
                 this.popUp.IsOpen = true;
 
-                if (string.IsNullOrEmpty(value: value))
+                if (string.IsNullOrEmpty(value: value) && cvs != null)
                 {
                     (cvs as BindingListCollectionView).CustomFilter = null;
                     this.popUp.IsOpen = false;
                 }
                 else
                 {
-                    (cvs as BindingListCollectionView).CustomFilter = this.FilterItem();                    
-                    int count = 0;
-                    object vValueCell = null;
-                    bool itemFound = false;
-                    if (cvs.Count > 0)
+                    if (cvs != null)
                     {
-                        foreach (var campo in (cvs as BindingListCollectionView).ItemProperties)
+                        (cvs as BindingListCollectionView).CustomFilter = this.FilterItem();
+                        int count = 0;
+                        object vValueCell = null;
+                        bool itemFound = false;
+                        if (cvs.Count > 0)
                         {
-                            Type t = campo.PropertyType;
-
-                            foreach (DataRowView r in (this.popUp.Child as DataGrid).Items)
+                            foreach (var campo in (cvs as BindingListCollectionView).ItemProperties)
                             {
-                                vValueCell = r.Row.ItemArray[count];
-                                if (t == typeof(int) || t == typeof(Nullable<int>))
+                                Type t = campo.PropertyType;
+
+                                foreach (DataRowView r in (this.popUp.Child as DataGrid).Items)
                                 {
-                                    int vValor = 0;
-
-                                    if (int.TryParse(s: this.xTextSearch, result: out vValor))
+                                    vValueCell = r.Row.ItemArray[count];
+                                    if (t == typeof(int) || t == typeof(Nullable<int>))
                                     {
-                                        int vIntValidated = 0;
+                                        int vValor = 0;
 
-                                        if (vValueCell != null)
+                                        if (int.TryParse(s: this.xTextSearch, result: out vValor))
                                         {
-                                            int.TryParse(s: vValueCell.ToString(), result: out vIntValidated);
-                                        }
+                                            int vIntValidated = 0;
 
-                                        if (vIntValidated == vValor)
+                                            if (vValueCell != null)
+                                            {
+                                                int.TryParse(s: vValueCell.ToString(), result: out vIntValidated);
+                                            }
+
+                                            if (vIntValidated == vValor)
+                                            {
+                                                this.selectedItem = r;
+                                                itemFound = true;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    else if (t == typeof(string))
+                                    {
+                                        if (vValueCell.ToString().ToUpper().Contains(value: this.xTextSearch.ToUpper()))
                                         {
                                             this.selectedItem = r;
                                             itemFound = true;
                                             break;
                                         }
                                     }
-                                }
-                                else if (t == typeof(string))
-                                {
-                                    if (vValueCell.ToString().ToUpper().Contains(value: this.xTextSearch.ToUpper()))
-                                    {
-                                        this.selectedItem = r;
-                                        itemFound = true;
-                                        break;
-                                    }
+
                                 }
 
+                                if (itemFound)
+                                    break;
+
+                                count++;
                             }
-
-                            if (itemFound)
-                                break;
-
-                            count++;
                         }
+                        if (this.cvs.Count == 0)
+                            this.popUp.IsOpen = false;
                     }
+                    
                 }
-
-                if (this.cvs.Count == 0)
-                    this.popUp.IsOpen = false;
-
                 base.NotifyPropertyChanged(propertyName: "xTextSearch");
             }
         }
-
-        //private DataTable _vResult;
-        //public DataTable vResult
-        //{
-        //    get { return _vResult; }
-        //    set
-        //    {
-        //        _vResult = value;
-
-        //        if (value != null)
-        //        {
-        //            cvs = CollectionViewSource.GetDefaultView(
-        //                source: value.DefaultView) as CollectionView;
-        //        }
-
-        //        base.NotifyPropertyChanged(propertyName: "vResult");
-        //    }
-        //}
 
         private string _xNameView;
         public string xNameView
@@ -185,30 +169,30 @@ namespace HLP.Components.ViewModel.ViewModels
             string xQuery = string.Empty;
 
             int count = 0;
-
-            foreach (var campo in (cvs as BindingListCollectionView).ItemProperties)
-            {
-
-                if (campo.Name.ToUpper() == "ID")
-                    this.indexIdProperty = count;
-
-                Type t = campo.PropertyType;
-
-                if (t == typeof(int) || t == typeof(Nullable<int>))
+            if (cvs != null)
+                foreach (var campo in (cvs as BindingListCollectionView).ItemProperties)
                 {
-                    int vValor = 0;
 
-                    if (int.TryParse(s: this.xTextSearch, result: out vValor))
-                        xQuery += xQuery == "" ? string.Format(format: "{0} = {1}", arg0: campo.Name, arg1: vValor)
-                            : string.Format(format: " OR {0} = {1}", arg0: campo.Name, arg1: vValor);
+                    if (campo.Name.ToUpper() == "ID")
+                        this.indexIdProperty = count;
+
+                    Type t = campo.PropertyType;
+
+                    if (t == typeof(int) || t == typeof(Nullable<int>))
+                    {
+                        int vValor = 0;
+
+                        if (int.TryParse(s: this.xTextSearch, result: out vValor))
+                            xQuery += xQuery == "" ? string.Format(format: "{0} = {1}", arg0: campo.Name, arg1: vValor)
+                                : string.Format(format: " OR {0} = {1}", arg0: campo.Name, arg1: vValor);
+                    }
+                    else if (t == typeof(string))
+                    {
+                        xQuery += xQuery == "" ? string.Format(format: "{0} LIKE '%{1}%'", arg0: campo.Name, arg1: this.xTextSearch)
+                            : string.Format(format: " OR {0} LIKE '%{1}%'", arg0: campo.Name, arg1: this.xTextSearch);
+                    }
+                    count++;
                 }
-                else if (t == typeof(string))
-                {
-                    xQuery += xQuery == "" ? string.Format(format: "{0} LIKE '%{1}%'", arg0: campo.Name, arg1: this.xTextSearch)
-                        : string.Format(format: " OR {0} LIKE '%{1}%'", arg0: campo.Name, arg1: this.xTextSearch);
-                }
-                count++;
-            }
 
             return xQuery;
         }

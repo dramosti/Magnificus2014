@@ -39,8 +39,7 @@ namespace HLP.Entries.Services.RecursosHumanos
                     }
                 case StConnection.OnlineWeb:
                     {
-                       // return this.servicoInternet.GetLastFuncionario_Controle_Horas_PontoDia(idFuncionario, data);
-                        return new Funcionario_Controle_Horas_PontoModel();
+                        return this.servicoInternet.GetLastFuncionario_Controle_Horas_PontoDia(idFuncionario, data);
                     }
             }
             return null;

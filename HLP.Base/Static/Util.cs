@@ -2343,6 +2343,38 @@ namespace HLP.Base.Static
             else
                 SearchParent(comp: comp.Parent as FrameworkElement, t: t, compResult: out compResult);
         }
+
+        public static T FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            //get parent item
+            DependencyObject parentObject = VisualTreeHelper.GetParent(child);
+
+            //we've reached the end of the tree
+            if (parentObject == null) return null;
+
+            //check if the parent matches the type we're looking for
+            T parent = parentObject as T;
+            if (parent != null)
+                return parent;
+            else
+                return FindParent<T>(parentObject);
+        }
+
+        /// <summary>
+        /// Mapeamento das propriedade que não contem custom atributes.
+        /// </summary>
+        /// <typeparam name="T">Classe a ser mappeada</typeparam>
+        /// <returns></returns>
+        public static Microsoft.Practices.EnterpriseLibrary.Data.IRowMapper<T> GetMap<T>() where T : class, new()
+        {
+            List<System.Reflection.PropertyInfo> lProperty = typeof(T).GetProperties().Where(c => c.CustomAttributes.Count() == 0).ToList();
+            Microsoft.Practices.EnterpriseLibrary.Data.IMapBuilderContext<T> mapper = Microsoft.Practices.EnterpriseLibrary.Data.MapBuilder<T>.MapAllProperties();
+            foreach (System.Reflection.PropertyInfo p in lProperty)
+            {
+                mapper = mapper.DoNotMap(p);
+            }
+            return mapper.Build();
+        }
     }
 
 }

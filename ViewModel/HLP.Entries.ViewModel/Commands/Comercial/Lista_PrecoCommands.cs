@@ -3,13 +3,16 @@ using HLP.Base.EnumsBases;
 using HLP.Base.Modules;
 using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Services.Comercial;
+using HLP.Entries.Services.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,10 +28,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         int idOld = 0;
         bool bOpCancelada = false;
         Lista_PrecoService objService;
+        Unidade_MedidaService objUnidadeMedidaService;
 
         public Lista_PrecoCommands(Lista_PrecoViewModel objViewModel)
         {
             objService = new Lista_PrecoService();
+            this.objUnidadeMedidaService = new Unidade_MedidaService();
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
@@ -531,8 +536,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     this.bOpCancelada = true;
                 }
             this.objViewModel.hierarquiaListaPreco = null;
-            this.objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.getListaPreco);
-            this.objViewModel.bWorkerPesquisa.RunWorkerCompleted += bw_RunWorkerCompleted;
             this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
 
@@ -549,18 +552,18 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     this.IniciaCollection();
                     if (this.objViewModel.currentModel != null)
                     {
-                        this.objViewModel.currentModel.lLista_preco.CollectionChanged +=
-                            this.objViewModel.currentModel.lLista_preco_CollectionChanged;
-
-                        foreach (Lista_precoModel it in this.objViewModel.currentModel.lLista_preco)
-                        {
-                            it.stMarkupLista = this.objViewModel.currentModel.stMarkup;
-                        }
-
                         if (this.objViewModel.currentID > 0)
                         {
                             this.objViewModel.lIdsHierarquia = this.objService.getHierarquiaLista(idListaPreco: this.objViewModel.currentID);
                         }
+
+                        foreach (Lista_precoModel item in this.objViewModel.currentModel.lLista_preco)
+                        {
+                            item.refListaPrecoPai = GCHandle.Alloc(value: this.objViewModel.currentModel);
+                        }
+
+                        this.objViewModel.currentModel.lLista_preco.CollectionChanged 
+                            += this.objViewModel.currentModel.lLista_preco_CollectionChanged;
                     }
 
                     this.objViewModel.bTreeCarregada = false;
@@ -683,6 +686,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         public ProdutoModel GetProduto(int idProduto)
         {
             return objServicoProduto.GetObjeto(id: idProduto);
+        }
+
+        public Unidade_medidaModel GetUnidadeMedida(int idUnidadeMedida)
+        {
+            return objUnidadeMedidaService.GetObject(id: idUnidadeMedida);
         }
     }
 }

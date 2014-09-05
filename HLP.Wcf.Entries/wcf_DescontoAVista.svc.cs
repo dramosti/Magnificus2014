@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Resources.Util;
+﻿using HLP.Base.Static;
 using HLP.Dependencies;
 using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.Model.Repository.Interfaces.Financeiro;

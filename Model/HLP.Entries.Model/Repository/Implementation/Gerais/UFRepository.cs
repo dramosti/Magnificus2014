@@ -40,6 +40,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public UFModel GetUF(int idUF)
         {
+
             if (regUfAccessor == null)
             {
                 regUfAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_uf",

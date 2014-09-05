@@ -1,6 +1,6 @@
 ﻿using HLP.Components.Model.Models;
 using HLP.Components.Model.Repository.Interfaces;
-using HLP.Comum.Resources.Util;
+using HLP.Base.Static;
 using HLP.Dependencies;
 using Ninject;
 using System;

@@ -99,11 +99,13 @@
     </ApplicationDefinition>
     <Compile Include="Comercial\Converter\CanUserAddListaItensConverter.cs" />
     <Compile Include="Comercial\Converter\CanUserAddOrcamentoItemConverter.cs" />
+    <Compile Include="Comercial\Converter\contratoReadOnlyMultiValueConverter.cs" />
     <Compile Include="Comercial\Converter\getSiteMultiConverter.cs" />
     <Compile Include="Comercial\Converter\HeaderMarkupConverter.cs" />
     <Compile Include="Comercial\Converter\IdMotivoVisibilityConverter.cs" />
     <Compile Include="Comercial\Converter\IsEnabledCompMultiConverter.cs" />
     <Compile Include="Comercial\Converter\ListaPrecoClienteEnabled.cs" />
+    <Compile Include="Comercial\Converter\pPercentualReadOnlyMultiValueConverter.cs" />
     <Compile Include="Comercial\Converter\ReadOnlyColumnsListaAutomaticaConverter.cs" />
     <Compile Include="Comercial\Converter\RowDateListaPrecoConverter.cs" />
     <Compile Include="Comercial\Converter\StatusOrcamentoConverter.cs" />
@@ -310,12 +312,6 @@
       <DependentUpon>WinTransportadora.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validates\ValidaUsuarioValidationRule.cs" />
-    <Compile Include="wdTeste.xaml.cs">
-      <DependentUpon>wdTeste.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
     <Page Include="Comercial\WinCanalVenda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -561,14 +557,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="wdTeste.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -620,14 +608,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Comum\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
-      <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
-      <Name>HLP.Comum.Resources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
-      <Project>{178FDD5C-D3E5-4809-87C6-3A69C0055BC6}</Project>
-      <Name>HLP.Comum.View</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
       <Project>{6C138179-2C79-4535-9C3C-E78C529D3598}</Project>
       <Name>HLP.Dependencies</Name>

@@ -90,6 +90,21 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             this.Botoes.Children.Add(element: btnGerarVersao);
 
             this.itensComissoes = new ItensComissoes();
+
+            this.getCliente = comm.GetCliente;
+
+        }
+
+        private Func<int, object> _getCliente;
+
+        public Func<int, object> getCliente
+        {
+            get { return _getCliente; }
+            set
+            {
+                _getCliente = value;
+                base.NotifyPropertyChanged(propertyName: "getCliente");
+            }
         }
 
         private Orcamento_ItemModel _currentItem;
@@ -112,11 +127,6 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public EmpresaModel GetEmpresa(int idEmpresa)
         {
             return comm.GetEmpresa(idEmpresa: idEmpresa);
-        }
-
-        public Cliente_fornecedorModel GetCliente(int idCliente)
-        {
-            return comm.GetCliente(idCliente: idCliente);
         }
 
         public FuncionarioModel GetFuncionario(int idFuncionario)

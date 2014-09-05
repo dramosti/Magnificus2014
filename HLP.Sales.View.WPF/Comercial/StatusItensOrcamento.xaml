@@ -4,7 +4,7 @@
         x:Name="wd"
         xmlns:util="clr-namespace:HLP.Sales.View.WPF.Util"
         xmlns:convLocal="clr-namespace:HLP.Sales.View.WPF.Converters"
-        xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         Title="Alterar Status Itens Orçamento" Height="400" Width="950" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">

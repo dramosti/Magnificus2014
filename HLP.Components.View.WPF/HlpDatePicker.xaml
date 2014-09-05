@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ConvertLocal="clr-namespace:HLP.Components.View.WPF.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="20" Height="20" x:Name="ucDtPicker">
+             d:DesignHeight="20" Height="20" x:Name="ucDtPicker" FocusManager.FocusedElement="{Binding ElementName=txtData}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,24 +14,27 @@
             <ConvertLocal:VisibilityDatePickerConverter x:Key="visDtPickerConverter"></ConvertLocal:VisibilityDatePickerConverter>
             <ConvertLocal:DateShortConverter x:Key="dtShortConverter"></ConvertLocal:DateShortConverter>
             <ConvertLocal:TimeSpanToString x:Key="tmShortConverter"></ConvertLocal:TimeSpanToString>
-
+            <ConvertLocal:focusedElementDateCompConverter x:Key="focusedElementConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel Orientation="Horizontal">
-        <Border>
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="txtData" Width="80" BorderBrush="Transparent" Background="Transparent"
+    <Grid FocusManager.FocusedElement="{Binding ElementName=txtData}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="80"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Column="0" x:Name="txtData" Width="auto" BorderBrush="Transparent" Background="Transparent"
                  Text="{Binding ElementName=ucDtPicker, Path=xTextDate, Converter={StaticResource dtShortConverter}, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
                  Visibility="{Binding ElementName=ucDtPicker, Path=stFormatoDtPicker,
-            Converter={StaticResource visDtPickerConverter}, ConverterParameter=txtData}" Style="{StaticResource TextBoxComponentStyleDataPicker}" Margin="0"></TextBox>
-                <TextBox x:Name="txtHora" Width="60" BorderBrush="Transparent" Background="Transparent"
+            Converter={StaticResource visDtPickerConverter}, ConverterParameter=txtData}" 
+                 Style="{StaticResource TextBoxComponentStyleDataPicker}" Margin="0"></TextBox>
+        <TextBox Grid.Column="1" x:Name="txtHora" Width="auto" BorderBrush="Transparent" Background="Transparent"
                  Text="{Binding ElementName=ucDtPicker, Path=xTextTime, Converter={StaticResource tmShortConverter}, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"                        
                  Visibility="{Binding ElementName=ucDtPicker, Path=stFormatoDtPicker,
-            Converter={StaticResource visDtPickerConverter}, ConverterParameter=txtHora}" Style="{StaticResource TextBoxComponentStyleDataPicker}" Margin="0">
-                </TextBox>
-            </StackPanel>
-        </Border>
-        <Button x:Name="btnCalendar" DockPanel.Dock="Right" Width="20" Style="{StaticResource Button_HLP_DATE_PICKER}" ContextMenuService.Placement="Right" Click="btnCalendar_Click"
+            Converter={StaticResource visDtPickerConverter}, ConverterParameter=txtHora}" 
+                 Style="{StaticResource TextBoxComponentStyleDataPicker}" Margin="0">
+        </TextBox>
+        <Button Grid.Column="2" x:Name="btnCalendar" DockPanel.Dock="Right" Width="20" Style="{StaticResource Button_HLP_DATE_PICKER}" ContextMenuService.Placement="Right" Click="btnCalendar_Click"
                 Visibility="{Binding ElementName=ucDtPicker, Path=stFormatoDtPicker,
                 Converter={StaticResource visDtPickerConverter}, ConverterParameter=btnCalendar}" Content="29" Background="{x:Null}" BorderBrush="{x:Null}">
 
@@ -48,5 +51,5 @@
                 </ContextMenu>
             </Button.ContextMenu>
         </Button>
-    </StackPanel>
+    </Grid>
 </UserControl>

@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Resources.Util;
+﻿using HLP.Base.Static;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
@@ -50,7 +50,7 @@ namespace HLP.Entries.View.WPF.Gerais
 
                     if (r != null)
                     {
-                        cell = StaticUtil.GetCell(this.gridItens, r, 0);
+                        cell = Util.GetCell(this.gridItens, r, 0);
                         ((CheckBox)((DataGridCell)cell).Content).IsChecked = this.cbSelDesTudo.IsChecked;
                     }
                 }

@@ -1,6 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
 using HLP.Comum.Model.Models;
+using HLP.Entries.Model.Comercial;
 using HLP.Entries.Model.Models.Gerais;
 using System;
 using System.Collections.Generic;
@@ -14,16 +15,12 @@ namespace HLP.Entries.Model.Models.Comercial
 {
     public partial class ProdutoModel : modelComum
     {
-        Type produtoViewModel = null;
-        List<MethodInfo> lMethods;
-
         public ProdutoModel()
             : base(xTabela: "Produto")
         {
             this.lProdutos_Conversao = new ObservableCollectionBaseCadastros<ConversaoModel>();
             this.lProduto_Fornecedor_Homologado = new ObservableCollectionBaseCadastros<Produto_Fornecedor_HomologadoModel>();
             this.lProduto_Revisao = new ObservableCollectionBaseCadastros<Produto_RevisaoModel>();
-            this.lMethods = new List<MethodInfo>();
             this.dCadastro = DateTime.Now;
             this.idFuncionario = UserData.idUser;
 
@@ -46,8 +43,19 @@ namespace HLP.Entries.Model.Models.Comercial
         public string cAlternativo { get; set; }
         [ParameterOrder(Order = 3)]
         public string cEan { get; set; }
+
+        private string _xPesquisa;
         [ParameterOrder(Order = 4)]
-        public string xPesquisa { get; set; }
+        public string xPesquisa
+        {
+            get { return _xPesquisa; }
+            set
+            {
+                _xPesquisa = value;
+                base.NotifyPropertyChanged(propertyName: "xPesquisa");
+            }
+        }
+
         [ParameterOrder(Order = 5)]
         public string xComercial { get; set; }
         [ParameterOrder(Order = 6)]
@@ -67,6 +75,23 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
 
+
+        private Tipo_produtoModel _objTipoProduto;
+
+        public Tipo_produtoModel objTipoProduto
+        {
+            get { return _objTipoProduto; }
+            set
+            {
+                _objTipoProduto = value;
+
+                if (value != null)
+                    this.IsService = value.stServicos == (byte)1;
+
+                base.NotifyPropertyChanged(propertyName: "objTipoProduto");
+            }
+        }
+
         private int _idTipoProduto;
         [ParameterOrder(Order = 9)]
         public int idTipoProduto
@@ -76,25 +101,6 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _idTipoProduto = value;
 
-                if (Application.Current != null)
-                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                        {
-                            Window wdProduto = Sistema.GetOpenWindow(xName: "WinProduto");
-
-                            if (wdProduto != null)
-                            {
-                                this.produtoViewModel = wdProduto.DataContext.GetType();
-
-                                if (this.lMethods.Count(i => i.Name == "IsService") < 1)
-                                {
-                                    MethodInfo mi = this.produtoViewModel.GetMethod(name: "IsService");
-                                    this.lMethods.Add(item: mi);
-                                }
-
-                                this.IsService = (bool)lMethods.FirstOrDefault(i => i.Name == "IsService").Invoke(obj: wdProduto.DataContext,
-                                    parameters: new object[] { value });
-                            }
-                        }));
                 base.NotifyPropertyChanged(propertyName: "idTipoProduto");
 
             }
@@ -184,6 +190,23 @@ namespace HLP.Entries.Model.Models.Comercial
         [ParameterOrder(Order = 34)]
         public int? idEmpresa { get; set; }
 
+
+        private DepositoModel _objDeposito;
+
+        public DepositoModel objDeposito
+        {
+            get { return _objDeposito; }
+            set
+            {
+                _objDeposito = value;
+
+                if (value != null)
+                    this.idSite = value.idSite;
+                base.NotifyPropertyChanged(propertyName: "objDeposito");
+            }
+        }
+
+
         private int _idDeposito;
         [ParameterOrder(Order = 35)]
         public int idDeposito
@@ -192,27 +215,6 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _idDeposito = value;
-
-                if (Application.Current != null)
-                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                    {
-                        Window wdProduto = Sistema.GetOpenWindow(xName: "WinProduto");
-
-                        if (wdProduto != null)
-                        {
-                            this.produtoViewModel = wdProduto.DataContext.GetType();
-
-                            if (this.lMethods.Count(i => i.Name == "GetIdSiteByDeposito") < 1)
-                            {
-                                MethodInfo mi = this.produtoViewModel.GetMethod(name: "GetIdSiteByDeposito");
-                                this.lMethods.Add(item: mi);
-                            }
-
-                            this.idSite = (int)lMethods.FirstOrDefault(i => i.Name == "GetIdSiteByDeposito").Invoke(obj: wdProduto.DataContext,
-                                parameters: new object[] { value });
-                        }
-
-                    }));
 
                 base.NotifyPropertyChanged(propertyName: "idDeposito");
             }

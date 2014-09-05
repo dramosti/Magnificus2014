@@ -2,6 +2,7 @@
 using HLP.Base.Static;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace HLP.Base.ClassesBases
         public modelBase()
         {
             this.operationModel = OperationModel.searching;
+            this.lErrors = new ObservableCollection<ErrorsModel>();
         }
 
         public void IniciaObjeto()
@@ -80,6 +82,8 @@ namespace HLP.Base.ClassesBases
             }
 
             this.IniciaObjeto();
+
+            this.lErrors = new ObservableCollection<ErrorsModel>();
         }
 
         #region NotifyPropertyChanged
@@ -100,6 +104,33 @@ namespace HLP.Base.ClassesBases
 
         #region Validação de Dados
 
+        public int ValidateModel()
+        {
+            int countErrors = 0;
+
+            foreach (var p in this.GetType().GetProperties())
+            {
+                if (p.SetMethod != null && p.GetMethod != null)
+                    if (!(string.IsNullOrEmpty(value: this[columnName: p.Name])))
+                        countErrors++;
+            }
+
+            return countErrors;
+        }
+
+        private ObservableCollection<ErrorsModel> _lErrors;
+
+        public ObservableCollection<ErrorsModel> lErrors
+        {
+            get { return _lErrors; }
+            set
+            {
+                _lErrors = value;
+                this.NotifyPropertyChanged(propertyName: "lErrors");
+            }
+        }
+
+
         public string Error
         {
             get { return string.Empty; }
@@ -109,7 +140,17 @@ namespace HLP.Base.ClassesBases
         {
             get
             {
-                object valor = this.GetType().GetProperty(columnName).GetValue(this);
+                PropertyInfo pi = this.GetType().GetProperty(columnName);
+
+                Attribute a = pi.GetCustomAttribute(attributeType: typeof(SkipValidation));
+
+                if (a != null)
+                {
+                    if ((a as SkipValidation).skip)
+                        return string.Empty;
+                }
+
+                object valor = pi.GetValue(this);
                 string sMessage = string.Empty;
                 sMessage = this.GetValidationError(columnName: columnName, objeto: this);
 
@@ -184,7 +225,20 @@ namespace HLP.Base.ClassesBases
                         }
                     }
 
+                ErrorsModel error = this.lErrors.FirstOrDefault(
+                    i => i.xId == columnName);
 
+                if (error != null)
+                    this.lErrors.Remove(item: error);
+
+                if (!String.IsNullOrEmpty(value: sMessage))
+                {
+                    this.lErrors.Add(item: new ErrorsModel
+                        {
+                            xId = columnName,
+                            xErro = sMessage
+                        });
+                }
 
                 return sMessage;
             }
@@ -193,6 +247,7 @@ namespace HLP.Base.ClassesBases
         protected string GetValidationError<T>(string columnName, T objeto) where T : class
         {
             object valor = objeto.GetType().GetProperty(columnName).GetValue(objeto);
+
             if (lcamposSqlNotNull != null)
             {
                 PesquisaPadraoModelContract campo = lcamposSqlNotNull.FirstOrDefault(predicate:
@@ -283,5 +338,47 @@ namespace HLP.Base.ClassesBases
         public string DATA_TYPE { get; set; }
         public string IS_NULLABLE { get; set; }
         public int CHARACTER_MAXIMUM_LENGTH { get; set; }
+    }
+
+    public class ErrorsModel : INotifyPropertyChanged
+    {
+
+        private string _xId;
+
+        public string xId
+        {
+            get { return _xId; }
+            set
+            {
+                _xId = value;
+                this.NotifyPropertyChanged(propertyName: "xId");
+            }
+        }
+
+        private string _xErro;
+
+        public string xErro
+        {
+            get { return _xErro; }
+            set
+            {
+                _xErro = value;
+                this.NotifyPropertyChanged(propertyName: "xErro");
+            }
+        }
+
+        #region NotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void NotifyPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
     }
 }

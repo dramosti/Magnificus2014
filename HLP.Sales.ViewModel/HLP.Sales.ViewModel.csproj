@@ -64,10 +64,6 @@
     <Compile Include="ViewModel\Comercio\viewModelComum.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
-      <Project>{178fdd5c-d3e5-4809-87c6-3a69c0055bc6}</Project>
-      <Name>HLP.Comum.View</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>
