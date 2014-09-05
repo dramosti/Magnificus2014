@@ -3,6 +3,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
+        xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinBanco"
         Title="Bancos" Height="660" Width="1024" NameView="vwBanco">
     <runtime:WindowsBase.Resources>
@@ -10,99 +11,92 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <convert:NotConverter x:Key="notConverter"/>
         </ResourceDictionary>
     </runtime:WindowsBase.Resources>
-    <Grid>
-        <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <TabItem Header="Geral">
-                <TabItem.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </TabItem.Background>
+    <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <TabItem Header="Geral">
+            <Expander Header="Principal" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
                 <Grid>
-                    <Expander Header="Principal" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"></ColumnDefinition>
-                                <ColumnDefinition MaxWidth="175" MinWidth="175"></ColumnDefinition>
-                                <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                                <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="10"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <!--Label-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                        <ColumnDefinition MaxWidth="175" MinWidth="175"></ColumnDefinition>
+                        <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                        <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <!--Label-->
 
-                            <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Código do Banco " Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Nome do Banco" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Nome Resumido do Banco" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Logotipo do Banco" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="D+" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="D-" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
-                            
-                            <!--Components-->
-                            
-                            <Components:CustomTextBox stCompPosicao="fieldId"
+                    <Components:CustomTextBlock Text="Código" labelFor="{Binding ElementName=txtId}" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Código do Banco" labelFor="{Binding ElementName=txtIdBanco}" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Nome do Banco" labelFor="{Binding ElementName=txtNomeBanco}" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Nome Resumido do Banco" labelFor="{Binding ElementName=txtResumidoBanco}" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Logotipo do Banco"  Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="D+" labelFor="{Binding ElementName=txtDMais}" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="D-" labelFor="{Binding ElementName=txtDMenos}" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+
+                    <!--Components-->
+
+                    <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtId"
                                 Grid.Column="2" Grid.Row="1"
                                 Text="{Binding currentModel.idBanco, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"
 								IsReadOnly="True"
 								ToolTip="Chave principal do registro Banco">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox stCompPosicao="first"
+                    </Components:CustomTextBox>
+                    <Components:CustomTextBox stCompPosicao="first" x:Name="txtIdBanco"
                                 Grid.Column="2" Grid.Row="2"
                                 Text="{Binding currentModel.cBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
+								IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 								ToolTip="Informar o Código do Banco">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
+                    </Components:CustomTextBox>
+                    <Components:CustomTextBox x:Name="txtNomeBanco"
                                 Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
                                 Text="{Binding currentModel.xBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
+								IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 								ToolTip="Descrição do Nome do Banco Completo.">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
+                    </Components:CustomTextBox>
+                    <Components:CustomTextBox x:Name="txtResumidoBanco"
                                 Grid.Column="2" Grid.Row="4"
                                 Text="{Binding currentModel.xBancoResumido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
+								IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 								ToolTip="Descrição do Nome do Banco Resumido">
-                            </Components:CustomTextBox>
-                            <Components:HlpUserControlBtnImage  Grid.Column="2" Grid.Row="5" Caption=""
+                    </Components:CustomTextBox>
+                    <Components:HlpUserControlBtnImage  Grid.Column="2" Grid.Row="5" Caption=""
                                         IsEnabled="{Binding bIsEnabled}"                                                          
                                         xPathCaminho="{Binding currentModel.xLinkLogo, Mode=TwoWay}" ToolTip="Informar o caminho do arquivo do logotipo do banco.">
-                            </Components:HlpUserControlBtnImage>
-                            <Components:CustomTextBox
+                    </Components:HlpUserControlBtnImage>
+                    <Components:CustomTextBox x:Name="txtDMais"
                                 Grid.Column="2" Grid.Row="6"                                
                                 Text="{Binding currentModel.vDxMais, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
+								IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 								ToolTip="Define a quantidade de dias a mais para ser faturado a duplicata recebida.">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
+                    </Components:CustomTextBox>
+                    <Components:CustomTextBox x:Name="txtDMenos"
                                 Grid.Column="2" Grid.Row="7" stCompPosicao="last"
                                 Text="{Binding currentModel.vDxMenos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
+								IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 								ToolTip="Define a quantidade de dias a menos para ser faturado a duplicata paga.">
-                            </Components:CustomTextBox>
-                        </Grid>
-                    </Expander>
+                    </Components:CustomTextBox>
                 </Grid>
-            </TabItem>
-            <TabItem Header="Hierarquia" x:Name="tabHierarquia">
-                <AdornerDecorator>
-                    <ContentControl Content="{ Binding Path=hierarquiaConta, Mode=OneWay}"></ContentControl>
-                </AdornerDecorator>
-            </TabItem>
-        </TabControl>
-    </Grid>
+            </Expander>
+        </TabItem>
+        <TabItem Header="Hierarquia" x:Name="tabHierarquia">
+            <AdornerDecorator>
+                <ContentControl Content="{ Binding Path=hierarquiaConta, Mode=OneWay}"></ContentControl>
+            </AdornerDecorator>
+        </TabItem>
+    </TabControl>
+
 </runtime:WindowsBase>

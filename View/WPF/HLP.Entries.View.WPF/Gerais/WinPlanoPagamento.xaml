@@ -50,28 +50,28 @@
                 </Grid.RowDefinitions>
                 <!--Label-->
 
-                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Plano Pagamento" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Descrição " Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código" labelFor="{Binding ElementName=txtId}" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Plano Pagamento" labelFor="{Binding ElementName=txtPlanoPagamento}" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Descrição " labelFor="{Binding ElementName=txtDescricao}" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
 
                 <!--Components-->
 
-                <Components:CustomTextBox stCompPosicao="fieldId"
+                <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtId"
                     Grid.Column="2" Grid.Row="1"
                     IsReadOnly="True"
 					Text="{Binding currentModel.idPlanoPagamento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 				    ToolTip="Chave principal do registro do Plano de Pagamento">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox stCompPosicao="first"
+                <Components:CustomTextBox stCompPosicao="first" x:Name="txtPlanoPagamento"
                     Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				    IsEnabled="{Binding bIsEnabled}"
+				    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 					ToolTip="Insira um código ou uma breve descrição para identificar o plano de pagamento.">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtDescricao"
                     Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				    IsEnabled="{Binding bIsEnabled}"
+				    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 					ToolTip="Insira a descrição do plano de pagamento">
                 </Components:CustomTextBox>
 
@@ -102,26 +102,25 @@
 
                 <!--Label-->
 
-                <Components:CustomTextBlock Text="Alocação" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Forma de Pagamento" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Alterar a cada" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Alocação" labelFor="{Binding ElementName=cbxAlocacao}" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Forma de Pagamento" labelFor="{Binding ElementName=cbxStFormaPagamento}" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Alterar a cada" labelFor="{Binding ElementName=txtAlterarFormaPagamento}" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Margin="20,0,0,0" Text="{Binding ElementName=cbxStFormaPagamento, 
                     Path=SelectedIndex, Converter={StaticResource xDisplayFormaPagConverter}}" Grid.Column="4" Grid.Row="3"
                                             Visibility="{Binding ElementName=txtAlterarFormaPagamento, Path=IsEnabled, Converter={StaticResource xDisplayFormaPagamentoVisibConverter}}">
                 </Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Numero de Pagamentos" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Valor Fixo para cada pagamento." Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Valor Mínimo" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Alocação de imposto sobre vendas" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Numero de Pagamentos" labelFor="{Binding ElementName=txtNumeroPagamentos}" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Valor Fixo para cada pagamento." labelFor="{Binding ElementName=txtValorFixo}" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Valor Mínimo" Grid.Column="1" labelFor="{Binding ElementName=txtValorMinimo}" Grid.Row="6"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Alocação de imposto sobre vendas" labelFor="{Binding ElementName=cbxAlocacaoImpostos}" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
 
                 <!--Components-->
 
-                <Components:CustomComboBox
-                    Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" 
-                    x:Name="cbxAlocacao"			                    
+                <Components:CustomComboBox x:Name="cbxAlocacao"
+                    Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"                    			                    
 					SelectedIndex="{Binding currentModel.stAlocacao, Mode=TwoWay, NotifyOnValidationError=True, 
                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled}"
 					ToolTip="0-Especificado – um valor específico é devido em cada uma das datas de pagamento especificadas. Defina as linhas e os valores do plano de pagamento na guia Linhas de pagamento.Quando utilizar o status Especificado:os campos . Alterar, Numero de Pagamentos, Valor Moeda, Valor Minimo são desativados.1-Quantidade fixa (VALOR DEFAULT) – pagamento do valor total é dividido em uma quantidade fixa de prestações. Quando utilizar o status Quantidade Fixa: o campo Valor Moeda e a Guia das linhas é  desativado.2-Total – valor total pendente quando a Nota fiscal está vencida. Quando utilizar o status Total:os campos Numero de Pagamentos e Alocação de Impostos são desativados.3-Valor fixo – um valor específico e fixo é devido por cada prestação nas datas de pagamento calculadas. Quando utilizar o status Valor Fixo: os campos Forma de Pagamento, Alterar, Numero de Pagamentos,">
                     <Components:CustomComboBox.Items>
                         <System:String>0-Especificado</System:String>
@@ -131,7 +130,7 @@
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
                 <Components:CustomComboBox x:Name="cbxStFormaPagamento"
-                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"                                           
+                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"                                            
                     SelectedIndex="{Binding currentModel.stFormaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					ToolTip="Selecione o intervalo de datas em dias, meses ou anos a ser usado no cálculo da data de vencimento de cada prestação."
                     IsEnabled="{Binding bIsEnabled}">                    
@@ -141,10 +140,11 @@
                         <System:String>2-Meses</System:String>
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
-                <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="3" Height="20" x:Name="txtAlterarFormaPagamento"
+                <Components:CustomTextBox x:Name="txtAlterarFormaPagamento"
+                    Grid.Column="2" Grid.Row="3" Height="20" 
                     Text="{Binding currentModel.nAlterarFormaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"												
-                    ToolTip="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. " Grid.ColumnSpan="2">
+                    ToolTip="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. " Grid.ColumnSpan="2"
+                    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}">
                     <Components:CustomTextBox.Style>
                         <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="{x:Type Components:CustomTextBox}">
                             <Setter Property="IsEnabled" Value="True"/>
@@ -159,8 +159,9 @@
                         </Style>
                     </Components:CustomTextBox.Style>
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtNumeroPagamentos"
                     Grid.Column="2" Grid.Row="4"
+                    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
                     Text="{Binding currentModel.nNumerosPagamentos, Mode=TwoWay, 
                     TargetNullValue='',
                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					
@@ -181,9 +182,9 @@
                         </Style>
                     </Components:CustomTextBox.Style>
                 </Components:CustomTextBox>
-
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtValorFixo"
                     Grid.Column="2" Grid.Row="5"
+                    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
                     Text="{Binding currentModel.vFixoPagamento, Mode=TwoWay, NotifyOnValidationError=True, 
                     UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"					
 					ToolTip="Se você selecionou a opção Valor fixo no campo Alocação , especifique o valor da moeda de cada prestação.">
@@ -202,8 +203,9 @@
                         </Style>
                     </Components:CustomTextBox.Style>
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtValorMinimo"
                     Grid.Column="2" Grid.Row="6"
+                    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
                     Text="{Binding currentModel.vPagamentoMinimo, Mode=TwoWay, NotifyOnValidationError=True, 
                     UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"					
 					ToolTip="Especifique o menor valor da prestação. Valores mínimos substituem valores de pagamento calculados.">
@@ -226,7 +228,8 @@
                         </Style>
                     </Components:CustomTextBox.Style>
                 </Components:CustomTextBox>
-                <Components:CustomComboBox
+                <Components:CustomComboBox x:Name="cbxAlocacaoImpostos"
+                    IsReadOnly="{Binding bIsEnabled}"
                     Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2" IsEnabled="{Binding bIsEnabled}"
                     SelectedIndex="{Binding currentModel.stAlocacaoImpostos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					ToolTip="Selecione um método de distribuição do valor do imposto sobre vendas para prestações do plano de pagamento. 0-Primeira prestação - o valor total do imposto sobre vendas está incluído na primeira prestação. 1-Proporcionalmente - o valor do imposto sobre vendas é distribuído por igual, com o mesmo valor de imposto em cada prestação. 2-Última prestação - o valor total do imposto sobre vendas está incluído na última prestação. ">
@@ -253,14 +256,14 @@
                 </Grid.RowDefinitions>
                 <!--Label-->
 
-                <Components:CustomTextBlock Text="Nota" Grid.Column="1" Grid.Row="1"/>
+                <Components:CustomTextBlock Text="Nota" labelFor="{Binding ElementName=txtNota}" Grid.Column="1" Grid.Row="1"/>
 
                 <!--Components-->
 
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtNota"                    
                     Grid.Column="2" Grid.Row="1" stCompPosicao="last"
                     Text="{Binding currentModel.xNota, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 					ToolTip="Insira uma nota que explica como e quando usar o plano de pagamento. A nota é opcional e somente para uso interno.">
                 </Components:CustomTextBox>
 

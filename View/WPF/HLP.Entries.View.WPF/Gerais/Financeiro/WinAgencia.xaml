@@ -29,137 +29,131 @@
                     <System:String>vwContatoToComboBox</System:String>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-        </ResourceDictionary>      
+        </ResourceDictionary>
     </Window.Resources>
-    <Grid>
-        <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <TabItem Header="Geral">
-                <AdornerDecorator>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Expander Header="Principal" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="10"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="50" MinWidth="50"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="20" MinWidth="20"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="70" MinWidth="70"></ColumnDefinition>
-                                    <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="10"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                
-                                <!--Label-->
+    <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <TabItem Header="Geral">
+            <AdornerDecorator>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Expander Header="Principal" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="50" MinWidth="50"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="20" MinWidth="20"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="70" MinWidth="70"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            </Grid.RowDefinitions>
 
-                                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Código da Agência" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Nome da Agência" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Banco" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Telefone" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Fax" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                                <Components:CustomTextBlock Text="Contatos" Grid.Column="6" Grid.Row="1"></Components:CustomTextBlock>
-                                
-                                <!--Components-->
-                                
-                                <Components:CustomTextBox stCompPosicao="fieldId"
+                            <!--Label-->
+
+                            <Components:CustomTextBlock Text="Código" labelFor="{Binding ElementName=txtId}" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Código da Agência" labelFor="{Binding ElementName=txtIdAgencia}" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Nome da Agência" labelFor="{Binding ElementName=txtNomeAgencia}" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Banco" labelFor="{Binding ElementName=txtBanco}" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Telefone" labelFor="{Binding ElementName=txtTelefone}" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Fax" labelFor="{Binding ElementName=txtFax}" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Contatos" Grid.Column="6" Grid.Row="1"></Components:CustomTextBlock>
+
+                            <!--Components-->
+
+                            <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtId"
                                     Grid.Column="2" Grid.Row="1"
                                     Text="{Binding currentModel.idAgencia, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 									IsReadOnly="True"
 									ToolTip="Chave principal do registro da Agencia.">
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox stCompPosicao="first"
+                            </Components:CustomTextBox>
+                            <Components:CustomTextBox stCompPosicao="first" x:Name="txtIdAgencia"
                                     Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                                     Text="{Binding currentModel.cAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"	
+									IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"	
 									ToolTip="Digite um código da Agencia bancária.">
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox
+                            </Components:CustomTextBox>
+                            <Components:CustomTextBox x:Name="txtNomeAgencia"
                                     Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"
                                     Text="{Binding currentModel.xAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 									ToolTip="Informa o nome por completo da Agência Bancária">
-                                </Components:CustomTextBox>
-                                <Components:CustomPesquisa NameWindowCadastro="WinBanco"
-                                        	Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3"
-                                        	xIdPesquisa="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                        	IsEnabled="{Binding bIsEnabled}"
-                                        	ToolTip="Informa o código do Banco. O banco deverá estar cadastro no Formulário de Bancos." FieldPesquisa="ID" TableView="vwBanco">
-                                    <Components:CustomPesquisa.Items>
-                                        <System:String>xBanco</System:String>
-                                        <System:String>cBanco</System:String>
-                                    </Components:CustomPesquisa.Items>
-                                </Components:CustomPesquisa>
-                                <Components:CustomTextBox
+                            </Components:CustomTextBox>
+                            <Components:ucTextBoxIntellisense x:Name="txtBanco"
+					            ucEnabled="{Binding bIsEnabled}"
+					            Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3"
+					            selectedId="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                xNameView="vwBancoqs" NameWindowCadastro="WinBanco" TableView="vwBanco"
+                    />
+                            <Components:CustomTextBox x:Name="txtTelefone"
                                     Grid.Column="2" Grid.Row="5"
                                     Text="{Binding currentModel.xTelefone, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,Converter={StaticResource maskConverter}, ConverterParameter=tel}"
-									IsEnabled="{Binding bIsEnabled}"
+									IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 									ToolTip="Informar o telefone principal da Agencia Bancária">
-                                </Components:CustomTextBox>
-                                <Components:CustomTextBox
+                            </Components:CustomTextBox>
+                            <Components:CustomTextBox x:Name="txtFax"
                                     Grid.Column="2" Grid.Row="6" stCompPosicao="last"
                                     Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
-									IsEnabled="{Binding bIsEnabled}"
+									IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 									ToolTip="Informar o Fax principal da Agencia Bancária.">
-                                </Components:CustomTextBox>
-                                <Components:HlpContato
+                            </Components:CustomTextBox>
+                            <Components:HlpContato
                                     IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     ItemsSourceContatos="{Binding currentModel.lAgencia_ContatoModel}"
                                     Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="6"
                                          x:Name="dgvContato"
                                     >
-                                    <Components:HlpContato.lColumns>
-                                        <System:String>xNome</System:String>
-                                        <System:String>xCargo</System:String>
-                                        <System:String>xEmailComercial</System:String>
-                                        <System:String>xTelefoneComercial</System:String>
-                                        <System:String>xRamalComercial</System:String>
-                                        <System:String>xCelularComercial</System:String>
-                                    </Components:HlpContato.lColumns>
-                                </Components:HlpContato>
-                            </Grid>
-                        </Expander>
-                        <Expander Header="Endereco" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="1">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="10"></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition Width="10"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="10"></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition Height="10"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Components:HlpEndereco
+                                <Components:HlpContato.lColumns>
+                                    <System:String>xNome</System:String>
+                                    <System:String>xCargo</System:String>
+                                    <System:String>xEmailComercial</System:String>
+                                    <System:String>xTelefoneComercial</System:String>
+                                    <System:String>xRamalComercial</System:String>
+                                    <System:String>xCelularComercial</System:String>
+                                </Components:HlpContato.lColumns>
+                            </Components:HlpContato>
+                        </Grid>
+                    </Expander>
+                    <Expander Header="Endereco" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="10"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Components:HlpEndereco
                                     Grid.Column="1" Grid.Row="1"                                    
                                     x:Name="dgvEndereco"
                                     ItemsSourceEnderecos="{Binding currentModel.lAgencia_EnderecoModel}"
                                     IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
-                                    />                                    
-                            </Grid>
-                        </Expander>
-                    </Grid>
-                </AdornerDecorator>
-            </TabItem>
-            <TabItem Header="Hierarquia" x:Name="tabHierarquia">
-                <AdornerDecorator>
-                    <ContentControl Content="{ Binding Path=hierarquiaConta, Mode=OneWay}"></ContentControl>
-                </AdornerDecorator>
-            </TabItem>
-        </TabControl>
-    </Grid>
+                                    />
+                        </Grid>
+                    </Expander>
+                </Grid>
+            </AdornerDecorator>
+        </TabItem>
+        <TabItem Header="Hierarquia" x:Name="tabHierarquia">
+            <AdornerDecorator>
+                <ContentControl Content="{ Binding Path=hierarquiaConta, Mode=OneWay}"></ContentControl>
+            </AdornerDecorator>
+        </TabItem>
+    </TabControl>
 </runtime:WindowsBase>

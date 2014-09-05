@@ -12,10 +12,11 @@
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <convert:PorcentagemConverter x:Key="porcConverter"/>
-        </ResourceDictionary>        
+            <convert:NotConverter x:Key="notConverter"/>
+        </ResourceDictionary>
     </runtime:WindowsBase.Resources>
-    <Grid>
-        <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+    <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+        <AdornerDecorator>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
@@ -34,50 +35,49 @@
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <!--Label-->
 
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Código Alternativo"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Descrição"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Percentual da Multa "></Components:CustomTextBlock>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Dias de Carência"></Components:CustomTextBlock>
-                
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" labelFor="{Binding ElementName=txtId}" Text="Código"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" labelFor="{Binding ElementName=txtIdAlternativo}" Text="Código Alternativo"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" labelFor="{Binding ElementName=txtDescricao}" Text="Descrição"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" labelFor="{Binding ElementName=txtPercentualMulta}" Text="Percentual da Multa "></Components:CustomTextBlock>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" labelFor="{Binding ElementName=txtDiasCarencia}" Text="Dias de Carência"></Components:CustomTextBlock>
+
                 <!--Components-->
 
-                <Components:CustomTextBox stCompPosicao="fieldId"
+                <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtId"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idMultas, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsReadOnly="True"
-					ToolTip="Chave principal do registro da Multa">                    
+					ToolTip="Chave principal do registro da Multa">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox stCompPosicao="first"
+                <Components:CustomTextBox stCompPosicao="first" x:Name="txtIdAlternativo"
                     Grid.Column="2" Grid.Row="2"
                     Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				    IsEnabled="{Binding bIsEnabled}"
-				    ToolTip="Insira nome do código da multa">                    
+				    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
+				    ToolTip="Insira nome do código da multa">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+                <Components:CustomTextBox x:Name="txtDescricao"
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" 
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				    IsEnabled="{Binding bIsEnabled}"
+				    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 				    ToolTip="Insira uma descrição detalhada da Multa">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtPercentualMulta"
                     Grid.Column="2" Grid.Row="4"
                     Text="{Binding currentModel.pPercentual, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				    IsEnabled="{Binding bIsEnabled}"
+				    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 				    ToolTip="Insira a porcentagem da multa que se aplica ao código da multa">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtDiasCarencia"
                     Grid.Column="2" Grid.Row="5" stCompPosicao="last"
                     Text="{Binding currentModel.nDias, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				    IsEnabled="{Binding bIsEnabled}"
+				    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 				    ToolTip="Insira o número de dias no período de carência antes da aplicação da porcentagem de multa">
                 </Components:CustomTextBox>
 
             </Grid>
-        </Expander>
-
-    </Grid>
+        </AdornerDecorator>
+    </Expander>
 </runtime:WindowsBase>
