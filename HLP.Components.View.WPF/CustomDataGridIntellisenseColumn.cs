@@ -70,7 +70,8 @@ namespace HLP.Components.View.WPF
 
         protected override bool CommitCellEdit(FrameworkElement editingElement)
         {
-            this.model = (editingElement as ucTextBoxIntellisense).model;
+            if (editingElement.GetType() == typeof(ucTextBoxIntellisense))
+                this.model = (editingElement as ucTextBoxIntellisense).model;
             return base.CommitCellEdit(editingElement);
         }
 
@@ -95,6 +96,7 @@ namespace HLP.Components.View.WPF
             txtIntellisense.NameWindowCadastro = this.NameWindowCadastro;
             txtIntellisense.TableView = this.TableView;
             txtIntellisense.refMethod = this.refMethod;
+
             return txtIntellisense;
         }
 
@@ -111,38 +113,42 @@ namespace HLP.Components.View.WPF
             if (dataItem != null)
                 if (!dataItem.ToString().ToUpper().Contains(value: "NEWITEMPLACEHOLDER"))
                 {
-                    int? id = dataItem.GetType().GetProperty(name: (this.Binding as Binding).Path.Path).GetValue(obj: dataItem) as int?;
-
-                    object obj = this.refMethod.Invoke(arg: id ?? 0);
-
-                    if (obj != null)
+                    PropertyInfo piBinding = dataItem.GetType().GetProperty(name: (this.Binding as Binding).Path.Path);
+                    if (piBinding != null)
                     {
-                        if (!string.IsNullOrEmpty(value: this.xNamePropertyModel))
-                            dataItem.GetType().GetProperty(name: this.xNamePropertyModel).SetValue(obj: dataItem,
-                                value: obj);
+                        int? id = piBinding.GetValue(obj: dataItem) as int?;
 
-                        PropertyInfo pi = null;
+                        object obj = this.refMethod.Invoke(arg1: id ?? 0, arg2: true);
 
-                        if (this.xFieldsToDisplay.Split(';').Count() > 0)
+                        if (obj != null)
                         {
-                            foreach (string field in this.xFieldsToDisplay.Split(';'))
+                            if (!string.IsNullOrEmpty(value: this.xNamePropertyModel))
+                                dataItem.GetType().GetProperty(name: this.xNamePropertyModel).SetValue(obj: dataItem,
+                                    value: obj);
+
+                            PropertyInfo pi = null;
+
+                            if (this.xFieldsToDisplay.Split(';').Count() > 0)
                             {
-                                pi = obj.GetType().GetProperty(name: field);
-
-                                if (pi != null)
+                                foreach (string field in this.xFieldsToDisplay.Split(';'))
                                 {
-                                    xDisplay += xDisplay != string.Empty ? " - " : string.Empty;
+                                    pi = obj.GetType().GetProperty(name: field);
 
-                                    xDisplay += pi.GetValue(obj: obj);
+                                    if (pi != null)
+                                    {
+                                        xDisplay += xDisplay != string.Empty ? " - " : string.Empty;
+
+                                        xDisplay += pi.GetValue(obj: obj);
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            pi = obj.GetType().GetProperties().FirstOrDefault(i => i.Name.StartsWith(value: "x"));
+                            else
+                            {
+                                pi = obj.GetType().GetProperties().FirstOrDefault(i => i.Name.StartsWith(value: "x"));
 
-                            if (pi != null)
-                                xDisplay = pi.GetValue(obj: obj) as string;
+                                if (pi != null)
+                                    xDisplay = pi.GetValue(obj: obj) as string;
+                            }
                         }
                     }
                     txt.Text = xDisplay;
@@ -159,15 +165,15 @@ namespace HLP.Components.View.WPF
             set { SetValue(modelProperty, value); }
         }
 
-        public Func<int, object> refMethod
+        public Func<int, bool, object> refMethod
         {
-            get { return (Func<int, object>)GetValue(refMethodProperty); }
+            get { return (Func<int, bool, object>)GetValue(refMethodProperty); }
             set { SetValue(refMethodProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for refMethod.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty refMethodProperty =
-            DependencyProperty.Register("refMethod", typeof(Func<int, object>), typeof(CustomDataGridIntellisenseColumn), new PropertyMetadata(null));
+            DependencyProperty.Register("refMethod", typeof(Func<int, bool, object>), typeof(CustomDataGridIntellisenseColumn), new PropertyMetadata(null));
 
         // Using a DependencyProperty as the backing store for model.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty modelProperty =

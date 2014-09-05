@@ -57,42 +57,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                 regOrcamento_ideAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Orcamento_ide",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idOrcamento"),
-                                 MapBuilder<Orcamento_ideModel>.MapAllProperties()
-                                 .DoNotMap(c => c.orcamento_Total_Impostos)
-                                 .DoNotMap(i => i.orcamento_retTransp)
-                                 .DoNotMap(i => i.status)
-                                 .DoNotMap(i => i.xDepartamento)
-                                 .DoNotMap(i => i.xCidade)
-                                 .DoNotMap(i => i.xUf)
-                                 .DoNotMap(i => i.xTelefone)
-                                 .DoNotMap(i => i.idRamoAtividade)
-                                 .DoNotMap(i => i.idCanalVenda)
-                                .DoNotMap(i => i.bCriado)
-                                .DoNotMap(i => i.bEnviado)
-                                .DoNotMap(i => i.bCancelado)
-                                .DoNotMap(i => i.bPerdido)
-                                .DoNotMap(i => i.bConfirmado)
-                                .DoNotMap(i => i.bTodos)
-                                .DoNotMap(i => i.objCliente)
-                                .DoNotMap(i => i.objFuncionario)
-                                .DoNotMap(i => i.bIsEnabledClListaPreco)
-                                .DoNotMap(i => i.objListaPreco)
-                                .DoNotMap(i => i.idUfEnderecoCliente)
-                                .DoNotMap(i => i.idUfEnderecoEmpresa)
-                                .DoNotMap(i => i.objEmpresa)
-                                .DoNotMap(i => i.objCondicaoPagamento)
-                                .DoNotMap(i => i.objDesconto)
-                                .DoNotMap(i => i.objFuncionarioRepresentante)
-                                .DoNotMap(i => i.objTipoDocumento)
-                                .DoNotMap(i => i.bCriadoTotais)
-                                .DoNotMap(i => i.bConfirmadoTotais)
-                                .DoNotMap(i => i.bEnviadoTotais)
-                                .DoNotMap(i => i.bPerdidoTotais)
-                                .DoNotMap(i => i.bCanceladoTotais)
-                                .DoNotMap(i => i.bTodosTotais)
-                                .DoNotMap(i => i.idFuncionarioRepresentante)
-                                .DoNotMap(i => i.xEmpresa)
-                                 .Build());
+                                 Util.GetMap<Orcamento_ideModel>());
             }
 
             return regOrcamento_ideAccessor.Execute(idOrcamento).FirstOrDefault();
@@ -103,34 +68,7 @@ namespace HLP.Sales.Model.Repository.Implementation
             DataAccessor<Orcamento_ideModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("select * from Orcamento_ide where idOrcamento = @idOrcamento",
             new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idOrcamento"),
-            MapBuilder<Orcamento_ideModel>.MapAllProperties()
-            .DoNotMap(c => c.orcamento_Total_Impostos)
-            .DoNotMap(i => i.orcamento_retTransp)
-            .DoNotMap(i => i.status)
-            .DoNotMap(i => i.xDepartamento)
-            .DoNotMap(i => i.xCidade)
-            .DoNotMap(i => i.xUf)
-            .DoNotMap(i => i.xTelefone)
-            .DoNotMap(i => i.idRamoAtividade)
-            .DoNotMap(i => i.idCanalVenda)
-            .DoNotMap(i => i.bIsEnabledClListaPreco)
-                                .DoNotMap(i => i.bCriado)
-                                .DoNotMap(i => i.bEnviado)
-                                .DoNotMap(i => i.bCancelado)
-                                .DoNotMap(i => i.bPerdido)
-                                .DoNotMap(i => i.bConfirmado)
-                                .DoNotMap(i => i.bTodos)
-                                .DoNotMap(i => i.objListaPreco)
-                                .DoNotMap(i => i.objTipoDocumento)
-                                .DoNotMap(i => i.bCriadoTotais)
-                                .DoNotMap(i => i.bConfirmadoTotais)
-                                .DoNotMap(i => i.bEnviadoTotais)
-                                .DoNotMap(i => i.bPerdidoTotais)
-                                .DoNotMap(i => i.bCanceladoTotais)
-                                .DoNotMap(i => i.bTodosTotais)
-                                .DoNotMap(i => i.idFuncionarioRepresentante)
-                                .DoNotMap(i => i.xEmpresa)
-            .Build());
+            Util.GetMap<Orcamento_ideModel>());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
 
@@ -139,34 +77,7 @@ namespace HLP.Sales.Model.Repository.Implementation
             DataAccessor<Orcamento_ideModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("select * from Orcamento_ide where idOrcamentoOrigem = @idOrcamento",
             new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idOrcamento"),
-            MapBuilder<Orcamento_ideModel>.MapAllProperties()
-            .DoNotMap(c => c.orcamento_Total_Impostos)
-            .DoNotMap(i => i.orcamento_retTransp)
-            .DoNotMap(i => i.status)
-            .DoNotMap(i => i.xDepartamento)
-            .DoNotMap(i => i.xCidade)
-            .DoNotMap(i => i.xUf)
-            .DoNotMap(i => i.xTelefone)
-            .DoNotMap(i => i.idRamoAtividade)
-            .DoNotMap(i => i.idCanalVenda)
-            .DoNotMap(i => i.bCriado)
-            .DoNotMap(i => i.bIsEnabledClListaPreco)
-                                .DoNotMap(i => i.bEnviado)
-                                .DoNotMap(i => i.bCancelado)
-                                .DoNotMap(i => i.bPerdido)
-                                .DoNotMap(i => i.bConfirmado)
-                                .DoNotMap(i => i.bTodos)
-                                .DoNotMap(i => i.objListaPreco)
-                                .DoNotMap(i => i.objTipoDocumento)
-                                .DoNotMap(i => i.bCriadoTotais)
-                                .DoNotMap(i => i.bConfirmadoTotais)
-                                .DoNotMap(i => i.bEnviadoTotais)
-                                .DoNotMap(i => i.bPerdidoTotais)
-                                .DoNotMap(i => i.bCanceladoTotais)
-                                .DoNotMap(i => i.bTodosTotais)
-                                .DoNotMap(i => i.idFuncionarioRepresentante)
-                                .DoNotMap(i => i.xEmpresa)
-            .Build());
+            Util.GetMap<Orcamento_ideModel>());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
 
@@ -175,31 +86,7 @@ namespace HLP.Sales.Model.Repository.Implementation
             if (regAllOrcamento_ideAccessor == null)
             {
                 regAllOrcamento_ideAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Orcamento_ide",
-                                MapBuilder<Orcamento_ideModel>
-                                .MapAllProperties()
-                                .DoNotMap(i => i.status)
-                                .DoNotMap(i => i.xDepartamento)
-                                .DoNotMap(i => i.xCidade)
-                                .DoNotMap(i => i.xUf)
-                                .DoNotMap(i => i.xTelefone)
-                                .DoNotMap(i => i.idRamoAtividade)
-                                .DoNotMap(i => i.bCriado)
-                                .DoNotMap(i => i.bEnviado)
-                                .DoNotMap(i => i.bCancelado)
-                                .DoNotMap(i => i.bPerdido)
-                                .DoNotMap(i => i.bConfirmado)
-                                .DoNotMap(i => i.bTodos)
-                                .DoNotMap(i => i.bIsEnabledClListaPreco)
-                                .DoNotMap(i => i.objListaPreco)
-                                .DoNotMap(i => i.bCriadoTotais)
-                                .DoNotMap(i => i.bConfirmadoTotais)
-                                .DoNotMap(i => i.bEnviadoTotais)
-                                .DoNotMap(i => i.bPerdidoTotais)
-                                .DoNotMap(i => i.bCanceladoTotais)
-                                .DoNotMap(i => i.bTodosTotais)
-                                .DoNotMap(i => i.idFuncionarioRepresentante)
-                                .DoNotMap(i => i.xEmpresa)
-                                .Build());
+                                Util.GetMap<Orcamento_ideModel>());
             }
             return regAllOrcamento_ideAccessor.Execute().ToList();
         }

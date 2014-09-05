@@ -62,13 +62,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                 regCliente_fornecedorAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Cliente_fornecedor",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idClienteFornecedor"),
-                                         MapBuilder<Cliente_fornecedorModel>.MapAllProperties()
-                                         .DoNotMap(c => c.cliente_fornecedor_fiscal)
-                                         .DoNotMap(i => i.status)
-                                         .DoNotMap(i => i.enabledFieldsCondPagamento)
-                                         .DoNotMap(i => i.idSite)
-                                         .DoNotMap(i => i.bEnabledListaPreco)
-                                         .Build());
+                                         Util.GetMap<Cliente_fornecedorModel>());
             }
 
             return regCliente_fornecedorAccessor.Execute(idClienteFornecedor).FirstOrDefault();

@@ -2,6 +2,7 @@
 using HLP.Base.Static;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Services.Financeiro;
 using HLP.Entries.Services.Gerais;
 using HLP.Entries.Services.Transportes;
 using System;
@@ -122,20 +123,45 @@ namespace HLP.Entries.Services.Comercial
             return null;
         }
 
-        public Cliente_fornecedorModel GetObjeto(int id)
+        public Cliente_fornecedorModel GetObjeto(int id, bool loadOptionalParameters = false)
         {
+            Cliente_fornecedorModel objCliente = null;
             switch (Sistema.bOnline)
             {
                 case StConnection.OnlineNetwork:
                     {
-                        return this.servicoRede.GetObject(id: id);
-                    }
+                        objCliente = this.servicoRede.GetObject(id: id);
+                    }; break;
                 case StConnection.OnlineWeb:
                     {
-                        return this.servicoInternet.GetObject(id: id);
-                    }
+                        objCliente = this.servicoInternet.GetObject(id: id);
+                    }; break;
             }
-            return null;
+
+            if (loadOptionalParameters)
+            {
+                this.SetListaPrecoCliente(objClienteFornecedor: objCliente);
+                this.SetDescontoCliente(objClienteFornecedor: objCliente);
+            }
+            return objCliente;
+        }
+
+        private void SetListaPrecoCliente(Cliente_fornecedorModel objClienteFornecedor)
+        {
+            Lista_PrecoService objListaPrecoService = new Lista_PrecoService();
+
+            if (objClienteFornecedor != null)
+                objClienteFornecedor.objListaPrecoPai = objListaPrecoService.GetObjeto(
+                    id: objClienteFornecedor.idListaPrecoPai);
+
+        }
+
+        private void SetDescontoCliente(Cliente_fornecedorModel objClienteFornecedor)
+        {
+            Descontos_AvistaService objService = new Descontos_AvistaService();
+
+            if (objClienteFornecedor != null)
+                objClienteFornecedor.objDesconto = objService.GetObject(id: objClienteFornecedor.idDescontos ?? 0);
         }
 
         public int GetIdSiteByDeposito(int idDeposito)

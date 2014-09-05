@@ -1,6 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Services.Gerais;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -121,20 +122,46 @@ namespace HLP.Entries.Services.Comercial
             return null;
         }
 
-        public ProdutoModel GetObjeto(int id)
+        public ProdutoModel GetObjeto(int id, bool loadOptionalParameters = false)
         {
+            ProdutoModel objProduto = null;
+
             switch (Sistema.bOnline)
             {
                 case StConnection.OnlineNetwork:
                     {
-                        return this.servicoRede.GetObjeto(idProduto: id);
-                    }
+                        objProduto = this.servicoRede.GetObjeto(idProduto: id);
+                    } break;
                 case StConnection.OnlineWeb:
                     {
-                        return this.servicoInternet.GetObjeto(idProduto: id);
-                    }
+                        objProduto = this.servicoInternet.GetObjeto(idProduto: id);
+                    } break;
             }
-            return null;
+
+            if (loadOptionalParameters)
+            {
+                this.SetFamiliaProduto(objProduto: objProduto);
+                this.SetListUnidadeMedida(objProduto: objProduto);
+            }
+
+            return objProduto;
+        }
+
+        private void SetFamiliaProduto(ProdutoModel objProduto)
+        {
+            FamiliaProdutoService objFamiliaProdutoService = new FamiliaProdutoService();
+
+            if (objProduto != null)
+                objProduto.objFamiliaProduto = objFamiliaProdutoService.GetObjeto(id: objProduto.idProduto ?? 0);
+        }
+
+        private void SetListUnidadeMedida(ProdutoModel objProduto)
+        {
+            HLP.Components.Services.FillComboBoxService objCbxService = new HLP.Components.Services.FillComboBoxService();
+
+            if (objProduto != null)
+                objProduto.lUnidades = objCbxService.GetAllValuesToComboBox(
+                    sNameView: "getUnidadeMedidaToComboBox", sParameter: objProduto.idProduto.ToString());
         }
 
         public List<ProdutoModel> GetAll()

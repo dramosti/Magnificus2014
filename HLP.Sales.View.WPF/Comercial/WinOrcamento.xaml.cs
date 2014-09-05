@@ -44,10 +44,5 @@ namespace HLP.Sales.View.WPF.GestãoAdministrativa.Comercial
         {
             this.ViewModel.GenerateItensComissoes();
         }
-
-        private void pesquisaCliente_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

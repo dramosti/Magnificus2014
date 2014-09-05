@@ -17,27 +17,10 @@ namespace HLP.Components.View.WPF
 {
     public class CustomDataGrid : DataGrid
     {
-        Type t = null;
 
         public CustomDataGrid()
         {
             this.CanUserAddRows = true;
-        }
-
-        protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
-        {
-            base.OnItemsSourceChanged(oldValue, newValue);
-
-            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
-    new DependencyObject());
-
-            if (!designTime)
-            {
-                if (t == null)
-                {
-                    t = this.ItemsSource.GetType().GetGenericArguments()[0];
-                }
-            }
         }
 
         protected override void OnCellEditEnding(DataGridCellEditEndingEventArgs e)
@@ -52,27 +35,6 @@ namespace HLP.Components.View.WPF
                     e.Cancel = true;
                 }
             }
-        }
-
-        private void AddItem()
-        {
-            MethodInfo miAdd = this.ItemsSource.GetType().GetMethod(name: "Add");
-
-            ConstructorInfo c = t.GetConstructor(types: new Type[] { });
-            object obj = c.Invoke(parameters: new object[] { });
-
-            miAdd.Invoke(obj: this.ItemsSource, parameters: new object[]
-                {
-                     obj
-                });
-
-            MethodInfo miIndexOf = this.ItemsSource.GetType().GetMethod(name: "IndexOf");
-
-            int? currentItemIndex = miIndexOf.Invoke(obj: this.ItemsSource, parameters: new object[] { obj }) as int?;
-
-            int? index = this.ItemsSource.GetType().GetProperty(name: "Count").GetValue(obj: this.ItemsSource) as int?;
-
-            int? indexTeste = this.Items.IndexOf(item: obj);
         }
 
         protected override void OnBeginningEdit(DataGridBeginningEditEventArgs e)
@@ -160,13 +122,36 @@ namespace HLP.Components.View.WPF
                         .GetMethods(BindingFlags.Static | BindingFlags.Public)
                         .Where(ext => ext.Name == "Last");
                     object lastItem = null;
+                    Type typeItens = null;
 
                     foreach (MethodInfo extLast in lastMethods)
                     {
                         if (extLast.GetParameters().Count() == 1)
                         {
-                            lastItem = extLast.MakeGenericMethod(typeArguments: this.ItemsSource.GetType().GetGenericArguments()[0])
+                            if (this.ItemsSource.GetType() == typeof(CollectionViewSource) || this.ItemsSource.GetType().BaseType == typeof(CollectionView))
+                            {
+                                typeItens = (this.ItemsSource as CollectionView).SourceCollection.GetType();
+
+                                PropertyInfo piItensCount = (this.ItemsSource as System.Windows.Data.CollectionView).SourceCollection.GetType().GetProperty("Count");
+
+                                if (piItensCount != null)
+                                {
+                                    int? itensCount = piItensCount.GetValue(
+                                    (this.ItemsSource as System.Windows.Data.CollectionView).SourceCollection) as int?;
+
+                                    if (itensCount != null)
+                                        if (itensCount > 0)
+                                            lastItem = (this.ItemsSource as CollectionView).GetItemAt(index: (int)itensCount - 1);
+                                }
+                            }
+                            else
+                            {
+                                typeItens = this.ItemsSource.GetType().GetGenericArguments()[0];
+
+                                lastItem = extLast.MakeGenericMethod(typeArguments: typeItens)
                                 .Invoke(obj: this.ItemsSource, parameters: new object[] { this.ItemsSource });
+                            }
+
                             break;
                         }
                     }

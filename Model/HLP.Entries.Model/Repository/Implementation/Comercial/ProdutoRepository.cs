@@ -31,7 +31,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                 regProduToAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_produto",
                                      new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idProduto"),
-                                    this.ProdutoMapping());
+                                    Util.GetMap<ProdutoModel>());
             }
 
             return regProduToAccessor.Execute(idProduto).FirstOrDefault();
@@ -78,7 +78,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                 regProdutoByTypeAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Produto WHERE idTipoProduto = @idTipoProduto",
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idTipoProduto"),
-                                  this.ProdutoMapping());
+                                  Util.GetMap<ProdutoModel>());
             }
 
 
@@ -91,7 +91,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
             {
                 regProdutoByTypeAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Produto",
                                   new Parameters(UndTrabalho.dbPrincipal),
-                                  this.ProdutoMapping());
+                                  Util.GetMap<ProdutoModel>());
             }
             return regProdutoByTypeAccessor.Execute().ToList();
         }
@@ -123,17 +123,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
         public void RollackTransaction()
         {
             UndTrabalho.RollBackTransaction();
-        }
-
-        private IRowMapper<ProdutoModel> ProdutoMapping()
-        {
-            return MapBuilder<ProdutoModel>.MapAllProperties()
-                .DoNotMap(i => i.status)
-                .DoNotMap(i => i.IsService)
-                .DoNotMap(i => i.idSite)
-                .DoNotMap(i => i.objDeposito)
-                .DoNotMap(i => i.objTipoProduto)
-                .Build();
         }
 
     }

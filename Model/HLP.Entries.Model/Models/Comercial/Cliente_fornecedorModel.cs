@@ -11,6 +11,7 @@ using System.Windows.Threading;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Components.Model.Models;
 using HLP.Comum.Model.Models;
+using HLP.Entries.Model.Models.Financeiro;
 
 namespace HLP.Entries.Model.Models.Comercial
 {
@@ -392,6 +393,19 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "idCanalVenda");
             }
         }
+
+        private Lista_Preco_PaiModel _objListaPrecoPai;
+
+        public Lista_Preco_PaiModel objListaPrecoPai
+        {
+            get { return _objListaPrecoPai; }
+            set
+            {
+                _objListaPrecoPai = value;
+                base.NotifyPropertyChanged(propertyName: "objListaPrecoPai");
+            }
+        }
+
         private int _idListaPrecoPai;
         [ParameterOrder(Order = 26)]
         public int idListaPrecoPai
@@ -1056,6 +1070,21 @@ namespace HLP.Entries.Model.Models.Comercial
                 }
             }
         }
+
+
+        private Descontos_AvistaModel _objDesconto;
+
+        public Descontos_AvistaModel objDesconto
+        {
+            get { return _objDesconto; }
+            set
+            {
+                _objDesconto = value;
+                base.NotifyPropertyChanged(propertyName: "objDesconto");
+            }
+        }
+
+
         private int? _idDescontos;
         [ParameterOrder(Order = 82)]
         public int? idDescontos

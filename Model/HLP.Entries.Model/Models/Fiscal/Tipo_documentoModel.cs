@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Comum.Model.Models;
+using HLP.Entries.Model.Models.Fiscal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,7 +79,7 @@ namespace HLP.Entries.Model.Fiscal
         [ParameterOrder(Order = 28)]
         public byte? stNFdevolucao { get; set; }
 
-        
+
         private ObservableCollectionBaseCadastros<Tipo_documento_oper_validaModel> _lTipo_documento_oper_validaModel;
 
         public ObservableCollectionBaseCadastros<Tipo_documento_oper_validaModel> lTipo_documento_oper_validaModel
@@ -90,7 +91,7 @@ namespace HLP.Entries.Model.Fiscal
                 base.NotifyPropertyChanged(propertyName: "lTipo_documento_oper_validaModel");
             }
         }
-        
+
     }
 
     public partial class Tipo_documento_oper_validaModel : modelComum
@@ -108,6 +109,21 @@ namespace HLP.Entries.Model.Fiscal
                 base.NotifyPropertyChanged(propertyName: "idTipoDocumentoOperValida");
             }
         }
+
+
+        private Tipo_operacaoModel _objTipoOperacao;
+
+        public Tipo_operacaoModel objTipoOperacao
+        {
+            get { return _objTipoOperacao; }
+            set
+            {
+                _objTipoOperacao = value;
+                base.NotifyPropertyChanged(propertyName: "objTipoOperacao");
+            }
+        }
+
+
         private int _idTipoOperacao;
         [ParameterOrder(Order = 2)]
         public int idTipoOperacao

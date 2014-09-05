@@ -14,7 +14,7 @@
             <localConverter:NotConverter x:Key="notConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid FocusManager.FocusedElement="{Binding ElementName=txt}">
+    <Grid>
         <TextBox x:Name="txt" IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}
             ,Path=ucEnabled, Converter={StaticResource notConverter}}"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}

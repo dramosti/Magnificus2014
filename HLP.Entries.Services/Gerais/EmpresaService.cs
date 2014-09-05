@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
+using HLP.Components.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using System;
 using System.Collections.Generic;
@@ -70,24 +71,45 @@ namespace HLP.Entries.Services.Gerais
             }
         }
 
-        public EmpresaModel GetObject(int id)
+        public EmpresaModel GetObject(int id, bool loadOptionalParameters = false)
         {
+            EmpresaModel objEmpresa = null;
             switch (Sistema.bOnline)
             {
                 case StConnection.OnlineNetwork:
                     {
-                        return this.serviceNetwork.GetObject(id: id);
-                    }
+                        objEmpresa = this.serviceNetwork.GetObject(id: id);
+                    } break;
                 case StConnection.OnlineWeb:
                     {
-                        return this.serviceWeb.GetObject(id: id);
-                    }
+                        objEmpresa = this.serviceWeb.GetObject(id: id);
+                    } break;
                 case StConnection.Offline:
                 default:
                     {
                         return null;
                     }
             }
+
+            if (loadOptionalParameters)
+            {
+                this.SetObjCidades(objEmpresa: ref objEmpresa);
+            }
+
+            return objEmpresa;
+
+
+        }
+
+        private void SetObjCidades(ref EmpresaModel objEmpresa)
+        {
+            CidadeService objCidadeService = new CidadeService();
+
+            if (objEmpresa.lEmpresa_endereco.Count > 0)
+                foreach (EnderecoModel item in objEmpresa.lEmpresa_endereco)
+                {
+                    item.objCidade = objCidadeService.GetObject(id: item.idCidade);
+                }
         }
 
         public EmpresaModel SaveObject(EmpresaModel obj)
@@ -148,6 +170,12 @@ namespace HLP.Entries.Services.Gerais
                         return null;
                     }
             }
+        }
+
+        public enum ExecuteOptionalSearchs
+        {
+            _default,
+            cidade
         }
     }
 

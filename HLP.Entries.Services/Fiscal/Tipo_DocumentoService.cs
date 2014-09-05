@@ -75,24 +75,43 @@ namespace HLP.Entries.Services.Fiscal
             }
         }
 
-        public Tipo_documentoModel GetObject(int id)
+        public Tipo_documentoModel GetObject(int id, bool loadOptionalParameters = false)
         {
+            Tipo_documentoModel objTipoDocumento = null;
+
             switch (Sistema.bOnline)
             {
                 case StConnection.OnlineNetwork:
                     {
-                        return this.serviceNetwork.GetObject(id: id);
-                    }
+                        objTipoDocumento = this.serviceNetwork.GetObject(id: id);
+                    } break;
                 case StConnection.OnlineWeb:
                     {
-                        return this.serviceWeb.GetObject(id: id);
-                    }
+                        objTipoDocumento = this.serviceWeb.GetObject(id: id);
+                    } break;
                 case StConnection.Offline:
                 default:
                     {
                         return null;
                     }
             }
+
+            if (loadOptionalParameters)
+            {
+                this.SetTipoOperacao(objTipoDocumento: objTipoDocumento);
+            }
+
+            return objTipoDocumento;
+        }
+
+        private void SetTipoOperacao(Tipo_documentoModel objTipoDocumento)
+        {
+            Tipo_OperacaoService objTipoOperacaoService = new Tipo_OperacaoService();
+            if (objTipoDocumento.lTipo_documento_oper_validaModel.Count > 0)
+                foreach (Tipo_documento_oper_validaModel item in objTipoDocumento.lTipo_documento_oper_validaModel)
+                {
+                    item.objTipoOperacao = objTipoOperacaoService.GetObject(id: item.idTipoOperacao);
+                }
         }
 
         public Tipo_documentoModel SaveObject(Tipo_documentoModel obj)

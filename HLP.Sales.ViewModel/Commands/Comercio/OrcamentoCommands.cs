@@ -136,14 +136,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         #region Implementação Commands
 
-        public int GetIdSiteByDeposito(int idDeposito)
+        public DepositoModel GetDeposito(int idDeposito, bool bOptionalSearch = false)
         {
-            DepositoModel objDeposito = this.objDepositoService.GetObject(id: idDeposito);
-
-            if (objDeposito != null)
-                return objDeposito.idSite;
-
-            return 0;
+            return this.objDepositoService.GetObject(id: idDeposito);
         }
 
         public void ItensRepresentantesExecute()
@@ -506,7 +501,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 this.IniciaCollection();
                 if (objViewModel.currentModel != null)
                 {
-                    this.objViewModel.currentModel.LoadListTipoDocumento();
+                    //TODO: RESOLVER JÁ
+                    //this.objViewModel.currentModel.LoadListTipoDocumento();
                     this.objViewModel.currentModel.bTodos = this.objViewModel.currentModel.bTodosTotais = true;
 
                     if (this.objViewModel.currentModel.lOrcamento_Itens != null)
@@ -515,6 +511,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
 
                     this.objViewModel.GenerateItensComissoes();
+
+                    this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged +=
+                        this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
                 }
             }
         }
@@ -725,12 +724,12 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             return objEmpresaService.GetObject(id: idEmpresa);
         }
 
-        public object GetCliente(int idCliente)
+        public object GetCliente(int idCliente, bool bOptionaSearch = false)
         {
-            return objClienteService.GetObjeto(id: idCliente);
+            return objClienteService.GetObjeto(id: idCliente, loadOptionalParameters: bOptionaSearch);
         }
 
-        public FuncionarioModel GetFuncionario(int idFuncionario)
+        public FuncionarioModel GetFuncionario(int idFuncionario, bool bOptionalSearch = false)
         {
             return objFuncionarioService.GetObject(id: idFuncionario, bGetChild: false) ?? new FuncionarioModel();
         }
@@ -741,14 +740,14 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 sParameter: idTipoDocumento.ToString());
         }
 
-        public Familia_produtoModel GetFamiliaProduto(int idFamiliaProduto)
+        public Familia_produtoModel GetFamiliaProduto(int idFamiliaProduto, bool bOptionalSearch)
         {
             return objFamiliaProdutoService.GetObjeto(id: idFamiliaProduto);
         }
 
-        public ProdutoModel GetProduto(int idProduto)
+        public ProdutoModel GetProduto(int idProduto, bool optionalSearch)
         {
-            return objProdutoService.GetObjeto(id: idProduto);
+            return objProdutoService.GetObjeto(id: idProduto, loadOptionalParameters: optionalSearch);
         }
 
         public List<modelToComboBox> GetListUnidadeMedida(int idProduto)
@@ -757,7 +756,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 sNameView: "getUnidadeMedidaToComboBox", sParameter: idProduto.ToString());
         }
 
-        public Lista_Preco_PaiModel GetListaPreco(int idListaPreco)
+        public Lista_Preco_PaiModel GetListaPreco(int idListaPreco, bool bOptionalSearch)
         {
             return this.objListaPrecoService.GetObjeto(id: idListaPreco);
         }
@@ -767,7 +766,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             return this.objDescontoService.GetObject(id: idDesconto);
         }
 
-        public Condicao_pagamentoModel GetCondicaoPagamento(int idCondicaoPagamento)
+        public Condicao_pagamentoModel GetCondicaoPagamento(int idCondicaoPagamento, bool bOptionalSearch = false)
         {
             return this.objCondicaoPagamentoService.GetObject(id: idCondicaoPagamento);
         }
@@ -777,7 +776,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             return this.objCidadeService.GetObject(id: idCidade);
         }
 
-        public Tipo_operacaoModel GetTipoOperacao(int idTipoOperacao)
+        public Tipo_operacaoModel GetTipoOperacao(int idTipoOperacao, bool bOptionalSearch)
         {
             return this.objTipoOperacaoService.GetObject(id: idTipoOperacao);
         }
@@ -787,12 +786,12 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             return this.objClassificacaoFiscalService.GetObject(id: idClassificacaoFiscal);
         }
 
-        public Codigo_IcmsModel GetCodigoIcmsByUf(int idCodigoIcmsPai, int idUf)
+        public Codigo_Icms_paiModel GetCodigoIcmsPai(int idCodigoIcmsPai, bool bOptionalSearch)
         {
-            return this.objCodigoIcmsService.GetObjectByUf(id: idCodigoIcmsPai, idUf: idUf);
+            return this.objCodigoIcmsService.GetObject(id: idCodigoIcmsPai);
         }
 
-        public Ramo_atividadeModel GetRamoAtividade(int idRamoAtividade)
+        public Ramo_atividadeModel GetRamoAtividade(int idRamoAtividade, bool bOptionalSearch)
         {
             return this.objRamoAtividadeService.GetObject(id: idRamoAtividade);
         }
@@ -802,12 +801,12 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             return this.objUfService.GetObject(id: idUf);
         }
 
-        public Unidade_medidaModel GetUnidadeMedida(int idUnidadeMedida)
+        public Unidade_medidaModel GetUnidadeMedida(int idUnidadeMedida, bool bOptionalSearch)
         {
             return this.objUnidadeMedidaService.GetObject(id: idUnidadeMedida);
         }
 
-        public TransportadorModel GetTransportador(int idTransportador)
+        public TransportadorModel GetTransportador(int idTransportador, bool bOptionalSearch)
         {
             return this.objTransportadoraService.GetObject(id: idTransportador);
         }

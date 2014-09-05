@@ -562,7 +562,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             item.refListaPrecoPai = GCHandle.Alloc(value: this.objViewModel.currentModel);
                         }
 
-                        this.objViewModel.currentModel.lLista_preco.CollectionChanged 
+                        this.objViewModel.currentModel.lLista_preco.CollectionChanged
                             += this.objViewModel.currentModel.lLista_preco_CollectionChanged;
                     }
 
@@ -683,12 +683,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             return this.objServicoProduto.GetPrecoCustoProduto(idProduto: idProduto);
         }
 
-        public ProdutoModel GetProduto(int idProduto)
+        public ProdutoModel GetProduto(int idProduto, bool optionalSearch = false)
         {
-            return objServicoProduto.GetObjeto(id: idProduto);
+            return objServicoProduto.GetObjeto(id: idProduto, loadOptionalParameters: optionalSearch);
         }
 
-        public Unidade_medidaModel GetUnidadeMedida(int idUnidadeMedida)
+        public Unidade_medidaModel GetUnidadeMedida(int idUnidadeMedida, bool optionalSearch = false)
         {
             return objUnidadeMedidaService.GetObject(id: idUnidadeMedida);
         }

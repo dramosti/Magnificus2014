@@ -48,8 +48,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                 regOrcamento_Item_RepresentantesAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Orcamento_Item_Representantes",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idOrcamentoItemRepresentate"),
-                                 MapBuilder<Orcamento_Item_RepresentantesModel>.MapAllProperties()
-                                 .Build());
+                                 Util.GetMap<Orcamento_Item_RepresentantesModel>());
             }
 
             return regOrcamento_Item_RepresentantesAccessor.Execute(idOrcamentoItemRepresentate).FirstOrDefault();
@@ -59,9 +58,7 @@ namespace HLP.Sales.Model.Repository.Implementation
         {
             this.regOrcamento_Item_Representantes_ByIdOrcamentoItemAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Orcamento_Item_Representantes " +
                 "WHERE idOrcamentoItem = " + idOrcamentoItem,
-                                MapBuilder<Orcamento_Item_RepresentantesModel>.MapAllProperties()
-                                .DoNotMap(i => i.status)
-                                .Build());
+                                Util.GetMap<Orcamento_Item_RepresentantesModel>());
             return regOrcamento_Item_Representantes_ByIdOrcamentoItemAccessor.Execute().ToList();
         }
 
@@ -70,7 +67,7 @@ namespace HLP.Sales.Model.Repository.Implementation
             if (regAllOrcamento_Item_RepresentantesAccessor == null)
             {
                 regAllOrcamento_Item_RepresentantesAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Orcamento_Item_Representantes",
-                                MapBuilder<Orcamento_Item_RepresentantesModel>.MapAllProperties().Build());
+                                Util.GetMap<Orcamento_Item_RepresentantesModel>());
             }
             return regAllOrcamento_Item_RepresentantesAccessor.Execute().ToList();
         }

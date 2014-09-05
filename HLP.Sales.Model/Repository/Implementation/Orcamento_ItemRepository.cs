@@ -56,17 +56,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                 regOrcamento_ItemAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Orcamento_Item",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idOrcamentoItem"),
-                                 MapBuilder<Orcamento_ItemModel>
-                                 .MapAllProperties()
-                                 .DoNotMap(i => i.status)
-                                 .DoNotMap(i => i.bXComercialEnabled)
-                                 .DoNotMap(i => i.objImposto)
-                                 .DoNotMap(i => i.stServico)
-                                 .DoNotMap(i => i.bPermitePorcentagem)
-                                 .DoNotMap(i => i.bPedidoClienteEnabled)
-                                 .DoNotMap(i => i.xRepresentanteItem)   
-                                 .DoNotMap(i => i.objListaPreco)
-                                 .Build());
+                                 Util.GetMap<Orcamento_ItemModel>());
             }
 
             return regOrcamento_ItemAccessor.Execute(idOrcamentoItem).FirstOrDefault();
@@ -80,18 +70,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                             "where idOrcamento = @idOrcamento",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idOrcamento"),
-                                 MapBuilder<Orcamento_ItemModel>
-                                 .MapAllProperties()
-                                 .DoNotMap(i => i.status)
-                                 .DoNotMap(i => i.bXComercialEnabled)
-                                 .DoNotMap(i => i.objImposto)
-                                 .DoNotMap(i => i.stServico)
-                                 .DoNotMap(i => i.bPermitePorcentagem)
-                                 .DoNotMap(i => i.bPedidoClienteEnabled)
-                                 .DoNotMap(i => i.xUnidadeMedida)
-                                 .DoNotMap(i => i.xRepresentanteItem)
-                                 .DoNotMap(i => i.objListaPreco)
-                                 .Build());
+                                 Util.GetMap<Orcamento_ItemModel>());
             }
             return regOrcamento_ItemAccessor.Execute(idOrcamento).ToList();
         }
@@ -101,17 +80,7 @@ namespace HLP.Sales.Model.Repository.Implementation
             if (regAllOrcamento_ItemAccessor == null)
             {
                 regAllOrcamento_ItemAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Orcamento_Item",
-                                MapBuilder<Orcamento_ItemModel>
-                                .MapAllProperties()
-                                .DoNotMap(i => i.status)
-                                .DoNotMap(i => i.bXComercialEnabled)
-                                .DoNotMap(i => i.objImposto)
-                                .DoNotMap(i => i.stServico)
-                                .DoNotMap(i => i.bPermitePorcentagem)
-                                .DoNotMap(i => i.xUnidadeMedida)
-                                .DoNotMap(i => i.xRepresentanteItem)
-                                .DoNotMap(i => i.objListaPreco)
-                                .Build());
+                                Util.GetMap<Orcamento_ItemModel>());
             }
             return regAllOrcamento_ItemAccessor.Execute().ToList();
         }

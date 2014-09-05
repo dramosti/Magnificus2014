@@ -177,7 +177,7 @@ namespace HLP.Components.View.WPF
             if (d != null && args.NewValue != null)
             {
                 if ((d as ucTextBoxIntellisense).refMethod != null)
-                    (d as ucTextBoxIntellisense).model = (d as ucTextBoxIntellisense).refMethod.Invoke(arg: (int)args.NewValue);
+                    (d as ucTextBoxIntellisense).model = (d as ucTextBoxIntellisense).refMethod.Invoke(arg1: (int)args.NewValue, arg2: true);
 
                 (d as ucTextBoxIntellisense).txt.Text = String.Empty;
 
@@ -211,15 +211,15 @@ namespace HLP.Components.View.WPF
             set { SetValue(modelProperty, value); }
         }
 
-        public Func<int, object> refMethod
+        public Func<int, bool, object> refMethod
         {
-            get { return (Func<int, object>)GetValue(refMethodProperty); }
+            get { return (Func<int, bool, object>)GetValue(refMethodProperty); }
             set { SetValue(refMethodProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for refMethod.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty refMethodProperty =
-            DependencyProperty.Register("refMethod", typeof(Func<int, object>), typeof(ucTextBoxIntellisense), new PropertyMetadata(null));
+        public static readonly DependencyProperty refMethodProperty =                                                                                                                                                       
+            DependencyProperty.Register("refMethod", typeof(Func<int, bool, object>), typeof(ucTextBoxIntellisense), new PropertyMetadata(null));
 
 
 

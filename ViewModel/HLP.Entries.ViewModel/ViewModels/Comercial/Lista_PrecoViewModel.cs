@@ -38,9 +38,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
 
         #region function
 
-        private Func<int, object> _getProduto;
+        private Func<int, bool, object> _getProduto;
 
-        public Func<int, object> getProduto
+        public Func<int, bool, object> getProduto
         {
             get { return _getProduto; }
             set
@@ -50,9 +50,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             }
         }
 
-        private Func<int, object> _getUnidadeMedida;
+        private Func<int, bool, object> _getUnidadeMedida;
 
-        public Func<int, object> getUnidadeMedida
+        public Func<int, bool, object> getUnidadeMedida
         {
             get { return _getUnidadeMedida; }
             set

@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
+using HLP.Components.Model.Models;
 using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Comercial;
 using HLP.Entries.Model.Models.Gerais;
@@ -103,6 +104,18 @@ namespace HLP.Entries.Model.Models.Comercial
 
                 base.NotifyPropertyChanged(propertyName: "idTipoProduto");
 
+            }
+        }
+
+        private Familia_produtoModel _objFamiliaProduto;
+
+        public Familia_produtoModel objFamiliaProduto
+        {
+            get { return _objFamiliaProduto; }
+            set
+            {
+                _objFamiliaProduto = value;
+                base.NotifyPropertyChanged(propertyName: "objFamiliaProduto");
             }
         }
 
@@ -348,6 +361,17 @@ namespace HLP.Entries.Model.Models.Comercial
         [ParameterOrder(Order = 71)]
         public decimal pPerdaConstante { get; set; }
 
+        private List<modelToComboBox> _lUnidades;
+
+        public List<modelToComboBox> lUnidades
+        {
+            get { return _lUnidades; }
+            set
+            {
+                _lUnidades = value;
+                base.NotifyPropertyChanged(propertyName: "lUnidades");
+            }
+        }
 
         private ObservableCollectionBaseCadastros<Produto_Fornecedor_HomologadoModel> _lProduto_Fornecedor_Homologado;
 

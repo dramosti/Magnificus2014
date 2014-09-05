@@ -39,7 +39,8 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Fiscal.Tipo_documentoModel objret = itipo_documentoRepository.GetDocumento(id);
                 if (objret != null)
                 {
-                    objret.lTipo_documento_oper_validaModel = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Fiscal.Tipo_documento_oper_validaModel>(iTipo_documento_oper_validaRepository.GetAll((int)objret.idTipoDocumento));
+                    objret.lTipo_documento_oper_validaModel = 
+                        new ObservableCollectionBaseCadastros<HLP.Entries.Model.Fiscal.Tipo_documento_oper_validaModel>(iTipo_documento_oper_validaRepository.GetAll((int)objret.idTipoDocumento));
                 }
                 return objret;
             }

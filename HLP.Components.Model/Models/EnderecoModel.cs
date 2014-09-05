@@ -209,6 +209,18 @@ namespace HLP.Components.Model.Models
             }
         }
 
+        private object _objCidade;
+
+        public object objCidade
+        {
+            get { return _objCidade; }
+            set
+            {
+                _objCidade = value;
+                base.NotifyPropertyChanged(propertyName: "objCidade");
+            }
+        }
+
         private int _idCidade;
         [ParameterOrder(Order = 12)]
         public int idCidade

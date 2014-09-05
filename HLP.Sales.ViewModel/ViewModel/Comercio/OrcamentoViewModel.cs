@@ -92,18 +92,183 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             this.itensComissoes = new ItensComissoes();
 
             this.getCliente = comm.GetCliente;
-
+            this.getCondicaoPagamento = comm.GetCondicaoPagamento;
+            this.getFuncionarioRepresentante = comm.GetFuncionario;
+            this.getDeposito = comm.GetDeposito;
+            this.getProduto = comm.GetProduto;
+            this.getTipoOperacao = comm.GetTipoOperacao;
+            this.getUnidadeMedida = comm.GetUnidadeMedida;
+            this.getListaPrecoPai = comm.GetListaPreco;
+            this.getTransportador = comm.GetTransportador;
+            this.getIcmsPai = comm.GetCodigoIcmsPai;
+            this.getRamoAtividade = comm.GetRamoAtividade;
+            this.getFamiliaProduto = comm.GetFamiliaProduto;            
         }
 
-        private Func<int, object> _getCliente;
+        private Func<int, bool, object> _getCliente;
 
-        public Func<int, object> getCliente
+        public Func<int, bool, object> getCliente
         {
             get { return _getCliente; }
             set
             {
                 _getCliente = value;
                 base.NotifyPropertyChanged(propertyName: "getCliente");
+            }
+        }
+
+
+        private Func<int, bool, object> _getCondicaoPagamento;
+
+        public Func<int, bool, object> getCondicaoPagamento
+        {
+            get { return _getCondicaoPagamento; }
+            set
+            {
+                _getCondicaoPagamento = value;
+                base.NotifyPropertyChanged(propertyName: "getCondicaoPagamento");
+            }
+        }
+
+
+        private Func<int, bool, object> _getFuncionarioRepresentante;
+
+        public Func<int, bool, object> getFuncionarioRepresentante
+        {
+            get { return _getFuncionarioRepresentante; }
+            set
+            {
+                _getFuncionarioRepresentante = value;
+                base.NotifyPropertyChanged(propertyName: "getFuncionarioRepresentante");
+            }
+        }
+
+
+        private Func<int, bool, object> _getTipoDocumento;
+
+        public Func<int, bool, object> getTipoDocumento
+        {
+            get { return _getTipoDocumento; }
+            set
+            {
+                _getTipoDocumento = value;
+                base.NotifyPropertyChanged(propertyName: "getTipoDocumento");
+            }
+        }
+
+
+        private Func<int, bool, object> _getDeposito;
+
+        public Func<int, bool, object> getDeposito
+        {
+            get { return _getDeposito; }
+            set
+            {
+                _getDeposito = value;
+                base.NotifyPropertyChanged(propertyName: "getDeposito");
+            }
+        }
+
+
+        private Func<int, bool, object> _getProduto;
+
+        public Func<int, bool, object> getProduto
+        {
+            get { return _getProduto; }
+            set
+            {
+                _getProduto = value;
+                base.NotifyPropertyChanged(propertyName: "getProduto");
+            }
+        }
+
+
+        private Func<int, bool, object> _getTipoOperacao;
+
+        public Func<int, bool, object> getTipoOperacao
+        {
+            get { return _getTipoOperacao; }
+            set
+            {
+                _getTipoOperacao = value;
+                base.NotifyPropertyChanged(propertyName: "getTipoOperacao");
+            }
+        }
+
+
+        private Func<int, bool, object> _getUnidadeMedida;
+
+        public Func<int, bool, object> getUnidadeMedida
+        {
+            get { return _getUnidadeMedida; }
+            set
+            {
+                _getUnidadeMedida = value;
+                base.NotifyPropertyChanged(propertyName: "getUnidadeMedida");
+            }
+        }
+
+
+        private Func<int, bool, object> _getListaPrecoPai;
+
+        public Func<int, bool, object> getListaPrecoPai
+        {
+            get { return _getListaPrecoPai; }
+            set
+            {
+                _getListaPrecoPai = value;
+                base.NotifyPropertyChanged(propertyName: "getListaPrecoPai");
+            }
+        }
+
+
+        private Func<int, bool, object> _getTransportador;
+
+        public Func<int, bool, object> getTransportador
+        {
+            get { return _getTransportador; }
+            set
+            {
+                _getTransportador = value;
+                base.NotifyPropertyChanged(propertyName: "getTransportador");
+            }
+        }
+
+
+        private Func<int, bool, object> _getIcmsPai;
+
+        public Func<int, bool, object> getIcmsPai
+        {
+            get { return _getIcmsPai; }
+            set
+            {
+                _getIcmsPai = value;
+                base.NotifyPropertyChanged(propertyName: "getIcmsPai");
+            }
+        }
+
+
+        private Func<int, bool, object> _getRamoAtividade;
+
+        public Func<int, bool, object> getRamoAtividade
+        {
+            get { return _getRamoAtividade; }
+            set
+            {
+                _getRamoAtividade = value;
+                base.NotifyPropertyChanged(propertyName: "getRamoAtividade");
+            }
+        }
+
+        private Func<int, bool, object> _getFamiliaProduto;
+
+        public Func<int, bool, object> getFamiliaProduto
+        {
+            get { return _getFamiliaProduto; }
+            set
+            {
+                _getFamiliaProduto = value;
+                base.NotifyPropertyChanged(propertyName: "getFamiliaProduto");
             }
         }
 
@@ -139,24 +304,9 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             return comm.GetOperacoesValidas(idTipoDocumento: idTipoDocumento);
         }
 
-        public Familia_produtoModel GetFamiliaProduto(int idFamiliaProduto)
-        {
-            return comm.GetFamiliaProduto(idFamiliaProduto: idFamiliaProduto);
-        }
-
-        public ProdutoModel GetProduto(int idProduto)
-        {
-            return comm.GetProduto(idProduto: idProduto);
-        }
-
         public List<modelToComboBox> GetListUnidadeMedida(int idProduto)
         {
             return comm.GetListUnidadeMedida(idProduto: idProduto);
-        }
-
-        public Lista_Preco_PaiModel GetListaPreco(int idListaPreco)
-        {
-            return comm.GetListaPreco(idListaPreco: idListaPreco);
         }
 
         public Descontos_AvistaModel GetDesconto(int idDesconto)
@@ -164,19 +314,9 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             return comm.GetDesconto(idDesconto: idDesconto);
         }
 
-        public Condicao_pagamentoModel GetCondicaoPagamento(int idCondicaoPagamento)
-        {
-            return comm.GetCondicaoPagamento(idCondicaoPagamento: idCondicaoPagamento);
-        }
-
         public CidadeModel GetCidade(int idCidade)
         {
             return comm.GetCidade(idCidade: idCidade);
-        }
-
-        public Tipo_operacaoModel GetTipoOperacao(int idTipoOperacao)
-        {
-            return comm.GetTipoOperacao(idTipoOperacao: idTipoOperacao);
         }
 
         public Classificacao_fiscalModel GetClassificacaoFiscal(int idClassificacaoFiscal)
@@ -184,39 +324,9 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             return comm.GetClassificacaoFiscal(idClassificacaoFiscal: idClassificacaoFiscal);
         }
 
-        public Codigo_IcmsModel GetCodigoIcmsByUf(int idCodigoIcmsPai, int idUf)
-        {
-            return comm.GetCodigoIcmsByUf(idCodigoIcmsPai: idCodigoIcmsPai, idUf: idUf);
-        }
-
-        public Ramo_atividadeModel GetRamoAtividade(int idRamoAtividade)
-        {
-            return comm.GetRamoAtividade(idRamoAtividade: idRamoAtividade);
-        }
-
         public UFModel GetUf(int idUf)
         {
             return comm.GetUf(idUf: idUf);
-        }
-
-        public Unidade_medidaModel GetUnidadeMedida(int idUnidadeMedida)
-        {
-            return comm.GetUnidadeMedida(idUnidadeMedida: idUnidadeMedida);
-        }
-
-        public TransportadorModel GetTransportador(int idTransportador)
-        {
-            return comm.GetTransportador(idTransportador: idTransportador);
-        }
-
-        public Tipo_documentoModel GetTipoDocumento(int idTipoDocumento)
-        {
-            return comm.GetTipoDocumento(idTipoDocumento: idTipoDocumento);
-        }
-
-        public int GetIdSiteByDeposito(int idDeposito)
-        {
-            return comm.GetIdSiteByDeposito(idDeposito: idDeposito);
         }
 
         #endregion
