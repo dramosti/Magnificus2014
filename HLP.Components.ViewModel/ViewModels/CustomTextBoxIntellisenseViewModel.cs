@@ -71,7 +71,6 @@ namespace HLP.Components.ViewModel.ViewModels
             set
             {
                 _xTextSearch = value;
-                this.popUp.IsOpen = true;
 
                 if (string.IsNullOrEmpty(value: value) && cvs != null)
                 {
@@ -82,6 +81,7 @@ namespace HLP.Components.ViewModel.ViewModels
                 {
                     if (cvs != null)
                     {
+                        this.popUp.IsOpen = true;
                         (cvs as BindingListCollectionView).CustomFilter = this.FilterItem();
                         int count = 0;
                         object vValueCell = null;
@@ -137,7 +137,7 @@ namespace HLP.Components.ViewModel.ViewModels
                         if (this.cvs.Count == 0)
                             this.popUp.IsOpen = false;
                     }
-                    
+
                 }
                 base.NotifyPropertyChanged(propertyName: "xTextSearch");
             }

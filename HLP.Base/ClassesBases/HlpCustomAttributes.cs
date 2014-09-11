@@ -9,11 +9,17 @@ namespace HLP.Base.ClassesBases
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class SkipValidation : System.Attribute
     {
-        public bool skip { get; set; }
+        public TypeSkipValidation skip { get; set; }
 
-        public SkipValidation(bool skip)
+        public SkipValidation(TypeSkipValidation skip)
         {
             this.skip = skip;
         }
+    }
+
+    public enum TypeSkipValidation
+    {
+        all,
+        onlyDataGrid
     }
 }

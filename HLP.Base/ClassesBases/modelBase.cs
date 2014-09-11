@@ -104,7 +104,7 @@ namespace HLP.Base.ClassesBases
 
         #region Validação de Dados
 
-        public int ValidateModel()
+        public int ForceValidateModel()
         {
             int countErrors = 0;
 
@@ -116,6 +116,11 @@ namespace HLP.Base.ClassesBases
             }
 
             return countErrors;
+        }
+
+        protected virtual List<ErrorsModel> GetErrors()
+        {
+            return this.lErrors != null ? this.lErrors.ToList() : new List<ErrorsModel>();
         }
 
         private ObservableCollection<ErrorsModel> _lErrors;
@@ -143,10 +148,13 @@ namespace HLP.Base.ClassesBases
                 PropertyInfo pi = this.GetType().GetProperty(columnName);
 
                 Attribute a = pi.GetCustomAttribute(attributeType: typeof(SkipValidation));
+                bool bSkip = false;
 
                 if (a != null)
                 {
-                    if ((a as SkipValidation).skip)
+                    if ((a as SkipValidation).skip == TypeSkipValidation.onlyDataGrid)
+                        bSkip = true;
+                    else if ((a as SkipValidation).skip == TypeSkipValidation.all)
                         return string.Empty;
                 }
 
@@ -236,7 +244,9 @@ namespace HLP.Base.ClassesBases
                     this.lErrors.Add(item: new ErrorsModel
                         {
                             xId = columnName,
-                            xErro = sMessage
+                            xErro = sMessage,
+                            skipValidation = bSkip,
+                            xTable = this.GetType().Name
                         });
                 }
 
@@ -342,6 +352,31 @@ namespace HLP.Base.ClassesBases
 
     public class ErrorsModel : INotifyPropertyChanged
     {
+        private string _nItem;
+
+        public string nItem
+        {
+            get { return _nItem; }
+            set
+            {
+                _nItem = value;
+                this.NotifyPropertyChanged(propertyName: "nItem");
+            }
+        }
+
+
+        private string _xTable;
+
+        public string xTable
+        {
+            get { return _xTable; }
+            set
+            {
+                _xTable = value;
+                this.NotifyPropertyChanged(propertyName: "xTable");
+            }
+        }
+
 
         private string _xId;
 
@@ -364,6 +399,18 @@ namespace HLP.Base.ClassesBases
             {
                 _xErro = value;
                 this.NotifyPropertyChanged(propertyName: "xErro");
+            }
+        }
+
+        private bool _skipValidation;
+
+        public bool skipValidation
+        {
+            get { return _skipValidation; }
+            set
+            {
+                _skipValidation = value;
+                this.NotifyPropertyChanged(propertyName: "skipValidation");
             }
         }
 

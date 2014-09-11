@@ -113,8 +113,12 @@ namespace HLP.Components.View.WPF
 
                     this.SelectedCells.Clear();
                     c.Focus();
-                    this.BeginEdit();
-                    bPermiteKeyDown = false;
+
+                    if (e.Key != System.Windows.Input.Key.Up && e.Key != System.Windows.Input.Key.Down)
+                    {
+                        this.BeginEdit();
+                        bPermiteKeyDown = false;
+                    }
                 }
                 else
                 {
@@ -345,13 +349,37 @@ namespace HLP.Components.View.WPF
                 bPermiteKeyDown = true;
             else if (this.CurrentItem.ToString().Contains(value: "NewItemPlaceholder"))
                 bPermiteKeyDown = true;
-            else if ((this.CurrentItem as modelBase).ValidateModel() > 0)
-                bPermiteKeyDown = false;
+            //else if ((this.CurrentItem as modelBase).ValidateModel() > 0)
+            //    bPermiteKeyDown = false;
+            else if (!string.IsNullOrEmpty(value: this.pertenceValidacaoModel))
+            {
+                PropertyInfo pi = null;
+                object objModel = null;
+                object objModelParent = this.CurrentItem;
+                bPermiteKeyDown = true;
+
+                foreach (var xProperty in this.pertenceValidacaoModel.Split(separator: ';'))
+                {
+                    pi =
+                    objModelParent.GetType().GetProperty(name: "objImposto");
+
+                    if (pi != null)
+                    {
+                        objModel = pi.GetValue(objModelParent);
+
+                        if (objModel.GetType().BaseType == typeof(modelBase) ||
+                            objModel.GetType().BaseType == typeof(modelComum))
+                            bPermiteKeyDown = (objModel as modelBase).lErrors.Count(i => !i.skipValidation) == 0;
+
+                        objModelParent = objModel;
+                    }
+                }
+            }
             else
                 if (this.CurrentItem.GetType().BaseType == typeof(modelBase) ||
                     this.CurrentItem.GetType().BaseType == typeof(modelComum))
                 {
-                    bPermiteKeyDown = (this.CurrentItem as modelBase).lErrors.Count == 0;
+                    bPermiteKeyDown = (this.CurrentItem as modelBase).lErrors.Count(i => !i.skipValidation) == 0;
                 }
                 else
                     bPermiteKeyDown = true;
@@ -375,6 +403,19 @@ namespace HLP.Components.View.WPF
 
             return false;
         }
+
+        #region Propriedades
+
+        private string _pertenceValidacaoModel; //Campos que também pertencem a validação para bloqueio de inclusão de novo campo e que serão obtidos via reflection
+
+        public string pertenceValidacaoModel
+        {
+            get { return _pertenceValidacaoModel; }
+            set { _pertenceValidacaoModel = value; }
+        }
+
+
+        #endregion
 
         #region Dependency Properties
 

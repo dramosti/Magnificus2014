@@ -135,32 +135,18 @@ namespace HLP.Base.ClassesBases
             set { _lTextBlocks = value; }
         }
 
+        
+        private ObservableCollection<ErrorsModel> _lErrorsToView;
 
-        private ObservableCollection<FrameworkElement> _lComponentsWithError;
-
-        public ObservableCollection<FrameworkElement> lComponentsWithError
+        public ObservableCollection<ErrorsModel> lErrorsToView
         {
-            get { return _lComponentsWithError; }
+            get { return _lErrorsToView; }
             set
             {
-                _lComponentsWithError = value;
-                base.NotifyPropertyChanged(propertyName: "lComponentsWithError");
+                _lErrorsToView = value;
+                base.NotifyPropertyChanged(propertyName: "lErrorsToView");
             }
         }
-
-
-        private ObservableCollection<DetailsErrorModel> _lDataGridErrors;
-
-        public ObservableCollection<DetailsErrorModel> lDataGridErrors
-        {
-            get { return _lDataGridErrors; }
-            set
-            {
-                _lDataGridErrors = value;
-                base.NotifyPropertyChanged(propertyName: "lDataGridErrors");
-            }
-        }
-
 
         private int _currentErrorsCount;
 

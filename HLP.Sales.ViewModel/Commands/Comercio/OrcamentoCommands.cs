@@ -60,6 +60,11 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         Tipo_DocumentoService objTipoDocumentoService;
         DepositoService objDepositoService;
 
+        public OrcamentoCommands()
+        {
+
+        }
+
         public OrcamentoCommands(OrcamentoViewModel objViewModel)
         {
             objServico = new OrcamentoService();
@@ -163,9 +168,10 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 Orcamento_Item_RepresentantesModel mainRepresentante = this.objViewModel.currentItem.lOrcamentoItemsRepresentantes.FirstOrDefault(i =>
                     i.idRepresentante == this.objViewModel.currentItem.idFuncionarioRepresentante);
 
-                this.objViewModel.currentItem.pComissao = mainRepresentante.pComissao ?? 0;
+                if (mainRepresentante != null)
+                    this.objViewModel.currentItem.pComissao = mainRepresentante.pComissao ?? 0;
 
-                this.objViewModel.currentItem.setxRepresentante();
+                //this.objViewModel.currentItem.setxRepresentante();
             }
         }
 
@@ -731,6 +737,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         public FuncionarioModel GetFuncionario(int idFuncionario, bool bOptionalSearch = false)
         {
+            if (objFuncionarioService == null)
+                objFuncionarioService = new FuncionarioService();
+
             return objFuncionarioService.GetObject(id: idFuncionario, bGetChild: false) ?? new FuncionarioModel();
         }
 
@@ -781,7 +790,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             return this.objTipoOperacaoService.GetObject(id: idTipoOperacao);
         }
 
-        public Classificacao_fiscalModel GetClassificacaoFiscal(int idClassificacaoFiscal)
+        public Classificacao_fiscalModel GetClassificacaoFiscal(int idClassificacaoFiscal, bool bLoadOptional = false)
         {
             return this.objClassificacaoFiscalService.GetObject(id: idClassificacaoFiscal);
         }

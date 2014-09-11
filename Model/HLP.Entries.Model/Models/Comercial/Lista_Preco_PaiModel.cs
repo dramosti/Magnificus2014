@@ -476,7 +476,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
         private int? _idListaPrecoPai;
-        [ParameterOrder(Order = 10), SkipValidation(skip: true)]
+        [ParameterOrder(Order = 10), SkipValidation(skip: TypeSkipValidation.all)]
         public int? idListaPrecoPai
         {
             get { return _idListaPrecoPai; }

@@ -319,6 +319,9 @@
                                                IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}" Grid.ColumnSpan="2">
                             <Components:HlpContato.lColumns>
                                 <System:String>
+                                    stPrincipal
+                                </System:String>
+                                <System:String>
                                     xNome
                                 </System:String>
                                 <System:String>

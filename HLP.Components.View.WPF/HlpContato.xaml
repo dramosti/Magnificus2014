@@ -59,17 +59,20 @@
         </ObjectDataProvider>
     </UserControl.Resources>
     <Grid>
-        <DataGrid x:Name="dgv"
+        <Components:CustomDataGrid x:Name="dgv"                
                   ItemsSource="{Binding ElementName=ucContatos, Path=ItemsSourceContatos}" 
                   IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnlyUserControl}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="True">
-            <DataGrid.Resources>
+            <Components:CustomDataGrid.Resources>
                 <Style TargetType="DataGridRowHeader">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
                 </Style>
-            </DataGrid.Resources>
-            <DataGrid.Columns>
+            </Components:CustomDataGrid.Resources>
+            <Components:CustomDataGrid.Columns>
+                <DataGridCheckBoxColumn Header="Principal"
+                                        Binding="{Binding stPrincipal,                    
+                                UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"></DataGridCheckBoxColumn>
                 <DataGridTextColumn Header="Nome" Binding="{Binding xNome,                    
                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"
                                     >
@@ -360,7 +363,7 @@
                 <DataGridTextColumn Header="RNTRC" Binding="{Binding xRntrc, 
                      UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+            </Components:CustomDataGrid.Columns>
+        </Components:CustomDataGrid>
     </Grid>
 </UserControl>
