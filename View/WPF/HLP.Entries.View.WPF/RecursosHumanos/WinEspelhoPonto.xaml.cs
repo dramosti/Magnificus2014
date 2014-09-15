@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
+using HLP.Resources.View.WPF;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using HLP.Components.View.WPF;
 using HLP.Base.Static;

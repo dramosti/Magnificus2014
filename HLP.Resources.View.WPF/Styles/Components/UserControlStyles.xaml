@@ -521,6 +521,7 @@
         </Setter>
     </Style>
     <Style x:Key="TextBoxBaseStyle" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
     </Style>
     <Style x:Key="TextBoxComponentStyle" TargetType="TextBox">
         <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
@@ -531,7 +532,7 @@
         <Setter Property="Height" Value="20"/>
         <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>        
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
@@ -2145,7 +2146,7 @@
 
     <!--Bottoes Fechar e Reabrir-->
 
-    <Style x:Key="ButtonFechar" TargetType="{x:Type Button}">
+    <!--<Style x:Key="ButtonFechar" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Cursor" Value="Hand"/>
@@ -2172,7 +2173,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
     <Style x:Key="ButtonReabrir" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -7446,7 +7447,7 @@
         </Setter>
     </Style>
 
-    
+
     <!--Provisórios-->
     <Style x:Key="GlassButton" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="#4169E1"/>

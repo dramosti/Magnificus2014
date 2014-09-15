@@ -2,7 +2,7 @@
         xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:compPonto="clr-namespace:HLP.Entries.View.WPF.RecursosHumanos"
-        xmlns:convert="clr-namespace:HLP.Entries.View.WPF.Converters"              
+        xmlns:convert="clr-namespace:HLP.Entries.View.WPF.Converters"                              
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" 
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:src="clr-namespace:HLP.Entries.ViewModel.ViewModels;assembly=HLP.Entries.ViewModel"
@@ -57,10 +57,10 @@
                     <Image x:Name="ImagemContextMenu">
                         <Image.Style>
                             <Style TargetType="{x:Type Image}">
-                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationLeft.png"/>
+                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationLeft.png"/>                                
                                 <Style.Triggers>
                                     <Trigger Property="IsEnabled" Value="False">
-                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationLeftDisabled.png"/>
+                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationLeftDisabled.png"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -76,10 +76,10 @@
                     <Image x:Name="ImagemContextMenu">
                         <Image.Style>
                             <Style TargetType="{x:Type Image}">
-                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationRight.png"/>
+                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationRight.png"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsEnabled" Value="False">
-                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationRightDisabled.png"/>
+                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationRightDisabled.png"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -108,7 +108,7 @@
                                 </Grid.RowDefinitions>
                                 <Border x:Name="border" Grid.RowSpan="2" BorderBrush="{x:Null}" SnapsToDevicePixels="true"/>
                                 <ContentPresenter x:Name="contentPresenter" Grid.Row="1" TextElement.FontSize="16" HorizontalAlignment="Center" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Carregar.png"/>
+                                <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Resources.View.WPF;Images/Carregar.png"/>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsEnabled" Value="False">
@@ -255,15 +255,15 @@
                                 </Grid.RowDefinitions>
                                 <Border x:Name="border" Grid.RowSpan="2" BorderBrush="{x:Null}" SnapsToDevicePixels="true"/>
                                 <ContentPresenter x:Name="contentPresenter" Grid.Row="1" TextElement.FontSize="16" HorizontalAlignment="Center" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Atualizar.png"/>
+                                <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Resources.View.WPF;Images/Atualizar.png"/>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Atualizar_Disabled.png"/>
+                                    <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/Atualizar_Disabled.png"/>
                                     <Setter Property="Opacity" TargetName="contentPresenter" Value="0.36"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Atualizar_MouseOver.png"/>
+                                    <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/Atualizar_MouseOver.png"/>
                                     <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FFFFC31F"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
@@ -555,7 +555,8 @@
                                     <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
                                 </Button.Effect>
                             </Button>
-                            <Button Command="{Binding commandFecharMes}" Margin="3,3,3,3"  Grid.Row="2" Style="{StaticResource ButtonFechar}" Content="Fechar"/>
+                            <!--<Button Command="{Binding commandFecharMes}" Margin="3,3,3,3"  Grid.Row="2" Style="{StaticResource ButtonFechar}" Content="Fechar"/>-->
+                            <Button Command="{Binding commandFecharMes}" Margin="3,3,3,3"  Grid.Row="2"  Content="Fechar"/>
                             <Button  Command="{Binding commandReabrirMes}" Margin="3,3,3,3" Grid.Row="4" Style="{StaticResource ButtonReabrir}" Content="Reabrir"/>
                         </Grid>
                     </Grid>
