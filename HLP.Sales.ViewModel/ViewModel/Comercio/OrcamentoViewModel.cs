@@ -102,8 +102,23 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             this.getTransportador = comm.GetTransportador;
             this.getIcmsPai = comm.GetCodigoIcmsPai;
             this.getRamoAtividade = comm.GetRamoAtividade;
-            this.getFamiliaProduto = comm.GetFamiliaProduto;            
+            this.getFamiliaProduto = comm.GetFamiliaProduto;
+            this.getClassificacaoFiscal = comm.GetClassificacaoFiscal;
         }
+
+
+        private Func<int, bool, object> _getClassificacaoFiscal;
+
+        public Func<int, bool, object> getClassificacaoFiscal
+        {
+            get { return _getClassificacaoFiscal; }
+            set
+            {
+                _getClassificacaoFiscal = value;
+                base.NotifyPropertyChanged(propertyName: "getClassificacaoFiscal");
+            }
+        }
+
 
         private Func<int, bool, object> _getCliente;
 
@@ -317,11 +332,6 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public CidadeModel GetCidade(int idCidade)
         {
             return comm.GetCidade(idCidade: idCidade);
-        }
-
-        public Classificacao_fiscalModel GetClassificacaoFiscal(int idClassificacaoFiscal)
-        {
-            return comm.GetClassificacaoFiscal(idClassificacaoFiscal: idClassificacaoFiscal);
         }
 
         public UFModel GetUf(int idUf)

@@ -26,6 +26,7 @@ namespace HLP.Comum.ViewModel.Commands
         public viewModelComum<T> objviewModel;
         DocumentosService objDocumentosService;
         MethodInfo mi = null;
+        MethodInfo miCleanListErrors = null;
         #region NotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -82,8 +83,12 @@ namespace HLP.Comum.ViewModel.Commands
                 this.objDocumentosService = new DocumentosService();
 
             if (Application.Current.MainWindow.DataContext != null)
+            {
                 mi = Application.Current.MainWindow.DataContext.GetType()
                     .GetMethod(name: "VerifyErrorsWindow");
+                miCleanListErrors = Application.Current.MainWindow.DataContext.GetType()
+                    .GetMethod(name: "CleanListErrors");
+            }
         }
 
         void bWorkerSave_DoWork(object sender, DoWorkEventArgs e)
@@ -516,7 +521,8 @@ namespace HLP.Comum.ViewModel.Commands
             }
             this.objviewModel.bIsEnabled = false;
             this.objviewModel.loading = false;
-
+            if (this.miCleanListErrors != null)
+                this.miCleanListErrors.Invoke(obj: Application.Current.MainWindow.DataContext, parameters: new object[] { });
         }
         private bool cancelarBaseCanExecute()
         {

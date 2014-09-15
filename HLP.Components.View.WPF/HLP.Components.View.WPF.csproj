@@ -97,6 +97,7 @@
     <Compile Include="CustomCheckBox.cs" />
     <Compile Include="CustomComboBox.cs" />
     <Compile Include="CustomDataGrid.cs" />
+    <Compile Include="CustomDataGridDateColumn.cs" />
     <Compile Include="CustomDataGridIntellisenseColumn.cs" />
     <Compile Include="CustomDockPanelSplitter.cs" />
     <Compile Include="CustomHlpStatus.cs" />

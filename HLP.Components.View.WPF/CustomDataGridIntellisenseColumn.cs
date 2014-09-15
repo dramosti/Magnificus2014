@@ -1,4 +1,6 @@
-﻿using HLP.Components.ViewModel.ViewModels;
+﻿using HLP.Base.ClassesBases;
+using HLP.Components.ViewModel.ViewModels;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,6 +70,15 @@ namespace HLP.Components.View.WPF
             set { _customViewModel = value; }
         }
 
+        protected override object PrepareCellForEdit(FrameworkElement editingElement, RoutedEventArgs editingEventArgs)
+        {
+            base.PrepareCellForEdit(editingElement, editingEventArgs);
+
+            FocusManager.SetFocusedElement(element: editingElement, value: (editingElement as ucTextBoxIntellisense).txt);
+
+            return editingElement;
+        }
+
         protected override bool CommitCellEdit(FrameworkElement editingElement)
         {
             if (editingElement.GetType() == typeof(ucTextBoxIntellisense))
@@ -84,6 +95,8 @@ namespace HLP.Components.View.WPF
             b.Path = (this.Binding as Binding).Path;
             b.Mode = BindingMode.TwoWay;
             b.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            b.NotifyOnValidationError = true;
+            b.ValidatesOnDataErrors = true;
             txtIntellisense.SetBinding(dp: ucTextBoxIntellisense.selectedIdProperty, binding: b);
 
             Binding bModel = new System.Windows.Data.Binding();
@@ -113,7 +126,28 @@ namespace HLP.Components.View.WPF
             if (dataItem != null)
                 if (!dataItem.ToString().ToUpper().Contains(value: "NEWITEMPLACEHOLDER"))
                 {
-                    PropertyInfo piBinding = dataItem.GetType().GetProperty(name: (this.Binding as Binding).Path.Path);
+                    PropertyInfo piBinding = null;
+                    string xPath = (this.Binding as Binding).Path.Path;
+                    if ((this.Binding as Binding).Path.Path.Split(separator: '.').Count() > 0)
+                    {
+                        foreach (string path in (this.Binding as Binding).Path.Path.Split(separator: '.'))
+                        {
+                            if (path == (this.Binding as Binding).Path.Path.Split(separator: '.').Last())
+                            {
+                                xPath = path;
+                                break;
+                            }
+                            piBinding = dataItem.GetType().GetProperty(name: path);
+
+                            dataItem = piBinding.GetValue(obj: dataItem);
+                        }
+
+                    }
+
+                    piBinding = null;
+                    if (dataItem != null)
+                        piBinding = dataItem.GetType().GetProperty(name: xPath);
+
                     if (piBinding != null)
                     {
                         int? id = piBinding.GetValue(obj: dataItem) as int?;
@@ -149,6 +183,15 @@ namespace HLP.Components.View.WPF
                                 if (pi != null)
                                     xDisplay = pi.GetValue(obj: obj) as string;
                             }
+                        }
+
+                        if (dataItem.GetType().BaseType == typeof(modelBase)
+                            || dataItem.GetType().BaseType == typeof(modelComum))
+                        {
+                            if ((dataItem as modelBase).lErrors.Count(i => i.xId == xPath) > 0)
+                                txt.Background = Brushes.Red;
+                            else
+                                txt.Background = Brushes.Transparent;
                         }
                     }
                     txt.Text = xDisplay;

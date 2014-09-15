@@ -573,6 +573,19 @@ namespace HLP.Components.Model.Models
             }
         }
 
+        private bool _stPrincipal;
+        [ParameterOrder(Order = 51)]
+        public bool stPrincipal
+        {
+            get { return _stPrincipal; }
+            set
+            {
+                _stPrincipal = value;
+                base.NotifyPropertyChanged(propertyName: "stPrincipal");
+            }
+        }
+
+
         #region Propriedades não mapeadas utilizadas na view
 
         private int _idEmpresaContato;

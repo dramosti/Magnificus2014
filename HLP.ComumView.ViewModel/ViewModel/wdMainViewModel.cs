@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -84,104 +85,45 @@ namespace HLP.ComumView.ViewModel.ViewModel
 
         public bool VerifyErrorsWindow()
         {
-            int errorsCount = this.winMan._currentTab.lComponents.Count(
-                i => Validation.GetHasError(element: i));
+            PropertyInfo pi = this.winMan._currentTab._currentDataContext.GetType().GetProperty(name: "currentModel");
 
-            if (errorsCount > 0
-                && errorsCount != this.winMan._currentTab.currentErrorsCount)
+            if (pi != null)
             {
-                List<FrameworkElement> lCompErrors = new List<FrameworkElement>();
+                object currentModel = pi.GetValue(obj: this.winMan._currentTab._currentDataContext);
 
-                foreach (FrameworkElement comp in this.winMan._currentTab.lComponents.Where(
-                    i => Validation.GetHasError(element: i)))
+                MethodInfo miGetErros = currentModel.GetType().GetMethod(name: "GetErrors",
+                    bindingAttr: BindingFlags.Instance | BindingFlags.NonPublic
+                    );
+
+                if (miGetErros != null)
                 {
-                    lCompErrors.Add(item: comp);
-                }
+                    List<ErrorsModel> lErrors = miGetErros.Invoke(obj: currentModel, parameters: new object[] { }) as List<ErrorsModel>;
 
-                this.winMan._currentTab.lComponentsWithError =
-                    new ObservableCollection<FrameworkElement>(collection: lCompErrors);
-            }
-            else if (errorsCount == 0)
-            {
-                this.winMan._currentTab.lComponentsWithError = new ObservableCollection<FrameworkElement>();
-                this.winMan._currentTab.currentErrorsCount = 0;
-            }
-
-            if (this.winMan._currentTab.lDataGrids.Count > 0)
-            {
-                List<DetailsErrorModel> lErrorsDataGrid = new List<DetailsErrorModel>();
-                foreach (DataGrid dgv in this.winMan._currentTab.lDataGrids)
-                {
-                    if (dgv.Items.Count > 0)
+                    if (this.winMan._currentTab.lErrorsToView == null)
                     {
-                        DataGridRow r;
-                        DataGridCell _cell;
-                        for (int i = 0; i < dgv.Items.Count; i++)
-                        {
-                            r = Util.GetRow(grid: dgv, index: i);
-                            if (r != null)
-                            {
-                                for (int c = 0; c < dgv.Columns.Count; c++)
-                                {
-                                    _cell = Util.GetCell(grid: dgv, row: r, column: c);
-                                    if (_cell != null)
-                                    {
-                                        if (_cell.Column.GetType() == typeof(DataGridTemplateColumn))
-                                        {
-                                            FrameworkElement comp = null;
-
-                                            for (int cont = 0; cont < VisualTreeHelper.GetChildrenCount(reference: (_cell.Content as ContentPresenter)); cont++)
-                                            {
-                                                comp = VisualTreeHelper.GetChild(_cell.Content as ContentPresenter, cont) as FrameworkElement;
-                                            }
-
-                                            if (comp != null)
-                                                if (Validation.GetHasError(element:
-                                                    comp))
-                                                {
-                                                    FrameworkElement f = Util.GetParent(comp: dgv, t: typeof(Expander));
-                                                    ValidationError e = Validation.GetErrors(element: comp).FirstOrDefault();
-
-                                                    lErrorsDataGrid.Add(item: new DetailsErrorModel
-                                                    {
-                                                        isDataGridError = true,
-                                                        xLabelComp = string.Format(format: "Grid: {0}, Linha: {1}, Coluna: {2}",
-                                                        arg0: f != null ? (f as Expander).Header : string.Empty, arg1: r.GetIndex() + 1, arg2: _cell.Column.Header),
-                                                        xError = e != null ? e.ErrorContent.ToString() : "Erro desconhecido"
-                                                    });
-                                                    errorsCount++;
-                                                }
-                                        }
-                                        else
-                                            if (Validation.GetHasError(element: _cell.Content as FrameworkElement))
-                                            {
-                                                FrameworkElement f = Util.GetParent(comp: dgv, t: typeof(Expander));
-                                                ValidationError e = Validation.GetErrors(element: _cell.Content as FrameworkElement).FirstOrDefault();
-
-                                                lErrorsDataGrid.Add(item: new DetailsErrorModel
-                                                {
-                                                    isDataGridError = true,
-                                                    xLabelComp = string.Format(format: "Grid: {0}, Linha: {1}, Coluna: {2}",
-                                                    arg0: f != null ? (f as Expander).Header : string.Empty, arg1: r.GetIndex(), arg2: _cell.Column.Header),
-                                                    xError = e != null ? e.ErrorContent.ToString() : "Erro desconhecido"
-                                                });
-                                                errorsCount++;
-                                            }
-                                    }
-
-                                }
-                            }
-                        }
+                        this.winMan._currentTab.lErrorsToView = new ObservableCollection<ErrorsModel>(
+                            list: lErrors);
                     }
+                    else if (this.winMan._currentTab.lErrorsToView.Count != lErrors.Count)
+                        this.winMan._currentTab.lErrorsToView = new ObservableCollection<ErrorsModel>(
+                            list: lErrors);
+
+                    this.winMan._currentTab.currentErrorsCount = this.winMan._currentTab.lErrorsToView.Count;
+
+                    if (this.winMan._currentTab.lErrorsToView.Count > 0)
+                        return false;
                 }
 
-                this.winMan._currentTab.lDataGridErrors = new ObservableCollection<DetailsErrorModel>(
-                    collection: lErrorsDataGrid);
+
             }
 
-            this.winMan._currentTab.currentErrorsCount = errorsCount;
+            return true;
+        }
 
-            return errorsCount == 0 ? true : false;
+        public void CleanListErrors()
+        {
+            this.winMan._currentTab.lErrorsToView = new ObservableCollection<ErrorsModel>();
+            this.winMan._currentTab.currentErrorsCount = 0;
         }
 
         public void PopulateStaticCidades()

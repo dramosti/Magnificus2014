@@ -26,6 +26,7 @@
                 <System:String>6-Estrangeira - Importação direta, sem similar nacional, constante em lista de Resolução CAMEX</System:String>
                 <System:String>7-Estrangeira - Adquirida no mercado interno, sem similar nacional, constante em lista de Resolução CAMEX</System:String>
             </CompositeCollection>
+            <convertLocal:DisplayToRepresentantesOrcamentoConverter x:Key="displayToRepresentanteOrcamentoConverter"/>
             <convert:NotConverter x:Key="notConverter"></convert:NotConverter>
             <convertLocal:StatusOrcamentoConverter x:Key="statusOrcamentoConv"></convertLocal:StatusOrcamentoConverter>
             <convertLocal:CanUserAddOrcamentoItemConverter x:Key="canUserAddConv"></convertLocal:CanUserAddOrcamentoItemConverter>
@@ -297,7 +298,7 @@
                                     <Components:ucTextBoxIntellisense x:Name="ucIntellisenseContato"
 					ucEnabled="{Binding bIsEnabled}"
 					Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="1" 
-					selectedId="{Binding currentModel.idUF, Mode=TwoWay, NotifyOnValidationError=True, 
+					selectedId="{Binding currentModel.idContato, Mode=TwoWay, NotifyOnValidationError=True, 
                                         UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  xNameView="vwContatoqs" 
                                                                       NameWindowCadastro="WinContato" TableView="vwContato" 
                     />
@@ -370,11 +371,32 @@
 				                        ToolTip="A data em que o orçamento de venda expira e não é mais válida">
                                     </Components:HlpDatePicker>
                                     <Components:ucTextBoxIntellisense x:Name="ucIntellisenseMotivo"
-					ucEnabled="{Binding bIsEnabled}"
 					Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="5"
 					selectedId="{Binding currentModel.idMotivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  
                                                                       xNameView="vwMotivoqs" TableView="vwMotivoPerdaOrcam"
-                    />
+                    >
+                                        <Components:ucTextBoxIntellisense.Style>
+                                            <Style TargetType="{x:Type Components:ucTextBoxIntellisense}">
+                                                <Setter Property="ucEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding Path=bIsEnabled}" Value="True"></Condition>
+                                                            <Condition Binding="{Binding Path=currentModel.stOrcamento}" Value="3"></Condition>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="ucEnabled" Value="True"></Setter>
+                                                    </MultiDataTrigger>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding Path=bIsEnabled}" Value="True"></Condition>
+                                                            <Condition Binding="{Binding Path=currentModel.stOrcamento}" Value="4"></Condition>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="ucEnabled" Value="True"></Setter>
+                                                    </MultiDataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Components:ucTextBoxIntellisense.Style>
+                                    </Components:ucTextBoxIntellisense>
                                 </Grid>
                             </Expander>
                             <Expander Header="Pedido de Compras do Cliente" IsExpanded="True" Grid.Row="2" Style="{StaticResource ExpanderPadrao}">
@@ -479,7 +501,7 @@
                     />
                                     <Components:ucTextBoxIntellisense x:Name="ucMoeda"
 					ucEnabled="{Binding bIsEnabled}"
-					Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
+					Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
 					selectedId="{Binding currentModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  
                     xNameView="vwMoedaqs" TableView="vwMoeda" NameWindowCadastro="WinMoeda"
                     />
@@ -581,19 +603,21 @@
 								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
 								CanUserDeleteRows="True"
 								CanUserAddRows="{Binding ElementName=cbxOrcamento, Path=SelectedIndex, Converter={StaticResource canUserAddConv}}"
-                                ItemsSource="{Binding Source={StaticResource cvsItens}}">
+                                ItemsSource="{Binding Source={StaticResource cvsItens}}" pertenceValidacaoModel="objImposto;">
                             <Components:CustomDataGrid.Columns>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=nItem, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Ord" Width="40"/>
                                 <Components:CustomDataGridIntellisenseColumn Header="Operação" Width="100"
-                                        xFieldsToDisplay="idTipoOperacao;xOperacao" Binding="{Binding Path=idTipoOperacao}"
+                                        xFieldsToDisplay="idTipoOperacao;xOperacao" Binding="{Binding Path=idTipoOperacao,
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                         xNamePropertyModel="objTipoOperacao" refMethod="{Binding Path=Data.getTipoOperacao, Source={StaticResource proxy}}"
                                             xNameView="vwTipoOperacaoqs" NameWindowCadastro="WinTipoOperacao" TableView="vwTipoOperacao">
                                 </Components:CustomDataGridIntellisenseColumn>
                                 <Components:CustomDataGridIntellisenseColumn xFieldsToDisplay="idProduto;xPesquisa" Width="150"                                         
-                                        Header="Produtos" Binding="{Binding Path=idProduto}"
+                                        Header="Produtos" Binding="{Binding Path=idProduto,
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                            xNamePropertyModel="objProduto"
                                             refMethod="{Binding Path=Data.getProduto, Source={StaticResource proxy}}"
                                             xNameView="vwProdutoqs" NameWindowCadastro="WinProduto" TableView="vwProduto">
@@ -602,23 +626,25 @@
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=xComercial, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Desc Comercial" Width="125">
-                                    <DataGridTextColumn.CellStyle>
-                                        <Style>
+                                    <DataGridTextColumn.EditingElementStyle>
+                                        <Style TargetType="TextBox">
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding bXComercialEnabled}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                                    <Setter Property="IsReadOnly" Value="True"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
-                                    </DataGridTextColumn.CellStyle>
+                                    </DataGridTextColumn.EditingElementStyle>
                                 </DataGridTextColumn>
                                 <Components:CustomDataGridIntellisenseColumn Header="UN" Width="100"
-                                        xFieldsToDisplay="idUnidadeMedida;xSiglaPadrao;xUnidadeMedida" Binding="{Binding Path=idUnidadeMedida}"
+                                        xFieldsToDisplay="idUnidadeMedida;xSiglaPadrao;xUnidadeMedida" Binding="{Binding Path=idUnidadeMedida,
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                         xNamePropertyModel="objUnidadeMedida" refMethod="{Binding Path=Data.getUnidadeMedida, Source={StaticResource proxy}}"
                                             xNameView="vwUnidadeMedidaqs" NameWindowCadastro="WinUnidadeMedida" TableView="vwUnidadeMedida">
                                 </Components:CustomDataGridIntellisenseColumn>
                                 <Components:CustomDataGridIntellisenseColumn Header="Lista Preço" Width="125" x:Name="clListaPreco"
-                                        xFieldsToDisplay="idListaPrecoPai;xLista" Binding="{Binding Path=idListaPrecoPai}"
+                                        xFieldsToDisplay="idListaPrecoPai;xLista" Binding="{Binding Path=idListaPrecoPai,
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                         xNamePropertyModel="objListaPreco" refMethod="{Binding Path=Data.getListaPrecoPai, Source={StaticResource proxy}}"
                                             xNameView="vwListaPrecoPaiqs" NameWindowCadastro="WinListaPreco" TableView="vwListaPrecoPai">
                                 </Components:CustomDataGridIntellisenseColumn>
@@ -660,28 +686,22 @@
 										Binding="{Binding Path=vTotalSemDescontoItem, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},ConverterParameter=nCasasDecimaisTotalItem,
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Total Item Origem" Width="125"/>
-                                <DataGridTemplateColumn x:Name="clDtHrInicialRevisao" Header="Previsão de Entrega" Width="150">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Path=dPrevisaoEntrega}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                    <DataGridTemplateColumn.CellEditingTemplate>
-                                        <DataTemplate>
-                                            <Grid FocusManager.FocusedElement="{Binding ElementName= dateScheduledPicker}" >
-                                                <Components:HlpDatePicker x:Name="dateScheduledPicker" xTextDate="{Binding Path=dPrevisaoEntrega, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                                                ValidatesOnExceptions=true, NotifyOnValidationError=true}" IsEnabled="{Binding bIsEnabled}" stFormatoDtPicker="date">
-                                                </Components:HlpDatePicker>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellEditingTemplate>
-                                </DataGridTemplateColumn>
+                                <Components:CustomDataGridDateColumn
+                                    x:Name="clDtHrInicialRevisao" Header="Previsão de Entrega" Width="150"
+                                    Binding="{Binding Path=dPrevisaoEntrega, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                ValidatesOnExceptions=true, NotifyOnValidationError=true}">
+                                </Components:CustomDataGridDateColumn>
                                 <DataGridTemplateColumn x:Name="clRepresentante" Header="Representante" Width="200" >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Path=idFuncionarioRepresentante, Converter={StaticResource cbxDisplayConv}, 
-                                                        ConverterParameter={StaticResource lResultRepresentantes}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                                   />
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding Converter="{StaticResource displayToRepresentanteOrcamentoConverter}">
+                                                        <Binding Path="idFuncionarioRepresentante"></Binding>
+                                                        <Binding Path="lOrcamentoItemsRepresentantes"></Binding>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -691,14 +711,16 @@
                                                     <ColumnDefinition Width="150"></ColumnDefinition>
                                                     <ColumnDefinition Width="50"></ColumnDefinition>
                                                 </Grid.ColumnDefinitions>
-                                                <ComboBox x:Name="elem" Grid.Column="0"
+                                                <Components:CustomComboBox
+                                                    x:Name="elem" Grid.Column="0"
                 ItemsSource="{Binding Source={StaticResource lResultRepresentantes}}" 
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idFuncionarioRepresentante,
                                 UpdateSourceTrigger=LostFocus}"
                                                                   IsEnabled="{Binding bIsEnabled}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
+                                                      IsSynchronizedWithCurrentItem="False">
+                                                </Components:CustomComboBox>
                                                 <Button Grid.Column="1" Content="Representantes (F5)" 
                                                         Command="{Binding Data.itensRepresentantesCommands, Mode=OneWay, Source={StaticResource proxy}}"></Button>
                                             </Grid>
@@ -710,12 +732,13 @@
 										Binding="{Binding Path=pComissao, UpdateSourceTrigger=LostFocus, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% Comissão" Width="125"/>
                                 <Components:CustomDataGridIntellisenseColumn xFieldsToDisplay="idDeposito;xDeposito;xDescricao" Width="125"                                         
-                                        Header="Depósito" Binding="{Binding Path=idDeposito}"
+                                        Header="Depósito" Binding="{Binding Path=idDeposito,
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                            xNamePropertyModel="objDeposito"
                                             refMethod="{Binding Path=Data.getDeposito, Source={StaticResource proxy}}"
                                             xNameView="vwDepositoqs" NameWindowCadastro="WinDeposito" TableView="vwDeposito">
                                 </Components:CustomDataGridIntellisenseColumn>
-                                <DataGridTemplateColumn x:Name="clSite" Header="Site" Width="125" >
+                                <DataGridTemplateColumn x:Name="clSite" Header="Site" Width="125" IsReadOnly="True" >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding Path=idSite, Converter={StaticResource cbxDisplayConv}, 
@@ -726,14 +749,16 @@
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
                                             <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
-                                                <ComboBox x:Name="elem"
+                                                <Components:CustomComboBox
+                                                    x:Name="elem" Grid.Column="0"
                 ItemsSource="{Binding Source={StaticResource lResultSite}}" 
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idSite,
-                                UpdateSourceTrigger=PropertyChanged}"
+                                UpdateSourceTrigger=LostFocus}"
                                                                   IsEnabled="{Binding bIsEnabled}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
+                                                      IsSynchronizedWithCurrentItem="False">
+                                                </Components:CustomComboBox>
                                             </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
@@ -749,27 +774,30 @@
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
                                             <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
-                                                <ComboBox x:Name="elem"
+                                                <Components:CustomComboBox
+                                                    x:Name="elem"
                 ItemsSource="{Binding Source={StaticResource lResultCfop}}" 
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idCfop,
                                 UpdateSourceTrigger=LostFocus}"
-                                                      IsSynchronizedWithCurrentItem="False" IsEnabled="{Binding bIsEnabled}"/>
+                                                                  IsEnabled="{Binding bIsEnabled}"
+                                                      IsSynchronizedWithCurrentItem="False">
+                                                </Components:CustomComboBox>
                                             </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                 </DataGridTemplateColumn>
                                 <Components:CustomDataGridIntellisenseColumn Header="Classificação Fiscal" Width="125"
-                                        xFieldsToDisplay="idClassificacaoFiscal;xFamiliaProduto" Binding="{Binding Path=currentItem.objImposto.idClassificacaoFiscal,
+                                        xFieldsToDisplay="idClassificacaoFiscal;xClassificacaoFiscal" Binding="{Binding Path=objImposto.idClassificacaoFiscal,
                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                        xNamePropertyModel="objClassificacaoFiscal" refMethod="{Binding Path=Data.getFamiliaProduto, Source={StaticResource proxy}}"
+                                        xNamePropertyModel="objClassificacaoFiscal" refMethod="{Binding Path=Data.getClassificacaoFiscal, Source={StaticResource proxy}}"
                                             xNameView="vwClassificacaoFiscalqs" TableView="vwClassificacaoFiscal" NameWindowCadastro="WinClassificacaoFiscal">
                                 </Components:CustomDataGridIntellisenseColumn>
                                 <DataGridTextColumn
                                         IsReadOnly="True"
                                         Header="Ncm" Width="125"
-                                        Binding="{Binding Path=xNcm, Mode=OneWay}">
+                                        Binding="{Binding Path=objImposto.xNcm, Mode=OneWay}">
                                 </DataGridTextColumn>
                                 <DataGridTemplateColumn x:Name="clCstIpi" Header="CST IPI" Width="150" >
                                     <DataGridTemplateColumn.CellTemplate>
@@ -782,13 +810,16 @@
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
                                             <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
-                                                <ComboBox x:Name="elem"
+                                                <Components:CustomComboBox
+                                                    x:Name="elem"
                 ItemsSource="{Binding Source={StaticResource lResultCstIpi}}" 
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding objImposto.idCSTIpi,
-                                UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding bIsEnabled}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
+                                UpdateSourceTrigger=LostFocus}"
+                                                                  IsEnabled="{Binding bIsEnabled}"
+                                                      IsSynchronizedWithCurrentItem="False">
+                                                </Components:CustomComboBox>
                                             </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
@@ -814,13 +845,16 @@
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
                                             <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
-                                                <ComboBox x:Name="elem"
+                                                <Components:CustomComboBox
+                                                    x:Name="elem"
                 ItemsSource="{Binding Source={StaticResource lResultCstIcms}}" 
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding objImposto.idCSTIcms,
-                                UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding bIsEnabled}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
+                                UpdateSourceTrigger=LostFocus}"
+                                                                  IsEnabled="{Binding bIsEnabled}"
+                                                      IsSynchronizedWithCurrentItem="False">
+                                                </Components:CustomComboBox>
                                             </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
@@ -859,13 +893,16 @@
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
                                             <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
-                                                <ComboBox x:Name="elem"
+                                                <Components:CustomComboBox
+                                                    x:Name="elem"
                 ItemsSource="{Binding Source={StaticResource lResultStPis}}" 
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding objImposto.idCSTPis,
-                                UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding bIsEnabled}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
+                                UpdateSourceTrigger=LostFocus}"
+                                                                  IsEnabled="{Binding bIsEnabled}"
+                                                      IsSynchronizedWithCurrentItem="False">
+                                                </Components:CustomComboBox>
                                             </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
@@ -891,13 +928,16 @@
                                     <DataGridTemplateColumn.CellEditingTemplate>
                                         <DataTemplate>
                                             <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
-                                                <ComboBox x:Name="elem"
+                                                <Components:CustomComboBox
+                                                    x:Name="elem"
                 ItemsSource="{Binding Source={StaticResource lResultiCofins}}" 
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding objImposto.idCSTCofins,
-                                UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding bIsEnabled}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
+                                UpdateSourceTrigger=LostFocus}"
+                                                                  IsEnabled="{Binding bIsEnabled}"
+                                                      IsSynchronizedWithCurrentItem="False">
+                                                </Components:CustomComboBox>
                                             </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
@@ -926,20 +966,20 @@
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=xPedidoCliente, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Pedido Cliente" Width="150">
-                                    <DataGridTextColumn.CellStyle>
-                                        <Style>
-                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                    <DataGridTextColumn.EditingElementStyle>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="IsReadOnly" Value="True"></Setter>
                                             <Style.Triggers>
                                                 <MultiDataTrigger>
                                                     <MultiDataTrigger.Conditions>
                                                         <Condition Binding="{Binding bPedidoClienteEnabled, Mode=OneWay}" Value="True"></Condition>
                                                         <Condition Binding="{Binding Data.bIsEnabled, Mode=OneWay, Source={StaticResource proxy}}" Value="True"></Condition>
                                                     </MultiDataTrigger.Conditions>
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="True"></Setter>
+                                                    <Setter Property="IsReadOnly" Value="False"></Setter>
                                                 </MultiDataTrigger>
                                             </Style.Triggers>
                                         </Style>
-                                    </DataGridTextColumn.CellStyle>
+                                    </DataGridTextColumn.EditingElementStyle>
                                 </DataGridTextColumn>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
@@ -1098,7 +1138,7 @@
                             <Components:ucTextBoxIntellisense x:Name="ucIntellisenseCfop"
 					ucEnabled="{Binding bIsEnabled}"
 					Grid.Column="3" Grid.Row="5" Height="20" Margin="0,0,0,3"
-					selectedId="{Binding currentModel.idCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  
+					selectedId="{Binding currentItem.idCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  
                     xNameView="vwCfopqs" NameWindowCadastro="WinCfop" TableView="vwCfop"
                     />
                             <Components:CustomComboBox x:Name="cbxStOrigemMercadoria"

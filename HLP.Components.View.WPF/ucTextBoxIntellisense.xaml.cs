@@ -45,6 +45,7 @@ namespace HLP.Components.View.WPF
                 (this.popUp.Child as DataGrid).PreviewKeyDown += ucDataGrid_PreviewKeyDown;
                 (this.popUp.Child as DataGrid).MouseDoubleClick += ucTextBoxIntellisense_MouseDoubleClick;
                 this.LostFocus += ucTextBoxIntellisense_LostFocus;
+                this.Loaded += ucTextBoxIntellisense_Loaded;
 
                 foreach (MenuItem item in this.txt.ContextMenu.Items)
                 {
@@ -60,6 +61,11 @@ namespace HLP.Components.View.WPF
                     }
                 }
             }
+        }
+
+        void ucTextBoxIntellisense_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.customViewModel.GetResult();
         }
 
         void ucTextBoxIntellisense_LostFocus(object sender, RoutedEventArgs e)
@@ -158,9 +164,9 @@ namespace HLP.Components.View.WPF
 
         #region Dependencies Properties
 
-        public int selectedId
+        public int? selectedId
         {
-            get { return (int)GetValue(selectedIdProperty); }
+            get { return (int?)GetValue(selectedIdProperty); }
             set
             {
                 SetValue(selectedIdProperty, value);
@@ -169,37 +175,44 @@ namespace HLP.Components.View.WPF
 
         // Using a DependencyProperty as the backing store for selectedId.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty selectedIdProperty =
-            DependencyProperty.Register("selectedId", typeof(int), typeof(ucTextBoxIntellisense), new PropertyMetadata(
-                defaultValue: 0, propertyChangedCallback: new PropertyChangedCallback(SelectedIdChanged)));
+            DependencyProperty.Register("selectedId", typeof(int?), typeof(ucTextBoxIntellisense), new PropertyMetadata(
+                defaultValue: null, propertyChangedCallback: new PropertyChangedCallback(SelectedIdChanged)));
 
         public static void SelectedIdChanged(DependencyObject d, DependencyPropertyChangedEventArgs args)
         {
-            if (d != null && args.NewValue != null)
+            if (d != null)
             {
-                if ((d as ucTextBoxIntellisense).refMethod != null)
-                    (d as ucTextBoxIntellisense).model = (d as ucTextBoxIntellisense).refMethod.Invoke(arg1: (int)args.NewValue, arg2: true);
-
-                (d as ucTextBoxIntellisense).txt.Text = String.Empty;
-
-                if (((d as ucTextBoxIntellisense).customViewModel.cvs != null))
+                if (args.NewValue == null)
                 {
-                    ((d as ucTextBoxIntellisense).customViewModel.cvs as BindingListCollectionView)
-                        .CustomFilter = String.Format(format: "Id = {0}", arg0: args.NewValue);
+                    (d as ucTextBoxIntellisense).txt.Text = string.Empty;
+                }
+                else
+                {
+                    if ((d as ucTextBoxIntellisense).refMethod != null)
+                        (d as ucTextBoxIntellisense).model = (d as ucTextBoxIntellisense).refMethod.Invoke(arg1: (int)args.NewValue, arg2: true);
 
-                    (d as ucTextBoxIntellisense).customViewModel.cvs.MoveCurrentToFirst();
+                    (d as ucTextBoxIntellisense).txt.Text = String.Empty;
 
-                    if ((d as ucTextBoxIntellisense).customViewModel.cvs.CurrentItem != null)
+                    if (((d as ucTextBoxIntellisense).customViewModel.cvs != null))
                     {
-                        string xText = String.Empty;
+                        ((d as ucTextBoxIntellisense).customViewModel.cvs as BindingListCollectionView)
+                            .CustomFilter = String.Format(format: "Id = {0}", arg0: args.NewValue);
 
-                        foreach (object item in ((d as ucTextBoxIntellisense).customViewModel.cvs.CurrentItem as DataRowView).Row.ItemArray)
+                        (d as ucTextBoxIntellisense).customViewModel.cvs.MoveCurrentToFirst();
+
+                        if ((d as ucTextBoxIntellisense).customViewModel.cvs.CurrentItem != null)
                         {
-                            if (item != null)
-                                xText += xText == "" ?
-                                    item.ToString() : " - " + item.ToString();
-                        }
+                            string xText = String.Empty;
 
-                        (d as ucTextBoxIntellisense).txt.Text = xText;
+                            foreach (object item in ((d as ucTextBoxIntellisense).customViewModel.cvs.CurrentItem as DataRowView).Row.ItemArray)
+                            {
+                                if (item != null)
+                                    xText += xText == "" ?
+                                        item.ToString() : " - " + item.ToString();
+                            }
+
+                            (d as ucTextBoxIntellisense).txt.Text = xText;
+                        }
                     }
                 }
             }
@@ -218,7 +231,7 @@ namespace HLP.Components.View.WPF
         }
 
         // Using a DependencyProperty as the backing store for refMethod.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty refMethodProperty =                                                                                                                                                       
+        public static readonly DependencyProperty refMethodProperty =
             DependencyProperty.Register("refMethod", typeof(Func<int, bool, object>), typeof(ucTextBoxIntellisense), new PropertyMetadata(null));
 
 

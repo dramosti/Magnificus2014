@@ -45,15 +45,7 @@ namespace HLP.Magnificus.View.WPF
             {
                 this.DataContext = value;
             }
-        }
-
-        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            this.mainTabControl.SelectedItem = this.tiWindow;
-
-            if ((sender as ListBox).SelectedIndex > 0)
-                this.ViewModel.FocusOnComponent(comp: ((sender as ListBox).SelectedItem as DetailsErrorModel).comp);
-        }
+        }        
 
         #region Eventos para Maximizar sem ocultar barra
 

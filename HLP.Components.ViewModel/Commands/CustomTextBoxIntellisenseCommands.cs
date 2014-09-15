@@ -42,7 +42,7 @@ namespace HLP.Components.ViewModel.Commands
             DataTable dt = objDataService.GetData(sSelect:
                 string.Format(format: "select * from {0}", arg0: this.objViewModel.xNameView)).Tables[index: 0];
 
-            if(dt != null)
+            if (dt != null)
                 this.objViewModel.cvs = CollectionViewSource.GetDefaultView(
                         source: dt.DefaultView) as CollectionView;
         }
@@ -170,6 +170,9 @@ namespace HLP.Components.ViewModel.Commands
             if (o == null)
                 return false;
             object id = o.GetType().GetProperty(name: "selectedId").GetValue(obj: o);
+
+            if (id == null)
+                return false;
 
             return !(string.IsNullOrEmpty(value: id.ToString()));
         }
