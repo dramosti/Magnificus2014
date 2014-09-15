@@ -210,7 +210,7 @@
                 <Components:HlpDatePicker x:Name="dtCreated"
                     Grid.Column="3" Grid.Row="2" Height="20" Margin="0,0,0,3"
                     xTextDate="{Binding currentModel.dDataHora, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="False"
+					isReadOnlyUserControl="True"
 					ToolTip="O Sistema preenche automaticamente com a data e hora (dd/mm/aaaa - hh:mm) em que foi criado o orçamento.">
                 </Components:HlpDatePicker>
                 <Components:ucTextBoxIntellisense
@@ -229,7 +229,7 @@
                     ></Components:ucTextBoxIntellisense>
                 <Components:CustomTextBox x:Name="ucIntellisenseEmpresa"
                     Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3"
-                    IsEnabled="False"
+                    IsReadOnly="True"
 					Text="{Binding currentModel.xEmpresa, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 					ToolTip="Código da Empresa em que o sistema esta lançando o orçamento">
                 </Components:CustomTextBox>
@@ -354,19 +354,19 @@
                                     <Components:HlpDatePicker x:Name="dtVencimento"
                                         Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
                                         xTextDate="{Binding currentModel.dVencimento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				                        IsEnabled="{Binding bIsEnabled}"
+				                        isReadOnlyUserControl="{Binding bIsEnable, Converter={StaticResource notConverter}}"
 				                        ToolTip="A data em que o orçamento de venda expira e não é mais válida">
                                     </Components:HlpDatePicker>
                                     <Components:HlpDatePicker x:Name="dtAcompanhamento"
                                         Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
                                         xTextDate="{Binding currentModel.dAcompanhamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				                        IsEnabled="{Binding bIsEnabled}"
+				                        isReadOnlyUserControl="{Binding bIsEnable, Converter={StaticResource notConverter}}"
 				                        ToolTip="A data inicial de qualquer atividade de acompanhamento da cotação de venda">
                                     </Components:HlpDatePicker>
                                     <Components:HlpDatePicker x:Name="dtConfirmacao"
                                         Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
                                         xTextDate="{Binding currentModel.dConfirmacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				                        IsEnabled="{Binding bIsEnabled}"
+				                        isReadOnlyUserControl="{Binding bIsEnable, Converter={StaticResource notConverter}}"
 				                        ToolTip="A data em que o orçamento de venda expira e não é mais válida">
                                     </Components:HlpDatePicker>
                                     <Components:ucTextBoxIntellisense x:Name="ucIntellisenseMotivo"
@@ -507,7 +507,8 @@
                                     <Components:CustomTextBox x:Name="txtObservacao"
                                             Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2"
                                             Text="{Binding currentModel.xObservacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                                                              >
                                     </Components:CustomTextBox>
                                     <Components:CustomCheckBox x:Name="cbWeb"
                                             Grid.Column="2" Grid.Row="7"
@@ -764,31 +765,11 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn x:Name="clCfop" Header="Cfop" Width="125" >
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Path=idCfop, Converter={StaticResource cbxDisplayConv}, 
-                                                        ConverterParameter={StaticResource lResultCfop}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                                   />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                    <DataGridTemplateColumn.CellEditingTemplate>
-                                        <DataTemplate>
-                                            <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
-                                                <Components:CustomComboBox
-                                                    x:Name="elem"
-                ItemsSource="{Binding Source={StaticResource lResultCfop}}" 
-                                                      SelectedValuePath="id"
-                                            DisplayMemberPath="display"                                
-            SelectedValue="{Binding idCfop,
-                                UpdateSourceTrigger=LostFocus}"
-                                                                  IsEnabled="{Binding bIsEnabled}"
-                                                      IsSynchronizedWithCurrentItem="False">
-                                                </Components:CustomComboBox>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellEditingTemplate>
-                                </DataGridTemplateColumn>
+                                <Components:CustomDataGridIntellisenseColumn xFieldsToDisplay="idCfop;cCfop;xCfop" Width="123" Header="Cfop"
+                                Binding="{Binding Path=idCfop, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                                           
+                                            refMethod="{Binding Path=Data.getCfop, Source={StaticResource proxy}}"
+                                            xNameView="vwCfopqs" NameWindowCadastro="WinCfop" TableView="vwCfop"
+                                    ></Components:CustomDataGridIntellisenseColumn>
                                 <Components:CustomDataGridIntellisenseColumn Header="Classificação Fiscal" Width="125"
                                         xFieldsToDisplay="idClassificacaoFiscal;xClassificacaoFiscal" Binding="{Binding Path=objImposto.idClassificacaoFiscal,
                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -800,31 +781,11 @@
                                         Header="Ncm" Width="125"
                                         Binding="{Binding Path=objImposto.xNcm, Mode=OneWay}">
                                 </DataGridTextColumn>
-                                <DataGridTemplateColumn x:Name="clCstIpi" Header="CST IPI" Width="150" >
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Path=objImposto.idCSTIpi, Converter={StaticResource cbxDisplayConv}, 
-                                                        ConverterParameter={StaticResource lResultCstIpi}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                                   />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                    <DataGridTemplateColumn.CellEditingTemplate>
-                                        <DataTemplate>
-                                            <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
-                                                <Components:CustomComboBox
-                                                    x:Name="elem"
-                ItemsSource="{Binding Source={StaticResource lResultCstIpi}}" 
-                                                      SelectedValuePath="id"
-                                            DisplayMemberPath="display"                                
-            SelectedValue="{Binding objImposto.idCSTIpi,
-                                UpdateSourceTrigger=LostFocus}"
-                                                                  IsEnabled="{Binding bIsEnabled}"
-                                                      IsSynchronizedWithCurrentItem="False">
-                                                </Components:CustomComboBox>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellEditingTemplate>
-                                </DataGridTemplateColumn>
+                                <Components:CustomDataGridIntellisenseColumn x:Name="clCstIpi" xFieldsToDisplay="idCSTIpi;cCSTIpi;xCSTIpi" Width="150" Header="CST IPI"
+                                Binding="{Binding Path=objImposto.idCSTIpi, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                                           
+                                            refMethod="{Binding Path=Data.getStIpi, Source={StaticResource proxy}}"
+                                            xNameView="vwStIPIqs" NameWindowCadastro="WinStIPI" TableView="vwStIPI"
+                                    ></Components:CustomDataGridIntellisenseColumn>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=objImposto.IPI_pIPI, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, 
@@ -835,31 +796,12 @@
 										Binding="{Binding Path=objImposto.IPI_vIPI, UpdateSourceTrigger=LostFocus,
                                         NotifyOnValidationError=True, ValidatesOnDataErrors=True, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}}"
 										Header="Vl IPI" Width="100"/>
-                                <DataGridTemplateColumn x:Name="clCstIcms" Header="CST ICMS" Width="150" >
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Path=objImposto.idCSTIcms, Converter={StaticResource cbxDisplayConv}, 
-                                                        ConverterParameter={StaticResource lResultCstIcms}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                                   />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                    <DataGridTemplateColumn.CellEditingTemplate>
-                                        <DataTemplate>
-                                            <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
-                                                <Components:CustomComboBox
-                                                    x:Name="elem"
-                ItemsSource="{Binding Source={StaticResource lResultCstIcms}}" 
-                                                      SelectedValuePath="id"
-                                            DisplayMemberPath="display"                                
-            SelectedValue="{Binding objImposto.idCSTIcms,
-                                UpdateSourceTrigger=LostFocus}"
-                                                                  IsEnabled="{Binding bIsEnabled}"
-                                                      IsSynchronizedWithCurrentItem="False">
-                                                </Components:CustomComboBox>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellEditingTemplate>
-                                </DataGridTemplateColumn>
+                                <Components:CustomDataGridIntellisenseColumn
+                                    x:Name="clCstIcms" Header="CST ICMS" Width="150" xFieldsToDisplay="idCSTIcms;cCSTIcms;xCSTIcms"
+                                    Binding="{Binding Path=objImposto.idCSTIcms, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                                           
+                                            refMethod="{Binding Path=Data.getStIcms, Source={StaticResource proxy}}"
+                                            xNameView="vwStICMSqs" NameWindowCadastro="WinStICMS" TableView="vwStICMS"
+                                    ></Components:CustomDataGridIntellisenseColumn>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=objImposto.ICMS_pICMS, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, Mode=TwoWay,
@@ -883,31 +825,12 @@
 										Binding="{Binding Path=objImposto.vIcmsSubstituicaoTributaria, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vl ICMS ST" Width="125"/>
-                                <DataGridTemplateColumn x:Name="clCstPis" Header="CST PIS" Width="100" >
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Path=objImposto.idCSTPis, Converter={StaticResource cbxDisplayConv}, 
-                                                        ConverterParameter={StaticResource lResultStPis}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                                   />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                    <DataGridTemplateColumn.CellEditingTemplate>
-                                        <DataTemplate>
-                                            <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
-                                                <Components:CustomComboBox
-                                                    x:Name="elem"
-                ItemsSource="{Binding Source={StaticResource lResultStPis}}" 
-                                                      SelectedValuePath="id"
-                                            DisplayMemberPath="display"                                
-            SelectedValue="{Binding objImposto.idCSTPis,
-                                UpdateSourceTrigger=LostFocus}"
-                                                                  IsEnabled="{Binding bIsEnabled}"
-                                                      IsSynchronizedWithCurrentItem="False">
-                                                </Components:CustomComboBox>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellEditingTemplate>
-                                </DataGridTemplateColumn>
+                                <Components:CustomDataGridIntellisenseColumn
+                                    x:Name="clCstPis" Header="CST PIS" Width="100" xFieldsToDisplay="idCSTPis;cCSTPis;xCSTPis"
+                                    Binding="{Binding Path=objImposto.idCSTPis, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                                           
+                                            refMethod="{Binding Path=Data.getStPis, Source={StaticResource proxy}}"
+                                            xNameView="vwStPISqs" NameWindowCadastro="WinsStPIS" TableView="vwStPIS"
+                                    ></Components:CustomDataGridIntellisenseColumn>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=objImposto.PIS_pPIS, TargetNullValue=0, FallbackValue=0, Converter={StaticResource porcentagemConverter},
@@ -918,31 +841,12 @@
 										Binding="{Binding Path=objImposto.PIS_vPIS, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},
                                             UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vl PIS" Width="125"/>
-                                <DataGridTemplateColumn x:Name="clCstCofins" Header="CST COFINS" Width="125" >
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Path=objImposto.idCSTCofins, Converter={StaticResource cbxDisplayConv}, 
-                                                        ConverterParameter={StaticResource lResultiCofins}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                                   />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                    <DataGridTemplateColumn.CellEditingTemplate>
-                                        <DataTemplate>
-                                            <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
-                                                <Components:CustomComboBox
-                                                    x:Name="elem"
-                ItemsSource="{Binding Source={StaticResource lResultiCofins}}" 
-                                                      SelectedValuePath="id"
-                                            DisplayMemberPath="display"                                
-            SelectedValue="{Binding objImposto.idCSTCofins,
-                                UpdateSourceTrigger=LostFocus}"
-                                                                  IsEnabled="{Binding bIsEnabled}"
-                                                      IsSynchronizedWithCurrentItem="False">
-                                                </Components:CustomComboBox>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellEditingTemplate>
-                                </DataGridTemplateColumn>
+                                <Components:CustomDataGridIntellisenseColumn
+                                    x:Name="clCstCofins" Header="CST COFINS" Width="125" xFieldsToDisplay="idCSTCofins;cCSTCofins;xCSTCofins"
+                                    Binding="{Binding Path=objImposto.idCSTCofins, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                                           
+                                            refMethod="{Binding Path=Data.getStCofins, Source={StaticResource proxy}}"
+                                            xNameView="vwStCOFINSqs" NameWindowCadastro="WinStCofins" TableView="vwStCOFINS"
+                                    ></Components:CustomDataGridIntellisenseColumn>
                                 <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=objImposto.COFINS_pCOFINS, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},
@@ -1105,29 +1009,31 @@
                             <!--Components-->
 
                             <Components:CustomTextBox x:Name="txtProduto"
-                                Text="{Binding currentItem.idProduto}" IsEnabled="False"
+                                Text="{Binding currentItem.idProduto}" IsReadOnly="True"
                                    Grid.Column="1" Grid.Row="3" Width="90" HorizontalAlignment="Left">
                             </Components:CustomTextBox>
                             <Components:CustomTextBox x:Name="txtComercial"
-                                                      Text="{Binding currentItem.xComercial}" IsEnabled="False"
+                                                      Text="{Binding currentItem.xComercial}" IsReadOnly="True"
                                     Grid.Column="3" Grid.Row="3">
                             </Components:CustomTextBox>
                             <Components:CustomTextBox x:Name="txtUnidadeMedida"
-                                Text="{Binding currentItem.xUnidadeMedida}" IsEnabled="False"
+                                Text="{Binding currentItem.xUnidadeMedida}" IsReadOnly="True"
                                     Grid.Column="5" Grid.Row="3">
                             </Components:CustomTextBox>
                             <Components:CustomTextBox x:Name="txtQuantProduto"
-                                Text="{Binding currentItem.qProduto}" IsEnabled="{Binding bIsEnabled}"
+                                Text="{Binding currentItem.qProduto}" IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     Grid.Column="7" Grid.Row="3">
                             </Components:CustomTextBox>
                             <Components:CustomTextBox x:Name="txtValorVenda"
                                 Text="{Binding currentItem.vVenda, FallbackValue=0 ,TargetNullValue=0 , 
-                                Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisItem}" IsEnabled="{Binding bIsEnabled}"
+                                Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisItem}" 
+                                IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     Grid.Column="9" Grid.Row="3" >
                             </Components:CustomTextBox>
                             <Components:CustomTextBox x:Name="txtValorTotalItem"
                                 Text="{Binding currentItem.vTotalItem , FallbackValue=0 ,TargetNullValue=0 ,
-                                Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisTotalItem}" IsEnabled="False"
+                                Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisTotalItem}" 
+                                                      IsReadOnly="True"
                                     Grid.Column="11" Grid.Row="3" Grid.ColumnSpan="2" Margin="10,0,5,3">
                             </Components:CustomTextBox>
                             <Components:CustomCheckBox x:Name="cbConsumidorFinal"
@@ -1145,7 +1051,8 @@
                             <Components:CustomComboBox x:Name="cbxStOrigemMercadoria"
                                     Grid.Column="5" Grid.ColumnSpan="3" Grid.Row="5"
                                     SelectedIndex="{Binding currentItem.objImposto.ICMS_stOrigemMercadoria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}">
+									IsEnabled="{Binding bIsEnabled}"
+                                                       >
                                 <Components:CustomComboBox.Items>
                                     <System:String>0-Nacional</System:String>
                                     <System:String>1-Estrangeira– Importação Direta</System:String>
@@ -1193,8 +1100,10 @@
 
                                         <!--Label-->
 
-                                        <Components:CustomTextBlock Text="Calcula IPI?" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Text="Classificação Fiscal" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Calcula IPI?" Grid.Column="1" Grid.Row="1" 
+                                                                    labelFor="{Binding ElementName=txtNcm}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Classificação Fiscal" Grid.Column="1" Grid.Row="2"
+                                                                    ></Components:CustomTextBlock>
                                         <Components:CustomTextBlock Text="NCM" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                                         <Components:CustomTextBlock Text="% IPI" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                                         <Components:CustomTextBlock Text="Compões a Base do IPI" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
@@ -1214,16 +1123,16 @@
                     x:Name="ucIntellisenseClassificacaoFiscal" Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
 					selectedId="{Binding currentItem.objImposto.idClassificacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					ucEnabled="{Binding bIsEnabled}" refMethod="{Binding getFamiliaProduto}"
-					ToolTip="Classificação Fiscal ou NCM significa Nomenclatura Comum do Mercosul e trata-se de um código de oito dígitos estabelecido pelo Governo Brasileiro para identificar a natureza das mercadorias e promover o desenvolvimento do comércio internacional, além de facilitar a coleta e análise das estatísticas do comércio exterior. Qualquer mercadoria, importada ou comprada no Brasil, deve ter um código NCM na sua documentação legal (nota fiscal, livros legais, etc.), cujo objetivo é classificar os itens de acordo com regulamentos do Mercosul." 
+					ToolTip="Classificação Fiscal ou NCM significa Nomenclatura Comu mdo Mercosul e trata-se de um código de oito dígitos estabelecido pelo Governo Brasileiro para identificar a natureza das mercadorias e promover o desenvolvimento do comércio internacional, além de facilitar a coleta e análise das estatísticas do comércio exterior. Qualquer mercadoria, importada ou comprada no Brasil, deve ter um código NCM na sua documentação legal (nota fiscal, livros legais, etc.), cujo objetivo é classificar os itens de acordo com regulamentos do Mercosul." 
                                             xNameView="vwClassificacaoFiscalqs" TableView="vwClassificacaoFiscal" NameWindowCadastro="WinClassificacaoFiscal"
                     model="{Binding currentItem.objImposto.objClassificacaoFiscal}"
                     ></Components:ucTextBoxIntellisense>
-                                        <Components:CustomTextBox
+                                        <Components:CustomTextBox x:Name="txtNcm"
                                             Grid.Column="2" Grid.Row="3"
                                             Text="{Binding currentItem.objImposto.xNcm, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
-                                        <Components:CustomTextBox
+                                        <Components:CustomTextBox x:Name="txtpIpi"
                                             Grid.Column="2" Grid.Row="4"
                                             Text="{Binding currentItem.objImposto.IPI_pIPI, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
