@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   
         xmlns:System="clr-namespace:System;assembly=mscorlib"         
         xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
+        xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" x:Class="HLP.Entries.View.WPF.Gerais.WinUF"
         Title="Uf - Unidade da Federação" Height="300" Width="500" NameView="vwUF">
     <Window.Resources>
@@ -10,70 +11,63 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <convert:NotConverter x:Key="notConverter"/>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid Name="gridPropriedades">
-        <Expander Header="UF" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
-                    <ColumnDefinition Width="10"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="10"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                </Grid.RowDefinitions>
+    <Expander Header="UF" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+            </Grid.RowDefinitions>
 
-                <!--Label-->
+            <!--Label-->
 
-                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Sigla" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="UF" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Código IBGE" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Região" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Sigla" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="UF" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Código IBGE" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Região" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
 
-                <!--Components-->
+            <!--Components-->
 
-                <Components:CustomTextBox stCompPosicao="fieldId"
+            <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     x:Name="txtCodigo" Text="{Binding currentModel.idUF, Mode=TwoWay}" IsReadOnly="True" IsEnabled="True">
-                </Components:CustomTextBox>
-                <Components:CustomTextBox stCompPosicao="first"
+            </Components:CustomTextBox>
+            <Components:CustomTextBox stCompPosicao="first" x:Name="txtSigla"
                     Grid.Column="2" Grid.Row="2"
-                    IsEnabled="{Binding bIsEnabled}"
+                    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
     		        Text="{Binding currentModel.xSiglaUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                </Components:CustomTextBox>
-                <Components:CustomTextBox
+            </Components:CustomTextBox>
+            <Components:CustomTextBox x:Name="txtUF"
                     Grid.Column="2" Grid.Row="3"
-                    IsEnabled="{Binding bIsEnabled}" 
+                    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}" 
     		        Text="{Binding currentModel.xUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                     ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                </Components:CustomTextBox>
-                <Components:CustomTextBox
+            </Components:CustomTextBox>
+            <Components:CustomTextBox x:Name="txtCodigoIBGE"
                     Grid.Column="2" Grid.Row="4"
-                    IsEnabled="{Binding bIsEnabled}"
+                    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
     		        Text="{Binding currentModel.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                </Components:CustomTextBox>
-                <Components:CustomPesquisa 
-                    IsEnabled="{Binding bIsEnabled}"
-                    Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"  
-                                           x:Name="uc" stCompPosicao="last"
-                                           xIdPesquisa="{Binding currentModel.idRegiao, Mode=TwoWay,
-                    ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"                         
-                    TableView="vwRegiao" FieldPesquisa="ID">
-                    <Components:CustomPesquisa.Items>
-                        <System:String>xRegiao</System:String>
-                        <System:String>xPais</System:String>
-                    </Components:CustomPesquisa.Items>
-                </Components:CustomPesquisa>
-            </Grid>
-        </Expander>
-    </Grid>
+            </Components:CustomTextBox>            
+            <Components:ucTextBoxIntellisense x:Name="txtRegiao"
+					ucEnabled="{Binding bIsEnabled}"
+					Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
+					selectedId="{Binding currentModel.idRegiao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  xNameView="vwRegiaoqs" TableView="vwRegiao"
+                    />
+        </Grid>
+    </Expander>
+
 </runtime:WindowsBase>

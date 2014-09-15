@@ -92,12 +92,14 @@
 									IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 									ToolTip="Informa o nome por completo da Agência Bancária">
                             </Components:CustomTextBox>
+                            
                             <Components:ucTextBoxIntellisense x:Name="txtBanco"
 					            ucEnabled="{Binding bIsEnabled}"
 					            Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3"
 					            selectedId="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                 xNameView="vwBancoqs" NameWindowCadastro="WinBanco" TableView="vwBanco"
                     />
+                            
                             <Components:CustomTextBox x:Name="txtTelefone"
                                     Grid.Column="2" Grid.Row="5"
                                     Text="{Binding currentModel.xTelefone, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,Converter={StaticResource maskConverter}, ConverterParameter=tel}"
@@ -128,24 +130,12 @@
                         </Grid>
                     </Expander>
                     <Expander Header="Endereco" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="1">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition Width="10"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="10"></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition Height="10"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Components:HlpEndereco
+                        <Components:HlpEndereco
                                     Grid.Column="1" Grid.Row="1"                                    
                                     x:Name="dgvEndereco"
                                     ItemsSourceEnderecos="{Binding currentModel.lAgencia_EnderecoModel}"
                                     IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     />
-                        </Grid>
                     </Expander>
                 </Grid>
             </AdornerDecorator>
