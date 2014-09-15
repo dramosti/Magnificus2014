@@ -38,97 +38,101 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="10"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                </Grid.RowDefinitions>
-                <!--Label-->
+            <AdornerDecorator>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                        <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                        <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                        <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <!--Label-->
 
-                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Dia de pagamento" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Descrição " Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Código" labelFor="{Binding ElementName=txtId}" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Dia de pagamento" labelFor="{Binding ElementName=txtDiaPagamento}" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Text="Descrição " labelFor="{Binding ElementName=txtDescricao}" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
 
-                <!--Components-->
+                    <!--Components-->
 
-                <Components:CustomTextBox stCompPosicao="fieldId"
+                    <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtId"
                     Grid.Column="2" Grid.Row="1"
                     IsReadOnly="True"
 					Text="{Binding currentModel.idDiaPagamento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 					ToolTip="Chave principal do registro dia de pagamento">
-                </Components:CustomTextBox>
-                <Components:CustomTextBox stCompPosicao="first"
+                    </Components:CustomTextBox>
+                    <Components:CustomTextBox stCompPosicao="first" x:Name="txtDiaPagamento"
                     Grid.Column="2" Grid.Row="2"
                     Text="{Binding currentModel.xDiaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 					ToolTip="Insira uma breve identificação para o dia de pagamento. ">
-                </Components:CustomTextBox>
-                <Components:CustomTextBox
+                    </Components:CustomTextBox>
+                    <Components:CustomTextBox x:Name="txtDescricao"
                     Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" stCompPosicao="last"
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 					ToolTip="Insira uma descrição da identificação do dia de pagamento.">
-                </Components:CustomTextBox>
+                    </Components:CustomTextBox>
 
-            </Grid>
+                </Grid>
+            </AdornerDecorator>
         </Expander>
         <Expander Header="Dia do Pagamento" IsExpanded="True" Grid.Row="1" Style="{StaticResource ExpanderPadrao}" Focusable="False">
-            <Grid Width="400" HorizontalAlignment="Left">
-                <DataGrid 
+            <AdornerDecorator>
+                <Grid Width="400" HorizontalAlignment="Left">
+                    <Components:CustomDataGrid 
                         IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                          ItemsSource="{Binding currentModel.lDia_pagamento_linhas}"                                                 
                          AutoGenerateColumns="False" 
                          SelectionUnit="CellOrRowHeader" 
                          CanUserReorderColumns="False"
                          CanUserDeleteRows="True" CanUserAddRows="True" SelectedCellsChanged="DataGrid_SelectedCellsChanged_1">
-                    <DataGrid.Columns>
-                        <DataGridComboBoxColumn x:Name="cbxStSemanaMes" Header="Semana/Mês" ItemsSource="{StaticResource collectionSemanaMes}"
+                        <Components:CustomDataGrid.Columns>
+                            <DataGridComboBoxColumn x:Name="cbxStSemanaMes" Header="Semana/Mês" ItemsSource="{StaticResource collectionSemanaMes}"
                                         SelectedItemBinding="{Binding Path=stSemanaMes, Converter={StaticResource selectedItemConverter},
                                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
                     , ConverterParameter={StaticResource collectionSemanaMes}}" Visibility="Visible"
                                         >
-                        </DataGridComboBoxColumn>
-                        <DataGridComboBoxColumn Header="Dia Útil" ItemsSource="{StaticResource collectionDias}"
+                            </DataGridComboBoxColumn>
+                            <DataGridComboBoxColumn Header="Dia Útil" ItemsSource="{StaticResource collectionDias}"
                                         SelectedItemBinding="{Binding Path=stDiaUtil, Converter={StaticResource selectedItemConverter},
                                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
                     , ConverterParameter={StaticResource collectionDias}}">
-                            <DataGridComboBoxColumn.CellStyle>
-                                <Style TargetType="DataGridCell">
-                                    <Setter Property="IsEnabled" Value="False"></Setter>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Path=stSemanaMes}" Value="0">
-                                            <Setter Property="IsEnabled" Value="True"></Setter>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </DataGridComboBoxColumn.CellStyle>
-                        </DataGridComboBoxColumn>
-                        <DataGridTextColumn Header="Dia" Width="*"
+                                <DataGridComboBoxColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="IsEnabled" Value="False"></Setter>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=stSemanaMes}" Value="0">
+                                                <Setter Property="IsEnabled" Value="True"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridComboBoxColumn.CellStyle>
+                            </DataGridComboBoxColumn>
+                            <DataGridTextColumn Header="Dia" Width="*"
                                         Binding="{Binding Path=nDia, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ElementStyle="{StaticResource CellErrorStyle}">
-                            <DataGridTextColumn.CellStyle>
-                                <Style TargetType="DataGridCell">
-                                    <Setter Property="IsEnabled" Value="False"></Setter>
-                                    <Style.Triggers>                                        
-                                        <DataTrigger Binding="{Binding Path=stSemanaMes}" Value="1">
-                                            <Setter Property="IsEnabled" Value="True"></Setter>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </DataGridTextColumn.CellStyle>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="IsEnabled" Value="False"></Setter>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=stSemanaMes}" Value="1">
+                                                <Setter Property="IsEnabled" Value="True"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                        </Components:CustomDataGrid.Columns>
+                    </Components:CustomDataGrid>
+                </Grid>
+            </AdornerDecorator>
         </Expander>
     </Grid>
 </runtime:WindowsBase>

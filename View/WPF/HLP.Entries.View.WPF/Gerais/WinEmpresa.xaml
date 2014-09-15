@@ -24,175 +24,165 @@
                     <System:String>vwCidadeToComboBox</System:String>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </runtime:WindowsBase.Resources>
-    <Grid>
-        <TabControl>
-            <TabItem Header="Principal">
-                <AdornerDecorator>
-                    <Expander Header="Principal" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"></ColumnDefinition>
-                                <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
-                                <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                                <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
-                                <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="10"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                            </Grid.RowDefinitions>
+    <TabControl>
+        <TabItem Header="Principal">
+            <AdornerDecorator>
+                <Expander Header="Principal" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"></ColumnDefinition>
+                            <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                            <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                            <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                            <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-                            <!--Label-->
+                        <!--Label-->
 
-                            <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Nome" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Fantasia" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="CNPJ" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="IE" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="IM" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Suframa" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Telefone" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Fax" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="E-mail" Grid.Column="1" Grid.Row="10"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Http" Grid.Column="1" Grid.Row="11"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Ativo" Grid.Column="1" Grid.Row="12"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Ramo de Atividade" Grid.Column="1" Grid.Row="13"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Link Logo" Grid.Column="1" Grid.Row="14"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Link Pastas" Grid.Column="1" Grid.Row="15"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Cód. Reg. Tribut." Grid.Column="1" Grid.Row="16"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="Código" labelFor="{Binding ElementName=txtId}" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="Nome" labelFor="{Binding ElementName=txtNome}" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="Fantasia" labelFor="{Binding ElementName=txtFantasia}" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="CNPJ" labelFor="{Binding ElementName=txtCNPJ}" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="IE" labelFor="{Binding ElementName=txtIE}" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="IM" labelFor="{Binding ElementName=txtIM}" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="Suframa" labelFor="{Binding ElementName=txtSuframa}" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="Telefone" labelFor="{Binding ElementName=txtTelefone}" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="Fax" labelFor="{Binding ElementName=txtFax}" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="E-mail" labelFor="{Binding ElementName=txtEmail}" Grid.Column="1" Grid.Row="10"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="Http" labelFor="{Binding ElementName=txtHttp}" Grid.Column="1" Grid.Row="11"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="Ativo" labelFor="{Binding ElementName=cbAtivo}" Grid.Column="1" Grid.Row="12"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="Ramo de Atividade" labelFor="{Binding ElementName=txtRamoAtividade}" Grid.Column="1" Grid.Row="13"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="Link Logo" labelFor="{Binding ElementName=linkLogo}" Grid.Column="1" Grid.Row="14"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="Link Pastas" labelFor="{Binding ElementName=linkPastas}" Grid.Column="1" Grid.Row="15"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Text="Cód. Reg. Tribut." labelFor="{Binding ElementName=cbCodRegTribut}" Grid.Column="1" Grid.Row="16"></Components:CustomTextBlock>
 
-                            <!--Components-->
+                        <!--Components-->
 
-                            <Components:CustomTextBox stCompPosicao="fieldId"
+                        <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtId"
                             Grid.Column="2" Grid.Row="1"
                             Text="{Binding currentModel.idEmpresa, Mode=TwoWay}" IsReadOnly="True">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox stCompPosicao="first"
+                        </Components:CustomTextBox>
+                        <Components:CustomTextBox stCompPosicao="first" x:Name="txtNome"
                             Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"
-                            IsEnabled="{Binding bIsEnabled}"                                           
+                            IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"                                           
     		                Text="{Binding currentModel.xNome, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
+                        </Components:CustomTextBox>
+                        <Components:CustomTextBox x:Name="txtFantasia"
                             Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"
-                            IsEnabled="{Binding bIsEnabled}"                                            
+                            IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"                                            
     		                Text="{Binding currentModel.xFantasia, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
+                        </Components:CustomTextBox>
+                        <Components:CustomTextBox x:Name="txtCNPJ"
                             Grid.Column="2" Grid.Row="4"
-                            IsEnabled="{Binding bIsEnabled}"                                           
+                            IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"                                           
     		                Text="{Binding currentModel.xCNPJ, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True, Converter={StaticResource maskConverter}, ConverterParameter=cnpj}">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
+                        </Components:CustomTextBox>
+                        <Components:CustomTextBox x:Name="txtIE"
                             Grid.Column="2" Grid.Row="5"
-                            IsEnabled="{Binding bIsEnabled}"                                           
+                            IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"                                           
     		                Text="{Binding currentModel.xIE, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
+                        </Components:CustomTextBox>
+                        <Components:CustomTextBox x:Name="txtIM"
                             Grid.Column="2" Grid.Row="6"
-                            IsEnabled="{Binding bIsEnabled}"                                                   
+                            IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"                                                   
     		                Text="{Binding currentModel.xIM, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
+                        </Components:CustomTextBox>
+                        <Components:CustomTextBox x:Name="txtSuframa"
                             Grid.Column="2" Grid.Row="7"
-                            IsEnabled="{Binding bIsEnabled}"                                           
+                            IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"                                           
     		                Text="{Binding currentModel.xSuframa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
+                        </Components:CustomTextBox>
+                        <Components:CustomTextBox x:Name="txtTelefone"
                             Grid.Column="2" Grid.Row="8"                            
-                            IsEnabled="{Binding bIsEnabled}"
+                            IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
     		                Text="{Binding currentModel.xTelefone, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
+                        </Components:CustomTextBox>
+                        <Components:CustomTextBox x:Name="txtFax"
                             Grid.Column="2" Grid.Row="9"                            
-                            IsEnabled="{Binding bIsEnabled}"                                           
+                            IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"                                           
     		                Text="{Binding currentModel.xFax, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
+                        </Components:CustomTextBox>
+                        <Components:CustomTextBox x:Name="txtEmail"
                             Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="3"                         
-                            IsEnabled="{Binding bIsEnabled}"                                           
+                            IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"                                           
     		                Text="{Binding currentModel.xEmail, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
+                        </Components:CustomTextBox>
+                        <Components:CustomTextBox x:Name="txtHttp"
                             Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="3"                  
-                            IsEnabled="{Binding bIsEnabled}"                                           
+                            IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"                                           
     		                Text="{Binding currentModel.xHttp, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                            </Components:CustomTextBox>
-                            <Components:CustomCheckBox
+                        </Components:CustomTextBox>
+                        <Components:CustomCheckBox x:Name="cbAtivo"
                             Grid.Column="2" Grid.Row="12"                            
                             IsEnabled="{Binding bIsEnabled}"                                           
                             IsChecked="{Binding currentModel.Ativo, Mode=TwoWay,
                             UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                            </Components:CustomCheckBox>
-                            <Components:CustomPesquisa 
-                            Grid.Column="2" Grid.Row="13" Grid.ColumnSpan="3" Height="20" Margin="0,0,0,3"                            
-                    	    IsEnabled="{Binding bIsEnabled}"                                                   
-                    	    xIdPesquisa="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                    	    TableView="vwRamoAtividade" FieldPesquisa="ID" NameWindowCadastro="WinRamoAtividade">
-                                <Components:CustomPesquisa.Items>
-                                    <sys:String>xRamo</sys:String>
-                                    <sys:String>xDescricao</sys:String>
-                                </Components:CustomPesquisa.Items>
-                            </Components:CustomPesquisa>
-                            <Components:CustomTextBoxFindFiles
+                        </Components:CustomCheckBox>
+                        <Components:ucTextBoxIntellisense x:Name="txtRamoAtividade"
+					        ucEnabled="{Binding bIsEnabled}"
+					        Grid.Column="2" Grid.Row="13" Grid.ColumnSpan="2"
+					        selectedId="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  xNameView="vwRamoAtividadeqs" NameWindowCadastro="WinRamoAtividade" TableView="vwRamoAtividade"
+                            />
+                        <Components:CustomTextBoxFindFiles x:Name="linkLogo"
                             Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="3" Margin="0,0,0,3"                      
-                            IsEnabled="{Binding bIsEnabled}"                                                                                      
+                            IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"                                                                                      
     		                Text="{Binding currentModel.xLinkLogoEmpresa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                            </Components:CustomTextBoxFindFiles>
-                            <Components:CustomTextBoxFindFiles
+                        </Components:CustomTextBoxFindFiles>
+                        <Components:CustomTextBoxFindFiles x:Name="linkPastas"
                             Grid.Column="2" Grid.Row="15" Grid.ColumnSpan="3"  Margin="0,0,0,3"                          
-                            IsEnabled="{Binding bIsEnabled}"                                           
+                            IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"                                           
     		                Text="{Binding currentModel.xLinkPastas, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                            </Components:CustomTextBoxFindFiles>
-                            <Components:CustomCheckBox
+                        </Components:CustomTextBoxFindFiles>
+                        <Components:CustomCheckBox x:Name="cbCodRegTribut"
                             Grid.Column="2" Grid.Row="16"                            
                             IsEnabled="{Binding bIsEnabled}"                                            
                             IsChecked="{Binding currentModel.stCodigoRegimeTributario, Mode=TwoWay,
                             UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                            </Components:CustomCheckBox>
+                        </Components:CustomCheckBox>
 
-                        </Grid>
-                    </Expander>
-                </AdornerDecorator>
-            </TabItem>
-            <TabItem Header="Endereço">
-                <AdornerDecorator>
-                    <Grid>
-                        
-                        <Components:HlpEndereco       
-                            ItemsSourceEnderecos="{Binding currentModel.lEmpresa_endereco}"
-                            IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}">                            
-                        </Components:HlpEndereco>
                     </Grid>
-                </AdornerDecorator>
-            </TabItem>
-        </TabControl>
-    </Grid>
+                </Expander>
+            </AdornerDecorator>
+        </TabItem>
+        <TabItem Header="Endereço">
+            <AdornerDecorator>
+                <Components:HlpEndereco       
+                            ItemsSourceEnderecos="{Binding currentModel.lEmpresa_endereco}"
+                            IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}">
+                </Components:HlpEndereco>
+            </AdornerDecorator>
+        </TabItem>
+    </TabControl>
 </runtime:WindowsBase>
