@@ -1101,15 +1101,21 @@
                                         <!--Label-->
 
                                         <Components:CustomTextBlock Text="Calcula IPI?" Grid.Column="1" Grid.Row="1" 
-                                                                    labelFor="{Binding ElementName=txtNcm}"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Text="Classificação Fiscal" Grid.Column="1" Grid.Row="2"
                                                                     ></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Text="NCM" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Text="% IPI" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Text="Compões a Base do IPI" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Text="Código da Situação Tributária" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Text="Valor da Base do IPI" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Text="Valor do IPI" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Classificação Fiscal" Grid.Column="1" Grid.Row="2"
+                                                                    labelFor="{Binding ElementName=ucIntellisenseClassificacaoFiscal}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="NCM" Grid.Column="1" Grid.Row="3"
+                                                                    labelFor="{Binding ElementName=txtNcm}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="% IPI" Grid.Column="1" Grid.Row="4"
+                                                                    labelFor="{Binding ElementName=txtpIpi}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Compões a Base do IPI" Grid.Column="1" Grid.Row="5"
+                                                                    ></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Código da Situação Tributária" Grid.Column="1" Grid.Row="6"
+                                                                    labelFor="{Binding ElementName=ucPesquisaStIpi}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Valor da Base do IPI" Grid.Column="1" Grid.Row="7"
+                                                                    labelFor="{Binding ElementName=txtIpi_vBaseCalculo}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Valor do IPI" Grid.Column="1" Grid.Row="8"
+                                                                    labelFor="{Binding ElementName=txtIpivIpi}"></Components:CustomTextBlock>
 
                                         <!--Components-->
 
@@ -1130,12 +1136,14 @@
                                         <Components:CustomTextBox x:Name="txtNcm"
                                             Grid.Column="2" Grid.Row="3"
                                             Text="{Binding currentItem.objImposto.xNcm, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}">
+											IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                                                                  >
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox x:Name="txtpIpi"
                                             Grid.Column="2" Grid.Row="4"
                                             Text="{Binding currentItem.objImposto.IPI_pIPI, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                                                                  >
                                         </Components:CustomTextBox>
                                         <Components:CustomComboBox
                                             Grid.Column="2" Grid.Row="5" Height="20" Grid.ColumnSpan="2"  Margin="0,0,0,3" ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
@@ -1148,25 +1156,23 @@
                                                 <System:String>3-NENHUM</System:String>
                                             </Components:CustomComboBox.Items>
                                         </Components:CustomComboBox>
-                                        <Components:CustomPesquisa
-                                            Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"        
-											xIdPesquisa="{Binding currentItem.objImposto.idCSTIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											FieldPesquisa="ID" TableView="vwStIPI" NameWindowCadastro="WinStIPI">
-                                            <Components:CustomPesquisa.Items>
-                                                <System:String>cCSTIpi</System:String>
-                                                <System:String>xCSTIpi</System:String>
-                                            </Components:CustomPesquisa.Items>
-                                        </Components:CustomPesquisa>
-                                        <Components:CustomTextBox
+                                        <Components:ucTextBoxIntellisense
+                    x:Name="ucPesquisaStIpi" Height="20" Margin="0,0,0,3" Grid.Column="5" Grid.Row="2"                   
+					selectedId="{Binding currentItem.objImposto.idCSTIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					ucEnabled="{Binding bIsEnabled}" refMethod="{Binding getStIpi}"
+					ToolTip="Informar ao orçamento de vendas o cliente."
+                                            xNameView="vwStIPIqs" NameWindowCadastro="WinStIPI" TableView="vwStIPI">
+                                        </Components:ucTextBoxIntellisense>
+                                        <Components:CustomTextBox x:Name="txtIpi_vBaseCalculo"
                                             Grid.Column="2" Grid.Row="7"
                                             Text="{Binding currentItem.objImposto.IPI_vBaseCalculo, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                                                                  >
                                         </Components:CustomTextBox>
-                                        <Components:CustomTextBox
+                                        <Components:CustomTextBox x:Name="txtIpivIpi"
                                             Grid.Column="2" Grid.Row="8"
                                             Text="{Binding currentItem.objImposto.IPI_vIPI, Mode=TwoWay,FallbackValue=0,TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
                                     </Grid>
                                 </AdornerDecorator>
@@ -1214,25 +1220,42 @@
                                             <Components:CustomTextBlock Text="Reduz Base de Cálculo do ICMS?" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                                             <Components:CustomTextBlock Text="Não reduz a base de Calculo do ICMS?" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                                             <Components:CustomTextBlock Text="Calcula ICMS?" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="Código de ICMS" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="Código da Situação Tributária" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="% ICMS" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="% Redução da Base de Calculo do ICMS" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Código de ICMS" Grid.Column="1" Grid.Row="4"
+                                                                        labelFor="{Binding ElementName=ucIntellisenseCodigoIcms}"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Código da Situação Tributária" Grid.Column="1" Grid.Row="5"
+                                                                        ></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% ICMS" Grid.Column="1" Grid.Row="6"
+                                                                        labelFor="{Binding ElementName=txtpIcms}"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% Redução da Base de Calculo do ICMS" Grid.Column="1" Grid.Row="7"
+                                                                        labelFor="{Binding ElementName=txtIcmspSubstTributaria}"></Components:CustomTextBlock>
                                             <Components:CustomTextBlock Text="Compõe a base do ICMS?" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="Valor da Base de Calculo do ICMS" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="Valor do ICMS" Grid.Column="1" Grid.Row="10"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="Valor da Base de Calculo ICMS Próprio" Grid.Column="1" Grid.Row="11"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="Valor do ICMS Próprio" Grid.Column="6" Grid.Row="1"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Valor da Base de Calculo do ICMS" Grid.Column="1" Grid.Row="9"
+                                                                        labelFor="{Binding ElementName=txtIcmsvBaseCalculo}"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Valor do ICMS" Grid.Column="1" Grid.Row="10"
+                                                                        labelFor="{Binding ElementName=txtvIcms}"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Valor da Base de Calculo ICMS Próprio" Grid.Column="1" Grid.Row="11"
+                                                                        labelFor="{Binding ElementName=txtIcmsvBaseCalculoIcmsProprio}"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Valor do ICMS Próprio" Grid.Column="6" Grid.Row="1"
+                                                                        labelFor="{Binding ElementName=txtIcmsvIcmsProprio}"></Components:CustomTextBlock>
                                             <Components:CustomTextBlock Text="Calcula ICMS de Substituição Tributária?" Grid.Column="6" Grid.Row="2"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="% Red. da Base de Cálculo da Subst. Trib." Grid.Column="6" Grid.Row="3"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="Vlr da Red da Base de Cálculo da Subst Trib." Grid.Column="6" Grid.Row="4"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="% Subst. Tribt." Grid.Column="6" Grid.Row="5"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="% ICMS Interna destino" Grid.Column="6" Grid.Row="6"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="% MVA ST" Grid.Column="6" Grid.Row="7"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="% Carga Tributária Média" Grid.Column="6" Grid.Row="8"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="Compõe a base do ICMS de Subst. Tribut." Grid.Column="6" Grid.Row="9"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="Vlr de Base de Calculo do ICMS Subst. Trib." Grid.Column="6" Grid.Row="10"></Components:CustomTextBlock>
-                                            <Components:CustomTextBlock Text="Valor do ICMS Subst. Trib." Grid.Column="6" Grid.Row="11"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% Red. da Base de Cálculo da Subst. Trib." Grid.Column="6" Grid.Row="3"
+                                                                        labelFor="{Binding ElementName=txtIcmspReduzBaseSubstTributaria}"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Vlr da Red da Base de Cálculo da Subst Trib." Grid.Column="6" Grid.Row="4"
+                                                                        labelFor="{Binding ElementName=txtIcmsvReducaoBaseCalculoSubstTributaria}"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% Subst. Tribt." Grid.Column="6" Grid.Row="5"
+                                                                        labelFor="{Binding ElementName=txtIcmspSubstTributaria}"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% ICMS Interna destino" Grid.Column="6" Grid.Row="6"
+                                                                        labelFor="{Binding ElementName=txtpIcmsInterno}"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% MVA ST" Grid.Column="6" Grid.Row="7"
+                                                                        labelFor="{Binding ElementName=txtIcmspMvaSubstTributaria}"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% Carga Tributária Média" Grid.Column="6" Grid.Row="8"
+                                                                        labelFor="{Binding ElementName=txtIcmspCargaTributariaMedia}"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Compõe a base do ICMS de Subst. Tribut." Grid.Column="6" Grid.Row="9"
+                                                                        ></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Vlr de Base de Calculo do ICMS Subst. Trib." Grid.Column="6" Grid.Row="10"
+                                                                        labelFor="{Binding ElementName=txtvBaseCalculoIcmsSubstTributaria}"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Valor do ICMS Subst. Trib." Grid.Column="6" Grid.Row="11"
+                                                                        labelFor="{Binding ElementName=txtIcmsvSubstTributaria}"></Components:CustomTextBlock>
 
                                             <!--Components-->
 
@@ -1269,15 +1292,15 @@
                     model="{Binding currentItem.objImposto.objCodigoIcms}"
                     ></Components:ucTextBoxIntellisense>
                                             <Components:CustomTextBox
-                                            Grid.Column="2" Grid.Row="6" 
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="2" Grid.Row="6" x:Name="txtpIcms"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_pICMS, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},
                                                 UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
 					                        ToolTip="É informado a alíquota do ICMS">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
-                                            Grid.Column="2" Grid.Row="7"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="2" Grid.Row="7" x:Name="txtIcmsReduzBase"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_pReduzBase, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informar a porcentagem da Redução de base de calculo do ICMS">
                                             </Components:CustomTextBox>
@@ -1294,26 +1317,26 @@
                                                 </Components:CustomComboBox.Items>
                                             </Components:CustomComboBox>
                                             <Components:CustomTextBox
-                                            Grid.Column="2" Grid.Row="9"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="2" Grid.Row="9" x:Name="txtIcmsvBaseCalculo"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_vBaseCalculo, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Valor da base de calculo do ICMS do item do orçamento de vendas">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
-                                            Grid.Column="2" Grid.Row="10"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="2" Grid.Row="10" x:Name="txtvIcms"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_vICMS, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Valor do ICMS calculado no item">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
-                                            Grid.Column="2" Grid.Row="11"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="2" Grid.Row="11" x:Name="txtIcmsvBaseCalculoIcmsProprio"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_vBaseCalculoIcmsProprio, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Valor da base de Calculo do ICMS próprio">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
-                                            Grid.Column="7" Grid.Row="1"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="7" Grid.Row="1" x:Name="txtIcmsvIcmsProprio"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_vIcmsProprio, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Valor do ICMS próprio calculado no item">
                                             </Components:CustomTextBox>
@@ -1323,38 +1346,39 @@
 									        IsEnabled="{Binding bIsEnabled}" ToolTip="Calcula ICMS de substituição tributária para o item">
                                             </Components:CustomCheckBox>
                                             <Components:CustomTextBox
-                                            Grid.Column="7" Grid.Row="3"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="7" Grid.Row="3" x:Name="txtIcmspReduzBaseSubstTributaria"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_pReduzBaseSubstituicaoTributaria, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informar a porcentagem da redução da base de Cálculo da Substituição Tributária do ICMS">
                                             </Components:CustomTextBox>
+                                            <!--VERIFICAR ESTE BINDING-->
                                             <Components:CustomTextBox
-                                            Grid.Column="7" Grid.Row="4"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="7" Grid.Row="4" x:Name="txtIcmsvReducaoBaseCalculoSubstTributaria"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_vBaseCalculoSubstituicaoTributaria, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informa o valor redução da base de Cálculo da Substituição Tributária do ICMS">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
-                                            Grid.Column="7" Grid.Row="5"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="7" Grid.Row="5" x:Name="txtIcmspSubstTributaria"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_pSubstituicaoTributaria, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informar a porcentagem da Substituição tributária" Margin="0,2">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
-                                            Grid.Column="7" Grid.Row="6"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="7" Grid.Row="6" x:Name="txtpIcmsInterno"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_pIcmsInterno, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Aliquota do ICMS interno destino">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
-                                            Grid.Column="7" Grid.Row="7"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="7" Grid.Row="7" x:Name="txtIcmspMvaSubstTributaria"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_pMvaSubstituicaoTributaria, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Aliquota do ICMS interno destino">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
-                                            Grid.Column="7" Grid.Row="8"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="7" Grid.Row="8" x:Name="txtIcmspCargaTributariaMedia"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_pCargaTributariaMedia, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informa a porcentagem da Carga Tributária Média">
                                             </Components:CustomTextBox>
@@ -1372,14 +1396,14 @@
                                                 </Components:CustomComboBox.Items>
                                             </Components:CustomComboBox>
                                             <Components:CustomTextBox
-                                            Grid.Column="7" Grid.Row="10"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="7" Grid.Row="10" x:Name="txtIcmsvBaseCalculoSubstTributaria"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_vBaseCalculoSubstituicaoTributaria, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informa o valor da base de calculo do ICMS Substituição tributária">
                                             </Components:CustomTextBox>
                                             <Components:CustomTextBox
-                                            Grid.Column="7" Grid.Row="11"
-                                            IsEnabled="{Binding bIsEnabled}"
+                                            Grid.Column="7" Grid.Row="11" x:Name="txtIcmsvSubstTributaria"
+                                            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
                                             Text="{Binding currentItem.objImposto.ICMS_vSubstituicaoTributaria, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter},  UpdateSourceTrigger=PropertyChanged}"
 					                        ToolTip="Informa o valor do ICMS Substituição Tributária">
                                             </Components:CustomTextBox>
@@ -1476,20 +1500,18 @@
                                             </Components:CustomComboBox.Items>
                                         </Components:CustomComboBox>
                                         <Components:CustomTextBox
-                                            Grid.Column="2" Grid.Row="4"
+                                            Grid.Column="2" Grid.Row="4" x:Name="txtpisCoeficienteSubstTributaria"
                                             Text="{Binding currentItem.objImposto.PIS_nCoeficienteSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}" ToolTip="Informa o coeficiente usado para o calculo de substituição tributária do PIS ">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
+                                            ToolTip="Informa o coeficiente usado para o calculo de substituição tributária do PIS ">
                                         </Components:CustomTextBox>
-                                        <Components:CustomPesquisa
-                                            Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"   
-											xIdPesquisa="{Binding currentItem.objImposto.idCSTPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											FieldPesquisa="ID" TableView="vwStPIS" NameWindowCadastro="WinStPIS">
-                                            <Components:CustomPesquisa.Items>
-                                                <System:String>cCSTPis</System:String>
-                                                <System:String>xCSTPis</System:String>
-                                            </Components:CustomPesquisa.Items>
-                                        </Components:CustomPesquisa>
+                                        <Components:ucTextBoxIntellisense
+                    x:Name="ucPesquisaPisnCoeficienteSubstTributaria" Height="20" Margin="0,0,0,3" Grid.Column="5" Grid.Row="2"                   
+					selectedId="{Binding currentItem.objImposto.idCSTPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					ucEnabled="{Binding bIsEnabled}" refMethod="{Binding getStPis}"
+					ToolTip="Informado o código da situação Tributária do PIS cadastrado no formulário da situação tributária PIS. Ex. 01 – Operação Tributável (base de cálculo = valor da operação alíquota normal (cumulativo/não cumulativo)); 02 - Operação Tributável (base de cálculo = valor da operação (alíquota diferenciada)); "
+                                            xNameView="vwStPISqs" NameWindowCadastro="WinsStPIS" TableView="vwStPIS">
+                                        </Components:ucTextBoxIntellisense>
                                         <Components:CustomComboBox
                                             Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2"
                                             SelectedIndex="{Binding currentItem.objImposto.PIS_stCompoeBaseCalculoSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
