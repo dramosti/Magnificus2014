@@ -143,6 +143,23 @@ namespace HLP.Components.ViewModel.ViewModels
             }
         }
 
+        private string[] _lParameters;
+
+        public string[] lParameters
+        {
+            get { return _lParameters; }
+            set { _lParameters = value; }
+        }
+
+        private string _mainParameter;
+
+        public string mainParameter
+        {
+            get { return _mainParameter; }
+            set { _mainParameter = value; }
+        }
+        
+
         private string _xNameView;
         public string xNameView
         {

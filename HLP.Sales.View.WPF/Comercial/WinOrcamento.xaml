@@ -179,8 +179,7 @@
 
                 <!--Label-->
                 <Components:CustomHlpStatus Grid.Column="9" Grid.ColumnSpan="3" Grid.RowSpan="3" HorizontalAlignment="Right"
-                                            Height="50" VerticalAlignment="Center" selectedStatus="{Binding currentModel.stOrcamento}"
-                                            >
+                                            Height="50" VerticalAlignment="Center" selectedStatus="{Binding currentModel.stOrcamento}">
                     <Components:CustomHlpStatus.lStatusInterrompidos>
                         <System:Int32>3</System:Int32>
                         <System:Int32>4</System:Int32>
@@ -217,10 +216,9 @@
                 <Components:ucTextBoxIntellisense
                     x:Name="pesquisaCliente" Height="20" Margin="0,0,0,3" Grid.Column="5" Grid.Row="2"                   
 					selectedId="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					ucEnabled="{Binding bIsEnabled}" refMethod="{Binding getCliente}"
-					ToolTip="Informar ao orçamento de vendas o cliente." xNameView="vwClienteqs" NameWindowCadastro="WinCliente" TableView="vwCliente"
-                    model="{Binding currentModel.objCliente, Mode=TwoWay}"
-                    ></Components:ucTextBoxIntellisense>
+					ucEnabled="{Binding bIsEnabled}" refMethod="{Binding getCliente}" xNamePropertyModel="objCliente"
+					ToolTip="Informar ao orçamento de vendas o cliente." xNameView="vwClienteqs" NameWindowCadastro="WinCliente" TableView="vwCliente">
+                </Components:ucTextBoxIntellisense>
                 <Components:ucTextBoxIntellisense
                     x:Name="ucIntellisenseTipoDocumento" Height="20" Margin="0,0,0,3" Grid.Column="7" Grid.Row="2"
 					selectedId="{Binding currentModel.idTipoDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -348,7 +346,8 @@
                                     <Components:ucTextBoxIntellisense x:Name="ucIntellisenseTipoOrcamento"
 					ucEnabled="{Binding bIsEnabled}"
 					Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="1"
-					selectedId="{Binding currentModel.idTipoOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  
+					selectedId="{Binding currentModel.idTipoOrcamento, Mode=TwoWay, NotifyOnValidationError=True, 
+                                        UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  
                                                                       xNameView="vwTipoDocumentoqs" TableView="vwTipoOrcamento"
                     />
 
@@ -613,7 +612,9 @@
                                         xFieldsToDisplay="idTipoOperacao;xOperacao" Binding="{Binding Path=idTipoOperacao,
                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                         xNamePropertyModel="objTipoOperacao" refMethod="{Binding Path=Data.getTipoOperacao, Source={StaticResource proxy}}"
-                                            xNameView="vwTipoOperacaoqs" NameWindowCadastro="WinTipoOperacao" TableView="vwTipoOperacao">
+                                            xNameView="tipoOperacaoValidaFunctionqs" mainParameter="{Binding Path=Data.currentModel.idTipoDocumento,
+                                    UpdateSourceTrigger=PropertyChanged, Source={StaticResource proxy}}"
+                                            NameWindowCadastro="WinTipoOperacao" TableView="vwTipoOperacao">
                                 </Components:CustomDataGridIntellisenseColumn>
                                 <Components:CustomDataGridIntellisenseColumn xFieldsToDisplay="idProduto;xPesquisa" Width="150"                                         
                                         Header="Produtos" Binding="{Binding Path=idProduto,

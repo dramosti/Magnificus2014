@@ -39,8 +39,33 @@ namespace HLP.Components.ViewModel.Commands
 
         public void GetResult()
         {
-            DataTable dt = objDataService.GetData(sSelect:
+            DataTable dt = null;
+
+            if (this.objViewModel.mainParameter == null) //Está executando uma view Comum
+                dt = objDataService.GetData(sSelect:
                 string.Format(format: "select * from {0}", arg0: this.objViewModel.xNameView)).Tables[index: 0];
+            else // Está executando uma Function que retorna uma Sql Table http://technet.microsoft.com/pt-br/library/ms177499(v=sql.105).aspx
+            {
+                if (this.objViewModel.lParameters == null)
+                {
+                    dt = objDataService.GetData(sSelect:
+                        string.Format(format: "select * from {0} ({1})", arg0: this.objViewModel.xNameView, arg1: this.objViewModel.mainParameter)).Tables[index: 0];
+                }
+                else
+                {
+                    string xSelect = string.Format(format: "select * from {0} ({1}", arg0: this.objViewModel.xNameView, arg1: this.objViewModel.mainParameter);
+
+                    foreach (string _param in this.objViewModel.lParameters)
+                    {
+                        xSelect += ", " + _param;
+                    }
+
+                    xSelect += ")";
+
+                    dt = objDataService.GetData(sSelect:
+                        xSelect).Tables[index: 0];
+                }
+            }
 
             if (dt != null)
                 this.objViewModel.cvs = CollectionViewSource.GetDefaultView(

@@ -45,7 +45,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         OrcamentoCommands comm = null;
 
         public OrcamentoViewModel()
-        {
+        {   
             ResourceDictionary resource = new ResourceDictionary
             {
                 Source = new Uri("/HLP.Comum.Resources;component/Styles/Sales/Orcamento/Template/Buttons_Shurtcut.xaml", UriKind.RelativeOrAbsolute)
@@ -104,6 +104,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             this.getRamoAtividade = comm.GetRamoAtividade;
             this.getFamiliaProduto = comm.GetFamiliaProduto;
             this.getClassificacaoFiscal = comm.GetClassificacaoFiscal;
+            this.getTipoDocumento = comm.GetTipoDocumento;
         }
 
 
@@ -118,6 +119,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
                 base.NotifyPropertyChanged(propertyName: "getClassificacaoFiscal");
             }
         }
+
 
 
         private Func<int, bool, object> _getCliente;
