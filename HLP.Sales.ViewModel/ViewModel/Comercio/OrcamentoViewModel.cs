@@ -48,7 +48,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         {
             ResourceDictionary resource = new ResourceDictionary
             {
-                Source = new Uri("/HLP.Comum.Resources;component/Styles/Sales/Orcamento/Template/Buttons_Shurtcut.xaml", UriKind.RelativeOrAbsolute)
+                Source = new Uri("/HLP.Resources.View.WPF;component/Revisar/Buttons_Shurtcut.xaml", UriKind.RelativeOrAbsolute)
             };
 
             comm = new OrcamentoCommands(objViewModel: this);
