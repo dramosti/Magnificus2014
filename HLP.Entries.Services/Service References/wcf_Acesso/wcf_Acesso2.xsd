@@ -1,26 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Acesso.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases" />
-  <xs:complexType name="modelBase">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="lcamposSqlNotNull" nillable="true" type="tns:ArrayOfPesquisaPadraoModelContract" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases" minOccurs="0" name="status" type="q1:statusModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="modelBase" nillable="true" type="tns:modelBase" />
-  <xs:complexType name="ArrayOfPesquisaPadraoModelContract">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PesquisaPadraoModelContract" nillable="true" type="tns:PesquisaPadraoModelContract" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPesquisaPadraoModelContract" nillable="true" type="tns:ArrayOfPesquisaPadraoModelContract" />
-  <xs:complexType name="PesquisaPadraoModelContract">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CHARACTER_MAXIMUM_LENGTH" type="xs:int" />
-      <xs:element minOccurs="0" name="COLUMN_NAME" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DATA_TYPE" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IS_NULLABLE" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PesquisaPadraoModelContract" nillable="true" type="tns:PesquisaPadraoModelContract" />
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Acesso.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
+  <xs:element name="Save">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="objModel" nillable="true" type="q1:FuncionarioModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="SaveResult" nillable="true" type="q2:FuncionarioModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetObjeto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idObjeto" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetObjetoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="GetObjetoResult" nillable="true" type="q3:FuncionarioModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidaUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="xLogin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="xSenha" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidaUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidaUsuarioResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Fiscal" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Fiscal" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ClassificacaoFiscal.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:complexType name="Classificacao_fiscalModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelComum">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Ativo" type="xs:boolean" />
+          <xs:element minOccurs="0" name="cClassifcacaoFiscal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="cNCM" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="idClassificacaoFiscal" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+          <xs:element minOccurs="0" name="pCofins" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pII" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pIPI" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pPis" type="xs:decimal" />
+          <xs:element minOccurs="0" name="stCalculaPisCofins" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCompoeBaseNormalPisCofins" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCompoeBaseSubstCofins" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCompoeBaseSubstPis" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stRegimeTributacaoPisCofins" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="vCoeficienteSubstituicaoCofins" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vCoeficienteSubstituicaoPis" type="xs:decimal" />
+          <xs:element minOccurs="0" name="xClassificacaoFiscal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFundamentoLegal" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Classificacao_fiscalModel" nillable="true" type="tns:Classificacao_fiscalModel" />
+</xs:schema>

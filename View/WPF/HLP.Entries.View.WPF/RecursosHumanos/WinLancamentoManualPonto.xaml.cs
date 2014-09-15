@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HLP.Resources.View.WPF;
 
 namespace HLP.Entries.View.WPF.RecursosHumanos
 {

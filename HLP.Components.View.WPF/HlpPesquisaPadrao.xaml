@@ -9,7 +9,6 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>-->
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="RightAlignedCell" TargetType="{x:Type DataGridCell}">

@@ -67,11 +67,6 @@
     <Compile Include="Messages\ViewModels\HlpMessageErrorViewModel.cs" />
     <Compile Include="Messages\ViewModels\HlpMessageYesNoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\empresaService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\wcf_Funcionario\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,34 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Service References\empresaService\HLP.ComumView.ViewModel.empresaService.EmpresaModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\empresaService\serviceEmpresa.wsdl" />
-    <None Include="Service References\empresaService\serviceEmpresa.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaService\serviceEmpresa1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaService\serviceEmpresa2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaService\serviceEmpresa3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaService\serviceEmpresa4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaService\serviceEmpresa5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaService\serviceEmpresa6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Funcionario\HLP.ComumView.ViewModel.wcf_Funcionario.FuncionarioModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel.datasource" />
     <None Include="Service References\wcf_Funcionario\HLP.ComumView.ViewModel.wcf_Funcionario.modelToTreeView.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -176,14 +144,11 @@
     <None Include="Service References\wcf_Funcionario\wcf_Funcionario5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionario\wcf_Funcionario6.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Service References\wcf_Funcionario\wcf_Funcionario.disco" />
   </ItemGroup>
@@ -199,22 +164,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\empresaService\serviceEmpresa.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\empresaService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\empresaService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\empresaService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

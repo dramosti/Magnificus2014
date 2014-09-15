@@ -23,16 +23,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Fidelidade.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Fidelidade.wsdl" MetadataType="Wsdl" ID="c4589c39-0bc0-4eef-972e-a46bc4eb100c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?wsdl" />
-    <MetadataFile FileName="wcf_Fidelidade.xsd" MetadataType="Schema" ID="97b9d1c1-67e1-4785-b799-ac99a6f1a814" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_Fidelidade.disco" MetadataType="Disco" ID="75216a6b-c098-4714-8209-bf12e321e0db" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?disco" />
-    <MetadataFile FileName="wcf_Fidelidade1.xsd" MetadataType="Schema" ID="5b82d523-72f1-43a7-8af1-9799bc346401" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_Fidelidade2.xsd" MetadataType="Schema" ID="86119456-4e62-4ed7-89e5-f438d529f803" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Fidelidade3.xsd" MetadataType="Schema" ID="2a973849-d4c4-4d4f-9504-7418e3530acc" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Fidelidade4.xsd" MetadataType="Schema" ID="3bd0a439-ac28-47c1-95b5-1274be8d8074" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Fidelidade5.xsd" MetadataType="Schema" ID="ee6634e9-8846-4aad-a16a-c4dccff862ba" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Fidelidade.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Fidelidade51.xsd" MetadataType="Schema" ID="30b543c1-1150-49b1-b283-b64dc0ecc851" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Fidelidade.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Fidelidade52.xsd" MetadataType="Schema" ID="ae09c177-1b07-4c67-be21-1bff70ed0b7f" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Fidelidade.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Fidelidade53.xsd" MetadataType="Schema" ID="684c8ab6-1ed5-45b1-be55-3d05721279d5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Fidelidade.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Fidelidade54.xsd" MetadataType="Schema" ID="21e7fe44-7fe5-4bb1-a476-4d7d015a7ffb" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Fidelidade.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Fidelidade1.disco" MetadataType="Disco" ID="e1ed4de4-463c-4153-9796-fa6360ec6762" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Fidelidade.svc?disco" />
+    <MetadataFile FileName="wcf_Fidelidade1.wsdl" MetadataType="Wsdl" ID="3e737d7b-31f6-47d2-9dea-6df7c376e5e9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Fidelidade.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

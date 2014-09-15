@@ -66,19 +66,6 @@ namespace HLP.ComumView.ViewModel.ViewModel
             }
         }
 
-        private wcf_Funcionario.FuncionarioModel _currentFuncionario;
-
-        public wcf_Funcionario.FuncionarioModel currentFuncionario
-        {
-            get { return _currentFuncionario; }
-            set
-            {
-                _currentFuncionario = value;
-                base.NotifyPropertyChanged(propertyName: "currentFuncionario");
-            }
-        }
-
-
         #endregion
 
         #region Methods
@@ -198,7 +185,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
         }
 
         EmpresaService objService;
-        wcf_Funcionario.Iwcf_FuncionarioClient funcionarioService = new wcf_Funcionario.Iwcf_FuncionarioClient();
+        //wcf_Funcionario.Iwcf_FuncionarioClient funcionarioService = new wcf_Funcionario.Iwcf_FuncionarioClient();
 
 
         private StConnection _stConnection;

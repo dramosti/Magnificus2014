@@ -23,16 +23,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Juros.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Juros.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Juros.xsd" MetadataType="Schema" ID="9820aded-c97f-4a2f-a7c1-0a09449bb2b4" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Juros.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Juros.disco" MetadataType="Disco" ID="0125ff2b-8a01-4b79-9e42-d8ecb6963f1b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Juros.svc?disco" />
-    <MetadataFile FileName="wcf_Juros1.xsd" MetadataType="Schema" ID="75abf6c2-ce6b-4110-887f-0695640ba8b9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Juros.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_Juros2.xsd" MetadataType="Schema" ID="fef2a586-2eb6-4e24-9cf2-a1ee5093c3e0" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Juros.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Juros3.xsd" MetadataType="Schema" ID="068d907e-5581-44ea-a7e1-d559c9267fe3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Juros.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_Juros.wsdl" MetadataType="Wsdl" ID="2e662d6d-37c9-480f-a804-a788d6e0bc6a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Juros.svc?wsdl" />
-    <MetadataFile FileName="wcf_Juros4.xsd" MetadataType="Schema" ID="720523d4-d87e-4e52-af27-4349e4342340" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Juros.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Juros5.xsd" MetadataType="Schema" ID="95a64f2d-b2cb-4069-a590-db20a9f40376" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Juros.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Juros1.disco" MetadataType="Disco" ID="48ecc676-49fa-4f2e-b4e7-86b85f08cd68" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Juros.svc?disco" />
+    <MetadataFile FileName="wcf_Juros51.xsd" MetadataType="Schema" ID="474ecff7-341c-4d37-8990-f5975d99ad30" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Juros.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Juros52.xsd" MetadataType="Schema" ID="52d1f2a0-6e07-420b-a61b-02ce634c4ee7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Juros.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Juros53.xsd" MetadataType="Schema" ID="f1a6f950-507d-4509-bc78-4549356637a2" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Juros.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Juros54.xsd" MetadataType="Schema" ID="0914653b-a039-4fee-97dd-3faac28ac554" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Juros.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Juros1.wsdl" MetadataType="Wsdl" ID="51bd9faa-1e22-43cc-9a8b-d2a59debd42e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Juros.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

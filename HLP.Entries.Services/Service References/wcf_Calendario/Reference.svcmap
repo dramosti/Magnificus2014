@@ -23,16 +23,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Calendario.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Calendario.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Calendario.xsd" MetadataType="Schema" ID="33118435-da31-4254-bb42-359b71ea8c18" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Calendario.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Calendario1.xsd" MetadataType="Schema" ID="94dc5a81-98a5-417c-abb1-1c7770988423" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Calendario.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_Calendario.disco" MetadataType="Disco" ID="4c8ba2ce-5aae-49a8-9c5d-455dcd58ea38" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Calendario.svc?disco" />
-    <MetadataFile FileName="wcf_Calendario2.xsd" MetadataType="Schema" ID="4cb2552c-0c26-4e19-9368-8f2c6e54d96f" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Calendario.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Calendario.wsdl" MetadataType="Wsdl" ID="90edaf99-db9a-47b4-9b4a-8738e07ca255" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Calendario.svc?wsdl" />
-    <MetadataFile FileName="wcf_Calendario3.xsd" MetadataType="Schema" ID="af806055-eda2-40f0-a287-fbd967845bd8" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Calendario.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_Calendario4.xsd" MetadataType="Schema" ID="4a3bebcd-e69b-4d06-96f9-71e1b48038fb" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Calendario.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Calendario5.xsd" MetadataType="Schema" ID="efc11b26-b85a-4370-9e5a-eba2059436ba" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Calendario.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Calendario51.xsd" MetadataType="Schema" ID="b504a0de-8dd6-45ce-9f09-f2d5766bc1e0" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Calendario.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Calendario52.xsd" MetadataType="Schema" ID="40ffcd7f-31c6-4f20-acf8-6482958d8e44" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Calendario.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Calendario1.wsdl" MetadataType="Wsdl" ID="9b33bdb5-fc61-41c0-a36b-3e202598cb7b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Calendario.svc?wsdl" />
+    <MetadataFile FileName="wcf_Calendario53.xsd" MetadataType="Schema" ID="4a527732-1220-4b8c-8ff6-3684af65d73c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Calendario.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Calendario1.disco" MetadataType="Disco" ID="452eb576-bb98-4ba4-b4f6-842e18990cc9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Calendario.svc?disco" />
+    <MetadataFile FileName="wcf_Calendario54.xsd" MetadataType="Schema" ID="3a306808-8d8f-4b12-9062-ab25131e1e9a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Calendario.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

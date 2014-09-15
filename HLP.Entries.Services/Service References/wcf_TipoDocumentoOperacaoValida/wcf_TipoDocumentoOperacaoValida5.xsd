@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Fiscal" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Fiscal" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:complexType name="Tipo_operacaoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelComum">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Ativo" type="xs:boolean" />
+          <xs:element minOccurs="0" name="cCfopNaUf" type="xs:int" />
+          <xs:element minOccurs="0" name="cCfopNaoContribuinte" type="xs:int" />
+          <xs:element minOccurs="0" name="cCfopOutraUf" type="xs:int" />
+          <xs:element minOccurs="0" name="idCSTCofins" type="xs:int" />
+          <xs:element minOccurs="0" name="idCSTIcms" type="xs:int" />
+          <xs:element minOccurs="0" name="idCSTIpi" type="xs:int" />
+          <xs:element minOccurs="0" name="idCSTPis" type="xs:int" />
+          <xs:element minOccurs="0" name="idClassificacaoFiscal" type="xs:int" />
+          <xs:element minOccurs="0" name="idCodigoIcmsPai" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+          <xs:element minOccurs="0" name="idTipoOperacao" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="lOperacaoReducaoBase" nillable="true" type="tns:ArrayOfOperacao_reducao_baseModel" />
+          <xs:element minOccurs="0" name="nCoeficienteSubstituicaoTributariaCofins" type="xs:decimal" />
+          <xs:element minOccurs="0" name="nCoeficienteSubstituicaoTributariaPis" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pCofins" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pInss" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pInsumoIndustrializacao" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pIpi" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pIrrf" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pIss" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pMaoObraIndustrializacao" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pPis" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pReducaoBaseInss" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pReducaoBaseIrrf" type="xs:decimal" />
+          <xs:element minOccurs="0" name="stBaixaMaterialOp" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaCreditoIcmsSubstituicaoTributariaSuperSimples" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaCreditoIcmsSuperSimples" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaCsll" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaCustoEntrada" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaIcms" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaIcmsSubstituicaoTributaria" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaImportacao" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaInss" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaIpi" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaIrrf" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaIss" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaPisCofins" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCompoeBaseIcms" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCompoeBaseIcmsSubstituicaoTributaria" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCompoeBaseIpi" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCompoeBaseNormalPiscofins" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCompoeBaseSubtTribCofins" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCompoeBaseSubtTribPis" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stDescontaCreditoIcmsCusto" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stDescontaCreditoIpiCusto" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stDescontaCreditoPiscofinsCusto" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stDescontaCreditoSubstituicaoTributariaCusto" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stDescontaDiferencialIcmsCusto" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stEntregaFutura" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stEstoque" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stEstoqueClientes" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stEstoqueFornecedores" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stEstoqueProdFimOP" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stExplosaoMatOp" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stGeraComissao" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stGeraFinanceiro" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stNaoReduzBase" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stObrigaOpNaCompra" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stOrigemMercadoria" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stReduzBase" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stRegimeTributacaoPisCofins" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stRelacaoRecebimentoInspecao" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stRepresentaFaturamento" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stServico" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stTipoIndustrializacao" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stVinculaPedidoVenda" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="tpOperacao" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xOperacao" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Tipo_operacaoModel" nillable="true" type="tns:Tipo_operacaoModel" />
+  <xs:complexType name="ArrayOfOperacao_reducao_baseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Operacao_reducao_baseModel" nillable="true" type="tns:Operacao_reducao_baseModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOperacao_reducao_baseModel" nillable="true" type="tns:ArrayOfOperacao_reducao_baseModel" />
+  <xs:complexType name="Operacao_reducao_baseModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelComum">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idOperacaoReducaoBase" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idTipoOperacao" type="xs:int" />
+          <xs:element minOccurs="0" name="idUf" type="xs:int" />
+          <xs:element minOccurs="0" name="pReducaoIcms" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pReducaoIcmsSubstTributaria" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Operacao_reducao_baseModel" nillable="true" type="tns:Operacao_reducao_baseModel" />
+</xs:schema>

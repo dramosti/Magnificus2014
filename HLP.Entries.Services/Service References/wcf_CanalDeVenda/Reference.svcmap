@@ -23,16 +23,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CanalDeVenda.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CanalDeVenda.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_CanalDeVenda.disco" MetadataType="Disco" ID="2d452fcb-2d43-47e6-af3a-80f199b46e01" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CanalDeVenda.svc?disco" />
-    <MetadataFile FileName="wcf_CanalDeVenda.xsd" MetadataType="Schema" ID="99e2373a-24b6-4c4a-8abe-54dec11c50a5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CanalDeVenda.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_CanalDeVenda.wsdl" MetadataType="Wsdl" ID="220bf3d7-5817-4318-97d4-a4f067e1659d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CanalDeVenda.svc?wsdl" />
-    <MetadataFile FileName="wcf_CanalDeVenda1.xsd" MetadataType="Schema" ID="ee935077-01b2-4a6a-a582-c539cacc34e4" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CanalDeVenda.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_CanalDeVenda2.xsd" MetadataType="Schema" ID="b0f5d6f9-7716-43c5-925e-e53f591d3daf" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CanalDeVenda.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_CanalDeVenda3.xsd" MetadataType="Schema" ID="d658fc30-2816-4442-bb23-e1c51240c966" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CanalDeVenda.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_CanalDeVenda4.xsd" MetadataType="Schema" ID="1c771cbc-748c-43d3-a098-ead923898125" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CanalDeVenda.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_CanalDeVenda1.wsdl" MetadataType="Wsdl" ID="ae3174d4-769c-436b-aac9-9c26d3919e68" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CanalDeVenda.svc?wsdl" />
+    <MetadataFile FileName="wcf_CanalDeVenda5.xsd" MetadataType="Schema" ID="ef560bbf-b35f-4d4f-ab7e-dc27b2a2e43a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CanalDeVenda.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_CanalDeVenda51.xsd" MetadataType="Schema" ID="277e10f1-9906-45bb-815a-9702380a89b6" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CanalDeVenda.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_CanalDeVenda1.disco" MetadataType="Disco" ID="9be4eb74-a83f-463d-878e-34d62460c38e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CanalDeVenda.svc?disco" />
+    <MetadataFile FileName="wcf_CanalDeVenda52.xsd" MetadataType="Schema" ID="65738524-3943-4bc6-9828-057ebc541971" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CanalDeVenda.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_CanalDeVenda53.xsd" MetadataType="Schema" ID="a788510d-60e4-488d-b3b6-5eef78b34d35" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CanalDeVenda.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_CanalDeVenda54.xsd" MetadataType="Schema" ID="f650d374-43e8-4895-acb8-262cae12a3f9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CanalDeVenda.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

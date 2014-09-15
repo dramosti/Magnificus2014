@@ -21,14 +21,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PesquisaRapida.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_PesquisaRapida.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_PesquisaRapida.wsdl" MetadataType="Wsdl" ID="14214501-0786-4aa5-b6a7-d982df255314" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PesquisaRapida.svc?wsdl" />
-    <MetadataFile FileName="wcf_PesquisaRapida.xsd" MetadataType="Schema" ID="94a56f3a-bbe6-4365-a7bf-1c05f5240372" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PesquisaRapida.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_PesquisaRapida1.xsd" MetadataType="Schema" ID="fcdcd0ba-fda5-4a78-8a61-8440e493f8f1" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PesquisaRapida.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_PesquisaRapida2.xsd" MetadataType="Schema" ID="d642d0e1-69d8-4606-acb5-c9af7c732e0b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PesquisaRapida.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_PesquisaRapida.disco" MetadataType="Disco" ID="08610466-b2ba-4560-87c7-53bdf5c7684e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PesquisaRapida.svc?disco" />
+    <MetadataFile FileName="wcf_PesquisaRapida3.xsd" MetadataType="Schema" ID="09d38a5e-d624-497c-b5b6-87e88b43e77e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_PesquisaRapida.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_PesquisaRapida31.xsd" MetadataType="Schema" ID="95e42cce-4939-45bc-9dc4-1ec0ffa8c801" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_PesquisaRapida.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_PesquisaRapida32.xsd" MetadataType="Schema" ID="97f2d815-9ad9-4883-a9d5-b63b5bbb69b3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_PesquisaRapida.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_PesquisaRapida1.wsdl" MetadataType="Wsdl" ID="d662e6e0-275d-44f6-8d31-d8fe9a071d16" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_PesquisaRapida.svc?wsdl" />
+    <MetadataFile FileName="wcf_PesquisaRapida1.disco" MetadataType="Disco" ID="79f4ba82-b31a-47e4-82ae-a0881a1de716" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_PesquisaRapida.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

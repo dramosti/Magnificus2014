@@ -3,6 +3,7 @@ using HLP.Base.Static;
 using HLP.Comum.ViewModel.ViewModel;
 using HLP.ComumView.Model.Model;
 using HLP.ComumView.ViewModel.Commands;
+using HLP.Entries.Model.Models.Gerais;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
                     {
                         funcService = new wcf_Funcionario.Iwcf_FuncionarioClient();
 
-                        wcf_Funcionario.FuncionarioModel objFunc = funcService.getFuncionario(idFuncionario: UserData.idUser);
+                        FuncionarioModel objFunc = funcService.getFuncionario(idFuncionario: UserData.idUser, bGetChild: false);
                         if (objFunc != null)
                             this.currentModel.xId = objFunc.xID;
                     }

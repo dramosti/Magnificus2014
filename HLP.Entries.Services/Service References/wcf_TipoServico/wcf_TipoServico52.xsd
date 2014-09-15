@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_TipoServico.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:complexType name="Tipo_servicoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelComum">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="_idTipoServico" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="cTipoServico" type="xs:int" />
+          <xs:element minOccurs="0" name="idTipoServico" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="xTipoServico" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Tipo_servicoModel" nillable="true" type="tns:Tipo_servicoModel" />
+</xs:schema>

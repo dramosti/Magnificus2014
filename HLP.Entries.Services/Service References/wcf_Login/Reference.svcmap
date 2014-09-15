@@ -21,13 +21,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Login.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Login.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Login.wsdl" MetadataType="Wsdl" ID="7fc362b1-35d0-4c5a-af6f-a75fa56db9ed" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Login.svc?wsdl" />
-    <MetadataFile FileName="wcf_Login.xsd" MetadataType="Schema" ID="cd349956-72a4-40ca-a006-7b5ceb919fea" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Login.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_Login1.xsd" MetadataType="Schema" ID="17711951-8a3c-4636-9f4c-b8e88567e047" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Login.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Login.disco" MetadataType="Disco" ID="44d43df1-8e09-48da-a4da-ea647429783b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Login.svc?disco" />
+    <MetadataFile FileName="wcf_Login2.xsd" MetadataType="Schema" ID="e0eba241-d584-41d2-add9-6b5e58684ec9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Login.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Login21.xsd" MetadataType="Schema" ID="98dbdad0-751b-49b3-a022-76741bd2dae9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Login.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Login1.disco" MetadataType="Disco" ID="7e662501-6b73-4f36-9bd5-9a04060b73ea" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Login.svc?disco" />
+    <MetadataFile FileName="wcf_Login1.wsdl" MetadataType="Wsdl" ID="870c28b7-d3b9-4c8c-9c43-5c504dfd9f59" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Login.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

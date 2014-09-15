@@ -23,16 +23,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_TipoDocumentoOperacaoValida.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_TipoDocumentoOperacaoValida.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida.disco" MetadataType="Disco" ID="c656231e-f41d-4cbc-b723-7dc17db3d4fa" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_TipoDocumentoOperacaoValida.svc?disco" />
-    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida.wsdl" MetadataType="Wsdl" ID="8c4e8648-b54d-4ac9-9b26-16c3b72547d1" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_TipoDocumentoOperacaoValida.svc?wsdl" />
-    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida.xsd" MetadataType="Schema" ID="0eed2d94-0f87-42a9-925b-a5a2d66b835b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida1.xsd" MetadataType="Schema" ID="e5bbab9d-779c-4a8f-a315-996fb1efcacc" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida2.xsd" MetadataType="Schema" ID="c8f6da12-43f9-417b-b201-c03c0da04df8" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida3.xsd" MetadataType="Schema" ID="b0b1cbb7-64f7-4854-afcd-5d186c85f73d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida4.xsd" MetadataType="Schema" ID="20fe3a39-178a-404a-8f5a-ed0b68d3a580" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida1.wsdl" MetadataType="Wsdl" ID="1dc60bbc-4499-4de2-bf5d-9297251017da" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_TipoDocumentoOperacaoValida.svc?wsdl" />
+    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida1.disco" MetadataType="Disco" ID="5646c881-28e8-439d-a434-47d154604a16" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_TipoDocumentoOperacaoValida.svc?disco" />
+    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida5.xsd" MetadataType="Schema" ID="bdb68c6c-68f0-47e9-be22-e14a6a0dac29" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida51.xsd" MetadataType="Schema" ID="2d95c6c4-53f2-4676-bb25-c4ef92dd1bfe" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida52.xsd" MetadataType="Schema" ID="4c3c6a2f-95e5-49ac-8de0-ed0939ee5f32" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida53.xsd" MetadataType="Schema" ID="18cc2eba-ce8b-4861-ac5a-26750cdc41eb" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida54.xsd" MetadataType="Schema" ID="38ddd49d-f66f-4404-b9ad-167e2254f8e5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_TipoDocumentoOperacaoValida55.xsd" MetadataType="Schema" ID="0dc422ad-96ef-45e0-825e-509b33eb3c3a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

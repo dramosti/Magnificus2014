@@ -256,10 +256,10 @@
                                                     <Image x:Name="ImageAdd">
                                                         <Image.Style>
                                                             <Style TargetType="{x:Type Image}">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Confirmar_Preto.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/Confirmar_Preto.png"/>
                                                                 <Style.Triggers>
                                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Confirmar_MouseOver.png"/>
+                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/Confirmar_MouseOver.png"/>
                                                                     </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
@@ -276,10 +276,10 @@
                                                     <Image x:Name="ImageAdd">
                                                         <Image.Style>
                                                             <Style TargetType="{x:Type Image}">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancelar_Preto.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/Cancelar_Preto.png"/>
                                                                 <Style.Triggers>
                                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancelar_MouseOver.png"/>
+                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/Cancelar_MouseOver.png"/>
                                                                     </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>

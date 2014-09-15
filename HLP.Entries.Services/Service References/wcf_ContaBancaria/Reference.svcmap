@@ -25,17 +25,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ContaBancaria.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_ContaBancaria.xsd" MetadataType="Schema" ID="302b6ad3-b7fa-411e-a7b4-da4c2959276d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_ContaBancaria1.xsd" MetadataType="Schema" ID="84651a83-6b1d-4e70-b6bb-c387b8d65fa3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_ContaBancaria2.xsd" MetadataType="Schema" ID="ff88ddf3-882e-4855-b384-6fae61c8eca3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_ContaBancaria.wsdl" MetadataType="Wsdl" ID="86366b8c-9e58-4f32-a47f-be03a006837a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?wsdl" />
-    <MetadataFile FileName="wcf_ContaBancaria3.xsd" MetadataType="Schema" ID="6cae926c-f729-48c2-b2f4-5e79b6dc8b6d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_ContaBancaria5.xsd" MetadataType="Schema" ID="8468863a-332b-4592-b631-1df00ef1eb95" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?xsd=xsd5" />
-    <MetadataFile FileName="wcf_ContaBancaria4.xsd" MetadataType="Schema" ID="47a4d2f9-b88d-401f-be0d-26922b69fb9a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_ContaBancaria.disco" MetadataType="Disco" ID="40188a06-e290-4d52-a6f3-ceedb769cd04" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?disco" />
+    <MetadataFile FileName="wcf_ContaBancaria6.xsd" MetadataType="Schema" ID="0525ae66-7c3a-4ab9-b412-6dca2a06124e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ContaBancaria.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_ContaBancaria61.xsd" MetadataType="Schema" ID="10c4c36b-0608-44f8-929b-07258dc3ba54" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ContaBancaria.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_ContaBancaria62.xsd" MetadataType="Schema" ID="fb98edbb-bbfd-45ec-9cdd-6b169224efc1" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ContaBancaria.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_ContaBancaria1.disco" MetadataType="Disco" ID="2a2895dc-f89a-4561-8204-b6da35ec4d1f" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ContaBancaria.svc?disco" />
+    <MetadataFile FileName="wcf_ContaBancaria63.xsd" MetadataType="Schema" ID="3011f455-5d0a-477f-a66a-fb9aeb174352" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ContaBancaria.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_ContaBancaria1.wsdl" MetadataType="Wsdl" ID="de59626c-177b-4be6-9db0-6d913b893058" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ContaBancaria.svc?wsdl" />
+    <MetadataFile FileName="wcf_ContaBancaria64.xsd" MetadataType="Schema" ID="1826f974-b2b7-4405-bced-9ee16eea1396" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ContaBancaria.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_ContaBancaria65.xsd" MetadataType="Schema" ID="9ae158cb-4aae-4a31-872d-7fe212d45506" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ContaBancaria.svc?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Cliente.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:complexType name="ArrayOfConversaoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConversaoModel" nillable="true" type="tns:ConversaoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConversaoModel" nillable="true" type="tns:ArrayOfConversaoModel" />
+  <xs:complexType name="ConversaoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelComum">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idConversao" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idDeUnidadeMedida" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+          <xs:element minOccurs="0" name="idParaUnidadeMedida" type="xs:int" />
+          <xs:element minOccurs="0" name="idProduto" type="xs:int" />
+          <xs:element minOccurs="0" name="nFator" type="xs:decimal" />
+          <xs:element minOccurs="0" name="nQuantidadeAdicional" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="stArredondar" type="xs:unsignedByte" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConversaoModel" nillable="true" type="tns:ConversaoModel" />
+  <xs:complexType name="DepositoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelComum">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idDeposito" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idSite" type="xs:int" />
+          <xs:element minOccurs="0" name="stGrupoIdentificacao" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stTipo" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xDeposito" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xDescricao" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DepositoModel" nillable="true" type="tns:DepositoModel" />
+  <xs:complexType name="Familia_produtoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelComum">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idCentroCusto" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idContaContabil" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+          <xs:element minOccurs="0" name="idFamiliaProduto" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idFamiliaProdutoBase" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="lFamilia_Produto_ClassesModel" nillable="true" type="tns:ArrayOfFamilia_Produto_ClassesModel" />
+          <xs:element minOccurs="0" name="pAcressimoMaximo" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pComissaoAprazo" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pComissaoAvista" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pDescontoMaximo" type="xs:decimal" />
+          <xs:element minOccurs="0" name="stAlteraDescricaoComercialProdutoVenda" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stGrau" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xDescricao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFamiliaProduto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xSigla" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Familia_produtoModel" nillable="true" type="tns:Familia_produtoModel" />
+  <xs:complexType name="ArrayOfFamilia_Produto_ClassesModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Familia_Produto_ClassesModel" nillable="true" type="tns:Familia_Produto_ClassesModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFamilia_Produto_ClassesModel" nillable="true" type="tns:ArrayOfFamilia_Produto_ClassesModel" />
+  <xs:complexType name="Familia_Produto_ClassesModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q4:modelComum">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idClasseFinanceira" type="xs:int" />
+          <xs:element minOccurs="0" name="idFamiliaProduto" type="xs:int" />
+          <xs:element minOccurs="0" name="idFamilia_Produto_Classes" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idTipoOperacao" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Familia_Produto_ClassesModel" nillable="true" type="tns:Familia_Produto_ClassesModel" />
+</xs:schema>

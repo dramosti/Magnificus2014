@@ -8,6 +8,8 @@
       <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
       <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
       <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Comercial" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="Iwcf_Produto_GetObjeto_InputMessage">

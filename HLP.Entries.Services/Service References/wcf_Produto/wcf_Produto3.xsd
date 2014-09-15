@@ -1,36 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
-  <xs:complexType name="modelComum">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Comercial" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Comercial" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:complexType name="Tipo_produtoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelComum">
         <xs:sequence>
-          <xs:element minOccurs="0" name="lDocumentos" nillable="true" type="tns:ArrayOfDocumentosModel" />
+          <xs:element minOccurs="0" name="idTipoProduto" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="stComercial" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCompras" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stEstoque" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stPatrimonio" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stProducao" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stServicos" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stTerceiros" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xDescricao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xTipo" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="modelComum" nillable="true" type="tns:modelComum" />
-  <xs:complexType name="ArrayOfDocumentosModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DocumentosModel" nillable="true" type="tns:DocumentosModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDocumentosModel" nillable="true" type="tns:ArrayOfDocumentosModel" />
-  <xs:complexType name="DocumentosModel">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q2:modelBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="idDocumento" type="xs:int" />
-          <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
-          <xs:element minOccurs="0" name="idPk" type="xs:int" />
-          <xs:element minOccurs="0" name="xDocumento" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xExtensao" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xNameTable" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xPath" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="DocumentosModel" nillable="true" type="tns:DocumentosModel" />
+  <xs:element name="Tipo_produtoModel" nillable="true" type="tns:Tipo_produtoModel" />
 </xs:schema>
