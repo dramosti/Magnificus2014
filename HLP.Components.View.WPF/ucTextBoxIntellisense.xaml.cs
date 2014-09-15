@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -58,6 +59,65 @@ namespace HLP.Components.View.WPF
                     {
                         item.Command = this.customViewModel.goToRecordCommand;
                         item.CommandParameter = this;
+                    }
+                }
+            }
+        }
+
+        public void SetModelObjectFromId(object objUsedFromReflection, string xPath)
+        {
+#if DEBUG
+            if (refMethod == null)
+            {
+                Console.WriteLine(
+                    string.Format(
+                    format: "#Erro: Método de busca na ViewModel para a propriedade {0} não está configurada!",
+                    arg0: xPath)
+                    );
+            }
+
+#endif
+
+            if (refMethod == null)
+                return;
+
+            string xNameProperty = null;
+
+            if (objUsedFromReflection != null)
+            {
+                PropertyInfo piBinding = null;
+
+                if (xPath.Split(separator: '.').Count() > 0)
+                {
+                    foreach (string path in xPath.Split(separator: '.'))
+                    {
+                        if (path == xPath.Split(separator: '.').Last())
+                        {
+                            xNameProperty = path;
+                            break;
+                        }
+                        piBinding = objUsedFromReflection.GetType().GetProperty(name: path);
+
+                        if (piBinding != null)
+                            objUsedFromReflection = piBinding.GetValue(obj: objUsedFromReflection);
+                    }
+
+                }
+
+                piBinding = null;
+                if (objUsedFromReflection != null)
+                    piBinding = objUsedFromReflection.GetType().GetProperty(name: xNameProperty);
+
+                if (piBinding != null)
+                {
+                    int? id = piBinding.GetValue(obj: objUsedFromReflection) as int?;
+
+                    object obj = this.refMethod.Invoke(arg1: id ?? 0, arg2: true);
+                    if (obj != null)
+                    {
+                        if (!string.IsNullOrEmpty(value: this.xNamePropertyModel))
+                            objUsedFromReflection.GetType().GetProperty(name: this.xNamePropertyModel).SetValue(obj: objUsedFromReflection,
+                                value: obj);
                     }
                 }
             }
@@ -146,6 +206,50 @@ namespace HLP.Components.View.WPF
             set { _TableView = value; }
         }
 
+        [Category("HLP.Owner")]
+        public string mainParameter
+        {
+            get { return (string)GetValue(mainParameterProperty); }
+            set { SetValue(mainParameterProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for mainParameter.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty mainParameterProperty =
+            DependencyProperty.Register("mainParameter", typeof(string), typeof(ucTextBoxIntellisense), new PropertyMetadata(defaultValue: null,
+                propertyChangedCallback: new PropertyChangedCallback(MainParameterChanged)));
+
+        public static void MainParameterChanged(DependencyObject d, DependencyPropertyChangedEventArgs a)
+        {
+            if (d != null)
+            {
+                (d as ucTextBoxIntellisense).customViewModel.mainParameter = a.NewValue == null ? null : a.NewValue.ToString();
+            }
+        }
+
+        private string _OptionalParameters;
+        [Category("HLP.Owner")]
+        public string OptionalParameters
+        {
+            get { return _OptionalParameters; }
+            set
+            {
+                _OptionalParameters = value;
+
+                if (value == null)
+                    this.customViewModel.lParameters = null;
+                else
+                {
+                    if (value.Count(i => i == ';') == 0)
+                    {
+                        this.customViewModel.lParameters = new string[] { value };
+                    }
+                    else
+                        this.customViewModel.lParameters = value.Split(separator: ';').ToArray();
+                }
+            }
+        }
+
+
         private string _NameWindowCadastro;
         [Category("HLP.Owner")]
         public string NameWindowCadastro
@@ -173,6 +277,14 @@ namespace HLP.Components.View.WPF
             }
         }
 
+        private string _xNamePropertyModel;
+        [Category("HLP.Owner")]
+        public string xNamePropertyModel
+        {
+            get { return _xNamePropertyModel; }
+            set { _xNamePropertyModel = value; }
+        }
+
         // Using a DependencyProperty as the backing store for selectedId.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty selectedIdProperty =
             DependencyProperty.Register("selectedId", typeof(int?), typeof(ucTextBoxIntellisense), new PropertyMetadata(
@@ -188,9 +300,6 @@ namespace HLP.Components.View.WPF
                 }
                 else
                 {
-                    if ((d as ucTextBoxIntellisense).refMethod != null)
-                        (d as ucTextBoxIntellisense).model = (d as ucTextBoxIntellisense).refMethod.Invoke(arg1: (int)args.NewValue, arg2: true);
-
                     (d as ucTextBoxIntellisense).txt.Text = String.Empty;
 
                     if (((d as ucTextBoxIntellisense).customViewModel.cvs != null))
@@ -212,6 +321,18 @@ namespace HLP.Components.View.WPF
                             }
 
                             (d as ucTextBoxIntellisense).txt.Text = xText;
+
+                            PropertyInfo piCurrentModel = (d as ucTextBoxIntellisense).DataContext.GetType()
+                                .GetProperty(name: "currentModel");
+
+                            if (piCurrentModel != null)
+                            {
+                                Binding b = BindingOperations.GetBinding(target: d,
+                                    dp: ucTextBoxIntellisense.selectedIdProperty);
+
+                                (d as ucTextBoxIntellisense).SetModelObjectFromId(objUsedFromReflection: piCurrentModel.GetValue(obj: (d as ucTextBoxIntellisense).DataContext),
+                                    xPath: b.Path.Path);
+                            }
                         }
                     }
                 }
@@ -224,6 +345,15 @@ namespace HLP.Components.View.WPF
             set { SetValue(modelProperty, value); }
         }
 
+        // Using a DependencyProperty as the backing store for model.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty modelProperty =
+            DependencyProperty.Register("model", typeof(object), typeof(ucTextBoxIntellisense),
+            new PropertyMetadata(defaultValue: null, propertyChangedCallback: new PropertyChangedCallback(ModelChanged)));
+
+        public static void ModelChanged(DependencyObject d, DependencyPropertyChangedEventArgs a)
+        {
+        }
+
         public Func<int, bool, object> refMethod
         {
             get { return (Func<int, bool, object>)GetValue(refMethodProperty); }
@@ -233,13 +363,6 @@ namespace HLP.Components.View.WPF
         // Using a DependencyProperty as the backing store for refMethod.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty refMethodProperty =
             DependencyProperty.Register("refMethod", typeof(Func<int, bool, object>), typeof(ucTextBoxIntellisense), new PropertyMetadata(null));
-
-
-
-        // Using a DependencyProperty as the backing store for model.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty modelProperty =
-            DependencyProperty.Register("model", typeof(object), typeof(ucTextBoxIntellisense),
-            new PropertyMetadata(defaultValue: null));
 
         public bool ucEnabled
         {

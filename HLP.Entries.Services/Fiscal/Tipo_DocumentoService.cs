@@ -107,11 +107,12 @@ namespace HLP.Entries.Services.Fiscal
         private void SetTipoOperacao(Tipo_documentoModel objTipoDocumento)
         {
             Tipo_OperacaoService objTipoOperacaoService = new Tipo_OperacaoService();
-            if (objTipoDocumento.lTipo_documento_oper_validaModel.Count > 0)
-                foreach (Tipo_documento_oper_validaModel item in objTipoDocumento.lTipo_documento_oper_validaModel)
-                {
-                    item.objTipoOperacao = objTipoOperacaoService.GetObject(id: item.idTipoOperacao);
-                }
+            if (objTipoDocumento != null)
+                if (objTipoDocumento.lTipo_documento_oper_validaModel.Count > 0)
+                    foreach (Tipo_documento_oper_validaModel item in objTipoDocumento.lTipo_documento_oper_validaModel)
+                    {
+                        item.objTipoOperacao = objTipoOperacaoService.GetObject(id: item.idTipoOperacao);
+                    }
         }
 
         public Tipo_documentoModel SaveObject(Tipo_documentoModel obj)

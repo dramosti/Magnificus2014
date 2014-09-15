@@ -171,7 +171,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 if (mainRepresentante != null)
                     this.objViewModel.currentItem.pComissao = mainRepresentante.pComissao ?? 0;
 
-                //this.objViewModel.currentItem.setxRepresentante();
             }
         }
 
@@ -507,8 +506,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 this.IniciaCollection();
                 if (objViewModel.currentModel != null)
                 {
-                    //TODO: RESOLVER JÁ
-                    //this.objViewModel.currentModel.LoadListTipoDocumento();
                     this.objViewModel.currentModel.bTodos = this.objViewModel.currentModel.bTodosTotais = true;
 
                     if (this.objViewModel.currentModel.lOrcamento_Itens != null)
@@ -820,9 +817,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             return this.objTransportadoraService.GetObject(id: idTransportador);
         }
 
-        public Tipo_documentoModel GetTipoDocumento(int idTipoDocumento)
+        public Tipo_documentoModel GetTipoDocumento(int idTipoDocumento, bool bOptionalSearch)
         {
-            return this.objTipoDocumentoService.GetObject(id: idTipoDocumento);
+            return this.objTipoDocumentoService.GetObject(id: idTipoDocumento, loadOptionalParameters: bOptionalSearch);
         }
 
         #endregion

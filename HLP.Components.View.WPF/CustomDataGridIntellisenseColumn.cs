@@ -109,6 +109,8 @@ namespace HLP.Components.View.WPF
             txtIntellisense.NameWindowCadastro = this.NameWindowCadastro;
             txtIntellisense.TableView = this.TableView;
             txtIntellisense.refMethod = this.refMethod;
+            txtIntellisense.mainParameter = this.mainParameter;
+            txtIntellisense.OptionalParameters = this.OptionalParameters;
 
             return txtIntellisense;
         }
@@ -128,6 +130,7 @@ namespace HLP.Components.View.WPF
                 {
                     PropertyInfo piBinding = null;
                     string xPath = (this.Binding as Binding).Path.Path;
+
                     if ((this.Binding as Binding).Path.Path.Split(separator: '.').Count() > 0)
                     {
                         foreach (string path in (this.Binding as Binding).Path.Path.Split(separator: '.'))
@@ -138,7 +141,6 @@ namespace HLP.Components.View.WPF
                                 break;
                             }
                             piBinding = dataItem.GetType().GetProperty(name: path);
-
                             dataItem = piBinding.GetValue(obj: dataItem);
                         }
 
@@ -151,9 +153,7 @@ namespace HLP.Components.View.WPF
                     if (piBinding != null)
                     {
                         int? id = piBinding.GetValue(obj: dataItem) as int?;
-
                         object obj = this.refMethod.Invoke(arg1: id ?? 0, arg2: true);
-
                         if (obj != null)
                         {
                             if (!string.IsNullOrEmpty(value: this.xNamePropertyModel))
@@ -212,6 +212,41 @@ namespace HLP.Components.View.WPF
         {
             get { return (Func<int, bool, object>)GetValue(refMethodProperty); }
             set { SetValue(refMethodProperty, value); }
+        }
+
+
+        [Category("HLP.Owner")]
+        public string mainParameter
+        {
+            get { return (string)GetValue(mainParameterProperty); }
+            set { SetValue(mainParameterProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for mainParameter.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty mainParameterProperty =
+            DependencyProperty.Register("mainParameter", typeof(string), typeof(CustomDataGridIntellisenseColumn), new PropertyMetadata(defaultValue: null));
+
+        private string _OptionalParameters;
+        [Category("HLP.Owner")]
+        public string OptionalParameters
+        {
+            get { return _OptionalParameters; }
+            set
+            {
+                _OptionalParameters = value;
+
+                if (value == null)
+                    this.customViewModel.lParameters = null;
+                else
+                {
+                    if (value.Count(i => i == ';') == 0)
+                    {
+                        this.customViewModel.lParameters = new string[] { value };
+                    }
+                    else
+                        this.customViewModel.lParameters = value.Split(separator: ';').ToArray();
+                }
+            }
         }
 
         // Using a DependencyProperty as the backing store for refMethod.  This enables animation, styling, binding, etc...
