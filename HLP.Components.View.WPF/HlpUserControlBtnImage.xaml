@@ -26,7 +26,7 @@
                             <Border x:Name="border" Grid.Column="1" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" SnapsToDevicePixels="true">
                                 <ContentPresenter VerticalAlignment="Center" TextElement.FontFamily="Calibri" TextElement.FontSize="16" HorizontalAlignment="Left" x:Name="contentPresenter" Focusable="False" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </Border>
-                            <Image Grid.Column="0" x:Name="ImageAdd" Height="20" Source="pack://application:,,,/HLP.Resources.View.WPF;Images/Folder.png">
+                            <Image Grid.Column="0" x:Name="ImageAdd" Height="20" Source="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Folder.png">
                             </Image>
                         </Grid>                        
                     </ControlTemplate>

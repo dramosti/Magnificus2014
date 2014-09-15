@@ -57,10 +57,10 @@
                     <Image x:Name="ImagemContextMenu">
                         <Image.Style>
                             <Style TargetType="{x:Type Image}">
-                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationLeft.png"/>                                
+                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/ArrowNavigationLeft.png"/>                                
                                 <Style.Triggers>
                                     <Trigger Property="IsEnabled" Value="False">
-                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationLeftDisabled.png"/>
+                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/ArrowNavigationLeftDisabled.png"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -76,10 +76,10 @@
                     <Image x:Name="ImagemContextMenu">
                         <Image.Style>
                             <Style TargetType="{x:Type Image}">
-                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationRight.png"/>
+                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/ArrowNavigationRight.png"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsEnabled" Value="False">
-                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationRightDisabled.png"/>
+                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/ArrowNavigationRightDisabled.png"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -108,7 +108,7 @@
                                 </Grid.RowDefinitions>
                                 <Border x:Name="border" Grid.RowSpan="2" BorderBrush="{x:Null}" SnapsToDevicePixels="true"/>
                                 <ContentPresenter x:Name="contentPresenter" Grid.Row="1" TextElement.FontSize="16" HorizontalAlignment="Center" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Resources.View.WPF;Images/Carregar.png"/>
+                                <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Carregar.png"/>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsEnabled" Value="False">
@@ -255,15 +255,15 @@
                                 </Grid.RowDefinitions>
                                 <Border x:Name="border" Grid.RowSpan="2" BorderBrush="{x:Null}" SnapsToDevicePixels="true"/>
                                 <ContentPresenter x:Name="contentPresenter" Grid.Row="1" TextElement.FontSize="16" HorizontalAlignment="Center" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Resources.View.WPF;Images/Atualizar.png"/>
+                                <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Atualizar.png"/>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/Atualizar_Disabled.png"/>
+                                    <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Atualizar_Disabled.png"/>
                                     <Setter Property="Opacity" TargetName="contentPresenter" Value="0.36"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/Atualizar_MouseOver.png"/>
+                                    <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Atualizar_MouseOver.png"/>
                                     <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FFFFC31F"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>

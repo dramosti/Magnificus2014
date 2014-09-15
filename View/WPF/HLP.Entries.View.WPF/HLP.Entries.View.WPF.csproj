@@ -186,6 +186,7 @@
     <Compile Include="Gerais\Converters\xDisplayFormaPagamentoConverter.cs" />
     <Compile Include="Gerais\Converters\xDisplayFormaPagamentoVisiblityConverter.cs" />
     <Compile Include="Gerais\Financeiro\Converter\DiaPagamento_Converter.cs" />
+    <Compile Include="Gerais\Financeiro\Converter\EnableDiaMultValueConverter.cs" />
     <Compile Include="Gerais\Financeiro\Converter\EnableMesMultValueConverter.cs" />
     <Compile Include="Gerais\Financeiro\Converter\qtdDiasMesesEnabledConverter.cs" />
     <Compile Include="Gerais\Financeiro\WinAgencia.xaml.cs">

@@ -17,7 +17,7 @@ namespace HLP.Entries.View.WPF.Converters
             {
                 ResourceDictionary resource = new ResourceDictionary
                 {
-                    Source = new Uri("/HLP.Resources.View.WPF;Revisar/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
+                    Source = new Uri("/HLP.Resources.View.WPF;component/Revisar/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
                 };
                 if (value != null)
                 {

@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace HLP.Entries.View.WPF.Gerais.Financeiro.Converter
 {
-    public class EnableMesMultValueConverter : IMultiValueConverter
+    public class EnableDiaMultValueConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
@@ -17,7 +17,7 @@ namespace HLP.Entries.View.WPF.Gerais.Financeiro.Converter
                 bool bValue;
                 bool.TryParse(values[1].ToString(), out bValue);
 
-                if (values[0].ToString().Equals("1") && bValue)
+                if (values[0].ToString().Equals("0") && bValue)
                     return true;
                 else
                     return false;
