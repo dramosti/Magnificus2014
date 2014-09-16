@@ -16,10 +16,11 @@
             </ResourceDictionary.MergedDictionaries>
             <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
             <c:NotConverter x:Key="notConverter"/>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Window.Resources>
-    <AdornerDecorator>
-        <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
+
+    <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
+        <AdornerDecorator>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
@@ -50,9 +51,9 @@
                 <Components:CustomTextBlock Text="Meses" Grid.Column="1" Grid.Row="6" labelFor="{Binding ElementName=txtMeses}"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Dias" Grid.Column="1" Grid.Row="7" labelFor="{Binding ElementName=txtDias}"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Percentual de Desconto" Grid.Column="1" Grid.Row="8" labelFor="{Binding ElementName=txtPercentualDesconto}"></Components:CustomTextBlock>
-                
+
                 <!--Components-->
-                
+
                 <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtCodigo"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idDescontosAvista, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -70,7 +71,7 @@
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Digite uma breve descrição do desconto à vista, por exemplo, 10 dias antecipado 2 % de Desconto para o código de desconto 10D2%.">
-                </Components:CustomTextBox>                
+                </Components:CustomTextBox>
                 <Components:ucTextBoxIntellisense x:Name="txtProximoCodigo"
 					ucEnabled="{Binding bIsEnabled}"
 					Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3"
@@ -85,7 +86,7 @@
                         <System:String>0-Dias</System:String>
                         <System:String>1-Meses</System:String>
                     </Components:CustomComboBox.Items>
-                </Components:CustomComboBox>                
+                </Components:CustomComboBox>
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="6" x:Name="txtMeses"
                     Text="{Binding currentModel.nMeses, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -133,6 +134,7 @@
 					ToolTip="Digite o desconto à vista como um percentual do valor faturado. ">
                 </Components:CustomTextBox>
             </Grid>
-        </Expander>
-    </AdornerDecorator>
+        </AdornerDecorator>
+    </Expander>
+
 </runtime:WindowsBase>
