@@ -94,25 +94,35 @@
                          CanUserReorderColumns="False"
                          CanUserDeleteRows="True" CanUserAddRows="True" SelectedCellsChanged="DataGrid_SelectedCellsChanged_1">
                         <Components:CustomDataGrid.Columns>
-                            <DataGridComboBoxColumn Width="80" x:Name="cbxStSemanaMes" Header="Semana/Mês" ItemsSource="{StaticResource collectionSemanaMes}"
-                                        SelectedItemBinding="{Binding Path=stSemanaMes, Converter={StaticResource selectedItemConverter},
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ConverterParameter={StaticResource collectionSemanaMes}}" Visibility="Visible">
-                            </DataGridComboBoxColumn>
-                            <DataGridComboBoxColumn Width="80" Header="Dia Útil" ItemsSource="{StaticResource collectionDias}"
-                                        SelectedItemBinding="{Binding Path=stDiaUtil, Converter={StaticResource selectedItemConverter},
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
-                    , ConverterParameter={StaticResource collectionDias}}">
-                                <DataGridComboBoxColumn.CellStyle>
-                                    <Style TargetType="DataGridCell">
-                                        <Setter Property="IsEnabled" Value="False"></Setter>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Path=stSemanaMes}" Value="0">
-                                                <Setter Property="IsEnabled" Value="True"></Setter>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </DataGridComboBoxColumn.CellStyle>
-                            </DataGridComboBoxColumn>
+                            <DataGridTemplateColumn Header="Semana/Mês" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=collectionSemanaMes, Converter={StaticResource selectedItemConverter}, ConverterParameter={StaticResource collectionSemanaMes}}" />                                        
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Components:CustomComboBox ItemsSource="{StaticResource collectionSemanaMes}" 
+                                                                   SelectedItem="{Binding Path=stSemanaMes, Converter={StaticResource selectedItemConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ConverterParameter={StaticResource collectionSemanaMes}}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>                                
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Dia Útil" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=collectionSemanaMes, Converter={StaticResource selectedItemConverter}, 
+                                            ConverterParameter={StaticResource collectionDias}}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Components:CustomComboBox ItemsSource="{StaticResource collectionDias}" 
+                                                                   SelectedItem="{Binding Path=stDiaUtil, Converter={StaticResource selectedItemConverter}, 
+                                                                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, 
+                                                                    ConverterParameter={StaticResource collectionDias}}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn Header="Dia" Width="*"
                                         Binding="{Binding Path=nDia, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ElementStyle="{StaticResource CellErrorStyle}">
