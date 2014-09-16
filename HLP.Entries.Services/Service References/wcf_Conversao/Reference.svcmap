@@ -23,17 +23,19 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Conversao.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Conversao.xsd" MetadataType="Schema" ID="d4fd90e8-74f1-47ab-a0b9-eae0eb93ae22" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd5" />
-    <MetadataFile FileName="wcf_Conversao1.xsd" MetadataType="Schema" ID="d5b8fe15-d215-4444-b3e0-7d3ffae4d8a1" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_Conversao.disco" MetadataType="Disco" ID="dd5650b6-3841-40af-946d-379d6e88d1be" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?disco" />
-    <MetadataFile FileName="wcf_Conversao2.xsd" MetadataType="Schema" ID="be222b81-971a-4a8e-ae27-7e9acf5894fd" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_Conversao3.xsd" MetadataType="Schema" ID="be6afc2c-e33d-499f-ae64-916e3fc01a55" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Conversao.wsdl" MetadataType="Wsdl" ID="e158549b-ed51-4595-95b7-b0561a533195" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?wsdl" />
-    <MetadataFile FileName="wcf_Conversao4.xsd" MetadataType="Schema" ID="8404e06c-3e9a-4415-9efa-f8ace9bbb02d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Conversao5.xsd" MetadataType="Schema" ID="c8963a2b-cad9-414c-8e59-fa192a778b2a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Conversao6.xsd" MetadataType="Schema" ID="4266e4bc-248d-4240-a930-001964a63491" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Conversao.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Conversao61.xsd" MetadataType="Schema" ID="f0e3e624-eee4-468c-b3d8-244aead30433" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Conversao.svc?xsd=xsd6" />
+    <MetadataFile FileName="wcf_Conversao62.xsd" MetadataType="Schema" ID="5b3caaf0-3d2d-4d00-9318-fd64449d73ba" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Conversao.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Conversao1.disco" MetadataType="Disco" ID="ea98ccfc-e6b4-45f3-bd6c-3c531dbe06a0" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Conversao.svc?disco" />
+    <MetadataFile FileName="wcf_Conversao1.wsdl" MetadataType="Wsdl" ID="adafc5eb-1e00-427c-9879-cf9c534483e0" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Conversao.svc?wsdl" />
+    <MetadataFile FileName="wcf_Conversao63.xsd" MetadataType="Schema" ID="08f700fc-37d9-4be1-b86a-353c6eb18d56" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Conversao.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Conversao64.xsd" MetadataType="Schema" ID="a6c4ceb4-717b-4c37-a5c9-5eaf844a391d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Conversao.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Conversao65.xsd" MetadataType="Schema" ID="20522eab-b434-423f-906d-f38df3b799d4" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Conversao.svc?xsd=xsd7" />
+    <MetadataFile FileName="wcf_Conversao66.xsd" MetadataType="Schema" ID="2ad69c3e-6c74-4ff3-b3bd-1876b58524dc" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Conversao.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_Conversao67.xsd" MetadataType="Schema" ID="abec2256-c446-4550-a437-beb5b4380da2" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Conversao.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

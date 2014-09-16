@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="367da785-28a5-401d-af5b-f0522b2a31ef" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="12851a21-3bf0-41cc-86a5-e2f560c43e48" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -26,14 +26,16 @@
     <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Produto.wsdl" MetadataType="Wsdl" ID="8c195bbb-e3ce-4083-ad0e-5a1e4e26b09d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?wsdl" />
-    <MetadataFile FileName="wcf_Produto.xsd" MetadataType="Schema" ID="b3b75d8c-fb57-4705-943b-5f8e99ca8e23" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_Produto1.xsd" MetadataType="Schema" ID="e5dbd94b-d085-4c12-a7af-da27a5bd1691" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd5" />
-    <MetadataFile FileName="wcf_Produto.disco" MetadataType="Disco" ID="6bf1b1dc-48af-4bb3-99bf-0256aa0fd789" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?disco" />
-    <MetadataFile FileName="wcf_Produto2.xsd" MetadataType="Schema" ID="24d2e8cf-86cf-4116-8123-fa85e1e05a31" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_Produto3.xsd" MetadataType="Schema" ID="3bc7f071-aeef-4481-9c9a-c162e65ab924" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Produto4.xsd" MetadataType="Schema" ID="fae9ef28-baf1-40aa-ae91-a2b98b8d44b7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Produto5.xsd" MetadataType="Schema" ID="8e031f24-8ee0-4b04-beab-9c0667785e4f" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Produto.xsd" MetadataType="Schema" ID="53901c0d-235e-47a8-bd7f-f307293d912f" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd6" />
+    <MetadataFile FileName="wcf_Produto.wsdl" MetadataType="Wsdl" ID="a1a6734d-c648-475d-b06b-77a6043e57bb" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?wsdl" />
+    <MetadataFile FileName="wcf_Produto1.xsd" MetadataType="Schema" ID="11fe529c-d35f-4265-a07e-3cfc2a60e010" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Produto2.xsd" MetadataType="Schema" ID="0df0f4d9-e0a7-4345-a1ac-05a172393d27" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_Produto.disco" MetadataType="Disco" ID="463fbda6-b04f-4668-9339-4588b105a6f5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?disco" />
+    <MetadataFile FileName="wcf_Produto3.xsd" MetadataType="Schema" ID="54267114-ad64-446a-b7bd-3a010a5404fc" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd7" />
+    <MetadataFile FileName="wcf_Produto4.xsd" MetadataType="Schema" ID="1f723ca9-0ab1-4fce-9aec-f2b9b0d2f901" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Produto5.xsd" MetadataType="Schema" ID="e9f43918-9e44-462c-88e2-9e062ab66a05" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Produto6.xsd" MetadataType="Schema" ID="0323377f-ab31-4f38-b67b-2e4150d34c96" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Produto7.xsd" MetadataType="Schema" ID="2277d1f0-5a9f-484b-868d-a01942dd4c9d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Produto.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

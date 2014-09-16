@@ -32,15 +32,15 @@
                             </Grid.RowDefinitions>
                             <Border x:Name="border" Grid.RowSpan="2" BorderBrush="{x:Null}" SnapsToDevicePixels="true"/>
                             <ContentPresenter x:Name="contentPresenter" Grid.Row="1" TextElement.FontSize="16" HorizontalAlignment="Center" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            <Image x:Name="ImageSalvar" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_48.png"/>
+                            <Image x:Name="ImageSalvar" Source="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Save_48.png"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Source" TargetName="ImageSalvar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_Disabled.png"/>
+                                <Setter Property="Source" TargetName="ImageSalvar" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Save_Disabled.png"/>
                                 <Setter Property="Opacity" TargetName="contentPresenter" Value="0.36"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Source" TargetName="ImageSalvar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_MouseOver.png"/>
+                                <Setter Property="Source" TargetName="ImageSalvar" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Save_MouseOver.png"/>
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FFFFC31F"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -63,13 +63,13 @@
                                 <Image x:Name="ImageAdd">
                                     <Image.Style>
                                         <Style TargetType="{x:Type Image}">
-                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add.png"/>
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Add.png"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add_File_MouseOver.png"/>
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Add_File_MouseOver.png"/>
                                                 </Trigger>
                                                 <Trigger Property="IsEnabled" Value="False">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add_Desabilitado.png"/>
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Add_Desabilitado.png"/>
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
@@ -87,13 +87,13 @@
                                 <Image x:Name="ImageAdd">
                                     <Image.Style>
                                         <Style TargetType="{x:Type Image}">
-                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_48.png" />
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Edit_48.png" />
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_MouseOver.png"/>
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Edit_MouseOver.png"/>
                                                 </Trigger>
                                                 <Trigger Property="IsEnabled" Value="False">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_Disabled.png"/>
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Edit_Disabled.png"/>
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
@@ -111,13 +111,13 @@
                                 <Image x:Name="ImageAdd">
                                     <Image.Style>
                                         <Style TargetType="{x:Type Image}">
-                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_48.png"/>
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Delete_48.png"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_MouseOver.png"/>
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Delete_MouseOver.png"/>
                                                 </Trigger>
                                                 <Trigger Property="IsEnabled" Value="False">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_Disabled.png"/>
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Delete_Disabled.png"/>
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
@@ -136,13 +136,13 @@
                                 <Image x:Name="ImageAdd">
                                     <Image.Style>
                                         <Style TargetType="{x:Type Image}">
-                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/save_48.png"/>
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/save_48.png"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_MouseOver.png"/>
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Save_MouseOver.png"/>
                                                 </Trigger>
                                                 <Trigger Property="IsEnabled" Value="False">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_Disabled.png"/>
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Save_Disabled.png"/>
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
@@ -161,13 +161,13 @@
                                 <Image x:Name="ImageAdd">
                                     <Image.Style>
                                         <Style TargetType="{x:Type Image}">
-                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_2_48.png"/>
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Cancel_2_48.png"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_MouseOver.png"/>
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Cancel_MouseOver.png"/>
                                                 </Trigger>
                                                 <Trigger Property="IsEnabled" Value="False">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_Disabled.png"/>
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Cancel_Disabled.png"/>
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>
@@ -184,13 +184,13 @@
                                 <Image x:Name="ImageAdd">
                                     <Image.Style>
                                         <Style TargetType="{x:Type Image}">
-                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_48.png"/>
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Copy_48.png"/>
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_MouseOver.png"/>
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Copy_MouseOver.png"/>
                                                 </Trigger>
                                                 <Trigger Property="IsEnabled" Value="False">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_Disabled.png"/>
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Copy_Disabled.png"/>
                                                 </Trigger>
                                             </Style.Triggers>
                                         </Style>

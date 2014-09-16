@@ -85,7 +85,7 @@ namespace HLP.Entries.Services.Gerais
                     }
                 case StConnection.OnlineWeb:
                     {
-                        return this.serviceWeb.getFuncionario(id);
+                        return this.serviceWeb.getFuncionario(id, bGetChild);
                     }
                 case StConnection.Offline:
                 default:

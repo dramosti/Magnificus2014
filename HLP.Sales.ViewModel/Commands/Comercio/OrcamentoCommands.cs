@@ -11,6 +11,7 @@ using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Model.Models.Transportes;
+using HLP.Entries.Services;
 using HLP.Entries.Services.Comercial;
 using HLP.Entries.Services.Financeiro;
 using HLP.Entries.Services.Fiscal;
@@ -59,6 +60,11 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         TransportadoraService objTransportadoraService;
         Tipo_DocumentoService objTipoDocumentoService;
         DepositoService objDepositoService;
+        CfopService objCfopService;
+        Situacao_Tributaria_IpiService objStIpiService;
+        Situacao_Tributaria_PisService objStPisService;
+        Situacao_Tributaria_IcmsService objStIcmsService;
+        St_CofinsService objCofinsService;
 
         public OrcamentoCommands()
         {
@@ -88,6 +94,11 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             this.objUnidadeMedidaService = new Unidade_MedidaService();
             this.objTransportadoraService = new TransportadoraService();
             this.objTipoDocumentoService = new Tipo_DocumentoService();
+            this.objCfopService = new CfopService();
+            this.objStIpiService = new Situacao_Tributaria_IpiService();
+            this.objStPisService = new Situacao_Tributaria_PisService();
+            this.objStIcmsService = new Situacao_Tributaria_IcmsService();
+            this.objCofinsService = new St_CofinsService();
 
             this.objViewModel = objViewModel;
 
@@ -171,7 +182,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 if (mainRepresentante != null)
                     this.objViewModel.currentItem.pComissao = mainRepresentante.pComissao ?? 0;
 
-                //this.objViewModel.currentItem.setxRepresentante();
             }
         }
 
@@ -507,8 +517,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 this.IniciaCollection();
                 if (objViewModel.currentModel != null)
                 {
-                    //TODO: RESOLVER JÁ
-                    //this.objViewModel.currentModel.LoadListTipoDocumento();
                     this.objViewModel.currentModel.bTodos = this.objViewModel.currentModel.bTodosTotais = true;
 
                     if (this.objViewModel.currentModel.lOrcamento_Itens != null)
@@ -725,6 +733,16 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         #region Métodos para utilização via Model
 
+        public Situacao_tributaria_cofinsModel GetCofins(int idCofins, bool bOptionalSearch = false)
+        {
+            return objCofinsService.GetObject(id: idCofins);
+        }
+
+        public CfopModel GetCfop(int idCfop, bool bOptionalSearch = false)
+        {
+            return objCfopService.GetObject(id: idCfop);
+        }
+
         public EmpresaModel GetEmpresa(int idEmpresa)
         {
             return objEmpresaService.GetObject(id: idEmpresa);
@@ -820,11 +838,25 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             return this.objTransportadoraService.GetObject(id: idTransportador);
         }
 
-        public Tipo_documentoModel GetTipoDocumento(int idTipoDocumento)
+        public Tipo_documentoModel GetTipoDocumento(int idTipoDocumento, bool bOptionalSearch)
         {
-            return this.objTipoDocumentoService.GetObject(id: idTipoDocumento);
+            return this.objTipoDocumentoService.GetObject(id: idTipoDocumento, loadOptionalParameters: bOptionalSearch);
         }
 
+        public Situacao_tributaria_ipiModel GetStIpi(int idStIpi, bool bOptionalSearch)
+        {
+            return objStIpiService.GetObject(id: idStIpi);
+        }
+
+        public Situacao_tributaria_pisModel GetStPis(int idStPis, bool bOptionalSearch)
+        {
+            return objStPisService.GetObject(id: idStPis);
+        }
+
+        public Situacao_tributaria_icmsModel GetStIcms(int idStIcms, bool bOptionalSearch)
+        {
+            return objStIcmsService.GetObject(id: idStIcms);
+        }
         #endregion
     }
 }

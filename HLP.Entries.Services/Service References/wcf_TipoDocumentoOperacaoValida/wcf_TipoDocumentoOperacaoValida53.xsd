@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_TipoDocumentoOperacaoValida.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" />
+  <xs:element name="GetOperacoesValidas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idTipoDocumento" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOperacoesValidasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" minOccurs="0" name="GetOperacoesValidasResult" nillable="true" type="q1:ArrayOfTipo_documento_oper_validaModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

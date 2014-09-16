@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_EmpresaParametros.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
+  <xs:element name="getEmpresaParametros">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getEmpresaParametrosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="getEmpresaParametrosResult" nillable="true" type="q1:EmpresaModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveEmpresaParamestros">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="objEmpresaParametros" nillable="true" type="q2:EmpresaParametrosModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveEmpresaParamestrosResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

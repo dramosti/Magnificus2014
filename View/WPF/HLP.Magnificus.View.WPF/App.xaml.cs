@@ -36,8 +36,9 @@ namespace HLP.Magnificus.View.WPF
     {
         private bool unhandledException = false;
 
-        empresaParametrosService.IserviceEmpresaParametrosClient empresaServico =
-            new empresaParametrosService.IserviceEmpresaParametrosClient();
+        
+        empresaParametrosService.Iwcf_EmpresaParametrosClient empresaServico =
+            new empresaParametrosService.Iwcf_EmpresaParametrosClient();
         BackgroundWorker bwInitialize;
 
 

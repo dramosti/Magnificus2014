@@ -521,6 +521,7 @@
         </Setter>
     </Style>
     <Style x:Key="TextBoxBaseStyle" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
     </Style>
     <Style x:Key="TextBoxComponentStyle" TargetType="TextBox">
         <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
@@ -531,7 +532,7 @@
         <Setter Property="Height" Value="20"/>
         <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>        
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
@@ -2142,37 +2143,6 @@
         </Setter>
     </Style>
 
-
-    <!--Bottoes Fechar e Reabrir-->
-
-    <Style x:Key="ButtonFechar" TargetType="{x:Type Button}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="1"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="35"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Border x:Name="border" Grid.ColumnSpan="2" SnapsToDevicePixels="true"/>
-                        <ContentPresenter Grid.Column="1" x:Name="contentPresenter" TextElement.FontWeight="Black" TextElement.FontSize="18" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        <Image x:Name="ImageFinalizar" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Fechar.png"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.36"></Setter>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
     <Style x:Key="ButtonReabrir" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -2190,7 +2160,7 @@
                         </Grid.ColumnDefinitions>
                         <Border x:Name="border" Grid.ColumnSpan="2" SnapsToDevicePixels="true"/>
                         <ContentPresenter Grid.Column="1" TextElement.FontWeight="Black" x:Name="contentPresenter" TextElement.FontSize="18" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        <Image x:Name="ImageFinalizar" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Reabrir.png"/>
+                        <Image x:Name="ImageFinalizar" Source="pack://application:,,,/HLP.Resources.View.WPF;Images/Reabrir.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -5125,10 +5095,10 @@
             <Image x:Name="ImagemContextMenu">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationLeft.png"/>
+                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationLeft.png"/>
                         <Style.Triggers>
                             <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationLeftDisabled.png"/>
+                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationLeftDisabled.png"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -5144,10 +5114,10 @@
             <Image x:Name="ImagemContextMenu">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationRight.png"/>
+                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationRight.png"/>
                         <Style.Triggers>
                             <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationRightDisabled.png"/>
+                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationRightDisabled.png"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -7446,7 +7416,7 @@
         </Setter>
     </Style>
 
-    
+
     <!--Provisórios-->
     <Style x:Key="GlassButton" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="#4169E1"/>

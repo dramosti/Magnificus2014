@@ -23,16 +23,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ClassificacaoFiscal.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_ClassificacaoFiscal.disco" MetadataType="Disco" ID="ab932f0e-bec9-4976-8ab6-6c07de1448da" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?disco" />
-    <MetadataFile FileName="wcf_ClassificacaoFiscal.xsd" MetadataType="Schema" ID="1db39966-5f77-459c-a1f9-d9a9cc183614" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_ClassificacaoFiscal.wsdl" MetadataType="Wsdl" ID="c3f09f88-01a5-401e-84cf-c6cfd45c6508" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?wsdl" />
-    <MetadataFile FileName="wcf_ClassificacaoFiscal1.xsd" MetadataType="Schema" ID="bd3b5238-c955-43da-be3c-b54f5311bf99" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_ClassificacaoFiscal2.xsd" MetadataType="Schema" ID="6e87a69f-e0b9-46cb-8f29-2253a022604d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_ClassificacaoFiscal3.xsd" MetadataType="Schema" ID="416fd1eb-b5bc-409f-b673-0b448595f1ff" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_ClassificacaoFiscal4.xsd" MetadataType="Schema" ID="92c1440b-ce92-4b2b-892d-34a0f63e5d7e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal5.xsd" MetadataType="Schema" ID="e9130f5a-bc68-4489-961c-e0f021f76c28" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ClassificacaoFiscal.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal1.wsdl" MetadataType="Wsdl" ID="05b19bde-ce41-4e97-842c-746471b57c8d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ClassificacaoFiscal.svc?wsdl" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal51.xsd" MetadataType="Schema" ID="4787e7e2-e25e-4a09-a70b-154b7c4b690c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ClassificacaoFiscal.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal52.xsd" MetadataType="Schema" ID="df619c22-0dac-4c3c-9d08-3af38cec6b17" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ClassificacaoFiscal.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal53.xsd" MetadataType="Schema" ID="b3cec52c-c650-43cc-8b4c-ae4771a733c5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ClassificacaoFiscal.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal54.xsd" MetadataType="Schema" ID="05df508b-846c-4ee3-8cca-4a7ee8d98d3b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ClassificacaoFiscal.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal1.disco" MetadataType="Disco" ID="80684976-fb8b-4514-8357-c3a92fb2c3c7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ClassificacaoFiscal.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

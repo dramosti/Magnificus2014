@@ -23,16 +23,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Decisao.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Decisao.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Decisao.xsd" MetadataType="Schema" ID="9b4290c6-9a74-4c79-880e-937ede834e7d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Decisao.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_Decisao.wsdl" MetadataType="Wsdl" ID="5cdd94ec-f52d-4da1-8094-a25ad47ef665" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Decisao.svc?wsdl" />
-    <MetadataFile FileName="wcf_Decisao1.xsd" MetadataType="Schema" ID="7c002f60-405f-4b24-8da0-f86e8d855af5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Decisao.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Decisao2.xsd" MetadataType="Schema" ID="111811ca-0f44-4442-a63f-0b61fb99bc05" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Decisao.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_Decisao3.xsd" MetadataType="Schema" ID="fc71e40b-1c58-4226-b437-31fe75ca60cb" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Decisao.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_Decisao.disco" MetadataType="Disco" ID="354a5812-e26a-4aa6-b5fc-8c991b8744dc" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Decisao.svc?disco" />
-    <MetadataFile FileName="wcf_Decisao4.xsd" MetadataType="Schema" ID="9de7a9af-0fd1-42d4-ab77-61a1c4665083" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Decisao.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Decisao1.disco" MetadataType="Disco" ID="c539bd9c-736d-4958-8574-a2bc82d80ba3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Decisao.svc?disco" />
+    <MetadataFile FileName="wcf_Decisao5.xsd" MetadataType="Schema" ID="3fb08266-79e3-423d-a648-a8455e216dd2" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Decisao.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Decisao51.xsd" MetadataType="Schema" ID="b65ed01f-cb22-401d-bd2f-57a46914eeef" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Decisao.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Decisao52.xsd" MetadataType="Schema" ID="37294012-6155-4db3-80c6-78ddd2b02164" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Decisao.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Decisao1.wsdl" MetadataType="Wsdl" ID="e3741b4f-5bdb-46ef-b4b9-538ea96003aa" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Decisao.svc?wsdl" />
+    <MetadataFile FileName="wcf_Decisao53.xsd" MetadataType="Schema" ID="08e20d13-8436-48d4-91cb-e2ab0abf85c8" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Decisao.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Decisao54.xsd" MetadataType="Schema" ID="670d6a45-60d6-4648-96b0-e9842aaf58ce" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Decisao.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

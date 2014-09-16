@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="oASvzzVvEmWr/pxN26ayWsI5PTI=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="gVMy1P8w9W0myc7Xkxw+gYCH8CI=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_Iwcf_CondicaoEntrega">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_Iwcf_CondicaoEntrega" contract="wcf_CondicaoEntrega.Iwcf_CondicaoEntrega" bindingType="basicHttpBinding" address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CondicaoEntrega.svc" bindingConfiguration="BasicHttpBinding_Iwcf_CondicaoEntrega">
+    <endpoint name="BasicHttpBinding_Iwcf_CondicaoEntrega" contract="wcf_CondicaoEntrega.Iwcf_CondicaoEntrega" bindingType="basicHttpBinding" address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CondicaoEntrega.svc" bindingConfiguration="BasicHttpBinding_Iwcf_CondicaoEntrega">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://hlpsistemas.no-ip.org:8081/wcf/wcf_CondicaoEntrega.svc</serializedValue>
+          <serializedValue>http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CondicaoEntrega.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

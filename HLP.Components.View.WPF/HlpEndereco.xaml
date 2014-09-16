@@ -13,7 +13,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
-                <!--<ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>-->
             </ResourceDictionary.MergedDictionaries>
             <convertLocal:NotConverter x:Key="notConverter"/>
             <convertLocal:ByteToBoolConverter x:Key="ByteToBoolConverter"/>

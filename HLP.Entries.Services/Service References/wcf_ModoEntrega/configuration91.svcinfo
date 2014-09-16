@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="WOUMT87xvE0Cj9dbr//hGPPprbY=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="pWH2/4bZgBkvDaTQ5Eqv3Z401Kc=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_Iwcf_ModoEntrega">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_Iwcf_ModoEntrega" contract="wcf_ModoEntrega.Iwcf_ModoEntrega" bindingType="basicHttpBinding" address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ModoEntrega.svc" bindingConfiguration="BasicHttpBinding_Iwcf_ModoEntrega">
+    <endpoint name="BasicHttpBinding_Iwcf_ModoEntrega" contract="wcf_ModoEntrega.Iwcf_ModoEntrega" bindingType="basicHttpBinding" address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ModoEntrega.svc" bindingConfiguration="BasicHttpBinding_Iwcf_ModoEntrega">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://hlpsistemas.no-ip.org:8081/wcf/wcf_ModoEntrega.svc</serializedValue>
+          <serializedValue>http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_ModoEntrega.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

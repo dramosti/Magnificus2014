@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="KnuHkeZ4p8grJ3k60tE9qHH6rF8=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="iWkeDwY+XdQorJGgjYJjI76ZoKE=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_Iwcf_Acesso">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_Iwcf_Acesso" contract="wcf_Acesso.Iwcf_Acesso" bindingType="basicHttpBinding" address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Acesso.svc" bindingConfiguration="BasicHttpBinding_Iwcf_Acesso">
+    <endpoint name="BasicHttpBinding_Iwcf_Acesso" contract="wcf_Acesso.Iwcf_Acesso" bindingType="basicHttpBinding" address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Acesso.svc" bindingConfiguration="BasicHttpBinding_Iwcf_Acesso">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://hlpsistemas.no-ip.org:8081/wcf/wcf_Acesso.svc</serializedValue>
+          <serializedValue>http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Acesso.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

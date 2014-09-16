@@ -153,6 +153,8 @@ namespace HLP.Comum.ViewModel.Commands
 
             if (winPesquisa != null)
             {
+                this.objviewModel.currentModel = null;
+
                 winPesquisa.ShowDialog();
 
                 if ((winPesquisa.GetPropertyValue("lResult") as List<int>).Count > 0)

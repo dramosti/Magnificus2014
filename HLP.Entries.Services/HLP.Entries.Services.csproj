@@ -506,135 +506,132 @@
     <None Include="Service References\wcf_Acesso\wcf_Acesso5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Acesso\wcf_Acesso6.xsd">
+    <None Include="Service References\wcf_Agencia\wcf_Agencia1.wsdl" />
+    <None Include="Service References\wcf_Agencia\wcf_Agencia6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Agencia\wcf_Agencia.wsdl" />
-    <None Include="Service References\wcf_Agencia\wcf_Agencia.xsd">
+    <None Include="Service References\wcf_Agencia\wcf_Agencia61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Agencia\wcf_Agencia1.xsd">
+    <None Include="Service References\wcf_Agencia\wcf_Agencia62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Agencia\wcf_Agencia2.xsd">
+    <None Include="Service References\wcf_Agencia\wcf_Agencia63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Agencia\wcf_Agencia3.xsd">
+    <None Include="Service References\wcf_Agencia\wcf_Agencia64.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Agencia\wcf_Agencia4.xsd">
+    <None Include="Service References\wcf_Agencia\wcf_Agencia65.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Agencia\wcf_Agencia5.xsd">
+    <None Include="Service References\wcf_Banco\wcf_Banco1.wsdl" />
+    <None Include="Service References\wcf_Banco\wcf_Banco6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Banco\wcf_Banco.wsdl" />
-    <None Include="Service References\wcf_Banco\wcf_Banco.xsd">
+    <None Include="Service References\wcf_Banco\wcf_Banco61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Banco\wcf_Banco1.xsd">
+    <None Include="Service References\wcf_Banco\wcf_Banco62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Banco\wcf_Banco2.xsd">
+    <None Include="Service References\wcf_Banco\wcf_Banco63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Banco\wcf_Banco3.xsd">
+    <None Include="Service References\wcf_Banco\wcf_Banco64.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Banco\wcf_Banco4.xsd">
+    <None Include="Service References\wcf_Banco\wcf_Banco65.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Banco\wcf_Banco5.xsd">
+    <None Include="Service References\wcf_Calendario\wcf_Calendario1.wsdl" />
+    <None Include="Service References\wcf_Calendario\wcf_Calendario5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendario\wcf_Calendario.wsdl" />
-    <None Include="Service References\wcf_Calendario\wcf_Calendario.xsd">
+    <None Include="Service References\wcf_Calendario\wcf_Calendario51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendario\wcf_Calendario1.xsd">
+    <None Include="Service References\wcf_Calendario\wcf_Calendario52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendario\wcf_Calendario2.xsd">
+    <None Include="Service References\wcf_Calendario\wcf_Calendario53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendario\wcf_Calendario3.xsd">
+    <None Include="Service References\wcf_Calendario\wcf_Calendario54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendario\wcf_Calendario4.xsd">
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados.wsdl" />
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados1.wsdl" />
-    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados3.xsd">
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados31.xsd">
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados32.xsd">
+    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda1.wsdl" />
+    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda.wsdl" />
-    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda.xsd">
+    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda1.xsd">
+    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda2.xsd">
+    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda3.xsd">
+    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda4.xsd">
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms1.wsdl" />
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms.wsdl" />
-    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms.xsd">
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms1.xsd">
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms2.xsd">
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms3.xsd">
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms4.xsd">
+    <None Include="Service References\wcf_Cargo\wcf_Cargo1.wsdl" />
+    <None Include="Service References\wcf_Cargo\wcf_Cargo5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cargo\wcf_Cargo.wsdl" />
-    <None Include="Service References\wcf_Cargo\wcf_Cargo.xsd">
+    <None Include="Service References\wcf_Cargo\wcf_Cargo51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cargo\wcf_Cargo1.xsd">
+    <None Include="Service References\wcf_Cargo\wcf_Cargo52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cargo\wcf_Cargo2.xsd">
+    <None Include="Service References\wcf_Cargo\wcf_Cargo53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cargo\wcf_Cargo3.xsd">
+    <None Include="Service References\wcf_Cargo\wcf_Cargo54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cargo\wcf_Cargo4.xsd">
+    <None Include="Service References\wcf_Cfop\wcf_Cfop1.wsdl" />
+    <None Include="Service References\wcf_Cfop\wcf_Cfop5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cfop\wcf_Cfop.wsdl" />
-    <None Include="Service References\wcf_Cfop\wcf_Cfop.xsd">
+    <None Include="Service References\wcf_Cfop\wcf_Cfop51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cfop\wcf_Cfop1.xsd">
+    <None Include="Service References\wcf_Cfop\wcf_Cfop52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cfop\wcf_Cfop2.xsd">
+    <None Include="Service References\wcf_Cfop\wcf_Cfop53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cfop\wcf_Cfop3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Cfop\wcf_Cfop4.xsd">
+    <None Include="Service References\wcf_Cfop\wcf_Cfop54.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Cidade\wcf_Cidade.wsdl" />
@@ -653,106 +650,118 @@
     <None Include="Service References\wcf_Cidade\wcf_Cidade4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal.wsdl" />
-    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal.xsd">
+    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal1.wsdl" />
+    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal1.xsd">
+    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal2.xsd">
+    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal3.xsd">
+    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal4.xsd">
+    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente.wsdl" />
-    <None Include="Service References\wcf_Cliente\wcf_Cliente.xsd">
+    <None Include="Service References\wcf_Cliente\wcf_Cliente1.wsdl" />
+    <None Include="Service References\wcf_Cliente\wcf_Cliente6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente1.xsd">
+    <None Include="Service References\wcf_Cliente\wcf_Cliente61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente2.xsd">
+    <None Include="Service References\wcf_Cliente\wcf_Cliente62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente3.xsd">
+    <None Include="Service References\wcf_Cliente\wcf_Cliente63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente4.xsd">
+    <None Include="Service References\wcf_Cliente\wcf_Cliente64.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente5.xsd">
+    <None Include="Service References\wcf_Cliente\wcf_Cliente65.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms.wsdl" />
-    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms.xsd">
+    <None Include="Service References\wcf_Cliente\wcf_Cliente66.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms1.xsd">
+    <None Include="Service References\wcf_Cliente\wcf_Cliente67.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms2.xsd">
+    <None Include="Service References\wcf_Cliente\wcf_Cliente68.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms3.xsd">
+    <None Include="Service References\wcf_Cliente\wcf_Cliente69.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms4.xsd">
+    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms1.wsdl" />
+    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega.wsdl" />
-    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega.xsd">
+    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega1.xsd">
+    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega2.xsd">
+    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega3.xsd">
+    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega4.xsd">
+    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega1.wsdl" />
+    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento.wsdl" />
-    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento.xsd">
+    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento1.xsd">
+    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento2.xsd">
+    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento3.xsd">
+    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento4.xsd">
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento1.wsdl" />
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria.wsdl" />
-    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria.xsd">
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria1.xsd">
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria2.xsd">
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria3.xsd">
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria4.xsd">
+    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria1.wsdl" />
+    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria5.xsd">
+    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria61.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria62.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria63.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria64.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria65.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Contato\wcf_Contato.wsdl" />
@@ -771,144 +780,147 @@
     <None Include="Service References\wcf_Contato\wcf_Contato4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Conversao\wcf_Conversao.wsdl" />
-    <None Include="Service References\wcf_Conversao\wcf_Conversao.xsd">
+    <None Include="Service References\wcf_Conversao\wcf_Conversao1.wsdl" />
+    <None Include="Service References\wcf_Conversao\wcf_Conversao6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Conversao\wcf_Conversao1.xsd">
+    <None Include="Service References\wcf_Conversao\wcf_Conversao61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Conversao\wcf_Conversao2.xsd">
+    <None Include="Service References\wcf_Conversao\wcf_Conversao62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Conversao\wcf_Conversao3.xsd">
+    <None Include="Service References\wcf_Conversao\wcf_Conversao63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Conversao\wcf_Conversao4.xsd">
+    <None Include="Service References\wcf_Conversao\wcf_Conversao64.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Conversao\wcf_Conversao5.xsd">
+    <None Include="Service References\wcf_Conversao\wcf_Conversao65.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Decisao\wcf_Decisao.wsdl" />
-    <None Include="Service References\wcf_Decisao\wcf_Decisao.xsd">
+    <None Include="Service References\wcf_Conversao\wcf_Conversao66.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Decisao\wcf_Decisao1.xsd">
+    <None Include="Service References\wcf_Conversao\wcf_Conversao67.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Decisao\wcf_Decisao2.xsd">
+    <None Include="Service References\wcf_Decisao\wcf_Decisao1.wsdl" />
+    <None Include="Service References\wcf_Decisao\wcf_Decisao5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Decisao\wcf_Decisao3.xsd">
+    <None Include="Service References\wcf_Decisao\wcf_Decisao51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Decisao\wcf_Decisao4.xsd">
+    <None Include="Service References\wcf_Decisao\wcf_Decisao52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Departamento\wcf_Departamento.wsdl" />
-    <None Include="Service References\wcf_Departamento\wcf_Departamento.xsd">
+    <None Include="Service References\wcf_Decisao\wcf_Decisao53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Departamento\wcf_Departamento1.xsd">
+    <None Include="Service References\wcf_Decisao\wcf_Decisao54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Departamento\wcf_Departamento2.xsd">
+    <None Include="Service References\wcf_Departamento\wcf_Departamento1.wsdl" />
+    <None Include="Service References\wcf_Departamento\wcf_Departamento5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Departamento\wcf_Departamento3.xsd">
+    <None Include="Service References\wcf_Departamento\wcf_Departamento51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Departamento\wcf_Departamento4.xsd">
+    <None Include="Service References\wcf_Departamento\wcf_Departamento52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Deposito\wcf_Deposito.wsdl" />
-    <None Include="Service References\wcf_Deposito\wcf_Deposito.xsd">
+    <None Include="Service References\wcf_Departamento\wcf_Departamento53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Deposito\wcf_Deposito1.xsd">
+    <None Include="Service References\wcf_Departamento\wcf_Departamento54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Deposito\wcf_Deposito2.xsd">
+    <None Include="Service References\wcf_Deposito\wcf_Deposito1.wsdl" />
+    <None Include="Service References\wcf_Deposito\wcf_Deposito5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Deposito\wcf_Deposito3.xsd">
+    <None Include="Service References\wcf_Deposito\wcf_Deposito51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Deposito\wcf_Deposito4.xsd">
+    <None Include="Service References\wcf_Deposito\wcf_Deposito52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista.wsdl" />
-    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista.xsd">
+    <None Include="Service References\wcf_Deposito\wcf_Deposito53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista1.xsd">
+    <None Include="Service References\wcf_Deposito\wcf_Deposito54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista2.xsd">
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista1.wsdl" />
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista3.xsd">
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista4.xsd">
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento.wsdl" />
-    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento.xsd">
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento1.xsd">
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento2.xsd">
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento1.wsdl" />
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento3.xsd">
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento4.xsd">
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento5.xsd">
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Empresa\wcf_Empresa.wsdl" />
-    <None Include="Service References\wcf_Empresa\wcf_Empresa.xsd">
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento64.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Empresa\wcf_Empresa1.xsd">
+    <None Include="Service References\wcf_Empresa\wcf_Empresa1.wsdl" />
+    <None Include="Service References\wcf_Empresa\wcf_Empresa7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Empresa\wcf_Empresa2.xsd">
+    <None Include="Service References\wcf_Empresa\wcf_Empresa71.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Empresa\wcf_Empresa3.xsd">
+    <None Include="Service References\wcf_Empresa\wcf_Empresa72.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Empresa\wcf_Empresa4.xsd">
+    <None Include="Service References\wcf_Empresa\wcf_Empresa73.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Empresa\wcf_Empresa5.xsd">
+    <None Include="Service References\wcf_Empresa\wcf_Empresa74.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Empresa\wcf_Empresa6.xsd">
+    <None Include="Service References\wcf_Empresa\wcf_Empresa75.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Fabricante\wcf_Fabricante.wsdl" />
-    <None Include="Service References\wcf_Fabricante\wcf_Fabricante.xsd">
+    <None Include="Service References\wcf_Empresa\wcf_Empresa76.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Fabricante\wcf_Fabricante1.xsd">
+    <None Include="Service References\wcf_Fabricante\wcf_Fabricante1.wsdl" />
+    <None Include="Service References\wcf_Fabricante\wcf_Fabricante5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Fabricante\wcf_Fabricante2.xsd">
+    <None Include="Service References\wcf_Fabricante\wcf_Fabricante51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Fabricante\wcf_Fabricante3.xsd">
+    <None Include="Service References\wcf_Fabricante\wcf_Fabricante52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Fabricante\wcf_Fabricante4.xsd">
+    <None Include="Service References\wcf_Fabricante\wcf_Fabricante53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Fabricante\wcf_Fabricante54.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto.wsdl" />
@@ -930,42 +942,39 @@
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade.wsdl" />
-    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade.xsd">
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade1.wsdl" />
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade1.xsd">
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade2.xsd">
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade3.xsd">
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade4.xsd">
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.wsdl" />
-    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario1.wsdl" />
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionario\wcf_Funcionario1.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario71.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionario\wcf_Funcionario2.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario72.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionario\wcf_Funcionario3.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario73.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionario\wcf_Funcionario4.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario74.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionario\wcf_Funcionario5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Funcionario\wcf_Funcionario6.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario75.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.wsdl" />
@@ -987,20 +996,20 @@
     <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Juros\wcf_Juros.wsdl" />
-    <None Include="Service References\wcf_Juros\wcf_Juros.xsd">
+    <None Include="Service References\wcf_Juros\wcf_Juros1.wsdl" />
+    <None Include="Service References\wcf_Juros\wcf_Juros5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Juros\wcf_Juros1.xsd">
+    <None Include="Service References\wcf_Juros\wcf_Juros51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Juros\wcf_Juros2.xsd">
+    <None Include="Service References\wcf_Juros\wcf_Juros52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Juros\wcf_Juros3.xsd">
+    <None Include="Service References\wcf_Juros\wcf_Juros53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Juros\wcf_Juros4.xsd">
+    <None Include="Service References\wcf_Juros\wcf_Juros54.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco.wsdl" />
@@ -1041,27 +1050,27 @@
     <None Include="Service References\wcf_Localizacao\wcf_Localizacao4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Login\wcf_Login.wsdl" />
-    <None Include="Service References\wcf_Login\wcf_Login.xsd">
+    <None Include="Service References\wcf_Login\wcf_Login1.wsdl" />
+    <None Include="Service References\wcf_Login\wcf_Login2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Login\wcf_Login1.xsd">
+    <None Include="Service References\wcf_Login\wcf_Login21.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega.wsdl" />
-    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega.xsd">
+    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega1.wsdl" />
+    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega1.xsd">
+    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega2.xsd">
+    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega3.xsd">
+    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega4.xsd">
+    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega54.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Moeda\wcf_Moeda.wsdl" />
@@ -1080,87 +1089,84 @@
     <None Include="Service References\wcf_Moeda\wcf_Moeda4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Multa\wcf_Multa.wsdl" />
-    <None Include="Service References\wcf_Multa\wcf_Multa.xsd">
+    <None Include="Service References\wcf_Multa\wcf_Multa1.wsdl" />
+    <None Include="Service References\wcf_Multa\wcf_Multa5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Multa\wcf_Multa1.xsd">
+    <None Include="Service References\wcf_Multa\wcf_Multa51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Multa\wcf_Multa2.xsd">
+    <None Include="Service References\wcf_Multa\wcf_Multa52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Multa\wcf_Multa3.xsd">
+    <None Include="Service References\wcf_Multa\wcf_Multa53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Multa\wcf_Multa4.xsd">
+    <None Include="Service References\wcf_Multa\wcf_Multa54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros.wsdl" />
-    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros.xsd">
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros1.wsdl" />
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros1.xsd">
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros71.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros2.xsd">
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros72.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros3.xsd">
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros73.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros4.xsd">
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros74.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros5.xsd">
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros75.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros6.xsd">
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros76.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Personalidade\wcf_Personalidade.wsdl" />
-    <None Include="Service References\wcf_Personalidade\wcf_Personalidade.xsd">
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade1.wsdl" />
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Personalidade\wcf_Personalidade1.xsd">
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Personalidade\wcf_Personalidade2.xsd">
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Personalidade\wcf_Personalidade3.xsd">
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Personalidade\wcf_Personalidade4.xsd">
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.wsdl" />
-    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.xsd">
+    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida1.wsdl" />
+    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida1.xsd">
+    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida2.xsd">
+    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida32.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento.wsdl" />
-    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento.xsd">
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento1.wsdl" />
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento1.xsd">
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento2.xsd">
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento3.xsd">
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento5.xsd">
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento64.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Produto\wcf_Produto.wsdl" />
@@ -1182,269 +1188,275 @@
     <None Include="Service References\wcf_Produto\wcf_Produto5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade.wsdl" />
-    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade.xsd">
+    <None Include="Service References\wcf_Produto\wcf_Produto6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade1.xsd">
+    <None Include="Service References\wcf_Produto\wcf_Produto7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade2.xsd">
+    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade1.wsdl" />
+    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade3.xsd">
+    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade4.xsd">
+    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Rota\wcf_Rota.wsdl" />
-    <None Include="Service References\wcf_Rota\wcf_Rota.xsd">
+    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Rota\wcf_Rota1.xsd">
+    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Rota\wcf_Rota2.xsd">
+    <None Include="Service References\wcf_Rota\wcf_Rota1.wsdl" />
+    <None Include="Service References\wcf_Rota\wcf_Rota5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Rota\wcf_Rota3.xsd">
+    <None Include="Service References\wcf_Rota\wcf_Rota51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Rota\wcf_Rota4.xsd">
+    <None Include="Service References\wcf_Rota\wcf_Rota52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Setor\wcf_Setor.wsdl" />
-    <None Include="Service References\wcf_Setor\wcf_Setor.xsd">
+    <None Include="Service References\wcf_Rota\wcf_Rota53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Setor\wcf_Setor1.xsd">
+    <None Include="Service References\wcf_Rota\wcf_Rota54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Setor\wcf_Setor2.xsd">
+    <None Include="Service References\wcf_Setor\wcf_Setor1.wsdl" />
+    <None Include="Service References\wcf_Setor\wcf_Setor5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Setor\wcf_Setor3.xsd">
+    <None Include="Service References\wcf_Setor\wcf_Setor51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Setor\wcf_Setor4.xsd">
+    <None Include="Service References\wcf_Setor\wcf_Setor52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Site\wcf_Site.wsdl" />
-    <None Include="Service References\wcf_Site\wcf_Site.xsd">
+    <None Include="Service References\wcf_Setor\wcf_Setor53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Site\wcf_Site1.xsd">
+    <None Include="Service References\wcf_Setor\wcf_Setor54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Site\wcf_Site2.xsd">
+    <None Include="Service References\wcf_Site\wcf_Site1.wsdl" />
+    <None Include="Service References\wcf_Site\wcf_Site7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Site\wcf_Site3.xsd">
+    <None Include="Service References\wcf_Site\wcf_Site71.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Site\wcf_Site4.xsd">
+    <None Include="Service References\wcf_Site\wcf_Site72.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Site\wcf_Site5.xsd">
+    <None Include="Service References\wcf_Site\wcf_Site73.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Site\wcf_Site6.xsd">
+    <None Include="Service References\wcf_Site\wcf_Site74.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis.wsdl" />
-    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis.xsd">
+    <None Include="Service References\wcf_Site\wcf_Site75.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis1.xsd">
+    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis1.wsdl" />
+    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis2.xsd">
+    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis3.xsd">
+    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis4.xsd">
+    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StCofins\wcf_StCofins.wsdl" />
-    <None Include="Service References\wcf_StCofins\wcf_StCofins.xsd">
+    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StCofins\wcf_StCofins1.xsd">
+    <None Include="Service References\wcf_StCofins\wcf_StCofins1.wsdl" />
+    <None Include="Service References\wcf_StCofins\wcf_StCofins5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StCofins\wcf_StCofins2.xsd">
+    <None Include="Service References\wcf_StCofins\wcf_StCofins51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StCofins\wcf_StCofins3.xsd">
+    <None Include="Service References\wcf_StCofins\wcf_StCofins52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StCofins\wcf_StCofins4.xsd">
+    <None Include="Service References\wcf_StCofins\wcf_StCofins53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StIcms\wcf_StIcms.wsdl" />
-    <None Include="Service References\wcf_StIcms\wcf_StIcms.xsd">
+    <None Include="Service References\wcf_StCofins\wcf_StCofins54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StIcms\wcf_StIcms1.xsd">
+    <None Include="Service References\wcf_StIcms\wcf_StIcms1.wsdl" />
+    <None Include="Service References\wcf_StIcms\wcf_StIcms5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StIcms\wcf_StIcms2.xsd">
+    <None Include="Service References\wcf_StIcms\wcf_StIcms51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StIcms\wcf_StIcms3.xsd">
+    <None Include="Service References\wcf_StIcms\wcf_StIcms52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StIcms\wcf_StIcms4.xsd">
+    <None Include="Service References\wcf_StIcms\wcf_StIcms53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StIpi\wcf_StIpi.wsdl" />
-    <None Include="Service References\wcf_StIpi\wcf_StIpi.xsd">
+    <None Include="Service References\wcf_StIcms\wcf_StIcms54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StIpi\wcf_StIpi1.xsd">
+    <None Include="Service References\wcf_StIpi\wcf_StIpi1.wsdl" />
+    <None Include="Service References\wcf_StIpi\wcf_StIpi5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StIpi\wcf_StIpi2.xsd">
+    <None Include="Service References\wcf_StIpi\wcf_StIpi51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StIpi\wcf_StIpi3.xsd">
+    <None Include="Service References\wcf_StIpi\wcf_StIpi52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_StIpi\wcf_StIpi4.xsd">
+    <None Include="Service References\wcf_StIpi\wcf_StIpi53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida.wsdl" />
-    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida.xsd">
+    <None Include="Service References\wcf_StIpi\wcf_StIpi54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida1.xsd">
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida1.wsdl" />
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida2.xsd">
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida3.xsd">
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida4.xsd">
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento.wsdl" />
-    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento.xsd">
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento1.xsd">
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida55.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento2.xsd">
+    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento1.wsdl" />
+    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento3.xsd">
+    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento4.xsd">
+    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao.wsdl" />
-    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao.xsd">
+    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao1.xsd">
+    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao2.xsd">
+    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento55.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao3.xsd">
+    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao1.wsdl" />
+    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao4.xsd">
+    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto.wsdl" />
-    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto.xsd">
+    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto1.xsd">
+    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto2.xsd">
+    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto3.xsd">
+    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto1.wsdl" />
+    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto4.xsd">
+    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoServico\wcf_TipoServico.wsdl" />
-    <None Include="Service References\wcf_TipoServico\wcf_TipoServico.xsd">
+    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoServico\wcf_TipoServico1.xsd">
+    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoServico\wcf_TipoServico2.xsd">
+    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoServico\wcf_TipoServico3.xsd">
+    <None Include="Service References\wcf_TipoServico\wcf_TipoServico1.wsdl" />
+    <None Include="Service References\wcf_TipoServico\wcf_TipoServico5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_TipoServico\wcf_TipoServico4.xsd">
+    <None Include="Service References\wcf_TipoServico\wcf_TipoServico51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Transportadora\wcf_Transportadora.wsdl" />
-    <None Include="Service References\wcf_Transportadora\wcf_Transportadora.xsd">
+    <None Include="Service References\wcf_TipoServico\wcf_TipoServico52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Transportadora\wcf_Transportadora1.xsd">
+    <None Include="Service References\wcf_TipoServico\wcf_TipoServico53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Transportadora\wcf_Transportadora2.xsd">
+    <None Include="Service References\wcf_TipoServico\wcf_TipoServico54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Transportadora\wcf_Transportadora3.xsd">
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora1.wsdl" />
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Transportadora\wcf_Transportadora4.xsd">
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Transportadora\wcf_Transportadora5.xsd">
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Uf\wcf_Uf.wsdl" />
-    <None Include="Service References\wcf_Uf\wcf_Uf.xsd">
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Uf\wcf_Uf1.xsd">
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora64.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Uf\wcf_Uf2.xsd">
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora65.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Uf\wcf_Uf3.xsd">
+    <None Include="Service References\wcf_Uf\wcf_Uf1.wsdl" />
+    <None Include="Service References\wcf_Uf\wcf_Uf5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Uf\wcf_Uf4.xsd">
+    <None Include="Service References\wcf_Uf\wcf_Uf51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida.wsdl" />
-    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida.xsd">
+    <None Include="Service References\wcf_Uf\wcf_Uf52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida1.xsd">
+    <None Include="Service References\wcf_Uf\wcf_Uf53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida2.xsd">
+    <None Include="Service References\wcf_Uf\wcf_Uf54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida3.xsd">
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida1.wsdl" />
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida4.xsd">
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida53.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -1520,9 +1532,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_UnidadeMedida\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1533,12 +1542,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados1.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_PesquisaRapida\configuration91.svcinfo" />
@@ -1553,9 +1556,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Empresa\wcf_Empresa.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Empresa\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1566,9 +1566,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_DiaPagamento\configuration91.svcinfo" />
@@ -1583,9 +1580,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_DescontoAVista\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1596,9 +1590,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_PlanoPagamento\configuration91.svcinfo" />
@@ -1613,9 +1604,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_ParametroEmpresa\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1626,9 +1614,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Banco\wcf_Banco.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Banco\configuration91.svcinfo" />
@@ -1643,9 +1628,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Deposito\wcf_Deposito.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Deposito\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1656,9 +1638,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_CanalDeVenda\configuration91.svcinfo" />
@@ -1673,9 +1652,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Departamento\wcf_Departamento.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Departamento\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1686,9 +1662,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Conversao\wcf_Conversao.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Conversao\configuration91.svcinfo" />
@@ -1703,9 +1676,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_CondicaoPagamento\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1716,9 +1686,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_ContaBancaria\configuration91.svcinfo" />
@@ -1733,9 +1700,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Rota\wcf_Rota.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Rota\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1746,9 +1710,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Cliente\configuration91.svcinfo" />
@@ -1763,9 +1724,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Site\wcf_Site.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Site\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1776,9 +1734,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Juros\wcf_Juros.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Juros\configuration91.svcinfo" />
@@ -1793,9 +1748,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Multa\wcf_Multa.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Multa\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1806,9 +1758,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_TipoProduto\configuration91.svcinfo" />
@@ -1823,9 +1772,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Decisao\wcf_Decisao.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Decisao\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1836,9 +1782,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Fidelidade\configuration91.svcinfo" />
@@ -1853,9 +1796,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Personalidade\wcf_Personalidade.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Personalidade\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1866,9 +1806,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Agencia\wcf_Agencia.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Agencia\configuration91.svcinfo" />
@@ -1883,9 +1820,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_CargaTribMediaStIcms\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1896,9 +1830,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cfop\wcf_Cfop.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Cfop\configuration91.svcinfo" />
@@ -1913,9 +1844,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_ClassificacaoFiscal\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1926,9 +1854,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_CodigoIcms\configuration91.svcinfo" />
@@ -1943,9 +1868,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_SituacaoTributariaPis\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1956,9 +1878,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_StCofins\wcf_StCofins.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_StCofins\configuration91.svcinfo" />
@@ -1973,9 +1892,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_StIcms\wcf_StIcms.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_StIcms\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -1986,9 +1902,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_StIpi\wcf_StIpi.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_StIpi\configuration91.svcinfo" />
@@ -2003,9 +1916,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_TipoDocumento\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -2016,9 +1926,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_TipoOperacao\configuration91.svcinfo" />
@@ -2033,9 +1940,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Fabricante\wcf_Fabricante.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Fabricante\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -2046,24 +1950,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Acesso\wcf_Acesso.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Acesso\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Acesso\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Acesso\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_RamoAtividade\configuration91.svcinfo" />
@@ -2078,9 +1964,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_TipoServico\wcf_TipoServico.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_TipoServico\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -2091,9 +1974,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Setor\wcf_Setor.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Setor\configuration91.svcinfo" />
@@ -2108,9 +1988,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Cargo\wcf_Cargo.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Cargo\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -2121,9 +1998,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_CondicaoEntrega\configuration91.svcinfo" />
@@ -2138,9 +2012,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Uf\wcf_Uf.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Uf\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -2151,9 +2022,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_ModoEntrega\configuration91.svcinfo" />
@@ -2168,9 +2036,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Funcionario\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -2181,9 +2046,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Transportadora\wcf_Transportadora.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Transportadora\configuration91.svcinfo" />
@@ -2198,9 +2060,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Login\wcf_Login.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Login\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -2213,9 +2072,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_TipoDocumentoOperacaoValida\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -2226,9 +2082,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Calendario\wcf_Calendario.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Calendario\configuration91.svcinfo" />
@@ -2361,6 +2214,165 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Acesso\wcf_Acesso.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Acesso\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Acesso\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Acesso\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Agencia\wcf_Agencia1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Banco\wcf_Banco1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Calendario\wcf_Calendario1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cargo\wcf_Cargo1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cfop\wcf_Cfop1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_ClassificacaoFiscal\wcf_ClassificacaoFiscal1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cliente\wcf_Cliente1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CodigoIcms\wcf_CodigoIcms1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CondicaoEntrega\wcf_CondicaoEntrega1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_ContaBancaria\wcf_ContaBancaria1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Conversao\wcf_Conversao1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Decisao\wcf_Decisao1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Departamento\wcf_Departamento1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Deposito\wcf_Deposito1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Empresa\wcf_Empresa1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Fabricante\wcf_Fabricante1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Juros\wcf_Juros1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Login\wcf_Login1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Multa\wcf_Multa1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_RamoAtividade\wcf_RamoAtividade1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Rota\wcf_Rota1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Setor\wcf_Setor1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Site\wcf_Site1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_SituacaoTributariaPis\wcf_SituacaoTributariaPis1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_StCofins\wcf_StCofins1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_StIcms\wcf_StIcms1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_StIpi\wcf_StIpi1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_TipoDocumento\wcf_TipoDocumento1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_TipoDocumentoOperacaoValida\wcf_TipoDocumentoOperacaoValida1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_TipoOperacao\wcf_TipoOperacao1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_TipoProduto\wcf_TipoProduto1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_TipoServico\wcf_TipoServico1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Uf\wcf_Uf1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

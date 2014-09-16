@@ -82,6 +82,10 @@ namespace HLP.Base.ClassesBases
                 {
                     (e as TabControl).DataContext = this.Windows.DataContext;
                 }
+                else if (e.GetType() == typeof(AdornerDecorator))
+                {
+                    (e as AdornerDecorator).DataContext = this.Windows.DataContext;
+                }
                 else
                     throw new Exception(message: "Tela não está configurada com os padrões definidos. Contate o Suporte!");
 
@@ -135,7 +139,7 @@ namespace HLP.Base.ClassesBases
             set { _lTextBlocks = value; }
         }
 
-        
+
         private ObservableCollection<ErrorsModel> _lErrorsToView;
 
         public ObservableCollection<ErrorsModel> lErrorsToView

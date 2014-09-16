@@ -23,16 +23,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Uf.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Uf.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Uf.xsd" MetadataType="Schema" ID="64b8d76c-9454-47d6-8e57-5c3a73a03001" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Uf.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_Uf.disco" MetadataType="Disco" ID="92811ff9-b004-4ca0-b385-77577a730734" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Uf.svc?disco" />
-    <MetadataFile FileName="wcf_Uf.wsdl" MetadataType="Wsdl" ID="cac8941e-598f-4ea9-bcd7-0db18f4ed5a5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Uf.svc?wsdl" />
-    <MetadataFile FileName="wcf_Uf1.xsd" MetadataType="Schema" ID="74f92468-34c2-4650-985c-09108dd6c743" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Uf.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_Uf2.xsd" MetadataType="Schema" ID="56021ab6-3310-41c7-8e8b-fd04e384b3f3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Uf.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Uf3.xsd" MetadataType="Schema" ID="b336486c-e820-4511-a22b-8a94c8c1a119" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Uf.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Uf4.xsd" MetadataType="Schema" ID="ee1bb12d-042e-4b55-806e-e5cf0361a5be" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Uf.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Uf5.xsd" MetadataType="Schema" ID="14ce5a46-74fe-4298-b79f-ea7f202342fe" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Uf.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Uf51.xsd" MetadataType="Schema" ID="e80d1d65-0c6b-45f7-9fd1-ac7e75ab4a4e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Uf.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Uf52.xsd" MetadataType="Schema" ID="2cd62bcf-f562-45e1-b8b9-f102d2d6d4dd" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Uf.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Uf53.xsd" MetadataType="Schema" ID="37c4f6b9-8645-467f-84c0-64c2e1bd1a86" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Uf.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Uf54.xsd" MetadataType="Schema" ID="d287dee9-3880-4ac2-bf6c-0c6543ed1c4a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Uf.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Uf1.disco" MetadataType="Disco" ID="eda60214-54ba-4f74-8479-4738215af8b4" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Uf.svc?disco" />
+    <MetadataFile FileName="wcf_Uf1.wsdl" MetadataType="Wsdl" ID="0e4ff4a7-4499-48ae-8005-1dfacc3ae012" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Uf.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

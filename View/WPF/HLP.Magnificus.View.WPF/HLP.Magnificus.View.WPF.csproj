@@ -170,9 +170,6 @@
     <Compile Include="WinConnectionConfig.xaml.cs">
       <DependentUpon>WinConnectionConfig.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WinMessages.xaml.cs">
-      <DependentUpon>WinMessages.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WinSelectConnection.xaml.cs">
       <DependentUpon>WinSelectConnection.xaml</DependentUpon>
     </Compile>
@@ -185,39 +182,37 @@
     <Compile Include="WinLogin.xaml.cs">
       <DependentUpon>WinLogin.xaml</DependentUpon>
     </Compile>
-    <Resource Include="Magnificus.ico" />
-    <None Include="Service References\empresaParametrosService\HLP.Magnificus.View.WPF.empresaParametrosService.EmpresaModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Service References\empresaParametrosService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\empresaParametrosService\configuration.svcinfo" />
     <None Include="Service References\empresaParametrosService\configuration91.svcinfo" />
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros.disco" />
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros.wsdl" />
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros.xsd">
+    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros.disco" />
+    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros.wsdl" />
+    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros1.xsd">
+    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros2.xsd">
+    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros3.xsd">
+    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros4.xsd">
+    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros5.xsd">
+    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros6.xsd">
+    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Resource Include="Magnificus.ico" />
     <Resource Include="x-mark-48.png" />
     <Resource Include="error-7-64.png" />
     <Resource Include="Principal.ico" />
@@ -231,11 +226,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Page Include="Properties\DesignTimeResources.xaml" Condition="'$(DesignTime)'=='true' OR ('$(SolutionPath)'!='' AND Exists('$(SolutionPath)') AND '$(BuildingInsideVisualStudio)'!='true' AND '$(BuildingInsideExpressionBlend)'!='true')">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
-    </Page>
     <Page Include="wdConfig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -249,10 +239,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WinConnectionConfig.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WinMessages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -324,6 +310,10 @@
       <Project>{937c9439-cc70-40d2-96f5-d9ad99c51181}</Project>
       <Name>HLP.Components.ViewModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\HLP.Comum.View.WPF\HLP.Comum.View.WPF.csproj">
       <Project>{ea02e402-18cc-40f4-81a2-4007935f4c67}</Project>
       <Name>HLP.Comum.View.WPF</Name>
@@ -347,6 +337,10 @@
     <ProjectReference Include="..\..\..\HLP.Sales.View.WPF\HLP.Sales.View.WPF.csproj">
       <Project>{629160d8-8a40-4515-a5d8-9c20024fc0e2}</Project>
       <Name>HLP.Sales.View.WPF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Model\HLP.Entries.Model\HLP.Entries.Model.csproj">
+      <Project>{ef298ced-27e9-4647-93d6-883f4dccc9ee}</Project>
+      <Name>HLP.Entries.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Entries.View.WPF\HLP.Entries.View.WPF.csproj">
       <Project>{f6e2fd5e-5581-4362-a072-fce5099cccc1}</Project>
@@ -373,6 +367,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\empresaParametrosService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

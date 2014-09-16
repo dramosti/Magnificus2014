@@ -21,16 +21,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Rota.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Rota.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Rota.xsd" MetadataType="Schema" ID="3e19824d-1430-4bc6-baea-68f8ad3aba65" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Rota.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_Rota1.xsd" MetadataType="Schema" ID="24224b42-3b65-4227-b1a3-a2aa488c7055" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Rota.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_Rota2.xsd" MetadataType="Schema" ID="f924a4a5-885e-48e0-8f20-7ecda50dc6d7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Rota.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_Rota.wsdl" MetadataType="Wsdl" ID="7f2968da-c431-4fcd-aac3-517c7a5a9e2b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Rota.svc?wsdl" />
-    <MetadataFile FileName="wcf_Rota3.xsd" MetadataType="Schema" ID="f252a3bf-3558-421f-bd8c-c88b0948cd9f" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Rota.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Rota4.xsd" MetadataType="Schema" ID="8d69234e-4179-42a4-b55f-d0b765401610" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Rota.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Rota.disco" MetadataType="Disco" ID="c91c120b-5ce0-4669-8b65-49b21a86f742" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Rota.svc?disco" />
+    <MetadataFile FileName="wcf_Rota1.disco" MetadataType="Disco" ID="0338ec46-22f9-497b-895c-64fb9bac08cd" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Rota.svc?disco" />
+    <MetadataFile FileName="wcf_Rota5.xsd" MetadataType="Schema" ID="f376549b-064e-4fe8-a88e-7e4c1e95a656" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Rota.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Rota51.xsd" MetadataType="Schema" ID="9594c73b-0721-4614-ab7d-118e37a2ddef" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Rota.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Rota52.xsd" MetadataType="Schema" ID="f731366e-b902-4bcb-8c5a-9789257bcf1c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Rota.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Rota53.xsd" MetadataType="Schema" ID="acf7469c-263d-4ddb-aec5-d850f52974bb" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Rota.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Rota1.wsdl" MetadataType="Wsdl" ID="c27d33f6-b1ea-4a14-a93b-97218c731597" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Rota.svc?wsdl" />
+    <MetadataFile FileName="wcf_Rota54.xsd" MetadataType="Schema" ID="829c204b-f251-4df5-bf9c-c2e1423bcbc0" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Rota.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

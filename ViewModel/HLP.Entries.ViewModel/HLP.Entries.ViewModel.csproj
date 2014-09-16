@@ -238,8 +238,6 @@
     <None Include="Properties\DataSources\HLP.Components.Model.Models.HlpButtonHierarquiaStruct.datasource" />
     <None Include="Properties\DataSources\HLP.Components.Model.Models.modelToTreeView.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Model.Components.PesquisaPadraoModelContract.datasource" />
-    <None Include="Properties\DataSources\HLP.Comum.Resources.Models.modelToTreeView.datasource" />
-    <None Include="Properties\DataSources\HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Comercial.Tipo_produtoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Fiscal.Tipo_documentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Canal_vendaModel.datasource" />

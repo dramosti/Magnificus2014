@@ -23,16 +23,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CondicaoPagamento.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CondicaoPagamento.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_CondicaoPagamento.xsd" MetadataType="Schema" ID="c878a8d3-8a4d-40f8-b54c-6d602d58fd87" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CondicaoPagamento.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_CondicaoPagamento1.xsd" MetadataType="Schema" ID="53c52f3f-40db-44dc-a5a6-f5304b6df0b4" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CondicaoPagamento.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_CondicaoPagamento2.xsd" MetadataType="Schema" ID="3472a26b-28ce-4774-9ad2-77b28a3fb7d2" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CondicaoPagamento.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_CondicaoPagamento.wsdl" MetadataType="Wsdl" ID="313f8b88-d3ca-4b6a-8852-9df8ff434e6e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CondicaoPagamento.svc?wsdl" />
-    <MetadataFile FileName="wcf_CondicaoPagamento.disco" MetadataType="Disco" ID="88655ce4-640a-4abd-ad57-a0adf2c3dce8" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CondicaoPagamento.svc?disco" />
-    <MetadataFile FileName="wcf_CondicaoPagamento3.xsd" MetadataType="Schema" ID="11c86133-e495-438e-869f-a3554351ae7f" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CondicaoPagamento.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_CondicaoPagamento4.xsd" MetadataType="Schema" ID="7a4df7c5-10fc-4cbf-8398-c390a2d06f77" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CondicaoPagamento.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_CondicaoPagamento1.disco" MetadataType="Disco" ID="8b387c07-4627-4df1-8e37-919d7a617e7e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CondicaoPagamento.svc?disco" />
+    <MetadataFile FileName="wcf_CondicaoPagamento1.wsdl" MetadataType="Wsdl" ID="cedb199b-e743-49d8-a488-d0982bf0d78d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CondicaoPagamento.svc?wsdl" />
+    <MetadataFile FileName="wcf_CondicaoPagamento5.xsd" MetadataType="Schema" ID="c0568294-1d05-4795-bfae-f2d4b0ffc331" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CondicaoPagamento.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_CondicaoPagamento51.xsd" MetadataType="Schema" ID="2df458ca-fb6d-4824-b31f-83773fa6c4d9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CondicaoPagamento.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_CondicaoPagamento52.xsd" MetadataType="Schema" ID="2e302aab-51eb-4c9c-a3c9-aa1a3e72a8d6" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CondicaoPagamento.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_CondicaoPagamento53.xsd" MetadataType="Schema" ID="512a94d4-8014-4775-b1e8-d95807a7efc7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CondicaoPagamento.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_CondicaoPagamento54.xsd" MetadataType="Schema" ID="0bb16d71-31e8-4fee-ac48-58e4a4022f3e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CondicaoPagamento.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -1353,19 +1353,6 @@ namespace HLP.Sales.Model.Models.Comercial
                         this.lOrcamentoItemsRepresentantes = new ObservableCollectionBaseCadastros<Orcamento_Item_RepresentantesModel>();
                         this.idFuncionarioRepresentante = (this.refOrcamentoIde.Target as Orcamento_ideModel).idFuncionarioRepresentante;
                     }
-
-                    //TODO: RESOLVER JÁ
-                    //object retorno = this.GetMethodDataContextWindowValue(xname: "GetOperacoesValidas",
-                    //    _parameters: new object[] { (currentModel as Orcamento_ideModel).idTipoDocumento });
-
-                    //if (retorno != null)
-                    //{
-                    //    this.lTipoOperacao = new ObservableCollection<modelToComboBox>(
-                    //        list: retorno as List<modelToComboBox>);
-
-                    //    if (lTipoOperacao.Count > 0)
-                    //        this.idTipoOperacao = lTipoOperacao.FirstOrDefault().id;
-                    //}
                 }
         }
 
@@ -1382,38 +1369,6 @@ namespace HLP.Sales.Model.Models.Comercial
         }
 
         #region Métodos de Cálculos
-
-        //public void setxRepresentante()
-        //{
-        //    if (this.lOrcamentoItemsRepresentantes == null)
-        //    {
-        //        this.xRepresentanteItem = string.Empty;
-        //    }
-        //    else if (this.lOrcamentoItemsRepresentantes.Count() > 1)
-        //    {
-        //        this.xRepresentanteItem = "Vários";
-        //    }
-        //    else if (this.lOrcamentoItemsRepresentantes.Count() == 0)
-        //    {
-        //        this.xRepresentanteItem = string.Empty;
-        //    }
-        //    else
-        //    {
-        //        if (this.lOrcamentoItemsRepresentantes != null)
-        //        {
-        //            if (this.lOrcamentoItemsRepresentantes.Count > 0)
-        //            {
-        //                //TODO: RESOLVER JÁ
-        //                //FuncionarioModel f = (this.GetMethodDataContextWindowValue(
-        //                //            xname: "GetFuncionario", _parameters: new object[] { 
-        //                //        this.lOrcamentoItemsRepresentantes.FirstOrDefault().idRepresentante }) as FuncionarioModel);
-
-        //                //if (f != null)
-        //                //    this.xRepresentanteItem = f.idFuncionario.ToString() + " - " + f.xNome;
-        //            }
-        //        }
-        //    }
-        //}
 
         public void DescValidated(decimal p, bool bShowWdSupervisor = true)
         {

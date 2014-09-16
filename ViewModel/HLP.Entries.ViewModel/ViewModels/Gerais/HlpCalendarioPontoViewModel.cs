@@ -23,7 +23,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         {
             resource = new ResourceDictionary
                     {
-                        Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
+                        Source = new Uri("/HLP.Resources.View.WPF;component/Revisar/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
                     };           
             command = new HlpCalendarioPontoCommand(this);
         }

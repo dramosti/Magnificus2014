@@ -48,7 +48,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         {
             ResourceDictionary resource = new ResourceDictionary
             {
-                Source = new Uri("/HLP.Comum.Resources;component/Styles/Sales/Orcamento/Template/Buttons_Shurtcut.xaml", UriKind.RelativeOrAbsolute)
+                Source = new Uri("/HLP.Resources.View.WPF;component/Revisar/Buttons_Shurtcut.xaml", UriKind.RelativeOrAbsolute)
             };
 
             comm = new OrcamentoCommands(objViewModel: this);
@@ -104,6 +104,46 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             this.getRamoAtividade = comm.GetRamoAtividade;
             this.getFamiliaProduto = comm.GetFamiliaProduto;
             this.getClassificacaoFiscal = comm.GetClassificacaoFiscal;
+            this.getTipoDocumento = comm.GetTipoDocumento;
+            this.getCfop = comm.GetCfop;
+            this.getStIpi = comm.GetStIpi;
+            this.getStPis = comm.GetStPis;
+            this.getStIcms = comm.GetStIcms;
+            this.getStCofins = comm.GetCofins;
+        }
+
+        private Func<int, bool, object> _getStCofins;
+
+        public Func<int, bool, object> getStCofins
+        {
+            get { return _getStCofins; }
+            set { _getStCofins = value; }
+        }
+
+
+        private Func<int, bool, object> _getStPis;
+
+        public Func<int, bool, object> getStPis
+        {
+            get { return _getStPis; }
+            set { _getStPis = value; }
+        }
+
+        private Func<int, bool, object> _getStIcms;
+
+        public Func<int, bool, object> getStIcms
+        {
+            get { return _getStIcms; }
+            set { _getStIcms = value; }
+        }
+
+
+        private Func<int, bool, object> _getStIpi;
+
+        public Func<int, bool, object> getStIpi
+        {
+            get { return _getStIpi; }
+            set { _getStIpi = value; }
         }
 
 
@@ -118,6 +158,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
                 base.NotifyPropertyChanged(propertyName: "getClassificacaoFiscal");
             }
         }
+
 
 
         private Func<int, bool, object> _getCliente;
@@ -286,6 +327,15 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
                 base.NotifyPropertyChanged(propertyName: "getFamiliaProduto");
             }
         }
+
+        private Func<int, bool, object> _getCfop;
+
+        public Func<int, bool, object> getCfop
+        {
+            get { return _getCfop; }
+            set { _getCfop = value; }
+        }
+
 
         private Orcamento_ItemModel _currentItem;
 

@@ -23,16 +23,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_DescontoAVista.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_DescontoAVista.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_DescontoAVista.xsd" MetadataType="Schema" ID="c7a10a79-010b-4b7b-b133-5246c7a24938" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_DescontoAVista.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_DescontoAVista1.xsd" MetadataType="Schema" ID="d111f20a-f68f-4124-b767-2d7fec3166a7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_DescontoAVista.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_DescontoAVista.wsdl" MetadataType="Wsdl" ID="f72fb027-4e76-4177-b9a8-df86bee31f93" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_DescontoAVista.svc?wsdl" />
-    <MetadataFile FileName="wcf_DescontoAVista2.xsd" MetadataType="Schema" ID="7e8e29c0-fa2c-49d2-8104-c7b7a490024a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_DescontoAVista.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_DescontoAVista3.xsd" MetadataType="Schema" ID="bef1f5d3-45c0-44d2-af98-f6ba3a9ec526" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_DescontoAVista.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_DescontoAVista.disco" MetadataType="Disco" ID="6481d1e2-f94f-45b4-96ca-2adc85f7ab1f" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_DescontoAVista.svc?disco" />
-    <MetadataFile FileName="wcf_DescontoAVista4.xsd" MetadataType="Schema" ID="3d18a7ca-a4c2-4b4f-9d16-7e8f95a95b6d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_DescontoAVista.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_DescontoAVista5.xsd" MetadataType="Schema" ID="054817cc-4be0-4176-a18a-8f8485b5717e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_DescontoAVista.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_DescontoAVista1.disco" MetadataType="Disco" ID="42e94662-e150-4ed1-82db-3e696ec36009" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_DescontoAVista.svc?disco" />
+    <MetadataFile FileName="wcf_DescontoAVista51.xsd" MetadataType="Schema" ID="88f4822f-84e9-4e6b-864a-afa7292d3534" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_DescontoAVista.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_DescontoAVista52.xsd" MetadataType="Schema" ID="7c3ae548-9040-45e0-909e-c33e92b4dff9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_DescontoAVista.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_DescontoAVista53.xsd" MetadataType="Schema" ID="9743abd0-a424-4e49-b5d3-1fc85f9904a5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_DescontoAVista.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_DescontoAVista54.xsd" MetadataType="Schema" ID="9c8107a9-094e-4a59-aaf6-f40f8134ab6f" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_DescontoAVista.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_DescontoAVista1.wsdl" MetadataType="Wsdl" ID="adf5c20f-6db6-44e7-8bdf-1971551fdcb9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_DescontoAVista.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

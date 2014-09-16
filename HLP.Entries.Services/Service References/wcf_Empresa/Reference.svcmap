@@ -23,18 +23,18 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Empresa.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Empresa.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Empresa.xsd" MetadataType="Schema" ID="5b62bca0-304a-4966-9c2c-f4ae98fa6190" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Empresa.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Empresa1.xsd" MetadataType="Schema" ID="ae6bacbc-58a3-4fdf-917f-e799e5822395" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Empresa.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_Empresa2.xsd" MetadataType="Schema" ID="364e4fcc-cc64-4b9f-958c-0a49c247ee1d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Empresa.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_Empresa3.xsd" MetadataType="Schema" ID="8490a6e6-6a00-4654-8aaf-9e4b39b6029b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Empresa.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Empresa.wsdl" MetadataType="Wsdl" ID="aab0ca95-253f-4c91-9b83-c9ed60d35a63" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Empresa.svc?wsdl" />
-    <MetadataFile FileName="wcf_Empresa4.xsd" MetadataType="Schema" ID="c0ae0964-0018-4857-9020-8d58093dd868" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Empresa.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_Empresa5.xsd" MetadataType="Schema" ID="0f548b38-4874-4a7d-8b62-b27bb6f9e055" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Empresa.svc?xsd=xsd5" />
-    <MetadataFile FileName="wcf_Empresa6.xsd" MetadataType="Schema" ID="6caf385f-aed3-4a4e-8f96-350986acf0b9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Empresa.svc?xsd=xsd6" />
-    <MetadataFile FileName="wcf_Empresa.disco" MetadataType="Disco" ID="c3189457-316a-441c-a9a7-89dc0d783876" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Empresa.svc?disco" />
+    <MetadataFile FileName="wcf_Empresa7.xsd" MetadataType="Schema" ID="e41842fa-ec5a-45c3-8b0a-2ec77459d98f" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Empresa.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Empresa71.xsd" MetadataType="Schema" ID="27760f5e-4779-46dc-9502-96ff292f44b0" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Empresa.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Empresa1.wsdl" MetadataType="Wsdl" ID="6fa1a6a7-6d96-404c-8ac4-dc008cb3b153" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Empresa.svc?wsdl" />
+    <MetadataFile FileName="wcf_Empresa72.xsd" MetadataType="Schema" ID="2fa33fe7-a611-4b35-b618-6ea1cfff72d9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Empresa.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Empresa1.disco" MetadataType="Disco" ID="05fc24bb-ba9f-41df-acaf-0fc7cb85ee37" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Empresa.svc?disco" />
+    <MetadataFile FileName="wcf_Empresa73.xsd" MetadataType="Schema" ID="be3a9023-2c07-4283-9948-a381e1b88e4b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Empresa.svc?xsd=xsd6" />
+    <MetadataFile FileName="wcf_Empresa74.xsd" MetadataType="Schema" ID="db07ee7b-246a-40a7-80cc-81c4002e5ba6" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Empresa.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Empresa75.xsd" MetadataType="Schema" ID="4aaa2b31-8d32-48a7-8c02-909ba01e46c1" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Empresa.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_Empresa76.xsd" MetadataType="Schema" ID="6d5bf55c-f75c-457a-8902-01b16ba26afa" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Empresa.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

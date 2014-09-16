@@ -17,6 +17,8 @@ namespace HLP.Entries.Services.wcf_Acesso {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_Acesso.DocumentosModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_Acesso.modelComum))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_Acesso.EnderecoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Familia_produtoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Familia_Produto_ClassesModel))]
@@ -31,12 +33,6 @@ namespace HLP.Entries.Services.wcf_Acesso {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.Services.wcf_Acesso.PesquisaPadraoModelContract> lcamposSqlNotNullField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.Services.wcf_Acesso.statusModel statusField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -44,32 +40,6 @@ namespace HLP.Entries.Services.wcf_Acesso {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.Services.wcf_Acesso.PesquisaPadraoModelContract> lcamposSqlNotNull {
-            get {
-                return this.lcamposSqlNotNullField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.lcamposSqlNotNullField, value) != true)) {
-                    this.lcamposSqlNotNullField = value;
-                    this.RaisePropertyChanged("lcamposSqlNotNull");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.Services.wcf_Acesso.statusModel status {
-            get {
-                return this.statusField;
-            }
-            set {
-                if ((this.statusField.Equals(value) != true)) {
-                    this.statusField = value;
-                    this.RaisePropertyChanged("status");
-                }
             }
         }
         
@@ -85,15 +55,189 @@ namespace HLP.Entries.Services.wcf_Acesso {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DocumentosModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
+    [System.SerializableAttribute()]
+    public partial class DocumentosModel : HLP.Entries.Services.wcf_Acesso.modelBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idDocumentoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idEmpresaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idPkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xDocumentoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xExtensaoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xNameTableField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xPathField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idDocumento {
+            get {
+                return this.idDocumentoField;
+            }
+            set {
+                if ((this.idDocumentoField.Equals(value) != true)) {
+                    this.idDocumentoField = value;
+                    this.RaisePropertyChanged("idDocumento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idEmpresa {
+            get {
+                return this.idEmpresaField;
+            }
+            set {
+                if ((this.idEmpresaField.Equals(value) != true)) {
+                    this.idEmpresaField = value;
+                    this.RaisePropertyChanged("idEmpresa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idPk {
+            get {
+                return this.idPkField;
+            }
+            set {
+                if ((this.idPkField.Equals(value) != true)) {
+                    this.idPkField = value;
+                    this.RaisePropertyChanged("idPk");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xDocumento {
+            get {
+                return this.xDocumentoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xDocumentoField, value) != true)) {
+                    this.xDocumentoField = value;
+                    this.RaisePropertyChanged("xDocumento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xExtensao {
+            get {
+                return this.xExtensaoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xExtensaoField, value) != true)) {
+                    this.xExtensaoField = value;
+                    this.RaisePropertyChanged("xExtensao");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xNameTable {
+            get {
+                return this.xNameTableField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xNameTableField, value) != true)) {
+                    this.xNameTableField = value;
+                    this.RaisePropertyChanged("xNameTable");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xPath {
+            get {
+                return this.xPathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xPathField, value) != true)) {
+                    this.xPathField = value;
+                    this.RaisePropertyChanged("xPath");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="modelComum", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_Acesso.EnderecoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Familia_produtoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Familia_Produto_ClassesModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.FuncionarioModel))]
+    public partial class modelComum : HLP.Entries.Services.wcf_Acesso.modelBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<HLP.Entries.Services.wcf_Acesso.DocumentosModel> lDocumentosField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<HLP.Entries.Services.wcf_Acesso.DocumentosModel> lDocumentos {
+            get {
+                return this.lDocumentosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.lDocumentosField, value) != true)) {
+                    this.lDocumentosField = value;
+                    this.RaisePropertyChanged("lDocumentos");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EnderecoModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models")]
     [System.SerializableAttribute()]
-    public partial class EnderecoModel : HLP.Entries.Services.wcf_Acesso.modelBase {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_Acesso.modelBase))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Services.wcf_Acesso.EnderecoModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.FuncionarioModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Familia_produtoModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Familia_produtoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Familia_Produto_ClassesModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Familia_Produto_ClassesModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_Acesso.modelComum))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Services.wcf_Acesso.DocumentosModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_Acesso.DocumentosModel))]
+    public partial class EnderecoModel : HLP.Entries.Services.wcf_Acesso.modelComum {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool bCanFindCepField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> idAgenciaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> idCidadeField;
+        private int idCidadeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> idClienteFornecedorField;
@@ -120,6 +264,9 @@ namespace HLP.Entries.Services.wcf_Acesso {
         private string nNumeroField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private object objCidadeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte stLogradouroField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -138,6 +285,9 @@ namespace HLP.Entries.Services.wcf_Acesso {
         private string xCaixaPostalField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xCidadeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string xComplementoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -145,6 +295,19 @@ namespace HLP.Entries.Services.wcf_Acesso {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string xNomeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool bCanFindCep {
+            get {
+                return this.bCanFindCepField;
+            }
+            set {
+                if ((this.bCanFindCepField.Equals(value) != true)) {
+                    this.bCanFindCepField = value;
+                    this.RaisePropertyChanged("bCanFindCep");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<int> idAgencia {
@@ -160,7 +323,7 @@ namespace HLP.Entries.Services.wcf_Acesso {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> idCidade {
+        public int idCidade {
             get {
                 return this.idCidadeField;
             }
@@ -277,6 +440,19 @@ namespace HLP.Entries.Services.wcf_Acesso {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public object objCidade {
+            get {
+                return this.objCidadeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.objCidadeField, value) != true)) {
+                    this.objCidadeField = value;
+                    this.RaisePropertyChanged("objCidade");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public byte stLogradouro {
             get {
                 return this.stLogradouroField;
@@ -355,6 +531,19 @@ namespace HLP.Entries.Services.wcf_Acesso {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xCidade {
+            get {
+                return this.xCidadeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xCidadeField, value) != true)) {
+                    this.xCidadeField = value;
+                    this.RaisePropertyChanged("xCidade");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string xComplemento {
             get {
                 return this.xComplementoField;
@@ -392,145 +581,6 @@ namespace HLP.Entries.Services.wcf_Acesso {
                 }
             }
         }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PesquisaPadraoModelContract", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases")]
-    [System.SerializableAttribute()]
-    public partial class PesquisaPadraoModelContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CHARACTER_MAXIMUM_LENGTHField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string COLUMN_NAMEField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DATA_TYPEField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IS_NULLABLEField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CHARACTER_MAXIMUM_LENGTH {
-            get {
-                return this.CHARACTER_MAXIMUM_LENGTHField;
-            }
-            set {
-                if ((this.CHARACTER_MAXIMUM_LENGTHField.Equals(value) != true)) {
-                    this.CHARACTER_MAXIMUM_LENGTHField = value;
-                    this.RaisePropertyChanged("CHARACTER_MAXIMUM_LENGTH");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string COLUMN_NAME {
-            get {
-                return this.COLUMN_NAMEField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.COLUMN_NAMEField, value) != true)) {
-                    this.COLUMN_NAMEField = value;
-                    this.RaisePropertyChanged("COLUMN_NAME");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string DATA_TYPE {
-            get {
-                return this.DATA_TYPEField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DATA_TYPEField, value) != true)) {
-                    this.DATA_TYPEField = value;
-                    this.RaisePropertyChanged("DATA_TYPE");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string IS_NULLABLE {
-            get {
-                return this.IS_NULLABLEField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IS_NULLABLEField, value) != true)) {
-                    this.IS_NULLABLEField = value;
-                    this.RaisePropertyChanged("IS_NULLABLE");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="statusModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases")]
-    public enum statusModel : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        nenhum = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        criado = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        alterado = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        excluido = 3,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TipoCertificacao", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
-    public enum TipoCertificacao : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        ENSINOMEDIO = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        ENSINOSUPERIOR = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        MBAPOSGRADUACAO = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        MESTRADO = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        DOUTORADO = 4,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        POSDOUTORADO = 5,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        CURSOSCOMPLEMENTARES = 6,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        OUTROS = 7,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

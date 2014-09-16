@@ -186,6 +186,8 @@
     <Compile Include="Gerais\Converters\xDisplayFormaPagamentoConverter.cs" />
     <Compile Include="Gerais\Converters\xDisplayFormaPagamentoVisiblityConverter.cs" />
     <Compile Include="Gerais\Financeiro\Converter\DiaPagamento_Converter.cs" />
+    <Compile Include="Gerais\Financeiro\Converter\EnableDiaMultValueConverter.cs" />
+    <Compile Include="Gerais\Financeiro\Converter\EnableMesMultValueConverter.cs" />
     <Compile Include="Gerais\Financeiro\Converter\qtdDiasMesesEnabledConverter.cs" />
     <Compile Include="Gerais\Financeiro\WinAgencia.xaml.cs">
       <DependentUpon>WinAgencia.xaml</DependentUpon>
@@ -289,11 +291,6 @@
     </Compile>
     <Compile Include="RecursosHumanos\WinSetor.xaml.cs">
       <DependentUpon>WinSetor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\produtoService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Teste.xaml.cs">
       <DependentUpon>Teste.xaml</DependentUpon>
@@ -501,10 +498,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Properties\DesignTimeResources1.xaml" Condition="'$(DesignTime)'=='true' OR ('$(SolutionPath)'!='' AND Exists('$(SolutionPath)') AND '$(BuildingInsideVisualStudio)'!='true' AND '$(BuildingInsideExpressionBlend)'!='true')">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="RecursosHumanos\HlpCalendarioPonto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -581,28 +574,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\produtoService\wcf_Produto.wsdl" />
-    <None Include="Service References\produtoService\wcf_Produto.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\produtoService\wcf_Produto1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\produtoService\wcf_Produto2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\produtoService\wcf_Produto3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\produtoService\wcf_Produto4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\produtoService\wcf_Produto5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\produtoService\wcf_Produto6.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -662,24 +633,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\produtoService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\produtoService\wcf_Produto.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\produtoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\produtoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\produtoService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

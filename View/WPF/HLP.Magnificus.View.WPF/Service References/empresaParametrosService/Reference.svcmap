@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9c6d9167-88c0-4197-a945-b24472c51cdf" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c9c814e8-5fd7-461e-92de-0ac762c84fe6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -9,30 +9,30 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings>
-      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
-    </CollectionMappings>
+    <CollectionMappings />
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
     <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
-    <ReferencedAssemblies />
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
     <ReferencedDataContractTypes />
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceEmpresaParametros.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_EmpresaParametros.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceEmpresaParametros.xsd" MetadataType="Schema" ID="12020ab1-357b-49e2-a4f9-40852345d9e7" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceEmpresaParametros.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceEmpresaParametros.disco" MetadataType="Disco" ID="1572c2bf-816c-46ef-bb30-aba67834a186" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceEmpresaParametros.svc?disco" />
-    <MetadataFile FileName="serviceEmpresaParametros.wsdl" MetadataType="Wsdl" ID="7b048670-47a5-4337-830a-b00009322769" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceEmpresaParametros.svc?wsdl" />
-    <MetadataFile FileName="serviceEmpresaParametros1.xsd" MetadataType="Schema" ID="86cf2fb7-9f92-4e9d-acbc-fb41d7c9913d" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceEmpresaParametros.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceEmpresaParametros2.xsd" MetadataType="Schema" ID="8ba5c1cc-a52a-4c13-b9fc-f93fdf272f42" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceEmpresaParametros.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceEmpresaParametros3.xsd" MetadataType="Schema" ID="708fc83d-84f4-4383-96cb-0378d40af9f2" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceEmpresaParametros.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceEmpresaParametros4.xsd" MetadataType="Schema" ID="086d97c5-b4a8-4837-a8b3-4be82630ec7f" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceEmpresaParametros.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceEmpresaParametros5.xsd" MetadataType="Schema" ID="39472b50-f480-48e8-bf48-5ab6fcb4df1d" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceEmpresaParametros.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceEmpresaParametros6.xsd" MetadataType="Schema" ID="ec715010-b682-4b60-9719-8c2088d1d63c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceEmpresaParametros.svc?xsd=xsd6" />
+    <MetadataFile FileName="wcf_EmpresaParametros.xsd" MetadataType="Schema" ID="c65f8413-dc90-4ffe-b579-53efc0c00f53" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_EmpresaParametros.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_EmpresaParametros1.xsd" MetadataType="Schema" ID="f1b7cec2-5766-435e-9b08-e01f39a8ad61" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_EmpresaParametros.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_EmpresaParametros2.xsd" MetadataType="Schema" ID="49cf5281-7105-4987-9662-1720c718aaf3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_EmpresaParametros.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_EmpresaParametros3.xsd" MetadataType="Schema" ID="94871a7b-631b-4e64-95b5-f99ce3488a32" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_EmpresaParametros.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_EmpresaParametros4.xsd" MetadataType="Schema" ID="8b5efb59-ab7d-4930-9bc5-8d3c401b2d46" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_EmpresaParametros.svc?xsd=xsd6" />
+    <MetadataFile FileName="wcf_EmpresaParametros.wsdl" MetadataType="Wsdl" ID="f34e19c3-7701-4496-9285-76cb6c5e0bb1" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_EmpresaParametros.svc?wsdl" />
+    <MetadataFile FileName="wcf_EmpresaParametros5.xsd" MetadataType="Schema" ID="d2690061-e2fa-400e-b614-95c39b16de07" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_EmpresaParametros.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_EmpresaParametros6.xsd" MetadataType="Schema" ID="912754b5-7852-41af-b046-8e672f17b5a0" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_EmpresaParametros.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_EmpresaParametros.disco" MetadataType="Disco" ID="7ef04cf7-bcf0-46a6-9a77-dfa2d4f35dad" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_EmpresaParametros.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

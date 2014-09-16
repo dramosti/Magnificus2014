@@ -23,16 +23,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CargaTribMediaStIcms.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CargaTribMediaStIcms.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_CargaTribMediaStIcms.xsd" MetadataType="Schema" ID="893a1525-14c6-42ea-b7d2-fccf70677dc1" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CargaTribMediaStIcms.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_CargaTribMediaStIcms1.xsd" MetadataType="Schema" ID="4bb97864-d65a-4ec4-9953-a0fd56705ab5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CargaTribMediaStIcms.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_CargaTribMediaStIcms.disco" MetadataType="Disco" ID="d733ff52-29b4-4c86-a142-d502f3af5415" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CargaTribMediaStIcms.svc?disco" />
-    <MetadataFile FileName="wcf_CargaTribMediaStIcms2.xsd" MetadataType="Schema" ID="42612154-3614-4a00-a003-e13e326cb6d0" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CargaTribMediaStIcms.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_CargaTribMediaStIcms3.xsd" MetadataType="Schema" ID="94e1b269-280c-4c86-bb21-f8b7a2563572" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CargaTribMediaStIcms.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_CargaTribMediaStIcms4.xsd" MetadataType="Schema" ID="add674af-3952-4194-bab3-efa0d98c41da" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CargaTribMediaStIcms.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_CargaTribMediaStIcms.wsdl" MetadataType="Wsdl" ID="4c6a8b7b-69ee-4bf5-aa92-e3d0f612becc" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CargaTribMediaStIcms.svc?wsdl" />
+    <MetadataFile FileName="wcf_CargaTribMediaStIcms1.disco" MetadataType="Disco" ID="623c107a-5a57-4dcf-ac54-6f0dae317d62" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CargaTribMediaStIcms.svc?disco" />
+    <MetadataFile FileName="wcf_CargaTribMediaStIcms5.xsd" MetadataType="Schema" ID="85070454-8783-4ab5-a63e-86ae2cc0c296" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CargaTribMediaStIcms.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_CargaTribMediaStIcms51.xsd" MetadataType="Schema" ID="2976c3cb-2892-4ae4-9e99-a51c276114e9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CargaTribMediaStIcms.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_CargaTribMediaStIcms52.xsd" MetadataType="Schema" ID="f4f91db9-a345-4dd8-af9e-1eb219af7b81" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CargaTribMediaStIcms.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_CargaTribMediaStIcms53.xsd" MetadataType="Schema" ID="a4eaecd3-4cad-4994-a0e0-57b2e711b239" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CargaTribMediaStIcms.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_CargaTribMediaStIcms1.wsdl" MetadataType="Wsdl" ID="92a23e1a-36e3-4705-a667-6340e6da58f6" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CargaTribMediaStIcms.svc?wsdl" />
+    <MetadataFile FileName="wcf_CargaTribMediaStIcms54.xsd" MetadataType="Schema" ID="8b2f3104-9d95-4e17-980d-3933760206aa" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_CargaTribMediaStIcms.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
