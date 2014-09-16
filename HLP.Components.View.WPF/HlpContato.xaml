@@ -63,15 +63,14 @@
                   ItemsSource="{Binding ElementName=ucContatos, Path=ItemsSourceContatos}" 
                   IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnlyUserControl}"
                   AutoGenerateColumns="False"
-                  CanUserAddRows="True">
+                  CanUserAddRows="True" SelectionUnit="CellOrRowHeader">
             <Components:CustomDataGrid.Resources>
                 <Style TargetType="DataGridRowHeader">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
                 </Style>
             </Components:CustomDataGrid.Resources>
             <Components:CustomDataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Principal"
-                                        Binding="{Binding stPrincipal,                    
+                <DataGridCheckBoxColumn Header="Principal" Binding="{Binding stPrincipal,                    
                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"></DataGridCheckBoxColumn>
                 <DataGridTextColumn Header="Nome" Binding="{Binding xNome,                    
                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"

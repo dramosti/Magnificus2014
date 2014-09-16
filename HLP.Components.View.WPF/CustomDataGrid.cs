@@ -111,7 +111,8 @@ namespace HLP.Components.View.WPF
                     }
 
 
-                    this.SelectedCells.Clear();
+                    if (this.SelectedCells.Count > 0)
+                        this.SelectedCells.Clear();
                     c.Focus();
 
                     if (e.Key != System.Windows.Input.Key.Up && e.Key != System.Windows.Input.Key.Down)
@@ -226,16 +227,42 @@ namespace HLP.Components.View.WPF
                     if (c.IsEditing)
                     {
                         int indexColumn = 0;
+
                         if (e.Key == System.Windows.Input.Key.Left)
                         {
-                            indexColumn = this.Columns.FirstOrDefault(i => i.Visibility == System.Windows.Visibility.Visible)
-                                == this.CurrentColumn ? this.Columns.IndexOf(item: this.CurrentColumn) :
-                                this.Columns.IndexOf(item: this.CurrentColumn) - 1;
+                            if (this.CurrentColumn == this.Columns.FirstOrDefault(i => i.Visibility == System.Windows.Visibility.Visible))
+                                return;
+
+                            DataGridColumn column = null;
+                            for (int i = (this.Columns.IndexOf(item: this.CurrentColumn) - 1); i >= this.Columns.IndexOf(item: this.Columns.
+                                FirstOrDefault(col => col.Visibility == System.Windows.Visibility.Visible)); i--)
+                            {
+                                column = this.Columns[index: i];
+
+                                if (column.Visibility == System.Windows.Visibility.Visible)
+                                    break;
+                            }
+
+                            indexColumn = column == null ? this.Columns.IndexOf(
+                                this.Columns.FirstOrDefault(i => i.Visibility == System.Windows.Visibility.Visible)) : this.Columns.IndexOf(item: column);
                         }
                         else if (e.Key == System.Windows.Input.Key.Right)
                         {
-                            indexColumn = this.CurrentColumn == this.Columns.LastOrDefault(i => i.Visibility == System.Windows.Visibility.Visible)
-                                ? this.Columns.IndexOf(item: this.CurrentColumn) : this.Columns.IndexOf(item: this.CurrentColumn) + 1;
+                            if (this.CurrentColumn == this.Columns.LastOrDefault(i => i.Visibility == System.Windows.Visibility.Visible))
+                                return;
+
+                            DataGridColumn column = null;
+                            for (int i = (this.Columns.IndexOf(item: this.CurrentColumn) + 1); i <= this.Columns.IndexOf(item: this.Columns.
+                                LastOrDefault(col => col.Visibility == System.Windows.Visibility.Visible)); i++)
+                            {
+                                column = this.Columns[index: i];
+
+                                if (column.Visibility == System.Windows.Visibility.Visible)
+                                    break;
+                            }
+
+                            indexColumn = column == null ? this.Columns.IndexOf(
+                                this.Columns.LastOrDefault(i => i.Visibility == System.Windows.Visibility.Visible)) : this.Columns.IndexOf(item: column);
                         }
                         else if (e.Key == System.Windows.Input.Key.Down)
                         {
@@ -260,7 +287,8 @@ namespace HLP.Components.View.WPF
                             indexColumn = this.Columns.IndexOf(item: this.CurrentColumn);
                         }
 
-                        this.SelectedCells.Clear();
+                        if (this.SelectedCells.Count > 0)
+                            this.SelectedCells.Clear();
 
                         DataGridCell cellToFocus = Util.GetCell(grid: this, row: r,
                                 column: indexColumn);

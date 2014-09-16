@@ -92,34 +92,40 @@
                          AutoGenerateColumns="False" 
                          SelectionUnit="CellOrRowHeader" 
                          CanUserReorderColumns="False"
-                         CanUserDeleteRows="True" CanUserAddRows="True" SelectedCellsChanged="DataGrid_SelectedCellsChanged_1">
+                         SelectedCellsChanged="DataGrid_SelectedCellsChanged_1">
                         <Components:CustomDataGrid.Columns>
                             <DataGridTemplateColumn Header="Semana/Mês" Width="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path=collectionSemanaMes, Converter={StaticResource selectedItemConverter}, ConverterParameter={StaticResource collectionSemanaMes}}" />                                        
+                                        <TextBlock Text="{Binding Path=stSemanaMes, Converter={StaticResource selectedItemConverter}, ConverterParameter={StaticResource collectionSemanaMes}}" />                                        
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellEditingTemplate>
                                     <DataTemplate>
-                                        <Components:CustomComboBox ItemsSource="{StaticResource collectionSemanaMes}" 
-                                                                   SelectedItem="{Binding Path=stSemanaMes, Converter={StaticResource selectedItemConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ConverterParameter={StaticResource collectionSemanaMes}}"/>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName=cbx}" >
+                                            <Components:CustomComboBox x:Name="cbx" ItemsSource="{StaticResource collectionSemanaMes}" 
+                                                                   SelectedItem="{Binding Path=stSemanaMes, Converter={StaticResource selectedItemConverter}, 
+                                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, 
+                                                ConverterParameter={StaticResource collectionSemanaMes}}"/>
+                                        </Grid>                                        
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>                                
                             </DataGridTemplateColumn>
                             <DataGridTemplateColumn Header="Dia Útil" Width="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Path=collectionSemanaMes, Converter={StaticResource selectedItemConverter}, 
+                                        <TextBlock Text="{Binding Path=stDiaUtil, Converter={StaticResource selectedItemConverter}, 
                                             ConverterParameter={StaticResource collectionDias}}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellEditingTemplate>
                                     <DataTemplate>
-                                        <Components:CustomComboBox ItemsSource="{StaticResource collectionDias}" 
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName=cbx}" >
+                                            <Components:CustomComboBox x:Name="cbx" ItemsSource="{StaticResource collectionDias}" 
                                                                    SelectedItem="{Binding Path=stDiaUtil, Converter={StaticResource selectedItemConverter}, 
                                                                     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, 
                                                                     ConverterParameter={StaticResource collectionDias}}"/>
+                                        </Grid>                                        
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>

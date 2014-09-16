@@ -122,7 +122,21 @@ namespace HLP.Sales.Model.Models.Comercial
 
                     if ((this.lOrcamento_Itens.Count
                             > 0))
-                        item.nItem = this.lOrcamento_Itens.Max(i => i.nItem).Value + 1;
+                    {
+                        int? cont = null;
+                        if (this.lOrcamento_Itens.Count == 1)
+                        {
+                            Orcamento_ItemModel objItem = this.lOrcamento_Itens.FirstOrDefault();
+
+                            cont = objItem.nItem ?? 1;
+                        }
+                        else
+                        {
+                            cont = this.lOrcamento_Itens.Max(i => i.nItem).Value;
+                        }
+
+                        item.nItem = cont == null ? 1 : cont + 1;
+                    }
                     else
                         item.nItem = 1;
 

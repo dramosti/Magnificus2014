@@ -66,8 +66,8 @@ namespace HLP.Base.ClassesBases
         {
             this.operationModel = OperationModel.searching;
 
-            CamposSqlNotNullModel x = lCamposSqlNotNull._lCamposSql.FirstOrDefault(i => i.xTabela
-                      == xTabela);
+            CamposSqlNotNullModel x = lCamposSqlNotNull._lCamposSql.FirstOrDefault(i => i.xTabela.ToUpper()
+                      == xTabela.ToUpper());
 
             if (x == null)
                 return;
