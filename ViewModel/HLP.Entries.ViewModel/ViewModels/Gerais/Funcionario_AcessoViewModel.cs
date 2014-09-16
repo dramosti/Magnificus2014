@@ -36,5 +36,23 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         {
             return this.comm.ValidaUsuario(xLogin: xLogin, xSenha: xSenha, idFuncionario: idFuncionario);
         }
+
+
+
+        
+        private string _xFuncionario;
+
+        public string xFuncionario
+        {
+            get { return _xFuncionario; }
+            set
+            {
+                _xFuncionario = value;
+                base.NotifyPropertyChanged(propertyName: "xFuncionario");
+            }
+        }
+        
+
+        
     }
 }

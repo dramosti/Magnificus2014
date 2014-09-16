@@ -44,7 +44,7 @@ namespace HLP.Base.Static
                 Convert.ToDateTime(s);
                 return true;
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return false;
             }
@@ -363,7 +363,10 @@ namespace HLP.Base.Static
         public static void SetPropertyValue(this object containingObject, string propertyName, object newValue)
         {
             if (containingObject != null)
-                containingObject.GetType().InvokeMember(propertyName, BindingFlags.SetProperty, null, containingObject, new object[] { newValue });
+                try
+                { containingObject.GetType().InvokeMember(propertyName, BindingFlags.SetProperty, null, containingObject, new object[] { newValue }); }
+                catch (Exception)
+                { }
         }
 
         public static object GetPropertyValue(this object value, string sNameProperty)

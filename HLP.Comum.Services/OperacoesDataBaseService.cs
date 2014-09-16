@@ -37,10 +37,22 @@ namespace HLP.Comum.Services
 
         public List<RecordsSqlModel> GetRecordsFKUsed(string xMessage, string xValor)
         {
-            string xTabela = xMessage.Split(
-                    separator: new string[] { "table" }
+            string xTabela = "";
+            try
+            {
+              xTabela=  xMessage.Split(
+                 separator: new string[] { "table" }
+                 , options: StringSplitOptions.None)[1].ToString()
+                 .Split(separator: '"')[1].ToString().Split('"')[0].ToString();
+            }
+            catch (Exception ex)
+            {
+                xTabela = xMessage.Split(
+                    separator: new string[] { "tabela" }
                     , options: StringSplitOptions.None)[1].ToString()
                     .Split(separator: '"')[1].ToString().Split('"')[0].ToString();
+            }
+             
             string xCampo = xMessage.Split(separator: new string[] { "column" }, options: StringSplitOptions.None)[1].ToString().Split(separator: '\'')[1];
 
             switch (Sistema.bOnline)

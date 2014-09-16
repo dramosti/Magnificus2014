@@ -21,10 +21,21 @@ namespace HLP.Comum.ViewModel.Commands
         public void ShowWinExclusionDenied(string xMessage, string xValor)
         {
             List<RecordsSqlModel> l = objService.GetRecordsFKUsed(xMessage: xMessage, xValor: xValor);
-            string xTabela = xMessage.Split(
-                separator: new string[] { "table" }
-                , options: StringSplitOptions.None)[1].ToString()
-                .Split(separator: '"')[1].ToString().Split('"')[0].ToString();
+            string xTabela = "";
+            try
+            {
+                xTabela = xMessage.Split(
+                   separator: new string[] { "table" }
+                   , options: StringSplitOptions.None)[1].ToString()
+                   .Split(separator: '"')[1].ToString().Split('"')[0].ToString();
+            }
+            catch (Exception ex)
+            {
+                xTabela = xMessage.Split(
+                    separator: new string[] { "tabela" }
+                    , options: StringSplitOptions.None)[1].ToString()
+                    .Split(separator: '"')[1].ToString().Split('"')[0].ToString();
+            }
             string xCampo = xMessage.Split(separator: new string[] { "column" }, options: StringSplitOptions.None)[1].ToString().Split(separator: '\'')[1];
 
             Window form = GerenciadorModulo.Instancia.CarregaForm(nome: "WinExclusionDenied", exibeForm: Base.InterfacesBases.TipoExibeForm.Modal);

@@ -150,7 +150,12 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                if (ex.Message.ToUpper().Contains("THE DELETE STATEMENT CONFLICTED WITH THE REFERENCE CONSTRAINT"))
+                {
+                    OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
+                    vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
+                }
+                else if (ex.Message.ToUpper().Contains("A INSTRUÇÃO DELETE CONFLITOU COM A RESTRIÇÃO DO REFERENCE"))
                 {
                     OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
                     vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());

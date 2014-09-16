@@ -210,6 +210,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 this.objViewModel.currentModel = this.objService.GetObject(
                     id: this.objViewModel.currentID);
+
+                this.objViewModel.xFuncionario = this.objViewModel.currentModel.idFuncionario.ToString() + " - " + this.objViewModel.currentModel.xNome;
             }
             catch (Exception ex)
             {
