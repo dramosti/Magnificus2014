@@ -68,6 +68,7 @@ namespace HLP.Sales.Model.Models.Comercial
             try
             {
                 this.orcamento_Total_Impostos = new Orcamento_Total_ImpostosModel();
+
                 this.orcamento_retTransp = new Orcamento_retTranspModel();
                 this.orcamento_Total_Impostos.refOrcamentoIde = GCHandle.Alloc(value: this);
 
@@ -77,11 +78,6 @@ namespace HLP.Sales.Model.Models.Comercial
                 this.lOrcamento_Itens.CollectionChanged += lOrcamento_Itens_CollectionChanged;
                 this.idFuncionario = UserData.idUser;
                 this.dDataHora = DateTime.Now;
-
-                if (this.objFuncionario != null)
-                {
-                    this.idFuncionarioRepresentante = this.objFuncionario.idResponsavel ?? 0;
-                }
 
                 EnderecoModel objEnderecoEmpresa = null;
 
@@ -124,11 +120,11 @@ namespace HLP.Sales.Model.Models.Comercial
                     item.objImposto.refOrcamentoIde = GCHandle.Alloc(value: this);
 
 
-                    //if ((this.refOrcamentoIde.Target as Orcamento_ideModel).lOrcamento_Itens.Count
-                    //        > 0)
-                    //    this.nItem = (this.refOrcamentoIde.Target as Orcamento_ideModel).lOrcamento_Itens.Max(i => i.nItem).Value + 1;
-                    //else
-                    //    this.nItem = 1;
+                    if ((this.lOrcamento_Itens.Count
+                            > 0))
+                        item.nItem = this.lOrcamento_Itens.Max(i => i.nItem).Value + 1;
+                    else
+                        item.nItem = 1;
 
                     item.AfterConstructor();
                 }
@@ -503,6 +499,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 if (value != null)
                 {
                     this.bIsEnabledClListaPreco = value.stObrigaListaPreco != (byte)1;
+                    this.idFuncionarioRepresentante = value.idFuncionario ?? 0;
 
                     //Criei esta validação para facilitar em todas as partes do código que precise ser validado se é venda no estado ou não. Valor será setado na variável 'this.VendaNoEstado'
                     #region Venda no Estado?

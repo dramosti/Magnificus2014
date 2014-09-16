@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -528,6 +529,16 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
                     this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged +=
                         this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
+
+                    this.objViewModel.currentModel.orcamento_Total_Impostos.refOrcamentoIde = GCHandle.Alloc(value: this.objViewModel.currentModel);
+
+                    if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                        if (this.objViewModel.currentModel.lOrcamento_Itens.Count > 0)
+                            foreach (Orcamento_ItemModel item in this.objViewModel.currentModel.lOrcamento_Itens)
+                            {
+                                item.refOrcamentoIde = GCHandle.Alloc(value: this.objViewModel.currentModel);
+                                item.objImposto.refOrcamentoIde = GCHandle.Alloc(value: this.objViewModel.currentModel);
+                            }
                 }
             }
         }
