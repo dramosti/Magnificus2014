@@ -6,9 +6,6 @@
 
 
     <!--Style Components TextBox-->
-
-
-
     <SolidColorBrush Color="#FF545454" x:Key="CinzaEscuro"/>
     <SolidColorBrush Color="#FF8C8C8C" x:Key="CinzaClaro"/>
     <SolidColorBrush x:Key="MouseOverCinzaClaro" Color="#FFE0E0E0"/>
@@ -2160,7 +2157,7 @@
                         </Grid.ColumnDefinitions>
                         <Border x:Name="border" Grid.ColumnSpan="2" SnapsToDevicePixels="true"/>
                         <ContentPresenter Grid.Column="1" TextElement.FontWeight="Black" x:Name="contentPresenter" TextElement.FontSize="18" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        <Image x:Name="ImageFinalizar" Source="pack://application:,,,/HLP.Resources.View.WPF;Images/Reabrir.png"/>
+                        <Image x:Name="ImageFinalizar" Source="pack://application:,,,/HLP.Resources.View.WPF;component/Images/Reabrir.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -5095,10 +5092,10 @@
             <Image x:Name="ImagemContextMenu">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationLeft.png"/>
+                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/ArrowNavigationLeft.png"/>
                         <Style.Triggers>
                             <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationLeftDisabled.png"/>
+                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/ArrowNavigationLeftDisabled.png"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -5114,10 +5111,10 @@
             <Image x:Name="ImagemContextMenu">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationRight.png"/>
+                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/ArrowNavigationRight.png"/>
                         <Style.Triggers>
                             <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;Images/ArrowNavigationRightDisabled.png"/>
+                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Images/ArrowNavigationRightDisabled.png"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>

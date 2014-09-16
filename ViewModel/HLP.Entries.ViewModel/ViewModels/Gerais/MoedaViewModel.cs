@@ -39,8 +39,11 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                     if (this.currentModel.GetOperationModel() ==
                          Base.EnumsBases.OperationModel.updating)
                     {
-                        this.currentModel.xSimbolo = value.xCodigo;
-                        this.currentModel.xMoeda = value.xMoeda;
+                        if (value != null)
+                        {
+                            this.currentModel.xSimbolo = value.xCodigo;
+                            this.currentModel.xMoeda = value.xMoeda;
+                        }
                     }
                 }
             }

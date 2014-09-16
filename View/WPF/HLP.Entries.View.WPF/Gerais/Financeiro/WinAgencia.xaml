@@ -116,8 +116,7 @@
                                     IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     ItemsSourceContatos="{Binding currentModel.lAgencia_ContatoModel}"
                                     Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="6"
-                                         x:Name="dgvContato"
-                                    >
+                                         x:Name="dgvContato">
                                 <Components:HlpContato.lColumns>
                                     <System:String>xNome</System:String>
                                     <System:String>xCargo</System:String>

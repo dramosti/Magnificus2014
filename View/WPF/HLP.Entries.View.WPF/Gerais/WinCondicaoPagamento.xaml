@@ -104,14 +104,12 @@
                 <Components:CustomTextBlock Text="Data de Vencimento" labelFor="{Binding ElementName=cbxDataVencimento}" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Alocação de imposto sobre vendas" labelFor="{Binding ElementName=cbxAlocacaoImpostos}" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Primeiro Pagamento é a Vista?" labelFor="{Binding ElementName=stPrimeiroPagamento}" Grid.Column="1" Grid.Row="10" Margin="0,0,0,3"></Components:CustomTextBlock>
-
                 <!--Components-->
-
                 <Components:CustomComboBox x:Name="cbxMetodo"
                     Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"
                     SelectedIndex="{Binding currentModel.stMetodo, Mode=TwoWay, NotifyOnValidationError=True, 
                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"					
-					IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                    IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Selecione o método a ser usado para calcular a data de vencimento. A caixa de listagem exibe todos os métodos disponíveis.">
                     <Components:CustomComboBox.Items>
                         <System:String>0-Cartão Crédito</System:String>
@@ -126,7 +124,7 @@
                 </Components:CustomComboBox>
                 <Components:CustomComboBox x:Name="cbxCondicao"
                     Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
-                    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
+                    IsEnabled="{Binding bIsEnabled}"
                     SelectedIndex="{Binding currentModel.stCondicao, Mode=TwoWay, NotifyOnValidationError=True,
                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"					
                     ToolTip="Informar qual é o tipo da condição sendo elas Avista ou Aprazo">

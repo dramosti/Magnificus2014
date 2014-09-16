@@ -8,7 +8,7 @@
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinJuros"
         Title="Juros" Height="660" Width="1024" NameView="vwJuros">
-    <Window.Resources>        
+    <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
@@ -16,7 +16,7 @@
             <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
             <conv:NotConverter x:Key="notConverter"/>
             <convertLocal:qtdDiasMesesEnabledConverter x:Key="qtdDiasMesesEnabledConverter"/>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Window.Resources>
     <Expander Header="Geral" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
         <Grid>
@@ -78,6 +78,7 @@
             <Components:CustomTextBox x:Name="txtQuantidadeDiasMeses"
                     Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.nQuantidadeDiasMes, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
+                    IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 					ToolTip="Insira o número de dias ou meses para aplicar o código de juros aos pagamentos. O valor deste campo se baseia no intervalo do período selecionado no campo Dia/Mês.">
                 <Components:CustomTextBox.IsEnabled>
                     <MultiBinding Converter="{StaticResource qtdDiasMesesEnabledConverter}">

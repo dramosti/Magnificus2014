@@ -80,7 +80,7 @@
                                 <Components:CustomComboBox x:Name="txtTipoConta"
                                     Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
                                     SelectedIndex="{Binding currentModel.stConta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						            IsReadOnly="{Binding bIsEnabled,Converter={StaticResource notConverter}}"
+                                                           IsEnabled="{Binding bIsEnabled}"
 						            ToolTip="Informar se é Conta Corrente, Poupança, Caixa.">
                                     <Components:CustomComboBox.Items>
                                         <System:String>0-Caixa</System:String>
@@ -92,14 +92,12 @@
 					            ucEnabled="{Binding bIsEnabled}"
 					            Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3"
 					            selectedId="{Binding currentModel.idAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                xNameView="vwAgenciaqs" NameWindowCadastro="WinAgencia" TableView="vwAgencia"
-                    />
+                                xNameView="vwAgenciaqs" NameWindowCadastro="WinAgencia" TableView="vwAgencia" />
                                 <Components:ucTextBoxIntellisense x:Name="txtBanco"
-					            ucEnabled="{Binding bIsEnabled}"
+					            IsEnabled="False"
 					            Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="3"
 					            selectedId="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                xNameView="vwBancoqs" NameWindowCadastro="WinBanco" TableView="vwBanco"
-                    />
+                                xNameView="vwBancoqs" NameWindowCadastro="WinBanco" TableView="vwBanco"/>
                                 <Components:CustomTextBox x:Name="txtTitular"
                                     Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2"                                  
                                     Text="{Binding currentModel.xTitular, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
