@@ -515,6 +515,7 @@ namespace HLP.Comum.ViewModel.Commands
         }
         private void cancelarBase()
         {
+            this.objviewModel.currentModel = null;
             this.objviewModel.loading = true;
             System.Threading.Thread.Sleep(200);
             if (objviewModel.currentID != 0)

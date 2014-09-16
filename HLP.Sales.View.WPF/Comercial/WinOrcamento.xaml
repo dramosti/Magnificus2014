@@ -1157,7 +1157,7 @@
                                             </Components:CustomComboBox.Items>
                                         </Components:CustomComboBox>
                                         <Components:ucTextBoxIntellisense
-                    x:Name="ucPesquisaStIpi" Height="20" Margin="0,0,0,3" Grid.Column="5" Grid.Row="2"                   
+                    x:Name="ucPesquisaStIpi" Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2"
 					selectedId="{Binding currentItem.objImposto.idCSTIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					ucEnabled="{Binding bIsEnabled}" refMethod="{Binding getStIpi}"
 					ToolTip="Informar ao orçamento de vendas o cliente."
@@ -1223,7 +1223,7 @@
                                             <Components:CustomTextBlock Text="Código de ICMS" Grid.Column="1" Grid.Row="4"
                                                                         labelFor="{Binding ElementName=ucIntellisenseCodigoIcms}"></Components:CustomTextBlock>
                                             <Components:CustomTextBlock Text="Código da Situação Tributária" Grid.Column="1" Grid.Row="5"
-                                                                        ></Components:CustomTextBlock>
+                                                                        labelFor="{Binding ElementName=ucIntellisenseStIcms}"></Components:CustomTextBlock>
                                             <Components:CustomTextBlock Text="% ICMS" Grid.Column="1" Grid.Row="6"
                                                                         labelFor="{Binding ElementName=txtpIcms}"></Components:CustomTextBlock>
                                             <Components:CustomTextBlock Text="% Redução da Base de Calculo do ICMS" Grid.Column="1" Grid.Row="7"
@@ -1290,6 +1290,13 @@
 					ucEnabled="{Binding bIsEnabled}" refMethod="{Binding getIcmsPai}"
 					ToolTip="Informar ao sistema qual código do ICMS" xNameView="vwCodigoIcmsqs" NameWindowCadastro="WinCodigoICMS" TableView="vwCodigoIcmsPai"
                     model="{Binding currentItem.objImposto.objCodigoIcms}"
+                    ></Components:ucTextBoxIntellisense>
+                                            <Components:ucTextBoxIntellisense
+                    x:Name="ucIntellisenseStIcms" Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
+					selectedId="{Binding currentItem.objImposto.idCSTIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					ucEnabled="{Binding bIsEnabled}" refMethod="{Binding getIcmsPai}"
+					ToolTip="Código de Situação Tributária ou CST, este código determina a tributação (referente ao ICMS) do produto, onde são classificados da seguinte forma: 00 Tributada integralmente, 10 Tributada e com cobrança do ICMS por substituição tributária, 20 Com redução de base de cálculo, 30 Isenta ou não tributada e com cobrança do ICMS por substituição tributária, 40 Isenta, 41 Não tributada, 50 Suspensão, 51 Diferimento, 60 ICMS cobrado anteriormente por substituição tributária, 70 Com redução de base de cálculo e cobrança do ICMS por substituição tributária, 90 Outras
+" xNameView="vwStICMSqs" NameWindowCadastro="WinStICMS" TableView="vwStICMS"
                     ></Components:ucTextBoxIntellisense>
                                             <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="6" x:Name="txtpIcms"
@@ -1451,18 +1458,28 @@
                                         <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Calcula Pis/Cofins?"></Components:CustomTextBlock>
                                         <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Regime Tributação PIS/COFINS?"></Components:CustomTextBlock>
                                         <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Compõe a base de cálculo do PIS/COFINS?"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Coeficiente de Substituição Tributária do PIS"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Código da Situação Tributária do PIS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Coeficiente de Substituição Tributária do PIS"
+                                                                    labelFor="{Binding ElementName=txtCofins_nCoeficiente}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Código da Situação Tributária do PIS"
+                                                                    labelFor="{Binding ElementName=ucPesquisaStPis}"></Components:CustomTextBlock>
                                         <Components:CustomTextBlock Grid.Column="1" Grid.Row="6" Text="Compõe a base de cálc. da Subst. Trib. do PIS?"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="% PIS"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="8" Text="Valor do PIS"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="1" Text="Base de cálculo PIS"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="2" Text="% de Subst. Trib. do COFINS "></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="3" Text="Código Subst. Trib. do COFINS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="% PIS"
+                                                                    labelFor="{Binding ElementName=txtpPis}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="8" Text="Valor do PIS"
+                                                                    labelFor="{Binding ElementName=txtvPis}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="1" Text="Base de cálculo PIS"
+                                                                    labelFor="{Binding ElementName=txtPis_vBaseCalculo}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="2" Text="% de Subst. Trib. do COFINS"
+                                                                    labelFor="{Binding ElementName=txtCofins_nCoeficiente}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="3" Text="Código Subst. Trib. do COFINS"
+                                                                    labelFor="{Binding ElementName=ucPesquisaStCofins}"></Components:CustomTextBlock>
                                         <Components:CustomTextBlock Grid.Column="6" Grid.Row="4" Text="Compõe a base de cálculo da Subst. Trib. do COFINS?"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="5" Text="% COFINS"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="6" Text="Valor do COFINS"></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="7" Text="Base de cálculo COFINS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="5" Text="% COFINS"
+                                                                    labelFor="{Binding ElementName=txtpCofins}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="6" Text="Valor do COFINS"
+                                                                    labelFor="{Binding ElementName=txtvCofins}"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="7" Text="Base de cálculo COFINS"
+                                                                    labelFor="{Binding ElementName=txtCofinsvBaseCalculo}"></Components:CustomTextBlock>
 
 
                                         <!--Components-->
@@ -1506,7 +1523,7 @@
                                             ToolTip="Informa o coeficiente usado para o calculo de substituição tributária do PIS ">
                                         </Components:CustomTextBox>
                                         <Components:ucTextBoxIntellisense
-                    x:Name="ucPesquisaPisnCoeficienteSubstTributaria" Height="20" Margin="0,0,0,3" Grid.Column="5" Grid.Row="2"                   
+                    x:Name="ucPesquisaStPis" Height="20" Margin="0,0,0,3" Grid.Column="5" Grid.Row="2"                   
 					selectedId="{Binding currentItem.objImposto.idCSTPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					ucEnabled="{Binding bIsEnabled}" refMethod="{Binding getStPis}"
 					ToolTip="Informado o código da situação Tributária do PIS cadastrado no formulário da situação tributária PIS. Ex. 01 – Operação Tributável (base de cálculo = valor da operação alíquota normal (cumulativo/não cumulativo)); 02 - Operação Tributável (base de cálculo = valor da operação (alíquota diferenciada)); "
@@ -1525,35 +1542,32 @@
                                             </Components:CustomComboBox.Items>
                                         </Components:CustomComboBox>
                                         <Components:CustomTextBox
-                                            Grid.Column="2" Grid.Row="7"
+                                            Grid.Column="2" Grid.Row="7" x:Name="txtpPis"
                                             Text="{Binding currentItem.objImposto.PIS_pPIS, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}" ToolTip="É informado a alíquota do PIS (Programa de Integração Social).">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}" ToolTip="É informado a alíquota do PIS (Programa de Integração Social).">
                                         </Components:CustomTextBox>
-                                        <Components:CustomTextBox
+                                        <Components:CustomTextBox x:Name="txtvPis"
                                             Grid.Column="2" Grid.Row="8"
                                             Text="{Binding currentItem.objImposto.PIS_vPIS, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
-                                        <Components:CustomTextBox
+                                        <Components:CustomTextBox x:Name="txtPis_vBaseCalculo"
                                             Grid.Column="7" Grid.Row="1"
                                             Text="{Binding currentItem.objImposto.PIS_vBaseCalculo, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
-                                        <Components:CustomTextBox
+                                        <Components:CustomTextBox x:Name="txtCofins_nCoeficiente"
                                             Grid.Column="7" Grid.Row="2"
                                             Text="{Binding currentItem.objImposto.COFINS_nCoeficienteSubstituicaoTributaria, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
-                                        <Components:CustomPesquisa
-                                            Grid.Column="7" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"   
-											xIdPesquisa="{Binding currentItem.objImposto.idCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}" NameWindowCadastro="WinStCofins"
-											FieldPesquisa="ID" TableView="vwStCOFINS">
-                                            <Components:CustomPesquisa.Items>
-                                                <System:String>cCSTCofins</System:String>
-                                                <System:String>xCSTCofins</System:String>
-                                            </Components:CustomPesquisa.Items>
-                                        </Components:CustomPesquisa>
+                                        <Components:ucTextBoxIntellisense
+                    x:Name="ucPesquisaStCofins" Height="20" Margin="0,0,0,3" Grid.Column="7" Grid.Row="3" Grid.ColumnSpan="2"
+					selectedId="{Binding currentItem.objImposto.idCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					ucEnabled="{Binding bIsEnabled}" refMethod="{Binding getStCofins}"
+					ToolTip="Informado o código da situação Tributária do COFINS cadastrado no formulário da situação tributária COFINS." 
+                                            xNameView="vwStCOFINSqs" NameWindowCadastro="WinStCofins" TableView="vwStCOFINS">
+                                        </Components:ucTextBoxIntellisense>
                                         <Components:CustomComboBox
                                             Grid.Column="7" Grid.Row="4" Grid.ColumnSpan="2"
                                             SelectedIndex="{Binding currentItem.objImposto.COFINS_stCompoeBaseCalculoSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -1567,19 +1581,20 @@
                                             </Components:CustomComboBox.Items>
                                         </Components:CustomComboBox>
                                         <Components:CustomTextBox
-                                            Grid.Column="7" Grid.Row="5"
+                                            Grid.Column="7" Grid.Row="5" x:Name="txtpCofins"
                                             Text="{Binding currentItem.objImposto.COFINS_pCOFINS, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
-                                        <Components:CustomTextBox
+                                        <Components:CustomTextBox x:Name="txtvCofins"
                                             Grid.Column="7" Grid.Row="6"
                                             Text="{Binding currentItem.objImposto.COFINS_vCOFINS, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
-                                            Grid.Column="7" Grid.Row="7"
-                                            Text="{Binding currentItem.objImposto.COFINS_vBaseCalculo, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+                                            Grid.Column="7" Grid.Row="7" x:Name="txtCofinsvBaseCalculo"
+                                            Text="{Binding currentItem.objImposto.COFINS_vBaseCalculo, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, 
+                                            NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
                                     </Grid>
                                 </AdornerDecorator>
@@ -1626,9 +1641,12 @@
                                                     <!--Label-->
 
                                                     <Components:CustomTextBlock Text="Calcula ISS?" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                                                    <Components:CustomTextBlock Text="% ISS" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                                                    <Components:CustomTextBlock Text="Valor do ISS" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                                                    <Components:CustomTextBlock Text="Base de cálculo ISS" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="% ISS" Grid.Column="1" Grid.Row="2"
+                                                                                labelFor="{Binding ElementName=txtpIss}"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="Valor do ISS" Grid.Column="1" Grid.Row="3"
+                                                                                labelFor="{Binding ElementName=txtvIss}"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="Base de cálculo ISS" Grid.Column="1" Grid.Row="4"
+                                                                                labelFor="{Binding ElementName=txtIssvBaseCalculo}"></Components:CustomTextBlock>
 
                                                     <!--Components-->
 
@@ -1637,20 +1655,20 @@
                                                             IsChecked="{Binding currentItem.objImposto.ISS_stCalculaIss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									                        IsEnabled="{Binding bIsEnabled}">
                                                     </Components:CustomCheckBox>
-                                                    <Components:CustomTextBox
+                                                    <Components:CustomTextBox x:Name="txtpIss"
                                                             Grid.Column="2" Grid.Row="2"
                                                             Text="{Binding currentItem.objImposto.ISS_pIss, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource porcentagemConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											                IsEnabled="{Binding bIsEnabled}">
+											                IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                                     </Components:CustomTextBox>
                                                     <Components:CustomTextBox
-                                                            Grid.Column="2" Grid.Row="3"
+                                                            Grid.Column="2" Grid.Row="3" x:Name="txtvIss"
                                                             Text="{Binding currentItem.objImposto.ISS_vIss, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											                IsEnabled="{Binding bIsEnabled}">
+											                IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                                     </Components:CustomTextBox>
                                                     <Components:CustomTextBox
-                                                            Grid.Column="2" Grid.Row="4"
+                                                            Grid.Column="2" Grid.Row="4" x:Name="txtIssvBaseCalculo"
                                                             Text="{Binding currentItem.objImposto.ISS_vBaseCalculo, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											                IsEnabled="{Binding bIsEnabled}">
+											                IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                                     </Components:CustomTextBox>
 
                                                 </Grid>
@@ -1676,26 +1694,29 @@
 
                                                     <!--Label-->
 
-                                                    <Components:CustomTextBlock Text="Valor do Frete" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                                                    <Components:CustomTextBlock Text="Peso Líquido" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                                                    <Components:CustomTextBlock Text="Peso Bruto" Grid.Row="3" Grid.Column="1"/>
+                                                    <Components:CustomTextBlock Text="Valor do Frete" Grid.Column="1" Grid.Row="1"
+                                                                                labelFor="{Binding ElementName=txtvFreteItem}"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="Peso Líquido" Grid.Column="1" Grid.Row="2"
+                                                                                labelFor="{Binding ElementName=txtnPesoLiquido}"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="Peso Bruto" Grid.Row="3" Grid.Column="1"
+                                                                                labelFor="{Binding ElementName=txtnPesoBruto}"/>
 
                                                     <!--Components-->
 
                                                     <Components:CustomTextBox
-                                                        Grid.Column="2" Grid.Row="1"
+                                                        Grid.Column="2" Grid.Row="1" x:Name="txtvFreteItem"
                                                         Text="{Binding currentItem.vFreteItem, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											            IsEnabled="{Binding bIsEnabled}">
+											            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                                     </Components:CustomTextBox>
                                                     <Components:CustomTextBox
-                                                        Grid.Column="2" Grid.Row="2"
+                                                        Grid.Column="2" Grid.Row="2" x:Name="txtnPesoLiquido"
                                                         Text="{Binding currentItem.nPesoLiquido, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											            IsEnabled="{Binding bIsEnabled}">
+											            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                                     </Components:CustomTextBox>
                                                     <Components:CustomTextBox
-                                                        Grid.Column="2" Grid.Row="3"
+                                                        Grid.Column="2" Grid.Row="3" x:Name="txtnPesoBruto"
                                                         Text="{Binding currentItem.nPesoBruto, Mode=TwoWay,FallbackValue=0,TargetNullValue=0, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											            IsEnabled="{Binding bIsEnabled}">
+											            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                                     </Components:CustomTextBox>
 
                                                 </Grid>
@@ -1726,14 +1747,15 @@
 
                                                     <!--Label-->
 
-                                                    <Components:CustomTextBlock Text="Desconto Suframa" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="Desconto Suframa" Grid.Column="1" Grid.Row="1"
+                                                                                labelFor="{Binding ElementName=txtvDescontoSuframa}"></Components:CustomTextBlock>
 
                                                     <!--Components-->
 
                                                     <Components:CustomTextBox
-                                                        Grid.Column="2" Grid.Row="1"
+                                                        Grid.Column="2" Grid.Row="1" x:Name="txtvDescontoSuframa"
                                                         Text="{Binding currentItem.vDescontoSuframa, Mode=TwoWay, FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											            IsEnabled="{Binding bIsEnabled}">
+											            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                                     </Components:CustomTextBox>
 
                                                 </Grid>
@@ -1757,14 +1779,15 @@
 
                                                     <!--Label-->
 
-                                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Observação"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Observação"
+                                                                                labelFor="{Binding ElementName=txtObservacaoItem}"></Components:CustomTextBlock>
 
                                                     <!--Components-->
 
                                                     <Components:CustomTextBox
-                                                        Grid.Column="2" Grid.Row="1"
+                                                        Grid.Column="2" Grid.Row="1" x:Name="txtObservacaoItem"
                                                         Text="{Binding currentItem.xObservacaoItem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											            IsEnabled="{Binding bIsEnabled}">
+											            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                                     </Components:CustomTextBox>
 
                                                 </Grid>
@@ -1788,20 +1811,22 @@
 
                                                     <!--Label-->
 
-                                                    <Components:CustomTextBlock Text="Seguros" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                                                    <Components:CustomTextBlock Text="Outras Despesas" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="Seguros" Grid.Column="1" Grid.Row="1"
+                                                                                labelFor="{Binding ElementName=txtvSegurosItem}"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="Outras Despesas" Grid.Column="1" Grid.Row="2"
+                                                                                labelFor="{Binding ElementName=txtvOutrasDespesasItem}"></Components:CustomTextBlock>
 
                                                     <!--Components-->
 
                                                     <Components:CustomTextBox
-                                                        Grid.Column="2" Grid.Row="1"
+                                                        Grid.Column="2" Grid.Row="1" x:Name="txtvSegurosItem"
                                                         Text="{Binding currentItem.vSegurosItem, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											            IsEnabled="{Binding bIsEnabled}">
+											            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                                     </Components:CustomTextBox>
                                                     <Components:CustomTextBox
-                                                        Grid.Column="2" Grid.Row="2"
+                                                        Grid.Column="2" Grid.Row="2" x:Name="txtvOutrasDespesasItem"
                                                         Text="{Binding currentItem.vOutrasDespesasItem, Mode=TwoWay,FallbackValue=0, TargetNullValue=0, Converter={StaticResource moedaConverter}, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											            IsEnabled="{Binding bIsEnabled}">
+											            IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                                     </Components:CustomTextBox>
 
                                                 </Grid>
@@ -1935,84 +1960,84 @@
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIcmsTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False" ToolTip="O Sistema informará o valor total da base de calculo do ICMS conforme os cálculos mencionados nos itens do orçamento">
+											IsReadOnly="True" ToolTip="O Sistema informará o valor total da base de calculo do ICMS conforme os cálculos mencionados nos itens do orçamento">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="2" x:Name="txtvIcmsTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vICMSTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False" ToolTip="O Sistema informará o valor total do Icms conforme os cálculos mencionados nos itens do orçamento">
+											IsReadOnly="True" ToolTip="O Sistema informará o valor total do Icms conforme os cálculos mencionados nos itens do orçamento">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="3" x:Name="txtvBaseCalculoIcmsSubstTributaria"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoICmsSubstituicaoTributariaTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False" ToolTip="O sistema informará o valor total da Base de Substituição Tributária do ICMS conforme os cálculos mencionados nos itens do orçamento">
+											IsReadOnly="True" ToolTip="O sistema informará o valor total da Base de Substituição Tributária do ICMS conforme os cálculos mencionados nos itens do orçamento">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="4" x:Name="txtvIcmsSubstTributariaTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vIcmsSubstituicaoTributariaTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False" ToolTip="O sistema informará o valor total da Substituição Tributária do ICMS conforme os cálculos mencionados nos itens do orçamento">
+											IsReadOnly="True" ToolTip="O sistema informará o valor total da Substituição Tributária do ICMS conforme os cálculos mencionados nos itens do orçamento">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="5" x:Name="txtvProdutoTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vProdutoTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False" ToolTip="O Sistema irá trazer a somatória de todos os produtos lançado no orçamento">
+											IsReadOnly="True" ToolTip="O Sistema irá trazer a somatória de todos os produtos lançado no orçamento">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="6"  x:Name="txtvFreteTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vFreteTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="7" x:Name="txtvSeguroTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vSeguroTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="8" x:Name="txtvOutrasDespesasTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vOutrasDespesasTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="9" x:Name="txtpDescontoTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.pDescontoTotal, 
                                             Mode=TwoWay, Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="10" x:Name="txtvDescontoTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vDescontoTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="2" Grid.Row="11" x:Name="txtvBaseCalculoIpiTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIpiTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False">
+											IsReadOnly="True">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="6" Grid.Row="1" x:Name="txtvIpiTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vIPITotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False">
+											IsReadOnly="True">
                                         </Components:CustomTextBox>
                                         <Components:CustomCheckBox
                                         Grid.Column="6" Grid.Row="2" x:Name="cbContribuinteIcms"
@@ -2024,54 +2049,54 @@
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIcmsProprioTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False">
+											IsReadOnly="True">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="6" Grid.Row="4" x:Name="txtvIcmsProprioTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vIcmsProprioTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False">
+											IsReadOnly="True">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox x:Name="txtvBaseCalculoPisTotal"
                                             Grid.Column="6" Grid.Row="5"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoPisTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False">
+											IsReadOnly="True">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="6" Grid.Row="6" x:Name="txtvPisTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vPISTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False">
+											IsReadOnly="True">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="6" Grid.Row="7" x:Name="txtvBaseCalculoCofinsTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoCofinsTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False">
+											IsReadOnly="True">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="6" Grid.Row="8" x:Name="txtvCofinsTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vCOFINSTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False">
+											IsReadOnly="True">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="6" Grid.Row="9" x:Name="txtvDescontoSuframaTotal"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vDescontoSuframaTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter},
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}">
+											IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox
                                             Grid.Column="6" Grid.Row="10" x:Name="txtvTotalImpostos"
                                             Text="{Binding currentModel.orcamento_Total_Impostos.vTotal, 
                                             Mode=TwoWay, Converter={StaticResource moedaConverter}, ConverterParameter=nCasasDecimaisTotalNota,
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="False">
+											IsReadOnly="True">
                                         </Components:CustomTextBox>
 
                                     </Grid>
@@ -2127,28 +2152,28 @@
                                                 <Components:CustomTextBox x:Name="txtIm"
                                                     Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"
                                                     Text="{Binding currentModel.orcamento_Total_Impostos.xIM, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											        IsEnabled="{Binding bIsEnabled}">
+											        IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                                 </Components:CustomTextBox>
                                                 <Components:CustomTextBox x:Name="txtvBaseCalculoIssTotal"
                                                     Grid.Column="2" Grid.Row="2"
                                                     Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIssTotal, 
                                                     Mode=TwoWay, Converter={StaticResource moedaConverter},
                                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											        IsEnabled="False">
+											        IsReadOnly="True">
                                                 </Components:CustomTextBox>
                                                 <Components:CustomTextBox
                                                     Grid.Column="2" Grid.Row="3" x:Name="txtvServicoTotal"
                                                     Text="{Binding currentModel.orcamento_Total_Impostos.vServicoTotal, 
                                                     Mode=TwoWay, Converter={StaticResource moedaConverter},
                                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											        IsEnabled="False">
+											        IsReadOnly="True">
                                                 </Components:CustomTextBox>
                                                 <Components:CustomTextBox
                                                     Grid.Column="2" Grid.Row="4" x:Name="txtvIssTotal"
                                                     Text="{Binding currentModel.orcamento_Total_Impostos.vIssTotal, 
                                                     Mode=TwoWay, Converter={StaticResource moedaConverter},
                                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											        IsEnabled="False">
+											        IsReadOnly="True">
                                                 </Components:CustomTextBox>
                                             </Grid>
                                         </Expander>
@@ -2232,7 +2257,7 @@
 					selectedId="{Binding currentModel.orcamento_retTransp.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					ucEnabled="{Binding bIsEnabled}" refMethod="{Binding getTransportador}"
 					ToolTip="Informa a transportadora para esse orçamento" xNameView="vwTransportadorqs" NameWindowCadastro="WinTransportadora" TableView="vwTransportador"
-                    model="{Binding currentModel.orcamento_retTransp.objTransportador}"
+                    xNamePropertyModel="objTransportador"
                     ></Components:ucTextBoxIntellisense>
                                         <Components:CustomComboBox x:Name="cbxFreteImpostos"
                                             Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2" ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
@@ -2266,36 +2291,41 @@
                                         <Components:CustomTextBox x:Name="txtRntrc"
                                                     Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
                                                     Text="{Binding currentModel.orcamento_retTransp.xRntrc, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											        IsEnabled="{Binding bIsEnabled}" ToolTip="Informa qual é o numero do Registro Nacional de Transportores Rodoviários de Cargas">
+											        IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}" 
+                                                                  ToolTip="Informa qual é o numero do Registro Nacional de Transportores Rodoviários de Cargas">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox x:Name="txtCnpjCpf"
                                                     Grid.Column="2" Grid.Row="6"                                                    
-											        IsEnabled="{Binding bIsEnabled}" ToolTip="Informa qual é CNPJ ou CPF da transportadora relacionado a esse orçamento">
+											        IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
+                                                                  ToolTip="Informa qual é CNPJ ou CPF da transportadora relacionado a esse orçamento">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox x:Name="txtVolume"
                                                     Grid.Column="2" Grid.Row="7"
                                                     Text="{Binding currentModel.orcamento_retTransp.vVolume, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											        IsEnabled="{Binding bIsEnabled}" ToolTip="Informar a quantidade de volume para esse transporte">
+											        IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
+                                                                  ToolTip="Informar a quantidade de volume para esse transporte">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox x:Name="txtEspecieVolume"
                                                     Grid.Column="2" Grid.Row="8"
                                                     Text="{Binding currentModel.orcamento_retTransp.xEspecieVolumeNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											        IsEnabled="{Binding bIsEnabled}" ToolTip="Informar o volume para esse tipo de Lançamento">
+											        IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
+                                                                  ToolTip="Informar o volume para esse tipo de Lançamento">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox x:Name="txtMarca"
                                                     Grid.Column="2" Grid.Row="9"
                                                     Text="{Binding currentModel.orcamento_retTransp.xMarcaVolumeNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											        IsEnabled="{Binding bIsEnabled}" ToolTip="Informar a marca para esse tipo de Lançamento">
+											        IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}"
+                                                                  ToolTip="Informar a marca para esse tipo de Lançamento">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox x:Name="txtPesoBruto"
                                                     Grid.Column="2" Grid.Row="10"
                                                     Text="{Binding currentModel.orcamento_retTransp.vPesoBruto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											        IsEnabled="{Binding bIsEnabled}">
+											        IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
                                         <Components:CustomTextBox x:Name="txtPesoLiquido"
                                                     Grid.Column="2" Grid.Row="11"
                                                     Text="{Binding currentModel.orcamento_retTransp.vPesoLiquido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											        IsEnabled="{Binding bIsEnabled}">
+											        IsReadOnly="{Binding Path=bIsEnabled, Converter={StaticResource notConverter}}">
                                         </Components:CustomTextBox>
                                         <Components:CustomComboBox x:Name="cbxStTransporte"
                                             Grid.Column="2" Grid.Row="12" Height="20" Grid.ColumnSpan="2" Margin="0,0,0,3" ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
