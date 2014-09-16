@@ -55,19 +55,7 @@
                 <Components:CustomTextBlock Text="Funcionário" Grid.Column="1" Grid.Row="1"/>
                 
                 <!--Components-->
-
-                <Components:CustomPesquisa
-                    Grid.Column="2" Grid.Row="2" Margin="0,0,0,3" Height="20"
-				    xIdPesquisa="{Binding currentModel.idFuncionario, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    IsReadOnly="True" NameWindowCadastro="WinFuncionario"
-				    TableView="vwFuncionario" FieldPesquisa="ID">
-                    <Components:CustomPesquisa.Items>
-                        <System:String>xNome</System:String>
-                        <System:String>xCodigoAlternativo</System:String>
-                        <System:String>xTelefoneComercial</System:String>
-                    </Components:CustomPesquisa.Items>
-                </Components:CustomPesquisa>
-
+                <Components:CustomTextBox Grid.Column="2" IsEnabled="False" Grid.Row="2" Margin="0,0,0,3" Text="{Binding xFuncionario, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
             </Grid>
         </Expander>
         <Expander Header="Login" Style="{StaticResource ExpanderPadrao}" IsExpanded="True" Grid.Row="1">
@@ -160,7 +148,7 @@
                     <RowDefinition Height="10"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <DataGrid 
+                <Components:CustomDataGrid 
                 Name="gridAcessos" Grid.Column="1" Grid.Row="1" Width="650" HorizontalAlignment="Left"
                 ItemsSource="{Binding currentModel.lFuncionario_Acesso, UpdateSourceTrigger=PropertyChanged}"
                           AutoGenerateColumns="False" 
@@ -230,7 +218,7 @@
                             <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
                         </MultiBinding>
                     </DataGrid.IsEnabled>
-                </DataGrid>
+                </Components:CustomDataGrid>
             </Grid>
         </Expander>
     </Grid>

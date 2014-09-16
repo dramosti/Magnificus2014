@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public partial class Unidade_medidaModel : modelBase
+    public partial class Unidade_medidaModel : modelComum
     {
         public Unidade_medidaModel()
             : base(xTabela: "Unidade_medida")

@@ -159,7 +159,7 @@
     		                Text="{Binding currentModel.xLinkLogoEmpresa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
                         </Components:CustomTextBoxFindFiles>
-                        <Components:CustomTextBoxFindFiles x:Name="linkPastas"
+                        <Components:CustomTextBoxFindFiles x:Name="linkPastas" 
                             Grid.Column="2" Grid.Row="15" Grid.ColumnSpan="3"  Margin="0,0,0,3"                          
                             IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"                                           
     		                Text="{Binding currentModel.xLinkPastas, Mode=TwoWay, UpdateSourceTrigger=LostFocus,

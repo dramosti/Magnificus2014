@@ -11,7 +11,7 @@ namespace HLP.Entries.Services.Gerais
 {
     public class Funcionario_AcessoService
     {
-        const string xTabela = "Acesso;";
+        const string xTabela = "Acesso;Funcionario;Funcionario_Acesso;";
 
         HLP.Wcf.Entries.wcf_Acesso serviceNetwork;        
         wcf_Acesso.Iwcf_AcessoClient serviceWeb;
