@@ -13,7 +13,7 @@ namespace HLP.Entries.Services.Gerais
 
         public class ConversaoService
         {
-            const string xTabela = "Conversao;";
+            const string xTabela = "Produto;Conversao;";
             
             HLP.Wcf.Entries.wcf_Conversao serviceNetwork;
             wcf_Conversao.Iwcf_ConversaoClient serviceWeb;
