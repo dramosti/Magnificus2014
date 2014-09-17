@@ -62,7 +62,7 @@ namespace HLP.Components.View.WPF
                 Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
             };
 
-            this.Style = resource["ComboBoxStyle"] as Style;
+            this.Style = resource["ComboBox_NOVO"] as Style;
 
             this.LostFocus += CustomComboBox_LostFocus;
         }
