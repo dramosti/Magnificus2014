@@ -4,6 +4,7 @@
     xmlns:System="clr-namespace:System;assembly=mscorlib"
 	xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
 	xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
+    xmlns:conv="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
 	x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinDepartamento"
 	x:Name="Window"
 	Title="Departamento"
@@ -14,6 +15,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <conv:NotConverter x:Key="notConverter"/>
         </ResourceDictionary>
     </runtime:WindowsBase.Resources>
     <Grid>
@@ -37,37 +39,42 @@
                 </Grid.RowDefinitions>
                 <!--Label-->
 
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código" VerticalAlignment="Center"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Departamento" VerticalAlignment="Center"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Descrição" VerticalAlignment="Center"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Setor"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="E-mail"/>
-                
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código" VerticalAlignment="Center"
+                                            labelFor="{Binding ElementName=txtId}"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Departamento" VerticalAlignment="Center"
+                                            labelFor="{Binding ElementName=txtDepartamento}"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Descrição" VerticalAlignment="Center"
+                                            labelFor="{Binding ElementName=txtDescricao}"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Setor"
+                                            labelFor="{Binding ElementName=ucPesquisaSetor}"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="E-mail"
+                                            labelFor="{Binding ElementName=txtEmail}"/>
+
                 <!--Components-->
 
-                <Components:CustomTextBox stCompPosicao="fieldId"
+                <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtId"
                                       IsReadOnly="True"
                                       Text="{Binding currentModel.idDepartamento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
                                       ToolTip="Chave principal do registro do Departamento"
-                                      Grid.Column="2" Grid.Row="1"/>               
-                <Components:CustomTextBox  stCompPosicao="first"
+                                      Grid.Column="2" Grid.Row="1"/>
+                <Components:CustomTextBox  stCompPosicao="first" x:Name="txtDepartamento"
                                        Grid.Column="2"  Grid.Row="2" Grid.ColumnSpan="2"
                                        Text="{Binding currentModel.xDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                       IsEnabled="{Binding bIsEnabled}"
-                                       ToolTip="Informe um departamento de forma reduzida"/>                
-                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="3" Grid.ColumnSpan="3"
+                                       IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                                       ToolTip="Informe um departamento de forma reduzida"/>
+                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="3" Grid.ColumnSpan="3" x:Name="txtDescricao"
                                        Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                       IsEnabled="{Binding bIsEnabled}"
-                                       ToolTip="Descrição do Departamento"/>        
-                <Components:ucTextBoxIntellisense
+                                       IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                                       ToolTip="Descrição do Departamento"/>
+                <Components:ucTextBoxIntellisense x:Name="ucPesquisaSetor"
                     Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" 
                     selectedId="{Binding currentModel.idSetor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                    TableView="vwSetor" ucEnabled="{Binding bIsEnabled}" NameWindowCadastro="WinSetor" xNameView="vwSetorqs">                    
+                    TableView="vwSetor" ucEnabled="{Binding bIsEnabled}" NameWindowCadastro="WinSetor" xNameView="vwSetorqs">
                 </Components:ucTextBoxIntellisense>
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtEmail"
                                        Grid.Column="2"  Grid.Row="5" Grid.ColumnSpan="3" stCompPosicao="last"
                                        Text="{Binding currentModel.xEmail, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                       IsEnabled="{Binding bIsEnabled}"
+                                       IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                        ToolTip="Informar o e-mail padrão para o Departamento, caso haja.">
                 </Components:CustomTextBox>
             </Grid>
