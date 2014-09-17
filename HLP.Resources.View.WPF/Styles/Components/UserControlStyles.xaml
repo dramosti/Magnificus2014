@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:UtilLocal="clr-namespace:HLP.Resources.View.WPF.Styles.Util"
                     xmlns:conv="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
-                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
+                    xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing">
 
 
     <!--Style Components TextBox-->
@@ -468,6 +469,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <Style x:Key="ButtonFilter" TargetType="{x:Type Button}">
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Cursor" Value="Hand"/>
@@ -616,6 +618,56 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="Button_PESQUISA_TEXTBOX" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF0072C6"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF0072C6"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#000072C6"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF626262"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Border x:Name="border" BorderThickness="0.7" CornerRadius="0,4,4,0" BorderBrush="Transparent"  Background="Transparent">
+                            <Path x:Name="path" VerticalAlignment="Center" HorizontalAlignment="Center"  Height="15" Width="15" Stretch="Uniform" Fill="#FF626262" Data="F1 M 389.964,416.225C 387.262,416.225 385.073,414.025 385.073,411.316C 385.073,408.604 387.262,406.407 389.964,406.407C 392.665,406.407 394.856,408.604 394.856,411.316C 394.856,414.025 392.665,416.225 389.964,416.225 Z M 367.365,416.225C 364.661,416.225 362.47,414.025 362.47,411.316C 362.47,408.604 364.661,406.407 367.365,406.407C 370.065,406.407 372.256,408.604 372.256,411.316C 372.256,414.025 370.065,416.225 367.365,416.225 Z M 396.164,398.133C 394.204,392.999 392.17,390.425 390.618,388.811C 389.537,387.687 388,386.576 385.982,386.703C 383.584,386.857 381.32,389.325 381.32,391.956L 381.32,392.717C 380.484,392.369 379.604,392.175 378.693,392.168C 377.762,392.175 376.862,392.375 376.01,392.74L 376.01,391.956C 376.01,389.325 373.745,386.857 371.346,386.703C 369.328,386.576 367.792,387.687 366.709,388.811C 365.157,390.425 363.125,392.999 361.164,398.133C 358.062,406.245 358.736,411.639 358.736,411.639L 358.74,411.639C 358.912,416.276 362.701,420 367.365,420C 372.136,420 375.99,416.104 375.99,411.316C 375.99,411.277 375.997,410.26 375.997,409.245C 376.6,408.445 377.578,407.915 378.693,407.915C 379.761,407.915 380.74,408.457 381.358,409.2C 381.358,410.252 381.352,411.273 381.352,411.316C 381.352,416.104 385.193,420 389.964,420C 394.628,420 398.418,416.276 398.589,411.639L 398.593,411.639C 398.593,411.639 399.266,406.245 396.164,398.133 Z "/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="TextBoxComponentStyle" TargetType="{x:Type TextBox}">
         <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -644,7 +696,7 @@
                             Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, 
                             Path=IsReadOnly}"></TextBox>
-                        <Button Visibility="Visible" Width="20" Grid.Column="1" Focusable="False" x:Name="btn" Style="{DynamicResource Button_PESQUISA_TEXTBOX}"
+                        <Button Visibility="Visible" Width="20" Grid.Column="1" Focusable="False" x:Name="btn" Style="{StaticResource Button_PESQUISA_TEXTBOX}"
                                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=CustomViewModel.searchCommand}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}}">
                         </Button>
@@ -666,11 +718,10 @@
     </Style>
 
     <Style x:Key="TextBox_PESQUISA_NEW" TargetType="{x:Type TextBox}">
-        <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Height" Value="20"/>
         <Setter Property="Margin" Value="3,0,0,0"/>
-        <Setter Property="Foreground" Value="#FF626262"/>        
+        <Setter Property="Foreground" Value="#FF626262"/>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -688,7 +739,7 @@
                         <Border Grid.ColumnSpan="3" x:Name="border" BorderBrush="Transparent" CornerRadius="4" BorderThickness="0.7" Background="White" SnapsToDevicePixels="True"/>
                         <Border Grid.ColumnSpan="3" x:Name="border2" BorderBrush="#FF9C9C9C" CornerRadius="4" BorderThickness="0.7" Background="White" SnapsToDevicePixels="True"/>
                         <ScrollViewer x:Name="PART_ContentHost" Focusable="True" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Foreground="#FF626262" FontFamily="Segoe Ui Light" VerticalAlignment="Center" HorizontalAlignment="Left"></ScrollViewer>
-                        <Button Visibility="Visible" Width="20" Grid.Column="1" Focusable="False" x:Name="btn" Style="{DynamicResource Button_PESQUISA_TEXTBOX}">
+                        <Button Visibility="Visible" Width="20" Grid.Column="1" Focusable="False" x:Name="btn" Style="{DynamicResource Button_PESQUISA_Pesquisa}">
                         </Button>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -724,10 +775,9 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
     </Style>
 
-    <Style x:Key="Button_PESQUISA_TEXTBOX" TargetType="{x:Type Button}">
+    <Style x:Key="Button_PESQUISA_Pesquisa" TargetType="{x:Type Button}">
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -744,6 +794,9 @@
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
                                 <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
                             </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="regularPolygon">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF0072C6"/>
+                            </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                         <Storyboard x:Key="Storyboard2">
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
@@ -754,11 +807,27 @@
                                 <EasingColorKeyFrame KeyTime="0" Value="White"/>
                                 <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF626262"/>
                             </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="regularPolygon">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF0072C6"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <Grid>
                         <Border x:Name="border" BorderThickness="0.7" CornerRadius="0,4,4,0" BorderBrush="Transparent"  Background="Transparent">
-                            <Path x:Name="path" VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Stretch="Fill" Fill="#FF626262" Data="F1 M 42.5,22C 49.4036,22 55,27.5964 55,34.5C 55,41.4036 49.4036,47 42.5,47C 40.1356,47 37.9245,46.3435 36,45.2426L 26.9749,54.2678C 25.8033,55.4393 23.9038,55.4393 22.7322,54.2678C 21.5607,53.0962 21.5607,51.1967 22.7322,50.0251L 31.7971,40.961C 30.6565,39.0755 30,36.8644 30,34.5C 30,27.5964 35.5964,22 42.5,22 Z M 42.5,26C 37.8056,26 34,29.8056 34,34.5C 34,39.1944 37.8056,43 42.5,43C 47.1944,43 51,39.1944 51,34.5C 51,29.8056 47.1944,26 42.5,26 Z "/>
+                            <Grid>
+                                <ed:RegularPolygon x:Name="regularPolygon" Fill="White" Height="4" Width="10" VerticalAlignment="Center" InnerRadius="1" PointCount="3" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Margin="-6.5,7.467,15.099,7.133">
+                                    <ed:RegularPolygon.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform Angle="-90"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </ed:RegularPolygon.RenderTransform>
+                                </ed:RegularPolygon>
+                                <Path x:Name="path" VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Stretch="Fill" Fill="#FF626262" Data="F1 M 42.5,22C 49.4036,22 55,27.5964 55,34.5C 55,41.4036 49.4036,47 42.5,47C 40.1356,47 37.9245,46.3435 36,45.2426L 26.9749,54.2678C 25.8033,55.4393 23.9038,55.4393 22.7322,54.2678C 21.5607,53.0962 21.5607,51.1967 22.7322,50.0251L 31.7971,40.961C 30.6565,39.0755 30,36.8644 30,34.5C 30,27.5964 35.5964,22 42.5,22 Z M 42.5,26C 37.8056,26 34,29.8056 34,34.5C 34,39.1944 37.8056,43 42.5,43C 47.1944,43 51,39.1944 51,34.5C 51,29.8056 47.1944,26 42.5,26 Z "/>
+                            </Grid>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -776,6 +845,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 
     <!--TextBox Find File-->
 
