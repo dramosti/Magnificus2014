@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 using HLP.Base.Modules;
 using HLP.Base.Static;
 using HLP.Comum.ViewModel.ViewModel;
@@ -345,19 +346,52 @@ namespace HLP.ComumView.ViewModel.Commands
                             value: actionFocusFirstComponent);
 
                         piIsReadOnly = null;
+                        PropertyInfo piFieldFlag = null;
+
+                        bool compFirstEncontrado = false;
+                        bool compIdEncontrado = false;
 
                         foreach (FrameworkElement item in objTabPageAtivasModel.lComponents)
                         {
                             piIsReadOnly = item.GetType().GetProperty(name: "IsReadOnly");
 
                             if (piIsReadOnly != null)
-                                if ((bool)piIsReadOnly.GetValue(obj: item) == false)
+                            {
+                                if ((bool)piIsReadOnly.GetValue(obj: item))
+                                {
+                                    if (item.GetType().BaseType == typeof(TextBox))
+                                    {
+                                        piFieldFlag = item.GetType().GetProperty(name: "stCompPosicao");
+
+                                        if (piFieldFlag != null)
+                                        {
+                                            statusComponentePosicao stPosicao = (statusComponentePosicao)piFieldFlag.GetValue(obj: item);
+
+                                            if (stPosicao == statusComponentePosicao.fieldId)
+                                            {
+                                                objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "idControl")
+                            .SetValue(obj: objTabPageAtivasModel._currentDataContext,
+                            value: item);
+                                                compIdEncontrado = true;
+
+                                                if (compFirstEncontrado && compIdEncontrado)
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                }
+                                else if ((bool)piIsReadOnly.GetValue(obj: item) == false)
                                 {
                                     objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "firstControl")
                             .SetValue(obj: objTabPageAtivasModel._currentDataContext,
                             value: item);
-                                    break;
+
+                                    compFirstEncontrado = true;
+
+                                    if (compFirstEncontrado && compIdEncontrado)
+                                        break;
                                 }
+                            }
 
                         }
 
@@ -585,6 +619,7 @@ namespace HLP.ComumView.ViewModel.Commands
                                 .Text.ToUpper().Contains(value: this.vm.xSearchLabels.ToUpper())).ToList();
                             this.currentIndexLTextBlockSearched = -1;
                         }
+
                         this.vm.bXSearchLabelsChanged = false;
 
                         if (lTextBlockSearched != null)
