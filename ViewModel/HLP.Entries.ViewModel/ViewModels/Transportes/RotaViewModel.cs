@@ -32,6 +32,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
         public RotaViewModel()
         {
             commands = new RotaCommand(objViewModel: this);
+            this.getCidade = commands.getCidade;
         }
 
         RotaCommand commands;
@@ -44,6 +45,14 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
         }
 
 
+        private Func<int, bool, object> _getCidade;
+
+        public Func<int, bool, object> getCidade
+        {
+            get { return _getCidade; }
+            set { _getCidade = value; }
+        }
+        
     }
 
     public class Rota_PracaSortByNOrdem : IComparer

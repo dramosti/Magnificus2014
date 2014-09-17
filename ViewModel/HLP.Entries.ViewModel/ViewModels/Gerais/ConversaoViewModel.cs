@@ -30,6 +30,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ConversaoViewModel()
         {
             comm = new ConversaoCommands(objViewModel: this);
+            this.getUnidadeMedida = comm.getUnidadeMedida;
         }
 
         private ConversaoModel _currentConversao;
@@ -68,5 +69,13 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 base.NotifyPropertyChanged("idProdutoSelecionado");
             }
         }
+        private Func<int, bool, object> _getUnidadeMedida;
+
+        public Func<int, bool, object> getUnidadeMedida
+        {
+            get { return _getUnidadeMedida; }
+            set { _getUnidadeMedida = value; }
+        }
+        
     }
 }

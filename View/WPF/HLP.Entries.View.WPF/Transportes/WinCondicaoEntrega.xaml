@@ -16,6 +16,7 @@
             <conv:ByteToIntConverter x:Key="convByteToIntConverter"/>
             <conv:DecimalToStringConverter x:Key="decimalToStringConverter"/>
             <conv:ByteToBoolConverter x:Key="convByteToBoolConverter"/>
+            <conv:NotConverter x:Key="notConverter"/>
             <conv:MoedaConverter x:Key="moedaConverter"></conv:MoedaConverter>
         </ResourceDictionary>
     </Window.Resources>
@@ -63,13 +64,13 @@
                 <Components:CustomTextBox stCompPosicao="first"
                     Grid.Column="2" Grid.Row="2"
                     Text="{Binding currentModel.xCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 				    ToolTip="Digite um código para a recém-criada origem de venda">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 					ToolTip="Descrição da condição de entrega">
                 </Components:CustomTextBox>
                 <Components:CustomComboBox
@@ -79,24 +80,24 @@
 						IsEnabled="{Binding bIsEnabled}"
 						ToolTip="Selecione o endereço no qual as mercadorias trocam de propriedade (INTRASTAT). São eles:">
                     <Components:CustomComboBox.Items>
-                        <System:String>0 – BRANCO</System:String>
-                        <System:String>1 - COMERCIAL</System:String>
-                        <System:String>2 - ENTREGA</System:String>
-                        <System:String>3 - ENTREGA ALTERNATIVO</System:String>
-                        <System:String>4 - NOTA FISCAL</System:String>
-                        <System:String>5 - OUTRO</System:String>
-                        <System:String>6 - PAGAMENTO</System:String>
-                        <System:String>7 - REMESSA DE TERCEIROS</System:String>
-                        <System:String>8 - REMETER PARA</System:String>
-                        <System:String>9 - RESIDÊNCIA</System:String>
-                        <System:String>10 - SERVIÇO</System:String>
-                        <System:String>11 - SWIFT</System:String>
+                        <System:String>BRANCO</System:String>
+                        <System:String>COMERCIAL</System:String>
+                        <System:String>ENTREGA</System:String>
+                        <System:String>ENTREGA ALTERNATIVO</System:String>
+                        <System:String>NOTA FISCAL</System:String>
+                        <System:String>OUTRO</System:String>
+                        <System:String>PAGAMENTO</System:String>
+                        <System:String>REMESSA DE TERCEIROS</System:String>
+                        <System:String>REMETER PARA</System:String>
+                        <System:String>RESIDÊNCIA</System:String>
+                        <System:String>SERVIÇO</System:String>
+                        <System:String>SWIFT</System:String>
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="5"
                     Text="{Binding currentModel.nIntrastat, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 					ToolTip="Intrastat é uma declaração estatística de entrega obrigatória ao INE por parte dos contribuintes que adquirem ou vendem produtos ao Mercado Comunitário">
                 </Components:CustomTextBox>
                 <Components:CustomCheckBox
@@ -108,7 +109,7 @@
 					ToolTip="Caso esta opção esteja selecionada, os encargos de remessa serão cancelados, se o valor da nota fiscal ultrapassar um determinado valor">
                 </Components:CustomCheckBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="7" stCompPosicao="last"
+                    Grid.Column="2" Grid.Row="7" stCompPosicao="last" IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
                     ToolTip="Se a caixa de seleção Aplicar mínimo grátis estiver marcada como sim, insira o valor mínimo da nota fiscal de venda para o qual os encargos de remessa serão cancelados. Este é o valor de vendas antes de impostos, frete e encargos diversos">
                     <Components:CustomTextBox.Text>
                         <Binding Path="currentModel.vMinimoGratis"

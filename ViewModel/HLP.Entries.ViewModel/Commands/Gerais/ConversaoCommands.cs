@@ -24,6 +24,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         ConversaoService objService;
         Unidade_MedidaService objUnidade_MedidaService;
 
+
         List<Unidade_medidaModel> lUnidadesMedida;
 
         public ConversaoCommands(ConversaoViewModel objViewModel)
@@ -65,6 +66,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             objViewModel.bWorkerPesquisa.RunWorkerCompleted += bw_RunWorkerCompleted;
         }
 
+        public Unidade_medidaModel getUnidadeMedida(int id, bool bOptionalSearch = false)
+        {
+            return objUnidade_MedidaService.GetObject(id);
+        }
 
         #region Implementação Commands
 

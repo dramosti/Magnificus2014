@@ -89,7 +89,19 @@ namespace HLP.Components.View.WPF
 
                 if (t == typeof(RelayCommand))
                 {
-                    if (((RelayCommand)this.actionOnLostFocus).CanExecute(parameter: null))
+                    FrameworkElement parent = this.Parent as FrameworkElement;
+
+                    while (true)
+                    {
+                        if ((parent as FrameworkElement).Parent != null)
+                        {
+                            parent = (parent as FrameworkElement).Parent as FrameworkElement;
+                        }
+                        else
+                            break;
+                    }
+
+                    if (((RelayCommand)this.actionOnLostFocus).CanExecute(parameter: parent))
                         ((RelayCommand)this.actionOnLostFocus).Execute(parameter: null);
                 }
                 else if (t == typeof(Action<object>))
