@@ -353,11 +353,21 @@ namespace HLP.ComumView.ViewModel.Commands
 
                         foreach (FrameworkElement item in objTabPageAtivasModel.lComponents)
                         {
-                            piIsReadOnly = item.GetType().GetProperty(name: "IsReadOnly");
+                            if (item.GetType().Name == "ucTextBoxIntellisense")
+                                piIsReadOnly = item.GetType().GetProperty(name: "ucEnabled");
+                            else
+                                piIsReadOnly = item.GetType().GetProperty(name: "IsReadOnly");
 
                             if (piIsReadOnly != null)
                             {
-                                if ((bool)piIsReadOnly.GetValue(obj: item))
+                                bool isReadOnlyValue;
+
+                                if (item.GetType().Name == "ucTextBoxIntellisense")
+                                    isReadOnlyValue = !(bool)piIsReadOnly.GetValue(obj: item);
+                                else
+                                    isReadOnlyValue = (bool)piIsReadOnly.GetValue(obj: item);
+
+                                if (isReadOnlyValue)
                                 {
                                     if (item.GetType().BaseType == typeof(TextBox))
                                     {
@@ -380,7 +390,7 @@ namespace HLP.ComumView.ViewModel.Commands
                                         }
                                     }
                                 }
-                                else if ((bool)piIsReadOnly.GetValue(obj: item) == false)
+                                else if (isReadOnlyValue == false)
                                 {
                                     objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "firstControl")
                             .SetValue(obj: objTabPageAtivasModel._currentDataContext,
