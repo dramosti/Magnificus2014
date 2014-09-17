@@ -33,7 +33,15 @@ namespace HLP.Comum.ViewModel.ViewModel
             get { return _firstControl; }
             set { _firstControl = value; }
         }
-        
+
+        private FrameworkElement _idControl;
+
+        public FrameworkElement idControl
+        {
+            get { return _idControl; }
+            set { _idControl = value; }
+        }
+
 
         private bool _loading;
 
@@ -266,9 +274,9 @@ namespace HLP.Comum.ViewModel.ViewModel
             {
                 if (navigatePesquisa == null)
                     navigatePesquisa = new MyObservableCollection<int>(new List<int>());
+                object pk;
+
                 if (this.currentModel != null)
-                {
-                    object pk;
                     foreach (var property in this.currentModel.GetType().GetProperties())
                     {
                         pk = property.GetCustomAttributes(true).FirstOrDefault(t => t.GetType() == typeof(PrimaryKey));
@@ -276,14 +284,16 @@ namespace HLP.Comum.ViewModel.ViewModel
                         {
                             if (((PrimaryKey)pk).isPrimary)
                             {
-                                int? value = (int?)(property.GetValue(obj: this.currentModel));
-                                if (value != null)
-                                    _currentID = (int)value;
-                                break;
+                                if (this.currentModel != null)
+                                {
+                                    int? value = (int?)(property.GetValue(obj: this.currentModel));
+                                    if (value != null)
+                                        _currentID = (int)value;
+                                    break;
+                                }
                             }
                         }
                     }
-                }
                 else if (this.navigatePesquisa.Count() > 0 && _currentID == 0)
                 {
                     _currentID = this.navigatePesquisa[this.iPositionCollection];
