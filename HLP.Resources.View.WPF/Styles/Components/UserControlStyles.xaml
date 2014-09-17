@@ -608,13 +608,13 @@
         </Style.Triggers>
     </Style>
 
-
     <Style x:Key="TextBoxComponentStyle" TargetType="{x:Type TextBox}">
         <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Height" Value="20"/>
         <Setter Property="Margin" Value="3,0,0,0"/>
         <Setter Property="Foreground" Value="#FF626262"/>
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -630,17 +630,58 @@
                             <ColumnDefinition Width="Auto"/>                            
                         </Grid.ColumnDefinitions>
                         <Border Grid.ColumnSpan="3" x:Name="border" BorderBrush="Transparent" CornerRadius="4" BorderThickness="0.7" Background="White" SnapsToDevicePixels="True"/>
-                        <Border Grid.ColumnSpan="3" x:Name="border2" BorderBrush="#FF9C9C9C" CornerRadius="4" BorderThickness="0.7" Background="White" SnapsToDevicePixels="True"/>
+                        <Border Grid.ColumnSpan="3" x:Name="border2" BorderBrush="#FF626262" CornerRadius="4" BorderThickness="0.7" Background="White" SnapsToDevicePixels="True"/>
                         <TextBox  Style="{StaticResource TextBoxInside_NEW}"         
                             x:Name="txt" Foreground="#FF626262" FontFamily="Segoe Ui Light" Focusable="True" VerticalAlignment="Center" HorizontalAlignment="Left"
                             Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                            IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, 
-                            Path=IsEnabled}"></TextBox>
+                            IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, 
+                            Path=IsReadOnly}"></TextBox>
                         <Button Visibility="Visible" Width="20" Grid.Column="1" Focusable="False" x:Name="btn" Style="{DynamicResource Button_PESQUISA_TEXTBOX}"
                                 Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}, Path=CustomViewModel.searchCommand}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TextBox}}}">
                         </Button>
+                    </Grid>
+                    <ControlTemplate.Triggers>                    
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderBrush" Value="#FF1C669C" TargetName="border2"/>
+                            <Setter Property="Effect" TargetName="border">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="#FF6BB5F0" BlurRadius="7" Direction="0" Opacity="1" ShadowDepth="0" RenderingBias="Performance"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
 
+    <Style x:Key="TextBox_PESQUISA_NEW" TargetType="{x:Type TextBox}">
+        <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Margin" Value="3,0,0,0"/>
+        <Setter Property="Foreground" Value="#FF626262"/>        
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid Focusable="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.ColumnSpan="3" x:Name="border" BorderBrush="Transparent" CornerRadius="4" BorderThickness="0.7" Background="White" SnapsToDevicePixels="True"/>
+                        <Border Grid.ColumnSpan="3" x:Name="border2" BorderBrush="#FF9C9C9C" CornerRadius="4" BorderThickness="0.7" Background="White" SnapsToDevicePixels="True"/>
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="True" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Foreground="#FF626262" FontFamily="Segoe Ui Light" VerticalAlignment="Center" HorizontalAlignment="Left"></ScrollViewer>
+                        <Button Visibility="Visible" Width="20" Grid.Column="1" Focusable="False" x:Name="btn" Style="{DynamicResource Button_PESQUISA_TEXTBOX}">
+                        </Button>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
@@ -651,11 +692,28 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="Validation.ErrorTemplate">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <DockPanel LastChildFill="True">
+                                            <Border Background="#FFC82F2F" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
+                                                ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
+                                            </Border>
+                                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
+                                                <Border BorderBrush="Transparent" BorderThickness="1"></Border>
+                                            </AdornedElementPlaceholder>
+                                        </DockPanel>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        
+
     </Style>
 
     <Style x:Key="Button_PESQUISA_TEXTBOX" TargetType="{x:Type Button}">
@@ -693,7 +751,6 @@
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
-
                         <Trigger Property="IsMouseOver" Value="True">
                             <Trigger.ExitActions>
                                 <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
