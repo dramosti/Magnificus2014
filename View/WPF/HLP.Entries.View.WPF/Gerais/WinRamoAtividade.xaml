@@ -4,15 +4,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.Gerais.WinRamoAtividade"
+        xmlns:conv="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         Title="Ramo de Atividade" Height="660" Width="1024" NameView="vwRamoAtividade">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <conv:NotConverter x:Key="notConverter"/>
         </ResourceDictionary>
+
     </Window.Resources>
-	<Grid>
+    <Grid>
         <Expander Header="Principal" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -30,41 +33,41 @@
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <!--Label-->
 
-                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Ramo de Atividade" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="CNAE" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1" labelFor="{Binding ElementName=txtId}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Ramo de Atividade" Grid.Column="1" Grid.Row="2" labelFor="{Binding ElementName=txtRamo}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3" labelFor="{Binding ElementName=txtDescricao}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="CNAE" Grid.Column="1" Grid.Row="4" labelFor="{Binding ElementName=txtCnae}"></Components:CustomTextBlock>
+
                 <!--Components-->
-                
-                <Components:CustomTextBox stCompPosicao="fieldId"
+
+                <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtId"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					IsReadOnly="True"
 					ToolTip="Chave principal do registro do Ramo de Atividade, campo auto incremental">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox stCompPosicao="first"
+                <Components:CustomTextBox stCompPosicao="first" x:Name="txtRamo"
                     Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xRamo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 					ToolTip="Digite um nome resumido para o Ramo de Atividade">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtDescricao"
                     Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 					ToolTip="Descrição mais ampla do Ramo de Atividade ">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtCnae"
                     Grid.Column="2" Grid.Row="4" stCompPosicao="last"
                     Text="{Binding currentModel.xCnae, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 					ToolTip="Informar a Classificação Nacional de Atividades Econômicas">
-                </Components:CustomTextBox>                
+                </Components:CustomTextBox>
             </Grid>
-        </Expander>       
-	</Grid>
+        </Expander>
+    </Grid>
 </runtime:WindowsBase>

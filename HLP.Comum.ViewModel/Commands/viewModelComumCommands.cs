@@ -17,6 +17,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace HLP.Comum.ViewModel.Commands
 {
@@ -420,11 +422,18 @@ namespace HLP.Comum.ViewModel.Commands
             return (this.GetOperationModel() != OperationModel.updating
                 || this.GenericCanExecute());
         }
+
         private void alterarBase()
         {
             this.objviewModel.bIsEnabled = true;
             (this.objviewModel.currentModel as modelComum).SetOperationModel(_value: OperationModel.updating);
+
+            if (this.objviewModel.focusFirstComponent != null &&
+                            this.objviewModel.firstControl != null)
+                this.objviewModel.focusFirstComponent.Invoke(obj: this.objviewModel.firstControl);
         }
+
+
         private void delBase(object iRemoved)
         {
             this.objviewModel.loading = true;
@@ -500,6 +509,10 @@ namespace HLP.Comum.ViewModel.Commands
                         xNameTabela: this.objviewModel.currentModel.GetType().Name.ToUpper().Replace(oldValue: "MODEL", newValue: ""),
                         idPk: this.objviewModel.currentID);
 
+            if (this.objviewModel.focusFirstComponent != null &&
+                this.objviewModel.idControl != null)
+                this.objviewModel.focusFirstComponent.Invoke(obj: this.objviewModel.idControl);
+
         }
         private bool salvarBaseCanExecute()
         {
@@ -520,7 +533,8 @@ namespace HLP.Comum.ViewModel.Commands
             System.Threading.Thread.Sleep(200);
             if (objviewModel.currentID != 0)
             {
-                (this.objviewModel.currentModel as modelComum).SetOperationModel(_value: OperationModel.searching);
+                if (this.objviewModel.currentModel != null)
+                    (this.objviewModel.currentModel as modelComum).SetOperationModel(_value: OperationModel.searching);
             }
             this.objviewModel.bIsEnabled = false;
             this.objviewModel.loading = false;

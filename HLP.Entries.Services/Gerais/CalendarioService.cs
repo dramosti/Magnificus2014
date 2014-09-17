@@ -14,7 +14,7 @@ namespace HLP.Entries.Services.Gerais
 
     public class CalendarioService
     {
-        const string xTabela = "Calendario";
+        const string xTabela = "Calendario;Calendario_Detalhe;Calendario_Intervalos";
 
         Wcf.Entries.wcf_Calendario serviceNetwork;
         wcf_Calendario.Iwcf_CalendarioClient serviceWeb;        
@@ -33,16 +33,18 @@ namespace HLP.Entries.Services.Gerais
 
                         #region Validação
 
-                        if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == xTabela)
-                == 0)
+                        foreach (string str in xTabela.Split(';').ToArray())
                         {
-                            CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
-                            lCampos.xTabela = xTabela;
-                            lCampos.lCamposSqlModel = serviceCamposBaseDadosNetwork.getCamposNotNull(
-                                xTabela: xTabela);
-                            lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str)
+                    == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosNetwork.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
                         }
-
                         #endregion
                     }
                     break;
@@ -59,14 +61,17 @@ namespace HLP.Entries.Services.Gerais
 
                         #region Validação
 
-                        if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == xTabela)
-                == 0)
+                        foreach (string str in xTabela.Split(';').ToArray())
                         {
-                            CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
-                            lCampos.xTabela = xTabela;
-                            lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
-                                xTabela: xTabela);
-                            lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str)
+                    == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
                         }
 
                         #endregion

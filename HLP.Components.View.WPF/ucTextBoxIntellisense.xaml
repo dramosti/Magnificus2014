@@ -5,35 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" Height="20" Width="Auto"
              xmlns:localConverter="clr-namespace:HLP.Components.View.WPF.Converter"
-             d:DesignHeight="40" d:DesignWidth="300" x:Name="txtIntellisense">
+             d:DesignHeight="40" d:DesignWidth="300" x:Name="txtIntellisense" Style="{DynamicResource UserControlStyle}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <localConverter:NotConverter x:Key="notConverter"/>
-        </ResourceDictionary>
+            <Style TargetType="UserControl" x:Key="UserControlStyle">
+                <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+            </Style>
+        </ResourceDictionary>        
     </UserControl.Resources>
     <Grid>
-        <TextBox x:Name="txt" IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}
+        <TextBox Style="{StaticResource TextBox_PESQUISA_NEW}" x:Name="txt" IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}
             ,Path=ucEnabled, Converter={StaticResource notConverter}}"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}
             ,Path=customViewModel.xTextSearch, Mode=TwoWay
             , UpdateSourceTrigger=PropertyChanged}"
-                 >
-            <TextBox.Style>
-                <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
-                    <Style.Resources>
-                        <SolidColorBrush x:Key="whiteSmoke" Color="#F5F5F5">
-                        </SolidColorBrush>
-                    </Style.Resources>
-                    <Style.Triggers>
-                        <Trigger Property="IsReadOnly" Value="True">
-                            <Setter Property="Background" Value="{StaticResource whiteSmoke}"></Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBox.Style>
+                 >           
             <TextBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Inserir novo item" x:Name="insertItem" 

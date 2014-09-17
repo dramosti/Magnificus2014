@@ -4,6 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:System="clr-namespace:System;assembly=mscorlib"  
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
+        xmlns:Conv="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.Gerais.WinFabricante" NameView="vwFabricante"
         Title="Fabricante" Height="660" Width="1024">
     <Window.Resources>
@@ -11,7 +12,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+            <Conv:NotConverter x:Key="notConverter"/>
+        </ResourceDictionary>                
     </Window.Resources>
     <Grid>
         <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
@@ -28,36 +30,39 @@
                     <RowDefinition Height="10"/>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                    
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <!--Label-->
 
-                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Razão Social" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Nome Fantasia" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>    
-                
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"
+                                            labelFor="{Binding ElementName=txtId}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Razão Social" Grid.Column="1" Grid.Row="2"
+                                            labelFor="{Binding ElementName=txtRazao}"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Nome Fantasia" Grid.Column="1" Grid.Row="3"
+                                            labelFor="{Binding ElementName=txtFantasia}"></Components:CustomTextBlock>
+
                 <!--Components-->
-                
-                <Components:CustomTextBox stCompPosicao="fieldId"
+
+                <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtId"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idFabricante, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					IsReadOnly="True"
 					ToolTip="Chave principal do registro do fabricante">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox stCompPosicao="first"
+                <Components:CustomTextBox stCompPosicao="first" x:Name="txtRazao"
                     Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xRazao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 					ToolTip="Informe a razão social do fabricante">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox stCompPosicao="last"
+                <Components:CustomTextBox stCompPosicao="last" x:Name="txtFantasia"
                     Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xFantasia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 					ToolTip="Informe o nome fantasia do fabricante">
                 </Components:CustomTextBox>
-                
+
             </Grid>
         </Expander>
 
