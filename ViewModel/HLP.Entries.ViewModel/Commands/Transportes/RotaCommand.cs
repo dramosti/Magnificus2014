@@ -12,6 +12,8 @@ using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
 using HLP.Entries.Services.Transportes;
 using HLP.Comum.ViewModel.ViewModel;
+using HLP.Entries.Services.Gerais;
+using HLP.Entries.Model.Models.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Transportes
 {
@@ -19,9 +21,11 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
     {
         RotaViewModel objViewModel;
         RotaService objService;
+        CidadeService objCidadeService;
         public RotaCommand(RotaViewModel objViewModel)
         {
             objService = new RotaService();
+            objCidadeService = new CidadeService();
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
@@ -59,6 +63,10 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         }
 
+        public CidadeModel getCidade(int id, bool bOptionalSearch = false)
+        {
+            return objCidadeService.GetObject(id);
+        }
 
         #region Implementação Commands
         public void Save(object _panel)
