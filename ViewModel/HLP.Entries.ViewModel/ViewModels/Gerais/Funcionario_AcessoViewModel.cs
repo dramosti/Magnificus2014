@@ -29,6 +29,8 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public Funcionario_AcessoViewModel()
         {
             comm = new Funcionario_AcessoCommands(objViewModel: this);
+            this.getEmpresa = comm.GetEmpresa;
+            this.getSetor = comm.GetSetor;
         }
 
 
@@ -50,6 +52,21 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 _xFuncionario = value;
                 base.NotifyPropertyChanged(propertyName: "xFuncionario");
             }
+        }
+
+        private Func<int, bool, object> _getEmpresa;
+        public Func<int, bool, object> getEmpresa
+        {
+            get { return _getEmpresa; }
+            set { _getEmpresa = value; }
+        }
+
+
+        private Func<int, bool, object> _getSetor;
+        public Func<int, bool, object> getSetor
+        {
+            get { return _getSetor; }
+            set { _getSetor = value; }
         }
         
 

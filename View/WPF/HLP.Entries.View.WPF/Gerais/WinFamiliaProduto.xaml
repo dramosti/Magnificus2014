@@ -5,6 +5,7 @@
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.Gerais.WinFamiliaProduto"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
+    xmlns:util="clr-namespace:HLP.Base.ClassesBases;assembly=HLP.Base"
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         xmlns:converterLocal="clr-namespace:HLP.Entries.View.WPF.Gerais.Converters"
@@ -18,6 +19,7 @@
             <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
             <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
             <converterLocal:cAlternativoMaskConverter x:Key="codAlternativoMaskConverter"/>
+            <util:BindingProxy x:Key="proxy" Data="{Binding}" />
             <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
             <ObjectDataProvider x:Key="lTpOper" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
                 <ObjectDataProvider.MethodParameters>
@@ -136,13 +138,13 @@
 
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="1"
-                                    Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+                                    Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 								    IsEnabled="{Binding bIsEnabled}"
 								    ToolTip="Informar a alíquota em percentual da comissão somente para valores a Vista, quando a condução de vendas for por Dinheiro.">
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="2"
-                                    Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+                                    Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 								    IsEnabled="{Binding bIsEnabled}"
 								    ToolTip="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a condução de vendas for Cartão de Débito e Crédito, Cheques e valores Líquidos ou Duplicatas geradas.">
                                 </Components:CustomTextBox>
@@ -180,42 +182,27 @@
 
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="1"
-                                    Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+                                    Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 								    IsEnabled="{Binding bIsEnabled}"
 								    ToolTip="Informar um percentual de desconto máximo para a linha inteira de produto, quando a linha de produto for sintético não é permitido a inclusão do valor. Lembrando que o sistema pegara em primeiro plano o percentual de desconto do item, caso não tenha o sistema buscará o % da Lista de preço e por fim da família do produto.">
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="2"
-                                    Text="{Binding currentModel.pAcressimoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+                                    Text="{Binding currentModel.pAcressimoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 								    IsEnabled="{Binding bIsEnabled}"
 								    ToolTip="Informar um percentual de acréscimo máximo para a linha inteira de produto, quando a linha de produto for sintético não é permitido a inclusão do valor. Lembrando que o sistema pegara em primeiro plano o percentual de acréscimo do item, caso não tenha o sistema buscará o % da Lista de preço e por fim da família do produto.">
                                 </Components:CustomTextBox>
-                                <Components:CustomPesquisa 
-								Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-								xIdPesquisa="{Binding currentModel.idContaContabil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Informar a conta contábil para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. " FieldPesquisa="ID" TableView="vwContaContabil">
-                                    <Components:CustomPesquisa.Items>
-                                        <System:String>TESTE</System:String>
-                                    </Components:CustomPesquisa.Items>
-                                </Components:CustomPesquisa>
-                                <Components:CustomPesquisa 
-								Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-								xIdPesquisa="{Binding currentModel.idCentroCusto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Informar o centro de custo para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. "
-                                FieldPesquisa="ID" TableView="vwCentroCusto">
-                                    <Components:CustomPesquisa.Items>
-                                        <System:String>TESTE</System:String>
-                                    </Components:CustomPesquisa.Items>
-                                </Components:CustomPesquisa>
-                                <Components:CustomCheckBox
-                                    Grid.Column="2" Grid.Row="5" stCompPosicao="last"
-                                    IsChecked="{Binding currentModel.stAlteraDescricaoComercialProdutoVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								    IsEnabled="{Binding bIsEnabled}"
-								    ToolTip="Informar ao sistema se poderá ou não alterar a descrição do produto no módulo comercial (Orçamento, Vendas, Faturamento).">
-                                </Components:CustomCheckBox>
+                                <Components:ucTextBoxIntellisense 
+					            ucEnabled="{Binding bIsEnabled}"
+					           Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
+					            selectedId="{Binding currentModel.idContaContabil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                xNameView="vwContaContabilqs" TableView="vwContaContabil" ToolTip="Informar a conta contábil para a família de produto, servirá com base padrão para todos os itens relacionado a essa família." />
 
+                                <Components:ucTextBoxIntellisense 
+					            ucEnabled="{Binding bIsEnabled}"
+					          Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
+					            selectedId="{Binding currentModel.idCentroCusto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                xNameView="vwCentroCustoqs" TableView="vwCentroCusto" ToolTip="Informar o centro de custo para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. " />
                             </Grid>
                         </Expander>
                     </Grid>
@@ -224,58 +211,25 @@
             <TabItem Header="Classificação Financeira das Linhas de Produto">
                 <AdornerDecorator>
                     <Components:CustomDataGrid
-                        ItemsSource="{Binding currentModel.lFamilia_Produto_ClassesModel}"
-                    IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                          ItemsSource="{Binding currentModel.lFamilia_Produto_ClassesModel}"
+                          IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" 
                           CanUserReorderColumns="False"
-                          CanUserDeleteRows="True"
-                          >
+                          CanUserDeleteRows="True">
                         <Components:CustomDataGrid.Columns>
-                            <DataGridTemplateColumn x:Name="clTipoOp" Header="Tipo de Operação" Width="600" >
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Path=idTipoOperacao, Converter={StaticResource cbxDisplayConv}, 
-                                            ConverterParameter={StaticResource lTpOper}}"
-                                                   />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                                <DataGridTemplateColumn.CellEditingTemplate>
-                                    <DataTemplate>
-                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStUsuario}" >
-                                            <ComboBox x:Name="cbxStUsuario"
-                ItemsSource="{Binding Source={StaticResource lTpOper}}"
-                                            SelectedValuePath="id"
-                                            DisplayMemberPath="display"                      
-            SelectedValue="{Binding idTipoOperacao,
-                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellEditingTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn x:Name="clClasseFin" Header="Classe Financeira" Width="*" >
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Path=idClasseFinanceira, Converter={StaticResource cbxDisplayConv}, 
-                                            ConverterParameter={StaticResource lClasses}}"
-                                                   />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                                <DataGridTemplateColumn.CellEditingTemplate>
-                                    <DataTemplate>
-                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStUsuario}" >
-                                            <ComboBox x:Name="cbxStUsuario"
-                ItemsSource="{Binding Source={StaticResource lClasses}}"
-                                            SelectedValuePath="id"
-                                            DisplayMemberPath="display"                      
-            SelectedValue="{Binding idClasseFinanceira,
-                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellEditingTemplate>
-                            </DataGridTemplateColumn>
+                            <Components:CustomDataGridIntellisenseColumn  Header="Tipo de Operação" Width="600"
+                                        xFieldsToDisplay="idTipoOperacao;xOperacao" Binding="{Binding Path=idTipoOperacao,
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                        refMethod="{Binding Path=Data.getOperacao, Source={StaticResource proxy}}"
+                                        xNameView="vwTipoOperacaoqs" NameWindowCadastro="WinTipoOperacao" TableView="vwTipoOperacao">
+                            </Components:CustomDataGridIntellisenseColumn>
+                            <Components:CustomDataGridIntellisenseColumn Header="Classe Financeira" Width="*"
+                                        xFieldsToDisplay="idClasseFinanceira;xClasseFinanceira;xDescricao" Binding="{Binding Path=idClasseFinanceira,
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                        refMethod="{Binding Path=Data.getClasseFinanceira, Source={StaticResource proxy}}"
+                                        xNameView="vwClasseFinanceiraqs" TableView="vwClasseFinanceira">
+                            </Components:CustomDataGridIntellisenseColumn>
                         </Components:CustomDataGrid.Columns>
                     </Components:CustomDataGrid>
                 </AdornerDecorator>

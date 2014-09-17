@@ -13,6 +13,10 @@ using HLP.Base.EnumsBases;
 using HLP.Entries.Services.Gerais;
 using HLP.Comum.ViewModel.ViewModel;
 using HLP.Components.Model.Models;
+using HLP.Entries.Model.Models.Fiscal;
+using HLP.Entries.Model.Models.Contabil;
+using HLP.Entries.Services.Contabil;
+using HLP.Entries.Services.Fiscal;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -20,10 +24,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         FamiliaProdutoViewModel objViewModel;
         FamiliaProdutoService objService;
+        ClasseFinanceiraService objClasseFinanceiraService;
+        Tipo_OperacaoService objTipoOperacaoService;
 
         public FamiliaProdutoCommand(FamiliaProdutoViewModel objViewModel)
         {
             objService = new FamiliaProdutoService();
+            objClasseFinanceiraService = new ClasseFinanceiraService();
+            objTipoOperacaoService = new Tipo_OperacaoService();
+
 
             this.objViewModel = objViewModel;
 
@@ -320,9 +329,14 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         #endregion
 
+        public Tipo_operacaoModel getOperacao(int id, bool bOptionalSearch = false)
+        {
+            return objTipoOperacaoService.GetObject(id: id);
+        }
 
-
-
-
+        public Classe_FinanceiraModel getClasseFinanceira(int id, bool bOptionalSearch = false)
+        {
+            return objClasseFinanceiraService.GetObject(id: id);
+        }
     }
 }

@@ -20,6 +20,13 @@ namespace HLP.Base.Static
 {
     public static class Util
     {
+
+        public static bool isDesignTime()
+        {
+            return System.ComponentModel.DesignerProperties.GetIsInDesignMode(
+     new DependencyObject());
+        }
+
         public enum focoComponente { Primeiro, Segundo };
 
         public static void CarregaSettingsAppConfig()

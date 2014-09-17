@@ -30,6 +30,8 @@ using HLP.Comum.Model.Repository.Interfaces;
 using HLP.Comum.Model.Repository.Implementation;
 using HLP.Entries.Model.Repository.Interfaces.GestaoDeMateriais;
 using HLP.Entries.Model.Repository.Implementation.GestaoDeMateriais;
+using HLP.Entries.Model.Repository.Interfaces.Contabil;
+using HLP.Entries.Model.Repository.Implementation.Contabil;
 
 namespace HLP.Dependencies
 {
@@ -64,7 +66,7 @@ namespace HLP.Dependencies
 
             Bind<IFuncionario_Controle_Horas_PontoRepository>().To<Funcionario_Controle_Horas_PontoRepository>();
             Bind<IFuncionario_BancoHorasRepository>().To<Funcionario_BancoHorasRepository>();
-            //Bind<IConfiguraBaseRepository>().To<ConfiguraBaseRepository>();
+            Bind<IClasse_FinanceiraRepository>().To<Classe_FinanceiraRepository>();
             //Bind<IConfigFormulariosRepository>().To<ConfigFormulariosRepository>();
             //Bind<IRelatoriosRepository>().To<RelatoriosRepository>();
             //Bind<IConfigColunasGridRepository>().To<ConfigColunasGridRepository>();

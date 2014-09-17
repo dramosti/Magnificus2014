@@ -5,6 +5,8 @@
         xmlns:convView="clr-namespace:HLP.Entries.View.WPF.Validates"
         xmlns:v="clr-namespace:HLP.Components.View.WPF.Validates;assembly=HLP.Components.View.WPF"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:HLP.Entries.View.WPF"
+        xmlns:util="clr-namespace:HLP.Base.ClassesBases;assembly=HLP.Base"
         xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
 		xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" 
 		xmlns:System="clr-namespace:System;assembly=mscorlib"  
@@ -16,6 +18,7 @@
             </ResourceDictionary.MergedDictionaries>
             <conv:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
             <conv:boolMultiConverter x:Key="boolMultiConverter"/>
+            <util:BindingProxy x:Key="proxy" Data="{Binding}" />
             <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
             <ObjectDataProvider x:Key="lresultSetor" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
                 <ObjectDataProvider.MethodParameters>
@@ -27,7 +30,7 @@
                     <System:String>vwEmpresaToComboBox</System:String>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </runtime:WindowsBase.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -49,11 +52,11 @@
                     <RowDefinition Height="10"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <!--Label-->
 
                 <Components:CustomTextBlock Text="Funcionário" Grid.Column="1" Grid.Row="1"/>
-                
+
                 <!--Components-->
                 <Components:CustomTextBox Grid.Column="2" IsEnabled="False" Grid.Row="2" Margin="0,0,0,3" Text="{Binding xFuncionario, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
             </Grid>
@@ -76,21 +79,21 @@
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <!--Label-->
 
                 <Components:CustomTextBlock Text="Utiliza Sistema" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Tipo Usuário" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Login" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Senha" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                
+
                 <!--Components-->
-                
+
                 <Components:CustomCheckBox
                     Grid.Column="2" Grid.Row="1"
                     Name="cbUtilizaSistema"                		
                 		IsChecked="{Binding currentModel.stUsuarioAtivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                		IsEnabled="{Binding bIsEnabled}">                		
+                		IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomCheckBox>
                 <Components:CustomComboBox 
                     Grid.Column="2" Grid.Row="2" Margin="0,0,0,3" Height="20"
@@ -121,21 +124,18 @@
                         </MultiBinding>
                     </Components:CustomTextBox.IsEnabled>
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="4" stCompPosicao="last"
-                    Name="txtSenha"						
-					Text="{Binding currentModel.xSenha, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					ToolTip="Seleciona a senha do Usuario"
-                    LostFocus="controlsBgLogin_LostFocus">
-                    <Components:CustomTextBox.IsEnabled>
+
+                <PasswordBox  Height="18"  Grid.Column="2" Grid.Row="4" local:PasswordHelper.Attach="True"
+                               local:PasswordHelper.Password="{Binding currentModel.xSenha, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                               ToolTip="Seleciona a senha do Usuario"
+                               Margin="2" LostFocus="controlsBgLogin_LostFocus">
+                    <PasswordBox.IsEnabled>
                         <MultiBinding Converter="{StaticResource boolMultiConverter}">
                             <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
                             <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
                         </MultiBinding>
-                    </Components:CustomTextBox.IsEnabled>
-                </Components:CustomTextBox>
-
-
+                    </PasswordBox.IsEnabled>
+                </PasswordBox>               
             </Grid>
         </Expander>
         <Expander Header="Empresa" Style="{StaticResource ExpanderPadrao}" IsExpanded="True" Grid.Row="2">
@@ -166,51 +166,19 @@
                         </BindingGroup>
                     </DataGrid.BindingGroup>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn x:Name="clEmpresa" Header="Empresa" Width="450" >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Path=idEmpresa, Converter={StaticResource cbxDisplayConv}, 
-                                        ConverterParameter={StaticResource lresultEmpresa}}"
-                                                   />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                            <DataGridTemplateColumn.CellEditingTemplate>
-                                <DataTemplate>
-                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEditing}" >
-                                        <ComboBox x:Name="cbxEditing"
-                ItemsSource="{Binding Source={StaticResource lresultEmpresa}}"
-                                            SelectedValuePath="id"
-                                            DisplayMemberPath="display"                      
-            SelectedValue="{Binding idEmpresa,
-                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellEditingTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn x:Name="clSetor" Header="Setor" Width="*" >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Path=idSetor, Converter={StaticResource cbxDisplayConv}, 
-                                        ConverterParameter={StaticResource lresultSetor}}"
-                                                   />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                            <DataGridTemplateColumn.CellEditingTemplate>
-                                <DataTemplate>
-                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEditing}" >
-                                        <ComboBox x:Name="cbxEditing"
-                ItemsSource="{Binding Source={StaticResource lresultSetor}}"
-                                            SelectedValuePath="id"
-                                            DisplayMemberPath="display"                      
-            SelectedValue="{Binding idSetor,
-                                UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellEditingTemplate>
-                        </DataGridTemplateColumn>
 
+                        <Components:CustomDataGridIntellisenseColumn Header="Empresa" Width="450"
+                                        xFieldsToDisplay="idEmpresa;xFantasia" Binding="{Binding Path=idEmpresa,
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                        refMethod="{Binding Path=Data.getEmpresa, Source={StaticResource proxy}}"
+                                        xNameView="vwEmpresaqs" NameWindowCadastro="WinEmpresa" TableView="vwEmpresa">
+                        </Components:CustomDataGridIntellisenseColumn>
+                        <Components:CustomDataGridIntellisenseColumn Header="Setor" Width="*"
+                                        xFieldsToDisplay="idSetor;xDescricao" Binding="{Binding Path=idSetor,
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                        refMethod="{Binding Path=Data.getSetor, Source={StaticResource proxy}}"
+                                        xNameView="vwSetorqs" NameWindowCadastro="WinSetor" TableView="vwSetor">
+                        </Components:CustomDataGridIntellisenseColumn>
                     </DataGrid.Columns>
                     <DataGrid.IsEnabled>
                         <MultiBinding Converter="{StaticResource boolMultiConverter}">

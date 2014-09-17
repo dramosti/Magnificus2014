@@ -17,38 +17,38 @@ namespace HLP.Components.Model.Models
         public EnderecoModel()
             : base(xTabela: "Enderecos")
         {
-            Window currentWindow = Sistema.GetOpenWindow();
+            //Window currentWindow = Sistema.GetOpenWindow();
 
-            if (currentWindow != null)
-            {
-                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                    {
-                        object currentModel = currentWindow.DataContext.GetType().GetProperty(name: "currentModel")
-                    .GetValue(obj: currentWindow.DataContext);
+            //if (currentWindow != null)
+            //{
+            //    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+            //        {
+            //            object currentModel = currentWindow.DataContext.GetType().GetProperty(name: "currentModel")
+            //        .GetValue(obj: currentWindow.DataContext);
 
-                        if (currentModel != null)
-                        {
-                            if ((currentModel as modelComum).GetOperationModel() ==
-                                 Base.EnumsBases.OperationModel.updating)
-                            {
-                                PropertyInfo pilEnderecos = currentModel.GetType().GetProperties().ToList().FirstOrDefault(
-                                    i => i.PropertyType == typeof(ObservableCollectionBaseCadastros<EnderecoModel>));
+            //            if (currentModel != null)
+            //            {
+            //                if ((currentModel as modelComum).GetOperationModel() ==
+            //                     Base.EnumsBases.OperationModel.updating)
+            //                {
+            //                    PropertyInfo pilEnderecos = currentModel.GetType().GetProperties().ToList().FirstOrDefault(
+            //                        i => i.PropertyType == typeof(ObservableCollectionBaseCadastros<EnderecoModel>));
 
-                                if (pilEnderecos != null)
-                                {
-                                    ObservableCollectionBaseCadastros<EnderecoModel> list = pilEnderecos.GetValue(obj: currentModel) as ObservableCollectionBaseCadastros<EnderecoModel>;
+            //                    if (pilEnderecos != null)
+            //                    {
+            //                        ObservableCollectionBaseCadastros<EnderecoModel> list = pilEnderecos.GetValue(obj: currentModel) as ObservableCollectionBaseCadastros<EnderecoModel>;
 
-                                    if (list != null)
-                                        if (list.Count(i => i.stPrincipal == (byte)1) < 1)
-                                        {
-                                            this._stPrincipal = (byte)1;
-                                            base.NotifyPropertyChanged(propertyName: "stPrincipal");
-                                        }
-                                }
-                            }
-                        }
-                    }));
-            }
+            //                        if (list != null)
+            //                            if (list.Count(i => i.stPrincipal == (byte)1) < 1)
+            //                            {
+            //                                this._stPrincipal = (byte)1;
+            //                                base.NotifyPropertyChanged(propertyName: "stPrincipal");
+            //                            }
+            //                    }
+            //                }
+            //            }
+            //        }));
+            //}
         }
         private int? _idEndereco;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -65,53 +65,53 @@ namespace HLP.Components.Model.Models
             get { return _stPrincipal; }
             set
             {
-                if (value == (byte)1)
-                {
-                    Window currentWindow = Sistema.GetOpenWindow();
+                //if (value == (byte)1)
+                //{
+                //    Window currentWindow = Sistema.GetOpenWindow();
 
-                    if (currentWindow != null)
-                    {
-                        Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                        {
-                            object currentModel = currentWindow.DataContext.GetType().GetProperty(name: "currentModel")
-                        .GetValue(obj: currentWindow.DataContext);
+                //    if (currentWindow != null)
+                //    {
+                //        Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                //        {
+                //            object currentModel = currentWindow.DataContext.GetType().GetProperty(name: "currentModel")
+                //        .GetValue(obj: currentWindow.DataContext);
 
-                            if (currentModel != null)
-                            {
-                                if ((currentModel as modelComum).GetOperationModel() ==
-                                     Base.EnumsBases.OperationModel.updating)
-                                {
-                                    PropertyInfo pilEnderecos = currentModel.GetType().GetProperties().ToList().FirstOrDefault(
-                                        i => i.PropertyType == typeof(ObservableCollectionBaseCadastros<EnderecoModel>));
+                //            if (currentModel != null)
+                //            {
+                //                if ((currentModel as modelComum).GetOperationModel() ==
+                //                     Base.EnumsBases.OperationModel.updating)
+                //                {
+                //                    PropertyInfo pilEnderecos = currentModel.GetType().GetProperties().ToList().FirstOrDefault(
+                //                        i => i.PropertyType == typeof(ObservableCollectionBaseCadastros<EnderecoModel>));
 
-                                    if (pilEnderecos != null)
-                                    {
-                                        ObservableCollectionBaseCadastros<EnderecoModel> list = pilEnderecos.GetValue(obj: currentModel) as ObservableCollectionBaseCadastros<EnderecoModel>;
+                //                    if (pilEnderecos != null)
+                //                    {
+                //                        ObservableCollectionBaseCadastros<EnderecoModel> list = pilEnderecos.GetValue(obj: currentModel) as ObservableCollectionBaseCadastros<EnderecoModel>;
 
-                                        if (list.Where(i => i != this).Count(i => i.stPrincipal == (byte)1) > 0)
-                                        {
-                                            if (MessageHlp.Show(stMessage: StMessage.stYesNo, xMessageToUser: "Já foi definido um endereço como principal, " +
-                                                "deseja definir o registro atual como endereço principal? ")
-                                                == MessageBoxResult.Yes)
-                                            {
-                                                foreach (EnderecoModel end in list.Where(i => i != this && i.stPrincipal == (byte)1))
-                                                {
-                                                    end._stPrincipal = (byte)0;
-                                                    end.NotifyPropertyChanged(propertyName: "stPrincipal");
-                                                }
-                                            }
-                                            else
-                                            {
-                                                this.stPrincipal = (byte)0;
-                                                base.NotifyPropertyChanged(propertyName: "stPrincipal");
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }));
-                    }
-                }
+                //                        if (list.Where(i => i != this).Count(i => i.stPrincipal == (byte)1) > 0)
+                //                        {
+                //                            if (MessageHlp.Show(stMessage: StMessage.stYesNo, xMessageToUser: "Já foi definido um endereço como principal, " +
+                //                                "deseja definir o registro atual como endereço principal? ")
+                //                                == MessageBoxResult.Yes)
+                //                            {
+                //                                foreach (EnderecoModel end in list.Where(i => i != this && i.stPrincipal == (byte)1))
+                //                                {
+                //                                    end._stPrincipal = (byte)0;
+                //                                    end.NotifyPropertyChanged(propertyName: "stPrincipal");
+                //                                }
+                //                            }
+                //                            else
+                //                            {
+                //                                this.stPrincipal = (byte)0;
+                //                                base.NotifyPropertyChanged(propertyName: "stPrincipal");
+                //                            }
+                //                        }
+                //                    }
+                //                }
+                //            }
+                //        }));
+                //    }
+                //}
                 _stPrincipal = value;
                 base.NotifyPropertyChanged(propertyName: "stPrincipal");
             }
