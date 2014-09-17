@@ -99,6 +99,7 @@
     <Content Include="wcf_Cargo.svc" />
     <Content Include="wcf_Cfop.svc" />
     <Content Include="wcf_Cidade.svc" />
+    <Content Include="wcf_ClasseFinanceira.svc" />
     <Content Include="wcf_ClassificacaoFiscal.svc" />
     <Content Include="wcf_CodigoIcms.svc" />
     <Content Include="wcf_CondicaoEntrega.svc" />
@@ -167,6 +168,7 @@
     <Compile Include="Iwcf_Agencia.cs" />
     <Compile Include="Iwcf_Banco.cs" />
     <Compile Include="Iwcf_Calendario.cs" />
+    <Compile Include="Iwcf_ClasseFinanceira.cs" />
     <Compile Include="Iwcf_Documentos.cs" />
     <Compile Include="Iwcf_Localizacao.cs" />
     <Compile Include="Iwcf_Login.cs" />
@@ -257,6 +259,9 @@
     </Compile>
     <Compile Include="wcf_Cidade.svc.cs">
       <DependentUpon>wcf_Cidade.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_ClasseFinanceira.svc.cs">
+      <DependentUpon>wcf_ClasseFinanceira.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_ClassificacaoFiscal.svc.cs">
       <DependentUpon>wcf_ClassificacaoFiscal.svc</DependentUpon>
@@ -507,7 +512,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63620</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

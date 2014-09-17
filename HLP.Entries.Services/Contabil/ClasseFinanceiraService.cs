@@ -1,42 +1,52 @@
-﻿using System;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
+using HLP.Dependencies;
+using HLP.Entries.Model.Models.Contabil;
+using HLP.Entries.Model.Models.Gerais;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Entries.Model.Models.Gerais;
-using HLP.Base.Static;
-using HLP.Base.ClassesBases;
-using System.Configuration;
-using System.ServiceModel.Configuration;
 
-namespace HLP.Entries.Services.Gerais
+
+
+namespace HLP.Entries.Services.Contabil
 {
 
-    public class CalendarioService
+    public class ClasseFinanceiraService
     {
-        const string xTabela = "Calendario;Calendario_Detalhe;Calendario_Intervalos";
 
-        Wcf.Entries.wcf_Calendario serviceNetwork;
-        wcf_Calendario.Iwcf_CalendarioClient serviceWeb;        
+
+        const string xTabela = "ClasseFinanceira;";
+        [Inject]
+        public HLP.Entries.Model.Repository.Interfaces.Contabil.IClasse_FinanceiraRepository serviceNetwork { get; set; }
+        wcf_ClasseFinanceira.Iwcf_ClasseFinanceiraClient serviceWeb;
 
         HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
         wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
 
-        public CalendarioService()
+        public ClasseFinanceiraService()
         {
             switch (Sistema.bOnline)
             {
                 case StConnection.OnlineNetwork:
                     {
-                        serviceNetwork = new Wcf.Entries.wcf_Calendario();
+                        if (!Util.isDesignTime())
+                        {
+                            IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
+                            kernel.Settings.ActivationCacheDisabled = false;
+                            kernel.Inject(this);
+                        }
+                        //serviceNetwork = new HLP.Entries.Model.Repository.Interfaces.Contabil.IClasse_FinanceiraRepository Network();
                         serviceCamposBaseDadosNetwork = new Wcf.Entries.wcf_CamposBaseDados();
 
                         #region Validação
 
                         foreach (string str in xTabela.Split(';').ToArray())
                         {
-                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str)
-                    == 0)
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
                             {
                                 CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
                                 lCampos.xTabela = str;
@@ -45,30 +55,24 @@ namespace HLP.Entries.Services.Gerais
                                 lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
                             }
                         }
+
                         #endregion
                     }
                     break;
                 case StConnection.OnlineWeb:
                     {
-                        Configuration localConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                        string nameBinding = string.Empty;
-
-                        var b = ((localConfig.SectionGroups[9].Sections[10] as BindingsSection).BindingCollections[0] as BasicHttpBindingCollectionElement).
-                            ConfiguredBindings.FirstOrDefault(i => i.Name == "BasicHttpBinding_Iwcf_Calendario");
-
+                        serviceWeb = new wcf_ClasseFinanceira.Iwcf_ClasseFinanceiraClient();
                         serviceCamposBaseDadosWeb = new wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient();
-                        serviceWeb = new wcf_Calendario.Iwcf_CalendarioClient();                        
 
                         #region Validação
 
                         foreach (string str in xTabela.Split(';').ToArray())
                         {
-                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str)
-                    == 0)
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
                             {
                                 CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
                                 lCampos.xTabela = str;
-                                lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosNetwork.getCamposNotNull(
                                     xTabela: str);
                                 lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
                             }
@@ -84,17 +88,17 @@ namespace HLP.Entries.Services.Gerais
             }
         }
 
-        public CalendarioModel GetObject(int id, bool bGetChild = true)
+        public Classe_FinanceiraModel GetObject(int id)
         {
             switch (Sistema.bOnline)
             {
                 case StConnection.OnlineNetwork:
                     {
-                        return this.serviceNetwork.GetObjeto(idObjeto: id, bGetChild: bGetChild);
+                        return this.serviceNetwork.GetClasse_Financeira(id);
                     }
                 case StConnection.OnlineWeb:
                     {
-                        return this.serviceWeb.GetObjeto(idObjeto: id, bGetChild: bGetChild);
+                        return this.serviceWeb.GetObject(id: id);
                     }
                 case StConnection.Offline:
                 default:
@@ -104,37 +108,37 @@ namespace HLP.Entries.Services.Gerais
             }
         }
 
-        public CalendarioModel SaveObject(CalendarioModel obj)
+        public int SaveObject(Classe_FinanceiraModel obj)
         {
             switch (Sistema.bOnline)
             {
                 case StConnection.OnlineNetwork:
                     {
-                        return this.serviceNetwork.Save(obj, UserData.idUser);
+                        return this.serviceNetwork.Save(obj);
                     }
                 case StConnection.OnlineWeb:
                     {
-                        return this.serviceWeb.Save(obj, UserData.idUser);
+                        return this.serviceWeb.SaveObject(obj: obj);
                     }
                 case StConnection.Offline:
                 default:
                     {
-                        return new CalendarioModel();
+                        return 0;
                     }
             }
         }
 
-        public bool DeleteObject(CalendarioModel obj)
+        public bool DeleteObject(int id)
         {
             switch (Sistema.bOnline)
             {
                 case StConnection.OnlineNetwork:
                     {
-                        return this.serviceNetwork.Delete(obj, UserData.idUser);
+                        return this.serviceNetwork.Delete(id);
                     }
                 case StConnection.OnlineWeb:
                     {
-                        return this.serviceWeb.Delete(obj, UserData.idUser);
+                        return this.serviceWeb.DeleteObject(id: id);
                     }
                 case StConnection.Offline:
                 default:
@@ -144,29 +148,25 @@ namespace HLP.Entries.Services.Gerais
             }
         }
 
-
-        public List<HLP.Entries.Model.Models.Gerais.Calendario_IntervalosModel> GetIntervalos(int idCalendario) 
+        public Classe_FinanceiraModel CopyObject(int id)
         {
             switch (Sistema.bOnline)
             {
                 case StConnection.OnlineNetwork:
                     {
-                        return this.serviceNetwork.GetIntervalos(idCalendario);
+                        return this.serviceNetwork.Copy(id);
                     }
                 case StConnection.OnlineWeb:
                     {
-                        return this.serviceWeb.GetIntervalos(idCalendario);
-                        //return new List<Calendario_IntervalosModel>();
+                        return this.serviceWeb.CopyObject(id: id);
                     }
                 case StConnection.Offline:
                 default:
                     {
-                        return new List<Calendario_IntervalosModel>();
+                        return null;
                     }
             }
-
         }
-
     }
 
 }

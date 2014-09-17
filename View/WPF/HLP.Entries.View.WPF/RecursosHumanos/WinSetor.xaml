@@ -3,6 +3,7 @@
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
  xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
  xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
+ xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
  x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinSetor"
  x:Name="Window"
  Title="Setor"
@@ -12,6 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <convert:NotConverter x:Key="notConverter"/>
         </ResourceDictionary>
     </runtime:WindowsBase.Resources>
     <Grid>
@@ -33,27 +35,31 @@
                 </Grid.RowDefinitions>
                 <!--Label-->
 
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Codigo"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Codigo do Setor"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Descricao"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="E-mail do Setor"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Codigo" 
+                                            labelFor="{Binding ElementName=txtId}"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Codigo do Setor" 
+                                            labelFor="{Binding ElementName=txtSetor}"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Descricao" 
+                                            labelFor="{Binding ElementName=txtDescricao}"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="E-mail do Setor" 
+                                            labelFor="{Binding ElementName=txtEmail}"/>
 
                 <!--Components-->
                 
-                <Components:CustomTextBox Grid.Column="2" Grid.Row="1" stCompPosicao="fieldId"
+                <Components:CustomTextBox Grid.Column="2" Grid.Row="1" stCompPosicao="fieldId" x:Name="txtId"
                                           Text="{Binding currentModel.idSetor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                                           IsReadOnly="True" ToolTip="Chave principal do registro Setor"/>                
-                <Components:CustomTextBox Grid.Column="2" Grid.Row="2" stCompPosicao="first"
+                <Components:CustomTextBox Grid.Column="2" Grid.Row="2" stCompPosicao="first" x:Name="txtSetor"
                                           Text="{Binding currentModel.xSetor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
-                                          IsEnabled="{Binding bIsEnabled}"
+                                          IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                           ToolTip="Informar um codigo para o Setor"/>                
-                <Components:CustomTextBox Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+                <Components:CustomTextBox Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" x:Name="txtDescricao"
                                           Text="{Binding currentModel.xDescricao, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
-                                          IsEnabled="{Binding bIsEnabled}" 
+                                          IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                           ToolTip="Informar uma descricao mais detalhada do Setor da Empresa"/>                
-                <Components:CustomTextBox Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" stCompPosicao="last"
+                <Components:CustomTextBox Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" stCompPosicao="last" x:Name="txtEmail"
                                           Text="{Binding currentModel.xEmail, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
-                                          IsEnabled="{Binding bIsEnabled}"
+                                          IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                           ToolTip="Informar um e-mail geral caso tenha do setor."/>                
             </Grid>
         </Expander>

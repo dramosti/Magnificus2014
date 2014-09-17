@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
+        xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinCargo"
         Title="Cargo" Height="300" Width="400" NameView="vwCargo">
     <Window.Resources>
@@ -10,6 +11,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <convert:NotConverter x:Key="notConverter"/>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
@@ -37,20 +39,21 @@
                 
                 <!--Components-->
                 
-                <Components:CustomTextBox stCompPosicao="fieldId"
+                <Components:CustomTextBox stCompPosicao="fieldId" x:Name="txtId"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idCargo, Mode=TwoWay}" IsReadOnly="True">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox stCompPosicao="first"
+                <Components:CustomTextBox stCompPosicao="first" x:Name="txtCargo"
                     Grid.Column="2" Grid.Row="2"
-                    IsEnabled="{Binding bIsEnabled}"
+                    IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                     Text="{Binding currentModel.xCargo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox x:Name="txtDescricao"
                     Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" stCompPosicao="last"
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, 
                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                    IsEnabled="{Binding bIsEnabled}">
+                    IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                                          >
                 </Components:CustomTextBox>
             </Grid>
         </Expander>

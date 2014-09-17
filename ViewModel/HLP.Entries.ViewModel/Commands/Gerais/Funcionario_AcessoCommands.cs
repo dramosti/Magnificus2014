@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using HLP.Entries.Services.Gerais;
+using HLP.Entries.Services.RecursosHumanos;
+using HLP.Entries.Model.Models.RecursosHumanos;
+using HLP.Entries.Model.Models.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -16,11 +19,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         Funcionario_AcessoViewModel objViewModel;
         Funcionario_AcessoService objService;
+        EmpresaService objEmpresaService;
+        SetorService objSetorService;
 
         public Funcionario_AcessoCommands(Funcionario_AcessoViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
             objService = new Funcionario_AcessoService();
+            objEmpresaService = new EmpresaService();
+            objSetorService = new SetorService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => false);
@@ -127,8 +134,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
         }
 
-
-
         private bool SaveCanExecute(object objDependency)
         {
             if (objViewModel.currentModel == null || objDependency == null)
@@ -218,6 +223,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 throw ex;
             }
         }
+
+        public SetorModel GetSetor(int idSetor, bool bOptionalSearch = false)
+        {
+            return objSetorService.GetObject(id: idSetor);
+        }
+        public EmpresaModel GetEmpresa(int idEmpresa, bool bOptionalSearch = false)
+        {
+            return objEmpresaService.GetObject(id: idEmpresa);
+        }
+
         #endregion
 
 

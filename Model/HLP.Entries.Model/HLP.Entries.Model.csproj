@@ -90,6 +90,7 @@
     <Compile Include="Models\Comercial\ProdutoModel.cs" />
     <Compile Include="Models\Comercial\Tipo_produtoModel.cs" />
     <Compile Include="Models\Components\PesquisaPadraoModel.cs" />
+    <Compile Include="Models\Contabil\Classe_FinanceiraModel.cs" />
     <Compile Include="Models\Crm\FidelidadeModel.cs" />
     <Compile Include="Models\Crm\PersonalidadeModel.cs" />
     <Compile Include="Models\Financeiro\AgenciaModel.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Repository\Implementation\Comercial\Produto_RevisaoRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Tipo_produtoRepository.cs" />
     <Compile Include="Repository\Implementation\Components\HlpPesquisaPadraoRepository.cs" />
+    <Compile Include="Repository\Implementation\Contabil\Classe_FinanceiraRepository.cs" />
     <Compile Include="Repository\Implementation\Crm\FidelidadeRepository.cs" />
     <Compile Include="Repository\Implementation\Crm\PersonalidadeRepository.cs" />
     <Compile Include="Repository\Implementation\Financeiro\AgenciaRepository.cs" />
@@ -254,6 +256,7 @@
     <Compile Include="Repository\Interfaces\Comercial\IProduto_RevisaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ITipo_produtoRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IHlpPesquisaPadraoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Contabil\IClasse_FinanceiraRepository.cs" />
     <Compile Include="Repository\Interfaces\Crm\IFidelidadeRepository.cs" />
     <Compile Include="Repository\Interfaces\Crm\IPersonalidadeRepository.cs" />
     <Compile Include="Repository\Interfaces\Financeiro\IAgenciaRepository.cs" />
@@ -342,6 +345,7 @@
       <Name>HLP.Comum.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

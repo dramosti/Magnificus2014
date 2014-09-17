@@ -31,6 +31,8 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public FamiliaProdutoViewModel()
         {
             commands = new FamiliaProdutoCommand(objViewModel: this);
+            this.getClasseFinanceira = commands.getClasseFinanceira;
+            this.getOperacao = commands.getOperacao;
         }
 
         public string ReturnMaskcAlternativo(string value)
@@ -74,6 +76,25 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             else
                 return null;
         }
+
+
+        private Func<int, bool, object> _getOperacao;
+
+        public Func<int, bool, object> getOperacao
+        {
+            get { return _getOperacao; }
+            set { _getOperacao = value; }
+        }
+
+        private Func<int, bool, object> _getClasseFinanceira;
+
+        public Func<int, bool, object> getClasseFinanceira
+        {
+            get { return _getClasseFinanceira; }
+            set { _getClasseFinanceira = value; }
+        }
+        
+        
 
     }
 }
