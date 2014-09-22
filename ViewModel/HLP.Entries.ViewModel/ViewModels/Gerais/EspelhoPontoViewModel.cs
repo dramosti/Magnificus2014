@@ -43,7 +43,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         public EspelhoPontoViewModel(List<Control> lControlsPonto, Button btnCarregar)
         {            
-            this.currentModel = new FuncionarioPonto();
             this.lControlsPonto = lControlsPonto;
             this.btnCarregar = btnCarregar;
             command = new EspelhoPontoCommand(this);

@@ -197,12 +197,16 @@
 					           Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 					            selectedId="{Binding currentModel.idContaContabil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                 xNameView="vwContaContabilqs" TableView="vwContaContabil" ToolTip="Informar a conta contábil para a família de produto, servirá com base padrão para todos os itens relacionado a essa família." />
-
                                 <Components:ucTextBoxIntellisense 
 					            ucEnabled="{Binding bIsEnabled}"
 					          Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 					            selectedId="{Binding currentModel.idCentroCusto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                 xNameView="vwCentroCustoqs" TableView="vwCentroCusto" ToolTip="Informar o centro de custo para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. " />
+                                <Components:CustomCheckBox
+                                    Grid.Column="2" Grid.Row="5"
+                                    IsChecked="{Binding currentModel.stAlteraDescricaoComercialProdutoVenda, Mode=TwoWay,
+                                    UpdateSourceTrigger=PropertyChanged}" 
+                                    ToolTip="Informar ao sistema se poderá ou não alterar a descrição do produto no módulo comercial (Orçamento, Vendas, Faturamento). 0-	Não 1-	Sim(Default)"></Components:CustomCheckBox>
                             </Grid>
                         </Expander>
                     </Grid>

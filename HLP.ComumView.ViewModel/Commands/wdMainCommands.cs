@@ -267,77 +267,79 @@ namespace HLP.ComumView.ViewModel.Commands
                         TabItem tiCurrentComp = null;
                         PropertyInfo piIsReadOnly = null;
 
-                        foreach (FrameworkElement comp in objTabPageAtivasModel.lComponents)
-                        {
-                            tiCurrentComp = Util.GetParent(comp: comp, t: typeof(TabItem)) as TabItem;
+                        //TODO: Revisar esta funcionalidade de mudança de foco e salvar ao passar por último campo
 
-                            if (tiCurrentComp != tiPriorComp && compPriorComp != null)
-                            {
-                                PropertyInfo pi = compPriorComp.GetType().GetProperty(name: "actionOnLostFocus");
+                        //foreach (FrameworkElement comp in objTabPageAtivasModel.lComponents)
+                        //{
+                        //    tiCurrentComp = Util.GetParent(comp: comp, t: typeof(TabItem)) as TabItem;
 
-                                if (pi != null)
-                                {
-                                    Action<object> actionFocusNextTabComp = this.vm.FocusOnComponent;
+                        //    if (tiCurrentComp != tiPriorComp && compPriorComp != null)
+                        //    {
+                        //        PropertyInfo pi = compPriorComp.GetType().GetProperty(name: "actionOnLostFocus");
 
-                                    try
-                                    {
-                                        pi.SetValue(obj: compPriorComp, value: actionFocusNextTabComp);
+                        //        if (pi != null)
+                        //        {
+                        //            Action<object> actionFocusNextTabComp = this.vm.FocusOnComponent;
 
-                                        piIsReadOnly = comp.GetType().GetProperty(name: "IsReadOnly");
+                        //            try
+                        //            {
+                        //                pi.SetValue(obj: compPriorComp, value: actionFocusNextTabComp);
 
-                                        if (piIsReadOnly != null)
-                                            if ((bool)piIsReadOnly.GetValue(obj: comp) == false)
-                                            {
-                                                tiPriorComp = tiCurrentComp;
+                        //                piIsReadOnly = comp.GetType().GetProperty(name: "IsReadOnly");
 
-                                                PropertyInfo piParameterAction = compPriorComp.GetType().GetProperty(name: "actionParameter");
+                        //                if (piIsReadOnly != null)
+                        //                    if ((bool)piIsReadOnly.GetValue(obj: comp) == false)
+                        //                    {
+                        //                        tiPriorComp = tiCurrentComp;
 
-                                                if (piParameterAction != null)
-                                                {
-                                                    piParameterAction.SetValue(obj: compPriorComp, value: comp);
-                                                }
-                                            }
-                                    }
-                                    catch (Exception ex)
-                                    {
+                        //                        PropertyInfo piParameterAction = compPriorComp.GetType().GetProperty(name: "actionParameter");
 
-                                        throw ex;
-                                    }
-                                }
-                            }
+                        //                        if (piParameterAction != null)
+                        //                        {
+                        //                            piParameterAction.SetValue(obj: compPriorComp, value: comp);
+                        //                        }
+                        //                    }
+                        //            }
+                        //            catch (Exception ex)
+                        //            {
 
-                            compPriorComp = comp;
-                        }
+                        //                throw ex;
+                        //            }
+                        //        }
+                        //    }
 
-                        FrameworkElement fe = objTabPageAtivasModel.lComponents
-                            .Where(i => i.GetType().Name == "CustomTextBox"
-                            || i.GetType().Name == "CustomCheckBox"
-                            || i.GetType().Name == "CustomComboBox"
-                            || i.GetType().Name == "ucTextBoxIntellisense"
-                            || i.GetType() == typeof(DataGrid)
-                            || i.GetType().BaseType == typeof(DataGrid)).LastOrDefault();
+                        //    compPriorComp = comp;
+                        //}                        
 
-                        if (fe != null)
-                        {
-                            PropertyInfo pi = fe.GetType().GetProperty(name: "actionOnLostFocus");
+                        //FrameworkElement fe = objTabPageAtivasModel.lComponents
+                        //    .Where(i => i.GetType().Name == "CustomTextBox"
+                        //    || i.GetType().Name == "CustomCheckBox"
+                        //    || i.GetType().Name == "CustomComboBox"
+                        //    || i.GetType().Name == "ucTextBoxIntellisense"
+                        //    || i.GetType() == typeof(DataGrid)
+                        //    || i.GetType().BaseType == typeof(DataGrid)).LastOrDefault();
 
-                            if (pi != null)
-                            {
-                                PropertyInfo piComm = objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "commandSalvar");
+                        //if (fe != null)
+                        //{
+                        //    PropertyInfo pi = fe.GetType().GetProperty(name: "actionOnLostFocus");
 
-                                if (piComm != null)
-                                {
-                                    ICommand comm = piComm.GetValue(objTabPageAtivasModel._currentDataContext)
-                                        as ICommand;
+                        //    if (pi != null)
+                        //    {
+                        //        PropertyInfo piComm = objTabPageAtivasModel._currentDataContext.GetType().GetProperty(name: "commandSalvar");
 
-                                    if (comm != null)
-                                    {
-                                        pi.SetValue(obj: fe,
-                                            value: comm);
-                                    }
-                                }
-                            }
-                        }
+                        //        if (piComm != null)
+                        //        {
+                        //            ICommand comm = piComm.GetValue(objTabPageAtivasModel._currentDataContext)
+                        //                as ICommand;
+
+                        //            if (comm != null)
+                        //            {
+                        //                pi.SetValue(obj: fe,
+                        //                    value: comm);
+                        //            }
+                        //        }
+                        //    }
+                        //}
 
                         Action<object> actionFocusFirstComponent = this.vm.FocusOnComponent;
 

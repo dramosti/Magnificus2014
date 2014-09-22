@@ -919,7 +919,7 @@
                                         <MultiBinding Converter="{StaticResource pComissaoVistaReadOnlymConverter}">
                                             <MultiBinding.Bindings>
                                                 <Binding Path="bIsEnabled"/>
-                                                <Binding ElementName="cbxStComissao"/>
+                                                <Binding ElementName="cbxStComissao" Path="SelectedIndex"/>
                                             </MultiBinding.Bindings>
                                         </MultiBinding>
                                     </Components:CustomTextBox.IsReadOnly>
@@ -932,7 +932,7 @@
                                         <MultiBinding Converter="{StaticResource pComissaoVistaReadOnlymConverter}">
                                             <MultiBinding.Bindings>
                                                 <Binding Path="bIsEnabled"/>
-                                                <Binding ElementName="cbxStComissao"/>
+                                                <Binding ElementName="cbxStComissao" Path="SelectedIndex"/>
                                             </MultiBinding.Bindings>
                                         </MultiBinding>
                                     </Components:CustomTextBox.IsReadOnly>

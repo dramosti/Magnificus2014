@@ -137,7 +137,7 @@ namespace HLP.Wcf.Entries
             try
             {
                 this.agenciaRepository.BeginTransaction();
-                this.agencia_ContatoRepository.DeleteContato_ByForeignKey(id: id, xForeignKey: "idAgencia");
+                this.agencia_ContatoRepository.DeleteContato_ByForeignKey(id: id, xForeignKey: "idContatoAgencia");
                 this.agencia_EnderecoRepository.Delete(idFK: id, sNameFK: "idAgencia");
                 this.agenciaRepository.Delete(idAgencia: id);
                 this.agenciaRepository.CommitTransaction();

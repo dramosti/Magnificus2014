@@ -491,13 +491,16 @@ namespace HLP.ComumView.ViewModel.ViewModel
 
         void bwFocus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+
             if (e.Result != null)
+            {
                 (e.Result as FrameworkElement).Focus();
 
-            if(e.Result.GetType().Name == "ucTextBoxIntellisense")
-            {
-                (e.Result as FrameworkElement).
-                    MoveFocus(request: new TraversalRequest(focusNavigationDirection: FocusNavigationDirection.Next));
+                if (e.Result.GetType().Name == "ucTextBoxIntellisense")
+                {
+                    (e.Result as FrameworkElement).
+                        MoveFocus(request: new TraversalRequest(focusNavigationDirection: FocusNavigationDirection.Next));
+                }
             }
 
         }

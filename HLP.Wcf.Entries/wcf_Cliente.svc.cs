@@ -259,7 +259,7 @@ namespace HLP.Wcf.Entries
                 this.cliente_fornecedorRepository.BeginTransaction();
                 this.cliente_fornecedor_arquivoRepository.DeletePorClienteFornecedor(
                     idClienteFornecedor: id);
-                this.cliente_fornecedor_contatoRepository.DeleteContato_ByForeignKey(id: id, xForeignKey: "idCliente");
+                this.cliente_fornecedor_contatoRepository.DeleteContato_ByForeignKey(id: id, xForeignKey: "idContatoClienteFornecedor");
                 this.cliente_fornecedor_enderecoRepository.Delete(idFK: id,
                     sNameFK: "idClienteFornecedor");
                 this.cliente_fornecedor_observacaoRepository.DeletePorClienteFornecedor(
