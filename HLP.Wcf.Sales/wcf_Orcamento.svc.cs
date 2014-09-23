@@ -144,6 +144,7 @@ namespace HLP.Wcf.Sales
 
                 HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objOrcamento =
                     this.orcamento_ideRepository.GetOrcamento_ide(idOrcamento: idObjeto);
+
                 if (objOrcamento != null)
                 {
                     objOrcamento.lOrcamento_Itens = new ObservableCollectionBaseCadastros<HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel>(
@@ -162,9 +163,12 @@ namespace HLP.Wcf.Sales
                             this.orcamento_Item_RepresentantesRepository.GetOrcamento_Item_Representantes_ByIdOrcamentoItem(idOrcamentoItem: item.idOrcamentoItem ?? 0));
                     }
 
-                    objOrcamento.orcamento_retTransp = this.orcamento_retTranspRepository.GetOrcamento_retTranspByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento);
+                    objOrcamento.orcamento_retTransp = this.orcamento_retTranspRepository.GetOrcamento_retTranspByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento)
+                        ?? new HLP.Sales.Model.Models.Comercial.Orcamento_retTranspModel();
 
-                    objOrcamento.orcamento_Total_Impostos = this.orcamento_Total_ImpostosRepository.GetOrcamento_Total_ImpostosByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento);
+                    objOrcamento.orcamento_Total_Impostos = this.orcamento_Total_ImpostosRepository.
+                        GetOrcamento_Total_ImpostosByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento)
+                        ?? new HLP.Sales.Model.Models.Comercial.Orcamento_Total_ImpostosModel();
                 }
                 return objOrcamento;
             }

@@ -95,22 +95,26 @@
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="6"
-                    Text="{Binding currentModel.pIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+                    Text="{Binding currentModel.pIPI, Mode=TwoWay, NotifyOnValidationError=True, 
+                    UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="7"
-                    Text="{Binding currentModel.pPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+                    Text="{Binding currentModel.pPis, Mode=TwoWay, NotifyOnValidationError=True, 
+                    UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="8"
-                    Text="{Binding currentModel.pII, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+                    Text="{Binding currentModel.pII, Mode=TwoWay, NotifyOnValidationError=True, 
+                    UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="9"
-                    Text="{Binding currentModel.pCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+                    Text="{Binding currentModel.pCofins, Mode=TwoWay, NotifyOnValidationError=True, 
+                    UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomTextBox>
                 <Components:CustomComboBox

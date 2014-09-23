@@ -68,7 +68,7 @@
         </Expander>
         <Expander Header="Tributação" Style="{StaticResource ExpanderPadrao}" Grid.Row="1" IsExpanded="True">
             <Grid>
-                <DataGrid
+                <Components:CustomDataGrid
 					     ItemsSource="{Binding currentModel.lCodigo_IcmsModel}"   
                         IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                          AutoGenerateColumns="False" 
@@ -76,37 +76,18 @@
                          CanUserReorderColumns="False"  
                          CanUserDeleteRows="True"
                             CanUserAddRows="True">
-                    <DataGrid.Columns>
-                        <DataGridTemplateColumn x:Name="clCidades" Header="UF" Width="*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Path=idUf, Converter={StaticResource cbxDisplayConv},
-                                                    ConverterParameter={StaticResource lUF}}"
-                                                   />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                            <DataGridTemplateColumn.CellEditingTemplate>
-                                <DataTemplate>
-                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStCidade}" >
-                                        <ComboBox x:Name="cbxStCidade"
-                ItemsSource="{Binding Source={StaticResource lUF}}" 
-                                                      SelectedValuePath="id"
-                                            DisplayMemberPath="display"                                
-            SelectedValue="{Binding idUf,
-                                UpdateSourceTrigger=LostFocus}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellEditingTemplate>
-                        </DataGridTemplateColumn>
+                    <Components:CustomDataGrid.Columns>
+                        <Components:CustomDataGridIntellisenseColumn
+                            xNameView=""
+                            Header="UF" Width="*" x:Name="clCidades"></Components:CustomDataGridIntellisenseColumn>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsEstado, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq do Estado" Width="125"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsInterna,UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq Interna de ICMS" Width="150"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=.pIcmsSubstituicaoTributaria, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq de Subst. Trib. (MVA/IVA)" Width="200"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=.pIcmsNaoContribruinteForaEstado, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq de ICMS P/ Não Contribuinte Fora do Estado" Width="280"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=vCoeficienteIcms, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Coeficiente do ICMS" Width="120"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=xFundamLegalCodTrib, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Fundamento Legal" Width="120"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                    </Components:CustomDataGrid.Columns>
+                </Components:CustomDataGrid>
             </Grid>
         </Expander>
     </Grid>
