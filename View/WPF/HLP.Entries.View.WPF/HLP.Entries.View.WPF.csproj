@@ -272,6 +272,9 @@
     <Compile Include="RecursosHumanos\HlpCalendarioPonto.xaml.cs">
       <DependentUpon>HlpCalendarioPonto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RecursosHumanos\MultiConverter\pComissaoVistaReadOnlyMultiConverter.cs" />
+    <Compile Include="RecursosHumanos\MultiConverter\vSalarioHoraMultiConverter.cs" />
+    <Compile Include="RecursosHumanos\MultiConverter\vSalarioMultiConverter.cs" />
     <Compile Include="RecursosHumanos\WinCargo.xaml.cs">
       <DependentUpon>WinCargo.xaml</DependentUpon>
     </Compile>

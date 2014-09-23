@@ -71,8 +71,9 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style x:Key="Button_FECHAR" TargetType="{x:Type Button}">
+            <Style x:Key="Button_FECHAR_OLD" TargetType="{x:Type Button}">
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="Padding" Value="1"/>
                 <Setter Property="Template">
@@ -97,7 +98,57 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="Button_MAX_MIN" TargetType="{x:Type Button}">
+            <Style x:Key="Button_FECHAR" TargetType="{x:Type Button}">
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <ControlTemplate.Resources>
+                                <Storyboard x:Key="Storyboard1">
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFE23A3A"></EasingColorKeyFrame>
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"></EasingColorKeyFrame>
+                                    </ColorAnimationUsingKeyFrames>
+                                </Storyboard>
+                                <Storyboard x:Key="Storyboard2">
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                        <EasingColorKeyFrame KeyTime="0" Value="#FFE23A3A"></EasingColorKeyFrame>
+                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"></EasingColorKeyFrame>
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                        <EasingColorKeyFrame KeyTime="0" Value="White"></EasingColorKeyFrame>
+                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF626262"></EasingColorKeyFrame>
+                                    </ColorAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </ControlTemplate.Resources>
+                            <Border x:Name="border" Background="Transparent" SnapsToDevicePixels="true">
+                                <Grid>
+                                    <Path x:Name="path" Width="10" Height="10"  Stretch="Fill" Fill="#FF626262" Data="F1 M 26.9166,22.1667L 37.9999,33.25L 49.0832,22.1668L 53.8332,26.9168L 42.7499,38L 53.8332,49.0834L 49.0833,53.8334L 37.9999,42.75L 26.9166,53.8334L 22.1666,49.0833L 33.25,38L 22.1667,26.9167L 26.9166,22.1667 Z "/>
+                                    <ContentPresenter Grid.Column="1" x:Name="contentPresenter" TextElement.Foreground="#FFB9B9B9" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                                    </Trigger.ExitActions>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="Button_MAX_MIN_OLD" TargetType="{x:Type Button}">
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="Padding" Value="1"/>
@@ -123,7 +174,107 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="Button_MINIMIZE" TargetType="{x:Type Button}">
+            <Style x:Key="Button_MAX_MIN" TargetType="{x:Type Button}">
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <ControlTemplate.Resources>
+                                <Storyboard x:Key="Storyboard1">
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF0072C6"></EasingColorKeyFrame>
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"></EasingColorKeyFrame>
+                                    </ColorAnimationUsingKeyFrames>
+                                </Storyboard>
+                                <Storyboard x:Key="Storyboard2">
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                        <EasingColorKeyFrame KeyTime="0" Value="#FF0072C6"></EasingColorKeyFrame>
+                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"></EasingColorKeyFrame>
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                        <EasingColorKeyFrame KeyTime="0" Value="White"></EasingColorKeyFrame>
+                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF626262"></EasingColorKeyFrame>
+                                    </ColorAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </ControlTemplate.Resources>
+                            <Border x:Name="border" Background="Transparent" SnapsToDevicePixels="true">
+                                <Grid>
+                                    <Path x:Name="path" Grid.Column="1" Grid.Row="1" Height="10" Width="10" Stretch="Fill" Fill="#FF626262" Data="F1 M 54,54L 54,40L 33,40L 33,54L 54,54 Z M 57,34L 57,57L 30,57L 30,34L 57,34 Z M 43,25L 22,25L 22,39L 27,39L 27,42L 19,42L 19,19L 46,19L 46,31L 43,31L 43,25 Z"/>
+                                    <ContentPresenter Grid.Column="1" x:Name="contentPresenter" TextElement.Foreground="#FFB9B9B9" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                                    </Trigger.ExitActions>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>            
+
+            <Style x:Key="Button_MINIMIZAR" TargetType="{x:Type Button}">
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <ControlTemplate.Resources>
+                                <Storyboard x:Key="Storyboard1">
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF0072C6"></EasingColorKeyFrame>
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"></EasingColorKeyFrame>
+                                    </ColorAnimationUsingKeyFrames>
+                                </Storyboard>
+                                <Storyboard x:Key="Storyboard2">
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
+                                        <EasingColorKeyFrame KeyTime="0" Value="#FF0072C6"></EasingColorKeyFrame>
+                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"></EasingColorKeyFrame>
+                                    </ColorAnimationUsingKeyFrames>
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                        <EasingColorKeyFrame KeyTime="0" Value="White"></EasingColorKeyFrame>
+                                        <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF626262"></EasingColorKeyFrame>
+                                    </ColorAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </ControlTemplate.Resources>
+                            <Border x:Name="border" Background="Transparent" SnapsToDevicePixels="true">
+                                <Grid>
+                                    <Path x:Name="path" Width="10" VerticalAlignment="Bottom" Height="2"  Stretch="Fill" Fill="#FF626262" Data="F1 M 19,38L 57,38L 57,44L 19,44L 19,38 Z " Margin="5.5,0,5.5,6.513"/>
+                                    <ContentPresenter Grid.Column="1" x:Name="contentPresenter" TextElement.Foreground="#FFB9B9B9" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                                    </Trigger.ExitActions>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="Button_MINIMIZAR_OLD" TargetType="{x:Type Button}">
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="Padding" Value="1"/>
@@ -148,6 +299,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            
             <LinearGradientBrush x:Key="TabItem.Static.Background" EndPoint="0,1" StartPoint="0,0">
                 <GradientStop Color="#F0F0F0" Offset="0.0"/>
                 <GradientStop Color="#E5E5E5" Offset="1.0"/>
@@ -2657,7 +2809,7 @@
             <TextBlock Text="Magnificus ES" FontFamily="Segoe UI Light" Foreground="#FF626262" Grid.Column="3"/>
             <Button Grid.Column="7" Width="20" Margin="3,0,0,0" Style="{DynamicResource Button_FECHAR}" Command="{Binding commCloseWindow}"/>
             <Button Grid.Column="6" Width="20" Margin="3,0,0,0" Style="{DynamicResource Button_MAX_MIN}"/>
-            <Button Grid.Column="5" Width="20" Margin="3,0,0,0" Style="{DynamicResource Button_MINIMIZE}" Command="{Binding commMinimizeWindow}"/>
+            <Button Grid.Column="5" Width="20" Margin="3,0,0,0" Style="{DynamicResource Button_MINIMIZAR}" Command="{Binding commMinimizeWindow}"/>
         </Grid>
         <Path Grid.Column="2" Data="M830.5,469" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="73.5,402.83,-64.5,0" Grid.Row="4" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
     </Grid>

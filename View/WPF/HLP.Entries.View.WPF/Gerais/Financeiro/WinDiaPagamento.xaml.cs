@@ -38,9 +38,5 @@ namespace HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro
                 this.DataContext = value;
             }
         }
-
-        private void DataGrid_SelectedCellsChanged_1(object sender, SelectedCellsChangedEventArgs e)
-        {            
-        }
     }
 }

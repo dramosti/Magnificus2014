@@ -71,7 +71,7 @@
                     Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.pJuros, Mode=TwoWay, 
                     Converter={StaticResource PorcentagemConverter},
-		     		NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
+		     		NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"			
 					IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
 					ToolTip="Insira a porcentagem de juros que se aplica">
             </Components:CustomTextBox>

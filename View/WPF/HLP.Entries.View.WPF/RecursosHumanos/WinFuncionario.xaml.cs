@@ -27,9 +27,6 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
         {
             InitializeComponent();
             this.ViewModel = new FuncionarioViewModel();
-            this.UpdateLayout();
-
-            base.SetEventsTabControl(tabControl: this.tbPrincipal);
         }
 
         public FuncionarioViewModel ViewModel
