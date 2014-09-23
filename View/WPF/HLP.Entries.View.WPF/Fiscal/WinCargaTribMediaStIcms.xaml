@@ -12,8 +12,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            <convert:PorcentagemConverter x:Key="porcentagemConverter"/>    
-        </ResourceDictionary>                    
+            <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+        </ResourceDictionary>
     </Window.Resources>
     <DockPanel>
         <Expander Header="Carga Tributária Média ICMS" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
@@ -33,16 +33,16 @@
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <!--Label-->
 
                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Ramo Atividade" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Uf" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="% Carga Tributária Média" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                
+
                 <!--Components-->
-                
+
                 <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     IsReadOnly="True"
@@ -71,10 +71,10 @@
                 <Components:CustomTextBox stCompPosicao="last"
                     Grid.Column="2" Grid.Row="4"
                     Text="{Binding currentModel.pCargaTributariaMedia, Mode=TwoWay, NotifyOnValidationError=True,
-                    Converter={StaticResource porcentagemConverter}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}">					
+                    Converter={StaticResource porcentagemConverter}, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
                 </Components:CustomTextBox>
-                
+
             </Grid>
         </Expander>
     </DockPanel>

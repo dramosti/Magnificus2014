@@ -1238,7 +1238,7 @@ namespace HLP.Sales.Model.Models.Comercial
         }
     }
 
-    public partial class Orcamento_ItemModel : modelComum, ICloneable
+    public partial class Orcamento_ItemModel : modelComum
     {
         private GCHandle _refOrcamentoIde;
 
@@ -2289,17 +2289,9 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "lOrcamentoItemsRepresentantes");
             }
         }
-
-
-        public object Clone()
-        {
-
-
-            return this.MemberwiseClone();
-        }
     }
 
-    public partial class Orcamento_Item_ImpostosModel : modelComum, ICloneable
+    public partial class Orcamento_Item_ImpostosModel : modelComum
     {
 
         private GCHandle _refOrcamentoIde;
@@ -3852,14 +3844,9 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "nItem");
             }
         }
-
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
     }
 
-    public partial class Orcamento_Item_RepresentantesModel : modelComum, ICloneable
+    public partial class Orcamento_Item_RepresentantesModel : modelComum
     {
         private GCHandle _refOrcamentoIde;
 
@@ -4051,11 +4038,6 @@ namespace HLP.Sales.Model.Models.Comercial
                 _idOrcamentoItem = value;
                 base.NotifyPropertyChanged(propertyName: "idOrcamentoItem");
             }
-        }
-
-        public object Clone()
-        {
-            return this.MemberwiseClone();
         }
     }
 
@@ -5619,6 +5601,145 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
     }
+
+    #region Clone
+
+    public partial class Orcamento_ideModel : ICloneable
+    {
+        public Orcamento_ideModel CloneFullObject()
+        {
+            Orcamento_ideModel objClone = (Orcamento_ideModel)this.Clone();
+            objClone.idOrcamento = null;
+
+            if (objClone.lOrcamento_Itens != null)
+                foreach (Orcamento_ItemModel orcamentoItem in this.lOrcamento_Itens)
+                {
+                    orcamentoItem.idOrcamento = 0;
+                    orcamentoItem.idOrcamentoItem = null;
+                    orcamentoItem.status = statusModel.criado;
+
+                    if (orcamentoItem.objImposto != null)
+                    {
+                        orcamentoItem.objImposto.idOrcamentoItem = 0;
+                        orcamentoItem.objImposto.idOrcamentoTotalizadorImpostos = null;
+                        orcamentoItem.status = statusModel.criado;
+                    }
+
+                    if (orcamentoItem.lOrcamentoItemsRepresentantes != null)
+                        foreach (Orcamento_Item_RepresentantesModel orcamentoRepresentante in orcamentoItem.lOrcamentoItemsRepresentantes)
+                        {
+                            orcamentoRepresentante.idOrcamentoItem = null;
+                            orcamentoRepresentante.idOrcamentoItemRepresentate = null;
+                            orcamentoRepresentante.status = statusModel.criado;
+                        }
+                }
+
+            if (this.orcamento_Total_Impostos != null)
+            {
+                this.orcamento_Total_Impostos.idOrcamento = 0;
+                this.orcamento_Total_Impostos.idOrcamentoTotalImpostos = null;
+            }
+
+            if (this.orcamento_retTransp != null)
+            {
+                this.orcamento_retTransp.idOrcamento = 0;
+                this.orcamento_retTransp.idRetTransp = null;
+            }
+
+            return objClone;
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
+
+    //TODO* : Versão alternativa de clone, onde é tudo clonado manualmente
+    //public partial class Orcamento_ideModel : ICloneable
+    //{
+    //    public Orcamento_ideModel CloneFullObject()
+    //    {
+    //        Orcamento_ideModel objClone = (Orcamento_ideModel)this.Clone();
+    //        objClone.idOrcamento = null;
+
+    //        Orcamento_ItemModel orcamentoItemClone = null;
+
+    //        if (objClone.lOrcamento_Itens != null)
+    //            foreach (Orcamento_ItemModel orcamentoItem in this.lOrcamento_Itens)
+    //            {
+    //                orcamentoItemClone = (Orcamento_ItemModel)orcamentoItem.Clone();
+
+    //                orcamentoItemClone.objImposto = orcamentoItem.objImposto != null ? (Orcamento_Item_ImpostosModel)orcamentoItem.objImposto.Clone() :
+    //                    new Orcamento_Item_ImpostosModel();
+
+    //                if (orcamentoItem.lOrcamentoItemsRepresentantes != null)
+    //                    foreach (Orcamento_Item_RepresentantesModel orcamentoRepresentante in orcamentoItem.lOrcamentoItemsRepresentantes)
+    //                    {
+    //                        orcamentoItemClone.lOrcamentoItemsRepresentantes.Add(item:
+    //                            (Orcamento_Item_RepresentantesModel)orcamentoRepresentante.Clone());
+    //                    }
+
+    //                objClone.lOrcamento_Itens.Add(orcamentoItemClone);
+    //            }
+
+    //        if (this.orcamento_Total_Impostos != null)
+    //            objClone.orcamento_Total_Impostos = (Orcamento_Total_ImpostosModel)this.orcamento_Total_Impostos.Clone();
+
+    //        if (this.orcamento_retTransp != null)
+    //            objClone.orcamento_retTransp = (Orcamento_retTranspModel)this.orcamento_retTransp.Clone();
+
+    //        return objClone;
+    //    }
+
+    //    public object Clone()
+    //    {
+    //        return this.MemberwiseClone();
+    //    }
+    //}
+
+    public partial class Orcamento_ItemModel : ICloneable
+    {
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
+
+    public partial class Orcamento_Item_ImpostosModel : ICloneable
+    {
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
+
+    public partial class Orcamento_Item_RepresentantesModel
+    {
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
+
+    public partial class Orcamento_Total_ImpostosModel : ICloneable
+    {
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
+
+    public partial class Orcamento_retTranspModel : ICloneable
+    {
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+    }
+
+    #endregion
 
     #region Validações
     public partial class Orcamento_ideModel

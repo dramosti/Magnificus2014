@@ -94,101 +94,102 @@ namespace HLP.Components.View.WPF
                 this.CancelEdit();
             }
             else
-                if (this.CurrentItem.ToString().Contains(value: "NewItemPlaceholder"))
-                {
-                    DataGridRow r = this.ItemContainerGenerator.ContainerFromItem(item: this.CurrentItem) as DataGridRow;
-
-                    DataGridCell c = null;
-
-                    for (int i = 0; i < this.Columns.Count; i++)
+                if (this.CurrentItem != null)
+                    if (this.CurrentItem.ToString().Contains(value: "NewItemPlaceholder"))
                     {
-                        c = Util.GetCell(grid: this, row: r,
-                            column: i);
+                        DataGridRow r = this.ItemContainerGenerator.ContainerFromItem(item: this.CurrentItem) as DataGridRow;
 
-                        if (c != null)
-                            if (c.IsReadOnly == false && c.Visibility == System.Windows.Visibility.Visible)
-                                break;
-                    }
+                        DataGridCell c = null;
 
-
-                    if (this.SelectedCells.Count > 0)
-                        this.SelectedCells.Clear();
-                    c.Focus();
-
-                    if (e.Key != System.Windows.Input.Key.Up && e.Key != System.Windows.Input.Key.Down)
-                    {
-                        this.BeginEdit();
-                        bPermiteKeyDown = false;
-                    }
-                }
-                else
-                {
-                    var lastMethods = typeof(System.Linq.Enumerable)
-                        .GetMethods(BindingFlags.Static | BindingFlags.Public)
-                        .Where(ext => ext.Name == "Last");
-                    object lastItem = null;
-                    Type typeItens = null;
-
-                    foreach (MethodInfo extLast in lastMethods)
-                    {
-                        if (extLast.GetParameters().Count() == 1)
+                        for (int i = 0; i < this.Columns.Count; i++)
                         {
-                            if (this.ItemsSource.GetType() == typeof(CollectionViewSource) || this.ItemsSource.GetType().BaseType == typeof(CollectionView))
+                            c = Util.GetCell(grid: this, row: r,
+                                column: i);
+
+                            if (c != null)
+                                if (c.IsReadOnly == false && c.Visibility == System.Windows.Visibility.Visible)
+                                    break;
+                        }
+
+
+                        if (this.SelectedCells.Count > 0)
+                            this.SelectedCells.Clear();
+                        c.Focus();
+
+                        if (e.Key != System.Windows.Input.Key.Up && e.Key != System.Windows.Input.Key.Down)
+                        {
+                            this.BeginEdit();
+                            bPermiteKeyDown = false;
+                        }
+                    }
+                    else
+                    {
+                        var lastMethods = typeof(System.Linq.Enumerable)
+                            .GetMethods(BindingFlags.Static | BindingFlags.Public)
+                            .Where(ext => ext.Name == "Last");
+                        object lastItem = null;
+                        Type typeItens = null;
+
+                        foreach (MethodInfo extLast in lastMethods)
+                        {
+                            if (extLast.GetParameters().Count() == 1)
                             {
-                                typeItens = (this.ItemsSource as CollectionView).SourceCollection.GetType();
-
-                                PropertyInfo piItensCount = (this.ItemsSource as System.Windows.Data.CollectionView).SourceCollection.GetType().GetProperty("Count");
-
-                                if (piItensCount != null)
+                                if (this.ItemsSource.GetType() == typeof(CollectionViewSource) || this.ItemsSource.GetType().BaseType == typeof(CollectionView))
                                 {
-                                    int? itensCount = piItensCount.GetValue(
-                                    (this.ItemsSource as System.Windows.Data.CollectionView).SourceCollection) as int?;
+                                    typeItens = (this.ItemsSource as CollectionView).SourceCollection.GetType();
 
-                                    if (itensCount != null)
-                                        if (itensCount > 0)
-                                            lastItem = (this.ItemsSource as CollectionView).GetItemAt(index: (int)itensCount - 1);
+                                    PropertyInfo piItensCount = (this.ItemsSource as System.Windows.Data.CollectionView).SourceCollection.GetType().GetProperty("Count");
+
+                                    if (piItensCount != null)
+                                    {
+                                        int? itensCount = piItensCount.GetValue(
+                                        (this.ItemsSource as System.Windows.Data.CollectionView).SourceCollection) as int?;
+
+                                        if (itensCount != null)
+                                            if (itensCount > 0)
+                                                lastItem = (this.ItemsSource as CollectionView).GetItemAt(index: (int)itensCount - 1);
+                                    }
+                                }
+                                else
+                                {
+                                    typeItens = this.ItemsSource.GetType().GetGenericArguments()[0];
+
+                                    lastItem = extLast.MakeGenericMethod(typeArguments: typeItens)
+                                    .Invoke(obj: this.ItemsSource, parameters: new object[] { this.ItemsSource });
+                                }
+
+                                break;
+                            }
+                        }
+                        if (lastItem == this.CurrentItem)
+                        {
+                            if (e.Key == System.Windows.Input.Key.Enter)
+                            {
+                                this.ValidateModel(bPermiteKeyDown: out bPermiteKeyDown);
+                            }
+                            else if (e.Key == System.Windows.Input.Key.Up ||
+                                e.Key == System.Windows.Input.Key.Down)
+                            {
+                                DataGridRow r = this.ItemContainerGenerator.ContainerFromItem(item: this.CurrentItem) as DataGridRow;
+
+                                DataGridCell c = Util.GetCell(grid: this, row: r,
+                                        column: this.Columns.IndexOf(item: this.CurrentColumn));
+
+                                if (this.IsComboBoxColumn(c: c))
+                                    bPermiteKeyDown = true;
+                                else
+                                    this.ValidateModel(bPermiteKeyDown: out bPermiteKeyDown);
+                            }
+                            else if (e.Key == System.Windows.Input.Key.Tab)
+                            {
+                                if (this.CurrentColumn == this.Columns.LastOrDefault(i => i.Visibility == System.Windows.Visibility.Visible))
+                                {
+                                    bPermiteKeyDown = false;
                                 }
                             }
-                            else
-                            {
-                                typeItens = this.ItemsSource.GetType().GetGenericArguments()[0];
-
-                                lastItem = extLast.MakeGenericMethod(typeArguments: typeItens)
-                                .Invoke(obj: this.ItemsSource, parameters: new object[] { this.ItemsSource });
-                            }
-
-                            break;
                         }
+
                     }
-                    if (lastItem == this.CurrentItem)
-                    {
-                        if (e.Key == System.Windows.Input.Key.Enter)
-                        {
-                            this.ValidateModel(bPermiteKeyDown: out bPermiteKeyDown);
-                        }
-                        else if (e.Key == System.Windows.Input.Key.Up ||
-                            e.Key == System.Windows.Input.Key.Down)
-                        {
-                            DataGridRow r = this.ItemContainerGenerator.ContainerFromItem(item: this.CurrentItem) as DataGridRow;
-
-                            DataGridCell c = Util.GetCell(grid: this, row: r,
-                                    column: this.Columns.IndexOf(item: this.CurrentColumn));
-
-                            if (this.IsComboBoxColumn(c: c))
-                                bPermiteKeyDown = true;
-                            else
-                                this.ValidateModel(bPermiteKeyDown: out bPermiteKeyDown);
-                        }
-                        else if (e.Key == System.Windows.Input.Key.Tab)
-                        {
-                            if (this.CurrentColumn == this.Columns.LastOrDefault(i => i.Visibility == System.Windows.Visibility.Visible))
-                            {
-                                bPermiteKeyDown = false;
-                            }
-                        }
-                    }
-
-                }
 
             if (bPermiteKeyDown)
             {

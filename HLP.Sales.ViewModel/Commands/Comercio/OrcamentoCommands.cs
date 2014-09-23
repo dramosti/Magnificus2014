@@ -438,9 +438,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 }
                 else
                 {
-                    this.objViewModel.currentID = (int)e.Result;
-                    this.getOrcamento(this, null);
-                    this.objViewModel.copyBaseCommand.Execute(null);
+                    this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -453,8 +451,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             try
             {
-                e.Result =
-                    objServico.Copy(objModel: this.objViewModel.currentModel);
+                this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception)
             {
@@ -536,7 +533,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         if (this.objViewModel.currentModel.lOrcamento_Itens.Count > 0)
                             foreach (Orcamento_ItemModel item in this.objViewModel.currentModel.lOrcamento_Itens)
                             {
-                                item.refOrcamentoIde = GCHandle.Alloc(value: this.objViewModel.currentModel);
+                                item.refOrcamentoIde = GCHandle.Alloc(value: this.objViewModel.currentModel);                                
                                 item.objImposto.refOrcamentoIde = GCHandle.Alloc(value: this.objViewModel.currentModel);
                             }
                 }
