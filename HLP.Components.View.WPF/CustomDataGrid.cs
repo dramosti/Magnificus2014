@@ -21,7 +21,10 @@ namespace HLP.Components.View.WPF
         public CustomDataGrid()
         {
             this.CanUserAddRows = true;
+            bIsEditing = false;
         }
+
+        private bool bIsEditing;
 
         protected override void OnCellEditEnding(DataGridCellEditEndingEventArgs e)
         {
@@ -39,10 +42,9 @@ namespace HLP.Components.View.WPF
 
         protected override void OnBeginningEdit(DataGridBeginningEditEventArgs e)
         {
-            base.OnBeginningEdit(e);
-
             try
             {
+                base.OnBeginningEdit(e);
                 if (this.CurrentCell.Column != null)
                 {
                     if (this.CurrentCell.Column.Header != null)
@@ -59,23 +61,69 @@ namespace HLP.Components.View.WPF
             }
         }
 
+        protected override void OnExecutedBeginEdit(System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            try
+            {
+                base.OnExecutedBeginEdit(e);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                bIsEditing = true;
+            }
+        }
+
+        protected override void OnExecutedCancelEdit(System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            try
+            {
+                base.OnExecutedCancelEdit(e);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                bIsEditing = false;
+            }
+        }
+
         protected override void OnExecutedCommitEdit(System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            base.OnExecutedCommitEdit(e);
-
-            if (this.CurrentCell.Column != null)
+            try
             {
-                if (this.CurrentCell.Column.Header != null)
+                base.OnExecutedCommitEdit(e);
+
+                if (this.CurrentCell.Column != null)
                 {
-                    if (this.CurrentCell.Column.Header.ToString().ToUpper().Equals("CEP"))
+                    if (this.CurrentCell.Column.Header != null)
                     {
-                        if (this.CurrentItem != null)
+                        if (this.CurrentCell.Column.Header.ToString().ToUpper().Equals("CEP"))
                         {
-                            this.CurrentItem.SetPropertyValue("bCanFindCep", false);
+                            if (this.CurrentItem != null)
+                            {
+                                this.CurrentItem.SetPropertyValue("bCanFindCep", false);
+                            }
                         }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                bIsEditing = false;
+            }
+
         }
 
         #region Tratamento de pressionamento de teclas
@@ -431,6 +479,40 @@ namespace HLP.Components.View.WPF
                 return true;
 
             return false;
+        }
+
+        protected override void OnLostFocus(RoutedEventArgs e)
+        {
+            base.OnLostFocus(e);
+        }        
+
+        protected override void OnLostKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs e)
+        {
+            bool cancelEdit = false;
+
+            if (bIsEditing)
+            {
+                if (e.NewFocus == null)
+                {
+                    cancelEdit = true;
+                }
+                else
+                    if (e.NewFocus.GetType() != typeof(DataGridCell))
+                        cancelEdit = true;
+
+                if (cancelEdit)
+                {
+                    if (MessageHlp.Show(stMessage: StMessage.stYesNo, xMessageToUser: "Será perdida todas as alterações não salvas. "
+                        + Environment.NewLine + "Deseja continuar?") == MessageBoxResult.Yes)
+                        this.CancelEdit(editingUnit: DataGridEditingUnit.Row);
+                    else
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                }
+            }
+            base.OnLostKeyboardFocus(e);
         }
 
         #region Propriedades

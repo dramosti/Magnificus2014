@@ -15,15 +15,15 @@
             <Style TargetType="UserControl" x:Key="UserControlStyle">
                 <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
             </Style>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <TextBox Style="{StaticResource TextBox_PESQUISA_NEW}" x:Name="txt" IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}
             ,Path=ucEnabled, Converter={StaticResource notConverter}}"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}
             ,Path=customViewModel.xTextSearch, Mode=TwoWay
-            , UpdateSourceTrigger=PropertyChanged}"
-                 >           
+            , UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                 >
             <TextBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Inserir novo item" x:Name="insertItem" 

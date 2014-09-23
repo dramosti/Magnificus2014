@@ -12,6 +12,7 @@ using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
 using HLP.Entries.Services.Fiscal;
 using HLP.Comum.ViewModel.ViewModel;
+using HLP.Entries.Services.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Fiscal
 {
@@ -19,9 +20,11 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
     {
         CodigoIcmsViewModel objViewModel;
         Codigo_IcmsService objService = new Codigo_IcmsService();
+        UfService objUfService;
 
         public CodigoIcmsCommand(CodigoIcmsViewModel objViewModel)
         {
+            this.objUfService = new UfService();
 
             this.objViewModel = objViewModel;
 
@@ -298,6 +301,11 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             this.objViewModel.currentModel =
                 this.objService.GetObject(id: this.objViewModel.currentID);
+        }
+
+        public object GetUf(int idUf, bool bOptionalSearch = false)
+        {
+            return objUfService.GetObject(id: idUf);
         }
         #endregion
     }

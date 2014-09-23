@@ -7,7 +7,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.Fiscal.WinCodigoICMS"
-        Title="Código ICMS" Height="660" Width="1101.612" NameView="vwCodigoIcmsPai">
+        Title="Código ICMS" Height="660" Width="1101.612" NameView="vwCodigoIcmsPai"
+        xmlns:util="clr-namespace:HLP.Base.ClassesBases;assembly=HLP.Base">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,7 +23,8 @@
                     <System:String>vwUFToComboBox</System:String>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-        </ResourceDictionary>       
+            <util:BindingProxy x:Key="Proxy" Data="{Binding}"/>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -47,15 +49,17 @@
 
                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Código do ICMS" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                
+
                 <!--Components-->
+
+                <Button x:Name="btnCommit" Grid.Column="4" Grid.Row="1" Click="btnCommit_Click">Commit</Button>
                 
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="1" stCompPosicao="fieldId"
                     IsReadOnly="True"
 						Text="{Binding currentModel.idCodigoIcmsPai, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 						ToolTip="Código principal do Registro, campo autoicremental">
-                        
+
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="2" stCompPosicao="first"
@@ -63,12 +67,12 @@
 						IsEnabled="{Binding bIsEnabled}"		
 						ToolTip="Informar o Código da Alíquota. Normalmente é preenchido com 1, 2, 3...Este código será associado ao Produto,e é através dele que se define a alíquota de ICMS do Produto.">
                 </Components:CustomTextBox>
-                
-            </Grid> 
+
+            </Grid>
         </Expander>
         <Expander Header="Tributação" Style="{StaticResource ExpanderPadrao}" Grid.Row="1" IsExpanded="True">
             <Grid>
-                <Components:CustomDataGrid
+                <Components:CustomDataGrid x:Name="dgv"
 					     ItemsSource="{Binding currentModel.lCodigo_IcmsModel}"   
                         IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                          AutoGenerateColumns="False" 
@@ -78,7 +82,9 @@
                             CanUserAddRows="True">
                     <Components:CustomDataGrid.Columns>
                         <Components:CustomDataGridIntellisenseColumn
-                            xNameView=""
+                            xNameView="vwUfqs" TableView="vwUF" xFieldsToDisplay="idUF;xSiglaUf;xUf" 
+                            NameWindowCadastro="WinUF" Binding="{Binding Path=idUf}"
+                            refMethod="{Binding Path=Data.getUf, Source={StaticResource Proxy}}"
                             Header="UF" Width="*" x:Name="clCidades"></Components:CustomDataGridIntellisenseColumn>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsEstado, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq do Estado" Width="125"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsInterna,UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq Interna de ICMS" Width="150"/>
