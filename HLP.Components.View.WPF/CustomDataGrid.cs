@@ -17,14 +17,34 @@ namespace HLP.Components.View.WPF
 {
     public class CustomDataGrid : DataGrid
     {
-
         public CustomDataGrid()
         {
             this.CanUserAddRows = true;
             bIsEditing = false;
         }
 
-        private bool bIsEditing;
+        private bool _bIsEditing;
+
+        public bool bIsEditing
+        {
+            get { return _bIsEditing; }
+            set
+            {
+                _bIsEditing = value;
+
+                if (this.DataContext != null)
+                {
+                    PropertyInfo piLockActions = this.DataContext.GetType()
+                        .GetProperty(name: "lockCurrentActions");
+
+                    if (piLockActions != null)
+                    {
+                        piLockActions.SetValue(obj: this.DataContext, value: value);
+                    }
+                }
+            }
+        }
+
 
         protected override void OnCellEditEnding(DataGridCellEditEndingEventArgs e)
         {
@@ -123,7 +143,6 @@ namespace HLP.Components.View.WPF
             {
                 bIsEditing = false;
             }
-
         }
 
         #region Tratamento de pressionamento de teclas
@@ -164,7 +183,19 @@ namespace HLP.Components.View.WPF
                             this.SelectedCells.Clear();
                         c.Focus();
 
-                        if (e.Key != System.Windows.Input.Key.Up && e.Key != System.Windows.Input.Key.Down)
+                        if (
+                            e.SystemKey == System.Windows.Input.Key.LeftAlt
+                            || e.SystemKey == System.Windows.Input.Key.RightAlt
+                            || e.SystemKey == System.Windows.Input.Key.LeftCtrl
+                            || e.SystemKey == System.Windows.Input.Key.RightCtrl
+                            || e.KeyboardDevice.Modifiers == System.Windows.Input.ModifierKeys.Alt
+                            || e.KeyboardDevice.Modifiers == System.Windows.Input.ModifierKeys.Control
+                            )
+                        {
+                            this.handledOnPreviewKeyDown = true;
+                        }
+                        else if (e.Key != System.Windows.Input.Key.Up && e.Key != System.Windows.Input.Key.Down
+                            )
                         {
                             this.BeginEdit();
                             bPermiteKeyDown = false;
@@ -479,40 +510,6 @@ namespace HLP.Components.View.WPF
                 return true;
 
             return false;
-        }
-
-        protected override void OnLostFocus(RoutedEventArgs e)
-        {
-            base.OnLostFocus(e);
-        }        
-
-        protected override void OnLostKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs e)
-        {
-            bool cancelEdit = false;
-
-            if (bIsEditing)
-            {
-                if (e.NewFocus == null)
-                {
-                    cancelEdit = true;
-                }
-                else
-                    if (e.NewFocus.GetType() != typeof(DataGridCell))
-                        cancelEdit = true;
-
-                if (cancelEdit)
-                {
-                    if (MessageHlp.Show(stMessage: StMessage.stYesNo, xMessageToUser: "Será perdida todas as alterações não salvas. "
-                        + Environment.NewLine + "Deseja continuar?") == MessageBoxResult.Yes)
-                        this.CancelEdit(editingUnit: DataGridEditingUnit.Row);
-                    else
-                    {
-                        e.Handled = true;
-                        return;
-                    }
-                }
-            }
-            base.OnLostKeyboardFocus(e);
         }
 
         #region Propriedades

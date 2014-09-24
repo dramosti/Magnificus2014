@@ -28,7 +28,7 @@ using System.Windows.Media.Imaging;
 namespace HLP.ComumView.ViewModel.ViewModel
 {
     public class wdMainViewModel : viewModelComum<mainMenuModel>
-    {
+    {        
 
         private Popup _popUpSearchField;
 
@@ -185,8 +185,6 @@ namespace HLP.ComumView.ViewModel.ViewModel
         }
 
         EmpresaService objService;
-        //wcf_Funcionario.Iwcf_FuncionarioClient funcionarioService = new wcf_Funcionario.Iwcf_FuncionarioClient();
-
 
         private StConnection _stConnection;
 

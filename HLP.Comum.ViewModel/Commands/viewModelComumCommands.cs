@@ -519,6 +519,9 @@ namespace HLP.Comum.ViewModel.Commands
             if (this.GetOperationModel() != OperationModel.updating)
                 return false;
 
+            if (this.objviewModel.lockCurrentActions == true)
+                return false;
+
             if (mi != null)
             {
                 return (bool)mi.Invoke(obj: Application.Current.MainWindow.DataContext, parameters: new object[] { });

@@ -51,9 +51,6 @@
                 <Components:CustomTextBlock Text="Código do ICMS" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
 
                 <!--Components-->
-
-                <Button x:Name="btnCommit" Grid.Column="4" Grid.Row="1" Click="btnCommit_Click">Commit</Button>
-                
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="1" stCompPosicao="fieldId"
                     IsReadOnly="True"
@@ -88,8 +85,8 @@
                             Header="UF" Width="*" x:Name="clCidades"></Components:CustomDataGridIntellisenseColumn>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsEstado, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq do Estado" Width="125"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsInterna,UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq Interna de ICMS" Width="150"/>
-                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=.pIcmsSubstituicaoTributaria, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq de Subst. Trib. (MVA/IVA)" Width="200"/>
-                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=.pIcmsNaoContribruinteForaEstado, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq de ICMS P/ Não Contribuinte Fora do Estado" Width="280"/>
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsSubstituicaoTributaria, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq de Subst. Trib. (MVA/IVA)" Width="200"/>
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsNaoContribruinteForaEstado, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq de ICMS P/ Não Contribuinte Fora do Estado" Width="280"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=vCoeficienteIcms, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Coeficiente do ICMS" Width="120"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=xFundamLegalCodTrib, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Fundamento Legal" Width="120"/>
                     </Components:CustomDataGrid.Columns>
