@@ -92,7 +92,7 @@
                          AutoGenerateColumns="False" 
                          SelectionUnit="CellOrRowHeader" 
                          CanUserReorderColumns="False"
-                         SelectedCellsChanged="DataGrid_SelectedCellsChanged_1">
+                         >
                         <Components:CustomDataGrid.Columns>
                             <DataGridTemplateColumn Header="Semana/Mês" Width="100">
                                 <DataGridTemplateColumn.CellTemplate>

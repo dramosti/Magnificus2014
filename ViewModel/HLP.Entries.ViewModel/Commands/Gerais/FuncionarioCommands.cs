@@ -13,6 +13,8 @@ using System.Windows.Controls;
 using HLP.Base.EnumsBases;
 using HLP.Components.Model.Models;
 using HLP.Entries.Services.Gerais;
+using HLP.Entries.Services.Comercial;
+using HLP.Entries.Model.Models.Comercial;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -20,6 +22,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         FuncionarioViewModel objViewModel;
         FuncionarioService objService;
+        ProdutoService objProdutoService;
         bool bOpCancelada = false;
         public FuncionarioCommands(FuncionarioViewModel objViewModel)
         {
@@ -65,6 +68,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
             objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.metodoGetModel);
             objViewModel.bWorkerPesquisa.RunWorkerCompleted += bw_RunWorkerCompleted;
+
+            this.objProdutoService = new ProdutoService();
         }
 
 
@@ -457,7 +462,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.lObjHierarquia = this.objService.GetHierarquia(idFuncionario: this.objViewModel.currentID);
         }
 
-
+        public ProdutoModel GetProduto(int id, bool bOptionalSearch = false)
+        {
+            return this.objProdutoService.GetObjeto(id: id, loadOptionalParameters: bOptionalSearch);
+        }
 
     }
 }

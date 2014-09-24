@@ -28,7 +28,7 @@ using System.Windows.Media.Imaging;
 namespace HLP.ComumView.ViewModel.ViewModel
 {
     public class wdMainViewModel : viewModelComum<mainMenuModel>
-    {
+    {        
 
         private Popup _popUpSearchField;
 
@@ -185,8 +185,6 @@ namespace HLP.ComumView.ViewModel.ViewModel
         }
 
         EmpresaService objService;
-        //wcf_Funcionario.Iwcf_FuncionarioClient funcionarioService = new wcf_Funcionario.Iwcf_FuncionarioClient();
-
 
         private StConnection _stConnection;
 
@@ -491,8 +489,17 @@ namespace HLP.ComumView.ViewModel.ViewModel
 
         void bwFocus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+
             if (e.Result != null)
+            {
                 (e.Result as FrameworkElement).Focus();
+
+                if (e.Result.GetType().Name == "ucTextBoxIntellisense")
+                {
+                    (e.Result as FrameworkElement).
+                        MoveFocus(request: new TraversalRequest(focusNavigationDirection: FocusNavigationDirection.Next));
+                }
+            }
 
         }
 

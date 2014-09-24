@@ -32,6 +32,8 @@ namespace HLP.Entries.View.WPF.Gerais.Converters
             if (values[4] != null)
                 if (!(string.IsNullOrEmpty(value: values[4].ToString())))
                     return false;
+                else
+                    return true;
 
             decimal m = 0;
             decimal s = 0;

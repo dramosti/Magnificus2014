@@ -32,9 +32,23 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         FuncionarioCommands comm;
         public BackgroundWorker bwHierarquia;
         public bool bTreeCarregada = true;
+
+        private Func<int, bool, object> _getProduto;
+
+        public Func<int, bool, object> getProduto
+        {
+            get { return _getProduto; }
+            set
+            {
+                _getProduto = value;
+                base.NotifyPropertyChanged(propertyName: "getProduto");
+            }
+        }
+
         public FuncionarioViewModel()
         {
             comm = new FuncionarioCommands(objViewModel: this);
+            this.getProduto = comm.GetProduto;
         }
 
         public List<Familia_produtoModel> GetListaFamiliaProduto()
@@ -67,7 +81,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         {
             if (!bTreeCarregada)
             {
-                this.comm.MontraTreeView();                
+                this.comm.MontraTreeView();
             }
         }
     }

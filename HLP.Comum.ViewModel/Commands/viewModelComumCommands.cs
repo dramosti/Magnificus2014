@@ -519,6 +519,9 @@ namespace HLP.Comum.ViewModel.Commands
             if (this.GetOperationModel() != OperationModel.updating)
                 return false;
 
+            if (this.objviewModel.lockCurrentActions == true)
+                return false;
+
             if (mi != null)
             {
                 return (bool)mi.Invoke(obj: Application.Current.MainWindow.DataContext, parameters: new object[] { });
@@ -554,11 +557,37 @@ namespace HLP.Comum.ViewModel.Commands
         {
             this.objviewModel.loading = true;
 
-            object pk;
             if (this.objviewModel.currentModel == null)
                 return;
 
-            foreach (var item in this.objviewModel.currentModel.GetType().GetProperties())
+            MethodInfo miClone = this.objviewModel.currentModel.GetType().GetMethod(name: "CloneFullObject");
+
+            if (miClone != null)
+            {
+                object objCloned = miClone.Invoke(obj: this.objviewModel.currentModel,
+                    parameters: new object[] { });
+
+                this.objviewModel.currentModel = objCloned as T;
+            }
+            else
+                this.SetNullToIdFields(tModel: this.objviewModel.currentModel.GetType(), objOwner: this.objviewModel.currentModel);
+
+            (this.objviewModel.currentModel as modelComum).SetOperationModel(_value: OperationModel.updating);
+            this.objviewModel.bIsEnabled = true;
+            this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
+            objviewModel.currentID = 0;
+            objviewModel.lItensHierarquia = new List<int>();
+
+            if ((this.objviewModel.currentModel as modelComum).lDocumentos != null)
+                this.objDocumentosService.CopyObject(lDocumentos:
+                    (this.objviewModel.currentModel as modelComum).lDocumentos.ToList());
+        }
+
+        private void SetNullToIdFields(Type tModel, object objOwner)
+        {
+            object pk;
+
+            foreach (var item in tModel.GetProperties())
             {
                 try
                 {
@@ -568,7 +597,7 @@ namespace HLP.Comum.ViewModel.Commands
                     {
                         if (((PrimaryKey)pk).isPrimary)
                         {
-                            item.SetValue(obj: this.objviewModel.currentModel, value: null);
+                            item.SetValue(obj: objOwner, value: null);
                         }
                     }
                     else if (item.PropertyType.BaseType.Name == "modelComum")
@@ -636,23 +665,13 @@ namespace HLP.Comum.ViewModel.Commands
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                     throw;
                 }
 
             }
-
-            (this.objviewModel.currentModel as modelComum).SetOperationModel(_value: OperationModel.updating);
-            this.objviewModel.bIsEnabled = true;
-            this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
-            objviewModel.currentID = 0;
-            objviewModel.lItensHierarquia = new List<int>();
-
-            if ((this.objviewModel.currentModel as modelComum).lDocumentos != null)
-                this.objDocumentosService.CopyObject(lDocumentos:
-                    (this.objviewModel.currentModel as modelComum).lDocumentos.ToList());
         }
 
         #endregion

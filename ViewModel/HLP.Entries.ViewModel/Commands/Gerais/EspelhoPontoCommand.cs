@@ -402,6 +402,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         public void ExecPesquisa()
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
+            this.objViewModel.currentModel = new FuncionarioPonto();
             this.objViewModel.currentModel.idFuncionario = objViewModel.currentID;
             //if (this.objViewModel.currentModel.idFuncionario != 0)
             //    this.CarragaFormulario();
@@ -424,13 +425,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 throw ex;
             }
         }
+
         bool CanSaveBancoHoras()
         {
-            if (objViewModel.currentModel.objFuncBancoHoras != null && objViewModel.currentModel != null)
-            {
-                if (objViewModel.currentModel.objFuncBancoHoras.idFuncionarioBancoHoras == null)
-                    return true;
-            }
+            if (objViewModel.currentModel != null)
+                if (objViewModel.currentModel.objFuncBancoHoras != null && objViewModel.currentModel != null)
+                {
+                    if (objViewModel.currentModel.objFuncBancoHoras.idFuncionarioBancoHoras == null)
+                        return true;
+                }
+
             return false;
         }
 
@@ -455,11 +459,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         private bool CanReabrirMes()
         {
-            if (objViewModel.currentModel.objFuncBancoHoras != null && objViewModel.currentModel != null)
-            {
-                if (objViewModel.currentModel.objFuncBancoHoras.idFuncionarioBancoHoras != null)
-                    return true;
-            }
+            if (this.objViewModel.currentModel != null)
+                if (objViewModel.currentModel.objFuncBancoHoras != null && objViewModel.currentModel != null)
+                {
+                    if (objViewModel.currentModel.objFuncBancoHoras.idFuncionarioBancoHoras != null)
+                        return true;
+                }
             return false;
         }
 

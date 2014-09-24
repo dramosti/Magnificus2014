@@ -36,7 +36,7 @@ namespace HLP.Magnificus.View.WPF
     {
         private bool unhandledException = false;
 
-        
+
         empresaParametrosService.Iwcf_EmpresaParametrosClient empresaServico =
             new empresaParametrosService.Iwcf_EmpresaParametrosClient();
         BackgroundWorker bwInitialize;
@@ -116,9 +116,8 @@ namespace HLP.Magnificus.View.WPF
             }
 
 
-            if (!xMessage.Contains("NewItemPlaceholderPosition"))
-                MessageHlp.Show(stMessage: StMessage.stError, xMessageToUser: xMessage,
-                    xMessageFramework: e.Exception.StackTrace);
+            MessageHlp.Show(stMessage: StMessage.stError, xMessageToUser: xMessage,
+                xMessageFramework: e.Exception.StackTrace);
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

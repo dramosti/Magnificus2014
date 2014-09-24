@@ -716,10 +716,6 @@ namespace HLP.Entries.Model.Models.Gerais
 
                 if (value == 2)
                 {
-                    //Window w = HLP.Comum.Infrastructure.Static.Sistema.GetOpenWindow(xName: "WinFuncionario");
-
-                    //TODO: Reestruturação: Verificar qual a melhor forma de fazer este recurso
-
                     Window w = Sistema.GetOpenWindow(xName: "WinFuncionario");
 
                     if (w != null)
