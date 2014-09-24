@@ -12,7 +12,7 @@ namespace HLP.Entries.Services.Fiscal
 
     public class Tipo_DocumentoService
     {
-        const string xTabela = "Tipo_documento;";
+        const string xTabela = "Tipo_documento;Tipo_documento_oper_valida";
 
         HLP.Wcf.Entries.wcf_TipoDocumento serviceNetwork;
         wcf_TipoDocumento.Iwcf_TipoDocumentoClient serviceWeb;

@@ -154,8 +154,9 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                 }
             }
             catch (Exception ex)
-            {
-                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+            {                
+                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint")
+                    || ex.Message.Contains("A instrução DELETE conflitou com a restrição do REFERENCE"))
                 {
                     OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
                     vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
