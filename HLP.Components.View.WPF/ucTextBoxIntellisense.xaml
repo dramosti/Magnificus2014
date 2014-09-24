@@ -5,16 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" Height="20" Width="Auto"
              xmlns:localConverter="clr-namespace:HLP.Components.View.WPF.Converter"
-             d:DesignHeight="40" d:DesignWidth="300" x:Name="txtIntellisense" Style="{DynamicResource UserControlStyle}">
+             d:DesignHeight="40" d:DesignWidth="300" x:Name="txtIntellisense" Validation.ErrorTemplate="{DynamicResource ValidationErrorTemplate}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            <localConverter:NotConverter x:Key="notConverter"/>
-            <Style TargetType="UserControl" x:Key="UserControlStyle">
-                <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
-            </Style>
+            <localConverter:NotConverter x:Key="notConverter"/>            
+            <ControlTemplate x:Key="ValidationErrorTemplate">
+                <DockPanel LastChildFill="True">
+                    <Border Background="#FFC82F2F" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
+                                                ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                        <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
+                    </Border>
+                    <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
+                        <Border BorderBrush="Transparent" BorderThickness="1"></Border>
+                    </AdornedElementPlaceholder>
+                </DockPanel>
+            </ControlTemplate>            
         </ResourceDictionary>        
     </UserControl.Resources>
     <Grid>
@@ -22,7 +30,7 @@
             ,Path=ucEnabled, Converter={StaticResource notConverter}}"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}
             ,Path=customViewModel.xTextSearch, Mode=TwoWay
-            , UpdateSourceTrigger=PropertyChanged}"
+            , UpdateSourceTrigger=PropertyChanged}" Margin="0"
                  >           
             <TextBox.ContextMenu>
                 <ContextMenu>
