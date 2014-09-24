@@ -17,7 +17,6 @@ namespace HLP.Components.ViewModel.ViewModels
 {
     public class CustomTextBoxIntellisenseViewModel : ViewModelBase<object>
     {
-
         public ICommand insertCommand { get; set; }
         public ICommand goToRecordCommand { get; set; }
         public ICommand searchCommand { get; set; }
@@ -35,7 +34,6 @@ namespace HLP.Components.ViewModel.ViewModels
                 base.NotifyPropertyChanged(propertyName: "cvs");
             }
         }
-
 
         private DataRowView _selectedItem;
 
