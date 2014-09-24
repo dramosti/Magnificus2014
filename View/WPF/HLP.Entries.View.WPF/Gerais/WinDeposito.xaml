@@ -57,11 +57,7 @@
 					            Grid.Column="2" Grid.Row="2" Height="20" Grid.ColumnSpan="3"
 					            selectedId="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                 xNameView="vwSiteqs" NameWindowCadastro="WinSite" TableView="vwSite" />
-<<<<<<< HEAD
-                    <Components:CustomTextBox 
-=======
             <Components:CustomTextBox
->>>>>>> c8da604b0d9772778518694eb8d4fdd3c7530bd6
                                 Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
                                 Text="{Binding currentModel.xDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}" 
