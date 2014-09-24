@@ -16,93 +16,89 @@
             <conv:NotConverter x:Key="notConverter"/>
         </ResourceDictionary>
     </Window.Resources>
-    <DockPanel LastChildFill="True">
+    <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="170"></ColumnDefinition>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                
             </Grid.RowDefinitions>
-            <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10"></ColumnDefinition>
-                        <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
-                        <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
-                        <ColumnDefinition MaxWidth="50" MinWidth="50"></ColumnDefinition>
-                        <ColumnDefinition MaxWidth="130" MinWidth="130"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="10"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <!--Label-->
 
-                    <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Text="Site" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Text="Depósito" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Text="Nome" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Text="Tipo de Depósito" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Text="Grupo de Identificação" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+            <!--Label-->
 
+            <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Site" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Depósito" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Nome" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Tipo de Depósito" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Grupo de Identificação" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+            
+            <!--Components-->
 
-                    <!--Components-->
-
-                    <Components:CustomTextBox stCompPosicao="fieldId"
+            <Components:CustomTextBox stCompPosicao="fieldId"
                                 Grid.Column="2" Grid.Row="1"
                                 Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsReadOnly="True"
 								ToolTip="Chave principal do registro do depósito">
-                    </Components:CustomTextBox>
-                    <Components:ucTextBoxIntellisense
+            </Components:CustomTextBox>
+
+            <Components:ucTextBoxIntellisense
 					            ucEnabled="{Binding bIsEnabled}"
-					            Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
+					            Grid.Column="2" Grid.Row="2" Height="20" Grid.ColumnSpan="3"
 					            selectedId="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                 xNameView="vwSiteqs" NameWindowCadastro="WinSite" TableView="vwSite" />
+<<<<<<< HEAD
                     <Components:CustomTextBox 
+=======
+            <Components:CustomTextBox
+>>>>>>> c8da604b0d9772778518694eb8d4fdd3c7530bd6
                                 Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
                                 Text="{Binding currentModel.xDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}" 
 								ToolTip="Insira uma identidade para o Depósito ">
-                    </Components:CustomTextBox>
-                    <Components:CustomTextBox
-                                Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" Margin="0,0,0,3"
+            </Components:CustomTextBox>
+            <Components:CustomTextBox
+                                Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
                                 Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"  
 								ToolTip="Insira uma identidade para o Depósito">
-                    </Components:CustomTextBox>
-                    <Components:CustomComboBox
+            </Components:CustomTextBox>
+            <Components:CustomComboBox
                                 Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
                                 SelectedIndex="{Binding currentModel.stTipo, Mode=TwoWay, NotifyOnValidationError=True, 
                                 UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"								
 								IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Selecione o tipo de depósito. Existem três tipos de depósitos: Padrão, Quarentena e Trânsito.">
-                        <Components:CustomComboBox.Items>
-                            <System:String>Padrão</System:String>
-                            <System:String>Quarentena</System:String>
-                            <System:String>Trânsito</System:String>
-                        </Components:CustomComboBox.Items>
-                    </Components:CustomComboBox>
-                    <Components:CustomComboBox
+								ToolTip="Selecione o tipo de depósito. Existem três tipos de depósitos: Padrão, Quarentena e Trânsito." Margin="0">
+                <Components:CustomComboBox.Items>
+                    <System:String>Padrão</System:String>
+                    <System:String>Quarentena</System:String>
+                    <System:String>Trânsito</System:String>
+                </Components:CustomComboBox.Items>
+            </Components:CustomComboBox>
+            <Components:CustomComboBox
                                 Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" stCompPosicao="last"
                                 SelectedIndex="{Binding currentModel.stGrupoIdentificacao, Mode=TwoWay, 
                                 NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, 
                                 Converter={StaticResource byteToIntConverter}}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Selecione o Grupo de Identificação do depósito. Existem três tipos de depósitos:">
-                        <Components:CustomComboBox.Items>
-                            <System:String>Estoque de terceiros no nosso estabelecimento</System:String>
-                            <System:String>Estoque do próprio estabelecimento</System:String>
-                            <System:String>Nosso estoque no estabelecimento de terceiros</System:String>
-                        </Components:CustomComboBox.Items>
-                    </Components:CustomComboBox>
-                </Grid>
-            </Expander>
+                <Components:CustomComboBox.Items>
+                    <System:String>Estoque de terceiros no nosso estabelecimento</System:String>
+                    <System:String>Estoque do próprio estabelecimento</System:String>
+                    <System:String>Nosso estoque no estabelecimento de terceiros</System:String>
+                </Components:CustomComboBox.Items>
+            </Components:CustomComboBox>
+
         </Grid>
-    </DockPanel>
+    </Expander>
 </runtime:WindowsBase>

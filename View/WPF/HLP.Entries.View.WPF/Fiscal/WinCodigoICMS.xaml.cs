@@ -32,5 +32,10 @@ namespace HLP.Entries.View.WPF.Fiscal
             get { return this.DataContext as CodigoIcmsViewModel; }
             set { this.DataContext = value; }
         }
+
+        private void btnCommit_Click(object sender, RoutedEventArgs e)
+        {
+            this.dgv.CancelEdit(editingUnit: DataGridEditingUnit.Row);
+        }
     }
 }

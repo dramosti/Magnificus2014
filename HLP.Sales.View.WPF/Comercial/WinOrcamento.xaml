@@ -201,7 +201,7 @@
                 <Components:CustomTextBlock Text="Condição de Pagamento" Grid.Column="7" Grid.Row="3" labelFor="{Binding ElementName=ucCondicaoPagamento}"></Components:CustomTextBlock>
 
                 <!--Components-->
-                <Components:CustomTextBox x:Name="txtId"
+                <Components:CustomTextBox x:Name="txtId" stCompPosicao="fieldId"
                     Grid.Column="1" Grid.Row="2"
                     IsReadOnly="True"
 					Text="{Binding currentModel.idOrcamento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"

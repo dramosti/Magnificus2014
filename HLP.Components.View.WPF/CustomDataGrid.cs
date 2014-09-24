@@ -17,11 +17,34 @@ namespace HLP.Components.View.WPF
 {
     public class CustomDataGrid : DataGrid
     {
-
         public CustomDataGrid()
         {
             this.CanUserAddRows = true;
+            bIsEditing = false;
         }
+
+        private bool _bIsEditing;
+
+        public bool bIsEditing
+        {
+            get { return _bIsEditing; }
+            set
+            {
+                _bIsEditing = value;
+
+                if (this.DataContext != null)
+                {
+                    PropertyInfo piLockActions = this.DataContext.GetType()
+                        .GetProperty(name: "lockCurrentActions");
+
+                    if (piLockActions != null)
+                    {
+                        piLockActions.SetValue(obj: this.DataContext, value: value);
+                    }
+                }
+            }
+        }
+
 
         protected override void OnCellEditEnding(DataGridCellEditEndingEventArgs e)
         {
@@ -39,10 +62,9 @@ namespace HLP.Components.View.WPF
 
         protected override void OnBeginningEdit(DataGridBeginningEditEventArgs e)
         {
-            base.OnBeginningEdit(e);
-
             try
             {
+                base.OnBeginningEdit(e);
                 if (this.CurrentCell.Column != null)
                 {
                     if (this.CurrentCell.Column.Header != null)
@@ -59,22 +81,67 @@ namespace HLP.Components.View.WPF
             }
         }
 
+        protected override void OnExecutedBeginEdit(System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            try
+            {
+                base.OnExecutedBeginEdit(e);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                bIsEditing = true;
+            }
+        }
+
+        protected override void OnExecutedCancelEdit(System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            try
+            {
+                base.OnExecutedCancelEdit(e);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                bIsEditing = false;
+            }
+        }
+
         protected override void OnExecutedCommitEdit(System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            base.OnExecutedCommitEdit(e);
-
-            if (this.CurrentCell.Column != null)
+            try
             {
-                if (this.CurrentCell.Column.Header != null)
+                base.OnExecutedCommitEdit(e);
+
+                if (this.CurrentCell.Column != null)
                 {
-                    if (this.CurrentCell.Column.Header.ToString().ToUpper().Equals("CEP"))
+                    if (this.CurrentCell.Column.Header != null)
                     {
-                        if (this.CurrentItem != null)
+                        if (this.CurrentCell.Column.Header.ToString().ToUpper().Equals("CEP"))
                         {
-                            this.CurrentItem.SetPropertyValue("bCanFindCep", false);
+                            if (this.CurrentItem != null)
+                            {
+                                this.CurrentItem.SetPropertyValue("bCanFindCep", false);
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                bIsEditing = false;
             }
         }
 
@@ -116,7 +183,19 @@ namespace HLP.Components.View.WPF
                             this.SelectedCells.Clear();
                         c.Focus();
 
-                        if (e.Key != System.Windows.Input.Key.Up && e.Key != System.Windows.Input.Key.Down)
+                        if (
+                            e.SystemKey == System.Windows.Input.Key.LeftAlt
+                            || e.SystemKey == System.Windows.Input.Key.RightAlt
+                            || e.SystemKey == System.Windows.Input.Key.LeftCtrl
+                            || e.SystemKey == System.Windows.Input.Key.RightCtrl
+                            || e.KeyboardDevice.Modifiers == System.Windows.Input.ModifierKeys.Alt
+                            || e.KeyboardDevice.Modifiers == System.Windows.Input.ModifierKeys.Control
+                            )
+                        {
+                            this.handledOnPreviewKeyDown = true;
+                        }
+                        else if (e.Key != System.Windows.Input.Key.Up && e.Key != System.Windows.Input.Key.Down
+                            )
                         {
                             this.BeginEdit();
                             bPermiteKeyDown = false;

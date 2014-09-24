@@ -12,6 +12,17 @@
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <convert:NotConverter x:Key="notConverter"/>
+            <ControlTemplate x:Key="errorTest">
+                <DockPanel LastChildFill="True">
+                    <Border Background="#FFC82F2F" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
+                                                ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                        <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
+                    </Border>
+                    <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
+                        <Border BorderBrush="Transparent" BorderThickness="1"></Border>
+                    </AdornedElementPlaceholder>
+                </DockPanel>
+            </ControlTemplate>
         </ResourceDictionary>
     </Window.Resources>
     <Expander Header="UF" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
@@ -61,12 +72,15 @@
                     Grid.Column="2" Grid.Row="4"
                     IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
     		        Text="{Binding currentModel.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-            </Components:CustomTextBox>            
+            </Components:CustomTextBox>
             <Components:ucTextBoxIntellisense x:Name="txtRegiao"
-					ucEnabled="{Binding bIsEnabled}"
+					ucEnabled="{Binding bIsEnabled}" Validation.ErrorTemplate="{StaticResource errorTest}"
 					Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
-					selectedId="{Binding currentModel.idRegiao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  xNameView="vwRegiaoqs" TableView="vwRegiao"
-                    />
+					selectedId="{Binding currentModel.idRegiao, Mode=TwoWay, 
+                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  xNameView="vwRegiaoqs" TableView="vwRegiao"
+                    >                
+            </Components:ucTextBoxIntellisense>
+            <Button Grid.Row="1" Grid.Column="3" Click="Button_Click">Verify</Button>
         </Grid>
     </Expander>
 

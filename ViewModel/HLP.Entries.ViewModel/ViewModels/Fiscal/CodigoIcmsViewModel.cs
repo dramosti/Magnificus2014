@@ -24,13 +24,23 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
         #endregion
-        
+
+        private Func<int, bool, object> _getUf;
+
+        public Func<int, bool, object> getUf
+        {
+            get { return _getUf; }
+            set { _getUf = value; }
+        }
+
+
         public CodigoIcmsViewModel()
         {
             commands = new CodigoIcmsCommand(this);
+            this.getUf = commands.GetUf;
         }
         CodigoIcmsCommand commands;
 
-              
+
     }
 }

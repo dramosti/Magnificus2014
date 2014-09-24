@@ -73,6 +73,7 @@ namespace HLP.Comum.ViewModel.ViewModel
         public viewModelComum()
         {
             this.bIsEnabled = false;
+            this.lockCurrentActions = false;
             message = new MessageHlp();
             viewModelComumCommands = new viewModelComumCommands<T>(this);
             this.Botoes = new StackPanel();
@@ -311,6 +312,21 @@ namespace HLP.Comum.ViewModel.ViewModel
                 return _currentID;
             }
         }
+
+
+        private bool _lockCurrentActions;
+
+        public bool lockCurrentActions
+        {
+            get { return _lockCurrentActions; }
+            set
+            {
+                _lockCurrentActions = value;
+                this.NotifyPropertyChanged(propertyName: "lockCurrentActions");
+            }
+        }
+
+
 
         private bool _bIsEnabled;
         public bool bIsEnabled
