@@ -439,6 +439,30 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 else
                 {
                     this.objViewModel.viewModelComumCommands.SetFocusFirstControl();
+
+                    this.IniciaCollection();
+                    if (objViewModel.currentModel != null)
+                    {
+                        if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                            this.objViewModel.currentItem = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault();
+
+                        this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
+
+                        this.objViewModel.GenerateItensComissoes();
+
+                        this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged +=
+                            this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
+
+                        this.objViewModel.currentModel.orcamento_Total_Impostos.refOrcamentoIde = GCHandle.Alloc(value: this.objViewModel.currentModel);
+
+                        if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                            if (this.objViewModel.currentModel.lOrcamento_Itens.Count > 0)
+                                foreach (Orcamento_ItemModel item in this.objViewModel.currentModel.lOrcamento_Itens)
+                                {
+                                    item.refOrcamentoIde = GCHandle.Alloc(value: this.objViewModel.currentModel);
+                                    item.objImposto.refOrcamentoIde = GCHandle.Alloc(value: this.objViewModel.currentModel);
+                                }
+                    }
                 }
             }
             catch (Exception ex)
@@ -451,6 +475,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             try
             {
+                this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged -=
+                            this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
+
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception)
@@ -533,7 +560,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         if (this.objViewModel.currentModel.lOrcamento_Itens.Count > 0)
                             foreach (Orcamento_ItemModel item in this.objViewModel.currentModel.lOrcamento_Itens)
                             {
-                                item.refOrcamentoIde = GCHandle.Alloc(value: this.objViewModel.currentModel);                                
+                                item.refOrcamentoIde = GCHandle.Alloc(value: this.objViewModel.currentModel);
                                 item.objImposto.refOrcamentoIde = GCHandle.Alloc(value: this.objViewModel.currentModel);
                             }
                 }

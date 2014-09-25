@@ -22,9 +22,13 @@ namespace HLP.Comum.View.WPF
     {
         public static bool WindowShowDialog()
         {
-            wdSenhaSupervisor wd = new wdSenhaSupervisor();
+            return Application.Current.Dispatcher.Invoke((Func<bool>)(()
+                =>
+                {
+                    wdSenhaSupervisor wd = new wdSenhaSupervisor();
 
-            return wd.ShowDialog() ?? false;
+                    return wd.ShowDialog() ?? false;
+                }));
         }
 
         public wdSenhaSupervisor()

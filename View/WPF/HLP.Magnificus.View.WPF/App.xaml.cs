@@ -37,8 +37,6 @@ namespace HLP.Magnificus.View.WPF
         private bool unhandledException = false;
 
 
-        empresaParametrosService.Iwcf_EmpresaParametrosClient empresaServico =
-            new empresaParametrosService.Iwcf_EmpresaParametrosClient();
         BackgroundWorker bwInitialize;
 
 
@@ -50,36 +48,36 @@ namespace HLP.Magnificus.View.WPF
             this.bwInitialize.DoWork += bwInitialize_DoWork;
         }
 
-        void bwParametrosEmpresa_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            try
-            {
-                if (e.Error != null)
-                {
-                    throw new Exception(message: e.Error.Message);
-                }
-                else
-                {
-                    CompanyData.parametrosEmpresa = e.Result;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //void bwParametrosEmpresa_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.Error != null)
+        //        {
+        //            throw new Exception(message: e.Error.Message);
+        //        }
+        //        else
+        //        {
+        //            CompanyData.parametrosEmpresa = e.Result;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
-        void bwParametrosEmpresa_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                e.Result = empresaServico.getEmpresaParametros(idEmpresa: CompanyData.idEmpresa);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //void bwParametrosEmpresa_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    trya
+        //    {
+        //        e.Result = empresaServico.getEmpresaParametros(idEmpresa: CompanyData.idEmpresa);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
         public bool DoHandle { get; set; }
         private void Application_DispatcherUnhandledException(object sender,

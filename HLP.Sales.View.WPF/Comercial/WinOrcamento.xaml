@@ -348,7 +348,7 @@
 					Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="1"
 					selectedId="{Binding currentModel.idTipoOrcamento, Mode=TwoWay, NotifyOnValidationError=True, 
                                         UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  
-                                                                      xNameView="vwTipoDocumentoqs" TableView="vwTipoOrcamento"
+                                                                      xNameView="vwTipoOrcamentoqs" TableView="vwTipoOrcamento"
                     />
 
                                     <Components:HlpDatePicker x:Name="dtVencimento"

@@ -9,10 +9,81 @@ namespace HLP.ComumView.Model.Model
 {
     public partial class configuracaoModel : INotifyPropertyChanged
     {
+
+        private Dictionary<int?, configuracaoModel> _lProfiles;
+
+        public Dictionary<int?, configuracaoModel> lProfiles
+        {
+            get { return _lProfiles; }
+            set
+            {
+                _lProfiles = value;
+                this.NotifyPropertyChanged(propertyName: "lProfiles");
+            }
+        }
+
+
         public configuracaoModel()
         {
-
         }
+
+        public void LoadProfiles()
+        {
+            this.lProfiles = new Dictionary<int?, configuracaoModel>();
+
+            lProfiles.Add(key: 0, value: null);
+
+            lProfiles.Add(key: 1, value: new configuracaoModel
+            {
+                xName = "Teste",
+                xBaseDados = @"Data Source=HLPSRV\SQLSERVER14;Initial Catalog=PROD_MAGNIFICUS;User Id=SA;Password=H029060tSql;",
+                xUriWcf = "http://hlpsistemas.no-ip.org:8081/wcf/"
+            });
+
+            lProfiles.Add(key: 2, value: new configuracaoModel
+            {
+                xName = "Desenvolvimento",
+                xBaseDados = @"Data Source=HLPSRV\SQLSERVER14;Initial Catalog=BD_MAGNIFICUS_ATUAL;User Id=SA;Password=H029060tSql;",
+                xUriWcf = "http://hlpsistemas.no-ip.org:8081/wcf_dev/"
+            });
+
+            this.NotifyPropertyChanged(propertyName: "lProfiles");
+        }
+
+        private string _xName;
+
+        public string xName
+        {
+            get { return _xName; }
+            set
+            {
+                _xName = value;
+                this.NotifyPropertyChanged(propertyName: "xName");
+            }
+        }
+
+
+        private int? _selectedPredefinedProfile;
+
+        public int? selectedPredefinedProfile
+        {
+            get { return _selectedPredefinedProfile; }
+            set
+            {
+                _selectedPredefinedProfile = value;
+
+                configuracaoModel conf = this.lProfiles.FirstOrDefault(i => i.Key == (value ?? 0)).Value;
+
+                if (conf != null && value > 0)
+                {
+                    this.xBaseDados = conf.xBaseDados;
+                    this.xUriWcf = conf.xUriWcf;
+                }
+
+                this.NotifyPropertyChanged(propertyName: "selectedPredefinedProfile");
+            }
+        }
+
 
 
         private string _xUriWcf;
@@ -86,4 +157,6 @@ namespace HLP.ComumView.Model.Model
             }
         }
     }
+
+
 }

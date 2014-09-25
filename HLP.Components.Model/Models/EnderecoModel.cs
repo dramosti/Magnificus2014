@@ -17,38 +17,38 @@ namespace HLP.Components.Model.Models
         public EnderecoModel()
             : base(xTabela: "Enderecos")
         {
-            //Window currentWindow = Sistema.GetOpenWindow();
+            Window currentWindow = Sistema.GetOpenWindow();
 
-            //if (currentWindow != null)
-            //{
-            //    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-            //        {
-            //            object currentModel = currentWindow.DataContext.GetType().GetProperty(name: "currentModel")
-            //        .GetValue(obj: currentWindow.DataContext);
+            if (currentWindow != null)
+            {
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                    {
+                        object currentModel = currentWindow.DataContext.GetType().GetProperty(name: "currentModel")
+                    .GetValue(obj: currentWindow.DataContext);
 
-            //            if (currentModel != null)
-            //            {
-            //                if ((currentModel as modelComum).GetOperationModel() ==
-            //                     Base.EnumsBases.OperationModel.updating)
-            //                {
-            //                    PropertyInfo pilEnderecos = currentModel.GetType().GetProperties().ToList().FirstOrDefault(
-            //                        i => i.PropertyType == typeof(ObservableCollectionBaseCadastros<EnderecoModel>));
+                        if (currentModel != null)
+                        {
+                            if ((currentModel as modelComum).GetOperationModel() ==
+                                 Base.EnumsBases.OperationModel.updating)
+                            {
+                                PropertyInfo pilEnderecos = currentModel.GetType().GetProperties().ToList().FirstOrDefault(
+                                    i => i.PropertyType == typeof(ObservableCollectionBaseCadastros<EnderecoModel>));
 
-            //                    if (pilEnderecos != null)
-            //                    {
-            //                        ObservableCollectionBaseCadastros<EnderecoModel> list = pilEnderecos.GetValue(obj: currentModel) as ObservableCollectionBaseCadastros<EnderecoModel>;
+                                if (pilEnderecos != null)
+                                {
+                                    ObservableCollectionBaseCadastros<EnderecoModel> list = pilEnderecos.GetValue(obj: currentModel) as ObservableCollectionBaseCadastros<EnderecoModel>;
 
-            //                        if (list != null)
-            //                            if (list.Count(i => i.stPrincipal == (byte)1) < 1)
-            //                            {
-            //                                this._stPrincipal = (byte)1;
-            //                                base.NotifyPropertyChanged(propertyName: "stPrincipal");
-            //                            }
-            //                    }
-            //                }
-            //            }
-            //        }));
-            //}
+                                    if (list != null)
+                                        if (list.Count(i => i.stPrincipal == (byte)1) < 1)
+                                        {
+                                            this._stPrincipal = (byte)1;
+                                            base.NotifyPropertyChanged(propertyName: "stPrincipal");
+                                        }
+                                }
+                            }
+                        }
+                    }));
+            }
         }
         private int? _idEndereco;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]

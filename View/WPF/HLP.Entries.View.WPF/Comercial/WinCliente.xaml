@@ -555,7 +555,7 @@
                                             Grid.Column="2" Grid.Row="1"
 											xIdPesquisa="{Binding currentModel.idCondicaoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											FieldPesquisa="ID" TableView="vwPlanoPagamento" NameWindowCadastro="WinPlanoPagamento">
+											FieldPesquisa="ID" TableView="vwCondicaoPagamento" NameWindowCadastro="WinCondicaoPagamento">
                                             <Components:CustomPesquisa.Items>
                                                 <System:String>xCondicaoPagamento</System:String>
                                                 <System:String>xDescricao</System:String>

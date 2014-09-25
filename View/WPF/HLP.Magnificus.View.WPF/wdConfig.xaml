@@ -4,7 +4,7 @@
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" 
     xmlns:ViewModel="clr-namespace:HLP.ComumView.ViewModel.ViewModel;assembly=HLP.ComumView.ViewModel" 
     x:Class="HLP.Magnificus.View.WPF.wdConfig"
-        Title="wdConfig" Height="160" Width="400"
+        Title="wdConfig" Height="250" Width="700"
         WindowStyle="None" WindowStartupLocation="CenterScreen" 
         >
     <Window.Resources>
@@ -75,6 +75,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="3"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="3"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="3"/>
             <RowDefinition Height="20"/>
@@ -86,18 +88,23 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="5"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
-        <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Uri Wcf"/>
-        <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Base de Dados"/>
+        <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Perfis Predefinidos"/>
+        <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Uri Wcf"/>
+        <Components:CustomTextBlock Grid.Column="1" Grid.Row="6" Text="Base de Dados"/>
+        <Components:CustomComboBox ItemsSource="{Binding Path=currentModel.lProfiles}" Grid.Column="3" Grid.Row="2" 
+                                   SelectedIndex="{Binding Path=currentModel.selectedPredefinedProfile, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   DisplayMemberPath="Value.xName">
+        </Components:CustomComboBox>
         <Components:CustomTextBox Text="{Binding currentModel.xUriWcf, UpdateSourceTrigger=PropertyChanged,
-            NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Grid.Column="3" Grid.Row="2"/>
-        <Components:CustomTextBox Text="{Binding currentModel.xBaseDados, UpdateSourceTrigger=PropertyChanged,
             NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Grid.Column="3" Grid.Row="4"/>
-        <Grid Grid.Row="9" Grid.ColumnSpan="5" Background="#FF4774B5">
+        <Components:CustomTextBox Text="{Binding currentModel.xBaseDados, UpdateSourceTrigger=PropertyChanged,
+            NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Grid.Column="3" Grid.Row="6"/>
+        <Grid Grid.Row="11" Grid.ColumnSpan="5" Background="#FF4774B5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="30"/>

@@ -25,6 +25,7 @@ using HLP.Entries.Model.Models.Transportes;
 using System.Threading;
 using HLP.Comum.Model.Models;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
@@ -103,6 +104,8 @@ namespace HLP.Sales.Model.Models.Comercial
                     this.idMoeda = (HLP.Base.Static.CompanyData.objEmpresaModel as EmpresaModel)
                             .empresaParametros.ObjParametro_ComercialModel.idMoeda;
                 }
+
+                this.idFuncionarioRepresentante = HLP.Base.Static.UserData.idUser;
             }
             catch (Exception ex)
             {
@@ -128,7 +131,7 @@ namespace HLP.Sales.Model.Models.Comercial
                         {
                             Orcamento_ItemModel objItem = this.lOrcamento_Itens.FirstOrDefault();
 
-                            cont = objItem.nItem ?? 1;
+                            cont = objItem.nItem ?? 0;
                         }
                         else
                         {
@@ -513,7 +516,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 if (value != null)
                 {
                     this.bIsEnabledClListaPreco = value.stObrigaListaPreco != (byte)1;
-                    this.idFuncionarioRepresentante = value.idFuncionario ?? 0;
+                    this.idFuncionarioRepresentante = value.idFuncionario ?? HLP.Base.Static.UserData.idUser;
 
                     //Criei esta validação para facilitar em todas as partes do código que precise ser validado se é venda no estado ou não. Valor será setado na variável 'this.VendaNoEstado'
                     #region Venda no Estado?
@@ -1387,6 +1390,13 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 if ((this.refOrcamentoIde.Target as Orcamento_ideModel).GetOperationModel() == OperationModel.updating)
                 {
+                    StackTrace stk = new StackTrace();
+                    StackFrame[] stkTrace = stk.GetFrames();
+
+                    if (stkTrace.ToList().Count(i => i.GetMethod().Name.ToLower().Contains("save")
+                        || i.GetMethod().Name.ToLower().Contains("cancelar")) > 0)
+                        return;
+
                     this.bPermitePorcentagem = false;
                     Lista_precoModel objItemListaPreco = null;
                     if (this.objListaPreco != null)
@@ -1916,10 +1926,11 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _vVenda = value;
 
-                this.pDesconto = this._pDesconto;
-
-                this.SetTotalItem();
+                this._vDesconto = ((value * this._qProduto) * (this._pDesconto / 100));
+                                
                 base.NotifyPropertyChanged(propertyName: "vVenda");
+                base.NotifyPropertyChanged(propertyName: "vDesconto");
+                this.SetTotalItem();
             }
         }
         private decimal _qProduto;
@@ -1930,7 +1941,10 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _qProduto = value;
+                this._vDesconto = ((value * this._qProduto) * (this._pDesconto / 100));
+
                 base.NotifyPropertyChanged(propertyName: "qProduto");
+                base.NotifyPropertyChanged(propertyName: "vDesconto");
                 this.SetTotalItem();
             }
         }
