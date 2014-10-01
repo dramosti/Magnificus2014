@@ -23,16 +23,16 @@ namespace HLP.Components.ViewModel.ViewModels
             comm = new CustomTextBoxCommands(objViewModel: this);            
         }
 
-        private Visibility _visibility;
+        //private Visibility _visibility;
 
-        public Visibility visibility
-        {
-            get { return _visibility; }
-            set
-            {
-                _visibility = value;
-                base.NotifyPropertyChanged(propertyName: "visibility");
-            }
-        }
+        //public Visibility visibility
+        //{
+        //    get { return _visibility; }
+        //    set
+        //    {
+        //        _visibility = value;
+        //        base.NotifyPropertyChanged(propertyName: "visibility");
+        //    }
+        //}
     }
 }

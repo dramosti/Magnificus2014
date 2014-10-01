@@ -576,6 +576,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\HLP.Controls\HLP.Controls\HLP.Controls.csproj">
+      <Project>{4a1ca1fc-acbe-44a8-8e38-bbe110eaeb3c}</Project>
+      <Name>HLP.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
       <Project>{6C138179-2C79-4535-9C3C-E78C529D3598}</Project>
       <Name>HLP.Dependencies</Name>

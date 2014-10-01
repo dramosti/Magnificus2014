@@ -48,18 +48,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFToolkit, Version=3.5.31016.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\WPF Toolkit\v3.5.31016.1\WPFToolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="WPFToolkit.Design, Version=3.5.31016.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\WPF Toolkit\v3.5.31016.1\WPFToolkit.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="WPFToolkit.VisualStudio.Design, Version=3.5.31016.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\WPF Toolkit\v3.5.31016.1\WPFToolkit.VisualStudio.Design.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -107,6 +95,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\HLP.Controls\HLP.Controls\HLP.Controls.csproj">
+      <Project>{4a1ca1fc-acbe-44a8-8e38-bbe110eaeb3c}</Project>
+      <Name>HLP.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>
@@ -126,6 +118,10 @@
     <ProjectReference Include="..\HLP.Entries.Services\HLP.Entries.Services.csproj">
       <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>
       <Name>HLP.Entries.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Resources.View.WPF\HLP.Resources.View.WPF.csproj">
+      <Project>{8d4b32be-e2bc-42ab-8715-a6b73f2956e6}</Project>
+      <Name>HLP.Resources.View.WPF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\HLP.Entries.Model\HLP.Entries.Model.csproj">
       <Project>{ef298ced-27e9-4647-93d6-883f4dccc9ee}</Project>

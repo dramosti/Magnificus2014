@@ -12,6 +12,8 @@ namespace HLP.Components.View.WPF
     {
         public BaseControl()
         {
+            
+
         }
 
 

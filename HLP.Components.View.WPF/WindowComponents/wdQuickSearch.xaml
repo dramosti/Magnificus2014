@@ -4,7 +4,7 @@
         xmlns:Components="clr-namespace:HLP.Components.View.WPF"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         x:Class="HLP.Components.View.WPF.WindowComponents.wdQuickSearch"
-    xmlns:converter="clr-namespace:HLP.Components.View.WPF.Converter"
+        xmlns:converter="clr-namespace:HLP.Components.View.WPF.Converter"
         Title="wdQuickSearch" Height="150" Width="250" x:Name="wdQs" WindowStartupLocation="CenterScreen" FocusManager.FocusedElement="{Binding ElementName=txtValor}" AllowsTransparency="True" WindowStyle="None">
     <Window.Resources>
         <converter:RadioButtonCheckedButtonQuickSearchConverter x:Key="radioBtnCheckedButtonQSConv"/>

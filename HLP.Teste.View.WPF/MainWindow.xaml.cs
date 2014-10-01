@@ -16,13 +16,14 @@ using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Services.Gerais;
 using System.Collections.ObjectModel;
+using HLP.Components.View.WPF;
 
 namespace HLP.Teste.View.WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : WindowsBase
     {
         public MainWindow()
         {
