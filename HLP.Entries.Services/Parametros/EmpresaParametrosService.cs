@@ -15,7 +15,7 @@ namespace HLP.Entries.Services.Parametros
         const string xTabela = "Parametro_Estoque;Parametro_Custos;Parametro_Compras;Parametro_Ordem_Producao;Parametro_Fiscal;Parametro_Cartao_Ponto;Parametro_Comercial;Parametro_Financeiro";
 
         HLP.Wcf.Entries.wcf_EmpresaParametros serviceNetwork;
-        HLP.Entries.Services.wcf_ParametroEmpresa.Iwcf_EmpresaParametrosClient serviceWeb;
+        wcf_ParametroEmpresa.Iwcf_EmpresaParametrosClient serviceWeb;
 
         HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
         wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;

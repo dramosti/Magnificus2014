@@ -157,8 +157,32 @@ namespace HLP.Components.View.WPF
                         if (obj != null)
                         {
                             if (!string.IsNullOrEmpty(value: this.xNamePropertyModel))
-                                dataItem.GetType().GetProperty(name: this.xNamePropertyModel).SetValue(obj: dataItem,
-                                    value: obj);
+                            {
+                                object objInModel = dataItem.GetType().GetProperty(name: this.xNamePropertyModel).GetValue(
+                                    obj: dataItem);
+
+                                if (objInModel == null)
+                                    dataItem.GetType().GetProperty(name: this.xNamePropertyModel).SetValue(obj: dataItem,
+                                        value: obj);
+                                else
+                                {
+                                    object valueIdObjInModel = objInModel.GetType().GetProperty(name: piBinding.Name).GetValue(obj: objInModel);
+
+                                    object valueIdInObj = obj.GetType().GetProperty(name: piBinding.Name).GetValue(obj: obj);
+
+                                    if (valueIdObjInModel == null || valueIdInObj == null)
+                                    {
+                                        dataItem.GetType().GetProperty(name: this.xNamePropertyModel).SetValue(obj: dataItem,
+                                        value: obj);
+                                    }
+                                    else
+                                        if (valueIdObjInModel.ToString() != valueIdInObj.ToString())
+                                            dataItem.GetType().GetProperty(name: this.xNamePropertyModel).SetValue(obj: dataItem,
+                                                value: obj);
+
+                                }
+                            }
+
 
                             PropertyInfo pi = null;
 

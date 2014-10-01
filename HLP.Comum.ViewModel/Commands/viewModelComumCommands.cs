@@ -566,13 +566,16 @@ namespace HLP.Comum.ViewModel.Commands
             {
                 object objCloned = miClone.Invoke(obj: this.objviewModel.currentModel,
                     parameters: new object[] { });
+                (objCloned as modelComum).SetOperationModel(_value: OperationModel.updating);
 
                 this.objviewModel.currentModel = objCloned as T;
             }
             else
+            {
                 this.SetNullToIdFields(tModel: this.objviewModel.currentModel.GetType(), objOwner: this.objviewModel.currentModel);
-
-            (this.objviewModel.currentModel as modelComum).SetOperationModel(_value: OperationModel.updating);
+                (this.objviewModel.currentModel as modelComum).SetOperationModel(_value: OperationModel.updating);
+            }
+            
             this.objviewModel.bIsEnabled = true;
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
             objviewModel.currentID = 0;

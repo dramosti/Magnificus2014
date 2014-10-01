@@ -24,6 +24,8 @@ namespace HLP.ComumView.ViewModel.ViewModel
                 xBaseDados = Sistema.GetConnectionStrings(xKey: "dbPrincipal")
             };
 
+            this.currentModel.LoadProfiles();
+
             comm = new wdConfigCommands(objViewModel: this);
         }
     }

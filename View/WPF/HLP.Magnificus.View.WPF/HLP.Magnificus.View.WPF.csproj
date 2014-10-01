@@ -153,11 +153,6 @@
     <Compile Include="Converter\StConnectionConverter.cs" />
     <Compile Include="Converter\visibilityCtrlsWdMain.cs" />
     <Compile Include="Converter\WidthColumnConverter.cs" />
-    <Compile Include="Service References\empresaParametrosService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="wdConfig.xaml.cs">
       <DependentUpon>wdConfig.xaml</DependentUpon>
     </Compile>
@@ -183,35 +178,6 @@
       <DependentUpon>WinLogin.xaml</DependentUpon>
     </Compile>
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
-    <None Include="Service References\empresaParametrosService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\empresaParametrosService\configuration.svcinfo" />
-    <None Include="Service References\empresaParametrosService\configuration91.svcinfo" />
-    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros.disco" />
-    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros.wsdl" />
-    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaParametrosService\wcf_EmpresaParametros6.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Resource Include="Magnificus.ico" />
     <Resource Include="x-mark-48.png" />
     <Resource Include="error-7-64.png" />
@@ -367,12 +333,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\empresaParametrosService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

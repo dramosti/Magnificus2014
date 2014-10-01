@@ -385,23 +385,20 @@ namespace HLP.Components.View.WPF
                 }
                 else if (e.Key == System.Windows.Input.Key.Enter)
                 {
-                    if (this.CurrentColumn == this.Columns.LastOrDefault(i => i.Visibility == System.Windows.Visibility.Visible))
+                    this.SelectedCells.Clear();
+                    DataGridCell cellToFocus = null;
+
+                    for (int i = 0; i < this.Columns.Count; i++)
                     {
-                        this.SelectedCells.Clear();
-                        DataGridCell cellToFocus = null;
-
-                        for (int i = 0; i < this.Columns.Count; i++)
-                        {
-                            cellToFocus = Util.GetCell(grid: this, row: r,
-                                column: i);
-                            if (cellToFocus != null)
-                                if (cellToFocus.IsReadOnly == false && cellToFocus.Visibility == System.Windows.Visibility.Visible)
-                                    break;
-                        }
-
-                        cellToFocus.Focus();
-                        this.BeginEdit();
+                        cellToFocus = Util.GetCell(grid: this, row: r,
+                            column: i);
+                        if (cellToFocus != null)
+                            if (cellToFocus.IsReadOnly == false && cellToFocus.Visibility == System.Windows.Visibility.Visible)
+                                break;
                     }
+
+                    cellToFocus.Focus();
+                    this.BeginEdit();
                 }
                 else if (e.Key == System.Windows.Input.Key.Tab)
                 {
