@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="75f1aa95-1f2b-42b7-864f-2bf641efa10d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Components.Model" />
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_Lista_Preco.xsd" MetadataType="Schema" ID="9a87136a-081e-4750-86c5-ad31d7a770b4" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc?xsd=xsd7" />
+    <MetadataFile FileName="wcf_Lista_Preco1.xsd" MetadataType="Schema" ID="0a402fe2-b1ca-4e39-a364-34a64e9ac75a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc?xsd=xsd8" />
+    <MetadataFile FileName="wcf_Lista_Preco2.xsd" MetadataType="Schema" ID="f4d27292-63c3-4b70-8163-8549d308ae36" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc?xsd=xsd9" />
+    <MetadataFile FileName="wcf_Lista_Preco3.xsd" MetadataType="Schema" ID="13fd84d8-5a36-4188-a82a-4dfc3cdd782c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Lista_Preco4.xsd" MetadataType="Schema" ID="8f9890dd-f1e0-49d6-8cbe-dc1b4a22988b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Lista_Preco5.xsd" MetadataType="Schema" ID="53ab6538-5c7d-4eca-a8c3-093eacba5711" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Lista_Preco6.xsd" MetadataType="Schema" ID="4b3e1070-5165-4be6-81d3-06463b94e709" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Lista_Preco7.xsd" MetadataType="Schema" ID="5e9a2b07-146c-4ce1-a9db-be20da669ee5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc?xsd=xsd6" />
+    <MetadataFile FileName="wcf_Lista_Preco.disco" MetadataType="Disco" ID="b5401af5-2f48-4e8c-8416-a04849ea73bd" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc?disco" />
+    <MetadataFile FileName="wcf_Lista_Preco.wsdl" MetadataType="Wsdl" ID="1b4e07d0-2158-4eeb-bdb2-13689cb494a6" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc?wsdl" />
+    <MetadataFile FileName="wcf_Lista_Preco8.xsd" MetadataType="Schema" ID="30968006-6029-4f52-a3f5-1996bdfce93b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Lista_Preco9.xsd" MetadataType="Schema" ID="a084ab7e-a420-453c-b94c-87bf6d3bceab" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf_dev/wcf_Lista_Preco.svc?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

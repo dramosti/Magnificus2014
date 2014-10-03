@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.Services.wcf_Lista_Preco {
+namespace HLP.Entries.Services.wcf_ListaPreco {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,9 +17,17 @@ namespace HLP.Entries.Services.wcf_Lista_Preco {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_Lista_Preco.DocumentosModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_Lista_Preco.modelComum))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_ListaPreco.DocumentosModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_ListaPreco.modelComum))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Comercial.Tipo_produtoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Lista_precoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.ProdutoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Produto_Fornecedor_HomologadoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Produto_RevisaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.ConversaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.DepositoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Familia_produtoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Familia_Produto_ClassesModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -50,7 +58,7 @@ namespace HLP.Entries.Services.wcf_Lista_Preco {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DocumentosModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    public partial class DocumentosModel : HLP.Entries.Services.wcf_Lista_Preco.modelBase {
+    public partial class DocumentosModel : HLP.Entries.Services.wcf_ListaPreco.modelBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idDocumentoField;
@@ -169,15 +177,23 @@ namespace HLP.Entries.Services.wcf_Lista_Preco {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelComum", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Comercial.Tipo_produtoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Lista_precoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.ProdutoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Produto_Fornecedor_HomologadoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Produto_RevisaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.ConversaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.DepositoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Familia_produtoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Familia_Produto_ClassesModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel))]
-    public partial class modelComum : HLP.Entries.Services.wcf_Lista_Preco.modelBase {
+    public partial class modelComum : HLP.Entries.Services.wcf_ListaPreco.modelBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.Services.wcf_Lista_Preco.DocumentosModel> lDocumentosField;
+        private System.Collections.Generic.List<HLP.Entries.Services.wcf_ListaPreco.DocumentosModel> lDocumentosField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.Services.wcf_Lista_Preco.DocumentosModel> lDocumentos {
+        public System.Collections.Generic.List<HLP.Entries.Services.wcf_ListaPreco.DocumentosModel> lDocumentos {
             get {
                 return this.lDocumentosField;
             }
@@ -190,8 +206,78 @@ namespace HLP.Entries.Services.wcf_Lista_Preco {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GCHandle", Namespace="http://schemas.datacontract.org/2004/07/System.Runtime.InteropServices")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Comercial.Tipo_produtoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<int>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Components.Model.Models.HlpButtonHierarquiaStruct>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Components.Model.Models.HlpButtonHierarquiaStruct))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Components.Model.Models.modelToTreeView))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Components.Model.Models.modelToTreeView>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Components.Model.Models.modelToComboBox>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Components.Model.Models.modelToComboBox))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Model.Models.Comercial.Lista_precoModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Lista_precoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.ProdutoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Model.Models.Comercial.Produto_Fornecedor_HomologadoModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Produto_Fornecedor_HomologadoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Model.Models.Comercial.Produto_RevisaoModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Produto_RevisaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.ConversaoModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.ConversaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.DepositoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Familia_produtoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Familia_Produto_ClassesModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Familia_Produto_ClassesModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_ListaPreco.modelComum))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<HLP.Entries.Services.wcf_ListaPreco.DocumentosModel>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_ListaPreco.DocumentosModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_ListaPreco.modelBase))]
+    public partial struct GCHandle : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private object TargetField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public object Target {
+            get {
+                return this.TargetField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TargetField, value) != true)) {
+                    this.TargetField = value;
+                    this.RaisePropertyChanged("Target");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcf_Lista_Preco.Iwcf_Lista_Preco")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcf_ListaPreco.Iwcf_Lista_Preco")]
     public interface Iwcf_Lista_Preco {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Lista_Preco/GetLista_PrecoHierarquia", ReplyAction="http://tempuri.org/Iwcf_Lista_Preco/GetLista_PrecoHierarquiaResponse")]
@@ -250,12 +336,12 @@ namespace HLP.Entries.Services.wcf_Lista_Preco {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface Iwcf_Lista_PrecoChannel : HLP.Entries.Services.wcf_Lista_Preco.Iwcf_Lista_Preco, System.ServiceModel.IClientChannel {
+    public interface Iwcf_Lista_PrecoChannel : HLP.Entries.Services.wcf_ListaPreco.Iwcf_Lista_Preco, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Iwcf_Lista_PrecoClient : System.ServiceModel.ClientBase<HLP.Entries.Services.wcf_Lista_Preco.Iwcf_Lista_Preco>, HLP.Entries.Services.wcf_Lista_Preco.Iwcf_Lista_Preco {
+    public partial class Iwcf_Lista_PrecoClient : System.ServiceModel.ClientBase<HLP.Entries.Services.wcf_ListaPreco.Iwcf_Lista_Preco>, HLP.Entries.Services.wcf_ListaPreco.Iwcf_Lista_Preco {
         
         public Iwcf_Lista_PrecoClient() {
         }

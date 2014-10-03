@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -248,6 +249,7 @@ namespace HLP.Entries.Model.Models.Comercial
     {
         private GCHandle _refListaPrecoPai;
 
+        [IgnoreDataMemberAttribute()]
         public GCHandle refListaPrecoPai
         {
             get { return _refListaPrecoPai; }
@@ -271,7 +273,7 @@ namespace HLP.Entries.Model.Models.Comercial
                         if ((this.refListaPrecoPai.Target as Lista_Preco_PaiModel).GetOperationModel()
                             == Base.EnumsBases.OperationModel.updating)
                         {
-                            this.vCustoProduto = value.vCompra;                            
+                            this.vCustoProduto = value.vCompra;
                         }
                 }
                 base.NotifyPropertyChanged(propertyName: "objProduto");

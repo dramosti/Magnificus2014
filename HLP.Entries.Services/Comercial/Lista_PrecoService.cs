@@ -16,7 +16,7 @@ namespace HLP.Entries.Services.Comercial
         wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
 
         HLP.Wcf.Entries.wcf_Lista_Preco servicoRede;
-        wcf_Lista_Preco.Iwcf_Lista_PrecoClient servicoInternet;
+        wcf_ListaPreco.Iwcf_Lista_PrecoClient servicoInternet;
 
         public Lista_PrecoService()
         {
@@ -46,7 +46,7 @@ namespace HLP.Entries.Services.Comercial
                     break;
                 case StConnection.OnlineWeb:
                     {
-                        servicoInternet = new wcf_Lista_Preco.Iwcf_Lista_PrecoClient();
+                        servicoInternet = new wcf_ListaPreco.Iwcf_Lista_PrecoClient();
                         serviceCamposBaseDadosWeb = new wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient();
                         #region Validação
 

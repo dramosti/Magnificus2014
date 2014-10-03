@@ -85,9 +85,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\wcf_oficial.pubxml" />
-    <None Include="Properties\PublishProfiles\wcf_programacao.pubxml" />
-    <None Include="Properties\PublishProfiles\wcf_Testes.pubxml" />
+    <None Include="Properties\PublishProfiles\HLP065_SALESDEV.pubxml" />
+    <None Include="Properties\PublishProfiles\HLP065_SALESTESTE.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
