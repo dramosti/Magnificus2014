@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CondicaoPagamento.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+  <xs:complexType name="Condicao_pagamentoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idCondicaoPagamento" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idDiaPagamento" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idPlanoPagamento" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="nDias" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="nMeses" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="nSemanas" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="stAlocacaoImposto" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCondicao" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stDataVencimento" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stMetodo" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stPrimeiroPagamento" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xCondicaoPagamento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xDescricao" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Condicao_pagamentoModel" nillable="true" type="tns:Condicao_pagamentoModel" />
+</xs:schema>

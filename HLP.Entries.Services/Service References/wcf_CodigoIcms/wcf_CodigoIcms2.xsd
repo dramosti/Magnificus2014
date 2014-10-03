@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Fiscal" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Fiscal" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_CodigoIcms.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+  <xs:complexType name="Codigo_Icms_paiModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cIcms" type="xs:int" />
+          <xs:element minOccurs="0" name="idCodigoIcmsPai" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+          <xs:element minOccurs="0" name="lCodigo_IcmsModel" nillable="true" type="tns:ArrayOfCodigo_IcmsModel" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Codigo_Icms_paiModel" nillable="true" type="tns:Codigo_Icms_paiModel" />
+  <xs:complexType name="ArrayOfCodigo_IcmsModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Codigo_IcmsModel" nillable="true" type="tns:Codigo_IcmsModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCodigo_IcmsModel" nillable="true" type="tns:ArrayOfCodigo_IcmsModel" />
+  <xs:complexType name="Codigo_IcmsModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q2:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idCSTIcms" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idCodigoIcms" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idCodigoIcmsPai" type="xs:int" />
+          <xs:element minOccurs="0" name="idUf" type="xs:int" />
+          <xs:element minOccurs="0" name="pIcmsEstado" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pIcmsInterna" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pIcmsNaoContribruinteForaEstado" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pIcmsSubstituicaoTributaria" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pMvaSubstituicaoTributaria" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vCoeficienteIcms" type="xs:decimal" />
+          <xs:element minOccurs="0" name="xFundamLegalCodTrib" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Codigo_IcmsModel" nillable="true" type="tns:Codigo_IcmsModel" />
+</xs:schema>

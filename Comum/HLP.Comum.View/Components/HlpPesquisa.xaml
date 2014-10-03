@@ -1,0 +1,136 @@
+﻿<runtime:BaseControl x:Class="HLP.Comum.View.Components.HlpPesquisa"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
+             xmlns:local="clr-namespace:HLP.Comum.View.Components"
+             xmlns:convertLocal="clr-namespace:HLP.Comum.View.Converters"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Width="Auto" Height="Auto"
+             x:Name="componente"     
+             xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type local:HlpPesquisa}">
+                <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="True">
+                        <Setter Property="Validation.ErrorTemplate">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <DockPanel LastChildFill="True">
+                                        <Border Background="#FFECA933" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
+                            ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"
+                                ></TextBlock>
+                                        </Border>
+                                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
+                                            <Border BorderBrush="Transparent" BorderThickness="1"></Border>
+                                        </AdornedElementPlaceholder>
+                                    </DockPanel>
+                                </ControlTemplate>
+
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                    <Trigger Property="IsVisible" Value="false">
+                        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <convertLocal:HlpPesquisaConverter x:Key="hlpPesquisaConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel LastChildFill="True">
+        <TextBlock x:Name="lblCaption" 
+               TextWrapping="Wrap"
+               Style="{StaticResource  TextBlocktyleComponents}"
+               Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}"
+               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="{Binding ElementName=componente, Path=Height}" FontFamily="Calibri" FontSize="14"/>
+        
+
+        <TextBox x:Name="txtID"
+                 TextChanged="ucTxt_TextChanged"
+                 LostFocus="ucTxt_LostFocus"
+                 CharacterCasing="Upper"
+                 IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"
+                 Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text, 
+                 UpdateSourceTrigger=LostFocus, Converter={StaticResource hlpPesquisaConverter}}"
+                 Width="80" KeyDown="txtID_KeyDown" >
+            <TextBox.Style>
+                <Style x:Name="TextBoxHlpPesquisa" TargetType="{x:Type TextBoxBase}">                    
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
+                                <Border x:Name="Border1" CornerRadius="0,0,0,0" BorderBrush="#FF8C8C8C" BorderThickness="1.3,1.3,0,1.3" Background="White" SnapsToDevicePixels="True">
+                                    <DockPanel>
+                                        <Button 
+                                            Click="Button_Click"
+                                            DockPanel.Dock="Right" Content="..." Height="15" Width="15" Margin="0,0,1.5,0">
+                                            <Button.Style>
+                                                <Style TargetType="{x:Type Button}">
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Border x:Name="border" BorderBrush="Transparent" CornerRadius="2" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" SnapsToDevicePixels="true">
+                                                                    <Image x:Name="ImagemComponent">
+                                                                        <Image.Style>
+                                                                            <Style TargetType="{x:Type Image}">
+                                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Icons/Button/Pesquisa.png"/>
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Icons/Button/Pesquisa_MouseOVer.png"/>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Resources.View.WPF;component/Icons/Button/Pesquisa_Desabilitado.png"/>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </Image.Style>
+                                                                    </Image>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                        <Border>
+                                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" VerticalAlignment="Center" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                        </Border>
+                                    </DockPanel>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" TargetName="Border1" Value="0.56"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="BorderBrush" TargetName="Border1" Value="#FF4774B5"/>
+                                    </Trigger>
+                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                        <Setter Property="BorderBrush" TargetName="Border1" Value="#FF4774B5"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+            <TextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Inserir novo item" Click="MenuItem_Click"></MenuItem>
+                </ContextMenu>
+            </TextBox.ContextMenu>
+        </TextBox>
+
+        <TextBox x:Name="txtDisplay" IsReadOnly="True" Style="{StaticResource TextBoxPesquisaRapidaRightSide}"
+                 TextChanged="ucTxtPesquisa_TextChanged"
+                 CharacterCasing="Upper"
+                 Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Display}"
+                 Focusable="False"  />
+    </DockPanel>
+
+</runtime:BaseControl>

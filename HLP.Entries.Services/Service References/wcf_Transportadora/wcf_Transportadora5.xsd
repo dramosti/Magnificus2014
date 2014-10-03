@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Transportadora.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Transportadora.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+  <xs:complexType name="ArrayOfContatoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContatoModel" nillable="true" type="tns:ContatoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContatoModel" nillable="true" type="tns:ArrayOfContatoModel" />
+  <xs:complexType name="ContatoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Ativo" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="dAniversario" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dAniversarioTempoServico" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dDisponivelAte" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="dDisponivelaPartir" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="idAgencia" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idCliente" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idContato" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idContatoGerente" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idContatoMotorista" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idContatoTransportador" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idDecisao" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresaContato" type="xs:int" />
+          <xs:element minOccurs="0" name="idFidelidade" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idFuncionario" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idPersonalidade" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="lContato_EnderecoModel" nillable="true" type="tns:ArrayOfContato_EnderecoModel" />
+          <xs:element minOccurs="0" name="stEstadoCivil" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stMalaDireta" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stSensibilidade" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stSexo" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stVip" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xApelido" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCPF" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCargo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCelularComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCelularResidencial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xConjuge" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xDepartamento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEmailComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEmailResidencial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEmpresa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEnderecoEmpresa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFaxComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFilhos" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFuncao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xHobbies" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xHttpComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xHttpPessoal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xMemorando" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xMsnComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xMsnResidencial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNome" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xPagerComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xProfissao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xRadioFoneComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xRadioFoneResidencial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xRamalComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xRntrc" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xSkypeComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xSkypeResidencial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xTelefoneComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xTelefoneEmpresa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xTelefoneResidencial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xTitulo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ContatoModel" nillable="true" type="tns:ContatoModel" />
+  <xs:complexType name="ArrayOfContato_EnderecoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Contato_EnderecoModel" nillable="true" type="tns:Contato_EnderecoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContato_EnderecoModel" nillable="true" type="tns:ArrayOfContato_EnderecoModel" />
+  <xs:complexType name="Contato_EnderecoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q2:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idCidade" type="xs:int" />
+          <xs:element minOccurs="0" name="idContato" type="xs:int" />
+          <xs:element minOccurs="0" name="idEndereco" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="nNumero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="stLogradouro" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stPrincipal" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stTipoEndereco" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xBairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCEP" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCaixaPostal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xComplemento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEndereco" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFusoHorario" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLatitude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLongitude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNome" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Contato_EnderecoModel" nillable="true" type="tns:Contato_EnderecoModel" />
+  <xs:complexType name="ArrayOfEnderecoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnderecoModel" nillable="true" type="tns:EnderecoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnderecoModel" nillable="true" type="tns:ArrayOfEnderecoModel" />
+  <xs:complexType name="EnderecoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q3:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bCanFindCep" type="xs:boolean" />
+          <xs:element minOccurs="0" name="idAgencia" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idCidade" type="xs:int" />
+          <xs:element minOccurs="0" name="idClienteFornecedor" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idContato" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresa" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEndereco" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idFuncionario" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idSite" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idTransportador" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="nNumero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="stLogradouro" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stPrincipal" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stTipoEndereco" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xBairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCEP" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCaixaPostal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xComplemento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEndereco" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNome" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EnderecoModel" nillable="true" type="tns:EnderecoModel" />
+</xs:schema>

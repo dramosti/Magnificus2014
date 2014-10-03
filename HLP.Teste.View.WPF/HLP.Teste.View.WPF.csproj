@@ -97,10 +97,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\HLP.Controls\HLP.Controls\HLP.Controls.csproj">
-      <Project>{4a1ca1fc-acbe-44a8-8e38-bbe110eaeb3c}</Project>
-      <Name>HLP.Controls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>

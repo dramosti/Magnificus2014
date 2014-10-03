@@ -14,22 +14,7 @@
         </ResourceDictionary>
     </runtime:WindowsBase.Resources>
     <Grid>
-        <Expander Header="Unidade de Medida" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
-            <Component:WrapPanel HorizontalAlignment="Left"  VerticalAlignment="Top" Width="400" WidthComp1="150" >
-                <Component:HlpTextBox TextLabel="Código" IsReadOnly="True" 
-                                  Text="{Binding currentModel.idUnidadeMedida, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-                                  ToolTip="Chave principal do registro da Unidade de Medida"
-                                  />
-                <Component:HlpTextBox TextLabel="Sigla Padrão"
-                   Text="{Binding currentModel.xSiglaPadrao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                   IsEnabled="{Binding bIsEnabled}"/>
-                <Component:HlpTextBox  TextLabel="Unidade de Medida"
-                    Text="{Binding currentModel.xUnidadeMedida, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                    IsEnabled="{Binding bIsEnabled}"/>
-                <Component:HlpTextBox  TextLabel="Casas Decimais"
-                    IsEnabled="{Binding bIsEnabled}">                   
-                </Component:HlpTextBox>
-            </Component:WrapPanel>
+        <Expander Header="Unidade de Medida" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">                        
         </Expander>
     </Grid>
 

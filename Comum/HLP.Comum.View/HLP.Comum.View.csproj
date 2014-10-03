@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{178FDD5C-D3E5-4809-87C6-3A69C0055BC6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HLP.Comum.View</RootNamespace>
+    <AssemblyName>HLP.Comum.View</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_HLP065|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug_HLP065\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="SearchTextBox">
+      <HintPath>..\HLP.Comum.Infrastructure\SearchTextBox\SearchTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Wpf.AvalonDock">
+      <HintPath>..\HLP.Comum.Infrastructure\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero">
+      <HintPath>..\HLP.Comum.Infrastructure\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro">
+      <HintPath>..\HLP.Comum.Infrastructure\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010">
+      <HintPath>..\HLP.Comum.Infrastructure\ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid">
+      <HintPath>..\HLP.Comum.Infrastructure\ExtendedWPFToolkit\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\HLP.Comum.Infrastructure\ExtendedWPFToolkit\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\AdornerExtensions.cs" />
+    <Compile Include="Components\AdornerLabel.cs" />
+    <Compile Include="Components\BaseControl.cs" />
+    <Compile Include="Components\CustomCheckBox.cs" />
+    <Compile Include="Components\CustomComboBox.cs" />
+    <Compile Include="Components\CustomDatePicker.cs" />
+    <Compile Include="Components\CustomTextBlock.cs" />
+    <Compile Include="Components\CustomDockPanelSplitter.cs" />
+    <Compile Include="Components\HlpButtonHierarquia.xaml.cs">
+      <DependentUpon>HlpButtonHierarquia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpButtonNavigation.xaml.cs">
+      <DependentUpon>HlpButtonNavigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpButtonStatus.xaml.cs">
+      <DependentUpon>HlpButtonStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpDatePicker.xaml.cs">
+      <DependentUpon>HlpDatePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpEndereco.xaml.cs">
+      <DependentUpon>HlpEndereco.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpImageControl.xaml.cs">
+      <DependentUpon>HlpImageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpNavigation.xaml.cs">
+      <DependentUpon>HlpNavigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpPesquisaFiltrada.xaml.cs">
+      <DependentUpon>HlpPesquisaFiltrada.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpSearchTextBox.cs" />
+    <Compile Include="Components\HlpTimePicker.xaml.cs">
+      <DependentUpon>HlpTimePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpCheckBox.xaml.cs">
+      <DependentUpon>HlpCheckBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpComboBox.xaml.cs">
+      <DependentUpon>HlpComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpDateTimePicker.xaml.cs">
+      <DependentUpon>HlpDateTimePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpPesquisa.xaml.cs">
+      <DependentUpon>HlpPesquisa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpPesquisaPadrao.xaml.cs">
+      <DependentUpon>HlpPesquisaPadrao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpTextBox.xaml.cs">
+      <DependentUpon>HlpTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CustomTimePicker.cs" />
+    <Compile Include="Components\HlpUserControlBtnImage.xaml.cs">
+      <DependentUpon>HlpUserControlBtnImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\WatermarkTextBox.cs" />
+    <Compile Include="Converters\boolMultiConverter.cs" />
+    <Compile Include="Converters\boolToByteConverter.cs" />
+    <Compile Include="Converters\ByteToIntConverter.cs" />
+    <Compile Include="Converters\ComboBoxDisplayConverter.cs" />
+    <Compile Include="Converters\DateShortConverter.cs" />
+    <Compile Include="Converters\DateTimeTimeSpanConverter.cs" />
+    <Compile Include="Converters\DateTimeToStringHourConverter.cs" />
+    <Compile Include="Converters\DateTimeToStringLongConverter.cs" />
+    <Compile Include="Converters\DecimalToStringConverter.cs" />
+    <Compile Include="Converters\EnumDescriptionConverter.cs" />
+    <Compile Include="Converters\HlpNavigationVisibilityConverter.cs" />
+    <Compile Include="Converters\HlpNavigationMultiConverter.cs" />
+    <Compile Include="Converters\HlpPesquisaConverter.cs" />
+    <Compile Include="Converters\ImageToaByteConverter.cs" />
+    <Compile Include="Converters\IntStringConverter.cs" />
+    <Compile Include="Converters\MaskConverter.cs" />
+    <Compile Include="Converters\modelToComboBox.cs" />
+    <Compile Include="Converters\MoedaConverter.cs" />
+    <Compile Include="Converters\NotConverter.cs" />
+    <Compile Include="Converters\OperacoesAritmetConverter.cs" />
+    <Compile Include="Converters\PorcentagemConverter.cs" />
+    <Compile Include="Converters\SelectedItemToTextConverter.cs" />
+    <Compile Include="Converters\TextFormatConverter.cs" />
+    <Compile Include="Converters\TimeSpanToString.cs" />
+    <Compile Include="Converters\VisibilityDatePickerConverter.cs" />
+    <Compile Include="Converters\VisibilityVisibleToCollapsedNot.cs" />
+    <Compile Include="Formularios\HlpPesquisaInsert.xaml.cs">
+      <DependentUpon>HlpPesquisaInsert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\wdSenhaSupervisor.xaml.cs">
+      <DependentUpon>wdSenhaSupervisor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\WindowsBase.cs" />
+    <Compile Include="Formularios\WinPesquisaPadrao.xaml.cs">
+      <DependentUpon>WinPesquisaPadrao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PesquisaRapidaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Util\DatePickerTemplateSelector.cs" />
+    <Compile Include="Validates\ListUniqueValuesValidationRule.cs" />
+    <Compile Include="Validates\ListUniqueValueTrueValidationRule.cs" />
+    <Compile Include="Validates\NumericDecimalValidationRule.cs" />
+    <Compile Include="Validates\NumericIntValidationRule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Components\HlpButtonHierarquia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpButtonNavigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpButtonStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpDatePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpEndereco.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpImageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpNavigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpPesquisaFiltrada.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpTimePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\HlpCheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpDateTimePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpPesquisa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpPesquisaPadrao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpUserControlBtnImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Formularios\HlpPesquisaInsert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Formularios\wdSenhaSupervisor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Formularios\WinPesquisaPadrao.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
+      <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
+      <Name>HLP.Dependencies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Components.Model\HLP.Components.Model.csproj">
+      <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
+      <Name>HLP.Components.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Components.ViewModel\HLP.Components.ViewModel.csproj">
+      <Project>{937c9439-cc70-40d2-96f5-d9ad99c51181}</Project>
+      <Name>HLP.Components.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{cf75da11-2886-454a-84f8-9e1e9b4fa072}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HLP.ComumView.ViewModel\HLP.ComumView.ViewModel.csproj">
+      <Project>{ccfc8e30-5a35-4451-bbc5-6fac96016bf6}</Project>
+      <Name>HLP.ComumView.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
+      <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
+      <Name>HLP.Comum.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\HLP.Comum.Model.Components.PesquisaRapidaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Comum.Model.Models.modelToComboBox.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PesquisaRapidaService\servicePesquisaRapida.wsdl" />
+    <None Include="Service References\PesquisaRapidaService\servicePesquisaRapida.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PesquisaRapidaService\servicePesquisaRapida1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PesquisaRapidaService\servicePesquisaRapida2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\PesquisaRapidaService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PesquisaRapidaService\servicePesquisaRapida.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PesquisaRapidaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PesquisaRapidaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PesquisaRapidaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
