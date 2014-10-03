@@ -265,7 +265,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\wcf_Lista_Preco\Reference.cs">
+    <Compile Include="Service References\wcf_ListaPreco\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -1044,26 +1044,35 @@
     <None Include="Service References\wcf_Juros\wcf_Juros54.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco.wsdl" />
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco.xsd">
+    <None Include="Service References\wcf_ListaPreco\wcf_Lista_Preco.wsdl" />
+    <None Include="Service References\wcf_ListaPreco\wcf_Lista_Preco.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco1.xsd">
+    <None Include="Service References\wcf_ListaPreco\wcf_Lista_Preco1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco2.xsd">
+    <None Include="Service References\wcf_ListaPreco\wcf_Lista_Preco2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco3.xsd">
+    <None Include="Service References\wcf_ListaPreco\wcf_Lista_Preco3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco4.xsd">
+    <None Include="Service References\wcf_ListaPreco\wcf_Lista_Preco4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco5.xsd">
+    <None Include="Service References\wcf_ListaPreco\wcf_Lista_Preco5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco6.xsd">
+    <None Include="Service References\wcf_ListaPreco\wcf_Lista_Preco6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ListaPreco\wcf_Lista_Preco7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ListaPreco\wcf_Lista_Preco8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ListaPreco\wcf_Lista_Preco9.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Localizacao\wcf_Localizacao.wsdl" />
@@ -1524,7 +1533,7 @@
     <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario_ControlePonto\" />
     <WCFMetadataStorage Include="Service References\wcf_Juros\" />
-    <WCFMetadataStorage Include="Service References\wcf_Lista_Preco\" />
+    <WCFMetadataStorage Include="Service References\wcf_ListaPreco\" />
     <WCFMetadataStorage Include="Service References\wcf_Localizacao\" />
     <WCFMetadataStorage Include="Service References\wcf_Login\" />
     <WCFMetadataStorage Include="Service References\wcf_ModoEntrega\" />
@@ -2219,21 +2228,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Lista_Preco\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Lista_Preco\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Lista_Preco\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Produto\wcf_Produto.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2418,6 +2412,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_ClasseFinanceira\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_ListaPreco\wcf_Lista_Preco.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_ListaPreco\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_ListaPreco\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_ListaPreco\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

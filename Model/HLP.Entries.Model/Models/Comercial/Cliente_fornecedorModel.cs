@@ -12,6 +12,7 @@ using HLP.Entries.Model.Models.Gerais;
 using HLP.Components.Model.Models;
 using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Models.Financeiro;
+using System.Runtime.Serialization;
 
 namespace HLP.Entries.Model.Models.Comercial
 {
@@ -19,7 +20,7 @@ namespace HLP.Entries.Model.Models.Comercial
     {
         private static Type tClienteFornecedorViewModel = null;
 
-        public static object ExecuteMethodViewModelByReflection(string xNameMethod, object[] arguments)
+        private static object ExecuteMethodViewModelByReflection(string xNameMethod, object[] arguments)
         {
             Window w = Sistema.GetOpenWindow(xName: "WinCliente");
 

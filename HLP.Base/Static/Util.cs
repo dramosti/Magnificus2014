@@ -2374,8 +2374,28 @@ namespace HLP.Base.Static
         /// <returns></returns>
         public static Microsoft.Practices.EnterpriseLibrary.Data.IRowMapper<T> GetMap<T>() where T : class, new()
         {
-            List<System.Reflection.PropertyInfo> lProperty = typeof(T).GetProperties().Where(c => c.CustomAttributes.Count() == 0).ToList();
+            List<System.Reflection.PropertyInfo> lProperty = new List<System.Reflection.PropertyInfo>();
+            bool bPossuiParameterOrder = false;
+
+            foreach (System.Reflection.PropertyInfo pi in typeof(T).GetProperties())
+            {
+                bPossuiParameterOrder = false;
+                foreach (var customAttr in pi.GetCustomAttributes(false))
+                {                    
+                    if (customAttr.GetType() == typeof(HLP.Base.ClassesBases.ParameterOrder))
+                    {
+                        bPossuiParameterOrder = true;
+                        break;
+                    }                    
+                }
+                if (bPossuiParameterOrder == false)
+                    lProperty.Add(item: pi);
+            }
+
+
+
             Microsoft.Practices.EnterpriseLibrary.Data.IMapBuilderContext<T> mapper = Microsoft.Practices.EnterpriseLibrary.Data.MapBuilder<T>.MapAllProperties();
+
             foreach (System.Reflection.PropertyInfo p in lProperty)
             {
                 mapper = mapper.DoNotMap(p);

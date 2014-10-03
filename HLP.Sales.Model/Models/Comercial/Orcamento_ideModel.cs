@@ -26,6 +26,7 @@ using System.Threading;
 using HLP.Comum.Model.Models;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
@@ -1245,6 +1246,7 @@ namespace HLP.Sales.Model.Models.Comercial
     {
         private GCHandle _refOrcamentoIde;
 
+        [IgnoreDataMemberAttribute()]
         public GCHandle refOrcamentoIde
         {
             get { return _refOrcamentoIde; }
@@ -2309,7 +2311,7 @@ namespace HLP.Sales.Model.Models.Comercial
     {
 
         private GCHandle _refOrcamentoIde;
-
+        [IgnoreDataMemberAttribute()]
         public GCHandle refOrcamentoIde
         {
             get { return _refOrcamentoIde; }
@@ -3863,7 +3865,7 @@ namespace HLP.Sales.Model.Models.Comercial
     public partial class Orcamento_Item_RepresentantesModel : modelComum
     {
         private GCHandle _refOrcamentoIde;
-
+        [IgnoreDataMemberAttribute()]
         public GCHandle refOrcamentoIde
         {
             get { return _refOrcamentoIde; }
@@ -4058,7 +4060,7 @@ namespace HLP.Sales.Model.Models.Comercial
     public partial class Orcamento_Total_ImpostosModel : modelComum
     {
         private GCHandle _refOrcamentoIde;
-
+        [IgnoreDataMemberAttribute()]
         public GCHandle refOrcamentoIde
         {
             get { return _refOrcamentoIde; }

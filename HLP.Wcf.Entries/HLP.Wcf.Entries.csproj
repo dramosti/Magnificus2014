@@ -444,10 +444,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\wcf_oficial.pubxml" />
-    <None Include="Properties\PublishProfiles\wcf_programacao.pubxml" />
-    <None Include="Properties\PublishProfiles\wcf_publicacaoTeste.pubxml" />
-    <None Include="Properties\PublishProfiles\wcf_testes.pubxml" />
+    <None Include="Properties\PublishProfiles\HLP065_WCFDEV.pubxml" />
+    <None Include="Properties\PublishProfiles\HLP065_WCFTESTES.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
