@@ -1353,7 +1353,7 @@
                 </Trigger>            
             </Style.Triggers>
         </Style>
-    <Style x:Key="ComboBoxItemStyle" TargetType="{x:Type ComboBoxItem}">
+        <Style x:Key="ComboBoxItemStyle" TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Padding" Value="4,1"/>
         <Setter Property="Cursor" Value="Hand"/>
