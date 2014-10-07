@@ -83,8 +83,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLP.Sales.Services", "HLP.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLP.Teste.View.WPF", "HLP.Teste.View.WPF\HLP.Teste.View.WPF.csproj", "{BBE0F17A-9C0B-4254-B9CE-DD86FF4C3A83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLP.Controls", "..\HLP.Controls\HLP.Controls\HLP.Controls.csproj", "{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -419,18 +417,6 @@ Global
 		{BBE0F17A-9C0B-4254-B9CE-DD86FF4C3A83}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BBE0F17A-9C0B-4254-B9CE-DD86FF4C3A83}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{BBE0F17A-9C0B-4254-B9CE-DD86FF4C3A83}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
-		{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
-		{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}.Debug_HLP065|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}.Debug_HLP065|Any CPU.Build.0 = Debug|Any CPU
-		{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
-		{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
-		{4A1CA1FC-ACBE-44A8-8E38-BBE110EAEB3C}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

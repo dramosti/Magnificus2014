@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4f7783ef-bfbc-42df-8b5a-e00a9d47ce2c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Components.Model" />
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Lista_Preco.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_Lista_Preco.wsdl" MetadataType="Wsdl" ID="366bf019-9877-469d-aaef-c79b5e443257" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Lista_Preco.svc?wsdl" />
+    <MetadataFile FileName="wcf_Lista_Preco.disco" MetadataType="Disco" ID="73f77cbf-c59f-4767-a532-a45d889620a4" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Lista_Preco.svc?disco" />
+    <MetadataFile FileName="wcf_Lista_Preco.xsd" MetadataType="Schema" ID="28596d36-b228-45b4-967f-d2af7a699107" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Lista_Preco1.xsd" MetadataType="Schema" ID="83fcb57e-4aee-4904-bde2-ba5159144beb" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Lista_Preco2.xsd" MetadataType="Schema" ID="18210db8-fa09-4a8c-9f50-423369039167" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Lista_Preco3.xsd" MetadataType="Schema" ID="167125e4-5fc7-4180-b47b-35321be3b72d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Lista_Preco4.xsd" MetadataType="Schema" ID="94b3df78-d19b-4eac-9b95-4a049bd53877" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd6" />
+    <MetadataFile FileName="wcf_Lista_Preco5.xsd" MetadataType="Schema" ID="0277a56c-2442-47fe-bcf6-b9f913ca350e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_Lista_Preco6.xsd" MetadataType="Schema" ID="f63ca774-e9ff-41a3-a1db-4457035e13f5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
