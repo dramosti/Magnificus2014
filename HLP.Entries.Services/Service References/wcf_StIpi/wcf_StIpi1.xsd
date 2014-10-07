@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Fiscal" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Fiscal" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_StIpi.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+  <xs:complexType name="Situacao_tributaria_ipiModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cCSTIpi" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="idCSTIpi" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="stSimplesNacional" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xCSTIpi" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Situacao_tributaria_ipiModel" nillable="true" type="tns:Situacao_tributaria_ipiModel" />
+</xs:schema>

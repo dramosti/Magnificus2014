@@ -10,22 +10,19 @@
         <Expander Header="Unidade de Medida" IsExpanded="True">
             <Component:WrapPanel HorizontalAlignment="Left"  VerticalAlignment="Top" Width="400" WidthComp1="150" >
                 <Component:HlpTextBox TextLabel="Código" IsReadOnly="True" 
-                                  Validacao="Int"
                                   Text="{Binding currentModel.idUnidadeMedida, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
                                   ToolTip="Chave principal do registro da Unidade de Medida"
                                   />
                 <Component:HlpTextBox TextLabel="Sigla Padrão"
-                                  IsReadOnly="{Binding bIsEnabled}"
-                                  Validacao="Text"                                  
-                                  Text="{Binding currentModel.xSiglaPadrao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                   Text="{Binding currentModel.xSiglaPadrao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                   IsEnabled="{Binding bIsEnabled}"/>
                 <Component:HlpTextBox  TextLabel="Unidade de Medida"
-                                   Validacao="Text"
-                                   Text="{Binding currentModel.xUnidadeMedida, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                   IsReadOnly="{Binding bIsEnabled}"/>
+                    Text="{Binding currentModel.xUnidadeMedida, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    IsEnabled="{Binding bIsEnabled}"/>
                 <Component:HlpTextBox  TextLabel="Casas Decimais"
-                                   Validacao="Int"
-                                    Text="{Binding currentModel.nCasasDecimais, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                    IsReadOnly="{Binding bIsEnabled}"/>
+                                       Validacao="Int"
+                    >
+                </Component:HlpTextBox>
             </Component:WrapPanel>
         </Expander>
     </Grid>

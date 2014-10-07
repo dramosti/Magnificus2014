@@ -1,0 +1,246 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:Util="clr-namespace:HLP.Comum.Resources" 
+                    xmlns:local="clr-namespace:HLP.Comum.Resources.Converter"
+                    xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
+    
+        <!--Cores-->
+
+    <SolidColorBrush x:Key="BlueStandard" Color="#FF4774B5"/>
+    <SolidColorBrush x:Key="BlueMouseOver" Color="#FF558BD8"/>
+    <SolidColorBrush x:Key="GrayDisabled" Color="#FFC9C9C9"/>
+    <SolidColorBrush x:Key="WhiteForeground" Color="White"/>
+
+    <!--Control Template Botões Específicos das Telas-->
+    <!--BotaoEnviar-->
+    
+    <ControlTemplate x:Key="ControlTemplateBotaoEnviar" TargetType="{x:Type Button}">
+        <Border Height="70" Width="Auto" Margin="0,0,0,3">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Border.Background" Value="{StaticResource BlueStandard}"/>
+                    <Style.Triggers>
+                        <Trigger Property="Border.IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource BlueMouseOver}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <DockPanel LastChildFill="True">
+                <TextBlock Text="Enviar Itens" Margin="3,0,3,0" DockPanel.Dock="Bottom" Height="22" FontFamily="Calibri" FontSize="16" HorizontalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="FrameworkElement.IsEnabled" Value="False">
+                                    <Setter Property="TextElement.Foreground" Value="{StaticResource GrayDisabled}"/>
+                                    <Setter Property="TextElement.FontWeight" Value="Normal"/>
+                                </Trigger>
+                                <Trigger Property="FrameworkElement.IsEnabled" Value="True">
+                                    <Setter Property="TextElement.Foreground" Value="{StaticResource WhiteForeground}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Image x:Name="ImagemContextMenu" Height="36" Width="36" Margin="0,2,0,0">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Enviar_Botao_Branco.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Enviar_Botao_Disabled.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </DockPanel>
+        </Border>
+    </ControlTemplate>    
+    
+    <!--BotaoAprovar-->
+
+    <ControlTemplate x:Key="ControlTemplateBotaoAprovar" TargetType="{x:Type Button}">
+        <Border Height="70" Width="Auto" Margin="0,3,0,3" ToolTip="Aprovar Desconto">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Border.Background" Value="{StaticResource BlueStandard}"/>
+                    <Style.Triggers>
+                        <Trigger Property="Border.IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource BlueMouseOver}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <DockPanel LastChildFill="True">
+                <TextBlock Text="Aprovar Desconto" Margin="3,0,3,0" DockPanel.Dock="Bottom" Height="22" FontFamily="Calibri" FontSize="16" HorizontalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="FrameworkElement.IsEnabled" Value="False">
+                                    <Setter Property="TextElement.Foreground" Value="{StaticResource GrayDisabled}"/>
+                                    <Setter Property="TextElement.FontWeight" Value="Normal"/>
+                                </Trigger>
+                                <Trigger Property="FrameworkElement.IsEnabled" Value="True">
+                                    <Setter Property="TextElement.Foreground" Value="{StaticResource WhiteForeground}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Image x:Name="ImagemContextMenu" Height="36" Width="36" Margin="0,2,0,0">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/AprovadoBranco.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/AprovadoDisabled.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </DockPanel>
+        </Border>
+    </ControlTemplate>
+    
+    <!--Botao Confirmar-->
+
+    <ControlTemplate x:Key="ControlTemplateBotaoConfirmar" TargetType="{x:Type Button}">
+        <Border Height="70" Width="Auto" Margin="0,0,0,3">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Border.Background" Value="{StaticResource BlueStandard}"/>
+                    <Style.Triggers>
+                        <Trigger Property="Border.IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource BlueMouseOver}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <DockPanel LastChildFill="True">
+                <TextBlock Text="Confirmar Itens" Margin="3,0,3,0" DockPanel.Dock="Bottom" Height="22" FontFamily="Calibri" FontSize="16" HorizontalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="FrameworkElement.IsEnabled" Value="False">
+                                    <Setter Property="TextElement.Foreground" Value="{StaticResource GrayDisabled}"/>
+                                    <Setter Property="TextElement.FontWeight" Value="Normal"/>
+                                </Trigger>
+                                <Trigger Property="FrameworkElement.IsEnabled" Value="True">
+                                    <Setter Property="TextElement.Foreground" Value="{StaticResource WhiteForeground}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Image x:Name="ImagemContextMenu" Height="36" Width="36" Margin="0,2,0,0">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ConfirmadoBranco.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ConfirmadoDisabled.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </DockPanel>
+        </Border>
+    </ControlTemplate>
+    
+    <!--Botao Cancelado-->
+
+    <ControlTemplate x:Key="ControlTemplateBotaoCancelado" TargetType="{x:Type Button}">
+        <Border Height="70" Width="Auto" Margin="0,0,0,3">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Border.Background" Value="{StaticResource BlueStandard}"/>
+                    <Style.Triggers>
+                        <Trigger Property="Border.IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource BlueMouseOver}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <DockPanel LastChildFill="True">
+                <TextBlock Text="Itens Cancelados" Margin="3,0,3,0" DockPanel.Dock="Bottom" Height="22" FontFamily="Calibri" FontSize="16" HorizontalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="FrameworkElement.IsEnabled" Value="False">
+                                    <Setter Property="TextElement.Foreground" Value="{StaticResource GrayDisabled}"/>
+                                    <Setter Property="TextElement.FontWeight" Value="Normal"/>
+                                </Trigger>
+                                <Trigger Property="FrameworkElement.IsEnabled" Value="True">
+                                    <Setter Property="TextElement.Foreground" Value="{StaticResource WhiteForeground}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Image x:Name="ImagemContextMenu" Height="36" Width="36" Margin="0,2,0,0">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_Branco.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_Disabled.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </DockPanel>
+        </Border>
+    </ControlTemplate>
+    
+    <!--Bota Gerar Nova Versao-->
+
+    <ControlTemplate x:Key="ControlTemplateBotaoGerarVersao" TargetType="{x:Type Button}">
+        <Border Height="70" Width="Auto" Margin="0,0,0,3">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Border.Background" Value="{StaticResource BlueStandard}"/>
+                    <Style.Triggers>
+                        <Trigger Property="Border.IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource BlueMouseOver}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <DockPanel LastChildFill="True">
+                <TextBlock Text="Itens Cancelados" Margin="3,0,3,0" DockPanel.Dock="Bottom" Height="22" FontFamily="Calibri" FontSize="16" HorizontalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="FrameworkElement.IsEnabled" Value="False">
+                                    <Setter Property="TextElement.Foreground" Value="{StaticResource GrayDisabled}"/>
+                                    <Setter Property="TextElement.FontWeight" Value="Normal"/>
+                                </Trigger>
+                                <Trigger Property="FrameworkElement.IsEnabled" Value="True">
+                                    <Setter Property="TextElement.Foreground" Value="{StaticResource WhiteForeground}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Image x:Name="ImagemContextMenu" Height="36" Width="36" Margin="0,2,0,0">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_Branco.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_Disabled.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </DockPanel>
+        </Border>
+    </ControlTemplate>   
+    
+</ResourceDictionary>

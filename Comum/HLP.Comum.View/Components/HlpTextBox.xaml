@@ -1,0 +1,85 @@
+﻿<runtime:BaseControl x:Class="HLP.Comum.View.Components.HlpTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
+             xmlns:local="clr-namespace:HLP.Comum.View.Components"
+             mc:Ignorable="d" 
+              Width="Auto" Height="Auto"  x:Name="componente" Loaded="componente_Loaded">
+    <UserControl.Resources>  
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type local:HlpTextBox}">
+                <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="True">
+                        <Setter Property="Validation.ErrorTemplate">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <DockPanel LastChildFill="True">
+                                        <Border Background="#FFECA933" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
+                            ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"
+                                ></TextBlock>
+                                        </Border>
+                                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
+                                            <Border BorderBrush="Transparent" BorderThickness="1"></Border>
+                                        </AdornedElementPlaceholder>
+                                    </DockPanel>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                    <Trigger Property="IsVisible" Value="false">
+                        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel LastChildFill="True">
+        <TextBlock x:Name="lblCaption" 
+               TextWrapping="Wrap"
+               Height="{Binding Height, ElementName=componente}"
+               Style="{StaticResource TextBlocktyleComponents}" 
+               Visibility ="{Binding VisibilityLabel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, Mode=FindAncestor}}" 
+               Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Caption}"
+			   Width="{Binding WidthLabel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, Mode=FindAncestor}}" FontFamily="Calibri" FontSize="14"><Run Text="Label"/></TextBlock>
+        <Button DockPanel.Dock="Right" Visibility="Collapsed" x:Name="btn" HorizontalAlignment="Right" Width="25" Height="20" Grid.Column="1" Click="btn_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Image x:Name="ImageAdd" Height="12" Width="12">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Folder.png"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Folder_MouseOver.png"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Folder_Disabled.png"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TextBox x:Name="txtControle" Style="{DynamicResource TextBoxComponentStyle}" DockPanel.Dock="Left"
+                 TextChanged="txtControle_TextChanged"
+                 LostFocus="txtControle_LostFocus"
+                 MouseDoubleClick="txtControle_MouseDoubleClick"
+                 Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
+                 IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"
+                 Height="20" FontFamily="Calibri" FontSize="14">
+        </TextBox>
+
+
+
+    </DockPanel>
+</runtime:BaseControl>
