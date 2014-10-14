@@ -5,9 +5,7 @@ using System.Windows.Controls;
 using HLP.Base.Static;
 using System.Reflection;
 using System.Windows.Controls.Primitives;
-using HLP.Base.ClassesBases;
 using System.Linq;
-using HLP.Comum.Model.Models;
 using System.Windows.Media;
 using System.Windows.Data;
 using System.ComponentModel;
@@ -450,44 +448,7 @@ namespace HLP.Components.View.WPF
 
         private void ValidateModel(out bool bPermiteKeyDown)
         {
-            if (this.CurrentItem == null)
-                bPermiteKeyDown = true;
-            else if (this.CurrentItem.ToString().Contains(value: "NewItemPlaceholder"))
-                bPermiteKeyDown = true;
-            //else if ((this.CurrentItem as modelBase).ValidateModel() > 0)
-            //    bPermiteKeyDown = false;
-            else if (!string.IsNullOrEmpty(value: this.pertenceValidacaoModel))
-            {
-                PropertyInfo pi = null;
-                object objModel = null;
-                object objModelParent = this.CurrentItem;
-                bPermiteKeyDown = true;
-
-                foreach (var xProperty in this.pertenceValidacaoModel.Split(separator: ';'))
-                {
-                    pi =
-                    objModelParent.GetType().GetProperty(name: "objImposto");
-
-                    if (pi != null)
-                    {
-                        objModel = pi.GetValue(objModelParent);
-
-                        if (objModel.GetType().BaseType == typeof(modelBase) ||
-                            objModel.GetType().BaseType == typeof(modelComum))
-                            bPermiteKeyDown = (objModel as modelBase).lErrors.Count(i => !i.skipValidation) == 0;
-
-                        objModelParent = objModel;
-                    }
-                }
-            }
-            else
-                if (this.CurrentItem.GetType().BaseType == typeof(modelBase) ||
-                    this.CurrentItem.GetType().BaseType == typeof(modelComum))
-                {
-                    bPermiteKeyDown = (this.CurrentItem as modelBase).lErrors.Count(i => !i.skipValidation) == 0;
-                }
-                else
-                    bPermiteKeyDown = true;
+            bPermiteKeyDown = true;
         }
         #endregion
 

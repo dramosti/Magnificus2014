@@ -170,7 +170,6 @@ namespace HLP.Base.Static
                 throw new Exception("Erro ao deletar arquivo(s). Rasão: " + ex.Message);
             }
         }
-
         #endregion
 
         #region Extensions decimal

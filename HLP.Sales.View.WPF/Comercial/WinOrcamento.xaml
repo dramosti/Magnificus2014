@@ -603,7 +603,7 @@
 								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
 								CanUserDeleteRows="True"
 								CanUserAddRows="{Binding ElementName=cbxOrcamento, Path=SelectedIndex, Converter={StaticResource canUserAddConv}}"
-                                ItemsSource="{Binding Source={StaticResource cvsItens}}" pertenceValidacaoModel="objImposto;">
+                                ItemsSource="{Binding Source={StaticResource cvsItens}}" pertenceValidacaoModel="objImposto;" Margin="0,5,0,-5">
                             <Components:CustomDataGrid.Columns>
                                 <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
