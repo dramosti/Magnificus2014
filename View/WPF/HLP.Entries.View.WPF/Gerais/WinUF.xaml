@@ -77,7 +77,7 @@
 					ucEnabled="{Binding bIsEnabled}" Validation.ErrorTemplate="{StaticResource errorTest}"
 					Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
 					selectedId="{Binding currentModel.idRegiao, Mode=TwoWay, 
-                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  xNameView="vwRegiaoqs" TableView="vwRegiao"
+                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  xNameView="vwRegiaoqs" TableView="vwRegiao"
                     >                
             </Components:ucTextBoxIntellisense>
         </Grid>

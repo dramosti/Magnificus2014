@@ -24,20 +24,8 @@ namespace HLP.Entries.View.WPF.Parametrização
         public WinParametrizacao()
         {
             InitializeComponent();
-            this.ViewModel = new Empresa_ParametrosViewModel();
-            base.SetEventsTabControl(tabControl: this.tabPrincipal);
         }
 
-        public Empresa_ParametrosViewModel ViewModel
-        {
-            get
-            {
-                return this.DataContext as Empresa_ParametrosViewModel;
-            }
-            set
-            {
-                this.DataContext = value;
-            }
-        }
+      
     }
 }
